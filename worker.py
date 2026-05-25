@@ -1,0 +1,230 @@
+"""
+Background worker — keeps `data/state.json` fresh so the Streamlit dashboard
+can load instantly without re-running the engine or hitting yfinance.
+
+Runs forever. Every `--interval` seconds (default 600 = 10 min):
+    1. Download fresh bars for every symbol in DATA.symbols.
+    2. Run the full prepare_dual pipeline (indicators + HMM + signals).
+    3. Fetch macro verdict (news_macro).
+    4. Snapshot last-bar state + last 20 journal trades.
+    5. Atomic write to data/state.json (write tmp, fsync, rename).
+
+Usage:
+    python3 -m worker                       # default 10-min loop
+    python3 -m worker --interval 300        # 5-min loop
+    python3 -m worker --once                # write one snapshot and exit
+    python3 -m worker --symbols SPY,DIA     # override symbol list
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import signal
+import sys
+import time
+import traceback
+from datetime import datetime, timezone
+
+import pandas as pd
+
+from config.settings import DATA, PULLBACK, TRENDCARRY
+from core.data_loader import load_symbol
+from main_portfolio import prepare_dual
+from core.news_macro import macro_verdict, RISK_OFF_THEMES, RISK_ON_THEMES
+
+STATE_PATH = os.path.join("data", "state.json")
+JOURNAL_PATH = os.path.join("data", "trade_journal.csv")
+
+
+# ---------------------------------------------------------------------------
+# Snapshot builders
+# ---------------------------------------------------------------------------
+def _snapshot_symbol(symbol: str) -> dict:
+    df = prepare_dual(load_symbol(symbol, force_refresh=True))
+    last = df.iloc[-1]
+    ts = df.index[-1]
+    pb_sig = int(last.get("pullback_Signal", 0) or 0)
+    tc_sig = int(last.get("trend_carry_Signal", 0) or 0)
+
+    # Tail of bars for chart + volume profile.
+    tail = df.tail(400)
+    bars = []
+    for t, row in tail.iterrows():
+        bars.append({
+            "t": t.isoformat(),
+            "o": float(row.get("Open", row["Close"])),
+            "h": float(row.get("High", row["Close"])),
+            "l": float(row.get("Low", row["Close"])),
+            "c": float(row["Close"]),
+            "v": float(row.get("Volume", 0.0)),
+            "ema": float(row.get("EMA", float("nan"))),
+            "sma": float(row.get("SMA", float("nan"))),
+            "vwap": float(row.get("VWAP", float("nan"))) if "VWAP" in row else None,
+        })
+
+    return {
+        "symbol": symbol,
+        "bar_time_utc": ts.tz_convert("UTC").isoformat() if ts.tzinfo else ts.isoformat(),
+        "close": float(last["Close"]),
+        "ema": float(last.get("EMA", float("nan"))),
+        "sma": float(last.get("SMA", float("nan"))),
+        "vwap": float(last.get("VWAP", float("nan"))) if "VWAP" in df.columns else None,
+        "pullback_signal": pb_sig,
+        "trend_carry_signal": tc_sig,
+        "pullback_pyramid_ok": bool(last.get("pullback_PyramidOK", False)),
+        "pullback_pyramid_cap": int(last.get("pullback_PyramidCap", 0) or 0),
+        "trend_carry_pyramid_ok": bool(last.get("trend_carry_PyramidOK", False)),
+        "trend_carry_pyramid_cap": int(last.get("trend_carry_PyramidCap", 0) or 0),
+        "bars": bars,
+    }
+
+
+def _snapshot_macro() -> dict:
+    v = macro_verdict(force_refresh=True)
+    return {
+        "verdict": v.verdict,
+        "risk_off_score": v.risk_off_score,
+        "risk_on_score": v.risk_on_score,
+        "theme_hits": v.theme_hits,
+        "sample_headlines": v.sample_headlines,
+        "n_headlines": v.n_headlines,
+        "sources_used": v.sources_used,
+        "fetched_at": v.fetched_at,
+        "risk_off_themes": sorted(RISK_OFF_THEMES),
+        "risk_on_themes": sorted(RISK_ON_THEMES),
+    }
+
+
+def _snapshot_journal() -> list[dict]:
+    if not os.path.exists(JOURNAL_PATH):
+        return []
+    try:
+        j = pd.read_csv(JOURNAL_PATH)
+    except Exception:
+        return []
+    if j.empty:
+        return []
+    return j.tail(20).iloc[::-1].to_dict(orient="records")
+
+
+def build_state(symbols: list[str]) -> dict:
+    """Full snapshot dict. Per-symbol failures don't kill the whole snapshot."""
+    state = {
+        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "engine": {
+            "pullback_base_pct": PULLBACK.base_size_pct,
+            "pullback_cap_pct": PULLBACK.capital_cap_pct,
+            "pullback_stop_pct": PULLBACK.stop_loss_pct,
+            "pullback_tp1_pct": PULLBACK.partial_tp_pct,
+            "pullback_tp2_pct": PULLBACK.final_tp_pct,
+            "pullback_partial_size": PULLBACK.partial_tp_size,
+            "pullback_final_size": PULLBACK.final_tp_size,
+            "tc_base_pct": TRENDCARRY.base_size_pct,
+            "tc_stop_pct": TRENDCARRY.stop_loss_pct,
+            "tc_tp1_pct": TRENDCARRY.partial_tp_pct,
+            "tc_tp2_pct": TRENDCARRY.final_tp_pct,
+            "tc_partial_size": TRENDCARRY.partial_tp_size,
+            "tc_final_size": TRENDCARRY.final_tp_size,
+        },
+        "symbols": {},
+        "errors": {},
+    }
+    for sym in symbols:
+        try:
+            state["symbols"][sym] = _snapshot_symbol(sym)
+        except Exception as e:
+            state["errors"][sym] = f"{type(e).__name__}: {e}"
+            traceback.print_exc()
+
+    try:
+        state["macro"] = _snapshot_macro()
+    except Exception as e:
+        state["errors"]["macro"] = f"{type(e).__name__}: {e}"
+        state["macro"] = None
+
+    try:
+        state["journal_tail"] = _snapshot_journal()
+    except Exception as e:
+        state["errors"]["journal"] = f"{type(e).__name__}: {e}"
+        state["journal_tail"] = []
+
+    return state
+
+
+# ---------------------------------------------------------------------------
+# Atomic JSON write
+# ---------------------------------------------------------------------------
+def _json_default(o):
+    if isinstance(o, (pd.Timestamp, datetime)):
+        return o.isoformat()
+    if isinstance(o, float) and (o != o):     # NaN
+        return None
+    return str(o)
+
+
+def write_state(state: dict, path: str = STATE_PATH) -> None:
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    tmp = path + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump(state, f, indent=2, default=_json_default)
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(tmp, path)
+
+
+# ---------------------------------------------------------------------------
+# Loop
+# ---------------------------------------------------------------------------
+_STOP = False
+def _on_signal(signum, frame):
+    global _STOP
+    _STOP = True
+    print(f"\n[worker] received signal {signum}, shutting down after current iter.")
+
+
+def loop(symbols: list[str], interval: int) -> None:
+    signal.signal(signal.SIGINT, _on_signal)
+    signal.signal(signal.SIGTERM, _on_signal)
+    print(f"[worker] starting · symbols={symbols} · interval={interval}s · "
+          f"writes={STATE_PATH}")
+    while not _STOP:
+        t0 = time.time()
+        try:
+            state = build_state(symbols)
+            write_state(state)
+            print(f"[worker] {datetime.now(timezone.utc):%H:%M:%S} UTC · "
+                  f"wrote snapshot · errors={list(state['errors'].keys()) or 'none'} · "
+                  f"elapsed={time.time()-t0:.1f}s")
+        except Exception:
+            print("[worker] FATAL error in iteration; staying alive.")
+            traceback.print_exc()
+        # Sleep in small chunks so Ctrl-C is responsive.
+        slept = 0
+        while not _STOP and slept < interval:
+            time.sleep(min(2, interval - slept))
+            slept += 2
+    print("[worker] stopped.")
+
+
+def main():
+    p = argparse.ArgumentParser(description="Background worker — keeps data/state.json fresh.")
+    p.add_argument("--interval", type=int, default=600,
+                   help="seconds between snapshots (default 600 = 10 min)")
+    p.add_argument("--once", action="store_true", help="write one snapshot and exit")
+    p.add_argument("--symbols", default=None,
+                   help="comma-separated override (default: DATA.symbols)")
+    a = p.parse_args()
+    syms = (a.symbols.split(",") if a.symbols else DATA.symbols)
+    syms = [s.strip().upper() for s in syms if s.strip()]
+    if a.once:
+        state = build_state(syms)
+        write_state(state)
+        print(f"[worker] wrote one snapshot to {STATE_PATH} · "
+              f"errors={list(state['errors'].keys()) or 'none'}")
+        return
+    loop(syms, a.interval)
+
+
+if __name__ == "__main__":
+    main()
