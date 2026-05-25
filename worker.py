@@ -32,9 +32,11 @@ from config.settings import DATA, PULLBACK, TRENDCARRY
 from core.data_loader import load_symbol
 from main_portfolio import prepare_dual
 from core.news_macro import macro_verdict, RISK_OFF_THEMES, RISK_ON_THEMES
+from core.notifier import send_signal as _notify_signal
 
 STATE_PATH = os.path.join("data", "state.json")
 JOURNAL_PATH = os.path.join("data", "trade_journal.csv")
+NOTIFIED_PATH = os.path.join("data", "last_notified.json")
 
 
 # ---------------------------------------------------------------------------
@@ -174,6 +176,61 @@ def write_state(state: dict, path: str = STATE_PATH) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Notification: fire Discord only when a NEW signal-bar appears.
+# Persisted in data/last_notified.json so cron re-runs don't double-fire.
+# Schema: { "<symbol>:<strategy>:<side>": "<bar_time_utc iso>" }
+# ---------------------------------------------------------------------------
+def _load_notified() -> dict:
+    if not os.path.exists(NOTIFIED_PATH):
+        return {}
+    try:
+        with open(NOTIFIED_PATH) as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def _save_notified(d: dict) -> None:
+    os.makedirs(os.path.dirname(NOTIFIED_PATH), exist_ok=True)
+    tmp = NOTIFIED_PATH + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump(d, f, indent=2)
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(tmp, NOTIFIED_PATH)
+
+
+def maybe_notify(state: dict) -> int:
+    """For each per-symbol snapshot with a non-zero signal, fire Discord
+    iff this exact (symbol, strategy, side, bar_time) hasn't fired before.
+    Returns number of notifications sent."""
+    sent = 0
+    notified = _load_notified()
+    macro = state.get("macro")
+    engine = state.get("engine", {})
+    for sym, snap in state.get("symbols", {}).items():
+        for strat, sig_key in (("pullback", "pullback_signal"),
+                               ("trend_carry", "trend_carry_signal")):
+            side = int(snap.get(sig_key, 0) or 0)
+            if side == 0:
+                continue
+            key = f"{sym}:{strat}:{side}"
+            bar = snap.get("bar_time_utc", "")
+            if notified.get(key) == bar:
+                continue   # already notified for this exact bar
+            ok = _notify_signal(sym, side, snap, strategy=strat,
+                                macro=macro, engine=engine)
+            if ok:
+                notified[key] = bar
+                sent += 1
+                print(f"[worker] 🔔 notified Discord: {sym} {strat} "
+                      f"{'LONG' if side==1 else 'SHORT'} @ {bar}")
+    if sent:
+        _save_notified(notified)
+    return sent
+
+
+# ---------------------------------------------------------------------------
 # Loop
 # ---------------------------------------------------------------------------
 _STOP = False
@@ -193,8 +250,10 @@ def loop(symbols: list[str], interval: int) -> None:
         try:
             state = build_state(symbols)
             write_state(state)
+            n_sent = maybe_notify(state)
             print(f"[worker] {datetime.now(timezone.utc):%H:%M:%S} UTC · "
-                  f"wrote snapshot · errors={list(state['errors'].keys()) or 'none'} · "
+                  f"wrote snapshot · notified={n_sent} · "
+                  f"errors={list(state['errors'].keys()) or 'none'} · "
                   f"elapsed={time.time()-t0:.1f}s")
         except Exception:
             print("[worker] FATAL error in iteration; staying alive.")
@@ -220,7 +279,9 @@ def main():
     if a.once:
         state = build_state(syms)
         write_state(state)
+        n_sent = maybe_notify(state)
         print(f"[worker] wrote one snapshot to {STATE_PATH} · "
+              f"notified={n_sent} · "
               f"errors={list(state['errors'].keys()) or 'none'}")
         return
     loop(syms, a.interval)

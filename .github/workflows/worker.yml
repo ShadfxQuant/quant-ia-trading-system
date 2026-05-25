@@ -1,0 +1,59 @@
+name: signal-worker
+
+# Runs every 15 minutes (GitHub free-tier cron honors ~10–15 min cadence).
+# Fetches market data, runs the engine, sends Discord on new signals,
+# commits the refreshed data/state.json back to main so the Streamlit
+# dashboard always reads a current snapshot.
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch: {}     # also lets you trigger it manually from the Actions tab
+
+permissions:
+  contents: write           # needed so the job can push state.json back
+
+concurrency:
+  group: signal-worker
+  cancel-in-progress: false
+
+jobs:
+  run-worker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run worker (one snapshot + notify on new signals)
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          NEWSAPI_KEY:         ${{ secrets.NEWSAPI_KEY }}
+        run: python -m worker --once
+
+      - name: Commit refreshed snapshot
+        run: |
+          git config user.name  "signal-worker-bot"
+          git config user.email "actions@users.noreply.github.com"
+          # Force-add data/state.json and last_notified.json even though
+          # data/ is in .gitignore — they're the only files the dashboard
+          # needs from cron.
+          git add -f data/state.json data/last_notified.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "no snapshot change to commit"
+          else
+            git commit -m "chore(snapshot): worker update $(date -u +%FT%TZ)"
+            # Pull latest in case main moved while we were running.
+            git pull --rebase origin main || true
+            git push
+          fi
