@@ -1,24 +1,27 @@
 """
-LIVE SIGNAL TERMINAL — $700 crypto-SP500 execution.
+LIVE SIGNAL TERMINAL — production signal output.
 
-This is NOT a backtest. It pulls the latest SPY 1H data from yfinance
-(your signal source — the crypto SP500 tracker mirrors SPY's percentage
-moves with small tracking error), runs the production strategy, and
-prints a clean trade card sized for your actual account.
+This is NOT a backtest. It pulls the latest SPY/DIA 1H data from yfinance,
+runs the production strategy, and prints a clean trade card with directional,
+sizing and exit-ladder information expressed as percentages of account.
 
 Output shows:
     * direction (LONG / SHORT / flat)
-    * dollar position size to enter
-    * stop / TP percentages to apply to your crypto token's current price
+    * position size as a percentage of account (and in dollars for the
+      configured account size)
+    * stop / TP percentages — apply directly to any instrument that tracks
+      SPY's percentage moves (ETF, futures, perp, tokenised SPX, etc.)
     * pyramid permission (whether to ADD to an existing position)
     * NYSE market-hours flag (signals are only fresh while NYSE trades)
 
-The percentages translate 1-to-1 to your crypto-SP500 token because
-percent moves are scale-invariant. SPY −2.5% ≈ your token −2.5%.
+Percent moves are scale-invariant — the exit ladder works on any size book
+and on any instrument that mirrors SPY's percentage returns.
+
+Educational only — not investment advice.
 
 Usage:
-    python -m live_signal                          # SPY, $700, 2.5x
-    python -m live_signal --account 700 --leverage 2.5
+    python -m live_signal                          # SPY, default settings
+    python -m live_signal --account 10000          # show dollar sizes for $10K
     python -m live_signal --symbol DIA             # signal from DIA instead
     python -m live_signal --refresh                # force fresh yfinance pull
     python -m live_signal --watch --interval 600   # 10-min poll loop
@@ -62,7 +65,7 @@ def _nyse_status(now_utc: datetime | None = None) -> tuple[bool, str]:
     """Returns (is_open, human_string). Crude — DST may shift ±1h; close enough."""
     now = now_utc or datetime.now(timezone.utc)
     if now.weekday() >= 5:
-        return False, "WEEKEND — NYSE closed (your crypto token may drift but signals are stale)"
+        return False, "WEEKEND — NYSE closed (signals are stale until market reopens)"
     open_t = now.replace(hour=NYSE_OPEN_UTC_HOUR, minute=NYSE_OPEN_UTC_MIN, second=0, microsecond=0)
     close_t = now.replace(hour=NYSE_CLOSE_UTC_HOUR, minute=0, second=0, microsecond=0)
     if open_t <= now <= close_t:
@@ -157,7 +160,7 @@ def _render(snap: dict, account: float, leverage: float) -> None:
     max_notional = account * cap_pct
     base_notional = account * base_size_pct
 
-    # Exit-ladder percentages — universal, apply to your crypto token's price.
+    # Exit-ladder percentages — universal, apply to any SPY-correlated instrument.
     stop_pct = snap["StopPct"]
     tp1_pct = PULLBACK.partial_tp_pct
     tp2_pct = PULLBACK.final_tp_pct
@@ -221,7 +224,7 @@ def _render(snap: dict, account: float, leverage: float) -> None:
         print_news_warning(sign)
         print(f"")
         print(f"  ▶ ACTION:")
-        print(f"     1. Check your crypto-SP500 token's CURRENT price.")
+        print(f"     1. Check your instrument's CURRENT price.")
         print(f"     2. Enter {side} for ${base_notional:.2f} at market.")
         print(f"     3. Bracket: stop = (current × {1 - stop_pct * sign:.4f}),")
         print(f"                 TP1  = (current × {1 + tp1_pct * sign:.4f}),")
@@ -356,8 +359,9 @@ def main() -> None:
     p = argparse.ArgumentParser(description="Live trade-signal terminal.")
     p.add_argument("--symbol", default="SPY",
                    help="Signal source (yfinance ticker). SPY default; DIA also good.")
-    p.add_argument("--account", type=float, default=700.0,
-                   help="Your account size in USD (default: 700)")
+    p.add_argument("--account", type=float, default=10000.0,
+                   help="Account size in USD for the dollar display (default: 10000). "
+                        "Percentages in the trade card are scale-invariant.")
     p.add_argument("--leverage", type=float, default=2.5,
                    help="Leverage multiplier (default: 2.5)")
     p.add_argument("--refresh", action="store_true", default=True,
