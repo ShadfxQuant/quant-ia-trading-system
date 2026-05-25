@@ -19,11 +19,14 @@ class DataConfig:
     # Trading universe: SPY only. 1h bars for higher trade frequency.
     # Note: yfinance limits 1h history to ~730 days, so the loader uses
     # period-based download for intraday intervals (start/end ignored).
-    # SPY + DIA: production stocks book (SESSION_LOG #21). GLD: gold, added
-    # post-validation backtest (CAGR 61.8% / DD 29% on same window — bigger
-    # DD than SPY but uncorrelated, so improves diversification). Gold uses
-    # inverse macro polarity (see INVERSE_MACRO_SYMBOLS in core/news_macro.py).
-    symbols: List[str] = field(default_factory=lambda: ["SPY", "DIA", "GLD"])
+    # SPY + DIA: production stocks book (SESSION_LOG #21).
+    # GLD: yfinance gold ETF (NYSE hours, full engine).
+    # PAXGUSDT: Binance perp gold (24/7) — gated via REGIME_FILTERS to
+    # NYSE hours + ADX≥25 (COMBO_F: PF 1.81 / DD 18.3% in validation).
+    # All three gold instruments use inverse macro polarity.
+    symbols: List[str] = field(default_factory=lambda: [
+        "SPY", "DIA", "GLD", "PAXGUSDT",
+    ])
     start: str = "2024-05-06"
     end: str = "2026-05-06"
     interval: str = "1h"
@@ -387,6 +390,62 @@ class NewsFilterConfig:
 
 
 NEWS_FILTER = NewsFilterConfig()
+
+
+@dataclass
+class CryptoCarryConfig:
+    """
+    Delta-neutral crypto funding-rate carry.
+
+    Validated 2026-05-25 on BTCUSDT, ETHUSDT, SOLUSDT (Sharpe 5–12, DD <2%,
+    CAGR 5.5–7.5%) using Binance perp funding-rate history since Dec 2023.
+    BNB excluded — its funding is structurally negative (shorts pay longs).
+
+    Strategy: hold long spot + short perp in equal notional. Earn the
+    funding rate every 8h when positive; pay it when negative. Net of
+    fees on majors ≈ 5–7%/yr annualized with near-zero directional risk.
+
+    The dashboard surfaces current annualized yield per symbol; Discord
+    fires a notification when 8h funding rate exceeds `alert_8h_threshold`
+    (default 0.03% per 8h ≈ 33% annualized — extreme crowding).
+    """
+    enabled: bool = True
+    symbols: tuple = ("BTCUSDT", "ETHUSDT", "SOLUSDT")
+    # Window for computing the trailing "recent" yield shown on the dashboard.
+    recent_lookback_days: int = 7
+    # 8h funding rate above which to fire a Discord alert (decimal).
+    # 0.0003 = 0.03%/8h ≈ 33% annualized.
+    alert_8h_threshold: float = 0.0003
+    # Per-symbol position size cap as fraction of carry budget.
+    # Cap mostly serves as documentation — real execution is up to the user.
+    base_size_pct: float = 0.33
+
+
+CRYPTO_CARRY = CryptoCarryConfig()
+
+
+# ---------------------------------------------------------------------------
+# Per-symbol regime filters (core/regime_filter.py).
+#
+# For 24/7 perp symbols where the NYSE-tuned engine fires on chop bars,
+# restrict signals to known-tradable regimes. Validated via
+# `_research_paxg_regime` — see SESSION_LOG entry for the parameter sweep.
+#
+# Filter kinds:
+#   NONE             pass through (default for unlisted symbols)
+#   NYSE_ONLY        13:00–20:00 UTC only
+#   NO_ASIA          skip 00:00–07:00 UTC
+#   ADX_25           ADX(14) ≥ 25 (trend strength)
+#   ADX_25_NYSE      ADX≥25 AND NYSE hours  (COMBO_F — PAXG default)
+#   ADX_25_NO_ASIA   ADX≥25 AND skip Asia
+#
+# Symbols not in the dict pass through unfiltered. Stocks (SPY/DIA/GLD)
+# already have NYSE-hours data so they don't need a filter.
+# ---------------------------------------------------------------------------
+REGIME_FILTERS: dict = {
+    "PAXGUSDT": "ADX_25_NYSE",     # COMBO_F: PF 1.81, DD 18.3%, CAGR 41.3%
+}
+
 
 
 # Singletons used across modules.

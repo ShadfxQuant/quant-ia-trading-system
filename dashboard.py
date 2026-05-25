@@ -103,6 +103,11 @@ def _live_snapshot(symbol: str) -> dict:
     from core.data_loader import load_symbol
     from main_portfolio import prepare_dual
     df = prepare_dual(load_symbol(symbol))
+    try:
+        from core.regime_filter import apply_regime_filter
+        df = apply_regime_filter(df, symbol)
+    except Exception:
+        pass
     last = df.iloc[-1]
     ts = df.index[-1]
     tail = df.tail(400)
@@ -181,8 +186,10 @@ def _get_state(symbol: str) -> tuple[dict, dict, list[dict], str]:
 # ---------------------------------------------------------------------------
 st.title("📈 Quant IA — Live Signals")
 st.caption(
-    "Pullback engine + trend-carry sleeve · SPY/DIA · weak-gate / 2.5× lev · "
-    "backtest #21: $221K from $100K (in-sample, ~147 wks). "
+    "Pullback engine + trend-carry sleeve · "
+    + " · ".join(DATA.symbols)
+    + " · weak-gate / 2.5× lev · backtest #21: $221K from $100K "
+    "(in-sample, ~147 wks). "
     "**Educational only — not investment advice. Past performance is not "
     "indicative of future results.**"
 )
@@ -454,15 +461,22 @@ with st.expander("How the engine works (1-minute summary)"):
 # headline info (macro verdict + signal cards + explainer above).
 # ---------------------------------------------------------------------------
 st.divider()
-tab_chart, tab_pyramid, tab_journal, tab_ask, tab_subscribe = st.tabs(
-    ["📈 Chart", "🏛 Pyramid", "📓 Journal", "💬 Ask AI", "🔔 Subscribe"]
+(tab_chart, tab_pyramid, tab_carry, tab_journal,
+ tab_ask, tab_subscribe) = st.tabs(
+    ["📈 Chart", "🏛 Pyramid", "💰 Crypto Carry", "📓 Journal",
+     "💬 Ask AI", "🔔 Subscribe"]
 )
 
 # ---------- 📈 Chart tab: TradingView + Python volume profile ----------
 with tab_chart:
     st.subheader(f"TradingView — {symbol} (interactive)")
-    TV_SYMBOL_MAP = {"SPY": "AMEX:SPY", "DIA": "AMEX:DIA", "QQQ": "NASDAQ:QQQ",
-                     "IWM": "AMEX:IWM", "XLK": "AMEX:XLK", "XLF": "AMEX:XLF"}
+    TV_SYMBOL_MAP = {
+        "SPY": "AMEX:SPY", "DIA": "AMEX:DIA", "QQQ": "NASDAQ:QQQ",
+        "IWM": "AMEX:IWM", "XLK": "AMEX:XLK", "XLF": "AMEX:XLF",
+        "GLD": "AMEX:GLD",
+        "PAXGUSDT": "BINANCE:PAXGUSDT",
+        "BTCUSDT": "BINANCE:BTCUSDT", "ETHUSDT": "BINANCE:ETHUSDT",
+    }
     tv_symbol = TV_SYMBOL_MAP.get(symbol, f"AMEX:{symbol}")
     tv_html = f"""
 <div class="tradingview-widget-container" style="height:560px;width:100%">
@@ -601,6 +615,95 @@ with tab_pyramid:
         "add is allowed on the current bar. Above-VWAP + bullish trend "
         "= institutional confirmation that the trend is still alive."
     )
+
+
+# ---------- 💰 Crypto Carry tab ----------
+with tab_carry:
+    st.subheader("Delta-neutral funding carry — Binance perps")
+    st.caption("Validated 2026-05-25 on BTCUSDT / ETHUSDT / SOLUSDT — "
+               "Sharpe 5–12, max DD <2%, CAGR 5–7%. Updated every cron run "
+               "from Binance public funding endpoint.")
+
+    # Reuse the snapshot loader pattern.
+    def _load_carry() -> list[dict]:
+        st_file = _load_state_file()
+        if st_file and "crypto_carry" in st_file:
+            return st_file["crypto_carry"] or []
+        # Fallback to live fetch if no worker snapshot available.
+        try:
+            from core.crypto_carry import snap_all
+            return snap_all()
+        except Exception:
+            return []
+
+    carry_rows = _load_carry()
+    if not carry_rows:
+        st.info("No carry data yet. The worker will populate this on its next "
+                "cron run.")
+    else:
+        # Top-level alert banner if any symbol is in alert.
+        alerts = [c for c in carry_rows if c.get("alert_active")]
+        if alerts:
+            st.warning(
+                "🔔 **Extreme funding active on " +
+                ", ".join(f"{c['symbol']} ({c['annualized']*100:+.1f}%/yr)" for c in alerts)
+                + "** — large carry opportunity OR crowded positioning warning."
+            )
+
+        # Table.
+        rows = []
+        for c in carry_rows:
+            rows.append({
+                "Symbol": c["symbol"],
+                "8h funding": f"{c['latest_8h']*100:+.4f}%",
+                "Annualised (latest)": f"{c['annualized']*100:+.2f}%",
+                "7d avg annualised": f"{c['recent_annualized']*100:+.2f}%",
+                "% positive (7d)": f"{c['pct_positive_recent']*100:.0f}%",
+                "Position to harvest": c["side"],
+                "Alert?": "🔔" if c["alert_active"] else "",
+            })
+        st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+
+        # KPI strip — current top carry yield + average.
+        top = max(carry_rows, key=lambda c: c["recent_annualized"])
+        avg_ann = sum(c["recent_annualized"] for c in carry_rows) / len(carry_rows)
+        kk1, kk2, kk3 = st.columns(3)
+        kk1.metric("Top symbol (7d annualised)",
+                   top["symbol"],
+                   f"{top['recent_annualized']*100:+.2f}%")
+        kk2.metric("Avg across roster (7d ann.)",
+                   f"{avg_ann*100:+.2f}%",
+                   "delta-neutral, no directional risk")
+        kk3.metric("Symbols tracked", len(carry_rows),
+                   "Binance perp funding")
+
+    with st.expander("How to execute a carry position", expanded=False):
+        st.markdown("""
+**Delta-neutral funding carry (cash-and-carry)** — earn the funding rate
+without taking directional risk:
+
+1. Pick the symbol with the highest 7-day annualised yield (positive → short
+   perp side; negative → long perp side).
+2. **Long spot** and **short perp** in equal notional (e.g. $1,000 spot BTC +
+   $1,000 short BTCUSDT perp). Net delta = 0 — you don't care if price moves.
+3. Every 8 hours (00:00, 08:00, 16:00 UTC) you receive (or pay) the funding
+   rate × notional. Positive funding pays the short perp side.
+4. Hold until the funding rate normalises or flips sign, then close both legs.
+5. Net of fees on majors ≈ **5–7%/yr** annualised, max DD historically <2%.
+
+**Risk:** the only meaningful risk is **basis blowout** — a sudden divergence
+between perp and spot price beyond your margin buffer. On BTC/ETH this is rare
+and small; on smaller symbols it happens. Always use isolated margin and keep
+extra collateral.
+
+**Backtest reference (Dec 2023 → May 2026):**
+- BTCUSDT: 7.15% CAGR · 0.35% max DD · Sharpe 11.77
+- ETHUSDT: 7.45% CAGR · 0.50% max DD · Sharpe 11.79
+- SOLUSDT: 5.53% CAGR · 1.98% max DD · Sharpe 5.53
+
+_Educational only. Not financial advice. Verify funding rates and execute on
+your own venue._
+""")
 
 
 # ---------- 📓 Journal tab ----------

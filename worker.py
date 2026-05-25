@@ -28,11 +28,12 @@ from datetime import datetime, timezone
 
 import pandas as pd
 
-from config.settings import DATA, PULLBACK, TRENDCARRY
+from config.settings import DATA, PULLBACK, TRENDCARRY, CRYPTO_CARRY
 from core.data_loader import load_symbol
 from main_portfolio import prepare_dual
 from core.news_macro import macro_verdict, RISK_OFF_THEMES, RISK_ON_THEMES
-from core.notifier import send_signal as _notify_signal
+from core.notifier import send_signal as _notify_signal, send_text as _notify_text
+from core.crypto_carry import snap_all as _carry_snap_all
 
 STATE_PATH = os.path.join("data", "state.json")
 JOURNAL_PATH = os.path.join("data", "trade_journal.csv")
@@ -51,6 +52,13 @@ RSS_PUBLIC_URL_BASE = os.environ.get(
 # ---------------------------------------------------------------------------
 def _snapshot_symbol(symbol: str) -> dict:
     df = prepare_dual(load_symbol(symbol, force_refresh=True))
+    # Apply per-symbol regime filter (e.g. PAXGUSDT → ADX≥25 + NYSE hours).
+    # See core/regime_filter.py — symbols without a filter pass through.
+    try:
+        from core.regime_filter import apply_regime_filter
+        df = apply_regime_filter(df, symbol)
+    except Exception as e:
+        print(f"[worker] regime filter skipped for {symbol}: {e}")
     last = df.iloc[-1]
     ts = df.index[-1]
     pb_sig = int(last.get("pullback_Signal", 0) or 0)
@@ -157,6 +165,15 @@ def build_state(symbols: list[str]) -> dict:
     except Exception as e:
         state["errors"]["journal"] = f"{type(e).__name__}: {e}"
         state["journal_tail"] = []
+
+    if CRYPTO_CARRY.enabled:
+        try:
+            state["crypto_carry"] = _carry_snap_all()
+        except Exception as e:
+            state["errors"]["crypto_carry"] = f"{type(e).__name__}: {e}"
+            state["crypto_carry"] = []
+    else:
+        state["crypto_carry"] = []
 
     return state
 
@@ -316,6 +333,37 @@ def update_rss(state: dict) -> int:
     return appended
 
 
+def maybe_notify_carry(state: dict) -> int:
+    """Fire Discord when a symbol's latest 8h funding rate crosses the
+    alert threshold AND we haven't pinged for that exact funding event yet.
+    Dedup key: `carry:<symbol>:<last_funding_ts>`. Returns count sent."""
+    notified = _load_notified()
+    sent = 0
+    for c in state.get("crypto_carry", []) or []:
+        if not c.get("alert_active"):
+            continue
+        key = f"carry:{c['symbol']}:{c['last_funding_ts']}"
+        if notified.get(key):
+            continue
+        ann = c["annualized"] * 100
+        ann_recent = c["recent_annualized"] * 100
+        side_word = "🔔 HIGH FUNDING — short perp + long spot to harvest" \
+                    if c["latest_8h"] > 0 else \
+                    "🔔 NEGATIVE FUNDING — long perp + short spot to harvest"
+        msg = (f"{side_word}\n"
+               f"**{c['symbol']}** · 8h funding = `{c['latest_8h']*100:.4f}%` "
+               f"→ annualised **{ann:.1f}%** (7d avg {ann_recent:.1f}%)\n"
+               f"Delta-neutral cash-and-carry · backtest 2024-25 Sharpe 5–12, "
+               f"DD <2%. _Educational only._")
+        if _notify_text(msg):
+            notified[key] = "1"
+            sent += 1
+            print(f"[worker] 🔔 carry alert: {c['symbol']} ann={ann:.1f}%")
+    if sent:
+        _save_notified(notified)
+    return sent
+
+
 def maybe_notify(state: dict) -> int:
     """For each per-symbol snapshot with a non-zero signal, fire Discord
     iff this exact (symbol, strategy, side, bar_time) hasn't fired before.
@@ -367,9 +415,11 @@ def loop(symbols: list[str], interval: int) -> None:
             state = build_state(symbols)
             write_state(state)
             n_sent = maybe_notify(state)
+            n_carry = maybe_notify_carry(state)
             n_rss = update_rss(state)
             print(f"[worker] {datetime.now(timezone.utc):%H:%M:%S} UTC · "
-                  f"wrote snapshot · notified={n_sent} · rss_new={n_rss} · "
+                  f"wrote snapshot · notified={n_sent} · carry={n_carry} · "
+                  f"rss_new={n_rss} · "
                   f"errors={list(state['errors'].keys()) or 'none'} · "
                   f"elapsed={time.time()-t0:.1f}s")
         except Exception:
@@ -397,9 +447,10 @@ def main():
         state = build_state(syms)
         write_state(state)
         n_sent = maybe_notify(state)
+        n_carry = maybe_notify_carry(state)
         n_rss = update_rss(state)
         print(f"[worker] wrote one snapshot to {STATE_PATH} · "
-              f"notified={n_sent} · rss_new={n_rss} · "
+              f"notified={n_sent} · carry={n_carry} · rss_new={n_rss} · "
               f"errors={list(state['errors'].keys()) or 'none'}")
         return
     loop(syms, a.interval)
