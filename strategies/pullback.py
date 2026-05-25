@@ -73,7 +73,7 @@ def generate_signals(df: pd.DataFrame, cfg=PULLBACK) -> pd.DataFrame:
     # lever — it lets the same strategy ship on assets with different vol
     # regimes (SPY/QQQ/IWM) without manual threshold retuning.
     if cfg.use_atr_normalized and "ATR" in out.columns:
-        atr_pct = (out["ATR"] / out["Close"]).fillna(method="ffill").fillna(0.0)
+        atr_pct = (out["ATR"] / out["Close"]).ffill().fillna(0.0)
         pullback_band_eff = atr_pct * cfg.pullback_atr_mult
         imbalance_min_eff = atr_pct * cfg.imbalance_atr_mult
         stop_pct_override = atr_pct * cfg.stop_atr_mult
