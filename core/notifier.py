@@ -97,8 +97,21 @@ def send_signal(symbol: str, side: int, snap: dict,
     if macro and macro.get("verdict"):
         v = macro["verdict"]
         emoji = {"RISK_ON": "🟢", "RISK_OFF": "🔴", "NEUTRAL": "⚪"}.get(v, "⚪")
-        mismatch = (side == 1 and v == "RISK_OFF") or (side == -1 and v == "RISK_ON")
-        warn = " ⚠️ **MACRO MISMATCH**" if mismatch else ""
+        # Symbol-aware: gold (inverse polarity) is aligned with risk-off longs.
+        try:
+            from core.news_macro import macro_aligned, is_inverse_macro
+            aligned, _reason = macro_aligned(symbol, side, v)
+            mismatch = not aligned
+            inverse = is_inverse_macro(symbol)
+        except Exception:
+            mismatch = (side == 1 and v == "RISK_OFF") or (side == -1 and v == "RISK_ON")
+            inverse = False
+        if mismatch:
+            warn = " ⚠️ **MACRO MISMATCH**"
+        elif inverse and v != "NEUTRAL":
+            warn = f" ✅ macro-aligned (inverse polarity — {v} favours {symbol} long)"
+        else:
+            warn = ""
         desc_lines.append(f"Macro: {emoji} **{v}** "
                           f"(off={macro.get('risk_off_score', 0)} on={macro.get('risk_on_score', 0)}){warn}")
         if mismatch and macro.get("sample_headlines"):

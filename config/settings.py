@@ -19,7 +19,11 @@ class DataConfig:
     # Trading universe: SPY only. 1h bars for higher trade frequency.
     # Note: yfinance limits 1h history to ~730 days, so the loader uses
     # period-based download for intraday intervals (start/end ignored).
-    symbols: List[str] = field(default_factory=lambda: ["SPY", "DIA"])
+    # SPY + DIA: production stocks book (SESSION_LOG #21). GLD: gold, added
+    # post-validation backtest (CAGR 61.8% / DD 29% on same window — bigger
+    # DD than SPY but uncorrelated, so improves diversification). Gold uses
+    # inverse macro polarity (see INVERSE_MACRO_SYMBOLS in core/news_macro.py).
+    symbols: List[str] = field(default_factory=lambda: ["SPY", "DIA", "GLD"])
     start: str = "2024-05-06"
     end: str = "2026-05-06"
     interval: str = "1h"

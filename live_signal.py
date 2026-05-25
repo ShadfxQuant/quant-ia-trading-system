@@ -47,8 +47,8 @@ from execution.portfolio import run_portfolio, StrategySpec
 import journal
 try:
     from core.news_macro import print_news_warning
-except Exception:                               # pragma: no cover
-    def print_news_warning(side: int) -> None:  # graceful no-op fallback
+except Exception:                                                  # pragma: no cover
+    def print_news_warning(side: int, symbol: str = "SPY") -> None:  # graceful no-op fallback
         return
 
 
@@ -221,7 +221,8 @@ def _render(snap: dict, account: float, leverage: float) -> None:
               f"Worst case: −${loss_at_stop:.2f}  ·  R:R = {rr:.2f}×")
         print(f"     Time stop     : 390 bars (~3 months on 1h)")
         # Macro-sanity check: warn only on mismatch, never blocks the trade.
-        print_news_warning(sign)
+        # Symbol-aware so gold (inverse polarity) doesn't false-flag.
+        print_news_warning(sign, symbol=snap.get("symbol", "SPY"))
         print(f"")
         print(f"  ▶ ACTION:")
         print(f"     1. Check your instrument's CURRENT price.")
@@ -260,7 +261,7 @@ def _render(snap: dict, account: float, leverage: float) -> None:
         print(f"     💰 If both TPs hit: +${tc_total:.2f}  ·  R:R = {tc_rr:.2f}×")
         print(f"     Trailing stop : ATR×3.0 after TP1  ·  Max hold: 1500 bars (~9mo)")
         # Macro-sanity check (trend-carry is long-only).
-        print_news_warning(+1)
+        print_news_warning(+1, symbol=snap.get("symbol", "SPY"))
 
     # --- Pyramid status ---
     print(f"\n  {'─' * 76}")

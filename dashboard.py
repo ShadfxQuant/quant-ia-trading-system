@@ -293,9 +293,12 @@ def _signal_card(label, sig, base_pct, stop_pct, tp1_pct, tp2_pct,
         st.info(f"No {label} signal on the latest bar.")
         return
     side_word = "LONG" if sig == 1 else "SHORT"
-    macro_warn = ""
-    if (sig == 1 and mv["verdict"] == "RISK_OFF") or (sig == -1 and mv["verdict"] == "RISK_ON"):
-        macro_warn = f" ⚠️ **MACRO MISMATCH ({mv['verdict']})**"
+    # Symbol-aware macro check (gold is inverse polarity vs equities).
+    from core.news_macro import macro_aligned, is_inverse_macro
+    aligned, reason = macro_aligned(symbol, sig, mv["verdict"])
+    macro_warn = "" if aligned else f" ⚠️ **{reason}**"
+    if is_inverse_macro(symbol) and aligned and mv["verdict"] != "NEUTRAL":
+        macro_warn = f" ✅ macro-aligned ({mv['verdict']} favours {symbol} long)"
     st.success(f"**{label.upper()} {side_word} TRIGGERED**{macro_warn}")
     notion_pct = base_pct
     loss = notion_pct * stop_pct

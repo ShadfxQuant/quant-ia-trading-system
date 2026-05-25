@@ -68,6 +68,46 @@ THEME_KEYWORDS: dict[str, tuple[str, ...]] = {
 RISK_OFF_THEMES = {"war", "banking", "recession", "rate_hike", "crash"}
 RISK_ON_THEMES  = {"rate_cut", "risk_on"}
 
+# Per-symbol macro polarity.
+# Default ("normal"): risk-on = bullish for the asset, risk-off = bearish.
+# "inverse": risk-off = bullish (e.g. gold, silver, JPY, CHF, USD vs EM).
+# Add new tickers here as the roster grows.
+INVERSE_MACRO_SYMBOLS: set[str] = {
+    "GLD", "IAU", "PHYS", "SGOL",     # gold ETFs
+    "XAUUSD", "XAU", "PAXG",          # gold spot / tokenised gold
+    "SLV", "SIVR", "XAGUSD",          # silver (kept for future, even though SLV is off-roster)
+}
+
+
+def is_inverse_macro(symbol: str) -> bool:
+    """True if the asset's macro polarity is inverted vs equities (e.g. gold)."""
+    return symbol.upper() in INVERSE_MACRO_SYMBOLS
+
+
+def macro_aligned(symbol: str, side: int, verdict: str) -> tuple[bool, str]:
+    """Return (aligned, reason). `aligned=False` → caller should warn.
+    Inverse-polarity symbols (gold etc.) flip the meaning: risk-off LONG is
+    *aligned* for gold, *mismatched* for SPY.
+    """
+    if side == 0 or verdict == "NEUTRAL":
+        return True, ""
+    inverse = is_inverse_macro(symbol)
+    # Equities: long wants risk-on, short wants risk-off.
+    # Gold:     long wants risk-off, short wants risk-on.
+    long_wants  = "RISK_OFF" if inverse else "RISK_ON"
+    short_wants = "RISK_ON"  if inverse else "RISK_OFF"
+    wanted = long_wants if side == 1 else short_wants
+    if verdict == wanted:
+        return True, ""
+    if inverse:
+        msg = (f"MACRO MISMATCH ({verdict}) — {symbol} is inverse-polarity "
+               f"(gold-like); {'long' if side==1 else 'short'} signals usually "
+               f"want {wanted}")
+    else:
+        msg = (f"MACRO MISMATCH ({verdict}) — {symbol} "
+               f"{'long' if side==1 else 'short'} signals usually want {wanted}")
+    return False, msg
+
 
 @dataclass
 class MacroVerdict:
@@ -211,22 +251,21 @@ def macro_verdict(force_refresh: bool = False) -> MacroVerdict:
     return out
 
 
-def print_news_warning(side: int) -> None:
+def print_news_warning(side: int, symbol: str = "SPY") -> None:
     """Warn-only macro filter, called from live_signal before trigger output.
 
     side: +1 long, -1 short, 0 no signal. Prints a single block only when
-    macro disagrees with the trade direction. Never blocks execution.
+    macro disagrees with the trade direction *for that symbol's polarity*
+    (e.g. gold longs are aligned with risk-off, not mismatched). Never
+    blocks execution.
     """
     if side == 0:
         return
     v = macro_verdict()
-    long_disagrees  = (side ==  1 and v.verdict == "RISK_OFF")
-    short_disagrees = (side == -1 and v.verdict == "RISK_ON")
-    if not (long_disagrees or short_disagrees):
+    aligned, reason = macro_aligned(symbol, side, v.verdict)
+    if aligned:
         return
-    print(f"\n   ⚠️  MACRO MISMATCH — engine says "
-          f"{'LONG' if side == 1 else 'SHORT'} but macro reads "
-          f"{v.verdict}  (off={v.risk_off_score}  on={v.risk_on_score}  "
+    print(f"\n   ⚠️  {reason}  (off={v.risk_off_score}  on={v.risk_on_score}  "
           f"n_headlines={v.n_headlines})")
     print(f"   Sources: {', '.join(v.sources_used) or 'none'}")
     for theme, hits in sorted(v.theme_hits.items(), key=lambda x: -x[1]):
