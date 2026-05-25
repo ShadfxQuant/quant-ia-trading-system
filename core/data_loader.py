@@ -95,7 +95,10 @@ def _normalize(df: pd.DataFrame) -> pd.DataFrame:
     keep = [c for c in ("Open", "High", "Low", "Close", "Volume") if c in df.columns]
     df = df[keep].copy()
     df = df.dropna(how="any")
-    df.index = pd.to_datetime(df.index)
+    # `utc=True` forces a single timezone — pandas 2.x raises on mixed-tz
+    # indexes, which yfinance occasionally returns when symbols span DST
+    # boundaries or trade on different listings (e.g. GLD vs SPY).
+    df.index = pd.to_datetime(df.index, utc=True)
     df.sort_index(inplace=True)
     return df
 
