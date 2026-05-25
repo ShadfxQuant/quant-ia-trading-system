@@ -1,0 +1,19 @@
+# Custom theme for the Quant IA dashboard.
+# Goal: dark, terminal-feeling, sharp accent — feels bespoke, not template.
+# Override per-environment via Streamlit Cloud settings if needed.
+
+[theme]
+base = "dark"
+primaryColor = "#00D4AA"               # cool teal accent (Bloomberg-ish, not neon)
+backgroundColor = "#0B0F17"            # deep blue-black, easier on eyes than pure black
+secondaryBackgroundColor = "#161B26"   # sidebar + tab + card surface
+textColor = "#E8ECF1"                  # near-white, slight cool tint
+font = "sans serif"
+
+[server]
+# Allow embedding the page inside iframes (e.g. a Notion / Linktree card).
+enableCORS = false
+enableXsrfProtection = true
+
+[browser]
+gatherUsageStats = false                # don't ping Streamlit's telemetry

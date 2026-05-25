@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import json
 import os
+import urllib.parse
 from datetime import datetime, timezone
 from typing import Any
 
@@ -28,6 +29,12 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 import streamlit.components.v1 as components
+
+try:
+    import plotly.graph_objects as go
+    _HAS_PLOTLY = True
+except ImportError:
+    _HAS_PLOTLY = False
 
 from config.settings import PULLBACK, TRENDCARRY, DATA
 
@@ -89,7 +96,7 @@ def _load_state_file() -> dict | None:
         return None
 
 
-@st.cache_data(ttl=600, show_spinner=True)
+@st.cache_data(ttl=600, show_spinner="Pulling fresh market data + running engine…")
 def _live_snapshot(symbol: str) -> dict:
     """Fallback: run prepare_dual in-process and build the same per-symbol dict
     the worker would produce."""
@@ -129,7 +136,7 @@ def _live_snapshot(symbol: str) -> dict:
     }
 
 
-@st.cache_data(ttl=600, show_spinner=False)
+@st.cache_data(ttl=600, show_spinner="Fetching macro headlines…")
 def _live_macro() -> dict:
     from core.news_macro import macro_verdict, RISK_OFF_THEMES, RISK_ON_THEMES
     v = macro_verdict()
@@ -190,6 +197,52 @@ with st.sidebar:
 
 snap, mv, jtail, mode = _get_state(symbol)
 st.caption(f"Data source: **{mode}**")
+
+
+# ---------------------------------------------------------------------------
+# Top KPI strip — at-a-glance state for the front page.
+# ---------------------------------------------------------------------------
+def _kpi_strip(snap: dict, mv: dict, jtail: list[dict]) -> None:
+    k1, k2, k3, k4 = st.columns(4)
+    pb = snap["pullback_signal"]
+    tc = snap["trend_carry_signal"]
+    if pb == 1:
+        sig_label, sig_delta, sig_dc = "🟢 PULLBACK LONG", "live trigger", "normal"
+    elif pb == -1:
+        sig_label, sig_delta, sig_dc = "🔴 PULLBACK SHORT", "live trigger", "inverse"
+    elif tc == 1:
+        sig_label, sig_delta, sig_dc = "🟢 TREND-CARRY LONG", "live trigger", "normal"
+    else:
+        sig_label, sig_delta, sig_dc = "⚪ FLAT", "no signal", "off"
+    k1.metric("Current signal", sig_label, sig_delta, delta_color=sig_dc)
+
+    v_emoji = {"RISK_ON": "🟢", "RISK_OFF": "🔴", "NEUTRAL": "⚪"}.get(mv["verdict"], "⚪")
+    k2.metric("Macro mood", f"{v_emoji} {mv['verdict']}",
+              f"off {mv['risk_off_score']} · on {mv['risk_on_score']}",
+              delta_color="off")
+
+    # Journal-derived KPIs (closed legs only).
+    closed_n, win_rate, total_pnl = 0, 0.0, 0.0
+    if jtail:
+        jdf = pd.DataFrame(jtail)
+        if "event" in jdf.columns and "pnl" in jdf.columns:
+            exits = jdf[jdf["event"] == "EXIT"]
+            if not exits.empty:
+                closed_n = int(len(exits))
+                pnl_series = pd.to_numeric(exits["pnl"], errors="coerce")
+                win_rate = float((pnl_series > 0).mean())
+                total_pnl = float(pnl_series.sum())
+    k3.metric("Closed legs (last 20)", closed_n,
+              f"WR {win_rate:.0%}" if closed_n else "—",
+              delta_color="off")
+    k4.metric("Realised PnL", f"${total_pnl:,.0f}" if closed_n else "—",
+              "from last 20 legs" if closed_n else "no closed legs yet",
+              delta_color=("normal" if total_pnl > 0
+                           else "inverse" if total_pnl < 0
+                           else "off"))
+
+
+_kpi_strip(snap, mv, jtail)
 
 
 # ---------------------------------------------------------------------------
@@ -394,30 +447,21 @@ with st.expander("How the engine works (1-minute summary)"):
 
 
 # ---------------------------------------------------------------------------
-# Pyramid gates
+# Secondary sections behind tabs — keeps the front page focused on the
+# headline info (macro verdict + signal cards + explainer above).
 # ---------------------------------------------------------------------------
 st.divider()
-st.subheader("🏛 Pyramid gates")
-pp1, pp2 = st.columns(2)
-pp1.metric("Pullback pyramid OK?",
-           "✓ ALLOWED" if snap["pullback_pyramid_ok"] else "✗ blocked",
-           f"cap = {snap['pullback_pyramid_cap']}")
-pp2.metric("Trend-carry pyramid OK?",
-           "✓ ALLOWED" if snap["trend_carry_pyramid_ok"] else "✗ blocked",
-           f"cap = {snap['trend_carry_pyramid_cap']}")
-st.caption("Gates: structure_ok · regime ∈ {growth, slowdown} · VWAP-confirmed "
-           "(pullback only) · momentum gate OFF in production.")
+tab_chart, tab_pyramid, tab_journal, tab_ask, tab_subscribe = st.tabs(
+    ["📈 Chart", "🏛 Pyramid", "📓 Journal", "💬 Ask AI", "🔔 Subscribe"]
+)
 
-
-# ---------------------------------------------------------------------------
-# TradingView Advanced Chart (live, with VWAP + Volume studies)
-# ---------------------------------------------------------------------------
-st.divider()
-st.subheader(f"📈 TradingView — {symbol} (interactive)")
-TV_SYMBOL_MAP = {"SPY": "AMEX:SPY", "DIA": "AMEX:DIA", "QQQ": "NASDAQ:QQQ",
-                 "IWM": "AMEX:IWM", "XLK": "AMEX:XLK", "XLF": "AMEX:XLF"}
-tv_symbol = TV_SYMBOL_MAP.get(symbol, f"AMEX:{symbol}")
-tv_html = f"""
+# ---------- 📈 Chart tab: TradingView + Python volume profile ----------
+with tab_chart:
+    st.subheader(f"TradingView — {symbol} (interactive)")
+    TV_SYMBOL_MAP = {"SPY": "AMEX:SPY", "DIA": "AMEX:DIA", "QQQ": "NASDAQ:QQQ",
+                     "IWM": "AMEX:IWM", "XLK": "AMEX:XLK", "XLF": "AMEX:XLF"}
+    tv_symbol = TV_SYMBOL_MAP.get(symbol, f"AMEX:{symbol}")
+    tv_html = f"""
 <div class="tradingview-widget-container" style="height:560px;width:100%">
   <div id="tv_chart_{symbol}" style="height:560px;width:100%"></div>
   <script src="https://s3.tradingview.com/tv.js"></script>
@@ -446,179 +490,223 @@ tv_html = f"""
   </script>
 </div>
 """
-components.html(tv_html, height=580)
-st.caption("TradingView free widget — VWAP, Volume, EMA, SMA pre-loaded. "
-           "Full Volume Profile (visible range) requires TV Pro; the chart below "
-           "is the free Python-computed alternative.")
+    components.html(tv_html, height=580)
+    st.caption("TradingView free widget — VWAP, Volume, EMA, SMA pre-loaded. "
+               "Full Volume Profile (visible range) requires TV Pro; the chart "
+               "below is the free Python-computed alternative.")
 
-
-# ---------------------------------------------------------------------------
-# Python-side Volume Profile (free alternative to TV Pro)
-# ---------------------------------------------------------------------------
-st.divider()
-st.subheader("📊 Volume profile — last 400 bars (Python-computed)")
-bars = snap.get("bars", [])
-if len(bars) < 20:
-    st.info("Not enough bars in snapshot for volume profile.")
-else:
-    bdf = pd.DataFrame(bars)
-    n_bins = st.slider("Price bins", min_value=20, max_value=80, value=40, step=5)
-    price_min, price_max = float(bdf["l"].min()), float(bdf["h"].max())
-    edges = np.linspace(price_min, price_max, n_bins + 1)
-    centers = (edges[:-1] + edges[1:]) / 2
-    vol_per_bin = np.zeros(n_bins)
-    # Distribute each bar's volume across the bins its [low, high] range covers.
-    for _, r in bdf.iterrows():
-        lo, hi, v = float(r["l"]), float(r["h"]), float(r["v"])
-        if hi <= lo or v <= 0:
-            continue
-        i0 = max(0, int((lo - price_min) / (price_max - price_min) * n_bins))
-        i1 = min(n_bins - 1, int((hi - price_min) / (price_max - price_min) * n_bins))
-        span = max(i1 - i0 + 1, 1)
-        per = v / span
-        vol_per_bin[i0:i1 + 1] += per
-
-    # POC + Value Area (70%)
-    poc_idx = int(np.argmax(vol_per_bin))
-    poc_price = float(centers[poc_idx])
-    total_v = vol_per_bin.sum()
-    sorted_idx = np.argsort(-vol_per_bin)
-    cum = 0.0
-    va_set = set()
-    for i in sorted_idx:
-        cum += vol_per_bin[i]
-        va_set.add(int(i))
-        if cum >= 0.70 * total_v:
-            break
-    va_prices = [centers[i] for i in sorted(va_set)]
-    va_low, va_high = (float(min(va_prices)), float(max(va_prices))) if va_prices else (poc_price, poc_price)
-
-    cc1, cc2, cc3 = st.columns(3)
-    cc1.metric("POC (point of control)", f"${poc_price:.2f}")
-    cc2.metric("Value Area High (70%)", f"${va_high:.2f}")
-    cc3.metric("Value Area Low (70%)", f"${va_low:.2f}")
-
-    vp_df = pd.DataFrame({"Price": [f"${p:.2f}" for p in centers],
-                          "Volume": vol_per_bin})
-    # Horizontal bar via st.bar_chart with price-as-index.
-    chart_df = pd.DataFrame({"volume": vol_per_bin}, index=[f"${p:.2f}" for p in centers])
-    st.bar_chart(chart_df, horizontal=True, height=400)
-    st.caption(f"POC = price bin with most traded volume. "
-               f"Value Area = the {len(va_set)} bins capturing 70% of total volume.")
-
-
-# ---------------------------------------------------------------------------
-# Journal
-# ---------------------------------------------------------------------------
-st.divider()
-st.subheader("📓 Trade journal — last 20")
-if not jtail:
-    st.info("No journal entries yet (run `python3 -m live_signal --watch --journal`).")
-else:
-    jdf = pd.DataFrame(jtail)
-    show_cols = [c for c in ("trade_id", "timestamp", "event", "side",
-                             "symbol", "price", "qty", "pnl", "notes")
-                 if c in jdf.columns]
-    st.dataframe(jdf[show_cols], use_container_width=True, hide_index=True)
-    if "event" in jdf.columns and "pnl" in jdf.columns:
-        exits = jdf[jdf["event"] == "EXIT"]
-        if not exits.empty:
-            total = pd.to_numeric(exits["pnl"], errors="coerce").sum()
-            wins = (pd.to_numeric(exits["pnl"], errors="coerce") > 0).sum()
-            m1, m2, m3 = st.columns(3)
-            m1.metric("Closed legs (last 20)", len(exits))
-            m2.metric("Win rate", f"{wins / max(len(exits), 1):.0%}")
-            m3.metric("Total realised", f"${total:,.2f}")
-
-
-# ---------------------------------------------------------------------------
-# Ask an AI about this signal
-# ---------------------------------------------------------------------------
-import urllib.parse
-
-st.divider()
-st.subheader("💬 Ask an AI about this signal")
-st.caption("No login required, no API key needed. Type your question; the box "
-           "below auto-includes the current signal context. Then click a button "
-           "to open that prompt in Claude, ChatGPT, or Perplexity.")
-
-_user_q = st.text_input("Your question",
-                        placeholder="e.g. Is now a good time to enter? "
-                                    "What's the worst-case loss here?")
-
-_pb_word = {0: "no signal", 1: "LONG", -1: "SHORT"}[snap["pullback_signal"]]
-_tc_word = {0: "no signal", 1: "LONG"}.get(snap["trend_carry_signal"], "no signal")
-_context = (
-    f"Quant IA live signal — {symbol} 1h\n"
-    f"Bar time (UTC): {snap['bar_time_utc'][:19]}\n"
-    f"Close: ${snap['close']:.2f}\n"
-    f"EMA(50): ${snap['ema']:.2f}   SMA(130): ${snap['sma']:.2f}"
-    + (f"   VWAP: ${snap['vwap']:.2f}" if snap.get('vwap') == snap.get('vwap') else "")
-    + f"\nPullback signal: {_pb_word}\n"
-    f"Trend-carry signal: {_tc_word}\n"
-    f"Pullback pyramid OK: {snap['pullback_pyramid_ok']} (cap={snap['pullback_pyramid_cap']})\n"
-    f"Macro verdict: {mv['verdict']} "
-    f"(risk_off={mv['risk_off_score']}, risk_on={mv['risk_on_score']}, "
-    f"headlines={mv['n_headlines']})\n"
-    f"Engine: deterministic pullback + trend-carry · ATR-normalized · "
-    f"weak-gate pyramiding · 2.5x leverage backtest result $221K from $100K "
-    f"in-sample.\n\n"
-    f"Question: {_user_q or '(no question yet)'}"
-)
-with st.expander("Prompt that will be sent (you can also copy this)", expanded=False):
-    st.code(_context, language="text")
-
-_q_enc = urllib.parse.quote(_context)
-b1, b2, b3 = st.columns(3)
-b1.markdown(f"[💭 **Open in Claude**](https://claude.ai/new?q={_q_enc})")
-b2.markdown(f"[🤖 **Open in ChatGPT**](https://chat.openai.com/?q={_q_enc})")
-b3.markdown(f"[🔍 **Open in Perplexity**](https://www.perplexity.ai/search/new?q={_q_enc})")
-st.caption("Each link opens a new chat in that AI with the signal context pre-filled. "
-           "First-time users may need to sign in to the chosen AI.")
-
-
-# ---------------------------------------------------------------------------
-# Subscribe for notifications
-# ---------------------------------------------------------------------------
-DISCORD_INVITE = os.environ.get("DISCORD_INVITE_URL", "").strip()
-try:
-    if "DISCORD_INVITE_URL" in st.secrets:
-        DISCORD_INVITE = str(st.secrets["DISCORD_INVITE_URL"])
-except Exception:
-    pass
-
-# Public RSS feed lives at the raw GitHub URL of the worker's output.
-RSS_URL = os.environ.get("RSS_URL", "").strip()
-try:
-    if "RSS_URL" in st.secrets:
-        RSS_URL = str(st.secrets["RSS_URL"])
-except Exception:
-    pass
-
-st.divider()
-st.subheader("🔔 Subscribe for signal notifications")
-sc1, sc2 = st.columns(2)
-with sc1:
-    st.markdown("**Discord (recommended)**")
-    if DISCORD_INVITE:
-        st.markdown(f"[Join the signals server →]({DISCORD_INVITE})")
-        st.caption("Every fresh signal (across all tracked symbols) is posted "
-                   "to a read-only channel within ~5 minutes of bar close.")
+    st.divider()
+    st.subheader("Volume profile — last 400 bars (Python-computed)")
+    bars = snap.get("bars", [])
+    if len(bars) < 20:
+        st.info("Not enough bars in snapshot for volume profile.")
     else:
-        st.info("Discord invite link not configured. Admin: set "
-                "`DISCORD_INVITE_URL` env var or Streamlit secret.")
-with sc2:
-    st.markdown("**RSS feed**")
-    if RSS_URL:
-        st.markdown(f"[Subscribe via RSS →]({RSS_URL})")
-        st.caption("Paste this URL into any RSS reader (Feedly, Inoreader, "
-                   "NetNewsWire, etc.). Updated whenever the worker writes a "
-                   "new signal.")
+        bdf = pd.DataFrame(bars)
+        n_bins = st.slider("Price bins", min_value=20, max_value=80, value=40, step=5)
+        price_min, price_max = float(bdf["l"].min()), float(bdf["h"].max())
+        edges = np.linspace(price_min, price_max, n_bins + 1)
+        centers = (edges[:-1] + edges[1:]) / 2
+        vol_per_bin = np.zeros(n_bins)
+        for _, r in bdf.iterrows():
+            lo, hi, v = float(r["l"]), float(r["h"]), float(r["v"])
+            if hi <= lo or v <= 0:
+                continue
+            i0 = max(0, int((lo - price_min) / (price_max - price_min) * n_bins))
+            i1 = min(n_bins - 1, int((hi - price_min) / (price_max - price_min) * n_bins))
+            span = max(i1 - i0 + 1, 1)
+            per = v / span
+            vol_per_bin[i0:i1 + 1] += per
+
+        poc_idx = int(np.argmax(vol_per_bin))
+        poc_price = float(centers[poc_idx])
+        total_v = vol_per_bin.sum()
+        sorted_idx = np.argsort(-vol_per_bin)
+        cum = 0.0
+        va_set: set[int] = set()
+        for i in sorted_idx:
+            cum += vol_per_bin[i]
+            va_set.add(int(i))
+            if cum >= 0.70 * total_v:
+                break
+        va_prices = [centers[i] for i in sorted(va_set)]
+        va_low, va_high = ((float(min(va_prices)), float(max(va_prices)))
+                           if va_prices else (poc_price, poc_price))
+
+        cc1, cc2, cc3 = st.columns(3)
+        cc1.metric("POC (point of control)", f"${poc_price:.2f}")
+        cc2.metric("Value Area High (70%)", f"${va_high:.2f}")
+        cc3.metric("Value Area Low (70%)", f"${va_low:.2f}")
+
+        if _HAS_PLOTLY:
+            # Horizontal Plotly bars with shaded value-area band + POC line.
+            in_va = [(i in va_set) for i in range(n_bins)]
+            colors = ["#00D4AA" if v else "#3a4759" for v in in_va]
+            fig = go.Figure()
+            fig.add_trace(go.Bar(
+                x=vol_per_bin, y=centers, orientation="h",
+                marker=dict(color=colors, line=dict(width=0)),
+                hovertemplate="Price ≈ $%{y:.2f}<br>Volume %{x:,.0f}<extra></extra>",
+                name="Volume",
+            ))
+            # POC marker
+            fig.add_hline(y=poc_price, line=dict(color="#F5A524", width=2, dash="dot"),
+                          annotation_text=f"POC ${poc_price:.2f}",
+                          annotation_position="right",
+                          annotation_font_color="#F5A524")
+            # Value-area band
+            fig.add_hrect(y0=va_low, y1=va_high,
+                          fillcolor="#00D4AA", opacity=0.07, line_width=0,
+                          annotation_text=f"Value Area 70% (${va_low:.2f} – ${va_high:.2f})",
+                          annotation_position="top left",
+                          annotation_font_color="#00D4AA",
+                          annotation_font_size=11)
+            fig.update_layout(
+                template="plotly_dark",
+                paper_bgcolor="#0B0F17", plot_bgcolor="#0B0F17",
+                height=460, margin=dict(l=10, r=10, t=20, b=10),
+                xaxis=dict(title="Volume", gridcolor="#1f2632", zeroline=False),
+                yaxis=dict(title="Price", gridcolor="#1f2632", zeroline=False),
+                showlegend=False,
+            )
+            st.plotly_chart(fig, use_container_width=True)
+        else:
+            # Fallback if plotly isn't installed.
+            chart_df = pd.DataFrame({"volume": vol_per_bin},
+                                    index=[f"${p:.2f}" for p in centers])
+            st.bar_chart(chart_df, horizontal=True, height=400)
+        st.caption(f"POC = price bin with most traded volume. "
+                   f"Value Area = the {len(va_set)} bins capturing 70% of total volume. "
+                   "Hover any bar for exact volume.")
+
+
+# ---------- 🏛 Pyramid tab ----------
+with tab_pyramid:
+    st.subheader("Pyramid gates")
+    pp1, pp2 = st.columns(2)
+    pp1.metric("Pullback pyramid OK?",
+               "✓ ALLOWED" if snap["pullback_pyramid_ok"] else "✗ blocked",
+               f"cap = {snap['pullback_pyramid_cap']}")
+    pp2.metric("Trend-carry pyramid OK?",
+               "✓ ALLOWED" if snap["trend_carry_pyramid_ok"] else "✗ blocked",
+               f"cap = {snap['trend_carry_pyramid_cap']}")
+    st.caption("Gates: structure_ok · regime ∈ {growth, slowdown} · "
+               "VWAP-confirmed (pullback only) · momentum gate OFF in production.")
+    st.markdown(
+        "**What is a pyramid add?** When you already hold a position and the "
+        "engine signals again in the same direction, it doesn't open a new "
+        "trade — it *adds* to the winner. These gates control whether that "
+        "add is allowed on the current bar. Above-VWAP + bullish trend "
+        "= institutional confirmation that the trend is still alive."
+    )
+
+
+# ---------- 📓 Journal tab ----------
+with tab_journal:
+    st.subheader("Trade journal — last 20")
+    if not jtail:
+        st.info("No journal entries yet "
+                "(run `python3 -m live_signal --watch --journal`).")
     else:
-        st.info("RSS feed URL not configured. Admin: point `RSS_URL` at "
-                "`https://raw.githubusercontent.com/<user>/<repo>/main/data/signals.rss`.")
-st.caption("Both subscription channels are free and pull from the same worker that "
-           "feeds this dashboard, so they fire at the same time.")
+        jdf = pd.DataFrame(jtail)
+        show_cols = [c for c in ("trade_id", "timestamp", "event", "side",
+                                 "symbol", "price", "qty", "pnl", "notes")
+                     if c in jdf.columns]
+        st.dataframe(jdf[show_cols], use_container_width=True, hide_index=True)
+        if "event" in jdf.columns and "pnl" in jdf.columns:
+            exits = jdf[jdf["event"] == "EXIT"]
+            if not exits.empty:
+                total = pd.to_numeric(exits["pnl"], errors="coerce").sum()
+                wins = (pd.to_numeric(exits["pnl"], errors="coerce") > 0).sum()
+                m1, m2, m3 = st.columns(3)
+                m1.metric("Closed legs (last 20)", len(exits))
+                m2.metric("Win rate", f"{wins / max(len(exits), 1):.0%}")
+                m3.metric("Total realised", f"${total:,.2f}")
+
+
+# ---------- 💬 Ask AI tab ----------
+with tab_ask:
+    st.subheader("Ask an AI about this signal")
+    st.caption("No login required, no API key needed. Type your question; the "
+               "prompt below auto-includes the current signal context. Click a "
+               "button to open that prompt in Claude, ChatGPT, or Perplexity.")
+
+    _user_q = st.text_input(
+        "Your question",
+        placeholder="e.g. Is now a good time to enter? "
+                    "What's the worst-case loss here?",
+    )
+
+    _pb_word = {0: "no signal", 1: "LONG", -1: "SHORT"}[snap["pullback_signal"]]
+    _tc_word = {0: "no signal", 1: "LONG"}.get(snap["trend_carry_signal"], "no signal")
+    _context = (
+        f"Quant IA live signal — {symbol} 1h\n"
+        f"Bar time (UTC): {snap['bar_time_utc'][:19]}\n"
+        f"Close: ${snap['close']:.2f}\n"
+        f"EMA(50): ${snap['ema']:.2f}   SMA(130): ${snap['sma']:.2f}"
+        + (f"   VWAP: ${snap['vwap']:.2f}" if snap.get('vwap') == snap.get('vwap') else "")
+        + f"\nPullback signal: {_pb_word}\n"
+        f"Trend-carry signal: {_tc_word}\n"
+        f"Pullback pyramid OK: {snap['pullback_pyramid_ok']} "
+        f"(cap={snap['pullback_pyramid_cap']})\n"
+        f"Macro verdict: {mv['verdict']} "
+        f"(risk_off={mv['risk_off_score']}, risk_on={mv['risk_on_score']}, "
+        f"headlines={mv['n_headlines']})\n"
+        f"Engine: deterministic pullback + trend-carry · ATR-normalized · "
+        f"weak-gate pyramiding · 2.5x leverage backtest result $221K from $100K "
+        f"in-sample.\n\n"
+        f"Question: {_user_q or '(no question yet)'}"
+    )
+    with st.expander("Prompt that will be sent (you can also copy this)",
+                     expanded=False):
+        st.code(_context, language="text")
+
+    _q_enc = urllib.parse.quote(_context)
+    b1, b2, b3 = st.columns(3)
+    b1.markdown(f"[💭 **Open in Claude**](https://claude.ai/new?q={_q_enc})")
+    b2.markdown(f"[🤖 **Open in ChatGPT**](https://chat.openai.com/?q={_q_enc})")
+    b3.markdown(f"[🔍 **Open in Perplexity**](https://www.perplexity.ai/search/new?q={_q_enc})")
+    st.caption("Each link opens a new chat in that AI with the signal context "
+               "pre-filled. First-time users may need to sign in to the AI.")
+
+
+# ---------- 🔔 Subscribe tab ----------
+with tab_subscribe:
+    DISCORD_INVITE = os.environ.get("DISCORD_INVITE_URL", "").strip()
+    try:
+        if "DISCORD_INVITE_URL" in st.secrets:
+            DISCORD_INVITE = str(st.secrets["DISCORD_INVITE_URL"])
+    except Exception:
+        pass
+    RSS_URL = os.environ.get("RSS_URL", "").strip()
+    try:
+        if "RSS_URL" in st.secrets:
+            RSS_URL = str(st.secrets["RSS_URL"])
+    except Exception:
+        pass
+
+    st.subheader("Subscribe for signal notifications")
+    sc1, sc2 = st.columns(2)
+    with sc1:
+        st.markdown("**Discord (recommended)**")
+        if DISCORD_INVITE:
+            st.markdown(f"[Join the signals server →]({DISCORD_INVITE})")
+            st.caption("Every fresh signal is posted to a read-only channel "
+                       "within ~5 minutes of bar close.")
+        else:
+            st.info("Discord invite link not configured. Admin: set "
+                    "`DISCORD_INVITE_URL` env var or Streamlit secret.")
+    with sc2:
+        st.markdown("**RSS feed**")
+        if RSS_URL:
+            st.markdown(f"[Subscribe via RSS →]({RSS_URL})")
+            st.caption("Paste this URL into any RSS reader (Feedly, Inoreader, "
+                       "NetNewsWire, etc.). Updated whenever the worker writes "
+                       "a new signal.")
+        else:
+            st.info("RSS feed URL not configured. Admin: point `RSS_URL` at "
+                    "`https://raw.githubusercontent.com/<user>/<repo>/main/data/signals.rss`.")
+    st.caption("Both subscription channels are free and pull from the same "
+               "worker that feeds this dashboard, so they fire at the same time.")
 
 
 st.divider()
