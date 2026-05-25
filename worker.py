@@ -37,6 +37,13 @@ from core.notifier import send_signal as _notify_signal
 STATE_PATH = os.path.join("data", "state.json")
 JOURNAL_PATH = os.path.join("data", "trade_journal.csv")
 NOTIFIED_PATH = os.path.join("data", "last_notified.json")
+RSS_PATH = os.path.join("data", "signals.rss")
+RSS_HISTORY_PATH = os.path.join("data", "signals_rss_items.json")
+RSS_MAX_ITEMS = 50
+RSS_PUBLIC_URL_BASE = os.environ.get(
+    "RSS_PUBLIC_URL_BASE",
+    "https://github.com/ShadfxQuant/quant-ia-trading-system",
+)
 
 
 # ---------------------------------------------------------------------------
@@ -200,6 +207,115 @@ def _save_notified(d: dict) -> None:
     os.replace(tmp, NOTIFIED_PATH)
 
 
+# ---------------------------------------------------------------------------
+# RSS feed — written every snapshot, holds the most recent N unique signals.
+# ---------------------------------------------------------------------------
+def _xml_escape(s: str) -> str:
+    return (s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+            .replace('"', "&quot;").replace("'", "&apos;"))
+
+
+def _load_rss_history() -> list[dict]:
+    if not os.path.exists(RSS_HISTORY_PATH):
+        return []
+    try:
+        with open(RSS_HISTORY_PATH) as f:
+            return json.load(f)
+    except Exception:
+        return []
+
+
+def _save_rss_history(items: list[dict]) -> None:
+    tmp = RSS_HISTORY_PATH + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump(items, f, indent=2, default=_json_default)
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(tmp, RSS_HISTORY_PATH)
+
+
+def _write_rss(items: list[dict]) -> None:
+    """Write the canonical RSS 2.0 XML to RSS_PATH."""
+    now = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0000")
+    parts = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<rss version="2.0">',
+        '<channel>',
+        '<title>Quant IA — Live Signals</title>',
+        f'<link>{_xml_escape(RSS_PUBLIC_URL_BASE)}</link>',
+        '<description>Deterministic pullback + trend-carry signals on SPY/DIA. '
+        'Educational only — not investment advice.</description>',
+        '<language>en-us</language>',
+        f'<lastBuildDate>{now}</lastBuildDate>',
+    ]
+    for it in items[:RSS_MAX_ITEMS]:
+        parts.append("<item>")
+        parts.append(f"<title>{_xml_escape(it.get('title', ''))}</title>")
+        parts.append(f"<description>{_xml_escape(it.get('description', ''))}</description>")
+        parts.append(f"<guid isPermaLink=\"false\">{_xml_escape(it.get('guid', ''))}</guid>")
+        parts.append(f"<pubDate>{_xml_escape(it.get('pubDate', now))}</pubDate>")
+        parts.append("</item>")
+    parts.append("</channel>")
+    parts.append("</rss>")
+    tmp = RSS_PATH + ".tmp"
+    with open(tmp, "w") as f:
+        f.write("\n".join(parts))
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(tmp, RSS_PATH)
+
+
+def update_rss(state: dict) -> int:
+    """Append any *new* (symbol, strategy, side, bar_time) signals to the RSS
+    feed. Returns count appended."""
+    items = _load_rss_history()
+    existing_guids = {it.get("guid") for it in items}
+    appended = 0
+    now_rfc = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0000")
+    engine = state.get("engine", {})
+    macro = state.get("macro") or {}
+    for sym, snap in state.get("symbols", {}).items():
+        for strat, sig_key in (("pullback", "pullback_signal"),
+                               ("trend_carry", "trend_carry_signal")):
+            side = int(snap.get(sig_key, 0) or 0)
+            if side == 0:
+                continue
+            bar = snap.get("bar_time_utc", "")
+            guid = f"{sym}:{strat}:{side}:{bar}"
+            if guid in existing_guids:
+                continue
+            side_word = "LONG" if side == 1 else "SHORT"
+            close = snap.get("close", 0.0)
+            base = (engine.get("pullback_base_pct", 0.75) if strat == "pullback"
+                    else engine.get("tc_base_pct", 0.30))
+            stop = (engine.get("pullback_stop_pct", 0.025) if strat == "pullback"
+                    else engine.get("tc_stop_pct", 0.04))
+            tp1 = (engine.get("pullback_tp1_pct", 0.04) if strat == "pullback"
+                   else engine.get("tc_tp1_pct", 0.08))
+            tp2 = (engine.get("pullback_tp2_pct", 0.15) if strat == "pullback"
+                   else engine.get("tc_tp2_pct", 0.25))
+            macro_line = (f"  Macro: {macro.get('verdict', '?')} "
+                          f"(off={macro.get('risk_off_score', 0)}, "
+                          f"on={macro.get('risk_on_score', 0)})") if macro else ""
+            desc = (f"{strat.upper()} {side_word} on {sym} @ bar {bar} | "
+                    f"Close=${close:.2f} | Size={base*100:.0f}% of acct | "
+                    f"Stop=-{stop*100:.2f}% | TP1=+{tp1*100:.2f}% | "
+                    f"TP2=+{tp2*100:.2f}%.{macro_line} "
+                    f"Educational only — not investment advice.")
+            items.insert(0, {
+                "guid": guid,
+                "title": f"{strat.upper()} {side_word} — {sym} @ ${close:.2f}",
+                "description": desc,
+                "pubDate": now_rfc,
+            })
+            appended += 1
+    if appended:
+        items = items[:RSS_MAX_ITEMS]
+        _save_rss_history(items)
+    _write_rss(items)
+    return appended
+
+
 def maybe_notify(state: dict) -> int:
     """For each per-symbol snapshot with a non-zero signal, fire Discord
     iff this exact (symbol, strategy, side, bar_time) hasn't fired before.
@@ -251,8 +367,9 @@ def loop(symbols: list[str], interval: int) -> None:
             state = build_state(symbols)
             write_state(state)
             n_sent = maybe_notify(state)
+            n_rss = update_rss(state)
             print(f"[worker] {datetime.now(timezone.utc):%H:%M:%S} UTC · "
-                  f"wrote snapshot · notified={n_sent} · "
+                  f"wrote snapshot · notified={n_sent} · rss_new={n_rss} · "
                   f"errors={list(state['errors'].keys()) or 'none'} · "
                   f"elapsed={time.time()-t0:.1f}s")
         except Exception:
@@ -280,8 +397,9 @@ def main():
         state = build_state(syms)
         write_state(state)
         n_sent = maybe_notify(state)
+        n_rss = update_rss(state)
         print(f"[worker] wrote one snapshot to {STATE_PATH} · "
-              f"notified={n_sent} · "
+              f"notified={n_sent} · rss_new={n_rss} · "
               f"errors={list(state['errors'].keys()) or 'none'}")
         return
     loop(syms, a.interval)

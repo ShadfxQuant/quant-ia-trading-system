@@ -1,12 +1,13 @@
 name: signal-worker
 
-# Runs every 15 minutes (GitHub free-tier cron honors ~10–15 min cadence).
+# Runs every 5 minutes (GitHub free-tier minimum effective cadence; actual
+# fire can lag 5–15 min during peak load — that's a platform limit, not config).
 # Fetches market data, runs the engine, sends Discord on new signals,
 # commits the refreshed data/state.json back to main so the Streamlit
 # dashboard always reads a current snapshot.
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "*/5 * * * *"
   workflow_dispatch: {}     # also lets you trigger it manually from the Actions tab
 
 permissions:
@@ -45,10 +46,10 @@ jobs:
         run: |
           git config user.name  "signal-worker-bot"
           git config user.email "actions@users.noreply.github.com"
-          # Force-add data/state.json and last_notified.json even though
-          # data/ is in .gitignore — they're the only files the dashboard
-          # needs from cron.
-          git add -f data/state.json data/last_notified.json 2>/dev/null || true
+          # Force-add files even though data/ is in .gitignore — these are
+          # the only files the dashboard / subscribers need from cron.
+          git add -f data/state.json data/last_notified.json \
+                     data/signals.rss data/signals_rss_items.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "no snapshot change to commit"
           else

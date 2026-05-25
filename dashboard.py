@@ -272,6 +272,128 @@ _signal_card("trend_carry", snap["trend_carry_signal"],
 
 
 # ---------------------------------------------------------------------------
+# Signal Explainer — plain-English breakdown of the latest bar
+# ---------------------------------------------------------------------------
+st.divider()
+st.subheader("📖 What does this signal mean?")
+
+
+def _explain_state(snap: dict) -> tuple[str, list[str]]:
+    """Return (headline, bullet-list explanation)."""
+    close = snap["close"]
+    ema = snap["ema"]
+    sma = snap["sma"]
+    vwap = snap.get("vwap")
+    pb = snap["pullback_signal"]
+    tc = snap["trend_carry_signal"]
+
+    structure = "bullish" if (ema == ema and sma == sma and ema > sma) else (
+                "bearish" if (ema == ema and sma == sma and ema < sma) else "neutral")
+    above_vwap = (vwap is not None and vwap == vwap and close > vwap)
+    deviation_pct = ((ema - sma) / sma * 100) if (sma and sma == sma) else None
+    price_dev_pct = ((close - ema) / ema * 100) if (ema and ema == ema) else None
+
+    bullets = []
+    bullets.append(
+        f"**Trend structure: {structure.upper()}** — EMA(50) = ${ema:.2f}, "
+        f"SMA(130) = ${sma:.2f}. "
+        + ("The faster average is above the slower one, meaning the medium-term "
+           "trend is up." if structure == "bullish" else
+           "The faster average is below the slower one — medium-term trend is down."
+           if structure == "bearish" else
+           "Averages are close together — no clear trend direction.")
+    )
+    if deviation_pct is not None:
+        bullets.append(
+            f"**Imbalance (EMA − SMA): {deviation_pct:+.2f}%** — how stretched the "
+            "trend is. Bigger absolute number = stronger directional bias."
+        )
+    if price_dev_pct is not None:
+        bullets.append(
+            f"**Pullback proximity (Close − EMA): {price_dev_pct:+.2f}%** — price "
+            "needs to be inside an ATR-scaled band around EMA for a fresh entry. "
+            "Too far above = chase; too far below = breakdown risk."
+        )
+    if vwap is not None and vwap == vwap:
+        bullets.append(
+            f"**VWAP: ${vwap:.2f}** — institutional reference price for the day. "
+            f"Current close is **{'ABOVE' if above_vwap else 'BELOW'}** VWAP. "
+            "Pyramid adds require the close to be above VWAP."
+        )
+
+    if pb == 1:
+        head = ("🟢 **Pullback LONG fired** — bullish structure + price dipped into "
+                "the ATR-scaled pullback band + momentum just turned back up.")
+        bullets.append(
+            "**What it means in plain English:** the medium-term trend is up, "
+            "price just pulled back a little inside that trend, and momentum is "
+            "starting to re-accelerate. The engine wants to ride the continuation."
+        )
+        bullets.append(
+            "**Action plan:** enter LONG at the suggested size, place a stop at "
+            "the displayed −% (this is your max loss for the full position), and "
+            "set two take-profits at TP1 (close 50%) and TP2 (close the runner). "
+            "After TP1 fills, move the stop to your entry price (breakeven)."
+        )
+    elif pb == -1:
+        head = ("🔴 **Pullback SHORT fired** — rare; the engine only takes shorts "
+                "when structure AND regime both agree it's bearish.")
+        bullets.append(
+            "**What it means in plain English:** the medium-term trend has flipped "
+            "down AND the regime model agrees. This is the engine's strictest entry."
+        )
+    elif tc == 1:
+        head = ("🟢 **Trend-carry LONG fired** — wider-exit, longer-hold version of "
+                "the pullback. Designed to ride bigger swings.")
+        bullets.append(
+            "**Action plan:** smaller size than the pullback engine, wider stop "
+            "(survives normal volatility), and a much further TP2. Hold for weeks "
+            "if needed — the time stop is ~9 months on 1h bars."
+        )
+    else:
+        head = "⚪ **No signal on the latest bar.** The engine is waiting."
+        if structure == "bullish":
+            bullets.append(
+                "Trend is up — the engine is waiting for a clean pullback into the "
+                "EMA + a momentum re-acceleration before firing. It can take days."
+            )
+        elif structure == "bearish":
+            bullets.append(
+                "Trend is down. Long entries require bullish structure; the engine "
+                "will sit out until the trend flips back up."
+            )
+        else:
+            bullets.append(
+                "No clear trend. The engine only enters in confirmed up- or down-trends."
+            )
+
+    return head, bullets
+
+
+_head, _bullets = _explain_state(snap)
+st.markdown(_head)
+for b in _bullets:
+    st.markdown(f"- {b}")
+
+with st.expander("How the engine works (1-minute summary)"):
+    st.markdown("""
+- **Pullback engine** — needs all four: bullish trend structure, price inside an
+  ATR-scaled pullback band around EMA, deviation between EMA and SMA, momentum
+  re-accelerating. Exits at a fixed stop, TP1 (close half + move stop to BE),
+  and TP2 (close the runner).
+- **Trend-carry sleeve** — same alpha logic but wider stops and a much further
+  TP2. Designed to capture multi-week swings instead of single pullbacks.
+- **Pyramiding** — adds new size on top of an existing winner when (1) trend is
+  still favourable and (2) close is above VWAP. Each strategy has its own cap.
+- **Macro filter** — *informational only*. Tags signals that disagree with the
+  current world headlines (e.g. LONG fired while news reads RISK_OFF). Never
+  blocks the trade — you decide.
+- All percentages are **scale-invariant** — the trade plan works on any size
+  book and any instrument that mirrors SPY's percentage returns.
+""")
+
+
+# ---------------------------------------------------------------------------
 # Pyramid gates
 # ---------------------------------------------------------------------------
 st.divider()
@@ -407,6 +529,97 @@ else:
             m1.metric("Closed legs (last 20)", len(exits))
             m2.metric("Win rate", f"{wins / max(len(exits), 1):.0%}")
             m3.metric("Total realised", f"${total:,.2f}")
+
+
+# ---------------------------------------------------------------------------
+# Ask an AI about this signal
+# ---------------------------------------------------------------------------
+import urllib.parse
+
+st.divider()
+st.subheader("💬 Ask an AI about this signal")
+st.caption("No login required, no API key needed. Type your question; the box "
+           "below auto-includes the current signal context. Then click a button "
+           "to open that prompt in Claude, ChatGPT, or Perplexity.")
+
+_user_q = st.text_input("Your question",
+                        placeholder="e.g. Is now a good time to enter? "
+                                    "What's the worst-case loss here?")
+
+_pb_word = {0: "no signal", 1: "LONG", -1: "SHORT"}[snap["pullback_signal"]]
+_tc_word = {0: "no signal", 1: "LONG"}.get(snap["trend_carry_signal"], "no signal")
+_context = (
+    f"Quant IA live signal — {symbol} 1h\n"
+    f"Bar time (UTC): {snap['bar_time_utc'][:19]}\n"
+    f"Close: ${snap['close']:.2f}\n"
+    f"EMA(50): ${snap['ema']:.2f}   SMA(130): ${snap['sma']:.2f}"
+    + (f"   VWAP: ${snap['vwap']:.2f}" if snap.get('vwap') == snap.get('vwap') else "")
+    + f"\nPullback signal: {_pb_word}\n"
+    f"Trend-carry signal: {_tc_word}\n"
+    f"Pullback pyramid OK: {snap['pullback_pyramid_ok']} (cap={snap['pullback_pyramid_cap']})\n"
+    f"Macro verdict: {mv['verdict']} "
+    f"(risk_off={mv['risk_off_score']}, risk_on={mv['risk_on_score']}, "
+    f"headlines={mv['n_headlines']})\n"
+    f"Engine: deterministic pullback + trend-carry · ATR-normalized · "
+    f"weak-gate pyramiding · 2.5x leverage backtest result $221K from $100K "
+    f"in-sample.\n\n"
+    f"Question: {_user_q or '(no question yet)'}"
+)
+with st.expander("Prompt that will be sent (you can also copy this)", expanded=False):
+    st.code(_context, language="text")
+
+_q_enc = urllib.parse.quote(_context)
+b1, b2, b3 = st.columns(3)
+b1.markdown(f"[💭 **Open in Claude**](https://claude.ai/new?q={_q_enc})")
+b2.markdown(f"[🤖 **Open in ChatGPT**](https://chat.openai.com/?q={_q_enc})")
+b3.markdown(f"[🔍 **Open in Perplexity**](https://www.perplexity.ai/search/new?q={_q_enc})")
+st.caption("Each link opens a new chat in that AI with the signal context pre-filled. "
+           "First-time users may need to sign in to the chosen AI.")
+
+
+# ---------------------------------------------------------------------------
+# Subscribe for notifications
+# ---------------------------------------------------------------------------
+DISCORD_INVITE = os.environ.get("DISCORD_INVITE_URL", "").strip()
+try:
+    if "DISCORD_INVITE_URL" in st.secrets:
+        DISCORD_INVITE = str(st.secrets["DISCORD_INVITE_URL"])
+except Exception:
+    pass
+
+# Public RSS feed lives at the raw GitHub URL of the worker's output.
+RSS_URL = os.environ.get("RSS_URL", "").strip()
+try:
+    if "RSS_URL" in st.secrets:
+        RSS_URL = str(st.secrets["RSS_URL"])
+except Exception:
+    pass
+
+st.divider()
+st.subheader("🔔 Subscribe for signal notifications")
+sc1, sc2 = st.columns(2)
+with sc1:
+    st.markdown("**Discord (recommended)**")
+    if DISCORD_INVITE:
+        st.markdown(f"[Join the signals server →]({DISCORD_INVITE})")
+        st.caption("Every fresh signal (across all tracked symbols) is posted "
+                   "to a read-only channel within ~5 minutes of bar close.")
+    else:
+        st.info("Discord invite link not configured. Admin: set "
+                "`DISCORD_INVITE_URL` env var or Streamlit secret.")
+with sc2:
+    st.markdown("**RSS feed**")
+    if RSS_URL:
+        st.markdown(f"[Subscribe via RSS →]({RSS_URL})")
+        st.caption("Paste this URL into any RSS reader (Feedly, Inoreader, "
+                   "NetNewsWire, etc.). Updated whenever the worker writes a "
+                   "new signal.")
+    else:
+        st.info("RSS feed URL not configured. Admin: point `RSS_URL` at "
+                "`https://raw.githubusercontent.com/<user>/<repo>/main/data/signals.rss`.")
+st.caption("Both subscription channels are free and pull from the same worker that "
+           "feeds this dashboard, so they fire at the same time.")
+
 
 st.divider()
 st.caption(
