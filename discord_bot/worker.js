@@ -1,26 +1,19 @@
 /**
  * Cloudflare Worker — Discord interactions endpoint for /read SYMBOL.
  *
- * Deploy:
- *   1. Install wrangler:  npm i -g wrangler
- *   2. wrangler login
- *   3. Set secret:  wrangler secret put DISCORD_PUBLIC_KEY
- *      (from Discord Developer Portal → General Information → Public Key)
- *   4. wrangler deploy
- *   5. Copy the *.workers.dev URL into Discord → General Information
- *      → "Interactions Endpoint URL". Discord will PING-verify; this
- *      worker handles that.
- *   6. Register the /read command (see register_command.js).
+ * Uses Discord's deferred-response pattern (type 5) to avoid the 3-second
+ * timeout: we ACK instantly, then PATCH the message via the interaction
+ * webhook with the actual Read content once we've fetched state.json.
  *
- * Reads live state from:
- *   https://raw.githubusercontent.com/ShadfxQuant/quant-ia-trading-system/main/data/state.json
- * No bot token / no server / no cost. Worker free tier = 100k req/day.
+ * Deploy:
+ *   wrangler secret put DISCORD_PUBLIC_KEY    # from Developer Portal → Public Key
+ *   wrangler deploy
  */
 
 const STATE_URL =
   "https://raw.githubusercontent.com/ShadfxQuant/quant-ia-trading-system/main/data/state.json";
 
-// --- ed25519 signature verification (Discord requires this) ---
+// --- ed25519 signature verification ---
 async function verify(request, body, publicKey) {
   const signature = request.headers.get("x-signature-ed25519");
   const timestamp = request.headers.get("x-signature-timestamp");
@@ -37,12 +30,10 @@ async function verify(request, body, publicKey) {
 }
 function hex2buf(hex) {
   const b = new Uint8Array(hex.length / 2);
-  for (let i = 0; i < b.length; i++)
-    b[i] = parseInt(hex.substr(i * 2, 2), 16);
+  for (let i = 0; i < b.length; i++) b[i] = parseInt(hex.substr(i * 2, 2), 16);
   return b.buffer;
 }
 
-// --- Discord response helpers ---
 const json = (data) =>
   new Response(JSON.stringify(data), {
     headers: { "content-type": "application/json" },
@@ -53,6 +44,9 @@ function biasEmoji(b) {
 }
 function tiltEmoji(t) {
   return { supports: "✅", conflicts: "⚠️", neutral: "·", "n/a": "·" }[t] || "·";
+}
+function fmtNum(n, d = 2) {
+  return typeof n === "number" && !isNaN(n) ? n.toFixed(d) : "—";
 }
 
 async function fetchRead(symbol) {
@@ -70,9 +64,14 @@ async function fetchRead(symbol) {
 function formatRead({ snap, generatedAt }) {
   const r = snap.read || {};
   if (r.error) return `**${snap.symbol}** — read unavailable: ${r.error}`;
+  if (!r.bias) {
+    return `**${snap.symbol}** — Read not yet populated by the worker. ` +
+           `Next worker tick will fill it in (within ~12 min during 07–21 UTC).\n` +
+           `_snapshot: ${generatedAt || "unknown"}_`;
+  }
   const lines = [
     `**${snap.symbol}**  ${biasEmoji(r.bias)} **${(r.bias || "?").toUpperCase()}**  ·  strength **${(r.strength || "?").toUpperCase()}**  (ADX ${r.adx ?? "—"})`,
-    `Close $${snap.close?.toFixed?.(2)}  ·  EMA50 $${snap.ema?.toFixed?.(2)}  ·  SMA130 $${snap.sma?.toFixed?.(2)}`,
+    `Close $${fmtNum(snap.close)}  ·  EMA50 $${fmtNum(snap.ema)}  ·  SMA130 $${fmtNum(snap.sma)}`,
     `Regime eligible last 24h: **${r.regime_pct_24h ?? 0}%**  ·  Macro: ${tiltEmoji(r.macro_tilt)} ${(r.macro_tilt || "—").toUpperCase()}`,
     "",
     r.narrative || "",
@@ -85,8 +84,18 @@ function formatRead({ snap, generatedAt }) {
   return lines.join("\n");
 }
 
+// Edit the original deferred response via interaction webhook
+async function editFollowup(appId, interactionToken, content) {
+  const url = `https://discord.com/api/v10/webhooks/${appId}/${interactionToken}/messages/@original`;
+  await fetch(url, {
+    method: "PATCH",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ content }),
+  });
+}
+
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     if (request.method !== "POST") return new Response("ok", { status: 200 });
     const body = await request.text();
     const valid = await verify(request, body, env.DISCORD_PUBLIC_KEY);
@@ -94,30 +103,37 @@ export default {
 
     const interaction = JSON.parse(body);
 
-    // Type 1 = PING (Discord verification)
-    if (interaction.type === 1) return json({ type: 1 });
+    if (interaction.type === 1) return json({ type: 1 }); // PING
 
-    // Type 2 = APPLICATION_COMMAND
     if (interaction.type === 2) {
       const cmd = interaction.data?.name;
       if (cmd !== "read") {
-        return json({
-          type: 4,
-          data: { content: `unknown command: ${cmd}` },
-        });
+        return json({ type: 4, data: { content: `unknown command: ${cmd}` } });
       }
       const symbol =
         interaction.data?.options?.find((o) => o.name === "symbol")?.value ||
         "PAXGUSDT";
-      try {
-        const result = await fetchRead(symbol);
-        return json({ type: 4, data: { content: formatRead(result) } });
-      } catch (e) {
-        return json({
-          type: 4,
-          data: { content: `❌ ${e.message}` },
-        });
-      }
+
+      // Defer (type 5) — we have 15 minutes to PATCH a real reply.
+      // Use ctx.waitUntil so the Worker keeps running after we ACK.
+      ctx.waitUntil((async () => {
+        try {
+          const result = await fetchRead(symbol);
+          await editFollowup(
+            interaction.application_id,
+            interaction.token,
+            formatRead(result),
+          );
+        } catch (e) {
+          await editFollowup(
+            interaction.application_id,
+            interaction.token,
+            `❌ ${e.message}`,
+          );
+        }
+      })());
+
+      return json({ type: 5 }); // DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE
     }
 
     return json({ type: 4, data: { content: "unhandled interaction type" } });
