@@ -65,6 +65,14 @@ def _filter_mask(df: pd.DataFrame, kind: str) -> pd.Series:
     if kind == "ADX_25_NO_ASIA":
         h = pd.Series(df.index.hour, index=df.index)
         return (_compute_adx(df) >= 25) & ~((h >= 0) & (h < 7))
+    if kind == "ADX_25_NO_ASIA_SLOPE":   # COMBO_E: best CAGR on fresh sweep
+        h = pd.Series(df.index.hour, index=df.index)
+        # 4-bar EMA-slope persistence — regime must be moving the same way
+        # for at least 4 consecutive hours before we trust it.
+        ema = df["Close"].ewm(span=50, adjust=False).mean()
+        slope = ema.diff()
+        slope_ok = (slope > 0).rolling(4).sum() >= 4
+        return (_compute_adx(df) >= 25) & ~((h >= 0) & (h < 7)) & slope_ok.fillna(False)
     raise ValueError(f"unknown regime filter kind {kind!r}")
 
 

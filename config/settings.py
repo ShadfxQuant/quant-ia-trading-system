@@ -443,7 +443,7 @@ CRYPTO_CARRY = CryptoCarryConfig()
 # already have NYSE-hours data so they don't need a filter.
 # ---------------------------------------------------------------------------
 REGIME_FILTERS: dict = {
-    "PAXGUSDT": "ADX_25_NYSE",     # COMBO_F: PF 1.81, DD 18.3%, CAGR 41.3%
+    "PAXGUSDT": "ADX_25_NO_ASIA_SLOPE",  # COMBO_E: PF 1.99, CAGR 80.2%, DD 25.8%, n=304 (fresh sweep)
 }
 
 

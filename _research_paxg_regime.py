@@ -151,7 +151,17 @@ FILTERS = ["NONE",
 
 
 def main() -> None:
+    # Silence statsmodels' "model not converging" chatter — it fires every
+    # iteration from the indicator fits and doesn't affect the backtest.
+    import logging, os
     warnings.filterwarnings("ignore")
+    logging.getLogger("statsmodels").setLevel(logging.ERROR)
+    os.environ["PYTHONWARNINGS"] = "ignore"
+    try:
+        from statsmodels.tools.sm_exceptions import ConvergenceWarning
+        warnings.simplefilter("ignore", ConvergenceWarning)
+    except Exception:
+        pass
     SYMBOL = "PAXGUSDT"
     print(f"PAXG regime-filter sweep · symbol={SYMBOL} · same 2.5x-lev engine\n")
     print(f"{'Filter':<12}{'Eligible%':>11}{'Final':>11}{'CAGR':>8}"
