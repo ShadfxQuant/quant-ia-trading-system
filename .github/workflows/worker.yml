@@ -1,13 +1,14 @@
 name: signal-worker
 
-# Runs every 5 minutes (GitHub free-tier minimum effective cadence; actual
-# fire can lag 5–15 min during peak load — that's a platform limit, not config).
-# Fetches market data, runs the engine, sends Discord on new signals,
-# commits the refreshed data/state.json back to main so the Streamlit
-# dashboard always reads a current snapshot.
+# Gated to the active trading window: every 15 min during 07:00–20:59 UTC.
+# - PAXG's COMBO_E filter skips 00:00–07:00 UTC (Asian session is muted)
+# - NYSE-hours symbols (SPY/GLD/DIA) only have fresh data 13:30–20:00 UTC
+# Outside this window the engine zeros every signal anyway, so ticking is
+# wasted free-tier minutes. This cuts ~80% vs the prior */5 24/7 schedule
+# and keeps us inside the 2,000 min/month GitHub free-tier cap.
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "*/15 7-20 * * *"
   workflow_dispatch: {}     # also lets you trigger it manually from the Actions tab
 
 permissions:
