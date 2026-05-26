@@ -33,7 +33,13 @@ from core.data_loader import load_symbol
 from main_portfolio import prepare_dual
 from core.news_macro import macro_verdict, RISK_OFF_THEMES, RISK_ON_THEMES
 from core.notifier import send_signal as _notify_signal, send_text as _notify_text
-from core.crypto_carry import snap_all as _carry_snap_all
+try:
+    from core.crypto_carry import snap_all as _carry_snap_all
+except ImportError:
+    # crypto_carry was shelved (needs 2 accounts, Infinex is single-venue).
+    # Stub it so the worker keeps running.
+    def _carry_snap_all():
+        return []
 
 STATE_PATH = os.path.join("data", "state.json")
 JOURNAL_PATH = os.path.join("data", "trade_journal.csv")
