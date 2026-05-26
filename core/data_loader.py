@@ -46,7 +46,10 @@ def _binance_klines(symbol: str, interval: str,
     iv = _BINANCE_INTERVALS.get(interval, "1h")
     start_ms = int(pd.Timestamp(start or "2020-01-01", tz="UTC").timestamp() * 1000)
     end_ms = int(pd.Timestamp(end or pd.Timestamp.utcnow(), tz="UTC").timestamp() * 1000)
-    url = "https://api.binance.com/api/v3/klines"
+    # data-api.binance.vision is Binance's public market-data mirror — same
+    # payload as api.binance.com but not geo-blocked from US IPs (api.binance.com
+    # returns HTTP 451 from the US/UK/CA).
+    url = "https://data-api.binance.vision/api/v3/klines"
     rows: list = []
     cursor = start_ms
     while cursor < end_ms:
