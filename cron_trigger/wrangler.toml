@@ -1,0 +1,9 @@
+name = "quant-ia-cron-trigger"
+main = "worker.js"
+compatibility_date = "2025-11-01"
+
+# Cloudflare cron — fires reliably on free tier (unlike GitHub schedule).
+# Every 12 minutes during 07:00–20:59 UTC. Each fire POSTs to GitHub's
+# workflow_dispatch API which kicks off the signal-worker workflow.
+[triggers]
+crons = ["*/12 7-20 * * *"]
