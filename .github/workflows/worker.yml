@@ -1,6 +1,6 @@
 name: signal-worker
 
-# Gated to the active trading window: every 15 min during 07:00–20:59 UTC.
+# Gated to the active trading window: every 12 min during 07:00–20:59 UTC.
 # - PAXG's COMBO_E filter skips 00:00–07:00 UTC (Asian session is muted)
 # - NYSE-hours symbols (SPY/GLD/DIA) only have fresh data 13:30–20:00 UTC
 # Outside this window the engine zeros every signal anyway, so ticking is
