@@ -137,6 +137,7 @@ def _live_snapshot(symbol: str) -> dict:
         "pullback_pyramid_cap": int(last.get("pullback_PyramidCap", 0) or 0),
         "trend_carry_pyramid_ok": bool(last.get("trend_carry_PyramidOK", False)),
         "trend_carry_pyramid_cap": int(last.get("trend_carry_PyramidCap", 0) or 0),
+        "read": (lambda: __import__("core.read", fromlist=["compute_read"]).compute_read(df, symbol))(),
         "bars": bars,
     }
 
@@ -280,8 +281,34 @@ with st.expander("Theme hits & sample headlines", expanded=mv["verdict"] != "NEU
 
 
 # ---------------------------------------------------------------------------
-# Latest signal
+# Insight Read — system's narrative view of the symbol right now
 # ---------------------------------------------------------------------------
+st.divider()
+st.subheader(f"🧭 Read — {symbol}")
+_read = snap.get("read") or {}
+if _read and "error" not in _read:
+    _bias = _read.get("bias", "neutral")
+    _emoji = {"bullish": "🟢", "bearish": "🔴", "neutral": "⚪️"}.get(_bias, "⚪️")
+    _tilt = _read.get("macro_tilt", "neutral")
+    _tilt_emoji = {"supports": "✅", "conflicts": "⚠️", "neutral": "·", "n/a": "·"}.get(_tilt, "·")
+    rc1, rc2, rc3, rc4 = st.columns(4)
+    rc1.metric("Bias", f"{_emoji} {_bias.upper()}")
+    rc2.metric("Strength", _read.get("strength", "—").upper(),
+               help=f"ADX = {_read.get('adx', '—')}")
+    rc3.metric("Regime eligibility 24h", f"{_read.get('regime_pct_24h', 0):.0f}%",
+               help="% of last 24h bars that passed the regime filter.")
+    rc4.metric("Macro tilt", f"{_tilt_emoji} {_tilt.upper()}")
+    st.write(_read.get("narrative", ""))
+    flips = _read.get("flip") or []
+    if flips:
+        with st.expander("What would flip this read?", expanded=False):
+            for f in flips:
+                st.write(f"• {f}")
+elif "error" in _read:
+    st.caption(f"Read unavailable: {_read['error']}")
+else:
+    st.caption("Read not yet computed — next worker tick will populate it.")
+
 st.divider()
 st.subheader(f"🔔 Latest signal — {symbol}")
 

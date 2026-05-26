@@ -86,6 +86,16 @@ def _snapshot_symbol(symbol: str) -> dict:
             "vwap": float(row.get("VWAP", float("nan"))) if "VWAP" in row else None,
         })
 
+    # Insight Read — bias / strength / regime / macro tilt synthesized from
+    # the same df. Always present (even when there's no signal) so the
+    # dashboard + /read slash command always have something to render.
+    try:
+        from core.read import compute_read
+        # Pass macro lazily via attribute so we don't recompute it per symbol.
+        read = compute_read(df, symbol, macro=getattr(_snapshot_symbol, "_macro", None))
+    except Exception as e:
+        read = {"error": f"{type(e).__name__}: {e}"}
+
     return {
         "symbol": symbol,
         "bar_time_utc": ts.tz_convert("UTC").isoformat() if ts.tzinfo else ts.isoformat(),
@@ -99,6 +109,7 @@ def _snapshot_symbol(symbol: str) -> dict:
         "pullback_pyramid_cap": int(last.get("pullback_PyramidCap", 0) or 0),
         "trend_carry_pyramid_ok": bool(last.get("trend_carry_PyramidOK", False)),
         "trend_carry_pyramid_cap": int(last.get("trend_carry_PyramidCap", 0) or 0),
+        "read": read,
         "bars": bars,
     }
 
@@ -153,18 +164,20 @@ def build_state(symbols: list[str]) -> dict:
         "symbols": {},
         "errors": {},
     }
+    # Compute macro first so per-symbol reads can fold it into the Read card.
+    try:
+        state["macro"] = _snapshot_macro()
+    except Exception as e:
+        state["errors"]["macro"] = f"{type(e).__name__}: {e}"
+        state["macro"] = None
+    _snapshot_symbol._macro = state.get("macro")  # cheap closure for compute_read
+
     for sym in symbols:
         try:
             state["symbols"][sym] = _snapshot_symbol(sym)
         except Exception as e:
             state["errors"][sym] = f"{type(e).__name__}: {e}"
             traceback.print_exc()
-
-    try:
-        state["macro"] = _snapshot_macro()
-    except Exception as e:
-        state["errors"]["macro"] = f"{type(e).__name__}: {e}"
-        state["macro"] = None
 
     try:
         state["journal_tail"] = _snapshot_journal()
