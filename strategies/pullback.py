@@ -119,14 +119,29 @@ def generate_signals(df: pd.DataFrame, cfg=PULLBACK) -> pd.DataFrame:
         bypass = out["RegimeScore"].fillna(0.0) >= cfg.regime_bypass_threshold
         mom_up = mom_up | bypass
 
+    # ----- Rollover guard: block longs when EMA50 is rolling over -----
+    # Even with bullish structure (EMA50 > SMA130), if EMA50's slope has
+    # turned negative for ≥3 bars the trend is breaking down faster than
+    # the lagging structure check. March 2026 fired pullback longs into
+    # exactly this setup (EMA50>SMA130 but slope down) and lost ~$80K
+    # in two bars. This guard kills that specific failure mode.
+    ema_slope = out["EMA"].diff() if "EMA" in out.columns else pd.Series(0.0, index=out.index)
+    long_slope_ok = (ema_slope.rolling(3).mean() > 0).fillna(False)
+    short_slope_ok = (ema_slope.rolling(3).mean() < 0).fillna(False)
+
     long_signal = (
         out["Is_bullish_structure"]
         & pullback & imb_long & mom_up
+        & long_slope_ok               # ← new rollover guard
     )
+    # Shorts now mirror longs — same structural test, no extra crash-regime
+    # gate. The previous `Is_bearish_regime` requirement meant shorts only
+    # fired in catastrophic markets, so the engine was effectively long-only
+    # (171 longs vs 6 shorts on 2.83y of GLD).
     short_signal = (
         out["Is_bearish_structure"]
-        & out["Is_bearish_regime"]
         & pullback & imb_short & mom_down
+        & short_slope_ok              # ← mirror of rollover guard
     )
 
     out["pullback_Signal"] = 0

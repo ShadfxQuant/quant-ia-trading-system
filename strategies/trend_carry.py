@@ -60,24 +60,43 @@ def generate_signals(df: pd.DataFrame, cfg=TRENDCARRY) -> pd.DataFrame:
     # ----- Same alpha-engine conditions, slightly looser thresholds -----
     pullback   = out["Price_dev"].abs() <= cfg.pullback_band
     imb_long   = out["Deviation"] >= cfg.imbalance_min
+    imb_short  = out["Deviation"] <= -cfg.imbalance_min
     mom_delta = out["Momentum"].diff()
     if cfg.use_momentum_crossup:
-        mom_up = (mom_delta > 0) & (mom_delta.shift(1).fillna(0) <= 0)
+        mom_up   = (mom_delta > 0) & (mom_delta.shift(1).fillna(0) <= 0)
+        mom_down = (mom_delta < 0) & (mom_delta.shift(1).fillna(0) >= 0)
     else:
-        mom_up = mom_delta > 0
+        mom_up   = mom_delta > 0
+        mom_down = mom_delta < 0
 
     if cfg.use_regime_bypass and "RegimeScore" in out.columns:
         bypass = out["RegimeScore"].fillna(0.0) >= cfg.regime_bypass_threshold
-        mom_up = mom_up | bypass
+        mom_up   = mom_up   | bypass
+        mom_down = mom_down | bypass
+
+    # EMA50 rollover guard — same logic as pullback engine.
+    ema_slope = out["EMA"].diff() if "EMA" in out.columns else pd.Series(0.0, index=out.index)
+    long_slope_ok  = (ema_slope.rolling(3).mean() > 0).fillna(False)
+    short_slope_ok = (ema_slope.rolling(3).mean() < 0).fillna(False)
 
     long_signal = (
         out["Is_bullish_structure"]
         & pullback & imb_long & mom_up
+        & long_slope_ok
+        & score_ok
+    )
+    # NEW: symmetric short side. Trend_carry was 100% long-only (0 shorts in
+    # 2.83y of GLD). The 2026 downtrend was untradable. Mirror block fixes that.
+    short_signal = (
+        out["Is_bearish_structure"]
+        & pullback & imb_short & mom_down
+        & short_slope_ok
         & score_ok
     )
 
     out["trend_carry_Signal"] = 0
-    out.loc[long_signal, "trend_carry_Signal"] = 1
+    out.loc[long_signal,  "trend_carry_Signal"] =  1
+    out.loc[short_signal, "trend_carry_Signal"] = -1
     # Sizing chain (mirrors pullback): base × vol_target × vix_leverage.
     size_mult = pd.Series(cfg.fixed_size_mult, index=out.index)
     if cfg.use_vol_targeting and "VolTargetMult" in out.columns:
