@@ -55,7 +55,19 @@ jobs:
             echo "no snapshot change to commit"
           else
             git commit -m "chore(snapshot): worker update $(date -u +%FT%TZ)"
-            # Pull latest in case main moved while we were running.
-            git pull --rebase origin main || true
-            git push
+            # Push with retry — with */5 cadence two workers can race on push.
+            # Pull-rebase + retry up to 5 times handles the race cleanly.
+            n=0
+            until [ $n -ge 5 ]; do
+              git pull --rebase origin main || true
+              if git push; then
+                echo "push succeeded on attempt $((n+1))"
+                exit 0
+              fi
+              n=$((n+1))
+              echo "push attempt $n failed, retrying in 5s..."
+              sleep 5
+            done
+            echo "push failed after 5 attempts"
+            exit 1
           fi
