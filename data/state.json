@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-27T19:56:17.686291+00:00",
+  "generated_at_utc": "2026-05-27T20:01:13.381672+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -19,10 +19,10 @@
     "SPY": {
       "symbol": "SPY",
       "bar_time_utc": "2026-05-27T19:30:00+00:00",
-      "close": 750.344970703125,
-      "ema": 744.5844947850219,
-      "sma": 736.6361849271334,
-      "vwap": 750.0427893756168,
+      "close": 750.47998046875,
+      "ema": 744.5897892856347,
+      "sma": 736.6372234637921,
+      "vwap": 750.0960585854467,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -33,15 +33,15 @@
         "bias": "bullish",
         "strength": "weak",
         "adx": 29.8,
-        "ema_slope_4bar": 0.9767,
+        "ema_slope_4bar": 0.982,
         "regime_pct_24h": 100.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close < EMA50 (744.58)",
+          "Close < EMA50 (744.59)",
           "ADX falls below 20 (now 29.8)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 29.8, close 750.34 vs EMA50 744.58) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "SPY leans long (ADX 29.8, close 750.48 vs EMA50 744.59) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -4438,21 +4438,21 @@
           "o": 750.5599975585938,
           "h": 750.8800048828125,
           "l": 750.0999755859375,
-          "c": 750.344970703125,
-          "v": 3504381.0,
-          "ema": 744.5844947850219,
-          "sma": 736.6361849271334,
-          "vwap": 750.0427893756168
+          "c": 750.47998046875,
+          "v": 7342268.0,
+          "ema": 744.5897892856347,
+          "sma": 736.6372234637921,
+          "vwap": 750.0960585854467
         }
       ]
     },
     "DIA": {
       "symbol": "DIA",
       "bar_time_utc": "2026-05-27T19:30:00+00:00",
-      "close": 506.8800048828125,
-      "ema": 502.80402825982117,
-      "sma": 498.19279221754806,
-      "vwap": 507.3789012594855,
+      "close": 506.8999938964844,
+      "ema": 502.80481214271026,
+      "sma": 498.19294597919173,
+      "vwap": 507.343340745852,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4463,7 +4463,7 @@
         "bias": "bullish",
         "strength": "strong",
         "adx": 32.9,
-        "ema_slope_4bar": 0.7234,
+        "ema_slope_4bar": 0.7242,
         "regime_pct_24h": 100.0,
         "macro_tilt": "conflicts",
         "flip": [
@@ -4471,7 +4471,7 @@
           "ADX falls below 20 (now 32.9)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "DIA leans long (ADX 32.9, close 506.88 vs EMA50 502.80) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "DIA leans long (ADX 32.9, close 506.90 vs EMA50 502.80) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -8868,21 +8868,21 @@
           "o": 507.30999755859375,
           "h": 507.3299865722656,
           "l": 506.489990234375,
-          "c": 506.8800048828125,
-          "v": 295109.0,
-          "ema": 502.80402825982117,
-          "sma": 498.19279221754806,
-          "vwap": 507.3789012594855
+          "c": 506.8999938964844,
+          "v": 609128.0,
+          "ema": 502.80481214271026,
+          "sma": 498.19294597919173,
+          "vwap": 507.343340745852
         }
       ]
     },
     "GLD": {
       "symbol": "GLD",
       "bar_time_utc": "2026-05-27T19:30:00+00:00",
-      "close": 408.4700012207031,
-      "ema": 414.8401685656196,
-      "sma": 422.14812622070315,
-      "vwap": 407.5655105378599,
+      "close": 408.5199890136719,
+      "ema": 414.8421288712262,
+      "sma": 422.1485107421875,
+      "vwap": 407.60178286435723,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8892,16 +8892,16 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 33.84,
-        "ema_slope_4bar": -1.0756,
+        "adx": 33.87,
+        "ema_slope_4bar": -1.0736,
         "regime_pct_24h": 100.0,
         "macro_tilt": "conflicts",
         "flip": [
           "Close > EMA50 (414.84)",
-          "ADX falls below 20 (now 33.8)",
+          "ADX falls below 20 (now 33.9)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 33.8, close 408.47 vs EMA50 414.84) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GLD leans short (ADX 33.9, close 408.52 vs EMA50 414.84) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -13297,12 +13297,12 @@
           "t": "2026-05-27T19:30:00+00:00",
           "o": 408.5899963378906,
           "h": 408.9242858886719,
-          "l": 408.45001220703125,
-          "c": 408.4700012207031,
-          "v": 385543.0,
-          "ema": 414.8401685656196,
-          "sma": 422.14812622070315,
-          "vwap": 407.5655105378599
+          "l": 408.3599853515625,
+          "c": 408.5199890136719,
+          "v": 611722.0,
+          "ema": 414.8421288712262,
+          "sma": 422.1485107421875,
+          "vwap": 407.60178286435723
         }
       ]
     },
@@ -17740,7 +17740,7 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 7,
-    "risk_on_score": 4,
+    "risk_on_score": 3,
     "theme_hits": {
       "war": 7,
       "banking": 0,
@@ -17748,7 +17748,7 @@
       "rate_hike": 0,
       "crash": 0,
       "rate_cut": 0,
-      "risk_on": 4
+      "risk_on": 3
     },
     "sample_headlines": {
       "war": [
@@ -17762,9 +17762,9 @@
       "crash": [],
       "rate_cut": [],
       "risk_on": [
-        "Micron shares rally after UBS projects more than 100% upside potential (MU)",
         "Abercrombie shares jump 12% on earnings beat even as Iran conflict hits sales",
-        "Stock Market Today: Tech Rally Leads Stocks Higher, Oil Strengthens After Fresh Mideast Tensions \u2014 Live Updates - WSJ"
+        "Stock Market Today: Tech Rally Leads Stocks Higher, Oil Strengthens After Fresh Mideast Tensions \u2014 Live Updates - WSJ",
+        "Nokia\u2019s 140% Rally Turns AI Comeback Into Valuation Puzzle - Yahoo Finance"
       ]
     },
     "n_headlines": 108,
@@ -17775,7 +17775,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1779911778.096377,
+    "fetched_at": 1779912074.009377,
     "risk_off_themes": [
       "banking",
       "crash",
