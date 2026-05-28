@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-28T08:46:10.560596+00:00",
+  "generated_at_utc": "2026-05-28T08:51:09.920416+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -35,13 +35,13 @@
         "adx": 29.8,
         "ema_slope_4bar": 0.9816,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close < EMA50 (744.59)",
           "ADX falls below 20 (now 29.8)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 29.8, close 750.47 vs EMA50 744.59) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "SPY leans long (ADX 29.8, close 750.47 vs EMA50 744.59) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -4465,13 +4465,13 @@
         "adx": 32.89,
         "ema_slope_4bar": 0.723,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close < EMA50 (502.80)",
           "ADX falls below 20 (now 32.9)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "DIA leans long (ADX 32.9, close 506.87 vs EMA50 502.80) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "DIA leans long (ADX 32.9, close 506.87 vs EMA50 502.80) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -8895,13 +8895,13 @@
         "adx": 33.87,
         "ema_slope_4bar": -1.0736,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close > EMA50 (414.84)",
           "ADX falls below 20 (now 33.9)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 33.9, close 408.52 vs EMA50 414.84) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GLD leans short (ADX 33.9, close 408.52 vs EMA50 414.84) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -17738,11 +17738,11 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_OFF",
-    "risk_off_score": 7,
+    "verdict": "NEUTRAL",
+    "risk_off_score": 6,
     "risk_on_score": 5,
     "theme_hits": {
-      "war": 7,
+      "war": 6,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
@@ -17753,8 +17753,8 @@
     "sample_headlines": {
       "war": [
         "Israeli strike in Gaza City kills new head of Hamas's military wing",
-        "US Steel Costs Impacted by War, Trade Deals",
-        "Elbit Systems Leads Defense Gains, Clears Estimates Amid War Demand"
+        "Elbit Systems Leads Defense Gains, Clears Estimates Amid War Demand",
+        "Kuwait air defenses activated against 'missile and drone threats'; U.S. carries out new strikes in Iran"
       ],
       "banking": [],
       "recession": [],
@@ -17775,7 +17775,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1779957971.6231735,
+    "fetched_at": 1779958270.5744417,
     "risk_off_themes": [
       "banking",
       "crash",
