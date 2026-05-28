@@ -65,10 +65,13 @@ def _filter_mask(df: pd.DataFrame, kind: str) -> pd.Series:
     if kind == "ADX_25_NO_ASIA":
         h = pd.Series(df.index.hour, index=df.index)
         return (_compute_adx(df) >= 25) & ~((h >= 0) & (h < 7))
-    if kind == "ADX_25_NO_ASIA_SLOPE":   # COMBO_E: best CAGR on fresh sweep
+    if kind == "ADX_25_NO_ASIA_SLOPE":   # COMBO_E: shipped PAXG default
         h = pd.Series(df.index.hour, index=df.index)
-        # 4-bar EMA-slope persistence — regime must be moving the same way
-        # for at least 4 consecutive hours before we trust it.
+        # 4-bar UP-slope persistence only. Tested allowing down-slope too
+        # (to enable the new short engine on PAXG) — regressed PAXG from
+        # CAGR 86.4% to 35.4% because gold's been mostly trending up over
+        # the available 2yr window. PAXG keeps its long-bias filter; GLD
+        # (which gets no filter) takes shorts via the strategy logic.
         ema = df["Close"].ewm(span=50, adjust=False).mean()
         slope = ema.diff()
         slope_ok = (slope > 0).rolling(4).sum() >= 4
