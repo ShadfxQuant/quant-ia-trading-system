@@ -194,6 +194,15 @@ def build_state(symbols: list[str]) -> dict:
     else:
         state["crypto_carry"] = []
 
+    # Paper trader — open/manage virtual positions on every signal so we
+    # build a live track record without risking real money.
+    try:
+        from core.paper_trader import tick as _paper_tick
+        state["paper"] = _paper_tick(state)
+    except Exception as e:
+        state["errors"]["paper"] = f"{type(e).__name__}: {e}"
+        state["paper"] = None
+
     return state
 
 
@@ -386,11 +395,20 @@ def maybe_notify_carry(state: dict) -> int:
 def maybe_notify(state: dict) -> int:
     """For each per-symbol snapshot with a non-zero signal, fire Discord
     iff this exact (symbol, strategy, side, bar_time) hasn't fired before.
-    Returns number of notifications sent."""
+    Returns number of notifications sent.
+
+    Also pings Discord on paper trader exits — even with no fresh entry,
+    a closed leg (stop / TP1 / TP2) is interesting to see live."""
     sent = 0
     notified = _load_notified()
     macro = state.get("macro")
     engine = state.get("engine", {})
+    paper = state.get("paper") or {}
+    paper_actions = paper.get("actions", [])
+    paper_index: dict[str, list[dict]] = {}
+    for a in paper_actions:
+        paper_index.setdefault(a.get("symbol", ""), []).append(a)
+
     for sym, snap in state.get("symbols", {}).items():
         for strat, sig_key in (("pullback", "pullback_signal"),
                                ("trend_carry", "trend_carry_signal")):
@@ -401,6 +419,11 @@ def maybe_notify(state: dict) -> int:
             bar = snap.get("bar_time_utc", "")
             if notified.get(key) == bar:
                 continue   # already notified for this exact bar
+            # Attach paper-trade action context for the Discord card.
+            paper_for_sym = [a for a in paper_index.get(sym, [])
+                             if a.get("strategy") == strat]
+            snap = {**snap, "_paper_actions": paper_for_sym,
+                    "_paper_equity": paper.get("equity")}
             ok = _notify_signal(sym, side, snap, strategy=strat,
                                 macro=macro, engine=engine)
             if ok:
@@ -408,6 +431,19 @@ def maybe_notify(state: dict) -> int:
                 sent += 1
                 print(f"[worker] 🔔 notified Discord: {sym} {strat} "
                       f"{'LONG' if side==1 else 'SHORT'} @ {bar}")
+
+    # Paper exits get their own short ping (no dedupe — already deduped at the
+    # paper_trader level since a leg only closes once).
+    for a in paper_actions:
+        if a.get("event") != "close":
+            continue
+        emoji = "✅" if a.get("pnl", 0) >= 0 else "❌"
+        msg = (f"{emoji} **PAPER EXIT** · {a['symbol']} {a['strategy']} "
+               f"{a['side']} closed via `{a['reason']}` @ "
+               f"${a['exit_price']:,.2f}  ·  pnl `${a['pnl']:+,.2f}`  "
+               f"·  equity → `${a['equity_after']:,.2f}`")
+        _notify_text(msg)
+
     if sent:
         _save_notified(notified)
     return sent

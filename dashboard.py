@@ -488,10 +488,10 @@ with st.expander("How the engine works (1-minute summary)"):
 # headline info (macro verdict + signal cards + explainer above).
 # ---------------------------------------------------------------------------
 st.divider()
-(tab_chart, tab_pyramid, tab_carry, tab_journal,
+(tab_chart, tab_pyramid, tab_paper, tab_carry, tab_journal,
  tab_ask, tab_subscribe) = st.tabs(
-    ["📈 Chart", "🏛 Pyramid", "💰 Crypto Carry", "📓 Journal",
-     "💬 Ask AI", "🔔 Subscribe"]
+    ["📈 Chart", "🏛 Pyramid", "💼 Paper Portfolio", "💰 Crypto Carry",
+     "📓 Journal", "💬 Ask AI", "🔔 Subscribe"]
 )
 
 # ---------- 📈 Chart tab: TradingView + Python volume profile ----------
@@ -642,6 +642,102 @@ with tab_pyramid:
         "add is allowed on the current bar. Above-VWAP + bullish trend "
         "= institutional confirmation that the trend is still alive."
     )
+
+
+# ---------- 💼 Paper Portfolio tab ----------
+with tab_paper:
+    st.subheader("Paper portfolio — live track record")
+    st.caption("Virtual $100K account. Every signal the worker fires opens a "
+               "paper position; the same exit ladder (stop / TP1 / TP2) closes "
+               "it on subsequent bars. Pure simulation — no real orders placed.")
+
+    import os as _os, json as _json
+    _paper_path = _os.path.join("data", "paper_account.json")
+    if not _os.path.exists(_paper_path):
+        st.info("No paper trades yet. The first signal after the worker runs "
+                "with the paper trader enabled will populate this.")
+    else:
+        try:
+            with open(_paper_path) as _f:
+                _paper = _json.load(_f)
+        except Exception as e:
+            _paper = None
+            st.error(f"Could not read paper_account.json: {e}")
+
+        if _paper:
+            _equity = _paper.get("equity", 100_000)
+            _init = _paper.get("initial_capital", 100_000)
+            _ret_pct = (_equity / _init - 1) * 100 if _init else 0.0
+            _open = _paper.get("open_positions", [])
+            _closed = _paper.get("closed_trades", [])
+            _n_total = _paper.get("n_trades_total", len(_closed))
+
+            pc1, pc2, pc3, pc4 = st.columns(4)
+            pc1.metric("Equity", f"${_equity:,.0f}",
+                       delta=f"{_ret_pct:+.2f}% vs start")
+            pc2.metric("Open positions", str(len(_open)))
+            pc3.metric("Closed trades", str(_n_total))
+            _wins = [t for t in _closed if t.get("pnl", 0) > 0]
+            _wr = (len(_wins) / len(_closed) * 100) if _closed else 0.0
+            pc4.metric("Win rate", f"{_wr:.1f}%")
+
+            # Open positions table
+            if _open:
+                st.markdown("### 🟢 Open positions")
+                _open_rows = []
+                for p in _open:
+                    side_word = "LONG" if p["side"] == 1 else "SHORT"
+                    _open_rows.append({
+                        "Symbol": p["symbol"],
+                        "Strategy": p["strategy"],
+                        "Side": side_word,
+                        "Entry": f"${p['entry_price']:,.2f}",
+                        "Size $": f"${p['size']:,.0f}",
+                        "TP1 hit?": "✓" if p.get("tp1_hit") else "—",
+                        "Opened (UTC)": p["entry_time"][:16].replace("T", " "),
+                    })
+                st.dataframe(_open_rows, use_container_width=True, hide_index=True)
+            else:
+                st.caption("No open positions right now — the engine is waiting "
+                           "for a fresh setup.")
+
+            # Equity curve from closed trades
+            if _closed:
+                st.markdown("### 📈 Equity curve")
+                import pandas as _pd
+                _eq_rows = [{"time": _init_t := _paper.get("last_updated_utc", ""),
+                             "equity": _init}]
+                _running = float(_init)
+                for t in _closed:
+                    _running += t.get("pnl", 0)
+                    _eq_rows.append({"time": t.get("exit_time", ""),
+                                     "equity": _running})
+                _eq_df = _pd.DataFrame(_eq_rows)
+                _eq_df["time"] = _pd.to_datetime(_eq_df["time"], errors="coerce", utc=True)
+                _eq_df = _eq_df.dropna(subset=["time"]).set_index("time").sort_index()
+                st.line_chart(_eq_df["equity"])
+
+                # Recent trades
+                st.markdown("### 🧾 Last 20 closed trades")
+                _recent = list(reversed(_closed[-20:]))
+                _trade_rows = []
+                for t in _recent:
+                    side_word = "LONG" if t["side"] == 1 else "SHORT"
+                    pnl = t.get("pnl", 0)
+                    _trade_rows.append({
+                        "Symbol": t["symbol"],
+                        "Strategy": t["strategy"],
+                        "Side": side_word,
+                        "Reason": t["reason"],
+                        "Entry": f"${t['entry_price']:,.2f}",
+                        "Exit": f"${t['exit_price']:,.2f}",
+                        "PnL": f"${pnl:+,.0f}",
+                        "Closed (UTC)": t["exit_time"][:16].replace("T", " "),
+                    })
+                st.dataframe(_trade_rows, use_container_width=True, hide_index=True)
+            else:
+                st.caption("No closed trades yet — equity curve will appear "
+                           "after the first exit.")
 
 
 # ---------- 💰 Crypto Carry tab ----------

@@ -50,6 +50,7 @@ jobs:
           # Force-add files even though data/ is in .gitignore — these are
           # the only files the dashboard / subscribers need from cron.
           git add -f data/state.json data/last_notified.json \
+                     data/paper_account.json \
                      data/signals.rss data/signals_rss_items.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "no snapshot change to commit"
