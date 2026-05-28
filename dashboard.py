@@ -705,7 +705,7 @@ with tab_paper:
             if _closed:
                 st.markdown("### 📈 Equity curve")
                 import pandas as _pd
-                _eq_rows = [{"time": _init_t := _paper.get("last_updated_utc", ""),
+                _eq_rows = [{"time": _paper.get("last_updated_utc", ""),
                              "equity": _init}]
                 _running = float(_init)
                 for t in _closed:
