@@ -393,14 +393,19 @@ def maybe_notify_carry(state: dict) -> int:
 
 
 def maybe_notify(state: dict) -> int:
-    """For each per-symbol snapshot with a non-zero signal, fire Discord
-    iff this exact (symbol, strategy, side, bar_time) hasn't fired before.
-    Returns number of notifications sent.
+    """Per (symbol, strategy), ping Discord only when the side *flips* —
+    i.e. once a SHORT signal fires, suppress further SHORT pings until the
+    signal goes to 0 (regime resolves). Re-firing on every new bar that
+    keeps the same direction is noise, not new information.
 
-    Also pings Discord on paper trader exits — even with no fresh entry,
-    a closed leg (stop / TP1 / TP2) is interesting to see live."""
+    Dedupe key is `<symbol>:<strategy>` mapped to the last-seen side
+    (-1/0/+1). A signal fires only when the new side differs from the
+    last-seen one AND the new side is non-zero. Side==0 silently updates
+    the cache so the next non-zero is a legitimate flip.
+
+    Also pings Discord on paper trader exits."""
     sent = 0
-    notified = _load_notified()
+    notified = _load_notified()  # schema: {"<sym>:<strat>": "<side>"}
     macro = state.get("macro")
     engine = state.get("engine", {})
     paper = state.get("paper") or {}
@@ -413,24 +418,35 @@ def maybe_notify(state: dict) -> int:
         for strat, sig_key in (("pullback", "pullback_signal"),
                                ("trend_carry", "trend_carry_signal")):
             side = int(snap.get(sig_key, 0) or 0)
-            if side == 0:
+            key = f"{sym}:{strat}"
+            try:
+                last_side = int(notified.get(key, "0"))
+            except (TypeError, ValueError):
+                # Legacy schema: value was a bar_time string. Treat as
+                # "we have notified before" so we don't spam on first run.
+                last_side = side
+
+            if side == last_side:
+                # No flip — same direction (or both zero). Silent.
                 continue
-            key = f"{sym}:{strat}:{side}"
+            if side == 0:
+                # Regime resolved; remember so the next non-zero can fire.
+                notified[key] = "0"
+                continue
+            # Fresh flip (0→±1 or +1↔-1). Notify.
             bar = snap.get("bar_time_utc", "")
-            if notified.get(key) == bar:
-                continue   # already notified for this exact bar
-            # Attach paper-trade action context for the Discord card.
             paper_for_sym = [a for a in paper_index.get(sym, [])
                              if a.get("strategy") == strat]
-            snap = {**snap, "_paper_actions": paper_for_sym,
-                    "_paper_equity": paper.get("equity")}
-            ok = _notify_signal(sym, side, snap, strategy=strat,
+            snap_aug = {**snap, "_paper_actions": paper_for_sym,
+                        "_paper_equity": paper.get("equity")}
+            ok = _notify_signal(sym, side, snap_aug, strategy=strat,
                                 macro=macro, engine=engine)
             if ok:
-                notified[key] = bar
+                notified[key] = str(side)
                 sent += 1
                 print(f"[worker] 🔔 notified Discord: {sym} {strat} "
-                      f"{'LONG' if side==1 else 'SHORT'} @ {bar}")
+                      f"{'LONG' if side==1 else 'SHORT'} @ {bar}  "
+                      f"(flip from {last_side})")
 
     # Paper exits get their own short ping (no dedupe — already deduped at the
     # paper_trader level since a leg only closes once).
