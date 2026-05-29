@@ -347,3 +347,56 @@ PAXG runs on the same engine + COMBO_E filter. The 2026 YTD GLD data point (+23.
 - `_research_gold_strategies.py`
 
 These don't ship but stay in repo for future iteration variants.
+
+---
+
+## Part 7 — Late 2026-05-29 updates (universe trim, SPY-on-Infinex reveal)
+
+### Universe trimmed to live-executable assets
+Dropped DIA from `DATA.symbols`. Final tracked universe:
+- **SPY** — equity perp on Infinex (live executable)
+- **GLD** — long-history gold backtest baseline (yfinance)
+- **PAXGUSDT** — Infinex gold perp signal source (24/7 via Binance vision mirror, gated by COMBO_E)
+
+DIA was paper-noise — couldn't be diversified-into on Infinex, just added Discord pings without execution value.
+
+### SPY-on-Infinex reveal — diversification math changes
+
+The original frame ("SPY is paper-only reference") was wrong. SPY perp IS executable on Infinex. That makes the system a **macro-pair on a single venue**:
+
+- **PAXG** carries inverse polarity (RISK_OFF → bullish). Catches war / banking-stress / Fed-easing-on-recession tape.
+- **SPY** carries normal polarity (RISK_ON → bullish). Catches peace / pivot / risk-asset bid.
+
+These are explicitly opposite in the macro filter (`core/news_macro.py` → `INVERSE_MACRO_SYMBOLS`). When a war headline lands, the system already knows PAXG long is aligned and SPY long is conflicted, and vice versa. The Discord card displays "macro-aligned" or "conflicts" per signal correctly.
+
+### Execution timing is naturally staggered
+
+- SPY signals fire on NYSE-hours data (13:30–20:00 UTC) — bars only exist during NYSE session
+- PAXG signals fire on 24/7 data gated to ~18% of bars by COMBO_E (ADX≥25 + skip Asia + slope persistence)
+
+These windows rarely overlap heavily. Most of the time only one is active, which makes first-fire-takes-slot equal-split allocation work naturally without coordination.
+
+### Paper trader allocation behavior (current)
+
+The paper trader already implements first-fire-takes-slot equal-split because both assets use the same `base_size_pct`. No per-symbol cap. Total exposure can stack to 225% in the theoretical case of all three symbols firing simultaneously, but in practice the staggered hours make this rare.
+
+**Per-symbol cap deliberately NOT shipped yet.** 30+ days of live paper data will tell us which asset is actually doing the work — design the cap with data, not guesses.
+
+### What to monitor over the 3-month validation window
+
+1. **Equity ending position** — target $110K-$125K assuming both assets fire normally
+2. **Asset contribution split** — is SPY or PAXG carrying the load?
+3. **Macro-aligned signal accuracy** — when a "macro-aligned ✅" signal fires, does it win?
+4. **Worst single trade** — should stay under -$15K (matches backtest)
+5. **First catastrophic correlation event** — if SPY and PAXG both lose big on the same day (e.g. Black Monday redux), that's a real risk that backtesting missed
+
+### Final config snapshot (commit `2698f11`)
+```
+PULLBACK:    base_size_pct=0.75, capital_cap_pct=2.50, max_pyramid=10
+TRENDCARRY:  base_size_pct=0.30, capital_cap_pct=1.25, max_pyramid=2
+REGIME:      PAXGUSDT → ADX_25_NO_ASIA_SLOPE (COMBO_E), others NONE
+SYMBOLS:     SPY, GLD, PAXGUSDT
+CRON:        */5 07-20 UTC via Cloudflare → GitHub workflow_dispatch
+NOTIFY:      flip-based dedupe, paper exit pings on every closed leg
+PAPER:       $100K virtual, fills at signal-bar close, stops/TPs from ladder
+```
