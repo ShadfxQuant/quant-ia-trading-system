@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-29T19:50:49.111870+00:00",
+  "generated_at_utc": "2026-05-29T19:55:43.429649+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -19,10 +19,10 @@
     "SPY": {
       "symbol": "SPY",
       "bar_time_utc": "2026-05-29T19:30:00+00:00",
-      "close": 757.27001953125,
-      "ema": 749.3432011153826,
-      "sma": 740.412502347506,
-      "vwap": 756.5977086979582,
+      "close": 756.60498046875,
+      "ema": 749.3171211521474,
+      "sma": 740.4073866624099,
+      "vwap": 756.5742013709674,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -33,15 +33,15 @@
         "bias": "bullish",
         "strength": "strong",
         "adx": 42.95,
-        "ema_slope_4bar": 1.2889,
+        "ema_slope_4bar": 1.2628,
         "regime_pct_24h": 100.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close < EMA50 (749.34)",
+          "Close < EMA50 (749.32)",
           "ADX falls below 20 (now 42.9)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 42.9, close 757.27 vs EMA50 749.34) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "SPY leans long (ADX 42.9, close 756.60 vs EMA50 749.32) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -4437,22 +4437,22 @@
           "t": "2026-05-29T19:30:00+00:00",
           "o": 756.8599853515625,
           "h": 757.625,
-          "l": 756.8300170898438,
-          "c": 757.27001953125,
-          "v": 4303347.0,
-          "ema": 749.3432011153826,
-          "sma": 740.412502347506,
-          "vwap": 756.5977086979582
+          "l": 756.4199829101562,
+          "c": 756.60498046875,
+          "v": 6492380.0,
+          "ema": 749.3171211521474,
+          "sma": 740.4073866624099,
+          "vwap": 756.5742013709674
         }
       ]
     },
     "GLD": {
       "symbol": "GLD",
       "bar_time_utc": "2026-05-29T19:30:00+00:00",
-      "close": 417.5299987792969,
-      "ema": 415.21312508037306,
-      "sma": 421.31402212289663,
-      "vwap": 418.2018210909097,
+      "close": 417.3599853515625,
+      "ema": 415.2064578871285,
+      "sma": 421.3127143272987,
+      "vwap": 418.1749315261272,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4462,15 +4462,15 @@
       "read": {
         "bias": "neutral",
         "strength": "weak",
-        "adx": 28.2,
-        "ema_slope_4bar": 0.518,
+        "adx": 28.05,
+        "ema_slope_4bar": 0.5113,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GLD is neutral (ADX 28.2, close 417.53 vs EMA50 415.21) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "GLD is neutral (ADX 28.1, close 417.36 vs EMA50 415.21) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -8866,12 +8866,12 @@
           "t": "2026-05-29T19:30:00+00:00",
           "o": 418.1300048828125,
           "h": 418.2200012207031,
-          "l": 417.49090576171875,
-          "c": 417.5299987792969,
-          "v": 378691.0,
-          "ema": 415.21312508037306,
-          "sma": 421.31402212289663,
-          "vwap": 418.2018210909097
+          "l": 417.2300109863281,
+          "c": 417.3599853515625,
+          "v": 594752.0,
+          "ema": 415.2064578871285,
+          "sma": 421.3127143272987,
+          "vwap": 418.1749315261272
         }
       ]
     },
@@ -13331,8 +13331,8 @@
       ],
       "rate_hike": [],
       "crash": [
+        "Oil prices tumble nearly 20% in May \u2014 the biggest monthly drop since 2020. Here\u2019s what\u2019s next.",
         "Space stocks tumble after a Blue Origin rocket explodes and SpaceX\u2019s valuation gets a reality check",
-        "Oil prices tumble 20% in May \u2014 the biggest monthly drop since 2020. Here\u2019s what\u2019s next.",
         "Gap shares tumble 13% as retailer cuts sales guidance after disappointing Old Navy performance - CNBC"
       ],
       "rate_cut": [],
@@ -13350,7 +13350,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780084250.004242,
+    "fetched_at": 1780084544.0782912,
     "risk_off_themes": [
       "banking",
       "crash",
