@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-29T17:05:51.034491+00:00",
+  "generated_at_utc": "2026-05-29T17:10:49.039268+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -19,29 +19,29 @@
     "SPY": {
       "symbol": "SPY",
       "bar_time_utc": "2026-05-29T16:30:00+00:00",
-      "close": 756.5999755859375,
-      "ema": 748.3894420382863,
-      "sma": 739.537502347506,
-      "vwap": 756.6227776656983,
+      "close": 756.8400268554688,
+      "ema": 748.398855813562,
+      "sma": 739.5393488957332,
+      "vwap": 756.631773644189,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
-      "pullback_pyramid_ok": false,
-      "pullback_pyramid_cap": 0,
+      "pullback_pyramid_ok": true,
+      "pullback_pyramid_cap": 10,
       "trend_carry_pyramid_ok": false,
       "trend_carry_pyramid_cap": 0,
       "read": {
         "bias": "bullish",
         "strength": "strong",
         "adx": 43.1,
-        "ema_slope_4bar": 1.4391,
+        "ema_slope_4bar": 1.4485,
         "regime_pct_24h": 100.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close < EMA50 (748.39)",
+          "Close < EMA50 (748.40)",
           "ADX falls below 20 (now 43.1)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 43.1, close 756.60 vs EMA50 748.39) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "SPY leans long (ADX 43.1, close 756.84 vs EMA50 748.40) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -4438,21 +4438,21 @@
           "o": 756.760009765625,
           "h": 757.8200073242188,
           "l": 756.5,
-          "c": 756.5999755859375,
-          "v": 1681920.0,
-          "ema": 748.3894420382863,
-          "sma": 739.537502347506,
-          "vwap": 756.6227776656983
+          "c": 756.8400268554688,
+          "v": 1828591.0,
+          "ema": 748.398855813562,
+          "sma": 739.5393488957332,
+          "vwap": 756.631773644189
         }
       ]
     },
     "DIA": {
       "symbol": "DIA",
       "bar_time_utc": "2026-05-29T16:30:00+00:00",
-      "close": 510.1000061035156,
-      "ema": 504.7376744189802,
-      "sma": 499.17154212364784,
-      "vwap": 509.5908669969397,
+      "close": 510.1549987792969,
+      "ema": 504.73983099450106,
+      "sma": 499.1719651442308,
+      "vwap": 509.59343554906604,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -4462,16 +4462,16 @@
       "read": {
         "bias": "bullish",
         "strength": "weak",
-        "adx": 24.7,
-        "ema_slope_4bar": 0.94,
+        "adx": 24.5,
+        "ema_slope_4bar": 0.9422,
         "regime_pct_24h": 100.0,
         "macro_tilt": "conflicts",
         "flip": [
           "Close < EMA50 (504.74)",
-          "ADX falls below 20 (now 24.7)",
+          "ADX falls below 20 (now 24.5)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "DIA leans long (ADX 24.7, close 510.10 vs EMA50 504.74) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "DIA leans long (ADX 24.5, close 510.15 vs EMA50 504.74) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -8867,22 +8867,22 @@
           "t": "2026-05-29T16:30:00+00:00",
           "o": 510.44000244140625,
           "h": 511.25,
-          "l": 510.1000061035156,
-          "c": 510.1000061035156,
-          "v": 181712.0,
-          "ema": 504.7376744189802,
-          "sma": 499.17154212364784,
-          "vwap": 509.5908669969397
+          "l": 510.05999755859375,
+          "c": 510.1549987792969,
+          "v": 190927.0,
+          "ema": 504.73983099450106,
+          "sma": 499.1719651442308,
+          "vwap": 509.59343554906604
         }
       ]
     },
     "GLD": {
       "symbol": "GLD",
       "bar_time_utc": "2026-05-29T16:30:00+00:00",
-      "close": 418.92498779296875,
-      "ema": 414.86103697568467,
-      "sma": 421.2904449462891,
-      "vwap": 418.19748710275826,
+      "close": 419.2699890136719,
+      "ema": 414.8745664353201,
+      "sma": 421.2930988018329,
+      "vwap": 418.21567419528935,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8893,14 +8893,14 @@
         "bias": "neutral",
         "strength": "strong",
         "adx": 30.17,
-        "ema_slope_4bar": 0.6258,
+        "ema_slope_4bar": 0.6393,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GLD is neutral (ADX 30.2, close 418.92 vs EMA50 414.86) and the trend is strong. The regime filter is mostly green."
+        "narrative": "GLD is neutral (ADX 30.2, close 419.27 vs EMA50 414.87) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -13297,11 +13297,11 @@
           "o": 418.8299865722656,
           "h": 419.8399963378906,
           "l": 418.6300048828125,
-          "c": 418.92498779296875,
-          "v": 410416.0,
-          "ema": 414.86103697568467,
-          "sma": 421.2904449462891,
-          "vwap": 418.19748710275826
+          "c": 419.2699890136719,
+          "v": 447455.0,
+          "ema": 414.8745664353201,
+          "sma": 421.2930988018329,
+          "vwap": 418.21567419528935
         }
       ]
     },
@@ -17739,7 +17739,7 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 6,
-    "risk_on_score": 1,
+    "risk_on_score": 2,
     "theme_hits": {
       "war": 3,
       "banking": 0,
@@ -17747,7 +17747,7 @@
       "rate_hike": 0,
       "crash": 3,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
@@ -17765,7 +17765,8 @@
       ],
       "rate_cut": [],
       "risk_on": [
-        "Dan Ives: Anthropic\u2019s growth is 'just the tip of the spear' for AI rally"
+        "Dan Ives: Anthropic\u2019s growth is 'just the tip of the spear' for AI rally",
+        "These S&P 500 stocks have soared the most during the AI-driven May rally"
       ]
     },
     "n_headlines": 85,
@@ -17775,7 +17776,7 @@
       "cnbc_top",
       "marketwatch"
     ],
-    "fetched_at": 1780074351.9947,
+    "fetched_at": 1780074649.611247,
     "risk_off_themes": [
       "banking",
       "crash",
