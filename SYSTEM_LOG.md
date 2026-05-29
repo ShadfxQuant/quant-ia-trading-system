@@ -218,7 +218,132 @@ Computed every worker tick, stashed in state.json, surfaced two ways:
 - Macro filter, regime filter, exit ladder, dedupe — all the institutional plumbing is there
 
 ### Next research questions worth ranking
-1. Does the symmetric engine + slope guard help SPY/DIA the same way it helped GLD?
+1. ~~Does the symmetric engine + slope guard help SPY/DIA the same way it helped GLD?~~ **Answered 2026-05-29** — yes, SPY benefits even more cleanly than GLD. SPY ex-2025 PF 2.43 vs GLD ex-2025 PF 1.67. See Part 6.
 2. Does ETH/BTC work as crypto satellites under their own regime filters?
 3. Should there be separate Discord channels per symbol so PAXG signals don't mix with equity signals?
 4. Can a daily-bar version validate the strategy across the 2008/2011/2020 stress periods? (yfinance has 20+ years of GLD daily.)
+5. Can a refined ADX-breakout strategy (Strategy B variant with tighter direction filter) push above PF 1.5? Current Sharpe 0.59 is close to ship-able.
+
+---
+
+## Part 5 — 2026-05-28 session changes (Discord plumbing, paper trader, dedupe)
+
+### Paper trader (in-system live track record)
+Built `core/paper_trader.py` — virtual $100K portfolio that opens positions on every fresh signal and manages exits via the same stop/TP1/TP2 ladder the real strategy uses. Persists to `data/paper_account.json`, surfaces in:
+- Dashboard "💼 Paper Portfolio" tab (equity / equity curve / open positions / last 20 closed trades)
+- Discord exit pings (`✅ PAPER EXIT · GLD pullback LONG closed via tp1 @ $464  ·  pnl $+1,234  ·  equity → $101,234`)
+
+**Why this over TradingView paper trading:**
+- Uses the FULL production engine (macro filter, regime filter, slope guard, symmetric shorts)
+- Runs automatically — no manual trade entry
+- Builds real verifiable track record over 3-6 months
+- No external dependency, runs alongside the live signal pipeline
+
+**v1 limitations**: fills at signal-bar close (no slippage), no funding-cost modeling, conservative stop-wins-if-tied policy.
+
+**Bug shipped + fixed same day**: paper trader used wrong attribute names (`base_position_pct`/`stop_pct`) instead of the canonical `base_size_pct`/`stop_loss_pct` on PULLBACK/TRENDCARRY configs. Silent AttributeError on every tick for ~17 hours; account never moved from $100K. Fixed in commit `60ec002`.
+
+### Discord /read slash command (Cloudflare Worker)
+End-to-end deployed:
+- Cloudflare Worker (`discord_bot/worker.js`) as Discord interactions endpoint
+- Deferred-reply pattern (type 5 + PATCH webhook) to dodge Discord's 3-second timeout on GitHub raw fetches
+- ed25519 signature verification
+- Returns formatted Read card with bias / strength / ADX / regime eligibility / macro tilt / what would flip
+- Set up under the `shadfxquant.workers.dev` subdomain
+
+**Issues hit + fixes:**
+- "Application did not respond" → refactored to deferred reply pattern
+- "Interactions endpoint could not be verified" → DISCORD_PUBLIC_KEY secret got nuked during redeploy, had to re-upload
+- Discord OAuth2 install code-grant requirement → bypass via direct invite URL
+- Bot not in guild → re-invited with both `bot` AND `applications.commands` scopes
+
+### Cloudflare cron trigger (bypass GitHub schedule throttling)
+**The diagnosis:** `gh run list` showed only 2 schedule-triggered runs in 24h despite `*/12` expecting ~70. GitHub silently throttles scheduled workflows on public repos during peak load. `workflow_dispatch` is NOT throttled the same way.
+
+**The fix:** second Cloudflare Worker (`cron_trigger/worker.js`) on a `*/5 7-20 UTC` cron that POSTs to GitHub's `/actions/workflows/worker.yml/dispatches` endpoint. Reliable Cloudflare cron → GitHub manual dispatch → signal-worker runs.
+
+Confirmed working: 10 consecutive ✓ runs at exactly 5-minute intervals after deployment.
+
+### Push race fix
+At `*/5` cadence with ~90s runtime, two workers can race on the final state.json push. Added retry-with-rebase loop (5 attempts, 5s backoff) so the loser of the race recovers cleanly. Fixed in commit `532cab5`.
+
+### Notification dedupe — flip-based not bar-based
+**The bug:** dedupe key was `(symbol, strategy, side)` mapped to bar_time. When GLD's short conditions persisted from 17:30 to 19:30 UTC across three hourly bars, EACH new bar fired a fresh notification (because bar_time changed) — and with both pullback AND trend_carry sleeves firing, the user got 6 pings for what was functionally one setup.
+
+**The fix:** dedupe by `(symbol, strategy)` mapped to last-seen side. Notify only on a side change (0→±1 or +1↔-1). Side→0 silently resets the cache so the next non-zero is a legitimate flip. Legacy bar_time values are treated as "already notified" to avoid replay on first run after deploy.
+
+Result: GLD short across 17:30/18:30/19:30/(both sleeves) = 2 pings total instead of 6. Shipped in `4f8f5e5`.
+
+### Strategy research (three new gold hypotheses — all failed)
+Built and tested three strategies derived from the COMBO_E filter analysis:
+
+| Strategy | Result | Why it failed |
+|---|---|---|
+| A — gold_asian_meanrev | PF 0.78, n=501 | Chop bars don't actually mean-revert; they drift |
+| B — gold_adx_breakout | PF 1.24, n=172 | Closest to ship; edge real but too weak. 42% WR insufficient |
+| C — gold_rollover_short | PF 0.71, n=133 | Fires too early before momentum confirms |
+
+**Notable findings beyond the gate:**
+- C had **-0.475 correlation with pullback** — strong inverse, would be perfect hedge if it were profitable. Don't ship losing strategies for "diversification."
+- B's positive Sharpe (0.59) suggests the threshold-crossover edge exists; worth iterating with tighter direction filter.
+- **Unfiltered baseline pullback on PAXG: PF 1.03.** COMBO_E regime filter is doing essentially ALL the alpha on PAXG. The strategy alone barely breaks even on raw 24/7 gold.
+
+All three strategy files retained in repo for future iteration. Recommendation: keep current PAXG system (pullback + trend_carry + COMBO_E) as-is.
+
+---
+
+## Part 6 — 2026-05-29 session changes (clean ex-boom baseline)
+
+### The headline number you actually need
+
+**GLD ex-2025: CAGR +18.1% · PF 1.67 · DD 22.1% · n=82**
+
+Plan around this. The 65.5% headline number includes 2025's once-per-decade gold boom — won't recur.
+
+### Five-window backtest, GLD + SPY side-by-side
+
+| Window | GLD CAGR | GLD PF | GLD DD | SPY CAGR | SPY PF | SPY DD |
+|---|---|---|---|---|---|---|
+| Full | +65.5% | 4.02 | 21.7% | +34.6% | 2.69 | 18.8% |
+| **Ex-2025** | **+18.1%** | **1.67** | **22.1%** | **+18.9%** | **2.43** | **22.4%** |
+| 2024 only | +44.7% | 2.77 | 18.8% | +35.1% | 2.90 | 13.9% |
+| 2026 YTD | +23.6% | 1.63 | 19.8% | +28.6% | 2.74 | 8.0% |
+| Pre-2024 (thin) | +6.1% | 1.70 | 7.4% | +21.1% | 1.72 | 14.2% |
+
+### Pre-fix vs post-fix delta (GLD full window) — VERIFIED
+
+Did a git-checkout of the parent of `ae0fc16` (symmetric+slope-guard commit) and re-ran. Every expected delta landed exactly:
+
+| Metric | Pre-fix | Post-fix | Expected | Match |
+|---|---|---|---|---|
+| PF | 2.58 | 4.02 | 2.58 → 4.02 | ✅ |
+| CAGR | 61.8% | 65.5% | 61.8 → 65.5 | ✅ |
+| Max DD | 29.0% | 21.7% | 29.0 → 21.7 | ✅ |
+| Worst trade | -$40,034 | -$14,803 | -$40K → -$15K | ✅ |
+| L / S | 171 / 6 | 148 / 10 | structural shift | ✅ |
+
+**The fix did exactly what it was designed to do:** slope guard removed 23 bad longs (the catastrophic ones), symmetric engine added 4 more shorts. The removed trades were the worst ones — DD dropped 7.3 points, worst-trade improved by $25K.
+
+### Honest reads beyond the headline
+
+1. **SPY ex-2025 PF (2.43) is meaningfully higher than GLD ex-2025 PF (1.67).** The engine works cleaner on equities outside the gold boom. SPY is the better single-asset sleeve in normal regimes.
+2. **2026 YTD on SPY (28.6% annualized) is outperforming GLD (23.6% annualized).** Current regime favors equity over gold; symmetric+slope-guard handled both but SPY benefited more.
+3. **Pre-2024 on GLD is statistically thin** (n=9). yfinance hourly cap kills any pre-2024 validation. To verify across 2008/2011/2020 we'd need daily bars and a separate parameter calibration.
+4. **Avg hold bars: 182 (GLD) vs 219 (SPY)** — both ~1 week. Engine is medium-term, ~1-2 setups per week per symbol during eligible regimes.
+
+### What this means for the PAXG system specifically
+
+PAXG runs on the same engine + COMBO_E filter. The 2026 YTD GLD data point (+23.6% annualized, PF 1.63, n=16) is the closest live-money analog we have for "current gold market regime." If GLD is making 23% in 2026 without a regime filter, PAXG with COMBO_E should track similar or better — confirming the live PAXG paper trader as the real test going forward.
+
+### Files added this session
+- `_research_gld_spy_baseline.py` — the multi-window research harness
+- `data/research_gld_spy_exboom.png` — equity curves per window per symbol (2025 distortion visually obvious)
+- `_backtest_paxg_ex2025.py` / `_backtest_gld_ex2025.py` — earlier per-symbol ex-2025 scripts (kept for reproducibility)
+
+### Files retained from failed strategy research
+- `strategies/gold_asian_meanrev.py` (PF 0.78)
+- `strategies/gold_adx_breakout.py` (PF 1.24 — closest to viable)
+- `strategies/gold_rollover_short.py` (PF 0.71)
+- `_research_gold_strategies.py`
+
+These don't ship but stay in repo for future iteration variants.
