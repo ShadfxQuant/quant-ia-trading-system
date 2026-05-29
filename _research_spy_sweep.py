@@ -80,14 +80,18 @@ def _metrics(eq, tr):
     )
 
 
-def _run(df_base, cfg, symbol="SPY"):
-    """Inject custom-cfg signals onto base df and run portfolio."""
+def _run(df_base, cfg, symbol="SPY", include_trend_carry=False):
+    """Inject custom-cfg signals onto base df and run portfolio.
+
+    By default isolates the pullback sleeve only — that matches the
+    `_research_edge.py` per-strategy attribution numbers (CAGR 12.5% /
+    DD 7.9% / Sharpe 0.52) which is the user's stated baseline.
+    Set include_trend_carry=True to backtest the combined portfolio."""
     df = pullback_signals(df_base, cfg=cfg)
-    spec_pb = StrategySpec("pullback", cfg, pb_exit(cfg))
-    # trend_carry stays at production cfg — sweep targets pullback knobs.
-    spec_tc = StrategySpec("trend_carry", TRENDCARRY, tc_exit(TRENDCARRY))
-    bt = run_portfolio(df, [spec_pb, spec_tc],
-                       symbol=symbol, initial_capital=START_CAP)
+    specs = [StrategySpec("pullback", cfg, pb_exit(cfg))]
+    if include_trend_carry:
+        specs.append(StrategySpec("trend_carry", TRENDCARRY, tc_exit(TRENDCARRY)))
+    bt = run_portfolio(df, specs, symbol=symbol, initial_capital=START_CAP)
     return _metrics(bt["equity_curve"], bt["trades"])
 
 

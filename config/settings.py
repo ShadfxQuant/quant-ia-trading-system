@@ -25,7 +25,12 @@ class DataConfig:
     # NYSE hours + ADX≥25 (COMBO_F: PF 1.81 / DD 18.3% in validation).
     # All three gold instruments use inverse macro polarity.
     symbols: List[str] = field(default_factory=lambda: [
-        "SPY", "DIA", "GLD", "PAXGUSDT",
+        # Trimmed 2026-05-29 to the three vehicles that map to actual
+        # execution: SPY for equity paper-trading reference, GLD for the
+        # long-history gold backtest baseline, PAXGUSDT for the live
+        # Infinex perp signals (gated by COMBO_E regime filter).
+        # DIA dropped — can't be diversified-into on Infinex anyway.
+        "SPY", "GLD", "PAXGUSDT",
     ])
     start: str = "2024-05-06"
     end: str = "2026-05-06"
