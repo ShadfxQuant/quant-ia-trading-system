@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-29T18:20:48.086372+00:00",
+  "generated_at_utc": "2026-05-29T18:25:53.714765+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -19,10 +19,10 @@
     "SPY": {
       "symbol": "SPY",
       "bar_time_utc": "2026-05-29T17:30:00+00:00",
-      "close": 755.9500122070312,
-      "ema": 748.68631213219,
-      "sma": 739.8045795147235,
-      "vwap": 756.5367330269924,
+      "close": 756.1400146484375,
+      "ema": 748.6937632083236,
+      "sma": 739.8060410719652,
+      "vwap": 756.5385415823673,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -33,7 +33,7 @@
         "bias": "bullish",
         "strength": "strong",
         "adx": 42.88,
-        "ema_slope_4bar": 1.3576,
+        "ema_slope_4bar": 1.365,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
@@ -41,7 +41,7 @@
           "ADX falls below 20 (now 42.9)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 42.9, close 755.95 vs EMA50 748.69) and the trend is strong. The regime filter is mostly green."
+        "narrative": "SPY leans long (ADX 42.9, close 756.14 vs EMA50 748.69) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -4438,21 +4438,21 @@
           "o": 756.5999755859375,
           "h": 756.6799926757812,
           "l": 755.1300048828125,
-          "c": 755.9500122070312,
-          "v": 3554989.0,
-          "ema": 748.68631213219,
-          "sma": 739.8045795147235,
-          "vwap": 756.5367330269924
+          "c": 756.1400146484375,
+          "v": 3873445.0,
+          "ema": 748.6937632083236,
+          "sma": 739.8060410719652,
+          "vwap": 756.5385415823673
         }
       ]
     },
     "GLD": {
       "symbol": "GLD",
       "bar_time_utc": "2026-05-29T17:30:00+00:00",
-      "close": 418.4389953613281,
-      "ema": 414.993625622841,
-      "sma": 421.2793219933143,
-      "vwap": 418.236926144717,
+      "close": 418.42999267578125,
+      "ema": 414.993272576349,
+      "sma": 421.27925274188703,
+      "vwap": 418.23716368510486,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4463,14 +4463,14 @@
         "bias": "neutral",
         "strength": "weak",
         "adx": 29.54,
-        "ema_slope_4bar": 0.6978,
+        "ema_slope_4bar": 0.6974,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GLD is neutral (ADX 29.5, close 418.44 vs EMA50 414.99) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "GLD is neutral (ADX 29.5, close 418.43 vs EMA50 414.99) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -8867,11 +8867,11 @@
           "o": 418.7099914550781,
           "h": 418.75,
           "l": 417.760009765625,
-          "c": 418.4389953613281,
-          "v": 400680.0,
-          "ema": 414.993625622841,
-          "sma": 421.2793219933143,
-          "vwap": 418.236926144717
+          "c": 418.42999267578125,
+          "v": 433081.0,
+          "ema": 414.993272576349,
+          "sma": 421.27925274188703,
+          "vwap": 418.23716368510486
         }
       ]
     },
@@ -13309,7 +13309,7 @@
   "macro": {
     "verdict": "NEUTRAL",
     "risk_off_score": 5,
-    "risk_on_score": 4,
+    "risk_on_score": 5,
     "theme_hits": {
       "war": 3,
       "banking": 0,
@@ -13317,7 +13317,7 @@
       "rate_hike": 0,
       "crash": 2,
       "rate_cut": 0,
-      "risk_on": 4
+      "risk_on": 5
     },
     "sample_headlines": {
       "war": [
@@ -13335,8 +13335,8 @@
       "rate_cut": [],
       "risk_on": [
         "Dan Ives: Anthropic\u2019s growth is 'just the tip of the spear' for AI rally",
-        "Dell\u2019s stunning 30% stock rally is giving a big boost to shares of other server makers",
-        "These S&P 500 stocks have soared the most during the AI-driven May rally"
+        "What\u2019s next for investors after the AI rally supercharged stocks in May?",
+        "Dell\u2019s stunning 30% stock rally is giving a big boost to shares of other server makers"
       ]
     },
     "n_headlines": 113,
@@ -13347,7 +13347,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780078848.6737208,
+    "fetched_at": 1780079154.7795148,
     "risk_off_themes": [
       "banking",
       "crash",
