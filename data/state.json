@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-29T13:25:41.566578+00:00",
+  "generated_at_utc": "2026-05-29T13:30:48.433977+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -8878,43 +8878,31 @@
     },
     "GLD": {
       "symbol": "GLD",
-      "bar_time_utc": "2026-05-28T19:30:00+00:00",
-      "close": 412.80279541015625,
-      "ema": 414.2352848735806,
-      "sma": 421.47490656926084,
-      "vwap": 411.23005322035453,
-      "pullback_signal": -1,
-      "trend_carry_signal": -1,
+      "bar_time_utc": "2026-05-29T13:30:00+00:00",
+      "close": 415.82000732421875,
+      "ema": 414.29743085203705,
+      "sma": 421.4022911658654,
+      "vwap": NaN,
+      "pullback_signal": 0,
+      "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
       "pullback_pyramid_cap": 0,
       "trend_carry_pyramid_ok": false,
       "trend_carry_pyramid_cap": 0,
       "read": {
-        "bias": "bearish",
+        "bias": "neutral",
         "strength": "strong",
-        "adx": 32.46,
-        "ema_slope_4bar": -0.1926,
+        "adx": 30.31,
+        "ema_slope_4bar": -0.0819,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
-          "Close > EMA50 (414.24)",
-          "ADX falls below 20 (now 32.5)",
-          "EMA50 crosses back above SMA130"
+          "Close + ADX both push above EMA50 with ADX \u2265 20",
+          "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GLD leans short (ADX 32.5, close 412.80 vs EMA50 414.24) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GLD is neutral (ADX 30.3, close 415.82 vs EMA50 414.30) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
-        {
-          "t": "2026-03-06T20:30:00+00:00",
-          "o": 473.5299987792969,
-          "h": 474.25,
-          "l": 473.1099853515625,
-          "c": 473.5199890136719,
-          "v": 926446.0,
-          "ema": 472.59870978554255,
-          "sma": 468.3850318321815,
-          "vwap": 472.75848917835293
-        },
         {
           "t": "2026-03-09T13:30:00+00:00",
           "o": 468.0899963378906,
@@ -13303,6 +13291,17 @@
           "ema": 414.2352848735806,
           "sma": 421.47490656926084,
           "vwap": 411.23005322035453
+        },
+        {
+          "t": "2026-05-29T13:30:00+00:00",
+          "o": 415.82000732421875,
+          "h": 415.82000732421875,
+          "l": 415.82000732421875,
+          "c": 415.82000732421875,
+          "v": 0.0,
+          "ema": 414.29743085203705,
+          "sma": 421.4022911658654,
+          "vwap": NaN
         }
       ]
     },
@@ -17736,21 +17735,19 @@
       ]
     }
   },
-  "errors": {
-    "paper": "AttributeError: 'PullbackStratConfig' object has no attribute 'base_position_pct'"
-  },
+  "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 9,
-    "risk_on_score": 3,
+    "risk_off_score": 10,
+    "risk_on_score": 2,
     "theme_hits": {
-      "war": 7,
+      "war": 8,
       "banking": 0,
       "recession": 1,
       "rate_hike": 0,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 3
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
@@ -17768,7 +17765,6 @@
       ],
       "rate_cut": [],
       "risk_on": [
-        "Analyst who predicted Micron rally has new message",
         "Oil drops 20% from 2026 peak on optimism over U.S.-Iran ceasefire talks",
         "Dan Ives: Anthropic\u2019s growth is 'just the tip of the sphere' for AI rally"
       ]
@@ -17781,7 +17777,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780061142.2898483,
+    "fetched_at": 1780061449.8919165,
     "risk_off_themes": [
       "banking",
       "crash",
@@ -17796,5 +17792,12 @@
   },
   "journal_tail": [],
   "crypto_carry": [],
-  "paper": null
+  "paper": {
+    "equity": 100000.0,
+    "initial_capital": 100000.0,
+    "return_pct": 0.0,
+    "open_count": 0,
+    "closed_count": 0,
+    "actions": []
+  }
 }
