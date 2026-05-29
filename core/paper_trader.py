@@ -132,21 +132,23 @@ def save_account(acct: PaperAccount) -> None:
 # Sizing + strategy config lookup
 # ---------------------------------------------------------------------------
 def _strategy_cfg(strategy: str) -> dict[str, float]:
-    """Return stop/TP/size config for the strategy."""
+    """Return stop/TP/size config for the strategy. Canonical attribute
+    names (base_size_pct, stop_loss_pct, *_tp_pct, *_tp_size) as stored on
+    the PULLBACK / TRENDCARRY dataclasses — already in absolute decimals."""
     if strategy == "pullback":
         return {
-            "size_frac": PULLBACK.base_position_pct / 100.0,
-            "stop_pct": PULLBACK.stop_pct / 100.0,
-            "tp1_pct": PULLBACK.partial_tp_pct / 100.0,
-            "tp2_pct": PULLBACK.final_tp_pct / 100.0,
+            "size_frac": PULLBACK.base_size_pct,
+            "stop_pct": PULLBACK.stop_loss_pct,
+            "tp1_pct": PULLBACK.partial_tp_pct,
+            "tp2_pct": PULLBACK.final_tp_pct,
             "tp1_size_frac": PULLBACK.partial_tp_size,
         }
     if strategy == "trend_carry":
         return {
-            "size_frac": TRENDCARRY.base_position_pct / 100.0,
-            "stop_pct": TRENDCARRY.stop_pct / 100.0,
-            "tp1_pct": TRENDCARRY.partial_tp_pct / 100.0,
-            "tp2_pct": TRENDCARRY.final_tp_pct / 100.0,
+            "size_frac": TRENDCARRY.base_size_pct,
+            "stop_pct": TRENDCARRY.stop_loss_pct,
+            "tp1_pct": TRENDCARRY.partial_tp_pct,
+            "tp2_pct": TRENDCARRY.final_tp_pct,
             "tp1_size_frac": TRENDCARRY.partial_tp_size,
         }
     raise ValueError(f"unknown strategy {strategy!r}")

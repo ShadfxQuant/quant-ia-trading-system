@@ -2,8 +2,39 @@
   "equity": 100000.0,
   "initial_capital": 100000.0,
   "cash": 100000.0,
-  "open_positions": [],
+  "open_positions": [
+    {
+      "symbol": "GLD",
+      "strategy": "pullback",
+      "side": -1,
+      "entry_time": "2026-05-29T14:25:17.804032+00:00",
+      "entry_price": 412.8299865722656,
+      "size": 75000.0,
+      "stop_pct": 0.025,
+      "tp1_pct": 0.04,
+      "tp2_pct": 0.15,
+      "tp1_size_frac": 0.5,
+      "bar_time_at_entry": "2026-05-28T19:30:00+00:00",
+      "tp1_hit": false,
+      "remaining_size": 75000.0
+    },
+    {
+      "symbol": "GLD",
+      "strategy": "trend_carry",
+      "side": -1,
+      "entry_time": "2026-05-29T14:25:17.804263+00:00",
+      "entry_price": 412.8299865722656,
+      "size": 30000.0,
+      "stop_pct": 0.04,
+      "tp1_pct": 0.08,
+      "tp2_pct": 0.25,
+      "tp1_size_frac": 0.3,
+      "bar_time_at_entry": "2026-05-28T19:30:00+00:00",
+      "tp1_hit": false,
+      "remaining_size": 30000.0
+    }
+  ],
   "closed_trades": [],
   "n_trades_total": 0,
-  "last_updated_utc": "2026-05-29T14:21:23.780631+00:00"
+  "last_updated_utc": "2026-05-29T14:25:17.804299+00:00"
 }
