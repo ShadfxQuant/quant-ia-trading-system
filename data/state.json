@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-29T18:50:50.686011+00:00",
+  "generated_at_utc": "2026-05-29T18:55:44.238776+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -19,10 +19,10 @@
     "SPY": {
       "symbol": "SPY",
       "bar_time_utc": "2026-05-29T18:30:00+00:00",
-      "close": 755.9849853515625,
-      "ema": 748.9853437810814,
-      "sma": 740.0960021972656,
-      "vwap": 756.51342866566,
+      "close": 755.7999877929688,
+      "ema": 748.9780889748621,
+      "sma": 740.0945791391226,
+      "vwap": 756.502720116558,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -33,15 +33,15 @@
         "bias": "bullish",
         "strength": "strong",
         "adx": 42.71,
-        "ema_slope_4bar": 1.286,
+        "ema_slope_4bar": 1.2787,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
-          "Close < EMA50 (748.99)",
+          "Close < EMA50 (748.98)",
           "ADX falls below 20 (now 42.7)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 42.7, close 755.98 vs EMA50 748.99) and the trend is strong. The regime filter is mostly green."
+        "narrative": "SPY leans long (ADX 42.7, close 755.80 vs EMA50 748.98) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -4438,21 +4438,21 @@
           "o": 756.2899780273438,
           "h": 756.77001953125,
           "l": 755.4400024414062,
-          "c": 755.9849853515625,
-          "v": 1619249.0,
-          "ema": 748.9853437810814,
-          "sma": 740.0960021972656,
-          "vwap": 756.51342866566
+          "c": 755.7999877929688,
+          "v": 2040608.0,
+          "ema": 748.9780889748621,
+          "sma": 740.0945791391226,
+          "vwap": 756.502720116558
         }
       ]
     },
     "GLD": {
       "symbol": "GLD",
       "bar_time_utc": "2026-05-29T18:30:00+00:00",
-      "close": 418.05999755859375,
-      "ema": 415.1154208818556,
-      "sma": 421.290329683744,
-      "vwap": 418.2356096586583,
+      "close": 418.20001220703125,
+      "ema": 415.1209116523826,
+      "sma": 421.2914067195012,
+      "vwap": 418.2365415260937,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4463,14 +4463,14 @@
         "bias": "neutral",
         "strength": "weak",
         "adx": 28.9,
-        "ema_slope_4bar": 0.5884,
+        "ema_slope_4bar": 0.5939,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GLD is neutral (ADX 28.9, close 418.06 vs EMA50 415.12) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "GLD is neutral (ADX 28.9, close 418.20 vs EMA50 415.12) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -8865,13 +8865,13 @@
         {
           "t": "2026-05-29T18:30:00+00:00",
           "o": 418.5,
-          "h": 418.69000244140625,
+          "h": 418.69500732421875,
           "l": 417.6700134277344,
-          "c": 418.05999755859375,
-          "v": 192753.0,
-          "ema": 415.1154208818556,
-          "sma": 421.290329683744,
-          "vwap": 418.2356096586583
+          "c": 418.20001220703125,
+          "v": 278121.0,
+          "ema": 415.1209116523826,
+          "sma": 421.2914067195012,
+          "vwap": 418.2365415260937
         }
       ]
     },
@@ -13307,13 +13307,13 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
-    "risk_off_score": 5,
+    "verdict": "RISK_OFF",
+    "risk_off_score": 7,
     "risk_on_score": 5,
     "theme_hits": {
-      "war": 3,
+      "war": 4,
       "banking": 0,
-      "recession": 0,
+      "recession": 1,
       "rate_hike": 0,
       "crash": 2,
       "rate_cut": 0,
@@ -13326,7 +13326,9 @@
         "Iran war cost: Average U.S. household paying $450 more on gas and energy"
       ],
       "banking": [],
-      "recession": [],
+      "recession": [
+        "The \u2018Three A\u2019s\u2019 are keeping the economy afloat during Iran war. Is it enough to avoid recession?"
+      ],
       "rate_hike": [],
       "crash": [
         "Oil prices tumble 20% in May \u2014 the biggest monthly drop since 2020. Here\u2019s what\u2019s next.",
@@ -13347,7 +13349,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780080651.6486692,
+    "fetched_at": 1780080944.83461,
     "risk_off_themes": [
       "banking",
       "crash",
