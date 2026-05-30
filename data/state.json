@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-30T16:00:45.340456+00:00",
+  "generated_at_utc": "2026-05-30T16:05:44.392699+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -8877,11 +8877,11 @@
     },
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
-      "bar_time_utc": "2026-05-30T15:00:00+00:00",
-      "close": 4522.07,
-      "ema": 4511.251193995274,
-      "sma": 4497.868615384615,
-      "vwap": 4525.317636178684,
+      "bar_time_utc": "2026-05-30T16:00:00+00:00",
+      "close": 4522.06,
+      "ema": 4511.678082965855,
+      "sma": 4497.648923076923,
+      "vwap": 4525.317697218024,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8891,29 +8891,18 @@
       "read": {
         "bias": "bullish",
         "strength": "weak",
-        "adx": 25.5,
-        "ema_slope_4bar": 1.9746,
-        "regime_pct_24h": 70.8,
+        "adx": 24.35,
+        "ema_slope_4bar": 1.8606,
+        "regime_pct_24h": 66.7,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,511.25)",
-          "ADX falls below 20 (now 25.5)",
+          "Close < EMA50 (4,511.68)",
+          "ADX falls below 20 (now 24.3)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "PAXGUSDT leans long (ADX 25.5, close 4,522.07 vs EMA50 4,511.25) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "PAXGUSDT leans long (ADX 24.3, close 4,522.06 vs EMA50 4,511.68) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-05-14T00:00:00+00:00",
-          "o": 4691.21,
-          "h": 4696.4,
-          "l": 4680.61,
-          "c": 4696.0,
-          "v": 34.75247,
-          "ema": 4691.933716540628,
-          "sma": 4700.593384615385,
-          "vwap": 4691.003333333333
-        },
         {
           "t": "2026-05-14T01:00:00+00:00",
           "o": 4696.0,
@@ -13297,11 +13286,22 @@
           "o": 4522.87,
           "h": 4523.08,
           "l": 4520.85,
-          "c": 4522.07,
-          "v": 4.20102,
-          "ema": 4511.251193995274,
-          "sma": 4497.868615384615,
-          "vwap": 4525.317636178684
+          "c": 4522.15,
+          "v": 4.20157,
+          "ema": 4511.254331250176,
+          "sma": 4497.869230769231,
+          "vwap": 4525.319749055982
+        },
+        {
+          "t": "2026-05-30T16:00:00+00:00",
+          "o": 4522.1,
+          "h": 4522.1,
+          "l": 4521.79,
+          "c": 4522.06,
+          "v": 0.0321,
+          "ema": 4511.678082965855,
+          "sma": 4497.648923076923,
+          "vwap": 4525.317697218024
         }
       ]
     }
@@ -13310,7 +13310,7 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 8,
-    "risk_on_score": 1,
+    "risk_on_score": 0,
     "theme_hits": {
       "war": 7,
       "banking": 0,
@@ -13318,7 +13318,7 @@
       "rate_hike": 0,
       "crash": 0,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 0
     },
     "sample_headlines": {
       "war": [
@@ -13333,9 +13333,7 @@
       "rate_hike": [],
       "crash": [],
       "rate_cut": [],
-      "risk_on": [
-        "Jim Cramer Discusses Missing the Massive Sandisk and Peers Rally"
-      ]
+      "risk_on": []
     },
     "n_headlines": 115,
     "sources_used": [
@@ -13345,7 +13343,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780156845.939708,
+    "fetched_at": 1780157144.8499587,
     "risk_off_themes": [
       "banking",
       "crash",
