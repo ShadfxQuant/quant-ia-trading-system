@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-30T12:35:45.552210+00:00",
+  "generated_at_utc": "2026-05-30T12:40:47.047844+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -8878,10 +8878,10 @@
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
       "bar_time_utc": "2026-05-30T12:00:00+00:00",
-      "close": 4527.72,
-      "ema": 4509.999818917658,
-      "sma": 4498.49123076923,
-      "vwap": 4526.467087297556,
+      "close": 4527.3,
+      "ema": 4509.983348329422,
+      "sma": 4498.488,
+      "vwap": 4526.46420971185,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8892,15 +8892,15 @@
         "bias": "bullish",
         "strength": "weak",
         "adx": 29.45,
-        "ema_slope_4bar": 2.879,
+        "ema_slope_4bar": 2.8625,
         "regime_pct_24h": 70.8,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,510.00)",
+          "Close < EMA50 (4,509.98)",
           "ADX falls below 20 (now 29.4)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "PAXGUSDT leans long (ADX 29.4, close 4,527.72 vs EMA50 4,510.00) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "PAXGUSDT leans long (ADX 29.4, close 4,527.30 vs EMA50 4,509.98) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -13297,11 +13297,11 @@
           "o": 4524.61,
           "h": 4528.61,
           "l": 4524.61,
-          "c": 4527.72,
-          "v": 0.74445,
-          "ema": 4509.999818917658,
-          "sma": 4498.49123076923,
-          "vwap": 4526.467087297556
+          "c": 4527.3,
+          "v": 0.75089,
+          "ema": 4509.983348329422,
+          "sma": 4498.488,
+          "vwap": 4526.46420971185
         }
       ]
     }
@@ -13309,14 +13309,14 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 10,
+    "risk_off_score": 11,
     "risk_on_score": 1,
     "theme_hits": {
       "war": 6,
       "banking": 0,
       "recession": 1,
       "rate_hike": 1,
-      "crash": 2,
+      "crash": 3,
       "rate_cut": 0,
       "risk_on": 1
     },
@@ -13335,6 +13335,7 @@
       ],
       "crash": [
         "Jim Cramer on Leidos: \u201cStock Is in Freefall, That Makes No Sense to Me\u201d",
+        "BMW joins forces with Mistral AI on crash simulation",
         "Teen Summer Jobs Plunge to Record Low - Newser"
       ],
       "rate_cut": [],
@@ -13350,7 +13351,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780144546.293036,
+    "fetched_at": 1780144847.6112335,
     "risk_off_themes": [
       "banking",
       "crash",
