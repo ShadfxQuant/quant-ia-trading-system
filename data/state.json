@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-30T14:30:44.867057+00:00",
+  "generated_at_utc": "2026-05-30T14:35:46.467664+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -8878,10 +8878,10 @@
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
       "bar_time_utc": "2026-05-30T14:00:00+00:00",
-      "close": 4523.43,
-      "ema": 4510.846472821811,
-      "sma": 4498.034769230769,
-      "vwap": 4525.847342535165,
+      "close": 4523.03,
+      "ema": 4510.830786547302,
+      "sma": 4498.0316923076925,
+      "vwap": 4525.824002028265,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8892,15 +8892,15 @@
         "bias": "bullish",
         "strength": "weak",
         "adx": 26.74,
-        "ema_slope_4bar": 2.1933,
+        "ema_slope_4bar": 2.1776,
         "regime_pct_24h": 70.8,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,510.85)",
+          "Close < EMA50 (4,510.83)",
           "ADX falls below 20 (now 26.7)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "PAXGUSDT leans long (ADX 26.7, close 4,523.43 vs EMA50 4,510.85) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "PAXGUSDT leans long (ADX 26.7, close 4,523.03 vs EMA50 4,510.83) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -13297,11 +13297,11 @@
           "o": 4523.4,
           "h": 4524.59,
           "l": 4522.37,
-          "c": 4523.43,
-          "v": 1.01679,
-          "ema": 4510.846472821811,
-          "sma": 4498.034769230769,
-          "vwap": 4525.847342535165
+          "c": 4523.03,
+          "v": 1.37594,
+          "ema": 4510.830786547302,
+          "sma": 4498.0316923076925,
+          "vwap": 4525.824002028265
         }
       ]
     }
@@ -13310,7 +13310,7 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 11,
-    "risk_on_score": 0,
+    "risk_on_score": 1,
     "theme_hits": {
       "war": 8,
       "banking": 0,
@@ -13318,7 +13318,7 @@
       "rate_hike": 0,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 0
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
@@ -13336,7 +13336,9 @@
         "\u2018Ticking time bomb\u2019: Peter Schiff issues stark warning over US stock market \u2014 and the \u2018ultimate crash\u2019 is near"
       ],
       "rate_cut": [],
-      "risk_on": []
+      "risk_on": [
+        "Global equity funds draw weekly inflows as AI rally boosts sentiment"
+      ]
     },
     "n_headlines": 115,
     "sources_used": [
@@ -13346,7 +13348,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780151445.8041255,
+    "fetched_at": 1780151747.8948193,
     "risk_off_themes": [
       "banking",
       "crash",
