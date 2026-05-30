@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-30T14:55:39.357463+00:00",
+  "generated_at_utc": "2026-05-30T15:00:43.942654+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -8878,10 +8878,10 @@
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
       "bar_time_utc": "2026-05-30T14:00:00+00:00",
-      "close": 4522.45,
-      "ema": 4510.808041449262,
-      "sma": 4498.02723076923,
-      "vwap": 4525.6123455778015,
+      "close": 4522.03,
+      "ema": 4510.791570861027,
+      "sma": 4498.024,
+      "vwap": 4525.593752294315,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8892,15 +8892,15 @@
         "bias": "bullish",
         "strength": "weak",
         "adx": 26.74,
-        "ema_slope_4bar": 2.1549,
+        "ema_slope_4bar": 2.1384,
         "regime_pct_24h": 70.8,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,510.81)",
+          "Close < EMA50 (4,510.79)",
           "ADX falls below 20 (now 26.7)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "PAXGUSDT leans long (ADX 26.7, close 4,522.45 vs EMA50 4,510.81) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "PAXGUSDT leans long (ADX 26.7, close 4,522.03 vs EMA50 4,510.79) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -13297,11 +13297,11 @@
           "o": 4523.4,
           "h": 4524.59,
           "l": 4521.77,
-          "c": 4522.45,
-          "v": 4.69726,
-          "ema": 4510.808041449262,
-          "sma": 4498.02723076923,
-          "vwap": 4525.6123455778015
+          "c": 4522.03,
+          "v": 4.78033,
+          "ema": 4510.791570861027,
+          "sma": 4498.024,
+          "vwap": 4525.593752294315
         }
       ]
     }
@@ -13310,7 +13310,7 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 11,
-    "risk_on_score": 0,
+    "risk_on_score": 1,
     "theme_hits": {
       "war": 8,
       "banking": 0,
@@ -13318,7 +13318,7 @@
       "rate_hike": 0,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 0
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
@@ -13336,7 +13336,9 @@
         "\u2018Ticking time bomb\u2019: Peter Schiff issues stark warning over US stock market \u2014 and the \u2018ultimate crash\u2019 is near"
       ],
       "rate_cut": [],
-      "risk_on": []
+      "risk_on": [
+        "History Says the S&P 500\u2019s 9-Week Rally Is Rare. It May Be Even Rarer Than You Think"
+      ]
     },
     "n_headlines": 115,
     "sources_used": [
@@ -13346,7 +13348,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780152940.282742,
+    "fetched_at": 1780153244.9601877,
     "risk_off_themes": [
       "banking",
       "crash",
