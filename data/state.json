@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-30T13:00:38.913246+00:00",
+  "generated_at_utc": "2026-05-30T13:05:42.740019+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -8877,11 +8877,11 @@
     },
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
-      "bar_time_utc": "2026-05-30T12:00:00+00:00",
-      "close": 4524.01,
-      "ema": 4509.854328721579,
-      "sma": 4498.462692307692,
-      "vwap": 4526.431824652835,
+      "bar_time_utc": "2026-05-30T13:00:00+00:00",
+      "close": 4523.65,
+      "ema": 4510.359918291129,
+      "sma": 4498.262692307691,
+      "vwap": 4526.378647640808,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8891,29 +8891,18 @@
       "read": {
         "bias": "bullish",
         "strength": "weak",
-        "adx": 29.45,
-        "ema_slope_4bar": 2.7335,
+        "adx": 28.01,
+        "ema_slope_4bar": 2.5046,
         "regime_pct_24h": 70.8,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,509.85)",
-          "ADX falls below 20 (now 29.4)",
+          "Close < EMA50 (4,510.36)",
+          "ADX falls below 20 (now 28.0)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "PAXGUSDT leans long (ADX 29.4, close 4,524.01 vs EMA50 4,509.85) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "PAXGUSDT leans long (ADX 28.0, close 4,523.65 vs EMA50 4,510.36) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-05-13T21:00:00+00:00",
-          "o": 4680.48,
-          "h": 4683.57,
-          "l": 4674.78,
-          "c": 4682.0,
-          "v": 20.96823,
-          "ema": 4691.807183170539,
-          "sma": 4701.230384615385,
-          "vwap": 4689.264965283138
-        },
         {
           "t": "2026-05-13T22:00:00+00:00",
           "o": 4682.8,
@@ -13296,12 +13285,23 @@
           "t": "2026-05-30T12:00:00+00:00",
           "o": 4524.61,
           "h": 4528.61,
-          "l": 4524.01,
-          "c": 4524.01,
-          "v": 0.94478,
-          "ema": 4509.854328721579,
-          "sma": 4498.462692307692,
-          "vwap": 4526.431824652835
+          "l": 4522.32,
+          "c": 4523.07,
+          "v": 1.55754,
+          "ema": 4509.817465976481,
+          "sma": 4498.455461538462,
+          "vwap": 4526.379052516217
+        },
+        {
+          "t": "2026-05-30T13:00:00+00:00",
+          "o": 4523.65,
+          "h": 4523.65,
+          "l": 4523.65,
+          "c": 4523.65,
+          "v": 0.00537,
+          "ema": 4510.359918291129,
+          "sma": 4498.262692307691,
+          "vwap": 4526.378647640808
         }
       ]
     }
@@ -13309,10 +13309,10 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 10,
+    "risk_off_score": 12,
     "risk_on_score": 1,
     "theme_hits": {
-      "war": 6,
+      "war": 8,
       "banking": 0,
       "recession": 1,
       "rate_hike": 1,
@@ -13339,7 +13339,7 @@
       ],
       "rate_cut": [],
       "risk_on": [
-        "Dell\u2019s stunning 33% stock rally gave a big boost to shares of other server makers"
+        "Costco Q3 2026 earnings beat on record gas sales, e-commerce"
       ]
     },
     "n_headlines": 113,
@@ -13350,7 +13350,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780146039.7944145,
+    "fetched_at": 1780146343.5631177,
     "risk_off_themes": [
       "banking",
       "crash",
