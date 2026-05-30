@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-30T19:26:15.505806+00:00",
+  "generated_at_utc": "2026-05-30T19:31:18.254133+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -8878,10 +8878,10 @@
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
       "bar_time_utc": "2026-05-30T19:00:00+00:00",
-      "close": 4518.43,
-      "ema": 4512.556614312768,
-      "sma": 4496.907384615384,
-      "vwap": 4523.947059619104,
+      "close": 4518.62,
+      "ema": 4512.56406529316,
+      "sma": 4496.908846153847,
+      "vwap": 4523.878144773492,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8890,17 +8890,16 @@
       "trend_carry_pyramid_cap": 0,
       "read": {
         "bias": "bullish",
-        "strength": "weak",
-        "adx": 20.38,
-        "ema_slope_4bar": 1.3023,
+        "strength": "chop",
+        "adx": 19.98,
+        "ema_slope_4bar": 1.3097,
         "regime_pct_24h": 54.2,
         "macro_tilt": "supports",
         "flip": [
           "Close < EMA50 (4,512.56)",
-          "ADX falls below 20 (now 20.4)",
-          "EMA50 crosses back below SMA130"
+          "ADX falls below 20 (now 20.0)"
         ],
-        "narrative": "PAXGUSDT leans long (ADX 20.4, close 4,518.43 vs EMA50 4,512.56) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "PAXGUSDT leans long (ADX 20.0, close 4,518.62 vs EMA50 4,512.56) and the tape is choppy. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -13296,12 +13295,12 @@
           "t": "2026-05-30T19:00:00+00:00",
           "o": 4519.29,
           "h": 4522.24,
-          "l": 4518.43,
-          "c": 4518.43,
-          "v": 9.14588,
-          "ema": 4512.556614312768,
-          "sma": 4496.907384615384,
-          "vwap": 4523.947059619104
+          "l": 4517.82,
+          "c": 4518.62,
+          "v": 9.99912,
+          "ema": 4512.56406529316,
+          "sma": 4496.908846153847,
+          "vwap": 4523.878144773492
         }
       ]
     }
@@ -13343,7 +13342,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780169176.3036613,
+    "fetched_at": 1780169479.326956,
     "risk_off_themes": [
       "banking",
       "crash",
