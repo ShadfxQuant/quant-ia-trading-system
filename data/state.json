@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-30T13:05:42.740019+00:00",
+  "generated_at_utc": "2026-05-30T13:10:49.665711+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -8878,10 +8878,10 @@
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
       "bar_time_utc": "2026-05-30T13:00:00+00:00",
-      "close": 4523.65,
-      "ema": 4510.359918291129,
-      "sma": 4498.262692307691,
-      "vwap": 4526.378647640808,
+      "close": 4524.3,
+      "ema": 4510.385408487207,
+      "sma": 4498.2676923076915,
+      "vwap": 4526.278982680313,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8892,15 +8892,15 @@
         "bias": "bullish",
         "strength": "weak",
         "adx": 28.01,
-        "ema_slope_4bar": 2.5046,
+        "ema_slope_4bar": 2.5301,
         "regime_pct_24h": 70.8,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,510.36)",
+          "Close < EMA50 (4,510.39)",
           "ADX falls below 20 (now 28.0)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "PAXGUSDT leans long (ADX 28.0, close 4,523.65 vs EMA50 4,510.36) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "PAXGUSDT leans long (ADX 28.0, close 4,524.30 vs EMA50 4,510.39) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -13295,13 +13295,13 @@
         {
           "t": "2026-05-30T13:00:00+00:00",
           "o": 4523.65,
-          "h": 4523.65,
-          "l": 4523.65,
-          "c": 4523.65,
-          "v": 0.00537,
-          "ema": 4510.359918291129,
-          "sma": 4498.262692307691,
-          "vwap": 4526.378647640808
+          "h": 4525.78,
+          "l": 4523.38,
+          "c": 4524.3,
+          "v": 2.02064,
+          "ema": 4510.385408487207,
+          "sma": 4498.2676923076915,
+          "vwap": 4526.278982680313
         }
       ]
     }
@@ -13309,16 +13309,16 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 12,
-    "risk_on_score": 1,
+    "risk_off_score": 10,
+    "risk_on_score": 0,
     "theme_hits": {
       "war": 8,
       "banking": 0,
       "recession": 1,
-      "rate_hike": 1,
-      "crash": 2,
+      "rate_hike": 0,
+      "crash": 1,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 0
     },
     "sample_headlines": {
       "war": [
@@ -13330,19 +13330,14 @@
       "recession": [
         "Meta\u2019s mass layoffs hit nearly 3,200 Bay Area workers, among region\u2019s worst job losses in years - San Francisco Chronicle"
       ],
-      "rate_hike": [
-        "Inflation Jumps to 3-Year High as Critics Say Trump Economic Promises Have Turned to Dust - Common Dreams"
-      ],
+      "rate_hike": [],
       "crash": [
-        "Jim Cramer on Leidos: \u201cStock Is in Freefall, That Makes No Sense to Me\u201d",
-        "Teen Summer Jobs Plunge to Record Low - Newser"
+        "\u2018Ticking time bomb\u2019: Peter Schiff issues stark warning over US stock market \u2014 and the \u2018ultimate crash\u2019 is near"
       ],
       "rate_cut": [],
-      "risk_on": [
-        "Costco Q3 2026 earnings beat on record gas sales, e-commerce"
-      ]
+      "risk_on": []
     },
-    "n_headlines": 113,
+    "n_headlines": 115,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13350,7 +13345,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780146343.5631177,
+    "fetched_at": 1780146650.835271,
     "risk_off_themes": [
       "banking",
       "crash",
