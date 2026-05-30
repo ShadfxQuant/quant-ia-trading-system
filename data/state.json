@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-30T13:55:46.549191+00:00",
+  "generated_at_utc": "2026-05-30T14:00:41.988962+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -8878,10 +8878,10 @@
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
       "bar_time_utc": "2026-05-30T13:00:00+00:00",
-      "close": 4521.57,
-      "ema": 4510.2783496636785,
-      "sma": 4498.246692307692,
-      "vwap": 4525.831990360615,
+      "close": 4522.48,
+      "ema": 4510.314035938188,
+      "sma": 4498.253692307692,
+      "vwap": 4525.878295934567,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8892,15 +8892,15 @@
         "bias": "bullish",
         "strength": "weak",
         "adx": 27.88,
-        "ema_slope_4bar": 2.423,
+        "ema_slope_4bar": 2.4587,
         "regime_pct_24h": 70.8,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,510.28)",
+          "Close < EMA50 (4,510.31)",
           "ADX falls below 20 (now 27.9)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "PAXGUSDT leans long (ADX 27.9, close 4,521.57 vs EMA50 4,510.28) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "PAXGUSDT leans long (ADX 27.9, close 4,522.48 vs EMA50 4,510.31) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -13297,11 +13297,11 @@
           "o": 4523.65,
           "h": 4525.78,
           "l": 4521.57,
-          "c": 4521.57,
-          "v": 6.92588,
-          "ema": 4510.2783496636785,
-          "sma": 4498.246692307692,
-          "vwap": 4525.831990360615
+          "c": 4522.48,
+          "v": 6.96597,
+          "ema": 4510.314035938188,
+          "sma": 4498.253692307692,
+          "vwap": 4525.878295934567
         }
       ]
     }
@@ -13309,16 +13309,16 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 10,
-    "risk_on_score": 0,
+    "risk_off_score": 13,
+    "risk_on_score": 1,
     "theme_hits": {
-      "war": 8,
+      "war": 9,
       "banking": 0,
-      "recession": 1,
+      "recession": 3,
       "rate_hike": 0,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 0
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
@@ -13328,6 +13328,8 @@
       ],
       "banking": [],
       "recession": [
+        "How to Recession-Proof Your Retirement Income Before Summer 2026",
+        "The \u2018Three A\u2019s\u2019 are keeping the economy afloat during Iran war. Is it enough to avoid recession?",
         "Meta\u2019s mass layoffs hit nearly 3,200 Bay Area workers, among region\u2019s worst job losses in years - San Francisco Chronicle"
       ],
       "rate_hike": [],
@@ -13335,7 +13337,9 @@
         "\u2018Ticking time bomb\u2019: Peter Schiff issues stark warning over US stock market \u2014 and the \u2018ultimate crash\u2019 is near"
       ],
       "rate_cut": [],
-      "risk_on": []
+      "risk_on": [
+        "Can Solana (SOL) Reclaim Its $294 All-Time High?"
+      ]
     },
     "n_headlines": 115,
     "sources_used": [
@@ -13345,7 +13349,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780149347.3535938,
+    "fetched_at": 1780149642.9181085,
     "risk_off_themes": [
       "banking",
       "crash",
