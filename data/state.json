@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-30T20:01:19.625656+00:00",
+  "generated_at_utc": "2026-05-30T20:06:17.392750+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -8877,11 +8877,11 @@
     },
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
-      "bar_time_utc": "2026-05-30T19:00:00+00:00",
-      "close": 4521.02,
-      "ema": 4512.6581829402185,
-      "sma": 4496.927307692307,
-      "vwap": 4523.983564846684,
+      "bar_time_utc": "2026-05-30T20:00:00+00:00",
+      "close": 4520.89,
+      "ema": 4512.980999295504,
+      "sma": 4496.640230769231,
+      "vwap": 4523.977953816689,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8891,28 +8891,17 @@
       "read": {
         "bias": "bullish",
         "strength": "chop",
-        "adx": 19.98,
-        "ema_slope_4bar": 1.4039,
-        "regime_pct_24h": 54.2,
+        "adx": 18.59,
+        "ema_slope_4bar": 1.3182,
+        "regime_pct_24h": 50.0,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,512.66)",
-          "ADX falls below 20 (now 20.0)"
+          "Close < EMA50 (4,512.98)",
+          "ADX falls below 20 (now 18.6)"
         ],
-        "narrative": "PAXGUSDT leans long (ADX 20.0, close 4,521.02 vs EMA50 4,512.66) and the tape is choppy. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "PAXGUSDT leans long (ADX 18.6, close 4,520.89 vs EMA50 4,512.98) and the tape is choppy. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-05-14T04:00:00+00:00",
-          "o": 4665.4,
-          "h": 4702.09,
-          "l": 4662.2,
-          "c": 4693.0,
-          "v": 37.58985,
-          "ema": 4690.014039708078,
-          "sma": 4699.649538461538,
-          "vwap": 4685.211179541355
-        },
         {
           "t": "2026-05-14T05:00:00+00:00",
           "o": 4693.01,
@@ -13301,6 +13290,17 @@
           "ema": 4512.6581829402185,
           "sma": 4496.927307692307,
           "vwap": 4523.983564846684
+        },
+        {
+          "t": "2026-05-30T20:00:00+00:00",
+          "o": 4520.95,
+          "h": 4520.95,
+          "l": 4520.89,
+          "c": 4520.89,
+          "v": 0.13348,
+          "ema": 4512.980999295504,
+          "sma": 4496.640230769231,
+          "vwap": 4523.977953816689
         }
       ]
     }
@@ -13339,7 +13339,7 @@
       "cnbc_top",
       "marketwatch"
     ],
-    "fetched_at": 1780171280.5328007,
+    "fetched_at": 1780171578.962565,
     "risk_off_themes": [
       "banking",
       "crash",
