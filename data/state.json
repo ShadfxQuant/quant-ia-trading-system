@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-31T09:16:16.559701+00:00",
+  "generated_at_utc": "2026-05-31T09:21:16.949239+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -8877,11 +8877,11 @@
     },
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
-      "bar_time_utc": "2026-05-31T08:00:00+00:00",
-      "close": 4526.61,
-      "ema": 4515.955531995778,
-      "sma": 4493.1666153846145,
-      "vwap": 4519.315817235072,
+      "bar_time_utc": "2026-05-31T09:00:00+00:00",
+      "close": 4527.49,
+      "ema": 4516.4078640743755,
+      "sma": 4493.033846153846,
+      "vwap": 4519.315960057999,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8891,28 +8891,17 @@
       "read": {
         "bias": "bullish",
         "strength": "chop",
-        "adx": 16.16,
-        "ema_slope_4bar": 1.8912,
-        "regime_pct_24h": 29.2,
+        "adx": 17.13,
+        "ema_slope_4bar": 1.8622,
+        "regime_pct_24h": 25.0,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,515.96)",
-          "ADX falls below 20 (now 16.2)"
+          "Close < EMA50 (4,516.41)",
+          "ADX falls below 20 (now 17.1)"
         ],
-        "narrative": "PAXGUSDT leans long (ADX 16.2, close 4,526.61 vs EMA50 4,515.96) and the tape is choppy. The regime filter is mostly blocking \u2014 only 29% of the last 24h was tradable. Macro backdrop supports this read."
+        "narrative": "PAXGUSDT leans long (ADX 17.1, close 4,527.49 vs EMA50 4,516.41) and the tape is choppy. The regime filter is mostly blocking \u2014 only 25% of the last 24h was tradable. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-05-14T17:00:00+00:00",
-          "o": 4672.96,
-          "h": 4677.41,
-          "l": 4672.2,
-          "c": 4673.28,
-          "v": 16.9412,
-          "ema": 4686.661568974347,
-          "sma": 4697.085153846155,
-          "vwap": 4681.604117205144
-        },
         {
           "t": "2026-05-14T18:00:00+00:00",
           "o": 4671.36,
@@ -13301,6 +13290,17 @@
           "ema": 4515.955531995778,
           "sma": 4493.1666153846145,
           "vwap": 4519.315817235072
+        },
+        {
+          "t": "2026-05-31T09:00:00+00:00",
+          "o": 4527.49,
+          "h": 4527.49,
+          "l": 4527.49,
+          "c": 4527.49,
+          "v": 0.00078,
+          "ema": 4516.4078640743755,
+          "sma": 4493.033846153846,
+          "vwap": 4519.315960057999
         }
       ]
     }
@@ -13334,8 +13334,8 @@
       "rate_cut": [],
       "risk_on": [
         "Forgent Power (FPS) Hits All-Time High on 27% PT Hike",
-        "Hewlett-Packard (HPE) on All-Time High Ahead of Q2 Earnings",
-        "NetApp (NTAP) Hits All-Time High as AI Propels Profits"
+        "NetApp (NTAP) Hits All-Time High as AI Propels Profits",
+        "Hewlett-Packard (HPE) on All-Time High Ahead of Q2 Earnings"
       ]
     },
     "n_headlines": 114,
@@ -13346,7 +13346,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780218977.4352636,
+    "fetched_at": 1780219278.1390502,
     "risk_off_themes": [
       "banking",
       "crash",
