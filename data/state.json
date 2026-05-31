@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-31T17:01:17.283886+00:00",
+  "generated_at_utc": "2026-05-31T17:06:20.499260+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -8877,11 +8877,11 @@
     },
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
-      "bar_time_utc": "2026-05-31T16:00:00+00:00",
-      "close": 4528.01,
-      "ema": 4518.930229775245,
-      "sma": 4493.068769230769,
-      "vwap": 4521.856982597635,
+      "bar_time_utc": "2026-05-31T17:00:00+00:00",
+      "close": 4528.6,
+      "ema": 4519.309813228889,
+      "sma": 4493.0619230769225,
+      "vwap": 4521.866067299947,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8891,28 +8891,17 @@
       "read": {
         "bias": "bullish",
         "strength": "chop",
-        "adx": 16.25,
-        "ema_slope_4bar": 1.336,
+        "adx": 16.4,
+        "ema_slope_4bar": 1.3472,
         "regime_pct_24h": 0.0,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,518.93)",
-          "ADX falls below 20 (now 16.3)"
+          "Close < EMA50 (4,519.31)",
+          "ADX falls below 20 (now 16.4)"
         ],
-        "narrative": "PAXGUSDT leans long (ADX 16.3, close 4,528.01 vs EMA50 4,518.93) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop supports this read."
+        "narrative": "PAXGUSDT leans long (ADX 16.4, close 4,528.60 vs EMA50 4,519.31) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-05-15T01:00:00+00:00",
-          "o": 4625.37,
-          "h": 4626.18,
-          "l": 4604.85,
-          "c": 4609.98,
-          "v": 236.03852,
-          "ema": 4674.997796607974,
-          "sma": 4693.429692307692,
-          "vwap": 4624.289137209822
-        },
         {
           "t": "2026-05-15T02:00:00+00:00",
           "o": 4609.98,
@@ -13296,11 +13285,22 @@
           "o": 4525.8,
           "h": 4528.65,
           "l": 4525.02,
-          "c": 4528.01,
-          "v": 5.29021,
-          "ema": 4518.930229775245,
-          "sma": 4493.068769230769,
-          "vwap": 4521.856982597635
+          "c": 4528.02,
+          "v": 5.29707,
+          "ema": 4518.930621932108,
+          "sma": 4493.068846153846,
+          "vwap": 4521.857804149582
+        },
+        {
+          "t": "2026-05-31T17:00:00+00:00",
+          "o": 4528.62,
+          "h": 4528.62,
+          "l": 4528.03,
+          "c": 4528.6,
+          "v": 0.08367,
+          "ema": 4519.309813228889,
+          "sma": 4493.0619230769225,
+          "vwap": 4521.866067299947
         }
       ]
     }
@@ -13308,16 +13308,16 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 6,
-    "risk_on_score": 2,
+    "risk_off_score": 7,
+    "risk_on_score": 1,
     "theme_hits": {
       "war": 5,
       "banking": 0,
-      "recession": 0,
+      "recession": 1,
       "rate_hike": 1,
       "crash": 0,
       "rate_cut": 0,
-      "risk_on": 2
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
@@ -13326,18 +13326,19 @@
         "Oil exports through the Strait of Hormuz might not return to levels seen before the Iran war"
       ],
       "banking": [],
-      "recession": [],
+      "recession": [
+        "The \u2018Three A\u2019s\u2019 are keeping the economy afloat during Iran war. Is it enough to avoid recession? - MarketWatch"
+      ],
       "rate_hike": [
         "More Fed policymakers eye possible rate hike as inflation risks rise - Yahoo Finance"
       ],
       "crash": [],
       "rate_cut": [],
       "risk_on": [
-        "Why Dell Stock Skyrocketed to a New All-Time High Today - Yahoo Finance",
         "Nvidia Stock Could Rally Again if Huang Delivers on AI Growth Targets - Yahoo Finance"
       ]
     },
-    "n_headlines": 113,
+    "n_headlines": 115,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13345,7 +13346,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780246877.8027675,
+    "fetched_at": 1780247181.1955428,
     "risk_off_themes": [
       "banking",
       "crash",
