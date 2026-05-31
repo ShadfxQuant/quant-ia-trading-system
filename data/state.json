@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-31T19:36:18.266997+00:00",
+  "generated_at_utc": "2026-05-31T19:41:24.579791+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -8878,10 +8878,10 @@
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
       "bar_time_utc": "2026-05-31T19:00:00+00:00",
-      "close": 4528.43,
-      "ema": 4519.916975670675,
-      "sma": 4493.233538461538,
-      "vwap": 4522.795047996984,
+      "close": 4525.89,
+      "ema": 4519.817367827538,
+      "sma": 4493.214,
+      "vwap": 4522.743402879254,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8892,14 +8892,14 @@
         "bias": "bullish",
         "strength": "chop",
         "adx": 15.32,
-        "ema_slope_4bar": 1.3573,
+        "ema_slope_4bar": 1.2577,
         "regime_pct_24h": 0.0,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,519.92)",
+          "Close < EMA50 (4,519.82)",
           "ADX falls below 20 (now 15.3)"
         ],
-        "narrative": "PAXGUSDT leans long (ADX 15.3, close 4,528.43 vs EMA50 4,519.92) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop supports this read."
+        "narrative": "PAXGUSDT leans long (ADX 15.3, close 4,525.89 vs EMA50 4,519.82) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -13295,12 +13295,12 @@
           "t": "2026-05-31T19:00:00+00:00",
           "o": 4527.45,
           "h": 4528.43,
-          "l": 4526.06,
-          "c": 4528.43,
-          "v": 3.74052,
-          "ema": 4519.916975670675,
-          "sma": 4493.233538461538,
-          "vwap": 4522.795047996984
+          "l": 4525.2,
+          "c": 4525.89,
+          "v": 3.74134,
+          "ema": 4519.817367827538,
+          "sma": 4493.214,
+          "vwap": 4522.743402879254
         }
       ]
     }
@@ -13308,16 +13308,16 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 7,
-    "risk_on_score": 1,
+    "risk_off_score": 3,
+    "risk_on_score": 0,
     "theme_hits": {
-      "war": 5,
+      "war": 3,
       "banking": 0,
-      "recession": 1,
-      "rate_hike": 1,
+      "recession": 0,
+      "rate_hike": 0,
       "crash": 0,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 0
     },
     "sample_headlines": {
       "war": [
@@ -13326,27 +13326,20 @@
         "Analysis: An end to the Iran war may be just the beginning of a new era of U.S. inequality"
       ],
       "banking": [],
-      "recession": [
-        "The \u2018Three A\u2019s\u2019 are keeping the economy afloat during Iran war. Is it enough to avoid recession? - MarketWatch"
-      ],
-      "rate_hike": [
-        "More Fed policymakers eye possible rate hike as inflation risks rise - Yahoo Finance"
-      ],
+      "recession": [],
+      "rate_hike": [],
       "crash": [],
       "rate_cut": [],
-      "risk_on": [
-        "Nvidia Stock Could Rally Again if Huang Delivers on AI Growth Targets - Yahoo Finance"
-      ]
+      "risk_on": []
     },
-    "n_headlines": 115,
+    "n_headlines": 85,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
       "cnbc_top",
-      "marketwatch",
-      "newsapi"
+      "marketwatch"
     ],
-    "fetched_at": 1780256179.2497954,
+    "fetched_at": 1780256485.0604131,
     "risk_off_themes": [
       "banking",
       "crash",
