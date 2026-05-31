@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-31T11:11:17.333558+00:00",
+  "generated_at_utc": "2026-05-31T11:16:16.643571+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -8877,11 +8877,11 @@
     },
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
-      "bar_time_utc": "2026-05-31T10:00:00+00:00",
-      "close": 4524.61,
-      "ema": 4516.709923999179,
-      "sma": 4492.928769230769,
-      "vwap": 4519.896076452103,
+      "bar_time_utc": "2026-05-31T11:00:00+00:00",
+      "close": 4524.6,
+      "ema": 4517.01933874431,
+      "sma": 4492.915307692308,
+      "vwap": 4519.896372202795,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8891,28 +8891,17 @@
       "read": {
         "bias": "bullish",
         "strength": "chop",
-        "adx": 16.02,
-        "ema_slope_4bar": 1.7068,
-        "regime_pct_24h": 20.8,
+        "adx": 15.75,
+        "ema_slope_4bar": 1.4987,
+        "regime_pct_24h": 16.7,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,516.71)",
-          "ADX falls below 20 (now 16.0)"
+          "Close < EMA50 (4,517.02)",
+          "ADX falls below 20 (now 15.8)"
         ],
-        "narrative": "PAXGUSDT leans long (ADX 16.0, close 4,524.61 vs EMA50 4,516.71) and the tape is choppy. The regime filter is mostly blocking \u2014 only 21% of the last 24h was tradable. Macro backdrop supports this read."
+        "narrative": "PAXGUSDT leans long (ADX 15.8, close 4,524.60 vs EMA50 4,517.02) and the tape is choppy. The regime filter is mostly blocking \u2014 only 17% of the last 24h was tradable. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-05-14T19:00:00+00:00",
-          "o": 4665.97,
-          "h": 4667.16,
-          "l": 4650.0,
-          "c": 4651.25,
-          "v": 43.13332,
-          "ema": 4684.527553674513,
-          "sma": 4696.378384615385,
-          "vwap": 4677.774597854694
-        },
         {
           "t": "2026-05-14T20:00:00+00:00",
           "o": 4651.25,
@@ -13301,6 +13290,17 @@
           "ema": 4516.709923999179,
           "sma": 4492.928769230769,
           "vwap": 4519.896076452103
+        },
+        {
+          "t": "2026-05-31T11:00:00+00:00",
+          "o": 4524.74,
+          "h": 4525.48,
+          "l": 4524.6,
+          "c": 4524.6,
+          "v": 0.00292,
+          "ema": 4517.01933874431,
+          "sma": 4492.915307692308,
+          "vwap": 4519.896372202795
         }
       ]
     }
@@ -13345,7 +13345,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780225878.1482663,
+    "fetched_at": 1780226177.6493092,
     "risk_off_themes": [
       "banking",
       "crash",
