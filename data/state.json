@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-05-31T13:06:17.425933+00:00",
+  "generated_at_utc": "2026-05-31T13:11:20.785148+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -8878,10 +8878,10 @@
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
       "bar_time_utc": "2026-05-31T13:00:00+00:00",
-      "close": 4530.4,
-      "ema": 4518.09637838071,
-      "sma": 4492.953384615385,
-      "vwap": 4520.620509382495,
+      "close": 4529.66,
+      "ema": 4518.067358772867,
+      "sma": 4492.947692307693,
+      "vwap": 4520.627545497071,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8892,14 +8892,14 @@
         "bias": "bullish",
         "strength": "chop",
         "adx": 16.99,
-        "ema_slope_4bar": 1.7089,
+        "ema_slope_4bar": 1.6799,
         "regime_pct_24h": 8.3,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,518.10)",
+          "Close < EMA50 (4,518.07)",
           "ADX falls below 20 (now 17.0)"
         ],
-        "narrative": "PAXGUSDT leans long (ADX 17.0, close 4,530.40 vs EMA50 4,518.10) and the tape is choppy. The regime filter is mostly blocking \u2014 only 8% of the last 24h was tradable. Macro backdrop supports this read."
+        "narrative": "PAXGUSDT leans long (ADX 17.0, close 4,529.66 vs EMA50 4,518.07) and the tape is choppy. The regime filter is mostly blocking \u2014 only 8% of the last 24h was tradable. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -13295,12 +13295,12 @@
           "t": "2026-05-31T13:00:00+00:00",
           "o": 4529.75,
           "h": 4530.4,
-          "l": 4529.75,
-          "c": 4530.4,
-          "v": 0.01849,
-          "ema": 4518.09637838071,
-          "sma": 4492.953384615385,
-          "vwap": 4520.620509382495
+          "l": 4529.66,
+          "c": 4529.66,
+          "v": 0.05974,
+          "ema": 4518.067358772867,
+          "sma": 4492.947692307693,
+          "vwap": 4520.627545497071
         }
       ]
     }
@@ -13308,16 +13308,16 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 9,
-    "risk_on_score": 0,
+    "risk_off_score": 8,
+    "risk_on_score": 2,
     "theme_hits": {
-      "war": 7,
+      "war": 6,
       "banking": 0,
       "recession": 0,
       "rate_hike": 1,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 0
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
@@ -13334,9 +13334,12 @@
         "\u2018Ticking time bomb\u2019: Peter Schiff issues stark warning over US stock market \u2014 and the \u2018ultimate crash\u2019 is near"
       ],
       "rate_cut": [],
-      "risk_on": []
+      "risk_on": [
+        "Why Dell Stock Skyrocketed to a New All-Time High Today - Yahoo Finance",
+        "Nvidia Stock Could Rally Again if Huang Delivers on AI Growth Targets - Yahoo Finance"
+      ]
     },
-    "n_headlines": 114,
+    "n_headlines": 113,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13344,7 +13347,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780232778.2701933,
+    "fetched_at": 1780233081.9823375,
     "risk_off_themes": [
       "banking",
       "crash",
