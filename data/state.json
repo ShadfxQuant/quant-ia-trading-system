@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-01T15:06:26.403993+00:00",
+  "generated_at_utc": "2026-06-01T15:11:25.985275+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -19,29 +19,29 @@
     "SPY": {
       "symbol": "SPY",
       "bar_time_utc": "2026-06-01T14:30:00+00:00",
-      "close": 756.030029296875,
-      "ema": 749.8192852523702,
-      "sma": 740.9870023287259,
-      "vwap": 755.7856794883264,
+      "close": 755.7698974609375,
+      "ema": 749.809084003902,
+      "sma": 740.9850013146033,
+      "vwap": 755.7720871002451,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
-      "pullback_pyramid_ok": true,
-      "pullback_pyramid_cap": 10,
+      "pullback_pyramid_ok": false,
+      "pullback_pyramid_cap": 0,
       "trend_carry_pyramid_ok": false,
       "trend_carry_pyramid_cap": 0,
       "read": {
         "bias": "bullish",
         "strength": "strong",
         "adx": 40.64,
-        "ema_slope_4bar": 1.1196,
+        "ema_slope_4bar": 1.1094,
         "regime_pct_24h": 100.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close < EMA50 (749.82)",
+          "Close < EMA50 (749.81)",
           "ADX falls below 20 (now 40.6)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 40.6, close 756.03 vs EMA50 749.82) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "SPY leans long (ADX 40.6, close 755.77 vs EMA50 749.81) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -4436,23 +4436,23 @@
         {
           "t": "2026-06-01T14:30:00+00:00",
           "o": 755.8400268554688,
-          "h": 756.1799926757812,
+          "h": 756.27001953125,
           "l": 755.280029296875,
-          "c": 756.030029296875,
-          "v": 3111778.0,
-          "ema": 749.8192852523702,
-          "sma": 740.9870023287259,
-          "vwap": 755.7856794883264
+          "c": 755.7698974609375,
+          "v": 3363733.0,
+          "ema": 749.809084003902,
+          "sma": 740.9850013146033,
+          "vwap": 755.7720871002451
         }
       ]
     },
     "GLD": {
       "symbol": "GLD",
       "bar_time_utc": "2026-06-01T14:30:00+00:00",
-      "close": 409.3301086425781,
-      "ema": 414.73712911282814,
-      "sma": 421.2238692063552,
-      "vwap": 409.4018214772129,
+      "close": 409.489990234375,
+      "ema": 414.7433989791731,
+      "sma": 421.2250990647536,
+      "vwap": 409.42049624987544,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4463,7 +4463,7 @@
         "bias": "bearish",
         "strength": "weak",
         "adx": 28.0,
-        "ema_slope_4bar": -0.2581,
+        "ema_slope_4bar": -0.2518,
         "regime_pct_24h": 100.0,
         "macro_tilt": "conflicts",
         "flip": [
@@ -4471,7 +4471,7 @@
           "ADX falls below 20 (now 28.0)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 28.0, close 409.33 vs EMA50 414.74) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GLD leans short (ADX 28.0, close 409.49 vs EMA50 414.74) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -8866,23 +8866,23 @@
         {
           "t": "2026-06-01T14:30:00+00:00",
           "o": 409.0199890136719,
-          "h": 409.5899963378906,
+          "h": 409.8598937988281,
           "l": 408.6400146484375,
-          "c": 409.3301086425781,
-          "v": 407006.0,
-          "ema": 414.73712911282814,
-          "sma": 421.2238692063552,
-          "vwap": 409.4018214772129
+          "c": 409.489990234375,
+          "v": 494843.0,
+          "ema": 414.7433989791731,
+          "sma": 421.2250990647536,
+          "vwap": 409.42049624987544
         }
       ]
     },
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
       "bar_time_utc": "2026-06-01T15:00:00+00:00",
-      "close": 4452.0,
-      "ema": 4505.009874632329,
-      "sma": 4492.255692307692,
-      "vwap": 4492.05997442082,
+      "close": 4456.25,
+      "ema": 4505.176541298995,
+      "sma": 4492.2883846153845,
+      "vwap": 4491.68443552029,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8892,15 +8892,15 @@
       "read": {
         "bias": "neutral",
         "strength": "strong",
-        "adx": 41.42,
-        "ema_slope_4bar": -7.8494,
+        "adx": 41.34,
+        "ema_slope_4bar": -7.6827,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "PAXGUSDT is neutral (ADX 41.4, close 4,452.00 vs EMA50 4,505.01) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "PAXGUSDT is neutral (ADX 41.3, close 4,456.25 vs EMA50 4,505.18) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -13295,13 +13295,13 @@
         {
           "t": "2026-06-01T15:00:00+00:00",
           "o": 4451.5,
-          "h": 4455.0,
-          "l": 4451.5,
-          "c": 4452.0,
-          "v": 0.03683,
-          "ema": 4505.009874632329,
-          "sma": 4492.255692307692,
-          "vwap": 4492.05997442082
+          "h": 4457.75,
+          "l": 4449.32,
+          "c": 4456.25,
+          "v": 2.63832,
+          "ema": 4505.176541298995,
+          "sma": 4492.2883846153845,
+          "vwap": 4491.68443552029
         }
       ]
     }
@@ -13346,7 +13346,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780326387.3025854,
+    "fetched_at": 1780326686.7409708,
     "risk_off_themes": [
       "banking",
       "crash",
