@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-01T15:21:22.150031+00:00",
+  "generated_at_utc": "2026-06-01T15:26:25.358922+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -19,10 +19,10 @@
     "SPY": {
       "symbol": "SPY",
       "bar_time_utc": "2026-06-01T14:30:00+00:00",
-      "close": 756.3300170898438,
-      "ema": 749.8310494795453,
-      "sma": 740.9893099271334,
-      "vwap": 755.8319328918826,
+      "close": 756.0650024414062,
+      "ema": 749.8206567482341,
+      "sma": 740.9872713529147,
+      "vwap": 755.815703689436,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -33,15 +33,15 @@
         "bias": "bullish",
         "strength": "strong",
         "adx": 40.64,
-        "ema_slope_4bar": 1.1314,
+        "ema_slope_4bar": 1.121,
         "regime_pct_24h": 100.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close < EMA50 (749.83)",
+          "Close < EMA50 (749.82)",
           "ADX falls below 20 (now 40.6)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 40.6, close 756.33 vs EMA50 749.83) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "SPY leans long (ADX 40.6, close 756.07 vs EMA50 749.82) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -4436,23 +4436,23 @@
         {
           "t": "2026-06-01T14:30:00+00:00",
           "o": 755.8400268554688,
-          "h": 756.3300170898438,
+          "h": 756.405029296875,
           "l": 755.280029296875,
-          "c": 756.3300170898438,
-          "v": 4007079.0,
-          "ema": 749.8310494795453,
-          "sma": 740.9893099271334,
-          "vwap": 755.8319328918826
+          "c": 756.0650024414062,
+          "v": 4293789.0,
+          "ema": 749.8206567482341,
+          "sma": 740.9872713529147,
+          "vwap": 755.815703689436
         }
       ]
     },
     "GLD": {
       "symbol": "GLD",
       "bar_time_utc": "2026-06-01T14:30:00+00:00",
-      "close": 409.8999938964844,
-      "ema": 414.7594775541578,
-      "sma": 421.22825293907755,
-      "vwap": 409.4567642790855,
+      "close": 410.010009765625,
+      "ema": 414.76379190196724,
+      "sma": 421.229099214994,
+      "vwap": 409.47370021992043,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4463,7 +4463,7 @@
         "bias": "bearish",
         "strength": "weak",
         "adx": 28.0,
-        "ema_slope_4bar": -0.2358,
+        "ema_slope_4bar": -0.2314,
         "regime_pct_24h": 100.0,
         "macro_tilt": "conflicts",
         "flip": [
@@ -4471,7 +4471,7 @@
           "ADX falls below 20 (now 28.0)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 28.0, close 409.90 vs EMA50 414.76) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GLD leans short (ADX 28.0, close 410.01 vs EMA50 414.76) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -8866,23 +8866,23 @@
         {
           "t": "2026-06-01T14:30:00+00:00",
           "o": 409.0199890136719,
-          "h": 410.0199890136719,
+          "h": 410.1300048828125,
           "l": 408.6400146484375,
-          "c": 409.8999938964844,
-          "v": 604660.0,
-          "ema": 414.7594775541578,
-          "sma": 421.22825293907755,
-          "vwap": 409.4567642790855
+          "c": 410.010009765625,
+          "v": 643662.0,
+          "ema": 414.76379190196724,
+          "sma": 421.229099214994,
+          "vwap": 409.47370021992043
         }
       ]
     },
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
       "bar_time_utc": "2026-06-01T15:00:00+00:00",
-      "close": 4458.5,
-      "ema": 4505.264776593113,
-      "sma": 4492.305692307692,
-      "vwap": 4491.391092619572,
+      "close": 4461.11,
+      "ema": 4505.367129534289,
+      "sma": 4492.32576923077,
+      "vwap": 4491.40263885188,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8892,15 +8892,15 @@
       "read": {
         "bias": "neutral",
         "strength": "strong",
-        "adx": 41.03,
-        "ema_slope_4bar": -7.5945,
+        "adx": 40.88,
+        "ema_slope_4bar": -7.4921,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "PAXGUSDT is neutral (ADX 41.0, close 4,458.50 vs EMA50 4,505.26) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "PAXGUSDT is neutral (ADX 40.9, close 4,461.11 vs EMA50 4,505.37) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -13295,13 +13295,13 @@
         {
           "t": "2026-06-01T15:00:00+00:00",
           "o": 4451.5,
-          "h": 4460.0,
+          "h": 4461.11,
           "l": 4449.32,
-          "c": 4458.5,
-          "v": 4.90506,
-          "ema": 4505.264776593113,
-          "sma": 4492.305692307692,
-          "vwap": 4491.391092619572
+          "c": 4461.11,
+          "v": 4.99415,
+          "ema": 4505.367129534289,
+          "sma": 4492.32576923077,
+          "vwap": 4491.40263885188
         }
       ]
     }
@@ -13309,10 +13309,10 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 5,
+    "risk_off_score": 4,
     "risk_on_score": 2,
     "theme_hits": {
-      "war": 4,
+      "war": 3,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
@@ -13324,7 +13324,7 @@
       "war": [
         "Iran attacks damage 20 US military sites since start of war, satellite images show",
         "Grammy-winning director explores his Nigerian grandfather's role in the Biafran war",
-        "European defense stocks are cooling off after the military spending boom. Here's what's next"
+        "Soaring prices during the Iran war jeopardize travel to tourism-dependent countries in Asia - AP News"
       ],
       "banking": [],
       "recession": [],
@@ -13346,7 +13346,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780327282.842197,
+    "fetched_at": 1780327586.4172678,
     "risk_off_themes": [
       "banking",
       "crash",
