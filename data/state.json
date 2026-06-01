@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-01T00:17:26.189641+00:00",
+  "generated_at_utc": "2026-06-01T07:01:22.450989+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -8877,11 +8877,11 @@
     },
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
-      "bar_time_utc": "2026-06-01T00:00:00+00:00",
-      "close": 4529.91,
-      "ema": 4520.575972907505,
-      "sma": 4493.672461538462,
-      "vwap": 4530.006666666667,
+      "bar_time_utc": "2026-06-01T06:00:00+00:00",
+      "close": 4493.4,
+      "ema": 4517.212968142144,
+      "sma": 4494.000692307692,
+      "vwap": 4513.348990975849,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8889,85 +8889,19 @@
       "trend_carry_pyramid_ok": false,
       "trend_carry_pyramid_cap": 0,
       "read": {
-        "bias": "bullish",
-        "strength": "chop",
-        "adx": 17.08,
-        "ema_slope_4bar": 0.7254,
+        "bias": "neutral",
+        "strength": "weak",
+        "adx": 28.78,
+        "ema_slope_4bar": -2.6032,
         "regime_pct_24h": 0.0,
-        "macro_tilt": "supports",
+        "macro_tilt": "neutral",
         "flip": [
-          "Close < EMA50 (4,520.58)",
-          "ADX falls below 20 (now 17.1)"
+          "Close + ADX both push above EMA50 with ADX \u2265 20",
+          "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "PAXGUSDT leans long (ADX 17.1, close 4,529.91 vs EMA50 4,520.58) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop supports this read."
+        "narrative": "PAXGUSDT is neutral (ADX 28.8, close 4,493.40 vs EMA50 4,517.21) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
-        {
-          "t": "2026-05-15T09:00:00+00:00",
-          "o": 4554.63,
-          "h": 4563.31,
-          "l": 4535.46,
-          "c": 4547.78,
-          "v": 47.87058,
-          "ema": 4648.102720786738,
-          "sma": 4685.290846153846,
-          "vwap": 4609.807239044521
-        },
-        {
-          "t": "2026-05-15T10:00:00+00:00",
-          "o": 4547.83,
-          "h": 4574.28,
-          "l": 4547.07,
-          "c": 4567.59,
-          "v": 51.82157,
-          "ema": 4644.945359187259,
-          "sma": 4684.173692307692,
-          "vwap": 4607.0945647722965
-        },
-        {
-          "t": "2026-05-15T11:00:00+00:00",
-          "o": 4568.4,
-          "h": 4570.56,
-          "l": 4554.09,
-          "c": 4554.36,
-          "v": 16.22816,
-          "ema": 4641.392992160308,
-          "sma": 4682.968076923076,
-          "vwap": 4606.249571407283
-        },
-        {
-          "t": "2026-05-15T12:00:00+00:00",
-          "o": 4554.09,
-          "h": 4560.3,
-          "l": 4547.84,
-          "c": 4550.08,
-          "v": 57.95058,
-          "ema": 4637.812090506962,
-          "sma": 4681.713692307692,
-          "vwap": 4603.048607706129
-        },
-        {
-          "t": "2026-05-15T13:00:00+00:00",
-          "o": 4549.76,
-          "h": 4559.5,
-          "l": 4516.44,
-          "c": 4535.91,
-          "v": 49.03702,
-          "ema": 4633.815930094924,
-          "sma": 4680.328153846153,
-          "vwap": 4599.880011853742
-        },
-        {
-          "t": "2026-05-15T14:00:00+00:00",
-          "o": 4535.31,
-          "h": 4567.89,
-          "l": 4529.41,
-          "c": 4563.73,
-          "v": 30.09605,
-          "ema": 4631.067462248064,
-          "sma": 4679.166461538461,
-          "vwap": 4598.553005325223
-        },
         {
           "t": "2026-05-15T15:00:00+00:00",
           "o": 4563.44,
@@ -13295,12 +13229,78 @@
           "t": "2026-06-01T00:00:00+00:00",
           "o": 4529.4,
           "h": 4533.9,
-          "l": 4526.21,
-          "c": 4529.91,
-          "v": 1.47136,
-          "ema": 4520.575972907505,
-          "sma": 4493.672461538462,
-          "vwap": 4530.006666666667
+          "l": 4524.6,
+          "c": 4528.19,
+          "v": 8.60595,
+          "ema": 4520.508521927113,
+          "sma": 4493.659230769232,
+          "vwap": 4528.8966666666665
+        },
+        {
+          "t": "2026-06-01T01:00:00+00:00",
+          "o": 4528.2,
+          "h": 4528.5,
+          "l": 4513.21,
+          "c": 4513.8,
+          "v": 44.10876,
+          "ema": 4520.245442635854,
+          "sma": 4493.743307692308,
+          "vwap": 4520.200098942022
+        },
+        {
+          "t": "2026-06-01T02:00:00+00:00",
+          "o": 4514.5,
+          "h": 4522.17,
+          "l": 4508.25,
+          "c": 4509.3,
+          "v": 27.39878,
+          "ema": 4519.81620959131,
+          "sma": 4493.814153846153,
+          "vwap": 4517.819748021213
+        },
+        {
+          "t": "2026-06-01T03:00:00+00:00",
+          "o": 4509.6,
+          "h": 4511.8,
+          "l": 4500.0,
+          "c": 4505.39,
+          "v": 11.15305,
+          "ema": 4519.250475881847,
+          "sma": 4493.959230769231,
+          "vwap": 4516.342343879805
+        },
+        {
+          "t": "2026-06-01T04:00:00+00:00",
+          "o": 4504.75,
+          "h": 4507.16,
+          "l": 4498.8,
+          "c": 4503.2,
+          "v": 7.60952,
+          "ema": 4518.621045455108,
+          "sma": 4494.0353076923075,
+          "vwap": 4515.319619152166
+        },
+        {
+          "t": "2026-06-01T05:00:00+00:00",
+          "o": 4503.3,
+          "h": 4511.7,
+          "l": 4501.52,
+          "c": 4507.5,
+          "v": 2.15665,
+          "ema": 4518.184926025497,
+          "sma": 4494.06323076923,
+          "vwap": 4515.14003578775
+        },
+        {
+          "t": "2026-06-01T06:00:00+00:00",
+          "o": 4507.2,
+          "h": 4507.2,
+          "l": 4491.9,
+          "c": 4493.4,
+          "v": 11.41739,
+          "ema": 4517.212968142144,
+          "sma": 4494.000692307692,
+          "vwap": 4513.348990975849
         }
       ]
     }
@@ -13308,12 +13308,12 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 4,
+    "risk_off_score": 5,
     "risk_on_score": 0,
     "theme_hits": {
-      "war": 3,
+      "war": 5,
       "banking": 0,
-      "recession": 1,
+      "recession": 0,
       "rate_hike": 0,
       "crash": 0,
       "rate_cut": 0,
@@ -13321,27 +13321,26 @@
     },
     "sample_headlines": {
       "war": [
-        "U.S. and Iran still without deal to end war after Trump says he's not in a 'hurry'",
-        "Oil exports through the Strait of Hormuz might not return to levels seen before the Iran war",
-        "Analysis: An end to the Iran war may be just the beginning of a new era of U.S. inequality"
+        "Grammy-winning director explores his Nigerian grandfather's role in the Biafran war",
+        "Oil jumps 2% as Israel expands Lebanon offensive, rattling ceasefire hopes",
+        "European defense stocks are cooling off after the military spending boom. Here's what's next"
       ],
       "banking": [],
-      "recession": [
-        "How to Recession-Proof Your Retirement Income Before Summer 2026"
-      ],
+      "recession": [],
       "rate_hike": [],
       "crash": [],
       "rate_cut": [],
       "risk_on": []
     },
-    "n_headlines": 85,
+    "n_headlines": 114,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
       "cnbc_top",
-      "marketwatch"
+      "marketwatch",
+      "newsapi"
     ],
-    "fetched_at": 1780273046.938318,
+    "fetched_at": 1780297283.0426567,
     "risk_off_themes": [
       "banking",
       "crash",
