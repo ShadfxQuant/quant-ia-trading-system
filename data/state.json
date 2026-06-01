@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-01T19:56:22.610885+00:00",
+  "generated_at_utc": "2026-06-01T20:01:20.178707+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -19,10 +19,10 @@
     "SPY": {
       "symbol": "SPY",
       "bar_time_utc": "2026-06-01T19:30:00+00:00",
-      "close": 758.14501953125,
-      "ema": 751.4184068915673,
-      "sma": 742.424737079327,
-      "vwap": 757.4005879473258,
+      "close": 758.4349975585938,
+      "ema": 751.4297785789142,
+      "sma": 742.4269676795373,
+      "vwap": 757.4682644976942,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -32,16 +32,16 @@
       "read": {
         "bias": "bullish",
         "strength": "strong",
-        "adx": 40.66,
-        "ema_slope_4bar": 1.3213,
+        "adx": 40.6,
+        "ema_slope_4bar": 1.3326,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
-          "Close < EMA50 (751.42)",
-          "ADX falls below 20 (now 40.7)",
+          "Close < EMA50 (751.43)",
+          "ADX falls below 20 (now 40.6)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 40.7, close 758.15 vs EMA50 751.42) and the trend is strong. The regime filter is mostly green."
+        "narrative": "SPY leans long (ADX 40.6, close 758.43 vs EMA50 751.43) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -4437,22 +4437,22 @@
           "t": "2026-06-01T19:30:00+00:00",
           "o": 759.6699829101562,
           "h": 759.67919921875,
-          "l": 758.1199951171875,
-          "c": 758.14501953125,
-          "v": 4399914.0,
-          "ema": 751.4184068915673,
-          "sma": 742.424737079327,
-          "vwap": 757.4005879473258
+          "l": 758.0399780273438,
+          "c": 758.4349975585938,
+          "v": 6132104.0,
+          "ema": 751.4297785789142,
+          "sma": 742.4269676795373,
+          "vwap": 757.4682644976942
         }
       ]
     },
     "GLD": {
       "symbol": "GLD",
       "bar_time_utc": "2026-06-01T19:30:00+00:00",
-      "close": 411.2200012207031,
-      "ema": 414.1380978221581,
-      "sma": 420.971291410006,
-      "vwap": 410.25055630573166,
+      "close": 411.2300109863281,
+      "ema": 414.13849036198656,
+      "sma": 420.97136840820315,
+      "vwap": 410.3111115394871,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4462,8 +4462,8 @@
       "read": {
         "bias": "bearish",
         "strength": "weak",
-        "adx": 24.8,
-        "ema_slope_4bar": -0.4526,
+        "adx": 24.82,
+        "ema_slope_4bar": -0.4522,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
@@ -4471,7 +4471,7 @@
           "ADX falls below 20 (now 24.8)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 24.8, close 411.22 vs EMA50 414.14) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "GLD leans short (ADX 24.8, close 411.23 vs EMA50 414.14) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -8867,12 +8867,12 @@
           "t": "2026-06-01T19:30:00+00:00",
           "o": 411.6499938964844,
           "h": 411.739990234375,
-          "l": 411.1700134277344,
-          "c": 411.2200012207031,
-          "v": 385934.0,
-          "ema": 414.1380978221581,
-          "sma": 420.971291410006,
-          "vwap": 410.25055630573166
+          "l": 411.1000061035156,
+          "c": 411.2300109863281,
+          "v": 699665.0,
+          "ema": 414.13849036198656,
+          "sma": 420.97136840820315,
+          "vwap": 410.3111115394871
         }
       ]
     },
@@ -13346,7 +13346,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780343784.0077891,
+    "fetched_at": 1780344080.6865716,
     "risk_off_themes": [
       "banking",
       "crash",
