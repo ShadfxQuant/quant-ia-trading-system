@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-01T19:11:19.059213+00:00",
+  "generated_at_utc": "2026-06-01T19:16:25.868373+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -19,10 +19,10 @@
     "SPY": {
       "symbol": "SPY",
       "bar_time_utc": "2026-06-01T18:30:00+00:00",
-      "close": 759.60498046875,
-      "ema": 751.1409096184434,
-      "sma": 742.1582754281851,
-      "vwap": 757.1495210628394,
+      "close": 759.5599975585938,
+      "ema": 751.139145582751,
+      "sma": 742.1579294057992,
+      "vwap": 757.1710536767785,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -33,7 +33,7 @@
         "bias": "bullish",
         "strength": "strong",
         "adx": 41.28,
-        "ema_slope_4bar": 1.3165,
+        "ema_slope_4bar": 1.3148,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
@@ -41,7 +41,7 @@
           "ADX falls below 20 (now 41.3)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 41.3, close 759.60 vs EMA50 751.14) and the trend is strong. The regime filter is mostly green."
+        "narrative": "SPY leans long (ADX 41.3, close 759.56 vs EMA50 751.14) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -4438,21 +4438,21 @@
           "o": 759.8200073242188,
           "h": 759.8699951171875,
           "l": 759.3800048828125,
-          "c": 759.60498046875,
-          "v": 2317176.0,
-          "ema": 751.1409096184434,
-          "sma": 742.1582754281851,
-          "vwap": 757.1495210628394
+          "c": 759.5599975585938,
+          "v": 2606988.0,
+          "ema": 751.139145582751,
+          "sma": 742.1579294057992,
+          "vwap": 757.1710536767785
         }
       ]
     },
     "GLD": {
       "symbol": "GLD",
       "bar_time_utc": "2026-06-01T18:30:00+00:00",
-      "close": 411.7300109863281,
-      "ema": 414.2607330740435,
-      "sma": 421.0290607158954,
-      "vwap": 410.11704935746377,
+      "close": 411.6300048828125,
+      "ema": 414.2568112660625,
+      "sma": 421.0282914381761,
+      "vwap": 410.12489922822124,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4463,7 +4463,7 @@
         "bias": "bearish",
         "strength": "weak",
         "adx": 25.43,
-        "ema_slope_4bar": -0.5093,
+        "ema_slope_4bar": -0.5133,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
@@ -4471,7 +4471,7 @@
           "ADX falls below 20 (now 25.4)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 25.4, close 411.73 vs EMA50 414.26) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "GLD leans short (ADX 25.4, close 411.63 vs EMA50 414.26) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -8867,12 +8867,12 @@
           "t": "2026-06-01T18:30:00+00:00",
           "o": 411.80999755859375,
           "h": 412.0,
-          "l": 411.6400146484375,
-          "c": 411.7300109863281,
-          "v": 208357.0,
-          "ema": 414.2607330740435,
-          "sma": 421.0290607158954,
-          "vwap": 410.11704935746377
+          "l": 411.6300048828125,
+          "c": 411.6300048828125,
+          "v": 236009.0,
+          "ema": 414.2568112660625,
+          "sma": 421.0282914381761,
+          "vwap": 410.12489922822124
         }
       ]
     },
@@ -13310,7 +13310,7 @@
   "macro": {
     "verdict": "NEUTRAL",
     "risk_off_score": 3,
-    "risk_on_score": 3,
+    "risk_on_score": 4,
     "theme_hits": {
       "war": 3,
       "banking": 0,
@@ -13318,7 +13318,7 @@
       "rate_hike": 0,
       "crash": 0,
       "rate_cut": 0,
-      "risk_on": 3
+      "risk_on": 4
     },
     "sample_headlines": {
       "war": [
@@ -13337,7 +13337,7 @@
         "Did Trump spark an IBM stock rally? It\u2019s complicated."
       ]
     },
-    "n_headlines": 115,
+    "n_headlines": 114,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13345,7 +13345,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780341079.800871,
+    "fetched_at": 1780341387.0187624,
     "risk_off_themes": [
       "banking",
       "crash",
