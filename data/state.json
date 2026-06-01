@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-01T09:56:19.230337+00:00",
+  "generated_at_utc": "2026-06-01T10:01:21.311428+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -8877,11 +8877,11 @@
     },
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
-      "bar_time_utc": "2026-06-01T09:00:00+00:00",
-      "close": 4488.12,
-      "ema": 4514.18719682929,
-      "sma": 4493.624230769231,
-      "vwap": 4505.818427213064,
+      "bar_time_utc": "2026-06-01T10:00:00+00:00",
+      "close": 4489.16,
+      "ema": 4513.195565119722,
+      "sma": 4493.449076923077,
+      "vwap": 4505.812984367431,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8891,28 +8891,17 @@
       "read": {
         "bias": "neutral",
         "strength": "strong",
-        "adx": 34.19,
-        "ema_slope_4bar": -3.9977,
+        "adx": 35.25,
+        "ema_slope_4bar": -4.0527,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "PAXGUSDT is neutral (ADX 34.2, close 4,488.12 vs EMA50 4,514.19) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "PAXGUSDT is neutral (ADX 35.3, close 4,489.16 vs EMA50 4,513.20) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
-        {
-          "t": "2026-05-15T18:00:00+00:00",
-          "o": 4562.57,
-          "h": 4565.91,
-          "l": 4553.38,
-          "c": 4560.83,
-          "v": 47.46904,
-          "ema": 4619.647852389767,
-          "sma": 4674.289384615385,
-          "vwap": 4593.701797972147
-        },
         {
           "t": "2026-05-15T19:00:00+00:00",
           "o": 4560.96,
@@ -13296,11 +13285,22 @@
           "o": 4490.4,
           "h": 4497.66,
           "l": 4482.67,
-          "c": 4488.12,
-          "v": 6.78925,
-          "ema": 4514.18719682929,
-          "sma": 4493.624230769231,
-          "vwap": 4505.818427213064
+          "c": 4487.85,
+          "v": 6.80492,
+          "ema": 4514.176608593996,
+          "sma": 4493.622153846154,
+          "vwap": 4505.813170535687
+        },
+        {
+          "t": "2026-06-01T10:00:00+00:00",
+          "o": 4487.86,
+          "h": 4489.16,
+          "l": 4487.86,
+          "c": 4489.16,
+          "v": 0.0018,
+          "ema": 4513.195565119722,
+          "sma": 4493.449076923077,
+          "vwap": 4505.812984367431
         }
       ]
     }
@@ -13309,7 +13309,7 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 7,
-    "risk_on_score": 0,
+    "risk_on_score": 1,
     "theme_hits": {
       "war": 6,
       "banking": 0,
@@ -13317,7 +13317,7 @@
       "rate_hike": 0,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 0
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
@@ -13332,7 +13332,9 @@
         "A year of grief after Air India crash: What remains when a plane falls from the sky"
       ],
       "rate_cut": [],
-      "risk_on": []
+      "risk_on": [
+        "Arm, IBM and Hewlett Packard soar as Nvidia chip 'reinvention' extends software rally"
+      ]
     },
     "n_headlines": 113,
     "sources_used": [
@@ -13342,7 +13344,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780307779.7483566,
+    "fetched_at": 1780308082.0871897,
     "risk_off_themes": [
       "banking",
       "crash",
