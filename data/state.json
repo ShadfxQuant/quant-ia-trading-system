@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-01T12:01:23.851481+00:00",
+  "generated_at_utc": "2026-06-01T12:06:25.211991+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -8877,11 +8877,11 @@
     },
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
-      "bar_time_utc": "2026-06-01T11:00:00+00:00",
-      "close": 4499.01,
-      "ema": 4512.861190785923,
-      "sma": 4493.448153846154,
-      "vwap": 4505.283011344576,
+      "bar_time_utc": "2026-06-01T12:00:00+00:00",
+      "close": 4499.0,
+      "ema": 4512.315730785859,
+      "sma": 4493.427230769231,
+      "vwap": 4505.267146648703,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8891,28 +8891,17 @@
       "read": {
         "bias": "neutral",
         "strength": "strong",
-        "adx": 34.35,
-        "ema_slope_4bar": -3.4166,
+        "adx": 34.32,
+        "ema_slope_4bar": -2.9354,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "PAXGUSDT is neutral (ADX 34.4, close 4,499.01 vs EMA50 4,512.86) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "PAXGUSDT is neutral (ADX 34.3, close 4,499.00 vs EMA50 4,512.32) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
-        {
-          "t": "2026-05-15T20:00:00+00:00",
-          "o": 4549.35,
-          "h": 4549.35,
-          "l": 4537.92,
-          "c": 4542.18,
-          "v": 22.33884,
-          "ema": 4613.9597207181205,
-          "sma": 4671.741923076924,
-          "vwap": 4592.213435077609
-        },
         {
           "t": "2026-05-15T21:00:00+00:00",
           "o": 4541.85,
@@ -13296,11 +13285,22 @@
           "o": 4496.14,
           "h": 4503.29,
           "l": 4493.72,
-          "c": 4499.01,
-          "v": 3.2621,
-          "ema": 4512.861190785923,
-          "sma": 4493.448153846154,
-          "vwap": 4505.283011344576
+          "c": 4498.96,
+          "v": 3.31554,
+          "ema": 4512.859230001609,
+          "sma": 4493.447769230769,
+          "vwap": 4505.280676484529
+        },
+        {
+          "t": "2026-06-01T12:00:00+00:00",
+          "o": 4497.9,
+          "h": 4499.36,
+          "l": 4496.36,
+          "c": 4499.0,
+          "v": 0.33684,
+          "ema": 4512.315730785859,
+          "sma": 4493.427230769231,
+          "vwap": 4505.267146648703
         }
       ]
     }
@@ -13308,10 +13308,10 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 5,
+    "risk_off_score": 6,
     "risk_on_score": 3,
     "theme_hits": {
-      "war": 4,
+      "war": 5,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
@@ -13346,7 +13346,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780315284.3698447,
+    "fetched_at": 1780315586.265314,
     "risk_off_themes": [
       "banking",
       "crash",
