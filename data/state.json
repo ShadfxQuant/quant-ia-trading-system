@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-01T13:31:26.490327+00:00",
+  "generated_at_utc": "2026-06-01T13:36:22.634734+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -19,10 +19,10 @@
     "SPY": {
       "symbol": "SPY",
       "bar_time_utc": "2026-06-01T13:30:00+00:00",
-      "close": 755.27001953125,
-      "ema": 749.5428458508437,
-      "sma": 740.6881178635817,
-      "vwap": 755.2383422851562,
+      "close": 756.22998046875,
+      "ema": 749.5804913778045,
+      "sma": 740.6955021784855,
+      "vwap": 755.7166544596354,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -32,16 +32,16 @@
       "read": {
         "bias": "bullish",
         "strength": "strong",
-        "adx": 41.87,
-        "ema_slope_4bar": 1.153,
+        "adx": 41.75,
+        "ema_slope_4bar": 1.1907,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
-          "Close < EMA50 (749.54)",
-          "ADX falls below 20 (now 41.9)",
+          "Close < EMA50 (749.58)",
+          "ADX falls below 20 (now 41.8)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 41.9, close 755.27 vs EMA50 749.54) and the trend is strong. The regime filter is mostly green."
+        "narrative": "SPY leans long (ADX 41.8, close 756.23 vs EMA50 749.58) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -4436,23 +4436,23 @@
         {
           "t": "2026-06-01T13:30:00+00:00",
           "o": 755.3599853515625,
-          "h": 755.6099853515625,
-          "l": 754.8350219726562,
-          "c": 755.27001953125,
-          "v": 1999472.0,
-          "ema": 749.5428458508437,
-          "sma": 740.6881178635817,
-          "vwap": 755.2383422851562
+          "h": 756.22998046875,
+          "l": 754.6900024414062,
+          "c": 756.22998046875,
+          "v": 3238026.0,
+          "ema": 749.5804913778045,
+          "sma": 740.6955021784855,
+          "vwap": 755.7166544596354
         }
       ]
     },
     "GLD": {
       "symbol": "GLD",
       "bar_time_utc": "2026-06-01T13:30:00+00:00",
-      "close": 409.8799133300781,
-      "ema": 414.9915463481115,
-      "sma": 421.26871384840746,
-      "vwap": 409.86663818359375,
+      "close": 410.26220703125,
+      "ema": 415.0065382579614,
+      "sma": 421.27165456918567,
+      "vwap": 409.97410074869794,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4462,15 +4462,15 @@
       "read": {
         "bias": "neutral",
         "strength": "weak",
-        "adx": 27.66,
-        "ema_slope_4bar": 0.1385,
+        "adx": 27.71,
+        "ema_slope_4bar": 0.1535,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GLD is neutral (ADX 27.7, close 409.88 vs EMA50 414.99) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "GLD is neutral (ADX 27.7, close 410.26 vs EMA50 415.01) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -8865,13 +8865,13 @@
         {
           "t": "2026-06-01T13:30:00+00:00",
           "o": 409.8550109863281,
-          "h": 410.2200012207031,
-          "l": 409.5,
-          "c": 409.8799133300781,
-          "v": 571313.0,
-          "ema": 414.9915463481115,
-          "sma": 421.26871384840746,
-          "vwap": 409.86663818359375
+          "h": 410.360107421875,
+          "l": 409.29998779296875,
+          "c": 410.26220703125,
+          "v": 715521.0,
+          "ema": 415.0065382579614,
+          "sma": 421.27165456918567,
+          "vwap": 409.97410074869794
         }
       ]
     },
@@ -8881,7 +8881,7 @@
       "close": 4461.0,
       "ema": 4510.114960105291,
       "sma": 4493.136153846153,
-      "vwap": 4500.490912773463,
+      "vwap": 4500.241867940988,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8891,7 +8891,7 @@
       "read": {
         "bias": "neutral",
         "strength": "strong",
-        "adx": 36.62,
+        "adx": 36.73,
         "ema_slope_4bar": -4.0616,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
@@ -8899,7 +8899,7 @@
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "PAXGUSDT is neutral (ADX 36.6, close 4,461.00 vs EMA50 4,510.11) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "PAXGUSDT is neutral (ADX 36.7, close 4,461.00 vs EMA50 4,510.11) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -13295,12 +13295,12 @@
           "t": "2026-06-01T13:00:00+00:00",
           "o": 4494.25,
           "h": 4495.87,
-          "l": 4457.26,
+          "l": 4453.75,
           "c": 4461.0,
-          "v": 26.06204,
+          "v": 26.84176,
           "ema": 4510.114960105291,
           "sma": 4493.136153846153,
-          "vwap": 4500.490912773463
+          "vwap": 4500.241867940988
         }
       ]
     }
@@ -13309,7 +13309,7 @@
   "macro": {
     "verdict": "NEUTRAL",
     "risk_off_score": 4,
-    "risk_on_score": 4,
+    "risk_on_score": 3,
     "theme_hits": {
       "war": 3,
       "banking": 0,
@@ -13317,7 +13317,7 @@
       "rate_hike": 0,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 4
+      "risk_on": 3
     },
     "sample_headlines": {
       "war": [
@@ -13333,8 +13333,8 @@
       ],
       "rate_cut": [],
       "risk_on": [
-        "HPE stock hits record high on Nvidia Vera CPU server launch",
         "Arm, IBM and Hewlett Packard soar as Nvidia chip 'reinvention' extends software rally",
+        "A \u2018volatility spasm\u2019 is set to provide the toughest test yet to the 9-week-old stock-market rally",
         "ServiceNow, Adobe stocks jump as Nvidia\u2019s new AI chip sparks software rally"
       ]
     },
@@ -13346,7 +13346,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780320687.2193005,
+    "fetched_at": 1780320983.2535048,
     "risk_off_themes": [
       "banking",
       "crash",
