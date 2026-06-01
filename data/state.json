@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-01T20:06:18.841091+00:00",
+  "generated_at_utc": "2026-06-01T20:11:20.469566+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -22,7 +22,7 @@
       "close": 758.4349975585938,
       "ema": 751.4297785789142,
       "sma": 742.4269676795373,
-      "vwap": 757.4675229194813,
+      "vwap": 757.4645051432007,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -4439,10 +4439,10 @@
           "h": 759.67919921875,
           "l": 758.0399780273438,
           "c": 758.4349975585938,
-          "v": 6109409.0,
+          "v": 6017331.0,
           "ema": 751.4297785789142,
           "sma": 742.4269676795373,
-          "vwap": 757.4675229194813
+          "vwap": 757.4645051432007
         }
       ]
     },
@@ -4452,7 +4452,7 @@
       "close": 411.2300109863281,
       "ema": 414.13849036198656,
       "sma": 420.97136840820315,
-      "vwap": 410.3068737303811,
+      "vwap": 410.3031823847041,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8869,20 +8869,20 @@
           "h": 411.739990234375,
           "l": 411.1000061035156,
           "c": 411.2300109863281,
-          "v": 677046.0,
+          "v": 657492.0,
           "ema": 414.13849036198656,
           "sma": 420.97136840820315,
-          "vwap": 410.3068737303811
+          "vwap": 410.3031823847041
         }
       ]
     },
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
-      "bar_time_utc": "2026-06-01T19:00:00+00:00",
-      "close": 4476.0,
-      "ema": 4501.558734730714,
-      "sma": 4492.225230769231,
-      "vwap": 4489.133926612679,
+      "bar_time_utc": "2026-06-01T20:00:00+00:00",
+      "close": 4478.81,
+      "ema": 4500.666627486372,
+      "sma": 4492.500384615385,
+      "vwap": 4489.092331012707,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8892,28 +8892,17 @@
       "read": {
         "bias": "neutral",
         "strength": "strong",
-        "adx": 36.06,
-        "ema_slope_4bar": -4.0492,
+        "adx": 35.24,
+        "ema_slope_4bar": -3.6739,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "PAXGUSDT is neutral (ADX 36.1, close 4,476.00 vs EMA50 4,501.56) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "PAXGUSDT is neutral (ADX 35.2, close 4,478.81 vs EMA50 4,500.67) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
-        {
-          "t": "2026-05-16T04:00:00+00:00",
-          "o": 4540.45,
-          "h": 4543.51,
-          "l": 4539.38,
-          "c": 4543.51,
-          "v": 4.9521,
-          "ema": 4594.01608192663,
-          "sma": 4660.763461538461,
-          "vwap": 4541.362994707094
-        },
         {
           "t": "2026-05-16T05:00:00+00:00",
           "o": 4542.66,
@@ -13302,6 +13291,17 @@
           "ema": 4501.558734730714,
           "sma": 4492.225230769231,
           "vwap": 4489.133926612679
+        },
+        {
+          "t": "2026-06-01T20:00:00+00:00",
+          "o": 4476.0,
+          "h": 4478.81,
+          "l": 4475.03,
+          "c": 4478.81,
+          "v": 1.08822,
+          "ema": 4500.666627486372,
+          "sma": 4492.500384615385,
+          "vwap": 4489.092331012707
         }
       ]
     }
@@ -13345,7 +13345,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780344379.5389192,
+    "fetched_at": 1780344680.9334815,
     "risk_off_themes": [
       "banking",
       "crash",
