@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-01T08:51:19.421936+00:00",
+  "generated_at_utc": "2026-06-01T08:56:17.801212+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -8878,10 +8878,10 @@
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
       "bar_time_utc": "2026-06-01T08:00:00+00:00",
-      "close": 4491.6,
-      "ema": 4515.309987576224,
-      "sma": 4493.835769230769,
-      "vwap": 4506.628062412369,
+      "close": 4489.88,
+      "ema": 4515.242536595832,
+      "sma": 4493.822538461539,
+      "vwap": 4506.509959098344,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8892,14 +8892,14 @@
         "bias": "neutral",
         "strength": "strong",
         "adx": 33.06,
-        "ema_slope_4bar": -3.3111,
+        "ema_slope_4bar": -3.3785,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "PAXGUSDT is neutral (ADX 33.1, close 4,491.60 vs EMA50 4,515.31) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "PAXGUSDT is neutral (ADX 33.1, close 4,489.88 vs EMA50 4,515.24) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -13296,11 +13296,11 @@
           "o": 4492.8,
           "h": 4493.8,
           "l": 4482.53,
-          "c": 4491.6,
-          "v": 32.4177,
-          "ema": 4515.309987576224,
-          "sma": 4493.835769230769,
-          "vwap": 4506.628062412369
+          "c": 4489.88,
+          "v": 32.42409,
+          "ema": 4515.242536595832,
+          "sma": 4493.822538461539,
+          "vwap": 4506.509959098344
         }
       ]
     }
@@ -13308,14 +13308,14 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 6,
+    "risk_off_score": 7,
     "risk_on_score": 0,
     "theme_hits": {
       "war": 6,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 0,
+      "crash": 1,
       "rate_cut": 0,
       "risk_on": 0
     },
@@ -13328,7 +13328,9 @@
       "banking": [],
       "recession": [],
       "rate_hike": [],
-      "crash": [],
+      "crash": [
+        "A year of grief after Air India crash: What remains when a plane falls from the sky"
+      ],
       "rate_cut": [],
       "risk_on": []
     },
@@ -13340,7 +13342,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780303880.060201,
+    "fetched_at": 1780304178.5309465,
     "risk_off_themes": [
       "banking",
       "crash",
