@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-01T20:46:22.335975+00:00",
+  "generated_at_utc": "2026-06-01T20:51:24.200688+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -35,13 +35,13 @@
         "adx": 40.6,
         "ema_slope_4bar": 1.3328,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "supports",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close < EMA50 (751.43)",
           "ADX falls below 20 (now 40.6)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 40.6, close 758.44 vs EMA50 751.43) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "SPY leans long (ADX 40.6, close 758.44 vs EMA50 751.43) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -4465,13 +4465,13 @@
         "adx": 24.82,
         "ema_slope_4bar": -0.4522,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "supports",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close > EMA50 (414.14)",
           "ADX falls below 20 (now 24.8)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 24.8, close 411.23 vs EMA50 414.14) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "GLD leans short (ADX 24.8, close 411.23 vs EMA50 414.14) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -8879,10 +8879,10 @@
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
       "bar_time_utc": "2026-06-01T20:00:00+00:00",
-      "close": 4476.5,
-      "ema": 4500.576039251078,
-      "sma": 4492.482615384615,
-      "vwap": 4488.990875826344,
+      "close": 4478.04,
+      "ema": 4500.636431407941,
+      "sma": 4492.494461538462,
+      "vwap": 4488.8999056496805,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8893,14 +8893,14 @@
         "bias": "neutral",
         "strength": "strong",
         "adx": 35.24,
-        "ema_slope_4bar": -3.7645,
+        "ema_slope_4bar": -3.7041,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "PAXGUSDT is neutral (ADX 35.2, close 4,476.50 vs EMA50 4,500.58) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "PAXGUSDT is neutral (ADX 35.2, close 4,478.04 vs EMA50 4,500.64) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -13296,34 +13296,35 @@
           "t": "2026-06-01T20:00:00+00:00",
           "o": 4476.0,
           "h": 4478.81,
-          "l": 4475.03,
-          "c": 4476.5,
-          "v": 3.53758,
-          "ema": 4500.576039251078,
-          "sma": 4492.482615384615,
-          "vwap": 4488.990875826344
+          "l": 4474.99,
+          "c": 4478.04,
+          "v": 6.08156,
+          "ema": 4500.636431407941,
+          "sma": 4492.494461538462,
+          "vwap": 4488.8999056496805
         }
       ]
     }
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_ON",
-    "risk_off_score": 2,
-    "risk_on_score": 4,
+    "verdict": "RISK_OFF",
+    "risk_off_score": 8,
+    "risk_on_score": 5,
     "theme_hits": {
-      "war": 2,
+      "war": 8,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
       "crash": 0,
       "rate_cut": 0,
-      "risk_on": 4
+      "risk_on": 5
     },
     "sample_headlines": {
       "war": [
         "Iran warns Israeli attacks in Lebanon threaten ceasefire with US",
-        "Bowen: Trump needs this war to end but Iran is not backing down"
+        "Bowen: Trump needs this war to end but Iran is not backing down",
+        "Chevron Corporation (CVX) A Top Oil Stock to Buy on US-Iran War Focused on Engine Protection"
       ],
       "banking": [],
       "recession": [],
@@ -13331,9 +13332,9 @@
       "crash": [],
       "rate_cut": [],
       "risk_on": [
+        "Is the Market Setting Up for a Summer Rally or a Summer Slump?",
         "HPE skyrockets 30% on biggest earnings beat since 2018",
-        "Arm, IBM and Hewlett Packard soar as Nvidia chip 'reinvention' extends software rally",
-        "Did Trump spark an IBM stock rally? It\u2019s complicated."
+        "Arm, IBM and Hewlett Packard soar as Nvidia chip 'reinvention' extends software rally"
       ]
     },
     "n_headlines": 114,
@@ -13344,7 +13345,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780346783.7900248,
+    "fetched_at": 1780347085.153023,
     "risk_off_themes": [
       "banking",
       "crash",
