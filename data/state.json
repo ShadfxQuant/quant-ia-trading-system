@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-01T17:46:17.631886+00:00",
+  "generated_at_utc": "2026-06-01T17:51:19.316383+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -19,10 +19,10 @@
     "SPY": {
       "symbol": "SPY",
       "bar_time_utc": "2026-06-01T17:30:00+00:00",
-      "close": 759.6998901367188,
-      "ema": 750.7907077126134,
-      "sma": 741.8794630784255,
-      "vwap": 756.6828052373304,
+      "close": 759.635009765625,
+      "ema": 750.7881633843352,
+      "sma": 741.8789639986478,
+      "vwap": 756.702842548038,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -33,7 +33,7 @@
         "bias": "bullish",
         "strength": "strong",
         "adx": 40.72,
-        "ema_slope_4bar": 1.2249,
+        "ema_slope_4bar": 1.2224,
         "regime_pct_24h": 100.0,
         "macro_tilt": "conflicts",
         "flip": [
@@ -41,7 +41,7 @@
           "ADX falls below 20 (now 40.7)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 40.7, close 759.70 vs EMA50 750.79) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "SPY leans long (ADX 40.7, close 759.64 vs EMA50 750.79) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -4438,21 +4438,21 @@
           "o": 758.5399780273438,
           "h": 760.280029296875,
           "l": 757.72998046875,
-          "c": 759.6998901367188,
-          "v": 2836426.0,
-          "ema": 750.7907077126134,
-          "sma": 741.8794630784255,
-          "vwap": 756.6828052373304
+          "c": 759.635009765625,
+          "v": 3067146.0,
+          "ema": 750.7881633843352,
+          "sma": 741.8789639986478,
+          "vwap": 756.702842548038
         }
       ]
     },
     "GLD": {
       "symbol": "GLD",
       "bar_time_utc": "2026-06-01T17:30:00+00:00",
-      "close": 412.5,
-      "ema": 414.3910867724048,
-      "sma": 421.10113760141223,
-      "vwap": 409.92035132443607,
+      "close": 412.260009765625,
+      "ema": 414.38167539066455,
+      "sma": 421.0992915226863,
+      "vwap": 409.94652056519027,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4462,16 +4462,16 @@
       "read": {
         "bias": "bearish",
         "strength": "weak",
-        "adx": 26.31,
-        "ema_slope_4bar": -0.5667,
+        "adx": 26.29,
+        "ema_slope_4bar": -0.5761,
         "regime_pct_24h": 100.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (414.39)",
+          "Close > EMA50 (414.38)",
           "ADX falls below 20 (now 26.3)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 26.3, close 412.50 vs EMA50 414.39) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GLD leans short (ADX 26.3, close 412.26 vs EMA50 414.38) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -8866,23 +8866,23 @@
         {
           "t": "2026-06-01T17:30:00+00:00",
           "o": 411.5400085449219,
-          "h": 412.54998779296875,
+          "h": 412.6099853515625,
           "l": 411.25,
-          "c": 412.5,
-          "v": 223197.0,
-          "ema": 414.3910867724048,
-          "sma": 421.10113760141223,
-          "vwap": 409.92035132443607
+          "c": 412.260009765625,
+          "v": 282757.0,
+          "ema": 414.38167539066455,
+          "sma": 421.0992915226863,
+          "vwap": 409.94652056519027
         }
       ]
     },
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
       "bar_time_utc": "2026-06-01T17:00:00+00:00",
-      "close": 4487.0,
-      "ema": 4503.660523317603,
-      "sma": 4492.390384615384,
-      "vwap": 4489.419100422063,
+      "close": 4483.5,
+      "ema": 4503.523268415643,
+      "sma": 4492.363461538462,
+      "vwap": 4489.381390843601,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8892,15 +8892,15 @@
       "read": {
         "bias": "neutral",
         "strength": "strong",
-        "adx": 38.38,
-        "ema_slope_4bar": -5.7956,
+        "adx": 38.25,
+        "ema_slope_4bar": -5.9329,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "PAXGUSDT is neutral (ADX 38.4, close 4,487.00 vs EMA50 4,503.66) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "PAXGUSDT is neutral (ADX 38.2, close 4,483.50 vs EMA50 4,503.52) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -13295,13 +13295,13 @@
         {
           "t": "2026-06-01T17:00:00+00:00",
           "o": 4473.57,
-          "h": 4487.0,
+          "h": 4488.5,
           "l": 4467.0,
-          "c": 4487.0,
-          "v": 10.26473,
-          "ema": 4503.660523317603,
-          "sma": 4492.390384615384,
-          "vwap": 4489.419100422063
+          "c": 4483.5,
+          "v": 10.70135,
+          "ema": 4503.523268415643,
+          "sma": 4492.363461538462,
+          "vwap": 4489.381390843601
         }
       ]
     }
@@ -13309,10 +13309,10 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 3,
+    "risk_off_score": 4,
     "risk_on_score": 1,
     "theme_hits": {
-      "war": 2,
+      "war": 3,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
@@ -13322,6 +13322,7 @@
     },
     "sample_headlines": {
       "war": [
+        "Iran warns Israeli attacks in Lebanon threaten ceasefire with US",
         "Iran attacks damage 20 US military sites since start of war, satellite images show",
         "Grammy-winning director explores his Nigerian grandfather's role in the Biafran war"
       ],
@@ -13344,7 +13345,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780335978.684582,
+    "fetched_at": 1780336279.9267414,
     "risk_off_themes": [
       "banking",
       "crash",
