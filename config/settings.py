@@ -160,13 +160,13 @@ class PullbackStratConfig:
     use_regime_bypass: bool = False
     regime_bypass_threshold: float = 0.60
     # ----- Sizing (fixed; HMM no longer scales) -----
-    # Production v2: full deployment + restore runner stacks while keeping
-    # VWAP as the quality gate (72.6% of v1 PnL came from VWAP-confirmed stacks).
-    # PRODUCTION TARGET (SESSION_LOG #20a): FULL EDGE · 2.5× leverage · gates OFF.
-    # 0.30 base × 2.5 lev = 0.75 ; 1.00 cap × 2.5 lev = 2.50.
-    base_size_pct: float = 0.75               # 0.30 baseline × 2.5× leverage
-    capital_cap_pct: float = 2.50             # 1.00 full deploy × 2.5× leverage
-    max_pyramid_positions: int = 10           # full edge: stack runners freely
+    # Production v3 (2026-05-30, SYSTEM_LOG Part 8): rebuilt from Baseline #0
+    # after multi-task research found VWAP pyramid gate harmful even as
+    # "non-blocking" (PF 3.16 → 2.60). Sizing now matches the verified
+    # baseline; users who want higher leverage can multiply both fields.
+    base_size_pct: float = 0.30               # 1.0× leverage (was 0.75 = 2.5×)
+    capital_cap_pct: float = 1.00             # 1.0× leverage (was 2.50 = 2.5×)
+    max_pyramid_positions: int = 8            # baseline #0 spec (was 10)
     # Fixed sizing multiplier — present so the dashboard always reads cleanly.
     fixed_size_mult: float = 1.0
     # ----- Layer 2: Entry Sensitivity Engine (adaptive thresholds) -----
@@ -188,12 +188,24 @@ class PullbackStratConfig:
     # gate. The VWAP gate was clipping the right-tail pyramid stacks that
     # historically drove PF; dropping it should lift PF toward baseline (2.55)
     # while accepting DD back toward 12–14%. RVOL/HMM remain informational.
-    # WEAK GATING (validated #21, best config): VWAP confirmation ON, momentum
-    # gate OFF. VWAP filters bad pyramid adds (DD 15.3→12.9%); dropping the
-    # momentum gate keeps the right-tail stacks. SPY+DIA 2.5× → $221,244,
-    # CAGR 32.4%, DD 12.9%, Sharpe 1.42, MAR 2.51 — best of every variant.
-    pyramid_require_above_vwap: bool = True
+    # PURE EDGE (2026-05-30 research): both VWAP and momentum pyramid gates
+    # confirmed harmful on baseline #0 SPY. VWAP gate dropped PF 3.16→2.60
+    # and removed 8 legs (-4.6%) — meets the "indicator-as-gate failure"
+    # pattern. Indicators allowed only as size multipliers or diagnostics.
+    pyramid_require_above_vwap: bool = False
     pyramid_require_positive_momentum: bool = False
+    # ----- Layer 5: RSI size multiplier (validated 2026-05-30) -----
+    # RSI(14) modulates entry size WITHOUT blocking entries:
+    #   RSI < 40 (oversold pullback)   → 1.3× size (more conviction)
+    #   RSI in 40-60 (neutral)         → 1.0× size
+    #   RSI > 60 (overbought entry)    → 0.7× size (less conviction)
+    # Backtested: CAGR 17.1 → 17.3, PF 3.16 → 3.18, leg count unchanged.
+    # Clean additive — set to False to disable.
+    use_rsi_size_mult: bool = True
+    rsi_oversold: float = 40.0
+    rsi_overbought: float = 60.0
+    rsi_mult_oversold: float = 1.3
+    rsi_mult_overbought: float = 0.7
     # ----- Exit profile (original deterministic exits) -----
     # Production v3 (Structure 1, validated): no BE-trail clip + extended runner.
     # The trailing-after-partial was the binding constraint on PF — disabling
