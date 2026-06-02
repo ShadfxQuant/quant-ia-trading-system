@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-02T13:36:21.799327+00:00",
+  "generated_at_utc": "2026-06-02T13:41:23.577738+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -19,29 +19,29 @@
     "SPY": {
       "symbol": "SPY",
       "bar_time_utc": "2026-06-02T13:30:00+00:00",
-      "close": 757.4099731445312,
-      "ema": 751.6644845859148,
-      "sma": 742.6851215069111,
-      "vwap": 757.3999837239585,
+      "close": 756.8300170898438,
+      "ema": 751.6417412112212,
+      "sma": 742.6806603064904,
+      "vwap": 757.1066691080729,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
-      "pullback_pyramid_ok": true,
-      "pullback_pyramid_cap": 10,
+      "pullback_pyramid_ok": false,
+      "pullback_pyramid_cap": 0,
       "trend_carry_pyramid_ok": false,
       "trend_carry_pyramid_cap": 0,
       "read": {
         "bias": "bullish",
         "strength": "strong",
-        "adx": 39.17,
-        "ema_slope_4bar": 1.2374,
+        "adx": 38.96,
+        "ema_slope_4bar": 1.2147,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (751.66)",
-          "ADX falls below 20 (now 39.2)",
+          "Close < EMA50 (751.64)",
+          "ADX falls below 20 (now 39.0)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 39.2, close 757.41 vs EMA50 751.66) and the trend is strong. The regime filter is mostly green."
+        "narrative": "SPY leans long (ADX 39.0, close 756.83 vs EMA50 751.64) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -4437,22 +4437,22 @@
           "t": "2026-06-02T13:30:00+00:00",
           "o": 757.1099853515625,
           "h": 757.739990234375,
-          "l": 757.0499877929688,
-          "c": 757.4099731445312,
-          "v": 1451527.0,
-          "ema": 751.6644845859148,
-          "sma": 742.6851215069111,
-          "vwap": 757.3999837239585
+          "l": 756.75,
+          "c": 756.8300170898438,
+          "v": 2286848.0,
+          "ema": 751.6417412112212,
+          "sma": 742.6806603064904,
+          "vwap": 757.1066691080729
         }
       ]
     },
     "GLD": {
       "symbol": "GLD",
       "bar_time_utc": "2026-06-02T13:30:00+00:00",
-      "close": 414.0050048828125,
-      "ema": 414.1332556373131,
-      "sma": 420.93663682204027,
-      "vwap": 413.9249979654948,
+      "close": 414.2300109863281,
+      "ema": 414.1420794060784,
+      "sma": 420.93836763822117,
+      "vwap": 414.0966389973958,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4460,18 +4460,17 @@
       "trend_carry_pyramid_ok": false,
       "trend_carry_pyramid_cap": 0,
       "read": {
-        "bias": "bearish",
+        "bias": "neutral",
         "strength": "weak",
-        "adx": 23.17,
-        "ema_slope_4bar": -0.335,
+        "adx": 23.05,
+        "ema_slope_4bar": -0.3262,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
-          "Close > EMA50 (414.13)",
-          "ADX falls below 20 (now 23.2)",
-          "EMA50 crosses back above SMA130"
+          "Close + ADX both push above EMA50 with ADX \u2265 20",
+          "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GLD leans short (ADX 23.2, close 414.01 vs EMA50 414.13) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "GLD is neutral (ADX 23.1, close 414.23 vs EMA50 414.14) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -8866,23 +8865,23 @@
         {
           "t": "2026-06-02T13:30:00+00:00",
           "o": 414.05218505859375,
-          "h": 414.1099853515625,
+          "h": 414.39990234375,
           "l": 413.6600036621094,
-          "c": 414.0050048828125,
-          "v": 779755.0,
-          "ema": 414.1332556373131,
-          "sma": 420.93663682204027,
-          "vwap": 413.9249979654948
+          "c": 414.2300109863281,
+          "v": 819339.0,
+          "ema": 414.1420794060784,
+          "sma": 420.93836763822117,
+          "vwap": 414.0966389973958
         }
       ]
     },
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
       "bar_time_utc": "2026-06-02T13:00:00+00:00",
-      "close": 4498.75,
-      "ema": 4501.185588085028,
-      "sma": 4500.9941538461535,
-      "vwap": 4502.908975500131,
+      "close": 4498.99,
+      "ema": 4501.194999849734,
+      "sma": 4500.996,
+      "vwap": 4502.9145037958115,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8893,14 +8892,14 @@
         "bias": "neutral",
         "strength": "weak",
         "adx": 23.12,
-        "ema_slope_4bar": 1.6012,
+        "ema_slope_4bar": 1.6107,
         "regime_pct_24h": 20.8,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "PAXGUSDT is neutral (ADX 23.1, close 4,498.75 vs EMA50 4,501.19) but the trend is only weak. The regime filter is mostly blocking \u2014 only 21% of the last 24h was tradable."
+        "narrative": "PAXGUSDT is neutral (ADX 23.1, close 4,498.99 vs EMA50 4,501.19) but the trend is only weak. The regime filter is mostly blocking \u2014 only 21% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -13296,21 +13295,21 @@
           "t": "2026-06-02T13:00:00+00:00",
           "o": 4505.0,
           "h": 4513.0,
-          "l": 4498.51,
-          "c": 4498.75,
-          "v": 24.48434,
-          "ema": 4501.185588085028,
-          "sma": 4500.9941538461535,
-          "vwap": 4502.908975500131
+          "l": 4498.5,
+          "c": 4498.99,
+          "v": 24.51199,
+          "ema": 4501.194999849734,
+          "sma": 4500.996,
+          "vwap": 4502.9145037958115
         }
       ]
     }
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
+    "verdict": "RISK_ON",
     "risk_off_score": 4,
-    "risk_on_score": 5,
+    "risk_on_score": 6,
     "theme_hits": {
       "war": 4,
       "banking": 0,
@@ -13318,12 +13317,12 @@
       "rate_hike": 0,
       "crash": 0,
       "rate_cut": 0,
-      "risk_on": 5
+      "risk_on": 6
     },
     "sample_headlines": {
       "war": [
         "Clashes continue in Lebanon despite Israel and Hezbollah accepting US partial ceasefire plan",
-        "Stock market today: Dow, S&P 500, Nasdaq futures slip as US-Iran tensions weigh on AI optimism",
+        "Stock market today: Dow, S&P 500, Nasdaq slip as US-Iran tensions weigh on AI optimism",
         "Treasury yields fall as investors pin hopes on Israel-Hezbollah ceasefire"
       ],
       "banking": [],
@@ -13332,9 +13331,9 @@
       "crash": [],
       "rate_cut": [],
       "risk_on": [
-        "Stock market today: Dow, S&P 500, Nasdaq futures slip as US-Iran tensions weigh on AI optimism",
+        "Stock market today: Dow, S&P 500, Nasdaq slip as US-Iran tensions weigh on AI optimism",
         "Why a massive Nvidia stock rally may be just getting started",
-        "Victoria Secret shares spike 40% after big earnings beat, raised sales outlook"
+        "Down 54% From Its All-Time High, This Ultra-High-Yield Dividend Stock Under $30 Is a Screaming Buy Right Now"
       ]
     },
     "n_headlines": 114,
@@ -13345,7 +13344,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780407382.285933,
+    "fetched_at": 1780407684.4953792,
     "risk_off_themes": [
       "banking",
       "crash",
