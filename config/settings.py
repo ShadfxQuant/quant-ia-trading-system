@@ -206,6 +206,19 @@ class PullbackStratConfig:
     rsi_overbought: float = 60.0
     rsi_mult_oversold: float = 1.3
     rsi_mult_overbought: float = 0.7
+    # ----- Layer 6: High-conviction agreement size multiplier (2026-05-30) -----
+    # Tested at 1.15/1.20/1.30/1.50× on SPY+GLD. SPY shows microscopic positive
+    # (+$200-$400), GLD loses substantially (-$2,600 to -$7,900). Combined
+    # portfolio is net-negative at every tested level — the simple
+    # SPY-trained rule (Task 3: 97% WR on agreement bars) does NOT generalise
+    # cross-asset. GLD's deterministic regime classifier overcalls "growth"
+    # (75% of GLD stops fired in growth regime per the 2026-05-30 audit),
+    # so amplifying agreement-bar size on GLD amplifies losses, not wins.
+    # Default OFF. Kept in code for the next-session ML build which will
+    # weight features per-asset rather than applying a single threshold.
+    use_conviction_size_mult: bool = False
+    conviction_size_mult: float = 1.3   # if enabled, this is the test default
+    conviction_size_cap: float = 2.0    # cap on combined SizeMult after stacks
     # ----- Exit profile (original deterministic exits) -----
     # Production v3 (Structure 1, validated): no BE-trail clip + extended runner.
     # The trailing-after-partial was the binding constraint on PF — disabling

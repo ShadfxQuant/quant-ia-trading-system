@@ -71,6 +71,10 @@ def prepare_dual(df: pd.DataFrame) -> pd.DataFrame:
     # on baseline #0 (CAGR 17.1→17.3, PF 3.16→3.18, n unchanged).
     if getattr(PULLBACK, "use_rsi_size_mult", False):
         df = _apply_rsi_size_mult(df)
+    # Layer 6: high-conviction agreement size multiplier
+    # (deterministic regime ∈ growth/stabilization AND HMM bull → 1.5× size).
+    if getattr(PULLBACK, "use_conviction_size_mult", False):
+        df = _apply_conviction_size_mult(df)
     return df.dropna(subset=["EMA", "SMA", "EMA_slope", "Momentum", "Deviation"])
 
 
@@ -96,6 +100,36 @@ def _apply_rsi_size_mult(df):
     existing = out.get("pullback_SizeMult", pd.Series(1.0, index=out.index)).fillna(1.0)
     out["pullback_SizeMult"] = (existing * mult).clip(lower=0.2)  # never zero
     out["RSI_14"] = rsi
+    return out
+
+
+def _apply_conviction_size_mult(df):
+    """Layer 6 — high-conviction agreement size multiplier.
+
+    Backtested 2026-05-30 (Task 3, baseline #0): trades opened when the
+    deterministic regime classifier and the HMM agree-bullish hit 97.1% WR
+    with $914 avg PnL on 35 SPY trades. Scaling those entries to 1.5×
+    captures the high-conviction signal without altering entry logic.
+
+    Multiplier composed with whatever pullback_SizeMult is already set
+    (typically the RSI layer); combined product capped at
+    `conviction_size_cap` to prevent runaway sizing on confluence bars.
+    NEVER zeros out — always applied as a positive multiplier.
+    """
+    import pandas as pd
+    cfg = PULLBACK
+    out = df.copy()
+    regime = out.get("Regime", pd.Series("?", index=out.index)).astype(str).str.lower()
+    hmm = out.get("HMM_state", pd.Series("?", index=out.index)).astype(str).str.lower()
+    is_bull_det = regime.isin(("growth", "stabilization"))
+    is_bull_hmm = hmm.str.contains("bull", na=False)
+    agreement = is_bull_det & is_bull_hmm
+    mult = pd.Series(1.0, index=out.index)
+    mult[agreement] = cfg.conviction_size_mult
+    existing = out.get("pullback_SizeMult", pd.Series(1.0, index=out.index)).fillna(1.0)
+    out["pullback_SizeMult"] = (existing * mult).clip(
+        lower=0.2, upper=cfg.conviction_size_cap)
+    out["HighConvictionEntry"] = agreement
     return out
 
 

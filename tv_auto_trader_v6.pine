@@ -1,0 +1,161 @@
+//@version=6
+// =====================================================================
+//  Confluence Auto-Trader (Pine v6)
+//  - 8-indicator voting → probability score 0..100%
+//  - Emits STRONG LONG / STRONG SHORT only when probability >= threshold
+//  - Rate-limited: max N signals per rolling W candles (default 10 / 20)
+//  - ATR stop 1.5x, target 3.0x → 2:1 R:R
+// =====================================================================
+strategy("Confluence Auto-Trader v6", overlay = true, initial_capital = 10000,
+     default_qty_type        = strategy.percent_of_equity,
+     default_qty_value       = 100,
+     commission_type         = strategy.commission.percent,
+     commission_value        = 0.04,
+     pyramiding              = 10,
+     process_orders_on_close = true)
+
+// ---------- Inputs ----------
+probMin     = input.int(70,  "Min probability % to fire", minval = 50, maxval = 100)
+maxSignals  = input.int(10,  "Max signals per window")
+windowBars  = input.int(20,  "Rolling window (bars)")
+
+emaFast     = input.int(20,  "EMA fast")
+emaMid      = input.int(50,  "EMA mid")
+emaSlow     = input.int(200, "EMA slow")
+rsiLen      = input.int(14,  "RSI length")
+stochK      = input.int(14,  "Stoch %K")
+stochD      = input.int(3,   "Stoch %D")
+adxLen      = input.int(14,  "ADX length")
+adxMin      = input.float(20,"ADX min trend")
+bbLen       = input.int(20,  "BB length")
+bbMult      = input.float(2, "BB stdev")
+atrLen      = input.int(14,  "ATR length")
+atrStopMul  = input.float(1.5,"ATR stop x")
+atrTpMul    = input.float(3.0,"ATR target x")
+useStrat    = input.bool(true,"Execute strategy trades")
+
+// ---------- Indicators ----------
+ema20  = ta.ema(close, emaFast)
+ema50  = ta.ema(close, emaMid)
+ema200 = ta.ema(close, emaSlow)
+
+rsiV   = ta.rsi(close, rsiLen)
+
+[macdLine, macdSig, macdHist] = ta.macd(close, 12, 26, 9)
+
+k = ta.stoch(close, high, low, stochK)
+d = ta.sma(k, stochD)
+
+[diPlus, diMinus, adxV] = ta.dmi(adxLen, adxLen)
+
+bbBasis = ta.sma(close, bbLen)
+bbDev   = bbMult * ta.stdev(close, bbLen)
+bbUp    = bbBasis + bbDev
+bbLo    = bbBasis - bbDev
+
+vwapV = ta.vwap(hlc3)
+atrV  = ta.atr(atrLen)
+
+// ---------- Votes (+1 bull / -1 bear / 0 neutral) ----------
+vEma    = ema20 > ema50 and ema50 > ema200 ?  1 :
+          ema20 < ema50 and ema50 < ema200 ? -1 : 0
+vRegime = close > ema200 ? 1 : -1
+vMacd   = macdHist > 0 and macdHist > macdHist[1] ?  1 :
+          macdHist < 0 and macdHist < macdHist[1] ? -1 : 0
+vRsi    = rsiV > 50 and rsiV < 70 ?  1 :
+          rsiV < 50 and rsiV > 30 ? -1 : 0
+vStoch  = k > d and k < 80 ?  1 :
+          k < d and k > 20 ? -1 : 0
+vAdx    = adxV > adxMin and diPlus  > diMinus ?  1 :
+          adxV > adxMin and diMinus > diPlus  ? -1 : 0
+vBb     = close < bbUp and close > bbBasis ?  1 :
+          close > bbLo and close < bbBasis ? -1 : 0
+vVwap   = close > vwapV ? 1 : -1
+
+score    = vEma + vRegime + vMacd + vRsi + vStoch + vAdx + vBb + vVwap
+// Convert net score (-8..+8) to probability 0..100 for the dominant side
+probLong  = math.round(math.max(score, 0) / 8 * 100)
+probShort = math.round(math.max(-score, 0) / 8 * 100)
+prob      = math.max(probLong, probShort)
+
+// ---------- Rate limit: max N signals per rolling W bars ----------
+var int[] sigTimes = array.new_int()
+
+// purge entries older than the window
+while array.size(sigTimes) > 0 and bar_index - array.get(sigTimes, 0) >= windowBars
+    array.shift(sigTimes)
+
+canFire = array.size(sigTimes) < maxSignals
+
+rawLong  = probLong  >= probMin
+rawShort = probShort >= probMin
+
+strongLong  = rawLong  and canFire
+strongShort = rawShort and canFire
+
+if strongLong or strongShort
+    array.push(sigTimes, bar_index)
+
+signalsInWindow = array.size(sigTimes)
+
+// ---------- Stops / targets ----------
+longStop  = close - atrStopMul * atrV
+longTp    = close + atrTpMul   * atrV
+shortStop = close + atrStopMul * atrV
+shortTp   = close - atrTpMul   * atrV
+
+// ---------- Plots ----------
+plot(ema20,  "EMA20",  color = color.new(color.aqua,   0))
+plot(ema50,  "EMA50",  color = color.new(color.orange, 0))
+plot(ema200, "EMA200", color = color.new(color.red,    0), linewidth = 2)
+plot(vwapV,  "VWAP",   color = color.new(color.yellow, 0))
+plot(bbUp,   "BB up",  color = color.new(color.gray,  60))
+plot(bbLo,   "BB lo",  color = color.new(color.gray,  60))
+
+plotshape(strongLong,  "STRONG LONG",  shape.triangleup,   location.belowbar,
+     color.lime, size = size.small, text = "LONG",  textcolor = color.white)
+plotshape(strongShort, "STRONG SHORT", shape.triangledown, location.abovebar,
+     color.red,  size = size.small, text = "SHORT", textcolor = color.white)
+
+// muted markers when a high-prob setup is suppressed by the rate limiter
+plotshape(rawLong  and not canFire, "BLOCKED LONG",  shape.circle,
+     location.belowbar, color.new(color.lime, 60), size = size.tiny)
+plotshape(rawShort and not canFire, "BLOCKED SHORT", shape.circle,
+     location.abovebar, color.new(color.red,  60), size = size.tiny)
+
+bgcolor(strongLong  ? color.new(color.green, 85) : na)
+bgcolor(strongShort ? color.new(color.red,   85) : na)
+
+// ---------- Info table ----------
+var table tbl = table.new(position.top_right, 2, 7, border_width = 1)
+f_row(int i, string k_, string v_) =>
+    table.cell(tbl, 0, i, k_, text_color = color.white, bgcolor = color.new(color.black, 70))
+    table.cell(tbl, 1, i, v_, text_color = color.white, bgcolor = color.new(color.black, 70))
+
+if barstate.islast
+    bias  = score > 0 ? "LONG bias" : score < 0 ? "SHORT bias" : "Neutral"
+    blocked = (rawLong or rawShort) and not canFire
+    state = strongLong ? "STRONG LONG" : strongShort ? "STRONG SHORT" : blocked ? "BLOCKED (rate limit)" : "WAIT"
+    f_row(0, "State",         state)
+    f_row(1, "Bias",          bias)
+    f_row(2, "Prob long %",   str.tostring(probLong))
+    f_row(3, "Prob short %",  str.tostring(probShort))
+    f_row(4, "Threshold %",   str.tostring(probMin))
+    f_row(5, "Score (raw)",   str.tostring(score) + " / 8")
+    f_row(6, "Signals in W",  str.tostring(signalsInWindow) + " / " + str.tostring(maxSignals)
+                              + " (W=" + str.tostring(windowBars) + ")")
+
+// ---------- Strategy execution ----------
+if useStrat
+    if strongLong
+        strategy.entry("L", strategy.long)
+        strategy.exit("L-x", "L", stop = longStop, limit = longTp)
+    if strongShort
+        strategy.entry("S", strategy.short)
+        strategy.exit("S-x", "S", stop = shortStop, limit = shortTp)
+
+// ---------- Alerts ----------
+alertcondition(strongLong,  "STRONG LONG",
+     "STRONG LONG {{ticker}} @ {{close}} stop=ATRx1.5 tp=ATRx3")
+alertcondition(strongShort, "STRONG SHORT",
+     "STRONG SHORT {{ticker}} @ {{close}} stop=ATRx1.5 tp=ATRx3")

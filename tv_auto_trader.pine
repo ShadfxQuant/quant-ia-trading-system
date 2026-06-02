@@ -1,0 +1,121 @@
+//@version=5
+// =====================================================================
+//  Confluence Auto-Trader — 8-indicator voting system
+//  BUY/SELL fires only on strong agreement (default 5/8). HOLD otherwise.
+//  ATR stop 1.5x, target 3.0x → fixed 2:1 R:R.
+//  Works as both indicator (alerts) and strategy (backtest).
+// =====================================================================
+strategy("Confluence Auto-Trader", overlay=true, initial_capital=10000,
+     default_qty_type=strategy.percent_of_equity, default_qty_value=100,
+     commission_type=strategy.commission.percent, commission_value=0.04,
+     pyramiding=0, process_orders_on_close=true)
+
+// ---------- Inputs ----------
+minScore   = input.int(5,  "Confluence threshold (max 8)", minval=1, maxval=8)
+emaFast    = input.int(20, "EMA fast")
+emaMid     = input.int(50, "EMA mid")
+emaSlow    = input.int(200,"EMA slow")
+rsiLen     = input.int(14, "RSI length")
+stochK     = input.int(14, "Stoch %K")
+stochD     = input.int(3,  "Stoch %D")
+adxLen     = input.int(14, "ADX length")
+adxMin     = input.float(20,"ADX min trend")
+bbLen      = input.int(20, "BB length")
+bbMult     = input.float(2,"BB stdev")
+atrLen     = input.int(14, "ATR length")
+atrStopMul = input.float(1.5,"ATR stop x")
+atrTpMul   = input.float(3.0,"ATR target x")
+useStrat   = input.bool(true,"Execute strategy trades")
+
+// ---------- Indicators ----------
+ema20  = ta.ema(close, emaFast)
+ema50  = ta.ema(close, emaMid)
+ema200 = ta.ema(close, emaSlow)
+
+rsiV   = ta.rsi(close, rsiLen)
+
+[macdLine, macdSig, macdHist] = ta.macd(close, 12, 26, 9)
+
+k = ta.stoch(close, high, low, stochK)
+d = ta.sma(k, stochD)
+
+[diPlus, diMinus, adxV] = ta.dmi(adxLen, adxLen)
+
+bbBasis = ta.sma(close, bbLen)
+bbDev   = bbMult * ta.stdev(close, bbLen)
+bbUp    = bbBasis + bbDev
+bbLo    = bbBasis - bbDev
+
+vwapV = ta.vwap(hlc3)
+atrV  = ta.atr(atrLen)
+
+// ---------- Votes (+1 bull / -1 bear / 0 neutral) ----------
+vEma    = ema20 > ema50 and ema50 > ema200 ?  1 :
+          ema20 < ema50 and ema50 < ema200 ? -1 : 0
+vRegime = close > ema200 ? 1 : -1
+vMacd   = macdHist > 0 and macdHist > macdHist[1] ?  1 :
+          macdHist < 0 and macdHist < macdHist[1] ? -1 : 0
+vRsi    = rsiV > 50 and rsiV < 70 ?  1 :
+          rsiV < 50 and rsiV > 30 ? -1 : 0
+vStoch  = k > d and k < 80 ?  1 :
+          k < d and k > 20 ? -1 : 0
+vAdx    = adxV > adxMin and diPlus  > diMinus ?  1 :
+          adxV > adxMin and diMinus > diPlus  ? -1 : 0
+vBb     = close < bbUp and close > bbBasis ?  1 :
+          close > bbLo and close < bbBasis ? -1 : 0
+vVwap   = close > vwapV ? 1 : -1
+
+score = vEma + vRegime + vMacd + vRsi + vStoch + vAdx + vBb + vVwap
+
+buySig  = score >=  minScore
+sellSig = score <= -minScore
+
+// ---------- Stops / targets ----------
+longStop   = close - atrStopMul * atrV
+longTp     = close + atrTpMul   * atrV
+shortStop  = close + atrStopMul * atrV
+shortTp    = close - atrTpMul   * atrV
+
+// ---------- Plots ----------
+plot(ema20,  "EMA20",  color=color.new(color.aqua,  0))
+plot(ema50,  "EMA50",  color=color.new(color.orange,0))
+plot(ema200, "EMA200", color=color.new(color.red,   0), linewidth=2)
+plot(vwapV,  "VWAP",   color=color.new(color.yellow,0))
+plot(bbUp,   "BB up",  color=color.new(color.gray,  60))
+plot(bbLo,   "BB lo",  color=color.new(color.gray,  60))
+
+plotshape(buySig,  "BUY",  shape.triangleup,   location.belowbar, color.lime, size=size.small, text="BUY")
+plotshape(sellSig, "SELL", shape.triangledown, location.abovebar, color.red,  size=size.small, text="SELL")
+
+bgcolor(buySig  ? color.new(color.green, 85) : na)
+bgcolor(sellSig ? color.new(color.red,   85) : na)
+
+// ---------- Info table ----------
+var table tbl = table.new(position.top_right, 2, 10, border_width=1)
+f_row(i, k_, v_) =>
+    table.cell(tbl, 0, i, k_, text_color=color.white, bgcolor=color.new(color.black,70))
+    table.cell(tbl, 1, i, v_, text_color=color.white, bgcolor=color.new(color.black,70))
+if barstate.islast
+    f_row(0,"Signal", buySig ? "BUY" : sellSig ? "SELL" : "HOLD")
+    f_row(1,"Score",  str.tostring(score) + " / 8")
+    f_row(2,"EMA stack",  str.tostring(vEma))
+    f_row(3,"Regime",     str.tostring(vRegime))
+    f_row(4,"MACD",       str.tostring(vMacd))
+    f_row(5,"RSI",        str.tostring(vRsi))
+    f_row(6,"Stoch",      str.tostring(vStoch))
+    f_row(7,"ADX",        str.tostring(vAdx))
+    f_row(8,"BB",         str.tostring(vBb))
+    f_row(9,"VWAP",       str.tostring(vVwap))
+
+// ---------- Strategy execution ----------
+if useStrat
+    if buySig and strategy.position_size <= 0
+        strategy.entry("L", strategy.long)
+        strategy.exit("L-x", "L", stop=longStop, limit=longTp)
+    if sellSig and strategy.position_size >= 0
+        strategy.entry("S", strategy.short)
+        strategy.exit("S-x", "S", stop=shortStop, limit=shortTp)
+
+// ---------- Alerts ----------
+alertcondition(buySig,  "BUY signal",  "BUY {{ticker}} @ {{close}} stop=ATRx1.5 tp=ATRx3")
+alertcondition(sellSig, "SELL signal", "SELL {{ticker}} @ {{close}} stop=ATRx1.5 tp=ATRx3")
