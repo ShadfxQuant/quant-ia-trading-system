@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-02T13:21:20.520617+00:00",
+  "generated_at_utc": "2026-06-02T13:26:22.446179+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -8879,10 +8879,10 @@
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
       "bar_time_utc": "2026-06-02T13:00:00+00:00",
-      "close": 4505.88,
-      "ema": 4501.4651959281655,
-      "sma": 4501.049,
-      "vwap": 4503.045398253947,
+      "close": 4502.04,
+      "ema": 4501.3146076928715,
+      "sma": 4501.019461538461,
+      "vwap": 4503.011051830719,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8892,16 +8892,16 @@
       "read": {
         "bias": "bullish",
         "strength": "weak",
-        "adx": 23.01,
-        "ema_slope_4bar": 1.8809,
+        "adx": 22.88,
+        "ema_slope_4bar": 1.7303,
         "regime_pct_24h": 20.8,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close < EMA50 (4,501.47)",
-          "ADX falls below 20 (now 23.0)",
+          "Close < EMA50 (4,501.31)",
+          "ADX falls below 20 (now 22.9)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "PAXGUSDT leans long (ADX 23.0, close 4,505.88 vs EMA50 4,501.47) but the trend is only weak. The regime filter is mostly blocking \u2014 only 21% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "PAXGUSDT leans long (ADX 22.9, close 4,502.04 vs EMA50 4,501.31) but the trend is only weak. The regime filter is mostly blocking \u2014 only 21% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -13297,12 +13297,12 @@
           "t": "2026-06-02T13:00:00+00:00",
           "o": 4505.0,
           "h": 4513.0,
-          "l": 4504.25,
-          "c": 4505.88,
-          "v": 11.98204,
-          "ema": 4501.4651959281655,
-          "sma": 4501.049,
-          "vwap": 4503.045398253947
+          "l": 4501.34,
+          "c": 4502.04,
+          "v": 18.36301,
+          "ema": 4501.3146076928715,
+          "sma": 4501.019461538461,
+          "vwap": 4503.011051830719
         }
       ]
     }
@@ -13310,22 +13310,22 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_ON",
-    "risk_off_score": 3,
-    "risk_on_score": 5,
+    "risk_off_score": 4,
+    "risk_on_score": 6,
     "theme_hits": {
-      "war": 3,
+      "war": 4,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
       "crash": 0,
       "rate_cut": 0,
-      "risk_on": 5
+      "risk_on": 6
     },
     "sample_headlines": {
       "war": [
         "Clashes continue in Lebanon despite Israel and Hezbollah accepting US partial ceasefire plan",
-        "Treasury yields fall as investors pin hopes on Israel-Hezbollah ceasefire",
-        "Japan, South Korea stocks hit more records, as oil gains on Iran war ending fragility - ABC News - Breaking News, Latest News and Videos"
+        "Stock market today: Dow, S&P 500, Nasdaq futures slip as US-Iran tensions weigh on AI optimism",
+        "Treasury yields fall as investors pin hopes on Israel-Hezbollah ceasefire"
       ],
       "banking": [],
       "recession": [],
@@ -13333,9 +13333,9 @@
       "crash": [],
       "rate_cut": [],
       "risk_on": [
+        "Stock market today: Dow, S&P 500, Nasdaq futures slip as US-Iran tensions weigh on AI optimism",
         "Why a massive Nvidia stock rally may be just getting started",
-        "HPE Stock Surges On Fiscal Q2 Earnings Beat, Raised Guidance, Fiscal 2027 Outlook",
-        "Victoria Secret shares spike 40% after big earnings beat, raised sales outlook"
+        "HPE Stock Surges On Fiscal Q2 Earnings Beat, Raised Guidance, Fiscal 2027 Outlook"
       ]
     },
     "n_headlines": 114,
@@ -13346,7 +13346,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780406481.1043863,
+    "fetched_at": 1780406783.26404,
     "risk_off_themes": [
       "banking",
       "crash",
