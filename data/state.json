@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-02T12:11:21.283169+00:00",
+  "generated_at_utc": "2026-06-02T12:16:19.901043+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -8879,10 +8879,10 @@
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
       "bar_time_utc": "2026-06-02T12:00:00+00:00",
-      "close": 4518.29,
-      "ema": 4501.815980235758,
-      "sma": 4500.136769230769,
-      "vwap": 4501.843065752591,
+      "close": 4517.16,
+      "ema": 4501.771666510267,
+      "sma": 4500.128076923076,
+      "vwap": 4501.841749627018,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8893,15 +8893,15 @@
         "bias": "bullish",
         "strength": "weak",
         "adx": 25.71,
-        "ema_slope_4bar": 2.9919,
+        "ema_slope_4bar": 2.9476,
         "regime_pct_24h": 25.0,
         "macro_tilt": "neutral",
         "flip": [
-          "Close < EMA50 (4,501.82)",
+          "Close < EMA50 (4,501.77)",
           "ADX falls below 20 (now 25.7)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "PAXGUSDT leans long (ADX 25.7, close 4,518.29 vs EMA50 4,501.82) but the trend is only weak. The regime filter is mostly blocking \u2014 only 25% of the last 24h was tradable."
+        "narrative": "PAXGUSDT leans long (ADX 25.7, close 4,517.16 vs EMA50 4,501.77) but the trend is only weak. The regime filter is mostly blocking \u2014 only 25% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -13298,11 +13298,11 @@
           "o": 4517.76,
           "h": 4518.33,
           "l": 4514.91,
-          "c": 4518.29,
-          "v": 1.04052,
-          "ema": 4501.815980235758,
-          "sma": 4500.136769230769,
-          "vwap": 4501.843065752591
+          "c": 4517.16,
+          "v": 1.04217,
+          "ema": 4501.771666510267,
+          "sma": 4500.128076923076,
+          "vwap": 4501.841749627018
         }
       ]
     }
@@ -13310,16 +13310,16 @@
   "errors": {},
   "macro": {
     "verdict": "NEUTRAL",
-    "risk_off_score": 4,
-    "risk_on_score": 5,
+    "risk_off_score": 5,
+    "risk_on_score": 4,
     "theme_hits": {
       "war": 4,
       "banking": 0,
       "recession": 0,
-      "rate_hike": 0,
+      "rate_hike": 1,
       "crash": 0,
       "rate_cut": 0,
-      "risk_on": 5
+      "risk_on": 4
     },
     "sample_headlines": {
       "war": [
@@ -13329,13 +13329,15 @@
       ],
       "banking": [],
       "recession": [],
-      "rate_hike": [],
+      "rate_hike": [
+        "Eurozone Inflation Climbs Further, Paving Way for ECB Rate Hike"
+      ],
       "crash": [],
       "rate_cut": [],
       "risk_on": [
         "Stocks rally on AI optimism; jitters over Iran simmer",
         "Stock market today: Dow, S&P 500, Nasdaq futures slip as US-Iran tensions weigh on AI optimism",
-        "AI is carrying the S&P 500 rally: Chart of the Day"
+        "Victoria Secret shares spike 40% after big earnings beat, raised sales outlook"
       ]
     },
     "n_headlines": 110,
@@ -13346,7 +13348,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780402281.9079862,
+    "fetched_at": 1780402581.4140558,
     "risk_off_themes": [
       "banking",
       "crash",
