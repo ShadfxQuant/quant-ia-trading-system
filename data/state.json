@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-02T14:36:23.765233+00:00",
+  "generated_at_utc": "2026-06-02T14:41:21.771795+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -19,10 +19,10 @@
     "SPY": {
       "symbol": "SPY",
       "bar_time_utc": "2026-06-02T14:30:00+00:00",
-      "close": 758.6500244140625,
-      "ema": 751.9506730744808,
-      "sma": 742.9505065917969,
-      "vwap": 757.6910427976185,
+      "close": 758.5,
+      "ema": 751.9447897641254,
+      "sma": 742.9493525578425,
+      "vwap": 757.7241725086677,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -32,16 +32,16 @@
       "read": {
         "bias": "bullish",
         "strength": "strong",
-        "adx": 37.53,
-        "ema_slope_4bar": 1.1552,
+        "adx": 37.61,
+        "ema_slope_4bar": 1.1494,
         "regime_pct_24h": 100.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close < EMA50 (751.95)",
-          "ADX falls below 20 (now 37.5)",
+          "Close < EMA50 (751.94)",
+          "ADX falls below 20 (now 37.6)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 37.5, close 758.65 vs EMA50 751.95) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "SPY leans long (ADX 37.6, close 758.50 vs EMA50 751.94) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -4428,7 +4428,7 @@
           "h": 758.469970703125,
           "l": 756.75,
           "c": 757.7349853515625,
-          "v": 6334472.0,
+          "v": 6277067.0,
           "ema": 751.6772301626611,
           "sma": 742.6876216008113,
           "vwap": 757.6516520182291
@@ -4436,23 +4436,23 @@
         {
           "t": "2026-06-02T14:30:00+00:00",
           "o": 757.72998046875,
-          "h": 758.6580200195312,
+          "h": 758.8099975585938,
           "l": 757.719970703125,
-          "c": 758.6500244140625,
-          "v": 382917.0,
-          "ema": 751.9506730744808,
-          "sma": 742.9505065917969,
-          "vwap": 757.6910427976185
+          "c": 758.5,
+          "v": 735227.0,
+          "ema": 751.9447897641254,
+          "sma": 742.9493525578425,
+          "vwap": 757.7241725086677
         }
       ]
     },
     "GLD": {
       "symbol": "GLD",
       "bar_time_utc": "2026-06-02T14:30:00+00:00",
-      "close": 413.2300109863281,
-      "ema": 414.04534887807904,
-      "sma": 420.88245990459734,
-      "vwap": 413.05016337615086,
+      "close": 413.2099914550781,
+      "ema": 414.0445637984222,
+      "sma": 420.88230590820314,
+      "vwap": 413.052839413135,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4463,15 +4463,15 @@
         "bias": "bearish",
         "strength": "weak",
         "adx": 21.41,
-        "ema_slope_4bar": -0.3187,
+        "ema_slope_4bar": -0.3195,
         "regime_pct_24h": 100.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (414.05)",
+          "Close > EMA50 (414.04)",
           "ADX falls below 20 (now 21.4)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 21.4, close 413.23 vs EMA50 414.05) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GLD leans short (ADX 21.4, close 413.21 vs EMA50 414.04) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -8858,7 +8858,7 @@
           "h": 414.39990234375,
           "l": 412.1400146484375,
           "c": 412.61199951171875,
-          "v": 1482020.0,
+          "v": 1484979.0,
           "ema": 414.0786279757015,
           "sma": 420.9259213961088,
           "vwap": 413.05063883463544
@@ -8866,23 +8866,23 @@
         {
           "t": "2026-06-02T14:30:00+00:00",
           "o": 412.7850036621094,
-          "h": 413.2300109863281,
+          "h": 413.4700012207031,
           "l": 412.6300048828125,
-          "c": 413.2300109863281,
-          "v": 34962.0,
-          "ema": 414.04534887807904,
-          "sma": 420.88245990459734,
-          "vwap": 413.05016337615086
+          "c": 413.2099914550781,
+          "v": 64718.0,
+          "ema": 414.0445637984222,
+          "sma": 420.88230590820314,
+          "vwap": 413.052839413135
         }
       ]
     },
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
       "bar_time_utc": "2026-06-02T14:00:00+00:00",
-      "close": 4489.0,
-      "ema": 4500.405545799495,
-      "sma": 4501.826692307692,
-      "vwap": 4501.1196157589175,
+      "close": 4493.1,
+      "ema": 4500.56633011322,
+      "sma": 4501.85823076923,
+      "vwap": 4501.2413401853355,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8890,18 +8890,17 @@
       "trend_carry_pyramid_ok": false,
       "trend_carry_pyramid_cap": 0,
       "read": {
-        "bias": "bearish",
+        "bias": "neutral",
         "strength": "weak",
         "adx": 23.55,
-        "ema_slope_4bar": -0.0598,
+        "ema_slope_4bar": 0.101,
         "regime_pct_24h": 20.8,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
-          "Close > EMA50 (4,500.41)",
-          "ADX falls below 20 (now 23.5)",
-          "EMA50 crosses back above SMA130"
+          "Close + ADX both push above EMA50 with ADX \u2265 20",
+          "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "PAXGUSDT leans short (ADX 23.5, close 4,489.00 vs EMA50 4,500.41) but the trend is only weak. The regime filter is mostly blocking \u2014 only 21% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "PAXGUSDT is neutral (ADX 23.5, close 4,493.10 vs EMA50 4,500.57) but the trend is only weak. The regime filter is mostly blocking \u2014 only 21% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -13298,11 +13297,11 @@
           "o": 4491.82,
           "h": 4496.04,
           "l": 4481.02,
-          "c": 4489.0,
-          "v": 34.94145,
-          "ema": 4500.405545799495,
-          "sma": 4501.826692307692,
-          "vwap": 4501.1196157589175
+          "c": 4493.1,
+          "v": 34.94663,
+          "ema": 4500.56633011322,
+          "sma": 4501.85823076923,
+          "vwap": 4501.2413401853355
         }
       ]
     }
@@ -13348,7 +13347,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780410984.4294968,
+    "fetched_at": 1780411282.5933897,
     "risk_off_themes": [
       "banking",
       "crash",
