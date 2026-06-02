@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-02T15:51:21.794337+00:00",
+  "generated_at_utc": "2026-06-02T15:56:27.605076+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -19,10 +19,10 @@
     "SPY": {
       "symbol": "SPY",
       "bar_time_utc": "2026-06-02T15:30:00+00:00",
-      "close": 759.780029296875,
-      "ema": 752.3044267760006,
-      "sma": 743.2297377366286,
-      "vwap": 758.467812071869,
+      "close": 759.839111328125,
+      "ema": 752.3067437184025,
+      "sma": 743.2301922137921,
+      "vwap": 758.4883204825082,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -33,15 +33,15 @@
         "bias": "bullish",
         "strength": "strong",
         "adx": 37.69,
-        "ema_slope_4bar": 1.1606,
+        "ema_slope_4bar": 1.1629,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
-          "Close < EMA50 (752.30)",
+          "Close < EMA50 (752.31)",
           "ADX falls below 20 (now 37.7)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 37.7, close 759.78 vs EMA50 752.30) and the trend is strong. The regime filter is mostly green."
+        "narrative": "SPY leans long (ADX 37.7, close 759.84 vs EMA50 752.31) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -4437,22 +4437,22 @@
           "t": "2026-06-02T15:30:00+00:00",
           "o": 759.8699951171875,
           "h": 760.0399780273438,
-          "l": 759.5999755859375,
-          "c": 759.780029296875,
-          "v": 811631.0,
-          "ema": 752.3044267760006,
-          "sma": 743.2297377366286,
-          "vwap": 758.467812071869
+          "l": 759.5900268554688,
+          "c": 759.839111328125,
+          "v": 985610.0,
+          "ema": 752.3067437184025,
+          "sma": 743.2301922137921,
+          "vwap": 758.4883204825082
         }
       ]
     },
     "GLD": {
       "symbol": "GLD",
       "bar_time_utc": "2026-06-02T15:30:00+00:00",
-      "close": 413.4649963378906,
-      "ema": 414.0362406465468,
-      "sma": 420.84752150315506,
-      "vwap": 413.1435978561459,
+      "close": 413.3371887207031,
+      "ema": 414.0312285831277,
+      "sma": 420.84653836763823,
+      "vwap": 413.1455017053887,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4463,15 +4463,15 @@
         "bias": "bearish",
         "strength": "chop",
         "adx": 19.89,
-        "ema_slope_4bar": -0.221,
+        "ema_slope_4bar": -0.226,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
-          "Close > EMA50 (414.04)",
+          "Close > EMA50 (414.03)",
           "ADX falls below 20 (now 19.9)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 19.9, close 413.46 vs EMA50 414.04) and the tape is choppy. The regime filter is mostly green."
+        "narrative": "GLD leans short (ADX 19.9, close 413.34 vs EMA50 414.03) and the tape is choppy. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -8868,21 +8868,21 @@
           "o": 413.57000732421875,
           "h": 413.8299865722656,
           "l": 413.07000732421875,
-          "c": 413.4649963378906,
-          "v": 165474.0,
-          "ema": 414.0362406465468,
-          "sma": 420.84752150315506,
-          "vwap": 413.1435978561459
+          "c": 413.3371887207031,
+          "v": 206645.0,
+          "ema": 414.0312285831277,
+          "sma": 420.84653836763823,
+          "vwap": 413.1455017053887
         }
       ]
     },
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
       "bar_time_utc": "2026-06-02T15:00:00+00:00",
-      "close": 4496.1,
-      "ema": 4500.470303326772,
-      "sma": 4502.711692307692,
-      "vwap": 4500.178415550863,
+      "close": 4494.0,
+      "ema": 4500.387950385596,
+      "sma": 4502.695538461538,
+      "vwap": 4500.076016869958,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8893,15 +8893,15 @@
         "bias": "bearish",
         "strength": "weak",
         "adx": 23.14,
-        "ema_slope_4bar": -0.6733,
+        "ema_slope_4bar": -0.7556,
         "regime_pct_24h": 20.8,
         "macro_tilt": "neutral",
         "flip": [
-          "Close > EMA50 (4,500.47)",
+          "Close > EMA50 (4,500.39)",
           "ADX falls below 20 (now 23.1)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "PAXGUSDT leans short (ADX 23.1, close 4,496.10 vs EMA50 4,500.47) but the trend is only weak. The regime filter is mostly blocking \u2014 only 21% of the last 24h was tradable."
+        "narrative": "PAXGUSDT leans short (ADX 23.1, close 4,494.00 vs EMA50 4,500.39) but the trend is only weak. The regime filter is mostly blocking \u2014 only 21% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -13298,11 +13298,11 @@
           "o": 4495.5,
           "h": 4499.1,
           "l": 4492.21,
-          "c": 4496.1,
-          "v": 55.22846,
-          "ema": 4500.470303326772,
-          "sma": 4502.711692307692,
-          "vwap": 4500.178415550863
+          "c": 4494.0,
+          "v": 57.1223,
+          "ema": 4500.387950385596,
+          "sma": 4502.695538461538,
+          "vwap": 4500.076016869958
         }
       ]
     }
@@ -13310,10 +13310,10 @@
   "errors": {},
   "macro": {
     "verdict": "NEUTRAL",
-    "risk_off_score": 3,
+    "risk_off_score": 4,
     "risk_on_score": 3,
     "theme_hits": {
-      "war": 3,
+      "war": 4,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
@@ -13325,7 +13325,7 @@
       "war": [
         "Clashes continue in Lebanon despite Israel and Hezbollah accepting US partial ceasefire plan",
         "Stock market today: Dow, S&P 500, Nasdaq build on records as US-Iran tensions weigh on AI optimism",
-        "Japan, South Korea stocks hit more records, as oil gains on Iran war ending fragility - ABC News - Breaking News, Latest News and Videos"
+        "Rubio says U.S. is in talks with Iran over nuclear program as senators press for war endgame"
       ],
       "banking": [],
       "recession": [],
@@ -13346,7 +13346,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780415482.4231687,
+    "fetched_at": 1780415788.4734964,
     "risk_off_themes": [
       "banking",
       "crash",
