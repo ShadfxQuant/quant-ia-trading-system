@@ -400,3 +400,158 @@ CRON:        */5 07-20 UTC via Cloudflare → GitHub workflow_dispatch
 NOTIFY:      flip-based dedupe, paper exit pings on every closed leg
 PAPER:       $100K virtual, fills at signal-bar close, stops/TPs from ladder
 ```
+
+---
+
+## Part 8 — 2026-05-30 session (baseline #0 rebuild, audit, A1 universe expansion)
+
+### Coinbase data-source switch (PAXG)
+
+Binance vision mirror stopped serving fresh PAXGUSDT bars at 2026-05-06. PAXG itself is actively trading (Coinbase ticker $4530 on 2026-05-29) — purely a Binance-side data issue. Added Coinbase route for PAXGUSDT → `PAXG-USD` on Coinbase Exchange API. Initial pager had a bug (passing start+end shifted the window backward); fixed by paging without params for first page, then walking backward. **9,250 hourly bars now current through 2026-05-29.** `_COINBASE_OVERRIDES` dict makes future swaps trivial.
+
+### Baseline #0 rebuild — the production engine got dialed back to its pure form
+
+Multi-task research on SPY 1H confirmed the cleanest config:
+
+**TASK 1 — VWAP vs RSI overlays (4 configs):**
+- A. Pure baseline: CAGR 17.1%, PF 3.16, n=175  ← winner before RSI
+- B. VWAP pyramid gate: CAGR 15.9%, PF 2.60, n=167  ← removes 8 legs, hurts PF
+- **C. RSI size mult: CAGR 17.3%, PF 3.18, n=175**  ← cleanly additive, **shipped**
+- D. VWAP + RSI: CAGR 16.2%, PF 2.61, n=167  ← VWAP gate's harm dominates
+
+Confirmed VWAP-as-non-blocking-gate STILL hurts performance. The "indicators must never gate entries" rule has empirical proof.
+
+**TASK 3 — Regime entry-quality breakdown:**
+
+| Deterministic regime at entry | n | WR | % of PnL |
+|---|---|---|---|
+| growth | 72 | **84.7%** | **+72.8%** |
+| slowdown | 82 | 62.2% | +25.4% |
+| crash | 19 | **47.4%** | **-2.6%** |
+
+| HMM state at entry | n | WR | % of PnL |
+|---|---|---|---|
+| bull | 64 | 79.7% | +63.8% |
+| range | 48 | 70.8% | +18.6% |
+| bear | 28 | 60.7% | +4.1% |
+
+| Agreement combination | n | WR | Avg PnL |
+|---|---|---|---|
+| **growth + HMM bull (BOTH bullish)** | **35** | **97.1%** | **+$914** |
+| det bull, HMM bear (disagree) | 39 | 74.4% | +$296 |
+
+That growth+HMM-bull subset is the single highest-conviction signal in the system. **But see Part 8.5 — it didn't generalise.**
+
+### Config changes shipped 2026-05-30 (PULLBACK dataclass)
+
+```
+base_size_pct                     0.75 → 0.30   (2.5× lev → 1.0× lev)
+capital_cap_pct                   2.50 → 1.00   (2.5× → 1.0×)
+max_pyramid_positions             10   → 8      (baseline #0 spec)
+pyramid_require_above_vwap        True → False  (confirmed harmful)
+pyramid_require_positive_momentum False (unchanged)
+use_rsi_size_mult                 NEW: True
+rsi_oversold/overbought           NEW: 40 / 60
+rsi_mult_oversold/overbought      NEW: 1.3× / 0.7×
+```
+
+**De-leveraged from 2.5× to 1.0×.** Headline CAGR drops but risk-adjusted return improves:
+
+| Symbol | Engine | CAGR | DD | Sharpe | PF | Final ($100K → 2.83yr) |
+|---|---|---|---|---|---|---|
+| SPY | post-deploy | +17.3% | 10.6% | 1.49 | 3.18 | $156,926 |
+| GLD | post-deploy | +35.9% | **9.7%** | **1.94** | **4.78** | $238,141 |
+
+To re-leverage: multiply `base_size_pct` and `capital_cap_pct` by the desired factor. 2.5× restores prior production sizing (~43% SPY CAGR / ~90% GLD CAGR).
+
+### QuantConnect port (independent verification)
+
+`quantconnect/pullback_engine.py` — single-asset (SPY) LEAN algorithm mirroring the full production logic: pullback entry, EMA50/SMA130 structure, ATR-normalized pullback band, slope guard, symmetric long+short, pyramid up to 8 legs, stop/TP1/TP2 ladder, time stop, RSI size multiplier.
+
+`quantconnect/README.md` — setup walkthrough. Paste into QuantConnect.com, backtest 2023-07-25 → 2026-05-22 with $100K. Expected drift ±5% on CAGR (different bar source — QC uses Polygon, we use yfinance).
+
+### Part 8.5 — the conviction multiplier didn't generalise
+
+Built `_apply_conviction_size_mult()` based on the Task 3 finding (growth + HMM bull = 97% WR). Swept multipliers 1.15 / 1.20 / 1.30 / 1.50× on combined SPY + GLD:
+
+| Multiplier | SPY final | GLD final | Combined Δ |
+|---|---|---|---|
+| **OFF (baseline)** | $156,926 | $238,141 | **$395,067** |
+| 1.15× | +$181 | -$2,600 | -$2,419 |
+| 1.20× | +$224 | -$3,260 | -$3,035 |
+| 1.30× | +$289 | -$4,569 | -$4,281 |
+| 1.50× | +$393 | -$7,918 | -$7,525 |
+
+**Every level net-negative on the combined portfolio.** SPY benefits microscopically; GLD loses substantially. Root cause: GLD's deterministic regime classifier overcalls "growth" — 75% of GLD stops fired in declared growth regime per the stop-leg audit. Amplifying agreement-bar size on GLD amplifies losses, not wins.
+
+**Layer 6 default: OFF.** Code kept in `main_portfolio._apply_conviction_size_mult` for the next-session ML build to leverage with per-asset weighting.
+
+### Stop-leg regime audit (`_audit_stops_by_regime.py`)
+
+Pre-ML diagnostic. Hypothesis: stops concentrate in chop bars. Result: **REJECTED.**
+
+| ADX bucket | Stops | % of stop $ |
+|---|---|---|
+| chop (<20) | 20 | ~30% |
+| weak (20–30) | 33 | ~20% |
+| **strong (≥30)** | **52** | **~55%** |
+
+Stops concentrate in **strong-trend reversals**, not chop. Counterfactual: skipping all ADX<20 entries would have cost $51K net combined (more winners lost than stops saved).
+
+**Real ML target reframed:** the bug isn't "we trade chop bars". The bug is **regime-call quality** — when the deterministic classifier says "growth" and the trend then reverses, we eat a stop. Per-asset feature weighting + out-of-sample features (VIX term structure, yield curve, breadth) is the path to fix this.
+
+### Phase A1 — universe expansion (5 new symbols)
+
+Added cross-asset paper symbols. Smoke-test results vs SPY (CAGR 17.3%, PF 3.18, DD 10.6%):
+
+| Symbol | PF | CAGR | DD | n | Verdict |
+|---|---|---|---|---|---|
+| DIA | 3.35 | +16.5% | 10.3% | 146 | ✅ as good as SPY |
+| QQQ | 1.86 | +12.8% | 14.1% | 159 | ⚠ weaker but tradeable |
+| SLV | 1.24 | +11.1% | **39.6%** | 257 | ⚠⚠ silver vol blows past DD budget |
+| IWM | 1.31 | +5.3% | 22.7% | 154 | ❌ small caps don't fit engine |
+| **EURUSD=X** | **1.01** | **+0.1%** | 10.0% | 243 / **17,104 bars** | ❌ FX hourly is broken |
+
+**Lessons before A2 (~10 more symbols):**
+1. Engine biased toward NYSE-hours liquid equities. Anything 24/5 (FX) or 24/7 (crypto) needs a session regime filter or it fires on dead hours.
+2. Pre-A2 foundation work needed: per-symbol size scaler (fixes SLV) + session filter framework (fixes FX). Without these, scaling to 40 symbols is just finding broken assets one at a time.
+3. Asset-class adapters > ticker list. The 40-symbol vision is really 5-6 asset-class adapters with ~5-10 tickers each.
+
+### Live config snapshot (end of 2026-05-30 session — commit `31a7bb4`)
+
+```
+PULLBACK:    base_size_pct=0.30, capital_cap_pct=1.00, max_pyramid=8
+             use_rsi_size_mult=True, conviction_size_mult=OFF
+             pyramid_require_above_vwap=False (PURE EDGE)
+TRENDCARRY:  base_size_pct=0.30, capital_cap_pct=1.25, max_pyramid=2  (unchanged)
+REGIME:      PAXGUSDT → COMBO_E (ADX_25_NO_ASIA_SLOPE), others NONE
+SYMBOLS:     8 — live: SPY, GLD, PAXGUSDT
+                  paper: DIA, QQQ
+                  watchlist: SLV, IWM, EURUSD=X
+DATA:        PAXGUSDT routed to Coinbase (Binance mirror went stale)
+             yfinance for equity ETFs and FX
+CRON:        */5 07-20 UTC, Cloudflare → GitHub workflow_dispatch
+PAPER:       $100K virtual, fills at signal-bar close
+```
+
+### Open work queues
+
+| Queue | Scope | Priority |
+|---|---|---|
+| Infinex execution adapter | Connect to user's Infinex account for live order placement | Blocked on user research — needs Infinex SDK/API documentation |
+| ML regime classifier | Predict trade-outcome (TP vs stop) from features incl. VIX/yields/breadth. Used as size mult, not gate. | High after Infinex investigation |
+| Per-symbol size scaler | Apply per-asset multipliers (SLV 0.5×, etc) so vol-heavy assets stay inside DD budget | Foundation for A2 |
+| Session filter framework | Generic per-asset session gating (FX London/NY overlap, futures 23/5) | Foundation for A2 |
+| 3-month paper validation | Don't touch the config for 3 months. Just collect data and compare against backtest. | The actual most important thing |
+
+### What was almost shipped but rolled back
+
+- **Conviction multiplier** (Layer 6, growth+HMM-bull → 1.5× size). Failed cross-asset generalisation test. Code retained; default OFF.
+- **VWAP pyramid gate** (formerly default ON). Confirmed harmful even as "non-blocking" overlay. Default flipped to OFF in baseline #0 rebuild.
+
+### Lessons from this session worth not repeating
+
+1. **Single-asset findings don't always generalise.** Task 3's 97% WR signal on SPY was real but SPY-specific. Always test multi-asset before shipping a feature derived from one symbol's data.
+2. **The chop-filter intuition is wrong on this engine.** Stops cluster in strong-trend reversals, not chop. Filter design must be empirical not folk-wisdom.
+3. **Adding more symbols ≠ better portfolio.** EURUSD ate 17K bars of compute and added zero edge. Asset-class fit matters more than count.
+4. **De-leveraging improved Sharpe even though CAGR dropped.** The "cleanest" config isn't the "biggest number" config — it's the one with best risk-adjusted return per unit of complexity.
