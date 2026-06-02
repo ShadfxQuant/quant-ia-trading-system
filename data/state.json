@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-02T12:26:17.756075+00:00",
+  "generated_at_utc": "2026-06-02T12:31:25.242419+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -35,13 +35,13 @@
         "adx": 40.6,
         "ema_slope_4bar": 1.3328,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "supports",
         "flip": [
           "Close < EMA50 (751.43)",
           "ADX falls below 20 (now 40.6)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 40.6, close 758.44 vs EMA50 751.43) and the trend is strong. The regime filter is mostly green."
+        "narrative": "SPY leans long (ADX 40.6, close 758.44 vs EMA50 751.43) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -4465,13 +4465,13 @@
         "adx": 24.82,
         "ema_slope_4bar": -0.4522,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "supports",
         "flip": [
           "Close > EMA50 (414.14)",
           "ADX falls below 20 (now 24.8)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 24.8, close 411.23 vs EMA50 414.14) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "GLD leans short (ADX 24.8, close 411.23 vs EMA50 414.14) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -8879,10 +8879,10 @@
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
       "bar_time_utc": "2026-06-02T12:00:00+00:00",
-      "close": 4520.75,
-      "ema": 4501.912450823993,
-      "sma": 4500.155692307692,
-      "vwap": 4501.858422056701,
+      "close": 4518.85,
+      "ema": 4501.837941020071,
+      "sma": 4500.141076923077,
+      "vwap": 4501.903615198348,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8893,15 +8893,15 @@
         "bias": "bullish",
         "strength": "weak",
         "adx": 25.71,
-        "ema_slope_4bar": 3.0883,
+        "ema_slope_4bar": 3.0138,
         "regime_pct_24h": 25.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
-          "Close < EMA50 (4,501.91)",
+          "Close < EMA50 (4,501.84)",
           "ADX falls below 20 (now 25.7)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "PAXGUSDT leans long (ADX 25.7, close 4,520.75 vs EMA50 4,501.91) but the trend is only weak. The regime filter is mostly blocking \u2014 only 25% of the last 24h was tradable."
+        "narrative": "PAXGUSDT leans long (ADX 25.7, close 4,518.85 vs EMA50 4,501.84) but the trend is only weak. The regime filter is mostly blocking \u2014 only 25% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -13296,22 +13296,22 @@
         {
           "t": "2026-06-02T12:00:00+00:00",
           "o": 4517.76,
-          "h": 4520.75,
+          "h": 4522.75,
           "l": 4514.91,
-          "c": 4520.75,
-          "v": 1.19351,
-          "ema": 4501.912450823993,
-          "sma": 4500.155692307692,
-          "vwap": 4501.858422056701
+          "c": 4518.85,
+          "v": 1.9363,
+          "ema": 4501.837941020071,
+          "sma": 4500.141076923077,
+          "vwap": 4501.903615198348
         }
       ]
     }
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
+    "verdict": "RISK_ON",
     "risk_off_score": 4,
-    "risk_on_score": 4,
+    "risk_on_score": 6,
     "theme_hits": {
       "war": 4,
       "banking": 0,
@@ -13319,7 +13319,7 @@
       "rate_hike": 0,
       "crash": 0,
       "rate_cut": 0,
-      "risk_on": 4
+      "risk_on": 6
     },
     "sample_headlines": {
       "war": [
@@ -13333,9 +13333,9 @@
       "crash": [],
       "rate_cut": [],
       "risk_on": [
+        "Buy Nvidia Stock, Sell Its Rival. How Cathie Wood\u2019s ARK Is Playing the Chips Rally.",
         "Stocks rally on AI optimism; jitters over Iran simmer",
-        "Stock market today: Dow, S&P 500, Nasdaq futures slip as US-Iran tensions weigh on AI optimism",
-        "Victoria Secret shares spike 40% after big earnings beat, raised sales outlook"
+        "Stock market today: Dow, S&P 500, Nasdaq futures slip as US-Iran tensions weigh on AI optimism"
       ]
     },
     "n_headlines": 110,
@@ -13346,7 +13346,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780403178.345064,
+    "fetched_at": 1780403486.3008902,
     "risk_off_themes": [
       "banking",
       "crash",
