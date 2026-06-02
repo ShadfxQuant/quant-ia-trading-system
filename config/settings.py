@@ -25,12 +25,19 @@ class DataConfig:
     # NYSE hours + ADX≥25 (COMBO_F: PF 1.81 / DD 18.3% in validation).
     # All three gold instruments use inverse macro polarity.
     symbols: List[str] = field(default_factory=lambda: [
-        # Trimmed 2026-05-29 to the three vehicles that map to actual
-        # execution: SPY for equity paper-trading reference, GLD for the
-        # long-history gold backtest baseline, PAXGUSDT for the live
-        # Infinex perp signals (gated by COMBO_E regime filter).
-        # DIA dropped — can't be diversified-into on Infinex anyway.
+        # Phase A1 — research/paper portfolio expansion 2026-05-30.
+        # Live on Infinex (real execution intent): SPY, GLD, PAXGUSDT.
+        # Paper-only diversification (verified backtest 2023-26):
+        #   DIA: PF 3.35, CAGR 16.5%, DD 10.3%  ← clean, similar to SPY
+        #   QQQ: PF 1.86, CAGR 12.8%, DD 14.1%  ← weaker but tradeable
+        # Watchlist symbols (degraded or broken on this engine — kept in
+        # the universe for the Discord/dashboard signal stream but flagged):
+        #   SLV: DD 39.6%  → needs per-symbol size scaler (~0.5× SPY)
+        #   IWM: PF 1.31   → small-cap noise, marginal edge
+        #   EURUSD=X: PF 1.01 → FX needs session filter + different bar res
         "SPY", "GLD", "PAXGUSDT",
+        "DIA", "QQQ",
+        "SLV", "IWM", "EURUSD=X",
     ])
     start: str = "2024-05-06"
     end: str = "2026-05-06"
