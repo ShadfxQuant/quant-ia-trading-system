@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-02T13:01:23.077142+00:00",
+  "generated_at_utc": "2026-06-02T13:06:21.257733+00:00",
   "engine": {
     "pullback_base_pct": 0.75,
     "pullback_cap_pct": 2.5,
@@ -35,13 +35,13 @@
         "adx": 40.6,
         "ema_slope_4bar": 1.3328,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "supports",
         "flip": [
           "Close < EMA50 (751.43)",
           "ADX falls below 20 (now 40.6)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 40.6, close 758.44 vs EMA50 751.43) and the trend is strong. The regime filter is mostly green."
+        "narrative": "SPY leans long (ADX 40.6, close 758.44 vs EMA50 751.43) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -4465,13 +4465,13 @@
         "adx": 24.82,
         "ema_slope_4bar": -0.4522,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "supports",
         "flip": [
           "Close > EMA50 (414.14)",
           "ADX falls below 20 (now 24.8)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 24.8, close 411.23 vs EMA50 414.14) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "GLD leans short (ADX 24.8, close 411.23 vs EMA50 414.14) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -8878,11 +8878,11 @@
     },
     "PAXGUSDT": {
       "symbol": "PAXGUSDT",
-      "bar_time_utc": "2026-06-02T12:00:00+00:00",
-      "close": 4506.31,
-      "ema": 4501.346176314189,
-      "sma": 4500.044615384615,
-      "vwap": 4503.008144077484,
+      "bar_time_utc": "2026-06-02T13:00:00+00:00",
+      "close": 4508.44,
+      "ema": 4501.565588085028,
+      "sma": 4501.068692307692,
+      "vwap": 4502.869995534856,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8892,29 +8892,18 @@
       "read": {
         "bias": "bullish",
         "strength": "weak",
-        "adx": 24.76,
-        "ema_slope_4bar": 2.5221,
+        "adx": 23.01,
+        "ema_slope_4bar": 1.9812,
         "regime_pct_24h": 20.8,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
-          "Close < EMA50 (4,501.35)",
-          "ADX falls below 20 (now 24.8)",
+          "Close < EMA50 (4,501.57)",
+          "ADX falls below 20 (now 23.0)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "PAXGUSDT leans long (ADX 24.8, close 4,506.31 vs EMA50 4,501.35) but the trend is only weak. The regime filter is mostly blocking \u2014 only 21% of the last 24h was tradable."
+        "narrative": "PAXGUSDT leans long (ADX 23.0, close 4,508.44 vs EMA50 4,501.57) but the trend is only weak. The regime filter is mostly blocking \u2014 only 21% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
-        {
-          "t": "2026-05-16T21:00:00+00:00",
-          "o": 4534.89,
-          "h": 4534.9,
-          "l": 4531.23,
-          "c": 4532.73,
-          "v": 2.16014,
-          "ema": 4564.158235167923,
-          "sma": 4642.1896153846155,
-          "vwap": 4529.038094523893
-        },
         {
           "t": "2026-05-16T22:00:00+00:00",
           "o": 4533.05,
@@ -13297,23 +13286,34 @@
           "t": "2026-06-02T12:00:00+00:00",
           "o": 4517.76,
           "h": 4522.75,
-          "l": 4505.51,
-          "c": 4506.31,
-          "v": 39.9102,
-          "ema": 4501.346176314189,
-          "sma": 4500.044615384615,
-          "vwap": 4503.008144077484
+          "l": 4503.72,
+          "c": 4504.75,
+          "v": 39.98061,
+          "ema": 4501.2849998436,
+          "sma": 4500.032615384615,
+          "vwap": 4502.869626479802
+        },
+        {
+          "t": "2026-06-02T13:00:00+00:00",
+          "o": 4505.0,
+          "h": 4508.44,
+          "l": 4505.0,
+          "c": 4508.44,
+          "v": 0.02653,
+          "ema": 4501.565588085028,
+          "sma": 4501.068692307692,
+          "vwap": 4502.869995534856
         }
       ]
     }
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
-    "risk_off_score": 4,
+    "verdict": "RISK_ON",
+    "risk_off_score": 3,
     "risk_on_score": 5,
     "theme_hits": {
-      "war": 4,
+      "war": 3,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
@@ -13324,8 +13324,8 @@
     "sample_headlines": {
       "war": [
         "Clashes continue in Lebanon despite Israel and Hezbollah accepting US partial ceasefire plan",
-        "Bowen: Trump needs this war to end but Iran is not backing down",
-        "Stock market today: Dow, S&P 500, Nasdaq futures slip as US-Iran tensions weigh on AI optimism"
+        "Stock market today: Dow, S&P 500, Nasdaq futures slip as US-Iran tensions weigh on AI optimism",
+        "Treasury yields fall as investors pin hopes on Israel-Hezbollah ceasefire"
       ],
       "banking": [],
       "recession": [],
@@ -13346,7 +13346,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780405283.7543542,
+    "fetched_at": 1780405582.1228218,
     "risk_off_themes": [
       "banking",
       "crash",
