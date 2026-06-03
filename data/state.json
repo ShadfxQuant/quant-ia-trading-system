@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-03T11:01:23.092832+00:00",
+  "generated_at_utc": "2026-06-03T11:06:28.282757+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -8879,10 +8879,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-03T10:00:00+00:00",
-      "close": 4487.0,
-      "ema": 4516.344118775331,
-      "sma": 4513.9169358473555,
-      "vwap": 4491.40210684563,
+      "close": 4489.0,
+      "ema": 4516.4225501478795,
+      "sma": 4513.932320462741,
+      "vwap": 4491.449133343071,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8893,14 +8893,14 @@
         "bias": "neutral",
         "strength": "strong",
         "adx": 39.66,
-        "ema_slope_4bar": -6.6314,
+        "ema_slope_4bar": -6.5529,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 39.7, close 4,487.00 vs EMA50 4,516.34) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 39.7, close 4,489.00 vs EMA50 4,516.42) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -13297,11 +13297,11 @@
           "o": 4471.7001953125,
           "h": 4496.0,
           "l": 4469.5,
-          "c": 4487.0,
-          "v": 4403.0,
-          "ema": 4516.344118775331,
-          "sma": 4513.9169358473555,
-          "vwap": 4491.40210684563
+          "c": 4489.0,
+          "v": 4533.0,
+          "ema": 4516.4225501478795,
+          "sma": 4513.932320462741,
+          "vwap": 4491.449133343071
         }
       ]
     },
@@ -35443,7 +35443,7 @@
         {
           "t": "2026-06-03T11:00:00+00:00",
           "o": 1.1619800329208374,
-          "h": 1.1619800329208374,
+          "h": 1.1621150970458984,
           "l": 1.1619800329208374,
           "c": 1.1619800329208374,
           "v": 0.0,
@@ -35457,15 +35457,15 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 5,
-    "risk_on_score": 0,
+    "risk_off_score": 4,
+    "risk_on_score": 1,
     "theme_hits": {
       "war": 3,
       "banking": 0,
       "recession": 0,
-      "rate_hike": 1,
+      "rate_hike": 0,
       "crash": 1,
-      "rate_cut": 0,
+      "rate_cut": 1,
       "risk_on": 0
     },
     "sample_headlines": {
@@ -35476,13 +35476,13 @@
       ],
       "banking": [],
       "recession": [],
-      "rate_hike": [
-        "India\u2019s plunging rupee puts surprise rate hike bets on the table"
-      ],
+      "rate_hike": [],
       "crash": [
-        "Partners Group Caps Withdrawals on Fund, Sparking Sector Selloff"
+        "KKR, Ares, Blackstone tumble premarket as Partners Group caps private equity fund withdrawals"
       ],
-      "rate_cut": [],
+      "rate_cut": [
+        "Mortgage rates are easing slightly, but homebuyers are retreating"
+      ],
       "risk_on": []
     },
     "n_headlines": 112,
@@ -35493,7 +35493,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780484483.6421611,
+    "fetched_at": 1780484788.6915288,
     "risk_off_themes": [
       "banking",
       "crash",
