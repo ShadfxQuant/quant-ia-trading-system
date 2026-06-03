@@ -555,3 +555,37 @@ PAPER:       $100K virtual, fills at signal-bar close
 2. **The chop-filter intuition is wrong on this engine.** Stops cluster in strong-trend reversals, not chop. Filter design must be empirical not folk-wisdom.
 3. **Adding more symbols ≠ better portfolio.** EURUSD ate 17K bars of compute and added zero edge. Asset-class fit matters more than count.
 4. **De-leveraging improved Sharpe even though CAGR dropped.** The "cleanest" config isn't the "biggest number" config — it's the one with best risk-adjusted return per unit of complexity.
+
+---
+
+## Part 8.6 — Monte Carlo robustness audit (2026-06-02)
+
+**Question:** Is the realized backtest a lucky path, or is it representative of the underlying edge?
+
+**Method:** Bootstrap-resampled the realized per-trade return stream 5,000 times per symbol (with replacement, same path length as realized N trades). Reconstructed equity curve per path, distribution of CAGR / max-DD / terminal equity. Script: `_montecarlo.py`.
+
+Caveats: bootstrap breaks temporal autocorrelation, so if losses cluster (correlated regimes), real-world tail DD will be worse than these numbers. Combined "serial" path treats trades on shared equity stack — live they overlap so combined DD will be modestly higher than reported here. No leverage applied (1× production).
+
+### Results (5,000 paths each)
+
+| Symbol | Realized CAGR | MC p5 / p50 / p95 CAGR | p5 DD | P(lose $) | P(2×) |
+|---|---|---|---|---|---|
+| SPY | +17.3% | +10.9% / +17.3% / +24.2% | −5.8% | 0.0% | 0.7% |
+| GLD | +36.4% | +27.0% / +36.4% / +45.8% | −4.7% | 0.0% | **92.8%** |
+| PAXG | +17.1% | **−4.9%** / +16.9% / +42.8% | **−17.4%** | **10.3%** | 0.0% |
+| Combined | +68.5% | +49.6% / +68.3% / +89.4% | −10.0% | 0.0% | **100%** |
+
+### Findings
+
+1. **SPY and GLD are robust.** Realized sits on the bootstrap median, p5 still solidly positive. The realized equity curve is representative, not lucky.
+2. **GLD is the workhorse** (matches Task 3 / Part 8). 92.8% probability of doubling, p5 still +27% CAGR.
+3. **PAXG is the fragile leg.** 10.3% of paths lose money, p5 max-DD −17.4%, p5 CAGR negative. Realized run sits in the favorable half of distribution — there is real downside variance we haven't lived through yet.
+4. **Diversification is doing real work.** Combined p5 DD (−10%) is *better* than PAXG's alone (−17.4%) because SPY/GLD smooth the path.
+
+### Implications for the work queues
+
+- **PAXG sizing is now an explicit action item**, not just a "consider it." Default `base_size_pct` may be too aggressive given the tail distribution. Consider a 0.5× per-symbol multiplier when the size scaler framework ships.
+- **PAXG is the right first target for the ML regime classifier.** Highest variance, biggest expected gain from a gating model.
+- **No reason to touch SPY/GLD config.** The 3-month paper validation window applies cleanly — bootstrap confirms the realized signal isn't path-luck.
+- Combined portfolio shows zero ruin paths across 5K trials, which is the cleanest evidence yet that the 3-symbol portfolio's risk profile is shippable at 1× leverage.
+
