@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-03T07:06:22.371429+00:00",
+  "generated_at_utc": "2026-06-03T07:11:24.611454+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -8878,11 +8878,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-03T06:00:00+00:00",
-      "close": 4487.89990234375,
-      "ema": 4522.906441121186,
-      "sma": 4514.585400390625,
-      "vwap": 4501.258057814325,
+      "bar_time_utc": "2026-06-03T07:00:00+00:00",
+      "close": 4488.7001953125,
+      "ema": 4521.708206457,
+      "sma": 4514.476171875,
+      "vwap": 4501.333677885037,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8892,28 +8892,17 @@
       "read": {
         "bias": "neutral",
         "strength": "strong",
-        "adx": 33.78,
-        "ema_slope_4bar": -4.6824,
+        "adx": 35.29,
+        "ema_slope_4bar": -5.3595,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 33.8, close 4,487.90 vs EMA50 4,522.91) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 35.3, close 4,488.70 vs EMA50 4,521.71) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
-        {
-          "t": "2026-05-07T15:00:00+00:00",
-          "o": 4773.39990234375,
-          "h": 4775.2001953125,
-          "l": 4694.2998046875,
-          "c": 4739.10009765625,
-          "v": 12905.0,
-          "ema": 4690.418608260252,
-          "sma": 4628.579236778846,
-          "vwap": 4742.611854413946
-        },
         {
           "t": "2026-05-07T16:00:00+00:00",
           "o": 4739.2998046875,
@@ -13297,11 +13286,22 @@
           "o": 4485.39990234375,
           "h": 4499.2998046875,
           "l": 4483.7001953125,
-          "c": 4487.89990234375,
-          "v": 4003.0,
-          "ema": 4522.906441121186,
-          "sma": 4514.585400390625,
-          "vwap": 4501.258057814325
+          "c": 4491.7001953125,
+          "v": 4252.0,
+          "ema": 4523.0554722179995,
+          "sma": 4514.614633413462,
+          "vwap": 4501.376147097175
+        },
+        {
+          "t": "2026-06-03T07:00:00+00:00",
+          "o": 4491.39990234375,
+          "h": 4491.7001953125,
+          "l": 4488.2001953125,
+          "c": 4488.7001953125,
+          "v": 81.0,
+          "ema": 4521.708206457,
+          "sma": 4514.476171875,
+          "vwap": 4501.333677885037
         }
       ]
     },
@@ -31026,9 +31026,9 @@
     "EURUSD=X": {
       "symbol": "EURUSD=X",
       "bar_time_utc": "2026-06-03T07:00:00+00:00",
-      "close": 1.1618449687957764,
-      "ema": 1.1637174172839464,
-      "sma": 1.1640682082909803,
+      "close": 1.16225004196167,
+      "ema": 1.1637333025061383,
+      "sma": 1.1640713242384104,
       "vwap": NaN,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -31040,7 +31040,7 @@
         "bias": "bearish",
         "strength": "weak",
         "adx": 25.09,
-        "ema_slope_4bar": -0.0003,
+        "ema_slope_4bar": -0.0002,
         "regime_pct_24h": 100.0,
         "macro_tilt": "supports",
         "flip": [
@@ -35443,12 +35443,12 @@
         {
           "t": "2026-06-03T07:00:00+00:00",
           "o": 1.1618449687957764,
-          "h": 1.1618449687957764,
+          "h": 1.16225004196167,
           "l": 1.1617100238800049,
-          "c": 1.1618449687957764,
+          "c": 1.16225004196167,
           "v": 0.0,
-          "ema": 1.1637174172839464,
-          "sma": 1.1640682082909803,
+          "ema": 1.1637333025061383,
+          "sma": 1.1640713242384104,
           "vwap": NaN
         }
       ]
@@ -35457,10 +35457,10 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 5,
+    "risk_off_score": 6,
     "risk_on_score": 2,
     "theme_hits": {
-      "war": 3,
+      "war": 4,
       "banking": 0,
       "recession": 0,
       "rate_hike": 1,
@@ -35471,8 +35471,8 @@
     "sample_headlines": {
       "war": [
         "Putin remains uncompromising on Ukraine, but is public discourse on war changing in Russia?",
-        "Oil Holds Gains, US Futures Slip on War Confusion: Markets Wrap - Bloomberg.com",
-        "Nvidia\u2019s AI Chips Sought by Chinese Labs With Ties to Military - Bloomberg.com"
+        "OECD warns of global slowdown as U.S.-Iran war stymies economic growth prospects",
+        "Oil Holds Gains, US Futures Slip on War Confusion: Markets Wrap - Bloomberg.com"
       ],
       "banking": [],
       "recession": [],
@@ -35496,7 +35496,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780470382.7260137,
+    "fetched_at": 1780470685.270712,
     "risk_off_themes": [
       "banking",
       "crash",
