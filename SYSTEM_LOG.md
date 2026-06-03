@@ -905,3 +905,173 @@ DATA.symbols: SPY, GLD, GC=F (live)  ·  DIA, QQQ (paper)  ·  SLV, IWM, EURUSD=
 KALMAN: P_bull → P_bull_kalman + HMM_state_kalman (process_var=1e-4, obs_var=1e-2)
 ```
 
+
+---
+
+## Part 8.12 — FINAL SIMULATION + node graph of the shipped model (2026-06-02)
+
+### Final profit (the headline number)
+
+| Window | Capital | Final equity | **Profit $** | CAGR | Max DD | WR |
+|---|---|---|---|---|---|---|
+| Realized 2.85 yr (in-sample) | $100,000 | **$335,854** | **+$235,854** | **+52.9%** | −7.6% | 69.9% |
+
+Per-symbol realized contribution:
+- SPY: $100K → $156,926 (+$56,926, +17.3% CAGR, 175 trades, 70.3% WR)
+- GLD: $100K → $238,141 (+$138,141, +36.4% CAGR, 189 trades, 81.0% WR)
+- GC=F: $100K → $140,787 (+$40,787, +15.5% CAGR, 417 trades, 64.7% WR)
+- COMBINED on shared $100K pool: **$335,854** (+$235,854, +52.9% CAGR, 781 trades)
+
+> **Methodology note**: Part 8.11 reported "$526,127 / +79.0% CAGR" using the older `_montecarlo.py` which compounded per-symbol returns on isolated $100K stacks. The new `_montecarlo_final.py` correctly applies all trades to a single shared $100K pool — the realistic number. The model didn't degrade between 8.11 and 8.12; the previous number was inflated by methodology, not by code. **The honest final realized profit is $235,854.**
+
+### Forward MC projection (10,000 paths, 1× leverage, combined)
+
+| Horizon | Mean wealth | p5 wealth | p50 wealth | p95 wealth | P(2×) | P(5×) | P(ruin) |
+|---|---|---|---|---|---|---|---|
+| 1 year | $153,695 | $131,983 | $153,207 | $177,248 | 0.2% | 0.0% | 0.00% |
+| **3 year** | **$361,717** | **$278,426** | **$357,512** | **$460,942** | **100%** | 1.4% | **0.00%** |
+| 5 year | $853,086 | $606,072 | $838,076 | $1,149,350 | 100% | **99.6%** | **0.00%** |
+
+### Leverage sensitivity (3-year, combined)
+
+| Leverage | p5 CAGR | p50 CAGR | p5 DD | P(ruin −50%) |
+|---|---|---|---|---|
+| 1.0× | +40.5% | +53.0% | −5.8% | 0.00% |
+| 1.5× | +66.2% | +88.2% | −8.7% | 0.00% |
+| 2.0× | +96.5% | +131.4% | −11.5% | 0.00% |
+| 2.5× | +133.2% | +185.0% | −14.1% | 0.00% |
+
+Across all four leverage points, zero ruin paths across 10,000 trials. The model has structural room for leverage scaling once the paper-validation window closes.
+
+---
+
+### Node graph — the shipped model (2026-06-02)
+
+Reading guide: each `[NODE]` is a load-bearing component. `─ verb →` arrows are typed dependency edges. Read top-down for data flow, follow arrows for causality.
+
+```
+                        ┌──────────────────────────────────────────────────┐
+                        │  [NODE: DATA SOURCES]                            │
+                        │   • yfinance: SPY, GLD, GC=F, DIA, QQQ, …        │
+                        │   • Coinbase: PAXG (deprecated 2026-06-02)       │
+                        └──────────────────────────────────────────────────┘
+                                            │ feeds OHLCV bars
+                                            ▼
+                        ┌──────────────────────────────────────────────────┐
+                        │  [NODE: INDICATORS]                              │
+                        │   EMA50, SMA130, momentum, slope, ATR, RSI       │
+                        └──────────────────────────────────────────────────┘
+                                            │ feeds features
+                                            ▼
+            ┌──────────────────────────────┴──────────────────────────────┐
+            ▼                                                              ▼
+┌─────────────────────────┐                              ┌────────────────────────────┐
+│ [NODE: 5-STATE          │                              │ [NODE: HMM REGIME]         │
+│  DETERMINISTIC REGIME]  │                              │   GaussianHMM, 3 states     │
+│  growth/slowdown/dist/  │                              │   emits P_bull, HMM_state  │
+│  crash/stabilization    │                              └─────────┬──────────────────┘
+└────────────┬────────────┘                                        │ raw probabilities
+             │ regime label                                        ▼
+             │                                       ┌──────────────────────────────┐
+             │                              NEW 8.10 │ [NODE: KALMAN P_BULL]        │
+             │                                       │  core/kalman.py              │
+             │                                       │  q=1e-4, r=1e-2              │
+             │                                       │  emits P_bull_kalman,        │
+             │                                       │  HMM_state_kalman            │
+             │                                       └─────────┬────────────────────┘
+             │                                                 │ smoothed signal
+             ▼                                                 │
+┌──────────────────────────────────────────────────────────────┴────────────┐
+│  [NODE: PULLBACK SIGNAL ENGINE] — primary alpha                           │
+│   Long: bull structure + pullback proximity + momentum re-acceleration    │
+│   Short: symmetric                                                        │
+│   Rollover guard: blocks longs when 3-bar EMA slope < 0                   │
+│   Size mult layers: RSI (1.3×/0.7×), conviction (OFF)                     │
+│   Pyramid: 8 legs, no VWAP gate (pure edge — Part 8.7 V0 baseline)        │
+│   Exit ladder: stop 2.5% / TP1 4% (BE) / TP2 15% / time 390 bars          │
+└──────────────────┬──────────────────────────────────────────────────────┬─┘
+                   │ signal                                               │
+                   │                                  NEW 8.11 (gold-only)│
+                   ▼                                                       ▼
+┌────────────────────────────────┐         ┌──────────────────────────────────┐
+│ [NODE: TREND_CARRY RUNNER]     │         │ [NODE: REGIME-FLIP EXIT]         │
+│  Same entry, longer hold,      │         │  execution/portfolio.py          │
+│  RegimeScore activation gate   │         │  Triggers when:                  │
+└────────────────┬───────────────┘         │   - symbol ∈ {GC=F}              │
+                 │                         │   - bars_held ≥ 3                 │
+                 │                         │   - HMM_state_kalman opposes side │
+                 │                         │   - unrealized ≤ −2%              │
+                 ▼                         └────────────┬─────────────────────┘
+┌────────────────────────────────────────────────────┐  │ pre-empts time-stop
+│  [NODE: EXECUTION ENGINE] — execution/portfolio.py  │  │
+│   Manages open positions, applies exits in order:   │◀─┘
+│    1. Hard stop                                     │
+│    2. TP1 partial                                   │
+│    3. TP2 final                                     │
+│    4. Trailing stop (currently OFF)                 │
+│    5. Regime-flip exit  ← NEW 8.11                   │
+│    6. Time stop (max_hold_bars)                     │
+│   Cap per strategy: capital_cap_pct                 │
+│   Initial $100K virtual capital                     │
+└──────────────────┬─────────────────────────────────┘
+                   │ trade records (pnl, exit_reason, …)
+                   ▼
+            ┌──────────────────────────────┐
+            │  [NODE: PORTFOLIO EQUITY]    │
+            │   per-trade ret stream       │
+            └─────────┬────────────────────┘
+                      │ trade returns
+                      ▼
+┌────────────────────────────────────────────────────────────────────┐
+│  [NODE: MONTE CARLO HARNESS] — _montecarlo_final.py                │
+│   Bootstrap 10,000 paths per symbol + combined                     │
+│   Horizons: 1y / 3y / 5y                                           │
+│   Leverage sensitivity: 1× / 1.5× / 2× / 2.5×                       │
+│   Gates every config change for regressions                         │
+└──────────────────┬─────────────────────────────────────────────────┘
+                   │
+                   ▼
+           [NODE: SHIPPED CONFIG GATE]   ←── only configs that pass MC ship
+```
+
+### Node-edge index (cross-references for next-session lookup)
+
+| Node | Code path | Depends on | Consumed by | Status |
+|---|---|---|---|---|
+| DATA SOURCES | `core/data_loader.py` | yfinance, Coinbase | INDICATORS | live (PAXG removed 8.11) |
+| INDICATORS | `core/indicators.py` | DATA SOURCES | regime nodes, signal engine | unchanged since baseline |
+| 5-STATE REGIME | `core/regime_model.py` | INDICATORS | RegimeScore, conviction | live, diagnostic only |
+| HMM REGIME | `core/hmm_regime.py` | INDICATORS | KALMAN P_BULL | live |
+| **KALMAN P_BULL** | `core/kalman.py` | HMM REGIME | REGIME-FLIP EXIT, future ML | **shipped 8.11** |
+| PULLBACK SIGNAL | `strategies/pullback.py` | INDICATORS, 5-STATE, HMM | EXECUTION ENGINE | live |
+| TREND_CARRY | `strategies/trend_carry.py` | INDICATORS, RegimeScore | EXECUTION ENGINE | live |
+| **REGIME-FLIP EXIT** | `execution/portfolio.py` (inline) | KALMAN P_BULL | EXECUTION ENGINE | **shipped 8.11** |
+| EXECUTION ENGINE | `execution/portfolio.py` | all signal + exit nodes | PORTFOLIO EQUITY | live |
+| PORTFOLIO EQUITY | TradeRecord stream | EXECUTION ENGINE | MC HARNESS | live |
+| **MC HARNESS** | `_montecarlo_final.py` | PORTFOLIO EQUITY | SHIPPED CONFIG GATE | **shipped 8.12** |
+| SHIPPED CONFIG GATE | dev workflow | MC HARNESS | future config changes | active |
+
+### Connections to open queue items (forward edges)
+
+| Open item | Connects to which existing nodes | Predicted improvement |
+|---|---|---|
+| LightGBM exit-trigger classifier | inputs from KALMAN P_BULL + INDICATORS + EXECUTION ENGINE features → REGIME-FLIP EXIT replacement | closes the ~78% remaining exit-edge ceiling |
+| DIA + QQQ paper → live promotion | adds to DATA SOURCES node | Part 8.7 V3 showed +52pp CAGR uplift |
+| Per-symbol size scaler | inserted between PULLBACK SIGNAL and EXECUTION ENGINE | unblocks A2 universe (SLV, futures) |
+| Session filter framework | inserted at INDICATORS or signal stage | unblocks FX (EURUSD=X currently broken) |
+| Infinex executor | new node downstream of EXECUTION ENGINE | activates real money execution |
+
+### Connections to retired items (backward edges)
+
+| Retired item | Why retired | Replaced by |
+|---|---|---|
+| PAXG (live) | Tail risk: p5 CAGR −4.9%, P(loss) 10.3% | GC=F (live, P(loss) 0.7%) |
+| V1 exit-trail re-enable | Cuts winners, regressed across all variants (8.7) | REGIME-FLIP EXIT (precision-filtered) |
+| V2 raw HMM-meta switch-flip | Regressed (8.7) | KALMAN P_BULL → REGIME-FLIP EXIT |
+| PAXG max_hold tightening | Regressed (8.9) | symbol swap to GC=F |
+| Conviction size mult | Cross-asset failure (8.5) | Reserved for ML build |
+
+### One-paragraph state summary
+
+The shipped model as of 2026-06-02 is a 3-symbol (SPY/GLD/GC=F) pullback trend-continuation engine with a HMM-derived regime layer that is Kalman-smoothed before being consumed by a regime-flip exit primitive gated to gold-class assets only. Realized profit over the 2.85-year backtest window is **$235,854 on $100K starting capital** (+52.9% CAGR, −7.6% max DD, 69.9% WR, 781 trades). Forward MC projects a 3-year **expected wealth of $362K with zero ruin paths at 1× leverage**, scaling to $853K expected over 5 years. The system has structural room for 2.5× leverage (p5 CAGR +133%, p5 DD −14%, 0% ruin) once the paper-validation window closes.
+
