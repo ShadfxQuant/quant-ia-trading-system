@@ -25,26 +25,31 @@ class DataConfig:
     # NYSE hours + ADX≥25 (COMBO_F: PF 1.81 / DD 18.3% in validation).
     # All three gold instruments use inverse macro polarity.
     symbols: List[str] = field(default_factory=lambda: [
-        # Phase A1.2 — MT5 alignment 2026-06-03:
-        # User trades MT5 CFDs (US500, US100, XAUUSD). Universe re-mapped
-        # to the closest yfinance proxies that match the actual instruments
-        # the user has execution access to:
-        #   - ES=F: E-mini S&P 500 futures continuous → MT5 US500 CFD
-        #   - NQ=F: E-mini Nasdaq-100 futures continuous → MT5 US100 CFD
-        #   - GC=F: gold continuous futures → MT5 XAUUSD CFD
-        # All three trade 23/5 like MT5 CFDs. Backtest validation (raw):
-        #   ES=F: PF 1.77, CAGR +12.4%, DD -9.1%,  WR 62.4%, n=258
-        #   NQ=F: PF 1.73, CAGR +19.6%, DD -11.7%, WR 61.2%, n=325
-        #   GC=F: regime-flip exit ON, see Part 8.11
-        # Paper-only diversifier (strongest standalone PF, NYSE-hours):
-        #   GLD: PF ~3.4, CAGR +36.4%, DD -5.3%, WR 81% — independent gold
-        #        validator (same underlying as GC=F, different microstructure)
-        # Watchlist (degraded — kept for signal stream):
-        #   SLV: DD 39.6%  → needs per-symbol size scaler
-        #   IWM: PF 1.31   → small-cap noise
-        #   EURUSD=X: PF 1.01 → FX hourly broken
-        "ES=F", "NQ=F", "GC=F",
-        "GLD",
+        # Phase A1.3 — proxy-signal architecture 2026-06-03:
+        # Switch-flip fixes (NYSE-hours session filter, regime-flip exit
+        # on ES=F/NQ=F) all REGRESSED in backtest. Root cause: pullback
+        # engine was designed for NYSE-hours ETF microstructure. Futures
+        # bars (23/5 with thin overnight tape) are structurally noisier
+        # per unit of signal.
+        #
+        # Solution: separate SIGNAL GENERATION from EXECUTION VENUE.
+        # The same underlying (S&P 500, Nasdaq-100, gold spot) is priced
+        # within basis points on both the NYSE-hours ETF and the MT5
+        # CFD — so a signal computed on the clean ETF stream is directly
+        # executable on the MT5 CFD at the same bar timestamp.
+        #
+        # SIGNAL GENERATION (high-PF, NYSE-hours):
+        #   - SPY (S&P 500 ETF):  PF 3.18, CAGR +17.3%, DD -6.9%, n=175
+        #   - QQQ (Nasdaq ETF):   PF 1.86, CAGR +12.8%, DD -14.1%, n=159
+        #   - GLD (gold ETF):     PF 3.40, CAGR +36.4%, DD -5.3%, n=189
+        #   - GC=F (gold futures): runs the regime-flip exit (Part 8.11)
+        #                          as independent 23/5 gold validator
+        # EXECUTION MAPPING via TRADING_LABEL_MAP (below):
+        #   SPY → MT5 US500 · QQQ → MT5 US100 · GLD → MT5 XAUUSD ·
+        #   GC=F → MT5 XAUUSD (cross-confirm)
+        # Watchlist (signal stream only):
+        #   SLV / IWM / EURUSD=X
+        "SPY", "QQQ", "GLD", "GC=F",
         "SLV", "IWM", "EURUSD=X",
     ])
     start: str = "2024-05-06"
@@ -513,6 +518,29 @@ REGIME_FILTERS: dict = {
 # perp / gold spot class only.
 # ---------------------------------------------------------------------------
 REGIME_FLIP_EXIT_SYMBOLS: set = {"GC=F"}
+
+
+# ---------------------------------------------------------------------------
+# Trading-venue label map (Part 8.16).
+# The signal engine runs on yfinance proxy tickers (clean PF, NYSE-hours
+# microstructure). The user executes on MT5 CFDs. SPY ↔ US500, QQQ ↔ US100,
+# GLD ↔ XAUUSD all track the same underlying within basis points, so a
+# signal on the proxy is directly executable on the MT5 CFD at the same
+# instant. The dashboard / Discord card surfaces the MT5 label so the user
+# reads "US500 BUY" instead of "SPY BUY".
+# ---------------------------------------------------------------------------
+TRADING_LABEL_MAP: dict = {
+    "SPY":  "US500",
+    "QQQ":  "US100",
+    "GLD":  "XAUUSD",
+    "GC=F": "XAUUSD",   # cross-confirm gold via 23/5 futures
+}
+
+
+def trade_label(symbol: str) -> str:
+    """Return the MT5-execution label for a signal-generation symbol.
+    Falls back to the symbol itself if no mapping exists."""
+    return TRADING_LABEL_MAP.get(symbol, symbol)
 
 
 

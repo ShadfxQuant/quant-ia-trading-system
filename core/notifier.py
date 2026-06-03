@@ -81,8 +81,17 @@ def send_signal(symbol: str, side: int, snap: dict,
     rr = total / loss if loss > 0 else 0.0
     close = snap.get("close", 0.0)
 
+    # Surface MT5 trading label so the user knows the exact instrument to enter
+    try:
+        from config.settings import trade_label
+        _trade_label = trade_label(symbol)
+    except Exception:
+        _trade_label = symbol
+    symbol_field_value = (f"`{symbol}` → **{_trade_label}**"
+                           if _trade_label != symbol else f"`{symbol}`")
+
     fields = [
-        {"name": "Symbol",    "value": f"`{symbol}`",                "inline": True},
+        {"name": "Symbol",    "value": symbol_field_value,             "inline": True},
         {"name": "Side",      "value": f"**{side_word}**",            "inline": True},
         {"name": "Strategy",  "value": strategy,                       "inline": True},
         {"name": "Close",     "value": f"${close:.2f}",                "inline": True},
@@ -124,7 +133,9 @@ def send_signal(symbol: str, side: int, snap: dict,
 
     payload = {
         "embeds": [{
-            "title": f"🔔 {strategy.upper()} {side_word} — {symbol}",
+            "title": (f"🔔 {strategy.upper()} {side_word} — {_trade_label}"
+                       if _trade_label != symbol
+                       else f"🔔 {strategy.upper()} {side_word} — {symbol}"),
             "description": "\n".join(desc_lines),
             "color": color,
             "fields": fields,

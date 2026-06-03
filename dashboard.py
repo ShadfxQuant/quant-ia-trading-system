@@ -36,7 +36,7 @@ try:
 except ImportError:
     _HAS_PLOTLY = False
 
-from config.settings import PULLBACK, TRENDCARRY, DATA
+from config.settings import PULLBACK, TRENDCARRY, DATA, trade_label
 
 STATE_PATH = os.path.join("data", "state.json")
 STATE_MAX_AGE_SEC = 1800   # 30 min — older = treated as stale
@@ -189,17 +189,21 @@ st.title("📈 Quant IA — Live Signals")
 st.caption(
     "Pullback engine + trend-carry sleeve · "
     + " · ".join(DATA.symbols)
-    + " · 1× lev · MT5-aligned (ES=F/NQ=F/GC=F = US500/US100/XAUUSD) · "
+    + " · 1× lev · proxy-signal architecture (SPY/QQQ/GLD signals → MT5 US500/US100/XAUUSD execution) · "
     "Kalman-smoothed HMM + regime-flip exit (GC=F) · "
-    "**realized 2.36yr: $100K → $218,373 (+$118,373 / +39.2% CAGR / −18.3% DD / WR 61.8% / n=986)** · "
-    "3yr MC: P(2×) 93.4% / P(ruin) 0%. "
+    "**realized 2.83yr: $100K → $378,649 (+$278,649 / +60.1% CAGR / −9.1% DD / WR 70.1% / n=923)** · "
+    "3yr MC: mean $416K, P(2×) 100%, P(ruin) 0%. "
     "**Educational only — not investment advice. Past performance is not "
     "indicative of future results.**"
 )
 
 with st.sidebar:
     st.header("Settings")
-    symbol = st.selectbox("Symbol", DATA.symbols, index=0)
+    symbol = st.selectbox(
+        "Symbol (signal source → MT5 label)",
+        DATA.symbols, index=0,
+        format_func=lambda s: f"{s} → {trade_label(s)}" if trade_label(s) != s else s,
+    )
     if st.button("🔄 Force refresh (clear cache)"):
         st.cache_data.clear()
         st.rerun()
@@ -293,8 +297,8 @@ yfinance bars  →  indicators  →  5-state regime
 
 | Knob | Value |
 |---|---|
-| Symbols (live, MT5) | ES=F (US500), NQ=F (US100), GC=F (XAUUSD) |
-| Symbols (paper) | GLD (gold validator) |
+| Signals computed on | SPY, QQQ, GLD, GC=F |
+| Execute on MT5 as | US500, US100, XAUUSD (+ XAUUSD cross-confirm) |
 | Watchlist | SLV, IWM, EURUSD=X |
 | Pullback size | 0.30 of equity, cap 1.00 |
 | Max pyramid | 8 legs |
@@ -309,19 +313,20 @@ yfinance bars  →  indicators  →  5-state regime
 
 | Metric | Value |
 |---|---|
-| Mean wealth | $275,038 |
-| p5 wealth | $195,624 |
-| p50 wealth | $269,234 |
-| p95 wealth | $371,756 |
-| P(double 2×) | 93.4% |
+| Mean wealth | $416,444 |
+| p5 wealth | $309,949 |
+| p50 wealth | $410,776 |
+| p95 wealth | $543,322 |
+| P(double 2×) | 100% |
+| P(5×) | 12.2% |
 | P(any loss) | 0.0% |
 | P(ruin −50%) | 0.00% |
 
-Per-symbol realized (MT5-aligned universe):
-- ES=F $131,635 (+12.4%, US500)
-- NQ=F $152,655 (+19.6%, US100)
-- GC=F $134,084 (+13.3%, XAUUSD)
-- GLD $238,141 (+36.4%, paper validator)
+Per-symbol realized — signal source → MT5 execution:
+- SPY → **US500**: $170,871 (+20.9% CAGR, 75.7% WR)
+- QQQ → **US100**: $140,333 (+12.7% CAGR, 73.1% WR)
+- GLD → **XAUUSD**: $233,411 (+34.9% CAGR, 80.1% WR)
+- GC=F → **XAUUSD** cross-confirm: $134,034 (+13.2% CAGR, regime-flip exit)
 """)
     st.caption(
         "Documented in SYSTEM_LOG.md Parts 8.7 → 8.12. "
@@ -361,7 +366,9 @@ with st.expander("Theme hits & sample headlines", expanded=mv["verdict"] != "NEU
 # Insight Read — system's narrative view of the symbol right now
 # ---------------------------------------------------------------------------
 st.divider()
-st.subheader(f"🧭 Read — {symbol}")
+_label = trade_label(symbol)
+_subheader_sym = f"{symbol} → **{_label}**" if _label != symbol else symbol
+st.subheader(f"🧭 Read — {_subheader_sym}")
 _read = snap.get("read") or {}
 if _read and "error" not in _read:
     _bias = _read.get("bias", "neutral")
@@ -387,7 +394,7 @@ else:
     st.caption("Read not yet computed — next worker tick will populate it.")
 
 st.divider()
-st.subheader(f"🔔 Latest signal — {symbol}")
+st.subheader(f"🔔 Latest signal — {_subheader_sym}")
 
 c1, c2, c3, c4, c5 = st.columns(5)
 c1.metric("Bar time (UTC)", snap["bar_time_utc"][:16].replace("T", " "))

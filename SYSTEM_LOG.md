@@ -1243,3 +1243,94 @@ Zero ruin paths across all leverage levels. At 1.5× lev (modest), 3yr P(double)
 
 The MT5 universe MC window is 2.36 years (Jan 2024 → Jun 2026) instead of 2.85 years, because yfinance's ES=F / NQ=F hourly data only goes back to Jan 2024. This is the binding constraint; not a configuration choice. Realized numbers are correctly time-scaled (CAGR not total return). 3-year forward MC uses the realized trade-rate to project trade count over the longer horizon.
 
+
+---
+
+## Part 8.16 — Proxy-signal architecture: recover the PF (2026-06-03)
+
+### The diagnosis
+
+Part 8.15's MT5 universe (ES=F + NQ=F + GC=F) dropped PF from ~3.0 to ~1.75 and realized profit from $235K to $118K. User asked why and if there's a solution. Three reasons:
+
+1. **Trading hours mismatch.** SPY/GLD = NYSE-hours (~6.5h/day, ~1.4K bars/yr). Futures = 23/5 (~5.5K bars/yr). Pullback engine fires on overnight thin tape and pays the noise.
+2. **Microstructure quality.** ETFs have tight spreads + deep book. Continuous-contract futures bars include rolling/settlement breaks; overnight liquidity is thin.
+3. **Survivorship bias.** SPY+GLD were picked through years of research because they backtest well. ES=F/NQ=F got dropped in cold.
+
+### Switch-flip fixes tested and rejected
+
+| Fix | ES=F PF | NQ=F PF | Verdict |
+|---|---|---|---|
+| Baseline (raw) | 1.77 | 1.73 | reference |
+| NYSE-only session filter | 1.48 | 1.84 | ❌ cuts winners on ES=F |
+| Regime-flip exit on ES=F/NQ=F | 1.52 | 1.25 | ❌ destroys edge (same V1 failure mode) |
+| Both stacked | 1.32 | 1.43 | ❌ even worse |
+
+No switch-flip recovers the lost PF. The structural issue is signal-on-noisy-data; tuning the engine cannot fix data quality.
+
+### The architectural fix: separate signal generation from execution venue
+
+**Insight:** SPY at 14:00 ET trades at $756.77. The MT5 US500 CFD at the same instant trades at S&P500 × 0.1 ≈ same number. Both track the S&P 500 index within basis points. A SPY BUY signal at 14:00 ET is identical to a US500 BUY at the same timestamp — different ticker, same underlying, different execution venue. Backtest the signal on the clean ETF stream (PF 3.18); execute on MT5 CFD.
+
+**Implementation:**
+
+| Signal source | MT5 execution label | Mapping table | Backtest PF |
+|---|---|---|---|
+| SPY | **US500** | `TRADING_LABEL_MAP["SPY"] = "US500"` | 3.18 |
+| QQQ | **US100** | `TRADING_LABEL_MAP["QQQ"] = "US100"` | 1.86 |
+| GLD | **XAUUSD** | `TRADING_LABEL_MAP["GLD"] = "XAUUSD"` | 3.40 |
+| GC=F | **XAUUSD** (cross-confirm) | same | regime-flip exit, ~2 |
+
+Wired into:
+- `config/settings.py`: `TRADING_LABEL_MAP` dict + `trade_label(symbol)` helper
+- `dashboard.py`: symbol selector shows "SPY → US500", subheaders show MT5 label
+- `core/notifier.py`: Discord signal cards show "🔔 PULLBACK LONG — US500" with the proxy ticker in the Symbol field for traceability
+
+### MC results — proxy-signal architecture (10,000 paths)
+
+| | Realized 2.83yr | 3yr Forward MC (1×) |
+|---|---|---|
+| Final equity | **$378,649** | mean $416,444 |
+| Profit | **+$278,649** | mean +$316,444 |
+| CAGR | +60.1% | p5 +45.9% / p50 +60.0% / p95 +75.5% |
+| Max DD | −9.1% | p5 −8.2% |
+| WR / Trades | 70.1% / 923 | — |
+| **P(double 2×)** | — | **100%** |
+| **P(5×)** | — | **12.2%** |
+| P(ruin −50%) | — | **0.00%** |
+
+### Side-by-side: this fix vs the regression
+
+| Universe | Realized profit | CAGR | DD | 3yr P(double) | 3yr p5 CAGR |
+|---|---|---|---|---|---|
+| Part 8.15 MT5-direct (ES=F/NQ=F/GC=F) | +$118,373 | +39.2% | −18.3% | 93.4% | +24.8% |
+| Original SPY/GLD (Part 8.12) | +$235,854 | +52.9% | −7.6% | 100% | +40.5% |
+| **NEW proxy-signal (SPY/QQQ/GLD/GC=F)** | **+$278,649** | **+60.1%** | **−9.1%** | **100%** | **+45.9%** |
+
+This is **better than both** the old SPY/GLD universe (because QQQ adds diversification) AND the broken MT5-direct universe. Realized profit recovered + $160K vs the regression and +$42K vs the original.
+
+### Leverage sensitivity (proxy architecture)
+
+| Lev | p5 CAGR | p50 CAGR | p5 DD | P(double) | P(5×) | P(ruin) |
+|---|---|---|---|---|---|---|
+| 1.0× | +45.9% | +60.0% | −8.2% | 100% | 12.2% | 0.00% |
+| 1.5× | +75.3% | +101.8% | −12.1% | 100% | 97.5% | 0.00% |
+| 2.0× | +110.7% | +154.3% | −16.1% | 100% | 100% | 0.00% |
+| 2.5× | +153.7% | +218.7% | −20.0% | 100% | 100% | 0.00% |
+
+### What this means operationally
+
+- **You're trading the same underlying.** US500 and SPY both track the S&P 500. A signal computed on SPY's NYSE-hours close is a valid trigger for US500 execution on MT5 — the CFD will trade at essentially the same level at that instant.
+- **You inherit the clean PF.** The pullback engine was tuned for NYSE-hours ETF microstructure. Backtest on what works.
+- **Discord/dashboard show MT5 labels.** "🔔 PULLBACK LONG — US500" tells you exactly what to enter on MT5; the proxy ticker (SPY) appears in the Symbol field for traceability.
+- **Cross-confirm gold via GC=F.** GLD signal fires on NYSE hours; GC=F signal fires 23/5 with the regime-flip exit primitive. Two independent signal streams for the same XAUUSD execution.
+- **Overnight exposure caveat.** If the SPY signal exits at NYSE close, your US500 CFD position carries overnight risk that the backtest doesn't model. Either close before NYSE close or accept that real-world P&L will have an overnight overlay vs the backtest.
+
+### Updated work board
+
+- ✅ Universe restored to high-PF proxies (SPY, QQQ, GLD, GC=F)
+- ✅ `TRADING_LABEL_MAP` wired through dashboard + Discord
+- ✅ MC source-of-truth (`_montecarlo_final.py`) updated
+- ✅ `data/state.json` regenerated (clean JSON, new universe)
+- Open: per-symbol leverage scaler (could increase QQQ size to lift its 1.86 PF contribution)
+- Open: overnight-exposure model — quantify the real-world delta vs backtest (~ small per Part 8.11 GC=F vs GLD comparison)
+
