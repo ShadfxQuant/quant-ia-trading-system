@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-03T09:26:18.807995+00:00",
+  "generated_at_utc": "2026-06-03T09:31:23.300472+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -8879,10 +8879,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-03T09:00:00+00:00",
-      "close": 4476.2998046875,
-      "ema": 4517.737916340409,
-      "sma": 4514.045398888221,
-      "vwap": 4494.3985631237265,
+      "close": 4479.10009765625,
+      "ema": 4517.847731750949,
+      "sma": 4514.066939603365,
+      "vwap": 4494.309308879293,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8893,14 +8893,14 @@
         "bias": "neutral",
         "strength": "strong",
         "adx": 39.0,
-        "ema_slope_4bar": -6.5141,
+        "ema_slope_4bar": -6.4043,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 39.0, close 4,476.30 vs EMA50 4,517.74) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 39.0, close 4,479.10 vs EMA50 4,517.85) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -13297,11 +13297,11 @@
           "o": 4472.2998046875,
           "h": 4487.5,
           "l": 4470.2001953125,
-          "c": 4476.2998046875,
-          "v": 1722.0,
-          "ema": 4517.737916340409,
-          "sma": 4514.045398888221,
-          "vwap": 4494.3985631237265
+          "c": 4479.10009765625,
+          "v": 2032.0,
+          "ema": 4517.847731750949,
+          "sma": 4514.066939603365,
+          "vwap": 4494.309308879293
         }
       ]
     },
@@ -31026,9 +31026,9 @@
     "EURUSD=X": {
       "symbol": "EURUSD=X",
       "bar_time_utc": "2026-06-03T09:00:00+00:00",
-      "close": 1.1617100238800049,
-      "ema": 1.16354762239411,
-      "sma": 1.164037023140834,
+      "close": 1.1615750789642334,
+      "ema": 1.1635423304366286,
+      "sma": 1.1640359851030202,
       "vwap": NaN,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -35445,10 +35445,10 @@
           "o": 1.16130530834198,
           "h": 1.1619800329208374,
           "l": 1.16130530834198,
-          "c": 1.1617100238800049,
+          "c": 1.1615750789642334,
           "v": 0.0,
-          "ema": 1.16354762239411,
-          "sma": 1.164037023140834,
+          "ema": 1.1635423304366286,
+          "sma": 1.1640359851030202,
           "vwap": NaN
         }
       ]
@@ -35457,20 +35457,21 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 4,
-    "risk_on_score": 1,
+    "risk_off_score": 5,
+    "risk_on_score": 0,
     "theme_hits": {
-      "war": 2,
+      "war": 3,
       "banking": 0,
       "recession": 0,
       "rate_hike": 1,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 0
     },
     "sample_headlines": {
       "war": [
         "Putin remains uncompromising on Ukraine, but is public discourse on war changing in Russia?",
+        "U.S., Iran intensify attacks as ceasefire frays, peace talks stall",
         "OECD warns of global slowdown as U.S.-Iran war stymies economic growth prospects"
       ],
       "banking": [],
@@ -35482,9 +35483,7 @@
         "GameStop wants to buy back $2 billion of its own stock after an eBay-fueled selloff"
       ],
       "rate_cut": [],
-      "risk_on": [
-        "Japan's Nikkei hits record high as Asia markets rise amid Middle East concerns"
-      ]
+      "risk_on": []
     },
     "n_headlines": 112,
     "sources_used": [
@@ -35494,7 +35493,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780478779.892427,
+    "fetched_at": 1780479084.2480962,
     "risk_off_themes": [
       "banking",
       "crash",
