@@ -582,10 +582,16 @@ Caveats: bootstrap breaks temporal autocorrelation, so if losses cluster (correl
 3. **PAXG is the fragile leg.** 10.3% of paths lose money, p5 max-DD −17.4%, p5 CAGR negative. Realized run sits in the favorable half of distribution — there is real downside variance we haven't lived through yet.
 4. **Diversification is doing real work.** Combined p5 DD (−10%) is *better* than PAXG's alone (−17.4%) because SPY/GLD smooth the path.
 
-### Implications for the work queues
+### New work queues opened by this audit
 
-- **PAXG sizing is now an explicit action item**, not just a "consider it." Default `base_size_pct` may be too aggressive given the tail distribution. Consider a 0.5× per-symbol multiplier when the size scaler framework ships.
-- **PAXG is the right first target for the ML regime classifier.** Highest variance, biggest expected gain from a gating model.
-- **No reason to touch SPY/GLD config.** The 3-month paper validation window applies cleanly — bootstrap confirms the realized signal isn't path-luck.
-- Combined portfolio shows zero ruin paths across 5K trials, which is the cleanest evidence yet that the 3-symbol portfolio's risk profile is shippable at 1× leverage.
+These are **new, standalone queue items** — they do not modify or replace anything in the Part 8 queue table.
+
+| New queue | Scope | Priority | Origin |
+|---|---|---|---|
+| PAXG tail-risk sizing study | Sweep PAXG `base_size_pct` from 0.30 → 0.15 in 0.05 steps. Re-run MC at each level. Find the size where p5 CAGR ≥ 0 and P(lose $) ≤ 5%. | High | 8.6 finding #3 |
+| Monte Carlo as CI gate | Wire `_montecarlo.py` into a config-change gate: any PR that touches `PULLBACK`/`TRENDCARRY` must show p5 CAGR ≥ baseline p5 CAGR − 3%. | Medium | 8.6 methodology |
+| Block-bootstrap MC variant | Current MC breaks temporal autocorrelation. Build a block-bootstrap version (block sizes 5/10/20 trades) to estimate realistic clustered-loss tail DD. | Medium | 8.6 caveat #1 |
+| Overlapping-portfolio MC | Replace the "serial" combined path with one that respects real overlap timing. Will widen combined DD distribution; quantify by how much. | Medium | 8.6 caveat #2 |
+| PAXG-first ML classifier scope doc | Write a 1-page scope: features, label (TP-vs-stop), model (LightGBM), CV scheme, output (SizeMult ∈ [0.3, 1.5]), eval (MC p5 CAGR delta vs baseline). | High | 8.6 finding #3 |
+| Leverage-restoration sensitivity | Re-run MC at 1.5× / 2.0× / 2.5× leverage on the combined portfolio. Map P(ruin) and p5 DD as functions of leverage. Decision-grade data for when paper window closes. | Low (post paper window) | 8.6 finding #4 |
 
