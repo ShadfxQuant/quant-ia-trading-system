@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-03T20:56:23.122771+00:00",
+  "generated_at_utc": "2026-06-03T22:32:16.280527+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13308,11 +13308,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-03T20:00:00+00:00",
-      "close": 4462.2001953125,
-      "ema": 4502.450691162341,
-      "sma": 4511.418479567307,
-      "vwap": 4483.166685403433,
+      "bar_time_utc": "2026-06-03T22:00:00+00:00",
+      "close": 4453.39990234375,
+      "ema": 4500.545969724627,
+      "sma": 4511.183094200721,
+      "vwap": 4482.779237645453,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,29 +13322,18 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 48.14,
-        "ema_slope_4bar": -6.0119,
+        "adx": 48.58,
+        "ema_slope_4bar": -6.2985,
         "regime_pct_24h": 0.0,
         "macro_tilt": "supports",
         "flip": [
-          "Close > EMA50 (4,502.45)",
-          "ADX falls below 20 (now 48.1)",
+          "Close > EMA50 (4,500.55)",
+          "ADX falls below 20 (now 48.6)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 48.1, close 4,462.20 vs EMA50 4,502.45) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop supports this read."
+        "narrative": "GC=F leans short (ADX 48.6, close 4,453.40 vs EMA50 4,500.55) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-05-08T06:00:00+00:00",
-          "o": 4736.5,
-          "h": 4743.5,
-          "l": 4721.10009765625,
-          "c": 4734.2998046875,
-          "v": 3944.0,
-          "ema": 4703.023334215259,
-          "sma": 4640.280003004807,
-          "vwap": 4725.8649133178305
-        },
         {
           "t": "2026-05-08T07:00:00+00:00",
           "o": 4734.0,
@@ -17727,12 +17716,23 @@
           "t": "2026-06-03T20:00:00+00:00",
           "o": 4471.89990234375,
           "h": 4473.60009765625,
-          "l": 4460.10009765625,
-          "c": 4462.2001953125,
-          "v": 1874.0,
-          "ema": 4502.450691162341,
-          "sma": 4511.418479567307,
-          "vwap": 4483.166685403433
+          "l": 4458.60009765625,
+          "c": 4462.7001953125,
+          "v": 2452.0,
+          "ema": 4502.470299005479,
+          "sma": 4511.422325721154,
+          "vwap": 4483.049765692621
+        },
+        {
+          "t": "2026-06-03T22:00:00+00:00",
+          "o": 4462.60009765625,
+          "h": 4466.7001953125,
+          "l": 4450.10009765625,
+          "c": 4453.39990234375,
+          "v": 990.0,
+          "ema": 4500.545969724627,
+          "sma": 4511.183094200721,
+          "vwap": 4482.779237645453
         }
       ]
     },
@@ -26597,10 +26597,10 @@
     },
     "EURUSD=X": {
       "symbol": "EURUSD=X",
-      "bar_time_utc": "2026-06-03T20:00:00+00:00",
-      "close": 1.1602274179458618,
-      "ema": 1.1625374376688644,
-      "sma": 1.1637303389035738,
+      "bar_time_utc": "2026-06-03T22:00:00+00:00",
+      "close": 1.160092830657959,
+      "ema": 1.1623545342286623,
+      "sma": 1.1636669571583087,
       "vwap": null,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -26611,40 +26611,18 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 37.2,
+        "adx": 36.65,
         "ema_slope_4bar": -0.0004,
         "regime_pct_24h": 100.0,
         "macro_tilt": "conflicts",
         "flip": [
           "Close > EMA50 (1.16)",
-          "ADX falls below 20 (now 37.2)",
+          "ADX falls below 20 (now 36.7)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "EURUSD=X leans short (ADX 37.2, close 1.16 vs EMA50 1.16) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "EURUSD=X leans short (ADX 36.7, close 1.16 vs EMA50 1.16) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
-        {
-          "t": "2026-05-12T02:00:00+00:00",
-          "o": 1.1764705181121826,
-          "h": 1.176747441291809,
-          "l": 1.1763322353363037,
-          "c": 1.1766090393066406,
-          "v": 0.0,
-          "ema": 1.1769994205730079,
-          "sma": 1.1745493412017822,
-          "vwap": null
-        },
-        {
-          "t": "2026-05-12T03:00:00+00:00",
-          "o": 1.1766090393066406,
-          "h": 1.1766090393066406,
-          "l": 1.1759172677993774,
-          "c": 1.1759172677993774,
-          "v": 0.0,
-          "ema": 1.1769569832093363,
-          "sma": 1.1746053677338821,
-          "vwap": null
-        },
         {
           "t": "2026-05-12T04:00:00+00:00",
           "o": 1.1760554313659668,
@@ -31022,6 +31000,28 @@
           "ema": 1.1625374376688644,
           "sma": 1.1637303389035738,
           "vwap": null
+        },
+        {
+          "t": "2026-06-03T21:00:00+00:00",
+          "o": 1.160496711730957,
+          "h": 1.1607661247253418,
+          "l": 1.160092830657959,
+          "c": 1.1602274179458618,
+          "v": 0.0,
+          "ema": 1.1624468486601194,
+          "sma": 1.1636991656743563,
+          "vwap": null
+        },
+        {
+          "t": "2026-06-03T22:00:00+00:00",
+          "o": 1.1602274179458618,
+          "h": 1.1602274179458618,
+          "l": 1.1598236560821533,
+          "c": 1.160092830657959,
+          "v": 0.0,
+          "ema": 1.1623545342286623,
+          "sma": 1.1636669571583087,
+          "vwap": null
         }
       ]
     }
@@ -31030,7 +31030,7 @@
   "macro": {
     "verdict": "RISK_ON",
     "risk_off_score": 1,
-    "risk_on_score": 4,
+    "risk_on_score": 5,
     "theme_hits": {
       "war": 1,
       "banking": 0,
@@ -31038,7 +31038,7 @@
       "rate_hike": 0,
       "crash": 0,
       "rate_cut": 1,
-      "risk_on": 3
+      "risk_on": 4
     },
     "sample_headlines": {
       "war": [
@@ -31052,9 +31052,9 @@
         "Mortgage rates are easing slightly, but homebuyers are retreating"
       ],
       "risk_on": [
-        "HPE Stock Surges On Fiscal Q2 Earnings Beat, Raised Guidance, Fiscal 2027 Outlook",
+        "Virgin Galactic\u2019s 200% Rally Comes to a Screeching Halt",
         "Historic stock rally faces key test",
-        "HPE Stock Surges On Fiscal Q2 Earnings Beat, Raised Guidance, Fiscal 2027 Outlook - Investor's Business Daily"
+        "Stocks take a breather on Wednesday as torrid rally cools \u2014 putting potentially historic S&P 500 winning streak in jeopardy"
       ]
     },
     "n_headlines": 113,
@@ -31065,7 +31065,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780520184.2603936,
+    "fetched_at": 1780525936.7007473,
     "risk_off_themes": [
       "banking",
       "crash",
