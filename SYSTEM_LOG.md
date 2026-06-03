@@ -595,3 +595,111 @@ These are **new, standalone queue items** — they do not modify or replace anyt
 | PAXG-first ML classifier scope doc | Write a 1-page scope: features, label (TP-vs-stop), model (LightGBM), CV scheme, output (SizeMult ∈ [0.3, 1.5]), eval (MC p5 CAGR delta vs baseline). | High | 8.6 finding #3 |
 | Leverage-restoration sensitivity | Re-run MC at 1.5× / 2.0× / 2.5× leverage on the combined portfolio. Map P(ruin) and p5 DD as functions of leverage. Decision-grade data for when paper window closes. | Low (post paper window) | 8.6 finding #4 |
 
+
+---
+
+## Part 8.7 — MC stress-test of brain-named improvements (2026-06-02)
+
+The brain had four improvements queued: fix exit ladder, reactivate HMM sizing, add multi-symbol diversification, build a gold-native signal. Implemented each as a config mutation (where possible) and bootstrap-MC'd (3,000 paths) against the baseline. Script: `_montecarlo_improvements.py`.
+
+### Headline comparison
+
+| Variant | Real CAGR | MC p5 / p50 / p95 | p5 DD | Verdict |
+|---|---|---|---|---|
+| V0 baseline | +68.5% | +49.0 / +68.1 / +89.1% | −9.9% | reference |
+| V1 exit ladder fix (re-enable EMA50 trail after partial) | +55.3% | +37.8 / +55.5 / +74.2% | −11.6% | ❌ regress |
+| V2 HMM sizing reactivated (`use_hmm_meta=True`) | +54.9% | +37.8 / +54.3 / +73.8% | −10.1% | ❌ regress |
+| V3 multi-symbol diversify (+DIA +QQQ) | **+120.6%** | **+89.1 / +120.5 / +156.3%** | −13.5% | ✅ **clear win** |
+| V4 gold-native regime on GLD (ADX_25_NO_ASIA_SLOPE) | +68.5% | +50.1 / +68.1 / +88.8% | −10.1% | ⚠ neutral |
+
+### Interpretation
+
+- **V1 dead.** Confirms the Structure-1 finding from #21 — trailing-after-partial IS the binding constraint on PF. Reopening it costs 13pp CAGR and widens DD. The brain's "fix the exit ladder" item was already correctly resolved by leaving the trail off.
+- **V2 dead as switch-flip.** HMM meta gates pyramid permission too tightly (n_trades 612 → 466), CAGR drops 14pp, DD unchanged. Needs the ML rebuild before reactivation — the threshold-based heuristic is the problem, not the HMM signal itself.
+- **V3 is the move.** Adding DIA + QQQ (already shipped as A1 paper symbols) to the live pool nearly doubles realized CAGR. p5 stays at +89%. DD widens modestly (−9.9 → −13.5%), well inside the 25% budget. Promote DIA + QQQ from paper to live in next cycle.
+- **V4 neutral.** ADX_25_NO_ASIA_SLOPE barely fires on GLD because GLD is already NYSE-hours-only. Need a different gold-native primitive (real-yields filter, DXY divergence, gold-tuned pullback band). The switch-flip version is a no-op.
+
+### Lessons
+
+1. Brain items are hypotheses, not conclusions. Two of four were stale — re-test before shipping.
+2. The MC harness is now the gate for ANY config change. Anything that drops p5 CAGR > 3pp or widens p5 DD > 3pp without compensating gains is dead on arrival.
+3. The biggest wins live in universe expansion, not parameter tuning. V3 alone > all the parameter studies of the last two sessions combined.
+
+
+---
+
+## Part 8.8 — HMM diagnostic: entry vs exit attribution (2026-06-02)
+
+Following Part 8.7 (V1 exit-trail re-enable regressed, V2 HMM-meta switch-flip regressed), the question wasn't whether the brain's improvement labels were right — it was whether they pointed at the right *mechanism*. Used the HMM as a research probe to attribute the bottleneck. Scripts: `_diag_entry_vs_exit.py`, `_diag_confirm_exit.py`.
+
+### Setup
+- 612 baseline trades (SPY+GLD+PAXG, V0 config, 1038-day span)
+- Tag each trade with HMM state at entry AND at exit bar
+- Cross-tab WR / expectancy by entry HMM state, by HMM-direction alignment, by entry→exit flip on losers
+- MC counterfactual two ways: "filter entries to HMM-aligned only" vs "reduce loss on HMM-flipped losers"
+
+### Entry attribution — NOT the problem
+
+| Entry HMM state | n | WR | avg ret | $ PnL |
+|---|---|---|---|---|
+| bull | 209 | 77.0% | +0.42% | +$110,538 |
+| bear | 156 | 67.9% | +0.14% | +$37,180 |
+| range | 180 | 77.8% | +0.22% | +$63,466 |
+
+Every HMM-state bucket is profitable, including "bear-state entries" at 67.9% WR. The HMM-aligned counterfactual (filter to entries where HMM agrees with trade direction) **dropped p5 CAGR by 26.1pp** because the "fighting" entries (HMM disagrees) still have 68.8% WR and +$46K PnL — filtering them out destroys edge.
+
+**Conclusion: entry is not broken.** The structure-based entry signal already captures the edge; HMM doesn't add filterable separation at entry.
+
+### Exit attribution — confirmed bottleneck
+
+Of 172 losers, 54.1% had HMM state flip between entry and exit. Flipped losers cost $72.9K vs $52.6K for same-state losers. Counterfactual (50% loss reduction on flipped losers) **gained +19.1pp on p5 CAGR**.
+
+**Confirmation pass (T1 — sensitivity):**
+
+| Loss reduction on flipped losers | p5 CAGR | Δ vs base | p5 DD |
+|---|---|---|---|
+| 0% | +49.9% | −0.0pp | −10.1% |
+| 25% | +59.2% | **+9.3pp** | −7.9% |
+| 50% | +67.5% | +17.6pp | −6.7% |
+| 75% | +77.9% | +28.0pp | −6.0% |
+| 100% | +87.8% | +37.8pp | −5.5% |
+
+Monotonic. Even at a 25% loss reduction (conservative), p5 CAGR gains ~9pp. The conclusion doesn't depend on an aggressive assumption.
+
+**Confirmation pass (T2 — exit-reason mechanism):**
+
+| Exit reason | Flipped losers | Same-state losers | Flipped $ | Same $ |
+|---|---|---|---|---|
+| `stop` (fast stop_loss) | 73 | 68 | −$54,395 | −$51,226 |
+| `time` (max_hold 390) | **20** | 10 | **−$18,513** | −$719 |
+
+This is the mechanistic smoking gun. **Time-stops on HMM-flipped trades cost 26× more** ($-18.5K vs $-0.7K) than time-stops on same-state trades. Fast stop_loss exits fire regardless of HMM flip (no signal there). All the HMM information is consumed by the time-stop bucket — meaning `max_hold_bars=390` is letting regime-turned trades run all the way to the bell.
+
+**Confirmation pass (T3 — per-symbol):**
+
+| Symbol | Losers | Flipped | Flip% | Flipped $ | Same $ |
+|---|---|---|---|---|---|
+| PAXGUSDT | 84 | 51 | **60.7%** | **−$43,363** | −$19,492 |
+| SPY | 52 | 26 | 50.0% | −$13,870 | −$12,272 |
+| GLD | 36 | 16 | 44.4% | −$15,675 | −$20,843 |
+
+PAXG has the highest flip rate and biggest flipped-$ loss — confirms the Part 8.6 MC finding that PAXG is the fragile leg. SPY/GLD ~50% flip rate is more uniform structural.
+
+### What this changes
+
+The brain's "fix the exit ladder" item is real — but the fix is **NOT** re-enabling trailing-after-partial (V1, already failed in Part 8.7). The right fix is a **regime-flip exit rule**: when HMM state flips against position direction, cut the position before `max_hold_bars` runs out. Mechanistically grounded by T2 — that's exactly the bucket where the leak is.
+
+### New queue items (from this attribution)
+
+| Queue | Scope | Priority |
+|---|---|---|
+| Regime-flip exit rule | New exit primitive: close position when HMM state at current bar flips against direction held ≥ N bars. Test N ∈ {3, 5, 10}. MC-validate. | High |
+| Time-stop tightening (PAXG) | Reduce `max_hold_bars` on PAXG only (highest flip rate). Likely lives inside the per-symbol size scaler framework. | Medium |
+| HMM as exit signal, not entry filter | Reinterpret HMM role: zero predictive power at entry, real predictive power at exit. Re-scope the "ML regime classifier" queue from entry-gate to exit-trigger. | High |
+
+### Headline lesson
+
+> Brain item names are right. Brain item *mechanisms* may be wrong. The diagnostic step between "this is broken" and "fix it" is non-optional.
+
+V1 failed because it touched the wrong exit knob (trailing-after-partial). The right knob is `max_hold_bars` × HMM-flip — a knob that didn't exist yet. The MC framework + HMM diagnostic surfaced this in two scripts. Without it we'd have shipped V1, taken the regression, and blamed "the brain was wrong about exits."
+
