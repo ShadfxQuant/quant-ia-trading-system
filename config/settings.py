@@ -25,23 +25,26 @@ class DataConfig:
     # NYSE hours + ADX≥25 (COMBO_F: PF 1.81 / DD 18.3% in validation).
     # All three gold instruments use inverse macro polarity.
     symbols: List[str] = field(default_factory=lambda: [
-        # Phase A1.1 — universe pivot 2026-06-02:
-        #   - PAXGUSDT DROPPED. The tokenized gold perp had outsized tail
-        #     risk (Part 8.6 MC: 10.3% loss probability, p5 DD -17.4%).
-        #     User decision: trade gold via XAUUSD spot reference instead.
-        #   - GC=F ADDED. Gold spot 24/5 FX. Same regime filter as PAXG
-        #     (ADX_25_NO_ASIA_SLOPE) because off-hours liquidity has the
-        #     same chop characteristics the filter was tuned against.
-        # Live on Infinex (real execution intent): SPY, GLD, GC=F.
-        # Paper-only diversification (verified backtest 2023-26):
-        #   DIA: PF 3.35, CAGR 16.5%, DD 10.3%  ← clean, similar to SPY
-        #   QQQ: PF 1.86, CAGR 12.8%, DD 14.1%  ← weaker but tradeable
-        # Watchlist symbols (degraded — kept for Discord signal stream):
-        #   SLV: DD 39.6%  → needs per-symbol size scaler (~0.5× SPY)
-        #   IWM: PF 1.31   → small-cap noise, marginal edge
-        #   EURUSD=X: PF 1.01 → FX needs session filter + different bar res
-        "SPY", "GLD", "GC=F",
-        "DIA", "QQQ",
+        # Phase A1.2 — MT5 alignment 2026-06-03:
+        # User trades MT5 CFDs (US500, US100, XAUUSD). Universe re-mapped
+        # to the closest yfinance proxies that match the actual instruments
+        # the user has execution access to:
+        #   - ES=F: E-mini S&P 500 futures continuous → MT5 US500 CFD
+        #   - NQ=F: E-mini Nasdaq-100 futures continuous → MT5 US100 CFD
+        #   - GC=F: gold continuous futures → MT5 XAUUSD CFD
+        # All three trade 23/5 like MT5 CFDs. Backtest validation (raw):
+        #   ES=F: PF 1.77, CAGR +12.4%, DD -9.1%,  WR 62.4%, n=258
+        #   NQ=F: PF 1.73, CAGR +19.6%, DD -11.7%, WR 61.2%, n=325
+        #   GC=F: regime-flip exit ON, see Part 8.11
+        # Paper-only diversifier (strongest standalone PF, NYSE-hours):
+        #   GLD: PF ~3.4, CAGR +36.4%, DD -5.3%, WR 81% — independent gold
+        #        validator (same underlying as GC=F, different microstructure)
+        # Watchlist (degraded — kept for signal stream):
+        #   SLV: DD 39.6%  → needs per-symbol size scaler
+        #   IWM: PF 1.31   → small-cap noise
+        #   EURUSD=X: PF 1.01 → FX hourly broken
+        "ES=F", "NQ=F", "GC=F",
+        "GLD",
         "SLV", "IWM", "EURUSD=X",
     ])
     start: str = "2024-05-06"

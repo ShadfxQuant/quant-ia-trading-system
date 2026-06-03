@@ -32,7 +32,7 @@ from execution.portfolio import run_portfolio, StrategySpec
 
 N_PATHS = 10_000
 INITIAL = 100_000.0
-SYMBOLS = ["SPY", "GLD", "GC=F"]
+SYMBOLS = ["ES=F", "NQ=F", "GC=F"]  # MT5 live universe; GLD removed (now paper)
 HORIZONS_YEARS = [1, 3, 5]
 LEVERAGES = [1.0, 1.5, 2.0, 2.5]
 RNG = np.random.default_rng(2026)

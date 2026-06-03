@@ -1156,3 +1156,90 @@ State.json regenerated immediately and committed so `/read` works without waitin
 
 Python's `json` is permissive by default; downstream consumers (V8, browsers, jq) are strict. **Any JSON produced by Python that crosses a process boundary should use `allow_nan=False`**, sanitizing upstream if needed. Added this as a project-wide policy: all `json.dump` calls writing files the worker / Cloudflare side reads must pass `allow_nan=False`.
 
+
+---
+
+## Part 8.15 — MT5 universe alignment (2026-06-03)
+
+### What changed
+
+User trades MT5 CFDs (US500, US100, XAUUSD). The previous live universe used ETF proxies (SPY, GLD) that don't exist as instruments on MT5 brokers. Re-mapped to the closest yfinance proxies that match what the user can actually execute:
+
+| MT5 instrument | New yfinance ticker | Old (replaced) | Hours |
+|---|---|---|---|
+| US500 | **ES=F** (E-mini S&P 500 cont futures) | SPY (NYSE ETF) | 23/5 |
+| US100 | **NQ=F** (E-mini Nasdaq-100 cont futures) | (was QQQ paper-only) | 23/5 |
+| XAUUSD | **GC=F** (gold cont futures, unchanged) | — | 23/5 |
+| (paper validator) | **GLD** (NYSE gold ETF) | — | NYSE-hours |
+
+DIA + QQQ dropped from paper (no MT5 equivalent the user needs). GLD demoted from live to paper-validator (it's still the strongest gold-class backtest, but the user trades XAUUSD via GC=F not GLD).
+
+### Backtest validation (raw, no regime filter — futures data already gap-filtered)
+
+| Symbol | Final $ | CAGR | DD | PF | WR | n |
+|---|---|---|---|---|---|---|
+| ES=F (US500) | $131,635 | +12.4% | −9.1% | 1.77 | 62.4% | 258 |
+| NQ=F (US100) | $152,655 | +19.6% | −11.7% | 1.73 | 61.2% | 325 |
+| GC=F (XAUUSD) | $134,084 | +13.3% | −15.5% | — | 61.8% | 403 |
+
+All three clear PF > 1.5 / CAGR > 10% / DD < 25%. Tested COMBO_E regime filter: zero effect on futures (yfinance already returns gap-filtered active-hours data on continuous contracts).
+
+### Final MC on the MT5-aligned universe (10,000 paths)
+
+| | Realized 2.36yr | 3yr Forward MC (1×) |
+|---|---|---|
+| Final equity | **$218,373** | mean $275,038 |
+| Profit | **+$118,373** | mean +$175,038 |
+| CAGR | +39.2% | p5 +24.8% / p50 +39.5% / p95 +55.1% |
+| Max DD | −18.3% | p5 −12.2% |
+| WR / Trades | 61.8% / 986 | — |
+| P(double 2×) | — | **93.4%** |
+| P(ruin −50%) | — | **0.00%** |
+
+### Honest comparison vs prior universe (SPY+GLD+GC=F)
+
+| Metric | Old (SPY/GLD/GC=F) | New (ES=F/NQ=F/GC=F) | Δ |
+|---|---|---|---|
+| Realized profit | +$235,854 | +$118,373 | −$117,481 |
+| Realized CAGR | +52.9% | +39.2% | −13.7pp |
+| Realized DD | −7.6% | −18.3% | wider 10.7pp |
+| 3yr MC p5 CAGR | +40.5% | +24.8% | −15.7pp |
+| 3yr P(double) | 100.0% | 93.4% | −6.6pp |
+| 3yr P(ruin) | 0.00% | 0.00% | same |
+| Window | 2.85 yr | 2.36 yr | shorter (futures data starts later) |
+
+**Read:** the MT5 universe is materially weaker than the SPY+GLD universe — primarily because SPY (PF 3.18) and GLD (PF 3.40) are exceptional standalone performers, while ES=F (PF 1.77) and NQ=F (PF 1.73) are merely good. This is the **executability tax**: trading what you can execute beats trading what's pretty in backtest. The system stays profitable, robust (0% ruin paths in 10K trials), and 93.4% likely to double in 3 years at 1× leverage.
+
+### Leverage sensitivity (3yr, MT5 universe, combined)
+
+| Lev | p5 CAGR | p50 CAGR | p5 DD | P(double) | P(ruin) |
+|---|---|---|---|---|---|
+| 1.0× | +24.8% | +39.5% | −12.2% | 93.4% | 0.00% |
+| 1.5× | +38.9% | +63.6% | −17.7% | 99.6% | 0.00% |
+| 2.0× | +53.8% | +91.2% | −23.1% | 99.9% | 0.00% |
+| 2.5× | +69.6% | +123.5% | −28.5% | 100.0% | 0.00% |
+
+Zero ruin paths across all leverage levels. At 1.5× lev (modest), 3yr P(double) jumps to 99.6%.
+
+### What's now live (and where to point Discord/dashboard)
+
+- ✅ `config/settings.py` DATA.symbols updated
+- ✅ `_montecarlo_final.py` updated to new live universe (excludes GLD from combined pool; GLD remains in DATA.symbols for paper signal tracking)
+- ✅ Dashboard caption refreshed with new numbers
+- ✅ Dashboard "Live model state" expander refreshed
+- ✅ TradingView symbol map (ES=F → CME_MINI:ES1!, NQ=F → CME_MINI:NQ1!, GC=F → COMEX:GC1!)
+- ✅ `data/state.json` regenerated (clean JSON, new universe)
+- ✅ Worker pipeline auto-picks up via DATA.symbols
+- ✅ Macro inverse polarity already includes GC=F (Part 8.13)
+
+### What's NOT changing (intentionally)
+
+- Engine logic (pullback + trend_carry + Kalman + regime-flip exit on GC=F) — unchanged
+- Per-symbol regime-flip gating still `{GC=F}` — ES=F and NQ=F use the time-stop ladder (they don't have the gold-class regime-turn leak)
+- 1× leverage — paper window still applies
+- GLD stays in DATA.symbols as paper validator (independent gold edge confirmation)
+
+### Methodology note: shorter window
+
+The MT5 universe MC window is 2.36 years (Jan 2024 → Jun 2026) instead of 2.85 years, because yfinance's ES=F / NQ=F hourly data only goes back to Jan 2024. This is the binding constraint; not a configuration choice. Realized numbers are correctly time-scaled (CAGR not total return). 3-year forward MC uses the realized trade-rate to project trade count over the longer horizon.
+

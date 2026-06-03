@@ -189,10 +189,10 @@ st.title("📈 Quant IA — Live Signals")
 st.caption(
     "Pullback engine + trend-carry sleeve · "
     + " · ".join(DATA.symbols)
-    + " · 1× lev (de-leveraged 2026-05-30) · "
+    + " · 1× lev · MT5-aligned (ES=F/NQ=F/GC=F = US500/US100/XAUUSD) · "
     "Kalman-smoothed HMM + regime-flip exit (GC=F) · "
-    "**realized 2.85yr: $100K → $335,854 (+$235,854 / +52.9% CAGR / −7.6% DD / WR 69.9% / n=781)** · "
-    "3yr MC: P(2×) 100% / P(ruin) 0%. "
+    "**realized 2.36yr: $100K → $218,373 (+$118,373 / +39.2% CAGR / −18.3% DD / WR 61.8% / n=986)** · "
+    "3yr MC: P(2×) 93.4% / P(ruin) 0%. "
     "**Educational only — not investment advice. Past performance is not "
     "indicative of future results.**"
 )
@@ -293,8 +293,8 @@ yfinance bars  →  indicators  →  5-state regime
 
 | Knob | Value |
 |---|---|
-| Symbols (live) | SPY, GLD, GC=F |
-| Symbols (paper) | DIA, QQQ |
+| Symbols (live, MT5) | ES=F (US500), NQ=F (US100), GC=F (XAUUSD) |
+| Symbols (paper) | GLD (gold validator) |
 | Watchlist | SLV, IWM, EURUSD=X |
 | Pullback size | 0.30 of equity, cap 1.00 |
 | Max pyramid | 8 legs |
@@ -309,18 +309,19 @@ yfinance bars  →  indicators  →  5-state regime
 
 | Metric | Value |
 |---|---|
-| Mean wealth | $361,717 |
-| p5 wealth | $278,426 |
-| p50 wealth | $357,512 |
-| p95 wealth | $460,942 |
-| P(double 2×) | 100% |
+| Mean wealth | $275,038 |
+| p5 wealth | $195,624 |
+| p50 wealth | $269,234 |
+| p95 wealth | $371,756 |
+| P(double 2×) | 93.4% |
 | P(any loss) | 0.0% |
 | P(ruin −50%) | 0.00% |
 
-Per-symbol realized:
-- SPY $156,926 (+17.3%)
-- GLD $238,141 (+36.4%)
-- GC=F $140,787 (+15.5%)
+Per-symbol realized (MT5-aligned universe):
+- ES=F $131,635 (+12.4%, US500)
+- NQ=F $152,655 (+19.6%, US100)
+- GC=F $134,084 (+13.3%, XAUUSD)
+- GLD $238,141 (+36.4%, paper validator)
 """)
     st.caption(
         "Documented in SYSTEM_LOG.md Parts 8.7 → 8.12. "
@@ -574,12 +575,18 @@ st.divider()
 with tab_chart:
     st.subheader(f"TradingView — {symbol} (interactive)")
     TV_SYMBOL_MAP = {
-        "SPY": "AMEX:SPY", "DIA": "AMEX:DIA", "QQQ": "NASDAQ:QQQ",
-        "IWM": "AMEX:IWM", "XLK": "AMEX:XLK", "XLF": "AMEX:XLF",
-        "SLV": "AMEX:SLV",
+        # MT5-aligned (live live)
+        "ES=F": "CME_MINI:ES1!",     # E-mini S&P 500 continuous → US500
+        "NQ=F": "CME_MINI:NQ1!",     # E-mini Nasdaq-100 continuous → US100
+        "GC=F": "COMEX:GC1!",        # Gold continuous → XAUUSD
+        # Paper / watchlist
         "GLD": "AMEX:GLD",
-        "GC=F": "TVC:GOLD",          # gold spot via TradingView's gold index
+        "SLV": "AMEX:SLV",
+        "IWM": "AMEX:IWM",
         "EURUSD=X": "FX:EURUSD",
+        # Legacy (kept in case user pivots back)
+        "SPY": "AMEX:SPY", "DIA": "AMEX:DIA", "QQQ": "NASDAQ:QQQ",
+        "XLK": "AMEX:XLK", "XLF": "AMEX:XLF",
         "BTCUSDT": "BINANCE:BTCUSDT", "ETHUSDT": "BINANCE:ETHUSDT",
     }
     tv_symbol = TV_SYMBOL_MAP.get(symbol, f"AMEX:{symbol}")
