@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-03T13:06:30.489807+00:00",
+  "generated_at_utc": "2026-06-03T13:11:28.953832+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -8878,11 +8878,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-03T12:00:00+00:00",
-      "close": 4488.0,
-      "ema": 4514.28795345783,
-      "sma": 4513.634630408654,
-      "vwap": 4490.865972799391,
+      "bar_time_utc": "2026-06-03T13:00:00+00:00",
+      "close": 4489.5,
+      "ema": 4513.338487220849,
+      "sma": 4513.474631911057,
+      "vwap": 4490.866072312706,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8890,30 +8890,20 @@
       "trend_carry_pyramid_ok": false,
       "trend_carry_pyramid_cap": 0,
       "read": {
-        "bias": "neutral",
+        "bias": "bearish",
         "strength": "strong",
-        "adx": 41.09,
-        "ema_slope_4bar": -5.1413,
+        "adx": 41.94,
+        "ema_slope_4bar": -4.2034,
         "regime_pct_24h": 0.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "supports",
         "flip": [
-          "Close + ADX both push above EMA50 with ADX \u2265 20",
-          "Or close below EMA50 with ADX rising past 20"
+          "Close > EMA50 (4,513.34)",
+          "ADX falls below 20 (now 41.9)",
+          "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F is neutral (ADX 41.1, close 4,488.00 vs EMA50 4,514.29) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F leans short (ADX 41.9, close 4,489.50 vs EMA50 4,513.34) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-05-07T22:00:00+00:00",
-          "o": 4682.5,
-          "h": 4708.5,
-          "l": 4671.0,
-          "c": 4694.89990234375,
-          "v": 0.0,
-          "ema": 4694.745153480717,
-          "sma": 4634.773080679087,
-          "vwap": 4733.792120926552
-        },
         {
           "t": "2026-05-07T23:00:00+00:00",
           "o": 4694.39990234375,
@@ -13297,11 +13287,22 @@
           "o": 4490.89990234375,
           "h": 4495.60009765625,
           "l": 4476.2998046875,
-          "c": 4488.0,
-          "v": 5746.0,
-          "ema": 4514.28795345783,
-          "sma": 4513.634630408654,
-          "vwap": 4490.865972799391
+          "c": 4488.60009765625,
+          "v": 5977.0,
+          "ema": 4514.311486699251,
+          "sma": 4513.6392465444715,
+          "vwap": 4490.870110843414
+        },
+        {
+          "t": "2026-06-03T13:00:00+00:00",
+          "o": 4488.5,
+          "h": 4491.0,
+          "l": 4486.2998046875,
+          "c": 4489.5,
+          "v": 110.0,
+          "ema": 4513.338487220849,
+          "sma": 4513.474631911057,
+          "vwap": 4490.866072312706
         }
       ]
     },
@@ -31026,9 +31027,9 @@
     "EURUSD=X": {
       "symbol": "EURUSD=X",
       "bar_time_utc": "2026-06-03T13:00:00+00:00",
-      "close": 1.160496711730957,
-      "ema": 1.163201572197759,
-      "sma": 1.1639517811628488,
+      "close": 1.1606314182281494,
+      "ema": 1.1632068548054921,
+      "sma": 1.1639528173666733,
       "vwap": NaN,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -35443,12 +35444,12 @@
         {
           "t": "2026-06-03T13:00:00+00:00",
           "o": 1.1603620052337646,
-          "h": 1.160496711730957,
+          "h": 1.1606314182281494,
           "l": 1.1603620052337646,
-          "c": 1.160496711730957,
+          "c": 1.1606314182281494,
           "v": 0.0,
-          "ema": 1.163201572197759,
-          "sma": 1.1639517811628488,
+          "ema": 1.1632068548054921,
+          "sma": 1.1639528173666733,
           "vwap": NaN
         }
       ]
@@ -35457,16 +35458,16 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 4,
-    "risk_on_score": 1,
+    "risk_off_score": 5,
+    "risk_on_score": 2,
     "theme_hits": {
       "war": 3,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 1,
+      "crash": 2,
       "rate_cut": 1,
-      "risk_on": 0
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
@@ -35478,12 +35479,15 @@
       "recession": [],
       "rate_hike": [],
       "crash": [
+        "Crypto ETF Outflows Hit $609M: Should Beginners Panic or Buy the Dip?",
         "KKR, Ares, Blackstone tumble premarket as Partners Group caps private equity fund withdrawals"
       ],
       "rate_cut": [
         "Mortgage rates are easing slightly, but homebuyers are retreating"
       ],
-      "risk_on": []
+      "risk_on": [
+        "Inditex Q1 2026 earnings beat as summer sales surge"
+      ]
     },
     "n_headlines": 85,
     "sources_used": [
@@ -35492,7 +35496,7 @@
       "cnbc_top",
       "marketwatch"
     ],
-    "fetched_at": 1780491991.2022445,
+    "fetched_at": 1780492289.327985,
     "risk_off_themes": [
       "banking",
       "crash",
