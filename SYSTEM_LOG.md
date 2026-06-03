@@ -703,3 +703,76 @@ The brain's "fix the exit ladder" item is real — but the fix is **NOT** re-ena
 
 V1 failed because it touched the wrong exit knob (trailing-after-partial). The right knob is `max_hold_bars` × HMM-flip — a knob that didn't exist yet. The MC framework + HMM diagnostic surfaced this in two scripts. Without it we'd have shipped V1, taken the regression, and blamed "the brain was wrong about exits."
 
+
+---
+
+## Part 8.9 — Regime-flip exit prototype + PAXG max_hold + HMM-ML reframe (2026-06-02)
+
+Three brain queue items from Part 8.8 prototyped and MC'd in one session.
+Scripts: `_proto_regime_flip_exit.py`, `_proto_regime_flip_v2.py`.
+
+### Item 1 — Regime-flip exit rule (PROTOTYPED, partial result)
+
+**V1 (raw HMM flip → force exit):** all variants regressed. N=3 all-symbols dropped p5 CAGR by 33pp and widened p5 DD to −20%. Reason: HMM is noisy; raw flip cuts winners on transient regime noise.
+
+**V2 (HMM flip + trade currently underwater):** added precision filter.
+
+| Variant (V2) | real CAGR Δ | MC p5 Δ | p5 DD | Verdict |
+|---|---|---|---|---|
+| baseline | 0.0pp | 0.0pp | −5.7% | reference |
+| N=3 dd≤−2% **PAXG only** | **+1.9pp** | **+2.2pp** | −5.1% | ⚠ MIXED (best) |
+| N=5 dd≤−2% PAXG only | +1.8pp | +1.8pp | −5.0% | ⚠ MIXED |
+| N=10 dd≤−2% PAXG only | +1.5pp | +1.5pp | −5.2% | ⚠ MIXED |
+| N=3 dd≤−2% all symbols | −3.2pp | −3.0pp | −5.5% | ❌ regress |
+| N=3 dd≤0% all symbols | −24.9pp | −22.7pp | −7.3% | ❌ regress |
+
+**Read:**
+- Best variant (V2 N=3 dd≤−2% PAXG-only) is a real but modest win: +1.9pp realized CAGR, +2.2pp MC p5, slightly tighter DD. Across all 6 PAXG-only V2 combos, every single one is positive on at least one of {real CAGR, MC p5, p5 DD} with no regressions — directionally consistent.
+- All-symbol versions destroy edge. SPY/GLD don't have the time-stop leak PAXG does; cutting their trades on HMM noise drops CAGR by 3–25pp.
+- The Part 8.8 counterfactual suggested +9pp at 25% loss reduction. Real implementation only delivers +2pp because the engine can't oracle-distinguish losers from temporarily-underwater winners. **The leak is real, the fix is real, but the precision ceiling on raw HMM is low.**
+
+**Ship decision: V2 N=3 dd≤−2% PAXG-only — proceed to integration**, with the explicit understanding that this captures ~22% of the theoretical exit-edge ceiling. The remaining 78% needs a higher-precision regime classifier (Item 3).
+
+### Item 2 — PAXG max_hold tightening (PROTOTYPED, REJECTED)
+
+Tested PAXG `max_hold_bars` ∈ {100, 200, 300} against baseline 390.
+
+| Variant | real CAGR | Δ vs base | MC p5 | p5 DD |
+|---|---|---|---|---|
+| baseline (390) | +49.4% | +0.0pp | +37.3% | −5.8% |
+| max_hold=100 PAXG | +46.8% | −2.6pp | +35.3% | −5.5% |
+| max_hold=200 PAXG | +44.3% | −5.1pp | +33.2% | −6.0% |
+| max_hold=300 PAXG | +46.3% | −3.1pp | +34.9% | −5.9% |
+
+**Reject.** Independent of regime-flip, tightening max_hold alone hurts PAXG. PAXG winners need the full 390-bar runway. The time-stop bucket isn't a "trades held too long" problem — it's a "trades that turned should have been cut but weren't" problem. That's the regime-flip rule's job, not raw max_hold's.
+
+### Item 3 — Reframe HMM-ML target: exit-trigger, not entry-gate (DONE)
+
+Updated framing for the open "ML regime classifier" queue based on Part 8.8 + 8.9 findings:
+
+**Before (entry-gate framing):**
+> Build LightGBM classifier on VIX/yields/breadth to gate Is_bearish_regime short filter and pyramid permission. Output: per-bar binary signal.
+
+**After (exit-trigger framing):**
+> Build LightGBM classifier whose target label is `trade-becomes-loser-from-here` (computed look-ahead on training data, predicted at inference). Features: HMM_state, P_bull, ADX bucket, slope variance, time-of-day, unrealized PnL, bars-since-entry. Output: continuous loser-probability ∈ [0,1]. Trigger: close position when prob > 0.7 AND unrealized PnL < threshold. This replaces the raw-HMM-flip trigger from V2 with a calibrated multi-feature signal that captures the precision the prototype demonstrated is needed.
+
+**Why this reframe matters:**
+- Entry edge already exists (every HMM-state bucket profitable at entry per Part 8.8). No filter is needed there.
+- Exit edge exists but needs precision (V2 prototype captures ~22% of ceiling; raw HMM lacks discriminator power).
+- Same model architecture, completely different deployment surface.
+- Bonus: the ML output becomes the position-sizing input too (high loser-prob → smaller next pyramid leg).
+
+### Summary of three queue items
+
+| Item | Status | Deliverable |
+|---|---|---|
+| 1. Regime-flip exit rule | ✅ Prototyped, ship PAXG-only variant | Integrate V2 N=3 dd≤−2% PAXG-only into `execution/portfolio.py` |
+| 2. PAXG max_hold tightening | ❌ Rejected by MC | Keep 390. Removed from queue. |
+| 3. HMM-ML reframe to exit-trigger | ✅ Scope updated | Next-session build target. Features + label spec above. |
+
+### What's now live on the work board
+
+- **Ship V2 PAXG regime-flip exit rule.** Modify the pullback exit logic to check for HMM_state == bear during long positions (or bull during shorts) on PAXG only, after 3 bars held, only if current unrealized < −2%.
+- **Build the LightGBM loser-prob classifier** with the reframed target. Train on baseline trade outcomes, time-series CV, MC the live integration.
+- The "fix the exit ladder" brain item is now **partially shipped** (V2 PAXG) and **partially rolled into ML build** (full precision via the classifier).
+
