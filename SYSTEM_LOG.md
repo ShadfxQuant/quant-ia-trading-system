@@ -1122,3 +1122,37 @@ This push activates the following nodes in production:
 
 The downstream "SHIPPED CONFIG GATE" node is now an enforced step: any further config touch goes through `_montecarlo_final.py` before commit.
 
+
+---
+
+## Part 8.14 — /read Discord command bugfix (2026-06-02)
+
+### The bug
+
+User report: `/read` Discord slash command failed with
+> `Unexpected token 'N', ..."  "vwap": NaN, ... is not valid JSON`
+
+### Root cause
+
+Python's `json.dump` writes `float('nan')` as bareword `NaN` by default (non-strict JSON allowed by Python's encoder). The Cloudflare Worker serving `/read` parses with V8 `JSON.parse()`, which is strict (RFC 8259) and rejects bareword `NaN` / `Infinity` / `-Infinity`. The previously-installed `_json_default` callback only handles non-JSON-serializable Python objects; bareword NaN never went through it.
+
+Counted on live `data/state.json`: **401 instances** of `NaN`, mostly in VWAP fields where the pyramid context had insufficient bars to compute.
+
+### Fix
+
+Added `_sanitize_json(obj)` in `worker.py` — recursively walks dicts/lists, replaces float NaN/Inf with `None`, also unwraps numpy scalars (np.floating, np.integer, np.bool_). Plumbed through both `write_state()` and `_save_rss_history()`, with `allow_nan=False` enforced on the encoder so future regressions raise immediately instead of silently producing invalid JSON.
+
+### Verification
+
+| Check | Result |
+|---|---|
+| `grep -c NaN data/state.json` after regen | **0** (was 401) |
+| `python json.load()` | OK |
+| `node JSON.parse()` (same engine Cloudflare Worker uses) | **OK, 8 symbols parsed** |
+
+State.json regenerated immediately and committed so `/read` works without waiting for the next cron cycle (next */5 UTC tick).
+
+### Lesson
+
+Python's `json` is permissive by default; downstream consumers (V8, browsers, jq) are strict. **Any JSON produced by Python that crosses a process boundary should use `allow_nan=False`**, sanitizing upstream if needed. Added this as a project-wide policy: all `json.dump` calls writing files the worker / Cloudflare side reads must pass `allow_nan=False`.
+

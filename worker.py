@@ -217,11 +217,46 @@ def _json_default(o):
     return str(o)
 
 
+def _sanitize_json(obj):
+    """Recursively replace NaN/Inf floats with None so the output is strict
+    JSON (RFC 8259). Python's json.dump otherwise emits bareword `NaN` /
+    `Infinity` which JSON.parse() (Cloudflare Worker, browsers) rejects with
+    `Unexpected token 'N'`. The /read Discord slash command was hitting this
+    on the worker-emitted state.json (2026-06-02).
+    """
+    import math
+    if isinstance(obj, dict):
+        return {k: _sanitize_json(v) for k, v in obj.items()}
+    if isinstance(obj, (list, tuple)):
+        return [_sanitize_json(v) for v in obj]
+    if isinstance(obj, float):
+        if math.isnan(obj) or math.isinf(obj):
+            return None
+    # numpy scalars need to be unwrapped before isnan/isinf
+    try:
+        import numpy as _np
+        if isinstance(obj, _np.floating):
+            f = float(obj)
+            if math.isnan(f) or math.isinf(f):
+                return None
+            return f
+        if isinstance(obj, _np.integer):
+            return int(obj)
+        if isinstance(obj, _np.bool_):
+            return bool(obj)
+    except Exception:
+        pass
+    return obj
+
+
 def write_state(state: dict, path: str = STATE_PATH) -> None:
     os.makedirs(os.path.dirname(path), exist_ok=True)
     tmp = path + ".tmp"
+    clean = _sanitize_json(state)
     with open(tmp, "w") as f:
-        json.dump(state, f, indent=2, default=_json_default)
+        # allow_nan=False enforces strict JSON; the sanitizer above guarantees
+        # no NaN/Inf reaches the encoder, so this never raises.
+        json.dump(clean, f, indent=2, default=_json_default, allow_nan=False)
         f.flush()
         os.fsync(f.fileno())
     os.replace(tmp, path)
@@ -273,7 +308,8 @@ def _load_rss_history() -> list[dict]:
 def _save_rss_history(items: list[dict]) -> None:
     tmp = RSS_HISTORY_PATH + ".tmp"
     with open(tmp, "w") as f:
-        json.dump(items, f, indent=2, default=_json_default)
+        json.dump(_sanitize_json(items), f, indent=2,
+                  default=_json_default, allow_nan=False)
         f.flush()
         os.fsync(f.fileno())
     os.replace(tmp, RSS_HISTORY_PATH)
