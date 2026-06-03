@@ -58,7 +58,7 @@ RSS_PUBLIC_URL_BASE = os.environ.get(
 # ---------------------------------------------------------------------------
 def _snapshot_symbol(symbol: str) -> dict:
     df = prepare_dual(load_symbol(symbol, force_refresh=True))
-    # Apply per-symbol regime filter (e.g. PAXGUSDT → ADX≥25 + NYSE hours).
+    # Apply per-symbol regime filter (e.g. GC=F → ADX_25_NO_ASIA_SLOPE).
     # See core/regime_filter.py — symbols without a filter pass through.
     try:
         from core.regime_filter import apply_regime_filter

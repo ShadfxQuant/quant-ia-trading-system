@@ -74,8 +74,9 @@ RISK_ON_THEMES  = {"rate_cut", "risk_on"}
 # Add new tickers here as the roster grows.
 INVERSE_MACRO_SYMBOLS: set[str] = {
     "GLD", "IAU", "PHYS", "SGOL",     # gold ETFs
-    "XAUUSD", "XAU", "PAXG", "PAXGUSDT",  # gold spot / tokenised gold (Binance perp)
-    "SLV", "SIVR", "XAGUSD",          # silver (kept for future, even though SLV is off-roster)
+    "GC=F", "MGC=F",                  # gold futures (live production 2026-06-02)
+    "XAUUSD", "XAU", "PAXG", "PAXGUSDT",  # gold spot / tokenised gold (deprecated)
+    "SLV", "SIVR", "XAGUSD",          # silver
 }
 
 

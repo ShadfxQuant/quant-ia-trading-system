@@ -189,8 +189,10 @@ st.title("📈 Quant IA — Live Signals")
 st.caption(
     "Pullback engine + trend-carry sleeve · "
     + " · ".join(DATA.symbols)
-    + " · weak-gate / 2.5× lev · backtest #21: $221K from $100K "
-    "(in-sample, ~147 wks). "
+    + " · 1× lev (de-leveraged 2026-05-30) · "
+    "Kalman-smoothed HMM + regime-flip exit (GC=F) · "
+    "**realized 2.85yr: $100K → $335,854 (+$235,854 / +52.9% CAGR / −7.6% DD / WR 69.9% / n=781)** · "
+    "3yr MC: P(2×) 100% / P(ruin) 0%. "
     "**Educational only — not investment advice. Past performance is not "
     "indicative of future results.**"
 )
@@ -251,6 +253,80 @@ def _kpi_strip(snap: dict, mv: dict, jtail: list[dict]) -> None:
 
 
 _kpi_strip(snap, mv, jtail)
+
+
+# ---------------------------------------------------------------------------
+# Live model state — what's actually running (refreshed 2026-06-02)
+# ---------------------------------------------------------------------------
+with st.expander("🧠 Live model state — what's actually running right now", expanded=False):
+    cL, cR = st.columns([1, 1])
+    with cL:
+        st.markdown("""
+**Shipped pipeline (2026-06-02)**
+
+```
+yfinance bars  →  indicators  →  5-state regime
+                                    ↓
+                                  HMM regime
+                                    ↓
+                              Kalman P_bull smoother      ← NEW 8.11
+                                    ↓
+                              HMM_state_kalman
+                                    ↓
+              ┌─────────────────────┴───────────────────┐
+              ↓                                          ↓
+       Pullback signal                          Regime-flip exit         ← NEW 8.11
+              ↓                                          ↓
+       Trend-carry runner                       (GC=F only, dd ≤ −2%)
+              ↓                                          ↓
+                 Execution engine (shared $100K pool)
+                                    ↓
+                             Trade records
+                                    ↓
+                         _montecarlo_final.py
+                          (10K-path MC gate)
+```
+""")
+    with cR:
+        st.markdown("""
+**Live config**
+
+| Knob | Value |
+|---|---|
+| Symbols (live) | SPY, GLD, GC=F |
+| Symbols (paper) | DIA, QQQ |
+| Watchlist | SLV, IWM, EURUSD=X |
+| Pullback size | 0.30 of equity, cap 1.00 |
+| Max pyramid | 8 legs |
+| Stop / TP1 / TP2 | −2.5% / +4% / +15% |
+| Time stop | 390 bars |
+| RSI size mult | 1.3× / 0.7× |
+| Regime-flip exit | ON (GC=F only) |
+| Kalman P_bull | ON (q=1e-4, r=1e-2) |
+| Leverage | 1× (paper window) |
+
+**MC headline (10K paths, 3yr horizon, 1×)**
+
+| Metric | Value |
+|---|---|
+| Mean wealth | $361,717 |
+| p5 wealth | $278,426 |
+| p50 wealth | $357,512 |
+| p95 wealth | $460,942 |
+| P(double 2×) | 100% |
+| P(any loss) | 0.0% |
+| P(ruin −50%) | 0.00% |
+
+Per-symbol realized:
+- SPY $156,926 (+17.3%)
+- GLD $238,141 (+36.4%)
+- GC=F $140,787 (+15.5%)
+""")
+    st.caption(
+        "Documented in SYSTEM_LOG.md Parts 8.7 → 8.12. "
+        "Methodology note: combined number uses a shared $100K pool, not "
+        "per-symbol stacks. Source of truth: `_montecarlo_final.py`."
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -500,8 +576,10 @@ with tab_chart:
     TV_SYMBOL_MAP = {
         "SPY": "AMEX:SPY", "DIA": "AMEX:DIA", "QQQ": "NASDAQ:QQQ",
         "IWM": "AMEX:IWM", "XLK": "AMEX:XLK", "XLF": "AMEX:XLF",
+        "SLV": "AMEX:SLV",
         "GLD": "AMEX:GLD",
-        "PAXGUSDT": "BINANCE:PAXGUSDT",
+        "GC=F": "TVC:GOLD",          # gold spot via TradingView's gold index
+        "EURUSD=X": "FX:EURUSD",
         "BTCUSDT": "BINANCE:BTCUSDT", "ETHUSDT": "BINANCE:ETHUSDT",
     }
     tv_symbol = TV_SYMBOL_MAP.get(symbol, f"AMEX:{symbol}")

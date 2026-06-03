@@ -1075,3 +1075,50 @@ Reading guide: each `[NODE]` is a load-bearing component. `─ verb →` arrows 
 
 The shipped model as of 2026-06-02 is a 3-symbol (SPY/GLD/GC=F) pullback trend-continuation engine with a HMM-derived regime layer that is Kalman-smoothed before being consumed by a regime-flip exit primitive gated to gold-class assets only. Realized profit over the 2.85-year backtest window is **$235,854 on $100K starting capital** (+52.9% CAGR, −7.6% max DD, 69.9% WR, 781 trades). Forward MC projects a 3-year **expected wealth of $362K with zero ruin paths at 1× leverage**, scaling to $853K expected over 5 years. The system has structural room for 2.5× leverage (p5 CAGR +133%, p5 DD −14%, 0% ruin) once the paper-validation window closes.
 
+
+---
+
+## Part 8.13 — Live-system push + dashboard re-engineering (2026-06-02)
+
+### What went live this push
+
+| Surface | Change | File |
+|---|---|---|
+| Cron worker pipeline | Picks up GC=F automatically via `DATA.symbols`. End-to-end smoke test confirmed all 3 live symbols (SPY/GLD/GC=F) snapshot through the new Kalman + regime-flip pipeline. | `worker.py` (comment update only — code is config-driven) |
+| Macro polarity | Added `GC=F`, `MGC=F` to `INVERSE_MACRO_SYMBOLS` so the macro card reads correctly (risk-off favors gold). | `core/news_macro.py` |
+| Dashboard caption | Replaced stale "$221K from $100K backtest #21" with the shipped numbers: $100K → $335,854 (+$235,854, +52.9% CAGR, −7.6% DD, WR 69.9%, n=781). Also notes Kalman + regime-flip + 1× leverage. | `dashboard.py` |
+| Dashboard model panel | NEW expander "🧠 Live model state" — pipeline ASCII graph, live config table, MC headline table, per-symbol realized numbers. | `dashboard.py` |
+| TradingView chart map | Replaced `PAXGUSDT → BINANCE:PAXGUSDT` with `GC=F → TVC:GOLD`. Added SLV, EURUSD=X. | `dashboard.py` |
+| Worker comment | "PAXGUSDT → ADX≥25" → "GC=F → ADX_25_NO_ASIA_SLOPE" | `worker.py` |
+
+### Verification (end-to-end smoke test, 2026-06-02 live)
+
+| Symbol | Close | Pullback signal | Trend-carry signal | Pipeline |
+|---|---|---|---|---|
+| SPY | $756.77 | 0 (flat) | 0 (flat) | ✅ |
+| GLD | $408.91 | 0 (flat) | 0 (flat) | ✅ |
+| GC=F | $4,473.90 | 0 (flat) | 0 (flat) | ✅ |
+
+Indicators, regime classification, HMM, Kalman smoother, signal engine, regime-flip exit logic all wired and executing cleanly on the new live universe.
+
+### What's still off-live (intentionally)
+
+- **Infinex executor** — still blocked on user's API/SDK research. Signals fire to Discord; execution is manual until that's unblocked.
+- **DIA + QQQ paper → live promotion** — Part 8.7 V3 win is shipped to config only as paper. Promote after Infinex executor exists so they can execute.
+- **LightGBM exit-trigger classifier** — features (Kalman innovations, etc.) now available; build queued for next session.
+- **Per-symbol size scaler + session filter** — A2 foundation work, queued.
+
+### Connection to the node graph (Part 8.12)
+
+This push activates the following nodes in production:
+
+- ✅ DATA SOURCES (yfinance, GC=F via Yahoo)
+- ✅ INDICATORS / 5-STATE REGIME / HMM REGIME (unchanged)
+- ✅ KALMAN P_BULL (live — feeds smoothed signals into signal cards)
+- ✅ PULLBACK SIGNAL + TREND_CARRY (live, both consume Kalman state)
+- ✅ REGIME-FLIP EXIT (live — only fires on GC=F)
+- ✅ EXECUTION ENGINE (live in backtest; manual relay to Infinex in production)
+- ✅ MC HARNESS (gates any future config change)
+
+The downstream "SHIPPED CONFIG GATE" node is now an enforced step: any further config touch goes through `_montecarlo_final.py` before commit.
+
