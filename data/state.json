@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-03T10:06:23.915388+00:00",
+  "generated_at_utc": "2026-06-03T10:11:18.665699+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -8878,11 +8878,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-03T09:00:00+00:00",
-      "close": 4472.0,
-      "ema": 4517.569296548742,
-      "sma": 4514.012323467548,
-      "vwap": 4492.325222380211,
+      "bar_time_utc": "2026-06-03T10:00:00+00:00",
+      "close": 4470.5,
+      "ema": 4515.69705995182,
+      "sma": 4513.790012770432,
+      "vwap": 4492.164517799773,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8892,28 +8892,17 @@
       "read": {
         "bias": "neutral",
         "strength": "strong",
-        "adx": 39.03,
-        "ema_slope_4bar": -6.6827,
+        "adx": 40.68,
+        "ema_slope_4bar": -7.2784,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 39.0, close 4,472.00 vs EMA50 4,517.57) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 40.7, close 4,470.50 vs EMA50 4,515.70) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
-        {
-          "t": "2026-05-07T18:00:00+00:00",
-          "o": 4721.0,
-          "h": 4725.5,
-          "l": 4704.60009765625,
-          "c": 4719.10009765625,
-          "v": 6563.0,
-          "ema": 4693.944163053801,
-          "sma": 4631.886162860577,
-          "vwap": 4735.184571420621
-        },
         {
           "t": "2026-05-07T19:00:00+00:00",
           "o": 4719.60009765625,
@@ -13297,11 +13286,22 @@
           "o": 4472.2998046875,
           "h": 4487.5,
           "l": 4467.2001953125,
-          "c": 4472.0,
-          "v": 5851.0,
-          "ema": 4517.569296548742,
-          "sma": 4514.012323467548,
-          "vwap": 4492.325222380211
+          "c": 4471.2998046875,
+          "v": 6054.0,
+          "ema": 4517.541837909037,
+          "sma": 4514.00693734976,
+          "vwap": 4492.204020987347
+        },
+        {
+          "t": "2026-06-03T10:00:00+00:00",
+          "o": 4471.7001953125,
+          "h": 4472.0,
+          "l": 4469.5,
+          "c": 4470.5,
+          "v": 73.0,
+          "ema": 4515.69705995182,
+          "sma": 4513.790012770432,
+          "vwap": 4492.164517799773
         }
       ]
     },
@@ -31026,9 +31026,9 @@
     "EURUSD=X": {
       "symbol": "EURUSD=X",
       "bar_time_utc": "2026-06-03T10:00:00+00:00",
-      "close": 1.16225004196167,
-      "ema": 1.1634967368869553,
-      "sma": 1.1640234938034644,
+      "close": 1.1619800329208374,
+      "ema": 1.1634861482971188,
+      "sma": 1.1640214168108427,
       "vwap": NaN,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -31039,16 +31039,16 @@
       "read": {
         "bias": "bearish",
         "strength": "weak",
-        "adx": 29.73,
+        "adx": 29.17,
         "ema_slope_4bar": -0.0003,
         "regime_pct_24h": 100.0,
         "macro_tilt": "supports",
         "flip": [
           "Close > EMA50 (1.16)",
-          "ADX falls below 20 (now 29.7)",
+          "ADX falls below 20 (now 29.2)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "EURUSD=X leans short (ADX 29.7, close 1.16 vs EMA50 1.16) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "EURUSD=X leans short (ADX 29.2, close 1.16 vs EMA50 1.16) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -35443,12 +35443,12 @@
         {
           "t": "2026-06-03T10:00:00+00:00",
           "o": 1.1617100238800049,
-          "h": 1.16225004196167,
+          "h": 1.162520408630371,
           "l": 1.1617100238800049,
-          "c": 1.16225004196167,
+          "c": 1.1619800329208374,
           "v": 0.0,
-          "ema": 1.1634967368869553,
-          "sma": 1.1640234938034644,
+          "ema": 1.1634861482971188,
+          "sma": 1.1640214168108427,
           "vwap": NaN
         }
       ]
@@ -35457,22 +35457,22 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 6,
-    "risk_on_score": 1,
+    "risk_off_score": 5,
+    "risk_on_score": 0,
     "theme_hits": {
-      "war": 4,
+      "war": 3,
       "banking": 0,
       "recession": 0,
       "rate_hike": 1,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 0
     },
     "sample_headlines": {
       "war": [
         "Putin remains uncompromising on Ukraine, but is public discourse on war changing in Russia?",
-        "Guyana Emerges as an Oil Winner in the Iran War",
-        "U.S., Iran intensify attacks as ceasefire frays, peace talks stall"
+        "U.S., Iran intensify attacks as ceasefire frays, peace talks stall",
+        "OECD warns of global slowdown as U.S.-Iran war stymies economic growth prospects"
       ],
       "banking": [],
       "recession": [],
@@ -35483,9 +35483,7 @@
         "GameStop wants to buy back $2 billion of its own stock after an eBay-fueled selloff"
       ],
       "rate_cut": [],
-      "risk_on": [
-        "Stock market today: Dow, S&P 500, Nasdaq clinch records as Nvidia surges, US-Iran optimism returns"
-      ]
+      "risk_on": []
     },
     "n_headlines": 112,
     "sources_used": [
@@ -35495,7 +35493,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780481184.8206356,
+    "fetched_at": 1780481479.335291,
     "risk_off_themes": [
       "banking",
       "crash",
