@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-03T12:01:22.153231+00:00",
+  "generated_at_utc": "2026-06-03T12:06:27.428507+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -8879,10 +8879,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-03T11:00:00+00:00",
-      "close": 4492.2998046875,
-      "ema": 4515.427586327701,
-      "sma": 4513.796165114182,
-      "vwap": 4491.412468787604,
+      "close": 4490.7001953125,
+      "ema": 4515.364856548289,
+      "sma": 4513.783860426683,
+      "vwap": 4491.388748656163,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8893,14 +8893,14 @@
         "bias": "neutral",
         "strength": "strong",
         "adx": 40.17,
-        "ema_slope_4bar": -5.9253,
+        "ema_slope_4bar": -5.9881,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 40.2, close 4,492.30 vs EMA50 4,515.43) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 40.2, close 4,490.70 vs EMA50 4,515.36) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -13297,11 +13297,11 @@
           "o": 4487.7998046875,
           "h": 4496.5,
           "l": 4487.0,
-          "c": 4492.2998046875,
-          "v": 2069.0,
-          "ema": 4515.427586327701,
-          "sma": 4513.796165114182,
-          "vwap": 4491.412468787604
+          "c": 4490.7001953125,
+          "v": 2226.0,
+          "ema": 4515.364856548289,
+          "sma": 4513.783860426683,
+          "vwap": 4491.388748656163
         }
       ]
     },
@@ -31026,9 +31026,9 @@
     "EURUSD=X": {
       "symbol": "EURUSD=X",
       "bar_time_utc": "2026-06-03T12:00:00+00:00",
-      "close": 1.1619800329208374,
-      "ema": 1.1633754267319516,
-      "sma": 1.1639922857284546,
+      "close": 1.1618449687957764,
+      "ema": 1.1633701300995962,
+      "sma": 1.1639912467736464,
       "vwap": NaN,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -31038,17 +31038,17 @@
       "trend_carry_pyramid_cap": 0,
       "read": {
         "bias": "bearish",
-        "strength": "weak",
-        "adx": 29.97,
-        "ema_slope_4bar": -0.0002,
+        "strength": "strong",
+        "adx": 30.11,
+        "ema_slope_4bar": -0.0003,
         "regime_pct_24h": 100.0,
         "macro_tilt": "supports",
         "flip": [
           "Close > EMA50 (1.16)",
-          "ADX falls below 20 (now 30.0)",
+          "ADX falls below 20 (now 30.1)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "EURUSD=X leans short (ADX 30.0, close 1.16 vs EMA50 1.16) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "EURUSD=X leans short (ADX 30.1, close 1.16 vs EMA50 1.16) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -35444,11 +35444,11 @@
           "t": "2026-06-03T12:00:00+00:00",
           "o": 1.1619800329208374,
           "h": 1.1619800329208374,
-          "l": 1.1619800329208374,
-          "c": 1.1619800329208374,
+          "l": 1.1618449687957764,
+          "c": 1.1618449687957764,
           "v": 0.0,
-          "ema": 1.1633754267319516,
-          "sma": 1.1639922857284546,
+          "ema": 1.1633701300995962,
+          "sma": 1.1639912467736464,
           "vwap": NaN
         }
       ]
@@ -35493,7 +35493,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780488083.0666163,
+    "fetched_at": 1780488388.6194708,
     "risk_off_themes": [
       "banking",
       "crash",
