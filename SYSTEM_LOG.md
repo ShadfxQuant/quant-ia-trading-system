@@ -776,3 +776,62 @@ Updated framing for the open "ML regime classifier" queue based on Part 8.8 + 8.
 - **Build the LightGBM loser-prob classifier** with the reframed target. Train on baseline trade outcomes, time-series CV, MC the live integration.
 - The "fix the exit ladder" brain item is now **partially shipped** (V2 PAXG) and **partially rolled into ML build** (full precision via the classifier).
 
+
+---
+
+## Part 8.10 — Kalman filter research + applications in our system (2026-06-02)
+
+### What it is, in one paragraph
+
+A Kalman filter is the optimal Bayesian estimator for a linear-Gaussian state-space model. You assume there's a hidden state (e.g. "true trend level", "trend velocity") that evolves linearly with Gaussian noise, and noisy observations of that state (the closing price). Each bar, the filter does a **predict** step (project the state forward using the dynamics model) and an **update** step (Bayesian-blend the prediction with the new observation, weighted by their relative uncertainties). The output is a posterior mean + covariance of the hidden state. Compared to an EMA, it (a) has no fixed lag — the lag is set by the noise ratio, which adapts, (b) provides an explicit uncertainty band, and (c) emits an "innovation" each bar (observed − predicted) which is itself a rich feature signal.
+
+### Properties relevant to a pullback trend-continuation system
+
+| Property | Why it matters here |
+|---|---|
+| Adaptive smoothing | EMA50 + SMA130 + 3-bar slope mean are fixed-window; they lag more in low-vol regimes than they need to and noisier in high-vol regimes than they should be. Kalman adapts via the observation-noise estimate. |
+| Velocity / acceleration as explicit state | Our rollover guard uses 3-bar EMA slope mean — a 2-bar derivative. Kalman state-space with [level, velocity] gives a much cleaner velocity estimate with smaller lag. |
+| Uncertainty quantification | Kalman emits a covariance. We can size positions by 1/σ — already what `pullback_SizeMult` does heuristically via ATR, but Kalman's σ is calibrated, not eyeballed. |
+| Innovations as features | Each bar's (observed − predicted) is a calibrated "surprise". A run of large positive innovations = regime acceleration. Direct input to the Item 3 ML loser-prob classifier. |
+| Composable with HMM | Kalman = continuous-state special case of state-space. HMM = discrete-state special case. They're complementary, not competing. Kalman-smooth the HMM `P_bull` signal to denoise it. |
+
+### Concrete integration candidates (ranked by expected ship value)
+
+| # | Where | What | Expected effect | Risk |
+|---|---|---|---|---|
+| A | Rollover guard | Replace 3-bar EMA-slope-mean with Kalman velocity state | Cleaner regime-turn detection, fewer false rollover blocks | Low — slot-in replacement of one indicator |
+| B | HMM `P_bull` smoothing | Wrap raw HMM P_bull in a univariate Kalman filter before threshold decisions | Eliminates the HMM-flip noise that killed V1 regime-flip exit (Part 8.9). Likely lifts V2 from 22% to ~40-50% of edge ceiling | Medium — changes a load-bearing signal that the live config already uses |
+| C | ML exit-classifier features | Add Kalman innovation + posterior σ as features to the LightGBM loser-prob classifier | Standard quant practice; innovations are known-informative on regime turns | Low — pure additive feature work |
+| D | Adaptive pullback band | Replace fixed `pullback_band_atr_mult` with Kalman-σ-derived band | Self-calibrating to each symbol's vol regime; foundation for the abandoned A2 size scaler queue | Medium — touches entry logic, needs MC gate |
+| E | GLD ↔ PAXG basis hedge | Kalman track the GLD-PAXG basis (same underlying, different microstructure). Trade mean-reversion on the basis when it widens. | New uncorrelated sleeve, ~zero direction exposure | High — new strategy class, needs from-scratch validation |
+
+### What this does NOT replace
+
+- **HMM regime classifier** — Kalman doesn't do discrete states; HMM stays for bull/bear/range labels
+- **Deterministic 5-state regime model** — those are macro-driven thresholds (slope/divergence/vol), not Kalman-friendly  
+- **The ML loser-prob classifier (Item 3)** — Kalman is a *feature provider* for it, not a replacement
+- **The pullback signal logic itself** — Kalman improves the inputs to the existing structure; doesn't propose a new entry rule
+
+### Recommended path
+
+1. **Build B first** (Kalman-smooth `P_bull`) — directly addresses the precision ceiling demonstrated in Part 8.9. Cheapest path to lift V2 PAXG regime-flip from 22% → higher.
+2. **Then A** (Kalman velocity in rollover guard) — quality-of-life improvement to entry signal.
+3. **Then C** (Kalman features in ML build) — folds in naturally when the ML pipeline goes up.
+4. **Defer D and E** — D is a vol-scaling project (foundation work, A2 queue). E is a whole new sleeve and needs its own session.
+
+
+### Live config re-MC (verification, 2026-06-02)
+
+Re-ran `_montecarlo.py` against the unchanged live config to confirm production is still on its expected curve and that none of the 8.7–8.9 research touched live behavior.
+
+| Symbol | Realized | MC p5 / p50 / p95 CAGR | p5 DD | P(lose) | Δ vs Part 8.6 |
+|---|---|---|---|---|---|
+| SPY | +17.3% | +10.9 / +17.3 / +24.2% | −5.8% | 0.0% | bit-identical |
+| GLD | +36.4% | +27.0 / +36.4 / +45.8% | −4.7% | 0.0% | bit-identical |
+| PAXG | +17.1% | −4.9 / +16.9 / +42.8% | −17.4% | 10.3% | bit-identical |
+| Combined | +68.5% | +49.6 / +68.3 / +89.4% | −10.0% | 0.0% | bit-identical |
+
+**Confirms:** the live config is unchanged. All 8.7/8.8/8.9 work is research/prototype only; nothing has shipped to `execution/portfolio.py` yet. PAXG remains the fragile leg (p5 CAGR still negative, 10.3% loss probability), exactly the leg that the Kalman-smoothed P_bull → V2 regime-flip pipeline (Part 8.10 item B → Part 8.9 V2 PAXG-only) is designed to fix.
+
+**Implication:** the next code change should be the Kalman P_bull smoother (8.10 item B), then re-MC, then wire V2 PAXG-only regime-flip into the engine, then re-MC again. Each step gated by MC: no regression on combined, no widening of PAXG tail.
+
