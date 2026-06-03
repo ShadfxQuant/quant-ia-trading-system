@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-03T08:41:21.109133+00:00",
+  "generated_at_utc": "2026-06-03T08:46:27.976316+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -8879,10 +8879,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-03T08:00:00+00:00",
-      "close": 4485.2001953125,
-      "ema": 4519.938379266586,
-      "sma": 4514.2507887620195,
-      "vwap": 4497.773712162633,
+      "close": 4483.7998046875,
+      "ema": 4519.883461987174,
+      "sma": 4514.240016526443,
+      "vwap": 4497.626113924412,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8893,14 +8893,14 @@
         "bias": "neutral",
         "strength": "strong",
         "adx": 36.92,
-        "ema_slope_4bar": -5.8869,
+        "ema_slope_4bar": -5.9418,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 36.9, close 4,485.20 vs EMA50 4,519.94) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 36.9, close 4,483.80 vs EMA50 4,519.88) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -13297,11 +13297,11 @@
           "o": 4481.7998046875,
           "h": 4487.7998046875,
           "l": 4478.7998046875,
-          "c": 4485.2001953125,
-          "v": 2613.0,
-          "ema": 4519.938379266586,
-          "sma": 4514.2507887620195,
-          "vwap": 4497.773712162633
+          "c": 4483.7998046875,
+          "v": 2838.0,
+          "ema": 4519.883461987174,
+          "sma": 4514.240016526443,
+          "vwap": 4497.626113924412
         }
       ]
     },
@@ -31039,16 +31039,16 @@
       "read": {
         "bias": "bearish",
         "strength": "weak",
-        "adx": 26.88,
+        "adx": 26.97,
         "ema_slope_4bar": -0.0003,
         "regime_pct_24h": 100.0,
         "macro_tilt": "supports",
         "flip": [
           "Close > EMA50 (1.16)",
-          "ADX falls below 20 (now 26.9)",
+          "ADX falls below 20 (now 27.0)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "EURUSD=X leans short (ADX 26.9, close 1.16 vs EMA50 1.16) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "EURUSD=X leans short (ADX 27.0, close 1.16 vs EMA50 1.16) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -35444,7 +35444,7 @@
           "t": "2026-06-03T08:00:00+00:00",
           "o": 1.1618449687957764,
           "h": 1.1619800329208374,
-          "l": 1.1610356569290161,
+          "l": 1.1609008312225342,
           "c": 1.1610356569290161,
           "v": 0.0,
           "ema": 1.1636173391324867,
@@ -35457,22 +35457,22 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 7,
-    "risk_on_score": 2,
+    "risk_off_score": 6,
+    "risk_on_score": 1,
     "theme_hits": {
-      "war": 5,
+      "war": 4,
       "banking": 0,
       "recession": 0,
       "rate_hike": 1,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 2
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
         "Putin remains uncompromising on Ukraine, but is public discourse on war changing in Russia?",
-        "Stocks steady at record highs as AI optimism trumps Iran tensions",
-        "OECD warns of global slowdown as U.S.-Iran war stymies economic growth prospects"
+        "OECD warns of global slowdown as U.S.-Iran war stymies economic growth prospects",
+        "Oil Holds Gains, US Futures Slip on War Confusion: Markets Wrap - Bloomberg.com"
       ],
       "banking": [],
       "recession": [],
@@ -35484,7 +35484,6 @@
       ],
       "rate_cut": [],
       "risk_on": [
-        "Stocks steady at record highs as AI optimism trumps Iran tensions",
         "Japan's Nikkei hits record high as Asia markets rise amid Middle East concerns"
       ]
     },
@@ -35496,7 +35495,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780476081.69253,
+    "fetched_at": 1780476389.0497344,
     "risk_off_themes": [
       "banking",
       "crash",
