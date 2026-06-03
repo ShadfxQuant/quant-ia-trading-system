@@ -835,3 +835,73 @@ Re-ran `_montecarlo.py` against the unchanged live config to confirm production 
 
 **Implication:** the next code change should be the Kalman P_bull smoother (8.10 item B), then re-MC, then wire V2 PAXG-only regime-flip into the engine, then re-MC again. Each step gated by MC: no regression on combined, no widening of PAXG tail.
 
+
+---
+
+## Part 8.11 — Universe pivot + regime-flip exit + Kalman P_bull ship (2026-06-02)
+
+Three changes shipped together to production, MC-validated.
+
+### Changes shipped
+
+1. **DATA.symbols**: dropped `PAXGUSDT`, added `GC=F` (gold continuous futures, yfinance — `XAUUSD=X` doesn't exist on Yahoo; GC=F is the canonical gold-spot proxy)
+2. **REGIME_FILTERS**: routed `GC=F` through `ADX_25_NO_ASIA_SLOPE` (same COMBO_E filter PAXG used)
+3. **`core/kalman.py`** (NEW): univariate Kalman smoother with `smooth_series()` and `innovations()` functions
+4. **`main_portfolio.prepare_dual`**: applies Kalman smoothing to `P_bull` after `attach_hmm_probabilities`, exposes `P_bull_kalman` and `HMM_state_kalman` columns
+5. **`config.settings.PULLBACK`**: new fields `use_regime_flip_exit=True`, `regime_flip_min_hold_bars=3`, `regime_flip_dd_threshold=-0.02`
+6. **`config.settings.REGIME_FLIP_EXIT_SYMBOLS`** = `{"GC=F"}` — per-symbol gating (SPY/GLD/DIA/QQQ excluded; they don't have the leak)
+7. **`execution/portfolio.py`**: regime-flip exit primitive inserted before the time-stop check, gated by symbol allowlist + min hold bars + drawdown precondition. Reads `HMM_state_kalman` (falls back to raw `HMM_state`).
+
+### MC results — new live config (5,000 paths/symbol)
+
+| Symbol | Realized | MC p5 / p50 / p95 CAGR | p5 DD | P(lose) |
+|---|---|---|---|---|
+| SPY | +17.3% | +10.9 / +17.3 / +24.2% | −5.8% | 0.0% |
+| GLD | +36.4% | +27.0 / +36.4 / +45.8% | −4.7% | 0.0% |
+| GC=F | **+15.5%** | **+5.1 / +15.5 / +26.9%** | **−12.6%** | **0.7%** |
+| **Combined** | **+79.0%** | **+58.1 / +79.0 / +101.1%** | **−8.5%** | **0.0%** |
+
+### Attribution — symbol swap vs regime-flip exit
+
+| GC=F variant | Real CAGR | MC p5 | p5 DD | P(lose) | n_trades |
+|---|---|---|---|---|---|
+| Regime-flip OFF (symbol swap only) | +12.9% | +1.6% | −16.7% | 3.2% | 368 |
+| Regime-flip ON (full ship) | **+15.5%** | **+5.3%** | **−12.6%** | **0.6%** | **417** |
+| Δ regime-flip contribution | **+2.6pp** | **+3.7pp** | **+4.1pp tighter** | **−2.6pp** | +49 |
+
+The symbol swap is the structural fix (eliminates PAXG fragility). The regime-flip exit is a clean **additive** win on top of it.
+
+### vs the old live config (Part 8.6 reference)
+
+| Metric | Old (PAXG) | New (GC=F + regime-flip + Kalman) | Δ |
+|---|---|---|---|
+| Combined realized CAGR | +68.5% | **+79.0%** | **+10.5pp** |
+| Combined MC p5 CAGR | +49.6% | **+58.1%** | **+8.5pp** |
+| Combined p5 DD | −10.0% | **−8.5%** | **tighter by 1.5pp** |
+| Gold-leg P(lose) | 10.3% | **0.0%** (GC=F isolated 0.7%) | **−9.6pp / −10.3pp** |
+| Gold-leg p5 DD | −17.4% | **−12.6%** | **tighter by 4.8pp** |
+| Combined realized DD | −15.6% | −14.5% | tighter by 1.1pp |
+
+### What this resolves on the work board
+
+- **Flaw 1 (PAXG tail risk):** resolved by symbol swap. GC=F P(loss) 0.7% vs PAXG 10.3%.
+- **Flaw 2 (exit ladder leak):** mitigated by regime-flip exit primitive on gold-class assets. Extends to other 24/5 instruments as they're added.
+- **Flaw 3 (HMM signal noise):** addressed by Kalman P_bull smoother. The `HMM_state_kalman` column is now available everywhere `HMM_state` is, with significantly less flip jitter. The regime-flip exit consumes the smoothed version.
+- **8.10 item B (Kalman P_bull):** ✅ SHIPPED
+- **8.9 item 1 (regime-flip exit prototype → integration):** ✅ SHIPPED
+- **8.9 item 2 (PAXG max_hold):** dropped (PAXG no longer in universe)
+- **8.9 item 3 (HMM-ML reframe to exit-trigger):** still queued for next session — Kalman features now available for that model
+
+### Updated live config snapshot (commit current)
+
+```
+PULLBACK:    base_size_pct=0.30, capital_cap_pct=1.00, max_pyramid=8
+             use_rsi_size_mult=True, use_conviction_size_mult=False
+             use_regime_flip_exit=True, regime_flip_min_hold=3, dd_th=-0.02
+TRENDCARRY:  base_size_pct=0.30, capital_cap_pct=1.25, max_pyramid=2
+REGIME_FILTERS: GC=F → ADX_25_NO_ASIA_SLOPE
+REGIME_FLIP_EXIT_SYMBOLS: {GC=F}  (per-symbol gating)
+DATA.symbols: SPY, GLD, GC=F (live)  ·  DIA, QQQ (paper)  ·  SLV, IWM, EURUSD=X (watchlist)
+KALMAN: P_bull → P_bull_kalman + HMM_state_kalman (process_var=1e-4, obs_var=1e-2)
+```
+

@@ -34,7 +34,7 @@ from typing import Any, List, Optional, Sequence
 import numpy as np
 import pandas as pd
 
-from config.settings import BACKTEST
+from config.settings import BACKTEST, PULLBACK as _PULLBACK_CFG, REGIME_FLIP_EXIT_SYMBOLS
 from strategies.exit_profile import ExitProfile
 
 
@@ -313,6 +313,31 @@ def run_portfolio(
 
                 if trail_hit:
                     rec = _close_leg(pos, pos.qty_open, price, ts, "trail", symbol)
+                    cash += rec.pnl
+                    cumulative_pnl_running[pos.strategy] += rec.pnl
+                    closed.append(rec)
+                    positions.remove(pos)
+                    continue
+
+            # Regime-flip exit (Part 8.9 V2 + 8.10 Kalman; gated per symbol).
+            # Fires only on symbols listed in REGIME_FLIP_EXIT_SYMBOLS, only
+            # after min_hold_bars, only when the trade is currently underwater
+            # (precondition prevents the V1 winner-killing failure mode).
+            if (
+                getattr(_PULLBACK_CFG, "use_regime_flip_exit", False)
+                and symbol in REGIME_FLIP_EXIT_SYMBOLS
+                and pos.qty_open > 0
+                and pos.bars_held >= getattr(_PULLBACK_CFG, "regime_flip_min_hold_bars", 3)
+            ):
+                # prefer Kalman-smoothed state, fall back to raw HMM_state
+                state = row.get("HMM_state_kalman", row.get("HMM_state", None))
+                state_s = str(state).lower() if state is not None else ""
+                unrealized = pos.side * (price - pos.entry_price) / pos.entry_price
+                dd_th = getattr(_PULLBACK_CFG, "regime_flip_dd_threshold", -0.02)
+                long_flipped  = pos.side == 1  and ("bear" in state_s)
+                short_flipped = pos.side == -1 and ("bull" in state_s)
+                if (long_flipped or short_flipped) and unrealized <= dd_th:
+                    rec = _close_leg(pos, pos.qty_open, price, ts, "regime_flip", symbol)
                     cash += rec.pnl
                     cumulative_pnl_running[pos.strategy] += rec.pnl
                     closed.append(rec)

@@ -38,7 +38,7 @@ N_PATHS = 5000
 INITIAL = 100_000.0
 TARGET_DOUBLE = 200_000.0
 RUIN_LEVEL = 50_000.0  # -50%
-SYMBOLS = ["SPY", "GLD", "PAXGUSDT"]
+SYMBOLS = ["SPY", "GLD", "GC=F"]  # PAXG dropped 2026-06-02; gold via spot futures
 RNG = np.random.default_rng(42)
 
 

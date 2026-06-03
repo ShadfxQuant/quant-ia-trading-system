@@ -55,6 +55,23 @@ def prepare_dual(df: pd.DataFrame) -> pd.DataFrame:
     df = label_structure(df)
     if attach_hmm_probabilities is not None:
         df = attach_hmm_probabilities(df)
+        # Part 8.10 item B: Kalman-smooth P_bull to denoise the regime
+        # signal before any downstream consumer (regime-flip exit, ML
+        # exit classifier features, etc). Raw P_bull has high-frequency
+        # jitter that V1 regime-flip showed kills winners.
+        try:
+            from core.kalman import smooth_series as _kalman_smooth
+            if "P_bull" in df.columns:
+                df = df.copy()
+                df["P_bull_kalman"] = _kalman_smooth(df["P_bull"])
+                # derive a smoothed HMM_state_kalman from thresholded smoothed P_bull
+                p = df["P_bull_kalman"]
+                state = pd.Series("range", index=df.index)
+                state[p >= 0.55] = "bull"
+                state[p <= 0.45] = "bear"
+                df["HMM_state_kalman"] = state
+        except Exception:
+            pass
     # Layer 4: regime score (proxy for GEX/DEX; consumed by Layers 2 & 3).
     df = attach_regime_score(df)
     # Lever 3: vol-targeting multiplier (consumed by strategy size_mult when

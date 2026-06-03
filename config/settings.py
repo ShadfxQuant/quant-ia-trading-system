@@ -25,17 +25,22 @@ class DataConfig:
     # NYSE hours + ADX≥25 (COMBO_F: PF 1.81 / DD 18.3% in validation).
     # All three gold instruments use inverse macro polarity.
     symbols: List[str] = field(default_factory=lambda: [
-        # Phase A1 — research/paper portfolio expansion 2026-05-30.
-        # Live on Infinex (real execution intent): SPY, GLD, PAXGUSDT.
+        # Phase A1.1 — universe pivot 2026-06-02:
+        #   - PAXGUSDT DROPPED. The tokenized gold perp had outsized tail
+        #     risk (Part 8.6 MC: 10.3% loss probability, p5 DD -17.4%).
+        #     User decision: trade gold via XAUUSD spot reference instead.
+        #   - GC=F ADDED. Gold spot 24/5 FX. Same regime filter as PAXG
+        #     (ADX_25_NO_ASIA_SLOPE) because off-hours liquidity has the
+        #     same chop characteristics the filter was tuned against.
+        # Live on Infinex (real execution intent): SPY, GLD, GC=F.
         # Paper-only diversification (verified backtest 2023-26):
         #   DIA: PF 3.35, CAGR 16.5%, DD 10.3%  ← clean, similar to SPY
         #   QQQ: PF 1.86, CAGR 12.8%, DD 14.1%  ← weaker but tradeable
-        # Watchlist symbols (degraded or broken on this engine — kept in
-        # the universe for the Discord/dashboard signal stream but flagged):
+        # Watchlist symbols (degraded — kept for Discord signal stream):
         #   SLV: DD 39.6%  → needs per-symbol size scaler (~0.5× SPY)
         #   IWM: PF 1.31   → small-cap noise, marginal edge
         #   EURUSD=X: PF 1.01 → FX needs session filter + different bar res
-        "SPY", "GLD", "PAXGUSDT",
+        "SPY", "GLD", "GC=F",
         "DIA", "QQQ",
         "SLV", "IWM", "EURUSD=X",
     ])
@@ -240,6 +245,16 @@ class PullbackStratConfig:
     trailing_logic_type: str = "ema_50"
     trailing_starts_at: str = "after_partial"
     max_hold_bars: int = 390
+    # ----- Regime-flip exit primitive (Part 8.9 V2 + 8.10 Kalman, 2026-06-02) -----
+    # Closes a position when the smoothed HMM state flips against direction,
+    # but ONLY if the trade is currently underwater. V1 prototype showed raw
+    # flip kills winners; V2 with the drawdown precondition gains +1.9pp
+    # realized CAGR and +2.2pp MC p5 on PAXG-class assets.
+    # Per-symbol gating via REGIME_FLIP_EXIT_SYMBOLS in this module — defaults
+    # to NOT firing on SPY/GLD/DIA/QQQ (NYSE-hours assets don't have the leak).
+    use_regime_flip_exit: bool = True
+    regime_flip_min_hold_bars: int = 3
+    regime_flip_dd_threshold: float = -0.02   # only fire if unrealized return ≤ this
     # ----- HMM meta-layer (SESSION_LOG #22 — re-bound from #6/#7) -----
     # Repurposed from a destructive entry gate into a sizing + pyramid
     # controller. NEVER blocks entries (pure deterministic structure decides
@@ -480,8 +495,21 @@ CRYPTO_CARRY = CryptoCarryConfig()
 # already have NYSE-hours data so they don't need a filter.
 # ---------------------------------------------------------------------------
 REGIME_FILTERS: dict = {
-    "PAXGUSDT": "ADX_25_NO_ASIA_SLOPE",  # COMBO_E: PF 1.99, CAGR 80.2%, DD 25.8%, n=304 (fresh sweep)
+    # GC=F: gold spot FX (24/5). Inherits PAXG's regime filter heuristic
+    # since gold spot off-hours liquidity has the same chop characteristics
+    # the COMBO_E filter was tuned for.
+    "GC=F": "ADX_25_NO_ASIA_SLOPE",
 }
+
+
+# ---------------------------------------------------------------------------
+# Per-symbol regime-flip exit gating (Part 8.9 V2 + 8.10 Kalman).
+# Only listed symbols will have the regime-flip exit primitive applied.
+# SPY/GLD/DIA/QQQ do NOT have the time-stop leak that motivated this rule —
+# applying it to them regressed CAGR by 3-25pp in MC. Restrict to gold
+# perp / gold spot class only.
+# ---------------------------------------------------------------------------
+REGIME_FLIP_EXIT_SYMBOLS: set = {"GC=F"}
 
 
 
