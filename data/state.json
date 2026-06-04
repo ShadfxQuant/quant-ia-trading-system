@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-04T10:01:08.636384+00:00",
+  "generated_at_utc": "2026-06-04T10:06:08.546404+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-04T09:00:00+00:00",
-      "close": 4499.10009765625,
-      "ema": 4498.480411632212,
-      "sma": 4512.098482572115,
-      "vwap": 4493.542048223453,
+      "close": 4500.2001953125,
+      "ema": 4498.523552716771,
+      "sma": 4512.106944861779,
+      "vwap": 4493.723991697055,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,15 +13322,15 @@
       "read": {
         "bias": "neutral",
         "strength": "strong",
-        "adx": 31.7,
-        "ema_slope_4bar": -0.9159,
+        "adx": 31.4,
+        "ema_slope_4bar": -0.8727,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 31.7, close 4,499.10 vs EMA50 4,498.48) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 31.4, close 4,500.20 vs EMA50 4,498.52) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -17725,13 +17725,13 @@
         {
           "t": "2026-06-04T09:00:00+00:00",
           "o": 4489.89990234375,
-          "h": 4500.5,
+          "h": 4503.2998046875,
           "l": 4487.7001953125,
-          "c": 4499.10009765625,
-          "v": 3280.0,
-          "ema": 4498.480411632212,
-          "sma": 4512.098482572115,
-          "vwap": 4493.542048223453
+          "c": 4500.2001953125,
+          "v": 3623.0,
+          "ema": 4498.523552716771,
+          "sma": 4512.106944861779,
+          "vwap": 4493.723991697055
         }
       ]
     },
@@ -26597,9 +26597,9 @@
     "EURUSD=X": {
       "symbol": "EURUSD=X",
       "bar_time_utc": "2026-06-04T10:00:00+00:00",
-      "close": 1.1629259586334229,
-      "ema": 1.1620767923711506,
-      "sma": 1.163503749553974,
+      "close": 1.1631964445114136,
+      "ema": 1.1620873996604835,
+      "sma": 1.1635058302145738,
       "vwap": null,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -26610,7 +26610,7 @@
       "read": {
         "bias": "neutral",
         "strength": "weak",
-        "adx": 22.21,
+        "adx": 22.36,
         "ema_slope_4bar": 0.0,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
@@ -26618,7 +26618,7 @@
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "EURUSD=X is neutral (ADX 22.2, close 1.16 vs EMA50 1.16) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "EURUSD=X is neutral (ADX 22.4, close 1.16 vs EMA50 1.16) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -31013,12 +31013,12 @@
         {
           "t": "2026-06-04T10:00:00+00:00",
           "o": 1.1629259586334229,
-          "h": 1.1629259586334229,
+          "h": 1.1631964445114136,
           "l": 1.1629259586334229,
-          "c": 1.1629259586334229,
+          "c": 1.1631964445114136,
           "v": 0.0,
-          "ema": 1.1620767923711506,
-          "sma": 1.163503749553974,
+          "ema": 1.1620873996604835,
+          "sma": 1.1635058302145738,
           "vwap": null
         }
       ]
@@ -31027,22 +31027,22 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 9,
-    "risk_on_score": 1,
+    "risk_off_score": 8,
+    "risk_on_score": 3,
     "theme_hits": {
-      "war": 5,
+      "war": 4,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
       "crash": 4,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 3
     },
     "sample_headlines": {
       "war": [
         "Israel and Lebanon agree to implement ceasefire if Hezbollah stops attacks",
         "US House delivers rebuke to Trump as it votes to halt Iran war",
-        "China Draws Down Billion-Barrel Stockpile as Iran War Cuts Imports in Half"
+        "Asia-Pacific markets fall on renewed Middle East tensions"
       ],
       "banking": [],
       "recession": [],
@@ -31054,6 +31054,8 @@
       ],
       "rate_cut": [],
       "risk_on": [
+        "Unusual Machines (UMAC) Notches All-Time High on Govt Funding Buzz",
+        "Eli Manning weighs in on Giants QB Jaxson Dart's Trump rally fallout",
         "Historic stock rally faces key test"
       ]
     },
@@ -31065,7 +31067,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780567269.289549,
+    "fetched_at": 1780567568.9680653,
     "risk_off_themes": [
       "banking",
       "crash",
