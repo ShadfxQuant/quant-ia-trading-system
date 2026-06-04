@@ -1667,3 +1667,161 @@ The Pine Script overlay is the first artifact that crosses the research/live bou
 - **Volume on FX bars** from yfinance is reported as 0 — CVD/tick-imbalance edges WON'T fire on EURUSD/USDJPY/etc charts via this Pine. They work in the lab via aggregated tick proxies; TV display version needs a different volume proxy on FX (e.g. ATR-weighted body sign).
 - **The 9 Pine edges are the cross-class-robust ones** — they discard 30+ single-symbol edges that may still be alpha for that specific symbol. Trade-off is: more reliable on any new symbol vs leaving signal on the table for symbols already mined.
 
+
+---
+
+## Part 8.19 — Edge Lab consolidation entry (re-input 2026-06-04)
+
+Self-contained dense node consolidating Parts 8.17 + 8.18 for next-session lookup. Everything load-bearing about the research arc lives here so future sessions don't need to re-read both prior parts.
+
+### Artifacts shipped (with paths)
+
+| Path | Purpose | Status |
+|---|---|---|
+| `research/__init__.py` | Isolation manifest — never imports execution/strategies/worker | live |
+| `research/edge_lab.py` | Harness: takes EdgeDef, mines stats at N horizons, auto-direction flip | live |
+| `research/edge_library.py` | 46 EdgeDefs across 9 categories | live |
+| `research/proxies.py` | CVD, tick imbalance, close-position, range z, GEX walls, RSI, Bollinger z, momentum acceleration, realized vol | live |
+| `research/run_lab.py` | Entry point: `python3 -m research.run_lab` | live |
+| `research/dashboard_research.py` | Streamlit on port 8502 (separate from main 8501) | live |
+| `research/tradingview_edge_overlay.pine` | Pine v5: 9 cross-class-validated edges as visual markers + alerts | live |
+| `research/RESEARCH_NOTES.md` | GEX/orderflow primers + reading list | live |
+| `research/NOT_A_LIL_FISH_METHODOLOGY.md` | Practitioner-archetype synthesis (5 pillars + 5 setups) | live |
+| `research/results/edges_latest.csv` | Latest mining output (~7,800 cells, 44 sym × 46 edges × 4 horizons) | refreshed per run |
+
+### The 44-symbol universe (9 asset classes)
+
+```
+Equity indices (5):    SPY QQQ DIA IWM MDY
+Sector ETFs (11):      XLK XLF XLE XLV XLI XLY XLP XLU XLB XLRE XLC
+Commodity ETFs (6):    GLD SLV USO UNG DBC CPER
+Index futures (4):     ES=F NQ=F YM=F RTY=F
+Metal/energy fut (5):  GC=F SI=F HG=F CL=F NG=F
+Bonds (5):             TLT IEF SHY HYG LQD
+FX (5):                EURUSD=X GBPUSD=X USDJPY=X AUDUSD=X USDCAD=X
+Vol + crypto (3):      ^VIX BTC-USD ETH-USD
+```
+
+All validated to load via yfinance with 1H bars (≥1,000 bars each).
+
+### The 9 cross-class-robust edges (shipped to Pine)
+
+**Selection criterion**: |t| > 5, p < 0.001, significant on ≥ 8 symbols across ≥ 3 asset classes. Filters single-symbol lucky edges; surfaces structural alphas only.
+
+| # | Edge | Family | Pine marker | # sym sig | mean_t | mean_bps | Direction |
+|---|---|---|---|---|---|---|---|
+| E1 | tick_imb_negative | Orderflow exhaustion | ▲ aqua | **23** | 6.11 | +35.2 | BULLISH bounce |
+| E2 | cvd_falling_strong | Orderflow exhaustion | ▲ teal | **24** | 5.92 | +33.6 | BULLISH bounce |
+| E3 | vol_compression_then_expansion | GEX proxy / squeeze | ◆ orange | **25** | 5.95 | +27.1 | NEUTRAL break |
+| E4 | rsi_extreme_high_80 | Momentum stretch | ▲ lime | 6 tech only | 6.06 | +55.3 | BULLISH continuation |
+| E5 | stack_oversold_uptrend | Stacked | ○ lime | 9 | 4.52 | +48.0 | BULLISH |
+| E6 | stack_overbought_downtrend | Stacked | ▼ red | **15** | 5.01 | +47.0 | **BEARISH** |
+| E7 | wide_bar_close_at_high | Institutional sweep | ◆ yellow | persistent | — | — | BULLISH |
+| E8 | inside_bar | Structural compression | × gray | persistent | — | — | NEUTRAL |
+| E9 | tod_power_hour + vol spike | Time-of-day stacked | ⚑ fuchsia | 13 | 4.17 | +39.0 | BULLISH |
+
+**Single-symbol stand-outs worth knowing (h=20):**
+- USO `tick_imb_negative`: 60.4% hit, +110.2bp, t=7.70 (highest mean_bp of any orderflow edge)
+- XLK `tick_imb_negative`: 65.6% hit, +80.5bp, t=9.94 (highest t-stat of any orderflow)
+- QQQ `rsi_extreme_high_80`: 75.4% hit, +91.9bp, t=8.49 (tech-only momentum stretch)
+- SPY `stack_overbought_downtrend`: 77.2% hit, +66.3bp, t=7.10 (cleanest bearish stack)
+- DIA `stack_overbought_downtrend`: 75.2% hit, +53.5bp, t=8.51
+
+### The not-a-lil-fish methodology — five pillars (one line each)
+
+1. **Levels-first** — no trade unless price is at a pre-marked structural level (ONH/L, prior day H/L/C, VWAP, OR boundaries, volume profile POC, GEX walls)
+2. **Tape reads at the level** — absorption / exhaustion / trapped traders / stop-run-and-reclaim are the only valid triggers
+3. **Patience as edge** — 1 trade/session normal; lunch lull skipped; opening drive + power hour are the two high-edge windows
+4. **R:R discipline** — 2:1 minimum, 3-5:1 target, fixed 0.25-0.5% account risk, size computed backwards from stop
+5. **Process over outcome** — A/B/C/D trade grading; weekly review counts grades, not P&L
+
+### Five named setups (and their lab status)
+
+| Setup | Lab status | Why |
+|---|---|---|
+| Opening Drive Failure (ODF) | ⏳ queued | needs 5-min bars |
+| Opening Range Breakout + Pullback (ORB-pullback) | ⏳ queued | needs sub-hourly + session-anchored OR |
+| VWAP Reclaim | ⏳ queued | needs session-anchored VWAP, not rolling |
+| GEX-wall pin (in long-gamma regime) | ⏳ queued | needs real options OI data |
+| Trapped Move (Trap + Snap) | ⏳ queued | needs sub-hourly + footprint or fine OHLCV |
+
+7 of 12 pillars/setups are empirically validated by the lab already (see Part 8.18 mapping table). 5 are queued and depend on adding either sub-hourly bars or real options-chain data.
+
+### How to use everything (operator workflow)
+
+```bash
+# 1. Mine edges across the 44 symbols (~3 min)
+python3 -m research.run_lab
+
+# 2. View results in the research dashboard (separate from main)
+streamlit run research/dashboard_research.py --server.port 8502
+
+# 3. Drop edges live on TradingView charts (any of the 44 symbols or any new one)
+#    - TV → Pine Editor → paste research/tradingview_edge_overlay.pine
+#    - Save as "Edge Lab Overlay v2", Add to chart
+#    - Right-click any signal marker → Create Alert → route to Discord webhook
+```
+
+### What's intentionally NOT plugged into live
+
+The Edge Lab cannot affect production behavior by design. The Pine Script is a **manual / discretionary signal display** — the user reads markers and decides. Two findings clean enough to consider promoting to the live systematic engine **after walk-forward validation** (queued, not yet shipping):
+
+- Power-hour SizeMult uplift (1.15× on `pullback_SizeMult` between 19-20 UTC)
+- First-30-min-of-NYSE entry filter (mixed edge in early RTH)
+
+Both go through the MC harness gate (`_montecarlo_final.py`) before any live deployment — same discipline as Part 8.12.
+
+### Honest caveats (load-bearing)
+
+1. **390-bar t-stats are drift artifacts, not alpha** — the 2024-26 trending market inflates long-horizon stats. Real intraday alpha lives at 5-20 bar horizons; always check both before drawing conclusions.
+2. **Bonferroni reality check**: with ~7,800 tests at p<0.01, ~78 false positives expected by chance. Cross-class robustness filter handles most of this; walk-forward validation closes the rest.
+3. **FX volume = 0 on yfinance** — Pine markers E1/E2 (CVD/tick imbalance) won't fire on EURUSD/USDJPY charts via the current Pine. Lab handles it via aggregated tick proxies; TV display version needs a different volume proxy for FX (e.g., ATR-weighted body sign — queued).
+4. **The not-a-lil-fish framework is archetype synthesis** — the document is broadly-observable retail-prop methodology, NOT direct quotes. User should verify with primary sources (@not_a_lil_fish on X) before treating any specific tactic as authoritative from that handle.
+5. **The 9 Pine edges are intentionally cross-class-conservative** — they discard 30+ single-symbol edges that may still be real alpha for one specific symbol. Trade-off: more reliable on any new symbol vs leaving signal on the table for already-mined symbols.
+
+### Open queue (Edge Lab specific, separate from main work board)
+
+| Task | Priority | Connects to |
+|---|---|---|
+| 5-min + 1-min bar variants of EdgeDefs | High | Unlocks 4/5 queued not-a-lil-fish setups |
+| Session-aware proxies (RTH vs ETH) | High | Pillar 3 (patience as edge) |
+| OR-breakout EdgeDef | High | ORB-pullback setup |
+| Opening-Drive-Failure EdgeDef | Medium | ODF setup |
+| VWAP-reclaim EdgeDef | Medium | VWAP Reclaim setup |
+| Real GEX from yfinance SPY options chain | Medium | GEX-wall pin setup; E3 proxy upgrade |
+| Walk-forward 3-fold of top edges | **High** | Bonferroni correction; promotion gate |
+| Composite signal from top edges | High | Multiplicative t-stat lift via combining |
+| A/B/C/D trade grading in journal | Low | Practitioner-grade quality metric |
+| Nightly cron + edges_history table | Low | Track edge degradation over time |
+| FX volume proxy for Pine | Low | Closes the E1/E2 FX gap |
+
+### Connection to main system (node graph)
+
+```
+[NODE: EDGE LAB]                        ← isolated research surface
+   ├─ reads only: yfinance OHLCV (shared upstream)
+   ├─ outputs to: research/results/, Pine Script, dashboard :8502
+   └─ NO writes to: execution/, strategies/, config/, worker.py
+
+[NODE: live pipeline]                   ← unchanged by lab work
+   └─ would consume: hypothetically, walk-forward-validated edges
+                     re-encoded as proper strategy modules,
+                     gated through _montecarlo_final.py
+```
+
+The boundary is structural: a single test of the lab cannot fire a live trade. Any promotion requires re-encoding in `strategies/`, MC gate, and 30-day paper validation — same discipline as everything else in Part 8.
+
+### Reading list (cached)
+
+- **Primary source**: @not_a_lil_fish on X / Twitter (verify methodology specifics)
+- **Adjacent practitioners**: @TraderXO, @JustinBennett, @sssvenny, @hedgeyemkt
+- **Books**:
+  - "Trading in the Zone" — Mark Douglas (discretionary mindset)
+  - "Mind Over Markets" — James Dalton (market profile / value area)
+  - "One Good Trade" — Mike Bellafiore (SMB Capital desk methodology)
+  - "Reading Price Charts Bar by Bar" — Al Brooks
+- **GEX-specific**: Charlie McElligott (Nomura) commentary; SpotGamma, MenthorQ, Tier1Alpha (paid)
+- **Orderflow**: John Grady "Trading Order Flow" (NoBSDayTrading); John Carter "Mastering the Trade"
+- **Free educational**: SMB Capital YouTube; Volume Profile Trading community; ICT (controversial but levels methodology useful)
+- **Anti-pattern reference** (what to skip): pattern-only without level context, indicator stacking, after-the-fact S/R, holding losers, revenge trading, news-release trading without explicit playbook
+
