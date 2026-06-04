@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-04T09:56:04.733453+00:00",
+  "generated_at_utc": "2026-06-04T10:01:08.636384+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-04T09:00:00+00:00",
-      "close": 4496.0,
-      "ema": 4498.358839175104,
-      "sma": 4512.074635667067,
-      "vwap": 4493.296126187958,
+      "close": 4499.10009765625,
+      "ema": 4498.480411632212,
+      "sma": 4512.098482572115,
+      "vwap": 4493.542048223453,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13320,18 +13320,17 @@
       "trend_carry_pyramid_ok": false,
       "trend_carry_pyramid_cap": 0,
       "read": {
-        "bias": "bearish",
+        "bias": "neutral",
         "strength": "strong",
-        "adx": 32.11,
-        "ema_slope_4bar": -1.0375,
+        "adx": 31.7,
+        "ema_slope_4bar": -0.9159,
         "regime_pct_24h": 0.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
-          "Close > EMA50 (4,498.36)",
-          "ADX falls below 20 (now 32.1)",
-          "EMA50 crosses back above SMA130"
+          "Close + ADX both push above EMA50 with ADX \u2265 20",
+          "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F leans short (ADX 32.1, close 4,496.00 vs EMA50 4,498.36) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F is neutral (ADX 31.7, close 4,499.10 vs EMA50 4,498.48) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -17726,13 +17725,13 @@
         {
           "t": "2026-06-04T09:00:00+00:00",
           "o": 4489.89990234375,
-          "h": 4497.0,
+          "h": 4500.5,
           "l": 4487.7001953125,
-          "c": 4496.0,
-          "v": 2922.0,
-          "ema": 4498.358839175104,
-          "sma": 4512.074635667067,
-          "vwap": 4493.296126187958
+          "c": 4499.10009765625,
+          "v": 3280.0,
+          "ema": 4498.480411632212,
+          "sma": 4512.098482572115,
+          "vwap": 4493.542048223453
         }
       ]
     },
@@ -26597,10 +26596,10 @@
     },
     "EURUSD=X": {
       "symbol": "EURUSD=X",
-      "bar_time_utc": "2026-06-04T09:00:00+00:00",
-      "close": 1.163061261177063,
-      "ema": 1.1620474385058144,
-      "sma": 1.163498552945944,
+      "bar_time_utc": "2026-06-04T10:00:00+00:00",
+      "close": 1.1629259586334229,
+      "ema": 1.1620767923711506,
+      "sma": 1.163503749553974,
       "vwap": null,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -26611,28 +26610,17 @@
       "read": {
         "bias": "neutral",
         "strength": "weak",
-        "adx": 22.75,
-        "ema_slope_4bar": -0.0,
+        "adx": 22.21,
+        "ema_slope_4bar": 0.0,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "EURUSD=X is neutral (ADX 22.7, close 1.16 vs EMA50 1.16) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "EURUSD=X is neutral (ADX 22.2, close 1.16 vs EMA50 1.16) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
-        {
-          "t": "2026-05-12T15:00:00+00:00",
-          "o": 1.1739845275878906,
-          "h": 1.1739845275878906,
-          "l": 1.1727453470230103,
-          "c": 1.1737089157104492,
-          "v": 0.0,
-          "ema": 1.1761284170943962,
-          "sma": 1.1751253283940828,
-          "vwap": null
-        },
         {
           "t": "2026-05-12T16:00:00+00:00",
           "o": 1.1735711097717285,
@@ -31016,10 +31004,21 @@
           "o": 1.1618449687957764,
           "h": 1.163061261177063,
           "l": 1.1618449687957764,
-          "c": 1.163061261177063,
+          "c": 1.1629259586334229,
           "v": 0.0,
-          "ema": 1.1620474385058144,
-          "sma": 1.163498552945944,
+          "ema": 1.162042132523711,
+          "sma": 1.1634975121571467,
+          "vwap": null
+        },
+        {
+          "t": "2026-06-04T10:00:00+00:00",
+          "o": 1.1629259586334229,
+          "h": 1.1629259586334229,
+          "l": 1.1629259586334229,
+          "c": 1.1629259586334229,
+          "v": 0.0,
+          "ema": 1.1620767923711506,
+          "sma": 1.163503749553974,
           "vwap": null
         }
       ]
@@ -31028,10 +31027,10 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 10,
+    "risk_off_score": 9,
     "risk_on_score": 1,
     "theme_hits": {
-      "war": 6,
+      "war": 5,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
@@ -31043,7 +31042,7 @@
       "war": [
         "Israel and Lebanon agree to implement ceasefire if Hezbollah stops attacks",
         "US House delivers rebuke to Trump as it votes to halt Iran war",
-        "Should You Buy Phillips 66 (PSX) Amid Escalating Middle East Tensions?"
+        "China Draws Down Billion-Barrel Stockpile as Iran War Cuts Imports in Half"
       ],
       "banking": [],
       "recession": [],
@@ -31066,7 +31065,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780566965.366092,
+    "fetched_at": 1780567269.289549,
     "risk_off_themes": [
       "banking",
       "crash",
