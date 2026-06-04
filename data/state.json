@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-04T12:36:13.309183+00:00",
+  "generated_at_utc": "2026-06-04T12:41:09.471187+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-04T12:00:00+00:00",
-      "close": 4524.89990234375,
-      "ema": 4501.13233686995,
-      "sma": 4512.924639423077,
-      "vwap": 4503.9994889478285,
+      "close": 4526.5,
+      "ema": 4501.195085797646,
+      "sma": 4512.936947866587,
+      "vwap": 4504.34041869099,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13323,14 +13323,14 @@
         "bias": "neutral",
         "strength": "strong",
         "adx": 30.28,
-        "ema_slope_4bar": 2.6772,
+        "ema_slope_4bar": 2.74,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 30.3, close 4,524.90 vs EMA50 4,501.13) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 30.3, close 4,526.50 vs EMA50 4,501.20) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -17727,11 +17727,11 @@
           "o": 4539.10009765625,
           "h": 4541.89990234375,
           "l": 4518.7998046875,
-          "c": 4524.89990234375,
-          "v": 4780.0,
-          "ema": 4501.13233686995,
-          "sma": 4512.924639423077,
-          "vwap": 4503.9994889478285
+          "c": 4526.5,
+          "v": 5324.0,
+          "ema": 4501.195085797646,
+          "sma": 4512.936947866587,
+          "vwap": 4504.34041869099
         }
       ]
     },
@@ -26597,9 +26597,9 @@
     "EURUSD=X": {
       "symbol": "EURUSD=X",
       "bar_time_utc": "2026-06-04T12:00:00+00:00",
-      "close": 1.1644154787063599,
-      "ema": 1.1622813254799442,
-      "sma": 1.1635474580984848,
+      "close": 1.1642799377441406,
+      "ema": 1.1622760101480925,
+      "sma": 1.1635464154756987,
       "vwap": null,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -31015,10 +31015,10 @@
           "o": 1.1648223400115967,
           "h": 1.1648223400115967,
           "l": 1.163873314857483,
-          "c": 1.1644154787063599,
+          "c": 1.1642799377441406,
           "v": 0.0,
-          "ema": 1.1622813254799442,
-          "sma": 1.1635474580984848,
+          "ema": 1.1622760101480925,
+          "sma": 1.1635464154756987,
           "vwap": null
         }
       ]
@@ -31027,14 +31027,14 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 10,
+    "risk_off_score": 8,
     "risk_on_score": 3,
     "theme_hits": {
       "war": 3,
       "banking": 0,
-      "recession": 1,
+      "recession": 0,
       "rate_hike": 0,
-      "crash": 6,
+      "crash": 5,
       "rate_cut": 0,
       "risk_on": 3
     },
@@ -31045,14 +31045,12 @@
         "Defiance in Beirut's Hezbollah stronghold during fragile ceasefire"
       ],
       "banking": [],
-      "recession": [
-        "Stock Market Today: Dow Rises, Nasdaq Falls With Jobless Data Due; Broadcom, CrowdStrike Plunge (Live Coverage)"
-      ],
+      "recession": [],
       "rate_hike": [],
       "crash": [
-        "Stock Market Today: Dow Rises, Nasdaq Falls With Jobless Data Due; Broadcom, CrowdStrike Plunge (Live Coverage)",
         "Bitcoin crash triggers billions in liquidations",
-        "SoftBank shares plunge over 11% amid broader tech sell-off"
+        "SoftBank shares plunge over 11% amid broader tech sell-off",
+        "Partners Group warns it could cap more fund withdrawals after triggering private equity rout"
       ],
       "rate_cut": [],
       "risk_on": [
@@ -31069,7 +31067,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780576574.7052622,
+    "fetched_at": 1780576870.2145715,
     "risk_off_themes": [
       "banking",
       "crash",
