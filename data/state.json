@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-04T13:06:11.335814+00:00",
+  "generated_at_utc": "2026-06-04T13:11:14.420364+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13308,11 +13308,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-04T12:00:00+00:00",
-      "close": 4534.7001953125,
-      "ema": 4501.516662084411,
-      "sma": 4513.000026292068,
-      "vwap": 4506.624361091065,
+      "bar_time_utc": "2026-06-04T13:00:00+00:00",
+      "close": 4533.39990234375,
+      "ema": 4502.650180322067,
+      "sma": 4513.325409405048,
+      "vwap": 4506.794000571169,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,28 +13322,17 @@
       "read": {
         "bias": "neutral",
         "strength": "strong",
-        "adx": 30.28,
-        "ema_slope_4bar": 3.0615,
-        "regime_pct_24h": 0.0,
+        "adx": 30.55,
+        "ema_slope_4bar": 4.2051,
+        "regime_pct_24h": 4.2,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 30.3, close 4,534.70 vs EMA50 4,501.52) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 30.5, close 4,533.40 vs EMA50 4,502.65) and the trend is strong. The regime filter is mostly blocking \u2014 only 4% of the last 24h was tradable."
       },
       "bars": [
-        {
-          "t": "2026-05-10T22:00:00+00:00",
-          "o": 4696.7998046875,
-          "h": 4704.5,
-          "l": 4690.0,
-          "c": 4700.10009765625,
-          "v": 2147.0,
-          "ema": 4713.667278474895,
-          "sma": 4651.55000375601,
-          "vwap": 4698.200032552083
-        },
         {
           "t": "2026-05-10T23:00:00+00:00",
           "o": 4700.0,
@@ -17727,11 +17716,22 @@
           "o": 4539.10009765625,
           "h": 4541.89990234375,
           "l": 4518.7998046875,
-          "c": 4534.7001953125,
-          "v": 9053.0,
-          "ema": 4501.516662084411,
-          "sma": 4513.000026292068,
-          "vwap": 4506.624361091065
+          "c": 4531.60009765625,
+          "v": 9388.0,
+          "ema": 4501.395089627304,
+          "sma": 4512.976179387019,
+          "vwap": 4506.599770272231
+        },
+        {
+          "t": "2026-06-04T13:00:00+00:00",
+          "o": 4531.60009765625,
+          "h": 4537.7998046875,
+          "l": 4527.7998046875,
+          "c": 4533.39990234375,
+          "v": 382.0,
+          "ema": 4502.650180322067,
+          "sma": 4513.325409405048,
+          "vwap": 4506.794000571169
         }
       ]
     },
@@ -26597,9 +26597,9 @@
     "EURUSD=X": {
       "symbol": "EURUSD=X",
       "bar_time_utc": "2026-06-04T13:00:00+00:00",
-      "close": 1.1642799377441406,
-      "ema": 1.1623494841650048,
-      "sma": 1.1635661785419171,
+      "close": 1.1641442775726318,
+      "ema": 1.162344164158279,
+      "sma": 1.1635651350021363,
       "vwap": null,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -31015,10 +31015,10 @@
           "o": 1.1640088558197021,
           "h": 1.1642799377441406,
           "l": 1.1640088558197021,
-          "c": 1.1642799377441406,
+          "c": 1.1641442775726318,
           "v": 0.0,
-          "ema": 1.1623494841650048,
-          "sma": 1.1635661785419171,
+          "ema": 1.162344164158279,
+          "sma": 1.1635651350021363,
           "vwap": null
         }
       ]
@@ -31027,14 +31027,14 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 10,
+    "risk_off_score": 9,
     "risk_on_score": 2,
     "theme_hits": {
       "war": 4,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 6,
+      "crash": 5,
       "rate_cut": 0,
       "risk_on": 2
     },
@@ -31050,7 +31050,7 @@
       "crash": [
         "Stock Market Today: Dow Rises, Nasdaq Falls As Broadcom, CrowdStrike Plunge On Earnings News (Live Coverage)",
         "Bitcoin crash triggers billions in liquidations",
-        "SoftBank shares plunge over 11% amid broader tech sell-off"
+        "Why Nvidia Stock Is Riding the Chip Selloff Better Than Its Rivals"
       ],
       "rate_cut": [],
       "risk_on": [
@@ -31058,7 +31058,7 @@
         "Broadcom Stock Just Hit a Record High. You Can Thank Nvidia, Alphabet, and Marvell. - The Motley Fool"
       ]
     },
-    "n_headlines": 111,
+    "n_headlines": 113,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -31066,7 +31066,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780578372.4072826,
+    "fetched_at": 1780578675.5890243,
     "risk_off_themes": [
       "banking",
       "crash",
