@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-04T08:26:09.302306+00:00",
+  "generated_at_utc": "2026-06-04T08:31:08.239451+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-04T08:00:00+00:00",
-      "close": 4489.2998046875,
-      "ema": 4498.419808888833,
-      "sma": 4511.959247295673,
-      "vwap": 4493.459112700867,
+      "close": 4486.39990234375,
+      "ema": 4498.306087228294,
+      "sma": 4511.936940354567,
+      "vwap": 4493.368666519954,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,16 +13322,16 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 33.18,
-        "ema_slope_4bar": -1.1151,
+        "adx": 33.2,
+        "ema_slope_4bar": -1.2288,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,498.42)",
+          "Close > EMA50 (4,498.31)",
           "ADX falls below 20 (now 33.2)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 33.2, close 4,489.30 vs EMA50 4,498.42) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 33.2, close 4,486.40 vs EMA50 4,498.31) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17727,12 +17727,12 @@
           "t": "2026-06-04T08:00:00+00:00",
           "o": 4488.39990234375,
           "h": 4494.60009765625,
-          "l": 4486.60009765625,
-          "c": 4489.2998046875,
-          "v": 996.0,
-          "ema": 4498.419808888833,
-          "sma": 4511.959247295673,
-          "vwap": 4493.459112700867
+          "l": 4485.89990234375,
+          "c": 4486.39990234375,
+          "v": 1229.0,
+          "ema": 4498.306087228294,
+          "sma": 4511.936940354567,
+          "vwap": 4493.368666519954
         }
       ]
     },
@@ -26598,9 +26598,9 @@
     "EURUSD=X": {
       "symbol": "EURUSD=X",
       "bar_time_utc": "2026-06-04T08:00:00+00:00",
-      "close": 1.161170482635498,
-      "ema": 1.1619848995084436,
-      "sma": 1.1634933618398813,
+      "close": 1.1615750789642334,
+      "ema": 1.162000766031139,
+      "sma": 1.1634964741193332,
       "vwap": null,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -31015,12 +31015,12 @@
         {
           "t": "2026-06-04T08:00:00+00:00",
           "o": 1.1607661247253418,
-          "h": 1.161170482635498,
+          "h": 1.1615750789642334,
           "l": 1.1607661247253418,
-          "c": 1.161170482635498,
+          "c": 1.1615750789642334,
           "v": 0.0,
-          "ema": 1.1619848995084436,
-          "sma": 1.1634933618398813,
+          "ema": 1.162000766031139,
+          "sma": 1.1634964741193332,
           "vwap": null
         }
       ]
@@ -31030,7 +31030,7 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 8,
-    "risk_on_score": 1,
+    "risk_on_score": 2,
     "theme_hits": {
       "war": 4,
       "banking": 0,
@@ -31038,7 +31038,7 @@
       "rate_hike": 0,
       "crash": 4,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
@@ -31056,10 +31056,11 @@
       ],
       "rate_cut": [],
       "risk_on": [
+        "World stocks rally on AI optimism; jitters over Iran persist",
         "Historic stock rally faces key test"
       ]
     },
-    "n_headlines": 112,
+    "n_headlines": 111,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -31067,7 +31068,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780561570.0884433,
+    "fetched_at": 1780561868.983019,
     "risk_off_themes": [
       "banking",
       "crash",
