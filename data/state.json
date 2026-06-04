@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-04T09:06:12.386540+00:00",
+  "generated_at_utc": "2026-06-04T09:11:10.378390+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13308,11 +13308,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-04T08:00:00+00:00",
-      "close": 4492.10009765625,
-      "ema": 4498.529624299364,
-      "sma": 4511.980788010817,
-      "vwap": 4493.343874156153,
+      "bar_time_utc": "2026-06-04T09:00:00+00:00",
+      "close": 4489.2001953125,
+      "ema": 4498.092180167743,
+      "sma": 4512.022329477163,
+      "vwap": 4493.255402540147,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,29 +13322,18 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 33.25,
-        "ema_slope_4bar": -1.0053,
+        "adx": 32.22,
+        "ema_slope_4bar": -1.3041,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,498.53)",
-          "ADX falls below 20 (now 33.2)",
+          "Close > EMA50 (4,498.09)",
+          "ADX falls below 20 (now 32.2)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 33.2, close 4,492.10 vs EMA50 4,498.53) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 32.2, close 4,489.20 vs EMA50 4,498.09) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
-        {
-          "t": "2026-05-08T17:00:00+00:00",
-          "o": 4721.89990234375,
-          "h": 4732.10009765625,
-          "l": 4721.7001953125,
-          "c": 4730.39990234375,
-          "v": 10898.0,
-          "ema": 4711.955975024445,
-          "sma": 4648.364618389423,
-          "vwap": 4729.444287369864
-        },
         {
           "t": "2026-05-08T18:00:00+00:00",
           "o": 4730.39990234375,
@@ -17728,11 +17717,22 @@
           "o": 4488.39990234375,
           "h": 4496.10009765625,
           "l": 4485.39990234375,
-          "c": 4492.10009765625,
-          "v": 2796.0,
-          "ema": 4498.529624299364,
-          "sma": 4511.980788010817,
-          "vwap": 4493.343874156153
+          "c": 4490.2001953125,
+          "v": 2898.0,
+          "ema": 4498.4551183251,
+          "sma": 4511.966173377404,
+          "vwap": 4493.2662395979005
+        },
+        {
+          "t": "2026-06-04T09:00:00+00:00",
+          "o": 4489.89990234375,
+          "h": 4490.39990234375,
+          "l": 4487.7001953125,
+          "c": 4489.2001953125,
+          "v": 69.0,
+          "ema": 4498.092180167743,
+          "sma": 4512.022329477163,
+          "vwap": 4493.255402540147
         }
       ]
     },
@@ -26611,7 +26611,7 @@
       "read": {
         "bias": "neutral",
         "strength": "weak",
-        "adx": 21.86,
+        "adx": 21.69,
         "ema_slope_4bar": -0.0001,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
@@ -26619,7 +26619,7 @@
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "EURUSD=X is neutral (ADX 21.9, close 1.16 vs EMA50 1.16) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "EURUSD=X is neutral (ADX 21.7, close 1.16 vs EMA50 1.16) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -31014,7 +31014,7 @@
         {
           "t": "2026-06-04T09:00:00+00:00",
           "o": 1.1618449687957764,
-          "h": 1.1621150970458984,
+          "h": 1.16225004196167,
           "l": 1.1618449687957764,
           "c": 1.1621150970458984,
           "v": 0.0,
@@ -31067,7 +31067,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780563973.0103195,
+    "fetched_at": 1780564270.9817665,
     "risk_off_themes": [
       "banking",
       "crash",
