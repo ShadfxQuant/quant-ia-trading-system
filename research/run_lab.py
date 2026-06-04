@@ -10,9 +10,31 @@ logging.getLogger("statsmodels").setLevel(logging.ERROR)
 from research.edge_lab import run_lab
 from research.edge_library import EDGES
 
-# Symbols to mine across. SPY/QQQ/GLD = clean ETF microstructure;
-# GC=F/ES=F = futures 23/5 (different regime); SLV / IWM = extra diversity.
-SYMBOLS = ["SPY", "QQQ", "GLD", "GC=F", "ES=F", "SLV", "IWM"]
+# ─────────────────────────────────────────────────────────────────────
+# 44-symbol mining universe (all yfinance-validated 2026-06-03).
+# Spans 9 asset classes — equity indices, sectors, commodities, futures,
+# metals, bonds, FX, vol, crypto — to surface BOTH cross-class consistency
+# (edge that works on equities AND gold AND bonds = structural alpha) and
+# class-specific edges (works only on FX = microstructure quirk).
+# ─────────────────────────────────────────────────────────────────────
+SYMBOLS = [
+    # Major equity indices (NYSE-hours ETFs)
+    "SPY", "QQQ", "DIA", "IWM", "MDY",
+    # Sector ETFs (sector-rotation edges)
+    "XLK", "XLF", "XLE", "XLV", "XLI", "XLY", "XLP", "XLU", "XLB", "XLRE", "XLC",
+    # Commodity ETFs
+    "GLD", "SLV", "USO", "UNG", "DBC", "CPER",
+    # Equity index futures (23/5 microstructure)
+    "ES=F", "NQ=F", "YM=F", "RTY=F",
+    # Metals + energy futures
+    "GC=F", "SI=F", "HG=F", "CL=F", "NG=F",
+    # Bonds
+    "TLT", "IEF", "SHY", "HYG", "LQD",
+    # FX (24/5)
+    "EURUSD=X", "GBPUSD=X", "USDJPY=X", "AUDUSD=X", "USDCAD=X",
+    # Volatility + crypto (24/7)
+    "^VIX", "BTC-USD", "ETH-USD",
+]
 HORIZONS = (5, 20, 100, 390)
 
 
