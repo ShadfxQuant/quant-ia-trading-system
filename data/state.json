@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-04T08:11:21.754184+00:00",
+  "generated_at_utc": "2026-06-04T08:16:25.605084+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-04T08:00:00+00:00",
-      "close": 4488.89990234375,
-      "ema": 4498.40412644398,
-      "sma": 4511.956171123798,
-      "vwap": 4493.565511602924,
+      "close": 4492.39990234375,
+      "ema": 4498.541381345941,
+      "sma": 4511.983094200721,
+      "vwap": 4493.560814983768,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13323,15 +13323,15 @@
         "bias": "bearish",
         "strength": "strong",
         "adx": 33.18,
-        "ema_slope_4bar": -1.1308,
+        "ema_slope_4bar": -0.9935,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,498.40)",
+          "Close > EMA50 (4,498.54)",
           "ADX falls below 20 (now 33.2)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 33.2, close 4,488.90 vs EMA50 4,498.40) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 33.2, close 4,492.40 vs EMA50 4,498.54) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17726,13 +17726,13 @@
         {
           "t": "2026-06-04T08:00:00+00:00",
           "o": 4488.39990234375,
-          "h": 4490.2998046875,
+          "h": 4494.2998046875,
           "l": 4487.10009765625,
-          "c": 4488.89990234375,
-          "v": 161.0,
-          "ema": 4498.40412644398,
-          "sma": 4511.956171123798,
-          "vwap": 4493.565511602924
+          "c": 4492.39990234375,
+          "v": 385.0,
+          "ema": 4498.541381345941,
+          "sma": 4511.983094200721,
+          "vwap": 4493.560814983768
         }
       ]
     },
@@ -26598,9 +26598,9 @@
     "EURUSD=X": {
       "symbol": "EURUSD=X",
       "bar_time_utc": "2026-06-04T08:00:00+00:00",
-      "close": 1.1609008312225342,
-      "ema": 1.1619743249432293,
-      "sma": 1.163491287598243,
+      "close": 1.1610356569290161,
+      "ema": 1.1619796122258366,
+      "sma": 1.1634923247190623,
       "vwap": null,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -26612,7 +26612,7 @@
         "bias": "bearish",
         "strength": "weak",
         "adx": 23.59,
-        "ema_slope_4bar": -0.0002,
+        "ema_slope_4bar": -0.0001,
         "regime_pct_24h": 100.0,
         "macro_tilt": "supports",
         "flip": [
@@ -31017,10 +31017,10 @@
           "o": 1.1607661247253418,
           "h": 1.1610356569290161,
           "l": 1.1607661247253418,
-          "c": 1.1609008312225342,
+          "c": 1.1610356569290161,
           "v": 0.0,
-          "ema": 1.1619743249432293,
-          "sma": 1.163491287598243,
+          "ema": 1.1619796122258366,
+          "sma": 1.1634923247190623,
           "vwap": null
         }
       ]
@@ -31029,14 +31029,14 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 8,
+    "risk_off_score": 9,
     "risk_on_score": 1,
     "theme_hits": {
       "war": 5,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 3,
+      "crash": 4,
       "rate_cut": 0,
       "risk_on": 1
     },
@@ -31051,8 +31051,8 @@
       "rate_hike": [],
       "crash": [
         "Bitcoin crash triggers billions in liquidations",
-        "SoftBank shares plunge over 11% amid broader tech sell-off",
-        "SpaceX Halo, Virgin Galactic Reality: Behind a 39% Stock Crash. - Barron's"
+        "Partners Group warns it could cap more fund withdrawals after triggering private equity rout",
+        "SoftBank shares plunge over 11% amid broader tech sell-off"
       ],
       "rate_cut": [],
       "risk_on": [
@@ -31067,7 +31067,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780560682.4973955,
+    "fetched_at": 1780560986.6695921,
     "risk_off_themes": [
       "banking",
       "crash",
