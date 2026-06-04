@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-04T10:56:11.185556+00:00",
+  "generated_at_utc": "2026-06-04T11:01:17.032188+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -35,13 +35,13 @@
         "adx": 28.47,
         "ema_slope_4bar": 0.1942,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close < EMA50 (753.78)",
           "ADX falls below 20 (now 28.5)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 28.5, close 754.19 vs EMA50 753.78) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "SPY leans long (ADX 28.5, close 754.19 vs EMA50 753.78) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -4465,13 +4465,13 @@
         "adx": 21.11,
         "ema_slope_4bar": 1.3787,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close < EMA50 (736.31)",
           "ADX falls below 20 (now 21.1)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "QQQ leans long (ADX 21.1, close 744.25 vs EMA50 736.31) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "QQQ leans long (ADX 21.1, close 744.25 vs EMA50 736.31) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -8895,13 +8895,13 @@
         "adx": 23.55,
         "ema_slope_4bar": -0.7764,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close > EMA50 (412.27)",
           "ADX falls below 20 (now 23.6)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 23.6, close 407.90 vs EMA50 412.27) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GLD leans short (ADX 23.6, close 407.90 vs EMA50 412.27) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-04T10:00:00+00:00",
-      "close": 4500.10009765625,
-      "ema": 4498.510022376058,
-      "sma": 4512.200792518029,
-      "vwap": 4493.897078025871,
+      "close": 4498.0,
+      "ema": 4498.427665605224,
+      "sma": 4512.184637920673,
+      "vwap": 4493.865112331101,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13320,17 +13320,18 @@
       "trend_carry_pyramid_ok": false,
       "trend_carry_pyramid_cap": 0,
       "read": {
-        "bias": "neutral",
+        "bias": "bearish",
         "strength": "weak",
         "adx": 29.7,
-        "ema_slope_4bar": -0.7021,
+        "ema_slope_4bar": -0.7845,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
-          "Close + ADX both push above EMA50 with ADX \u2265 20",
-          "Or close below EMA50 with ADX rising past 20"
+          "Close > EMA50 (4,498.43)",
+          "ADX falls below 20 (now 29.7)",
+          "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F is neutral (ADX 29.7, close 4,500.10 vs EMA50 4,498.51) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F leans short (ADX 29.7, close 4,498.00 vs EMA50 4,498.43) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -17727,11 +17728,11 @@
           "o": 4497.89990234375,
           "h": 4500.60009765625,
           "l": 4491.89990234375,
-          "c": 4500.10009765625,
-          "v": 1968.0,
-          "ema": 4498.510022376058,
-          "sma": 4512.200792518029,
-          "vwap": 4493.897078025871
+          "c": 4498.0,
+          "v": 2085.0,
+          "ema": 4498.427665605224,
+          "sma": 4512.184637920673,
+          "vwap": 4493.865112331101
         }
       ]
     },
@@ -17754,13 +17755,13 @@
         "adx": 24.03,
         "ema_slope_4bar": -0.284,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close > EMA50 (67.92)",
           "ADX falls below 20 (now 24.0)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "SLV leans short (ADX 24.0, close 66.21 vs EMA50 67.92) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "SLV leans short (ADX 24.0, close 66.21 vs EMA50 67.92) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -26596,10 +26597,10 @@
     },
     "EURUSD=X": {
       "symbol": "EURUSD=X",
-      "bar_time_utc": "2026-06-04T10:00:00+00:00",
-      "close": 1.1633317470550537,
-      "ema": 1.162092705642587,
-      "sma": 1.163506871003371,
+      "bar_time_utc": "2026-06-04T11:00:00+00:00",
+      "close": 1.163602590560913,
+      "ema": 1.1621570192117745,
+      "sma": 1.1635162371855516,
       "vwap": null,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -26610,28 +26611,17 @@
       "read": {
         "bias": "neutral",
         "strength": "weak",
-        "adx": 22.92,
-        "ema_slope_4bar": 0.0,
+        "adx": 23.08,
+        "ema_slope_4bar": 0.0001,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "EURUSD=X is neutral (ADX 22.9, close 1.16 vs EMA50 1.16) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "EURUSD=X is neutral (ADX 23.1, close 1.16 vs EMA50 1.16) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
-        {
-          "t": "2026-05-12T16:00:00+00:00",
-          "o": 1.1735711097717285,
-          "h": 1.1741223335266113,
-          "l": 1.1731581687927246,
-          "c": 1.1731581687927246,
-          "v": 0.0,
-          "ema": 1.1760119367688404,
-          "sma": 1.1751611810464127,
-          "vwap": null
-        },
         {
           "t": "2026-05-12T17:00:00+00:00",
           "o": 1.1731581687927246,
@@ -31015,10 +31005,21 @@
           "o": 1.1629259586334229,
           "h": 1.1637378931045532,
           "l": 1.1629259586334229,
-          "c": 1.1633317470550537,
+          "c": 1.1634671688079834,
           "v": 0.0,
-          "ema": 1.162092705642587,
-          "sma": 1.163506871003371,
+          "ema": 1.1620980162995647,
+          "sma": 1.1635079127091628,
+          "vwap": null
+        },
+        {
+          "t": "2026-06-04T11:00:00+00:00",
+          "o": 1.163602590560913,
+          "h": 1.163602590560913,
+          "l": 1.163602590560913,
+          "c": 1.163602590560913,
+          "v": 0.0,
+          "ema": 1.1621570192117745,
+          "sma": 1.1635162371855516,
           "vwap": null
         }
       ]
@@ -31026,9 +31027,9 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_OFF",
+    "verdict": "NEUTRAL",
     "risk_off_score": 8,
-    "risk_on_score": 6,
+    "risk_on_score": 7,
     "theme_hits": {
       "war": 4,
       "banking": 0,
@@ -31036,7 +31037,7 @@
       "rate_hike": 0,
       "crash": 4,
       "rate_cut": 0,
-      "risk_on": 6
+      "risk_on": 7
     },
     "sample_headlines": {
       "war": [
@@ -31067,7 +31068,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780570571.7110443,
+    "fetched_at": 1780570877.4147408,
     "risk_off_themes": [
       "banking",
       "crash",
