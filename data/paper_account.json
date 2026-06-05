@@ -1,5 +1,5 @@
 {
-  "equity": 99850.0,
+  "equity": 99100.0,
   "initial_capital": 100000.0,
   "cash": 100000.0,
   "open_positions": [
@@ -80,21 +80,6 @@
     },
     {
       "symbol": "QQQ",
-      "strategy": "pullback",
-      "side": 1,
-      "entry_time": "2026-06-04T15:01:54.038652+00:00",
-      "entry_price": 738.119873046875,
-      "size": 30000.0,
-      "stop_pct": 0.025,
-      "tp1_pct": 0.04,
-      "tp2_pct": 0.15,
-      "tp1_size_frac": 0.5,
-      "bar_time_at_entry": "2026-06-04T14:30:00+00:00",
-      "tp1_hit": false,
-      "remaining_size": 30000.0
-    },
-    {
-      "symbol": "QQQ",
       "strategy": "trend_carry",
       "side": 1,
       "entry_time": "2026-06-04T15:01:54.038676+00:00",
@@ -133,8 +118,20 @@
       "size": 30000.0,
       "pnl": -750.0000000000011,
       "reason": "stop"
+    },
+    {
+      "symbol": "QQQ",
+      "strategy": "pullback",
+      "side": 1,
+      "entry_time": "2026-06-04T15:01:54.038652+00:00",
+      "entry_price": 738.119873046875,
+      "exit_time": "2026-06-05T16:06:27.336147+00:00",
+      "exit_price": 719.6668762207031,
+      "size": 30000.0,
+      "pnl": -750.0000000000009,
+      "reason": "stop"
     }
   ],
-  "n_trades_total": 2,
-  "last_updated_utc": "2026-06-05T16:01:37.873618+00:00"
+  "n_trades_total": 3,
+  "last_updated_utc": "2026-06-05T16:06:27.336209+00:00"
 }
