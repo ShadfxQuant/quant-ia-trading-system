@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-05T08:55:59.895006+00:00",
+  "generated_at_utc": "2026-06-05T09:00:58.388255+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-05T08:00:00+00:00",
-      "close": 4489.60009765625,
-      "ema": 4494.464684700019,
-      "sma": 4519.180791766827,
-      "vwap": 4476.872037280459,
+      "close": 4489.89990234375,
+      "ema": 4494.476441746588,
+      "sma": 4519.183097956731,
+      "vwap": 4476.923303513484,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13323,15 +13323,15 @@
         "bias": "bearish",
         "strength": "weak",
         "adx": 24.21,
-        "ema_slope_4bar": -2.3161,
+        "ema_slope_4bar": -2.3044,
         "regime_pct_24h": 4.2,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,494.46)",
+          "Close > EMA50 (4,494.48)",
           "ADX falls below 20 (now 24.2)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 24.2, close 4,489.60 vs EMA50 4,494.46) but the trend is only weak. The regime filter is mostly blocking \u2014 only 4% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 24.2, close 4,489.90 vs EMA50 4,494.48) but the trend is only weak. The regime filter is mostly blocking \u2014 only 4% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17728,11 +17728,11 @@
           "o": 4487.2998046875,
           "h": 4495.39990234375,
           "l": 4485.5,
-          "c": 4489.60009765625,
-          "v": 1956.0,
-          "ema": 4494.464684700019,
-          "sma": 4519.180791766827,
-          "vwap": 4476.872037280459
+          "c": 4489.89990234375,
+          "v": 2062.0,
+          "ema": 4494.476441746588,
+          "sma": 4519.183097956731,
+          "vwap": 4476.923303513484
         }
       ]
     },
@@ -26598,10 +26598,10 @@
     },
     "EURUSD=X": {
       "symbol": "EURUSD=X",
-      "bar_time_utc": "2026-06-05T08:00:00+00:00",
-      "close": 1.1641442775726318,
-      "ema": 1.162306919147395,
-      "sma": 1.1634418826836805,
+      "bar_time_utc": "2026-06-05T09:00:00+00:00",
+      "close": 1.163873314857483,
+      "ema": 1.1623632440342235,
+      "sma": 1.1634293638742887,
       "vwap": null,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -26612,28 +26612,17 @@
       "read": {
         "bias": "neutral",
         "strength": "chop",
-        "adx": 17.4,
-        "ema_slope_4bar": 0.0001,
+        "adx": 19.26,
+        "ema_slope_4bar": 0.0002,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "EURUSD=X is neutral (ADX 17.4, close 1.16 vs EMA50 1.16) and the tape is choppy. The regime filter is mostly green."
+        "narrative": "EURUSD=X is neutral (ADX 19.3, close 1.16 vs EMA50 1.16) and the tape is choppy. The regime filter is mostly green."
       },
       "bars": [
-        {
-          "t": "2026-05-13T14:00:00+00:00",
-          "o": 1.1713716983795166,
-          "h": 1.1715089082717896,
-          "l": 1.1706860065460205,
-          "c": 1.1712344884872437,
-          "v": 0.0,
-          "ema": 1.1740063660665832,
-          "sma": 1.1755868609134967,
-          "vwap": null
-        },
         {
           "t": "2026-05-13T15:00:00+00:00",
           "o": 1.1712344884872437,
@@ -31017,10 +31006,21 @@
           "o": 1.1637378931045532,
           "h": 1.1642799377441406,
           "l": 1.1637378931045532,
-          "c": 1.1641442775726318,
+          "c": 1.1640088558197021,
           "v": 0.0,
-          "ema": 1.162306919147395,
-          "sma": 1.1634418826836805,
+          "ema": 1.1623016084904172,
+          "sma": 1.163440840977889,
+          "vwap": null
+        },
+        {
+          "t": "2026-06-05T09:00:00+00:00",
+          "o": 1.163873314857483,
+          "h": 1.163873314857483,
+          "l": 1.163873314857483,
+          "c": 1.163873314857483,
+          "v": 0.0,
+          "ema": 1.1623632440342235,
+          "sma": 1.1634293638742887,
           "vwap": null
         }
       ]
@@ -31030,21 +31030,21 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 8,
-    "risk_on_score": 3,
+    "risk_on_score": 2,
     "theme_hits": {
-      "war": 3,
+      "war": 4,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 5,
+      "crash": 4,
       "rate_cut": 0,
-      "risk_on": 3
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
         "Hezbollah rejects renewed ceasefire agreed by Israel and Lebanon",
-        "Asia-Pacific markets open lower on renewed Middle East tensions - CNBC",
-        "Alphabet\u2019s Fine Print Reveals Hidden Cost of the AI Talent War - The Information"
+        "Tough cookies: How pop group Le Sserafim overcame band tensions and internet trolls",
+        "S&P 500 futures fall after index snaps 9-day win streak amid rising Middle East tensions: Live updates - CNBC"
       ],
       "banking": [],
       "recession": [],
@@ -31057,11 +31057,10 @@
       "rate_cut": [],
       "risk_on": [
         "Eli Manning weighs in on Giants QB Jaxson Dart's Trump rally fallout",
-        "Jim Cramer says Thursday's rally shows investors' 'huge appetite' for stocks",
-        "Marvell Stock Climbs Toward a Record High. The Next Big Catalyst Is in Sight. - Barron's"
+        "Jim Cramer says Thursday's rally shows investors' 'huge appetite' for stocks"
       ]
     },
-    "n_headlines": 114,
+    "n_headlines": 113,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -31069,7 +31068,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780649760.62963,
+    "fetched_at": 1780650059.0315392,
     "risk_off_themes": [
       "banking",
       "crash",
