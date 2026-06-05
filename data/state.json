@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-05T09:06:01.878606+00:00",
+  "generated_at_utc": "2026-06-05T09:10:57.540654+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13308,11 +13308,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-05T08:00:00+00:00",
-      "close": 4490.0,
-      "ema": 4494.480367144872,
-      "sma": 4519.183867938702,
-      "vwap": 4476.950484545189,
+      "bar_time_utc": "2026-06-05T09:00:00+00:00",
+      "close": 4488.7998046875,
+      "ema": 4494.250057067488,
+      "sma": 4518.79463266226,
+      "vwap": 4476.994385859666,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,29 +13322,18 @@
       "read": {
         "bias": "bearish",
         "strength": "weak",
-        "adx": 24.21,
-        "ema_slope_4bar": -2.3004,
+        "adx": 23.86,
+        "ema_slope_4bar": -1.3197,
         "regime_pct_24h": 4.2,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,494.48)",
-          "ADX falls below 20 (now 24.2)",
+          "Close > EMA50 (4,494.25)",
+          "ADX falls below 20 (now 23.9)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 24.2, close 4,490.00 vs EMA50 4,494.48) but the trend is only weak. The regime filter is mostly blocking \u2014 only 4% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 23.9, close 4,488.80 vs EMA50 4,494.25) but the trend is only weak. The regime filter is mostly blocking \u2014 only 4% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
-        {
-          "t": "2026-05-11T17:00:00+00:00",
-          "o": 4726.0,
-          "h": 4734.2001953125,
-          "l": 4725.39990234375,
-          "c": 4733.0,
-          "v": 9394.0,
-          "ema": 4707.05594752461,
-          "sma": 4663.004616135818,
-          "vwap": 4707.927617069941
-        },
         {
           "t": "2026-05-11T18:00:00+00:00",
           "o": 4733.10009765625,
@@ -17728,11 +17717,22 @@
           "o": 4487.2998046875,
           "h": 4495.39990234375,
           "l": 4485.5,
-          "c": 4490.0,
-          "v": 2121.0,
-          "ema": 4494.480367144872,
-          "sma": 4519.183867938702,
-          "vwap": 4476.950484545189
+          "c": 4489.7998046875,
+          "v": 2190.0,
+          "ema": 4494.4725163483035,
+          "sma": 4519.18232797476,
+          "vwap": 4476.974981059988
+        },
+        {
+          "t": "2026-06-05T09:00:00+00:00",
+          "o": 4489.60009765625,
+          "h": 4489.60009765625,
+          "l": 4488.0,
+          "c": 4488.7998046875,
+          "v": 52.0,
+          "ema": 4494.250057067488,
+          "sma": 4518.79463266226,
+          "vwap": 4476.994385859666
         }
       ]
     },
@@ -26599,9 +26599,9 @@
     "EURUSD=X": {
       "symbol": "EURUSD=X",
       "bar_time_utc": "2026-06-05T09:00:00+00:00",
-      "close": 1.1641442775726318,
-      "ema": 1.162373870023053,
-      "sma": 1.1634314482028667,
+      "close": 1.1642799377441406,
+      "ema": 1.1623791900297789,
+      "sma": 1.1634324917426475,
       "vwap": null,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -31015,12 +31015,12 @@
         {
           "t": "2026-06-05T09:00:00+00:00",
           "o": 1.163873314857483,
-          "h": 1.1641442775726318,
+          "h": 1.1642799377441406,
           "l": 1.163873314857483,
-          "c": 1.1641442775726318,
+          "c": 1.1642799377441406,
           "v": 0.0,
-          "ema": 1.162373870023053,
-          "sma": 1.1634314482028667,
+          "ema": 1.1623791900297789,
+          "sma": 1.1634324917426475,
           "vwap": null
         }
       ]
@@ -31029,10 +31029,10 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 7,
+    "risk_off_score": 8,
     "risk_on_score": 2,
     "theme_hits": {
-      "war": 4,
+      "war": 5,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
@@ -31044,7 +31044,7 @@
       "war": [
         "Hezbollah rejects renewed ceasefire agreed by Israel and Lebanon",
         "Tough cookies: How pop group Le Sserafim overcame band tensions and internet trolls",
-        "S&P 500 futures fall after index snaps 9-day win streak amid rising Middle East tensions: Live updates - CNBC"
+        "PVH Lowers Sales Outlook Citing Impact of War in Iran"
       ],
       "banking": [],
       "recession": [],
@@ -31068,7 +31068,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780650363.0597398,
+    "fetched_at": 1780650658.303165,
     "risk_off_themes": [
       "banking",
       "crash",
