@@ -1881,3 +1881,100 @@ Both go through `_montecarlo_final.py` gate before live deployment — same disc
 
 A single test of the lab **cannot fire a live trade**. Promotion requires re-encoding in `strategies/`, MC gate, and 30-day paper validation — same discipline as everything else in Part 8.
 
+
+---
+
+## Part 8.20 — Chart inspector: agent reads any symbol on demand (2026-06-05)
+
+### The connectivity reality (honest framing)
+
+**What does NOT exist right now:**
+- Direct TradingView API access for the agent
+- Computer-use MCP (was briefly attached; disconnected)
+- Chrome MCP (not attached)
+- TV's official REST endpoint (TV doesn't publish one)
+
+**What DOES exist (and what got shipped):**
+- `research/inspect_symbol.py` — on-demand chart analysis tool. Pulls the same underlying data TradingView uses (yfinance hourly bars for equities/futures/FX/crypto), runs the 9 cross-class-validated edges, returns a TV-style snapshot the agent can read instantly in conversation.
+- Works on **any yfinance-listed ticker** — not just the 44 mined symbols. AAPL, TSLA, MSFT, NVDA, any sector ETF, any FX pair, any future, ^VIX, crypto.
+
+### How to use (operator + agent flow)
+
+**You ask:** "look at AAPL" or "inspect ES=F" or "what's happening on BTC?"
+
+**Agent runs:**
+```bash
+python3 -m research.inspect_symbol AAPL
+```
+
+**Agent reads back:**
+```
+╭─ AAPL @ $311.02  (2026-06-05 16:30:00+00:00)
+│  Regime: golden_cross  ·  RSI 48.2  ·  RangeZ 0.4  ·  ClosePos 0.15
+│  CVD: exhausted  ·  Tick: exhausted  ·  RVol: normal
+│
+├─ EDGES FIRING NOW (1):
+│    ▲ Tick Imbalance Exhaustion (BULLISH)
+│
+├─ levels:
+│    SMA50    $310.96  (+0.02% away)
+│    SMA200   $295.68  (+5.19% away)
+│    HH_20    $316.94  (-1.87% away)
+│    LL_20    $308.85  (+0.70% away)
+│
+├─ last 20 bars — edges that fired: …
+╰─ 4551 bars loaded
+```
+
+### What the inspector returns
+
+| Field | Meaning |
+|---|---|
+| `regime` | golden_cross / death_cross / mixed |
+| `rsi_14`, `range_z`, `close_pos` | current bar diagnostics |
+| `cvd_state`, `tick_state`, `rvol_pct` | orderflow + vol regime |
+| `edges_firing_now` | which of the 9 shipped edges are live this bar |
+| `edges_history_20bar` | rolling history of edge fires (last 20 bars) |
+| `levels` | distance to SMA50, SMA200, recent HH/LL |
+
+### Smoke-test results (2026-06-05)
+
+| Symbol | Current state | Edges firing now |
+|---|---|---|
+| AAPL | golden_cross, RSI 48, close@bottom | E1 tick exhaustion |
+| ES=F | mixed, near SMA50/SMA200 cross | E5 buy-the-dip stack |
+| GC=F | death_cross, inside-bar compression | E8 inside bar |
+| BTC-USD | death_cross, wide-bar close-at-high | E7 institutional sweep |
+| ^VIX | death_cross, vol compressed | E3 squeeze setup |
+
+All five returned correctly. The tool is wired to all 44 mined symbols and any new ticker the user mentions.
+
+### The real connectivity upgrade path (what would unlock direct TV access)
+
+| Option | What it would enable | Status |
+|---|---|---|
+| **Chrome MCP** (`claude-in-chrome`) | Agent navigates the user's TV browser, reads DOM/screenshots, can highlight markers | Not attached. Would require user to install the Chrome extension. |
+| **Computer-use MCP** | Agent screenshots desktop, reads any window (TV native app or browser). Read-tier for browsers. | Was briefly attached; disconnected. Reconnects intermittently. |
+| **TradingView Webhook receiver** | TV alerts POST to our Cloudflare worker → file the agent reads. One-way (TV→agent). | Not built yet. Trivial to add: extend `cron_trigger/worker.js`. |
+| **tvDatafeed library** | Python lib that pulls TV's bar data via session token. Same data inspector currently uses (yfinance) — no upgrade. | Not worth the auth headache when yfinance gives identical bars. |
+| **TradingView REST API** | Official endpoint for chart data + indicator output | **Does not exist publicly.** TV is browser-only. |
+
+### Best honest upgrade if you want true real-time chart inspection
+
+1. **Install the Chrome MCP extension** in your browser, attach it. Then I can navigate to `tradingview.com/chart/?symbol=AAPL` in your Chrome, read the page, take screenshots, see your annotations. This is the only path that lets me actually SEE your TradingView chart with your indicators on it.
+2. **Wire the Pine alerts to a Cloudflare webhook** that writes to a JSON file in this repo. When E1-E9 fire on TV, the file updates, and `/read` or the agent picks it up.
+
+### Until then
+
+The `research/inspect_symbol.py` tool gives me functional equivalent: when you name a symbol, I run the inspector, return the same edge analysis your Pine Script would show on TV, and we discuss what to do. The bars are identical (yfinance and TV both source from the same exchanges); the edges are identical (Pine v2 = Python inspector). The only thing missing vs real TV access is your custom drawings, your timeframe choice, and visual chart pattern recognition — which we can work around by you screenshotting if needed.
+
+### Open queue (added by this part)
+
+| Task | Priority | Status |
+|---|---|---|
+| Document Chrome MCP install for the user | High | docs ready; user action needed |
+| Build TV alert webhook receiver | Medium | extends existing `cron_trigger/worker.js` |
+| Add per-symbol timeframe selector (5m/1h/4h/1D) to inspector | Medium | currently hourly only |
+| Add volume profile (POC + value area) to inspector output | Medium | matches not-a-lil-fish pillar 1 |
+| Add session VWAP + anchored VWAP | Medium | matches not-a-lil-fish setup 3 (VWAP reclaim) |
+
