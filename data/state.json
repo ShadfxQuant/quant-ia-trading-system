@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-05T11:50:57.603191+00:00",
+  "generated_at_utc": "2026-06-05T11:55:56.490778+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-05T11:00:00+00:00",
-      "close": 4490.2998046875,
-      "ema": 4494.18665194437,
-      "sma": 4518.224631911057,
-      "vwap": 4480.0815342139,
+      "close": 4491.5,
+      "ema": 4494.233718427213,
+      "sma": 4518.233864182693,
+      "vwap": 4480.112721632799,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13323,15 +13323,15 @@
         "bias": "bearish",
         "strength": "weak",
         "adx": 23.2,
-        "ema_slope_4bar": -0.4766,
+        "ema_slope_4bar": -0.4295,
         "regime_pct_24h": 4.2,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,494.19)",
+          "Close > EMA50 (4,494.23)",
           "ADX falls below 20 (now 23.2)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 23.2, close 4,490.30 vs EMA50 4,494.19) but the trend is only weak. The regime filter is mostly blocking \u2014 only 4% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 23.2, close 4,491.50 vs EMA50 4,494.23) but the trend is only weak. The regime filter is mostly blocking \u2014 only 4% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17728,11 +17728,11 @@
           "o": 4493.2001953125,
           "h": 4494.2998046875,
           "l": 4484.7998046875,
-          "c": 4490.2998046875,
-          "v": 1939.0,
-          "ema": 4494.18665194437,
-          "sma": 4518.224631911057,
-          "vwap": 4480.0815342139
+          "c": 4491.5,
+          "v": 1987.0,
+          "ema": 4494.233718427213,
+          "sma": 4518.233864182693,
+          "vwap": 4480.112721632799
         }
       ]
     },
@@ -26599,9 +26599,9 @@
     "EURUSD=X": {
       "symbol": "EURUSD=X",
       "bar_time_utc": "2026-06-05T11:00:00+00:00",
-      "close": 1.1641442775726318,
-      "ema": 1.1625251320596428,
-      "sma": 1.1634147469814007,
+      "close": 1.1644154787063599,
+      "ema": 1.1625357673982204,
+      "sma": 1.1634168331439678,
       "vwap": null,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -31015,12 +31015,12 @@
         {
           "t": "2026-06-05T11:00:00+00:00",
           "o": 1.1644154787063599,
-          "h": 1.1644154787063599,
+          "h": 1.1645511388778687,
           "l": 1.1637378931045532,
-          "c": 1.1641442775726318,
+          "c": 1.1644154787063599,
           "v": 0.0,
-          "ema": 1.1625251320596428,
-          "sma": 1.1634147469814007,
+          "ema": 1.1625357673982204,
+          "sma": 1.1634168331439678,
           "vwap": null
         }
       ]
@@ -31030,7 +31030,7 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 7,
-    "risk_on_score": 4,
+    "risk_on_score": 3,
     "theme_hits": {
       "war": 4,
       "banking": 0,
@@ -31038,7 +31038,7 @@
       "rate_hike": 0,
       "crash": 3,
       "rate_cut": 0,
-      "risk_on": 4
+      "risk_on": 3
     },
     "sample_headlines": {
       "war": [
@@ -31056,9 +31056,9 @@
       ],
       "rate_cut": [],
       "risk_on": [
-        "Western Digital (WDC) Hits All-Time High as Citi Hikes PT by 37%",
         "Bitcoin caps a dismal week as price wallows 50% below its all-time high",
-        "Asia stocks fall as chip rally cools, US-Iran tensions weigh - Investing.com"
+        "Asia stocks fall as chip rally cools, US-Iran tensions weigh - Investing.com",
+        "Oil prices climb back toward $100, and US stocks halt their record-breaking rally - AP News"
       ]
     },
     "n_headlines": 113,
@@ -31069,7 +31069,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780660258.482058,
+    "fetched_at": 1780660557.44871,
     "risk_off_themes": [
       "banking",
       "crash",
