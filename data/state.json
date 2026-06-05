@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-05T07:10:57.349955+00:00",
+  "generated_at_utc": "2026-06-05T07:15:58.012338+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-05T07:00:00+00:00",
-      "close": 4479.7001953125,
-      "ema": 4494.349513783038,
-      "sma": 4519.520789513221,
-      "vwap": 4474.42281018316,
+      "close": 4482.2001953125,
+      "ema": 4494.447552998724,
+      "sma": 4519.540020282452,
+      "vwap": 4474.512310586241,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13323,15 +13323,15 @@
         "bias": "bearish",
         "strength": "weak",
         "adx": 25.73,
-        "ema_slope_4bar": -3.4836,
+        "ema_slope_4bar": -3.3855,
         "regime_pct_24h": 4.2,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,494.35)",
+          "Close > EMA50 (4,494.45)",
           "ADX falls below 20 (now 25.7)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 25.7, close 4,479.70 vs EMA50 4,494.35) but the trend is only weak. The regime filter is mostly blocking \u2014 only 4% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 25.7, close 4,482.20 vs EMA50 4,494.45) but the trend is only weak. The regime filter is mostly blocking \u2014 only 4% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17727,12 +17727,12 @@
           "t": "2026-06-05T07:00:00+00:00",
           "o": 4479.89990234375,
           "h": 4482.7998046875,
-          "l": 4479.0,
-          "c": 4479.7001953125,
-          "v": 115.0,
-          "ema": 4494.349513783038,
-          "sma": 4519.520789513221,
-          "vwap": 4474.42281018316
+          "l": 4478.7001953125,
+          "c": 4482.2001953125,
+          "v": 446.0,
+          "ema": 4494.447552998724,
+          "sma": 4519.540020282452,
+          "vwap": 4474.512310586241
         }
       ]
     },
@@ -26599,9 +26599,9 @@
     "EURUSD=X": {
       "symbol": "EURUSD=X",
       "bar_time_utc": "2026-06-05T07:00:00+00:00",
-      "close": 1.1627906560897827,
-      "ema": 1.162200084358461,
-      "sma": 1.1634450298089247,
+      "close": 1.1631964445114136,
+      "ema": 1.1622159976298976,
+      "sma": 1.163448151258322,
       "vwap": null,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -26612,7 +26612,7 @@
       "read": {
         "bias": "neutral",
         "strength": "chop",
-        "adx": 14.19,
+        "adx": 14.55,
         "ema_slope_4bar": 0.0,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
@@ -26620,7 +26620,7 @@
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "EURUSD=X is neutral (ADX 14.2, close 1.16 vs EMA50 1.16) and the tape is choppy. The regime filter is mostly green."
+        "narrative": "EURUSD=X is neutral (ADX 14.6, close 1.16 vs EMA50 1.16) and the tape is choppy. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -31015,12 +31015,12 @@
         {
           "t": "2026-06-05T07:00:00+00:00",
           "o": 1.1626555919647217,
-          "h": 1.1629259586334229,
+          "h": 1.1631964445114136,
           "l": 1.1626555919647217,
-          "c": 1.1627906560897827,
+          "c": 1.1631964445114136,
           "v": 0.0,
-          "ema": 1.162200084358461,
-          "sma": 1.1634450298089247,
+          "ema": 1.1622159976298976,
+          "sma": 1.163448151258322,
           "vwap": null
         }
       ]
@@ -31030,7 +31030,7 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 6,
-    "risk_on_score": 4,
+    "risk_on_score": 3,
     "theme_hits": {
       "war": 3,
       "banking": 0,
@@ -31038,7 +31038,7 @@
       "rate_hike": 0,
       "crash": 3,
       "rate_cut": 0,
-      "risk_on": 4
+      "risk_on": 3
     },
     "sample_headlines": {
       "war": [
@@ -31056,9 +31056,9 @@
       ],
       "rate_cut": [],
       "risk_on": [
-        "Nvidia CEO Jensen Huang Says Marvell Could Be the Next $1 Trillion Chip Company, Fueling a Rally in MRVL Stock.",
         "Eli Manning weighs in on Giants QB Jaxson Dart's Trump rally fallout",
-        "Jim Cramer says Thursday's rally shows investors' 'huge appetite' for stocks"
+        "Jim Cramer says Thursday's rally shows investors' 'huge appetite' for stocks",
+        "Marvell Stock Climbs Toward a Record High. The Next Big Catalyst Is in Sight. - Barron's"
       ]
     },
     "n_headlines": 114,
@@ -31069,7 +31069,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780643458.405269,
+    "fetched_at": 1780643759.2968278,
     "risk_off_themes": [
       "banking",
       "crash",
