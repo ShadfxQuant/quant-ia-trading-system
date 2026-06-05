@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-05T11:05:56.815129+00:00",
+  "generated_at_utc": "2026-06-05T11:10:56.456559+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13308,11 +13308,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-05T10:00:00+00:00",
-      "close": 4493.0,
-      "ema": 4494.317840131474,
-      "sma": 4518.5146334134615,
-      "vwap": 4479.540320088382,
+      "bar_time_utc": "2026-06-05T11:00:00+00:00",
+      "close": 4493.10009765625,
+      "ema": 4494.296467354909,
+      "sma": 4518.246172626202,
+      "vwap": 4479.6136026682325,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,29 +13322,18 @@
       "read": {
         "bias": "bearish",
         "strength": "weak",
-        "adx": 23.31,
-        "ema_slope_4bar": -0.6296,
+        "adx": 22.9,
+        "ema_slope_4bar": -0.3668,
         "regime_pct_24h": 4.2,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,494.32)",
-          "ADX falls below 20 (now 23.3)",
+          "Close > EMA50 (4,494.30)",
+          "ADX falls below 20 (now 22.9)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 23.3, close 4,493.00 vs EMA50 4,494.32) but the trend is only weak. The regime filter is mostly blocking \u2014 only 4% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 22.9, close 4,493.10 vs EMA50 4,494.30) but the trend is only weak. The regime filter is mostly blocking \u2014 only 4% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
-        {
-          "t": "2026-05-11T19:00:00+00:00",
-          "o": 4734.2001953125,
-          "h": 4746.5,
-          "l": 4731.7998046875,
-          "c": 4743.5,
-          "v": 4586.0,
-          "ema": 4709.4927761883755,
-          "sma": 4664.796153846154,
-          "vwap": 4709.625586771538
-        },
         {
           "t": "2026-05-11T20:00:00+00:00",
           "o": 4743.7001953125,
@@ -17728,11 +17717,22 @@
           "o": 4491.60009765625,
           "h": 4495.0,
           "l": 4488.7001953125,
-          "c": 4493.0,
-          "v": 1798.0,
-          "ema": 4494.317840131474,
-          "sma": 4518.5146334134615,
-          "vwap": 4479.540320088382
+          "c": 4493.7001953125,
+          "v": 1918.0,
+          "ema": 4494.345298771181,
+          "sma": 4518.52001953125,
+          "vwap": 4479.591564988275
+        },
+        {
+          "t": "2026-06-05T11:00:00+00:00",
+          "o": 4493.2001953125,
+          "h": 4494.10009765625,
+          "l": 4492.0,
+          "c": 4493.10009765625,
+          "v": 63.0,
+          "ema": 4494.296467354909,
+          "sma": 4518.246172626202,
+          "vwap": 4479.6136026682325
         }
       ]
     },
@@ -26599,9 +26599,9 @@
     "EURUSD=X": {
       "symbol": "EURUSD=X",
       "bar_time_utc": "2026-06-05T11:00:00+00:00",
-      "close": 1.1641442775726318,
-      "ema": 1.1625251320596428,
-      "sma": 1.1634147469814007,
+      "close": 1.1640088558197021,
+      "ema": 1.162519821402665,
+      "sma": 1.1634137052756088,
       "vwap": null,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -26612,7 +26612,7 @@
       "read": {
         "bias": "neutral",
         "strength": "weak",
-        "adx": 23.53,
+        "adx": 22.89,
         "ema_slope_4bar": 0.0003,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
@@ -26620,7 +26620,7 @@
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "EURUSD=X is neutral (ADX 23.5, close 1.16 vs EMA50 1.16) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "EURUSD=X is neutral (ADX 22.9, close 1.16 vs EMA50 1.16) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -31016,11 +31016,11 @@
           "t": "2026-06-05T11:00:00+00:00",
           "o": 1.1644154787063599,
           "h": 1.1644154787063599,
-          "l": 1.1641442775726318,
-          "c": 1.1641442775726318,
+          "l": 1.163873314857483,
+          "c": 1.1640088558197021,
           "v": 0.0,
-          "ema": 1.1625251320596428,
-          "sma": 1.1634147469814007,
+          "ema": 1.162519821402665,
+          "sma": 1.1634137052756088,
           "vwap": null
         }
       ]
@@ -31029,22 +31029,22 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 6,
-    "risk_on_score": 2,
+    "risk_off_score": 7,
+    "risk_on_score": 4,
     "theme_hits": {
       "war": 3,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 3,
+      "crash": 4,
       "rate_cut": 0,
-      "risk_on": 2
+      "risk_on": 4
     },
     "sample_headlines": {
       "war": [
         "Hezbollah rejects renewed ceasefire agreed by Israel and Lebanon",
         "S&P 500 futures fall after index snaps 9-day win streak amid rising Middle East tensions: Live updates - CNBC",
-        "Asia-Pacific markets open lower on renewed Middle East tensions - CNBC"
+        "Asia stocks fall as chip rally cools, US-Iran tensions weigh - Investing.com"
       ],
       "banking": [],
       "recession": [],
@@ -31052,12 +31052,13 @@
       "crash": [
         "Is the housing market going to crash in 2026?",
         "South Korea stocks fall over 5% as tech heavyweights follow plunge in Wall Street's AI-linked names",
-        "KKR, Blue Owl, and Blackstone Tumble. Why Private-Market Jitters Are Back and Hitting the Stocks. - Barron's"
+        "Bitcoin selloff continues as prices slide below $63,000 for the first time since February - CoinDesk"
       ],
       "rate_cut": [],
       "risk_on": [
         "Western Digital (WDC) Hits All-Time High as Citi Hikes PT by 37%",
-        "Eli Manning weighs in on Giants QB Jaxson Dart's Trump rally fallout"
+        "Eli Manning weighs in on Giants QB Jaxson Dart's Trump rally fallout",
+        "Asia stocks fall as chip rally cools, US-Iran tensions weigh - Investing.com"
       ]
     },
     "n_headlines": 113,
@@ -31068,7 +31069,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780657557.5381184,
+    "fetched_at": 1780657857.5976055,
     "risk_off_themes": [
       "banking",
       "crash",
