@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-05T08:26:01.704660+00:00",
+  "generated_at_utc": "2026-06-05T08:30:58.013044+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-05T08:00:00+00:00",
-      "close": 4487.10009765625,
-      "ema": 4494.366645484332,
-      "sma": 4519.161560997596,
-      "vwap": 4476.220108325323,
+      "close": 4489.5,
+      "ema": 4494.4607593017345,
+      "sma": 4519.180021784856,
+      "vwap": 4476.303762593521,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13323,15 +13323,15 @@
         "bias": "bearish",
         "strength": "weak",
         "adx": 24.33,
-        "ema_slope_4bar": -2.4142,
+        "ema_slope_4bar": -2.32,
         "regime_pct_24h": 4.2,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,494.37)",
+          "Close > EMA50 (4,494.46)",
           "ADX falls below 20 (now 24.3)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 24.3, close 4,487.10 vs EMA50 4,494.37) but the trend is only weak. The regime filter is mostly blocking \u2014 only 4% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 24.3, close 4,489.50 vs EMA50 4,494.46) but the trend is only weak. The regime filter is mostly blocking \u2014 only 4% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17726,13 +17726,13 @@
         {
           "t": "2026-06-05T08:00:00+00:00",
           "o": 4487.2998046875,
-          "h": 4490.5,
+          "h": 4491.7001953125,
           "l": 4485.5,
-          "c": 4487.10009765625,
-          "v": 593.0,
-          "ema": 4494.366645484332,
-          "sma": 4519.161560997596,
-          "vwap": 4476.220108325323
+          "c": 4489.5,
+          "v": 736.0,
+          "ema": 4494.4607593017345,
+          "sma": 4519.180021784856,
+          "vwap": 4476.303762593521
         }
       ]
     },
@@ -31029,30 +31029,30 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 9,
+    "risk_off_score": 7,
     "risk_on_score": 3,
     "theme_hits": {
-      "war": 4,
+      "war": 3,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 5,
+      "crash": 4,
       "rate_cut": 0,
       "risk_on": 3
     },
     "sample_headlines": {
       "war": [
         "Hezbollah rejects renewed ceasefire agreed by Israel and Lebanon",
-        "Stock Market Today: Dow Drops 620 Points After Iran War Jitters; Broadcom Hits Highs",
-        "Asia-Pacific markets open lower on renewed Middle East tensions - CNBC"
+        "Asia-Pacific markets open lower on renewed Middle East tensions - CNBC",
+        "Alphabet\u2019s Fine Print Reveals Hidden Cost of the AI Talent War - The Information"
       ],
       "banking": [],
       "recession": [],
       "rate_hike": [],
       "crash": [
         "Is the housing market going to crash in 2026?",
-        "Broadcom's sales and AI chip forecast comes in below expectations, shares tumble",
-        "South Korea stocks fall over 5% as tech heavyweights follow plunge in Wall Street's AI-linked names"
+        "South Korea stocks fall over 5% as tech heavyweights follow plunge in Wall Street's AI-linked names",
+        "Bitcoin selloff continues as prices slide below $63,000 for the first time since February - CoinDesk"
       ],
       "rate_cut": [],
       "risk_on": [
@@ -31069,7 +31069,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780647963.0946965,
+    "fetched_at": 1780648258.819645,
     "risk_off_themes": [
       "banking",
       "crash",
