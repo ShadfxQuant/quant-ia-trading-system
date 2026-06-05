@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-05T11:35:57.032964+00:00",
+  "generated_at_utc": "2026-06-05T11:40:55.613877+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-05T11:00:00+00:00",
-      "close": 4489.39990234375,
-      "ema": 4494.15136165638,
-      "sma": 4518.217709585337,
-      "vwap": 4479.900651875431,
+      "close": 4493.2998046875,
+      "ema": 4494.304299003194,
+      "sma": 4518.247708834135,
+      "vwap": 4480.00474093772,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13323,15 +13323,15 @@
         "bias": "bearish",
         "strength": "weak",
         "adx": 23.2,
-        "ema_slope_4bar": -0.5119,
+        "ema_slope_4bar": -0.3589,
         "regime_pct_24h": 4.2,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,494.15)",
+          "Close > EMA50 (4,494.30)",
           "ADX falls below 20 (now 23.2)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 23.2, close 4,489.40 vs EMA50 4,494.15) but the trend is only weak. The regime filter is mostly blocking \u2014 only 4% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 23.2, close 4,493.30 vs EMA50 4,494.30) but the trend is only weak. The regime filter is mostly blocking \u2014 only 4% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17726,13 +17726,13 @@
         {
           "t": "2026-06-05T11:00:00+00:00",
           "o": 4493.2001953125,
-          "h": 4494.10009765625,
+          "h": 4494.2998046875,
           "l": 4484.7998046875,
-          "c": 4489.39990234375,
-          "v": 1247.0,
-          "ema": 4494.15136165638,
-          "sma": 4518.217709585337,
-          "vwap": 4479.900651875431
+          "c": 4493.2998046875,
+          "v": 1472.0,
+          "ema": 4494.304299003194,
+          "sma": 4518.247708834135,
+          "vwap": 4480.00474093772
         }
       ]
     },
@@ -26599,9 +26599,9 @@
     "EURUSD=X": {
       "symbol": "EURUSD=X",
       "bar_time_utc": "2026-06-05T11:00:00+00:00",
-      "close": 1.1642799377441406,
-      "ema": 1.1625304520663686,
-      "sma": 1.1634157905211815,
+      "close": 1.1637378931045532,
+      "ema": 1.1625091954138358,
+      "sma": 1.1634116209470309,
       "vwap": null,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -26612,7 +26612,7 @@
       "read": {
         "bias": "neutral",
         "strength": "weak",
-        "adx": 22.89,
+        "adx": 22.6,
         "ema_slope_4bar": 0.0003,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
@@ -26620,7 +26620,7 @@
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "EURUSD=X is neutral (ADX 22.9, close 1.16 vs EMA50 1.16) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "EURUSD=X is neutral (ADX 22.6, close 1.16 vs EMA50 1.16) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -31016,11 +31016,11 @@
           "t": "2026-06-05T11:00:00+00:00",
           "o": 1.1644154787063599,
           "h": 1.1644154787063599,
-          "l": 1.163873314857483,
-          "c": 1.1642799377441406,
+          "l": 1.1637378931045532,
+          "c": 1.1637378931045532,
           "v": 0.0,
-          "ema": 1.1625304520663686,
-          "sma": 1.1634157905211815,
+          "ema": 1.1625091954138358,
+          "sma": 1.1634116209470309,
           "vwap": null
         }
       ]
@@ -31069,7 +31069,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780659357.556459,
+    "fetched_at": 1780659656.322779,
     "risk_off_themes": [
       "banking",
       "crash",
