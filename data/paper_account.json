@@ -1,5 +1,5 @@
 {
-  "equity": 99100.0,
+  "equity": 99400.0,
   "initial_capital": 100000.0,
   "cash": 100000.0,
   "open_positions": [
@@ -15,8 +15,8 @@
       "tp2_pct": 0.15,
       "tp1_size_frac": 0.5,
       "bar_time_at_entry": "2026-05-28T19:30:00+00:00",
-      "tp1_hit": false,
-      "remaining_size": 75000.0
+      "tp1_hit": true,
+      "remaining_size": 37500.0
     },
     {
       "symbol": "GLD",
@@ -77,21 +77,6 @@
       "bar_time_at_entry": "2026-06-04T14:30:00+00:00",
       "tp1_hit": true,
       "remaining_size": 15000.0
-    },
-    {
-      "symbol": "QQQ",
-      "strategy": "trend_carry",
-      "side": 1,
-      "entry_time": "2026-06-04T15:01:54.038676+00:00",
-      "entry_price": 738.119873046875,
-      "size": 30000.0,
-      "stop_pct": 0.04,
-      "tp1_pct": 0.08,
-      "tp2_pct": 0.25,
-      "tp1_size_frac": 0.3,
-      "bar_time_at_entry": "2026-06-04T14:30:00+00:00",
-      "tp1_hit": false,
-      "remaining_size": 30000.0
     }
   ],
   "closed_trades": [
@@ -130,8 +115,32 @@
       "size": 30000.0,
       "pnl": -750.0000000000009,
       "reason": "stop"
+    },
+    {
+      "symbol": "QQQ",
+      "strategy": "trend_carry",
+      "side": 1,
+      "entry_time": "2026-06-04T15:01:54.038676+00:00",
+      "entry_price": 738.119873046875,
+      "exit_time": "2026-06-05T18:46:33.778773+00:00",
+      "exit_price": 708.595078125,
+      "size": 30000.0,
+      "pnl": -1200.0000000000007,
+      "reason": "stop"
+    },
+    {
+      "symbol": "GLD",
+      "strategy": "pullback",
+      "side": -1,
+      "entry_time": "2026-05-29T14:25:17.804032+00:00",
+      "entry_price": 412.8299865722656,
+      "exit_time": "2026-06-05T18:46:33.778798+00:00",
+      "exit_price": 396.316787109375,
+      "size": 37500.0,
+      "pnl": 1499.9999999999986,
+      "reason": "tp1"
     }
   ],
-  "n_trades_total": 3,
-  "last_updated_utc": "2026-06-05T18:41:35.160050+00:00"
+  "n_trades_total": 5,
+  "last_updated_utc": "2026-06-05T18:46:33.778839+00:00"
 }
