@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-05T13:00:59.713580+00:00",
+  "generated_at_utc": "2026-06-05T13:05:59.582713+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-05T12:00:00+00:00",
-      "close": 4461.5,
-      "ema": 4493.157271184008,
-      "sma": 4517.77001953125,
-      "vwap": 4478.950666647898,
+      "close": 4440.39990234375,
+      "ema": 4492.329816373959,
+      "sma": 4517.60771108774,
+      "vwap": 4475.035642542604,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,16 +13322,16 @@
       "read": {
         "bias": "bearish",
         "strength": "weak",
-        "adx": 23.06,
-        "ema_slope_4bar": -1.3152,
+        "adx": 23.63,
+        "ema_slope_4bar": -2.1427,
         "regime_pct_24h": 4.2,
         "macro_tilt": "neutral",
         "flip": [
-          "Close > EMA50 (4,493.16)",
-          "ADX falls below 20 (now 23.1)",
+          "Close > EMA50 (4,492.33)",
+          "ADX falls below 20 (now 23.6)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 23.1, close 4,461.50 vs EMA50 4,493.16) but the trend is only weak. The regime filter is mostly blocking \u2014 only 4% of the last 24h was tradable."
+        "narrative": "GC=F leans short (ADX 23.6, close 4,440.40 vs EMA50 4,492.33) but the trend is only weak. The regime filter is mostly blocking \u2014 only 4% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -17727,12 +17727,12 @@
           "t": "2026-06-05T12:00:00+00:00",
           "o": 4497.39990234375,
           "h": 4502.7998046875,
-          "l": 4452.89990234375,
-          "c": 4461.5,
-          "v": 11471.0,
-          "ema": 4493.157271184008,
-          "sma": 4517.77001953125,
-          "vwap": 4478.950666647898
+          "l": 4438.2001953125,
+          "c": 4440.39990234375,
+          "v": 16356.0,
+          "ema": 4492.329816373959,
+          "sma": 4517.60771108774,
+          "vwap": 4475.035642542604
         }
       ]
     },
@@ -26599,9 +26599,9 @@
     "EURUSD=X": {
       "symbol": "EURUSD=X",
       "bar_time_utc": "2026-06-05T13:00:00+00:00",
-      "close": 1.1590172052383423,
-      "ema": 1.1622652128299868,
-      "sma": 1.1633275233782254,
+      "close": 1.1592857837677002,
+      "ema": 1.1622757453213342,
+      "sma": 1.1633295893669129,
       "vwap": null,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -31016,12 +31016,12 @@
         {
           "t": "2026-06-05T13:00:00+00:00",
           "o": 1.1590172052383423,
-          "h": 1.1590172052383423,
+          "h": 1.1598236560821533,
           "l": 1.1590172052383423,
-          "c": 1.1590172052383423,
+          "c": 1.1592857837677002,
           "v": 0.0,
-          "ema": 1.1622652128299868,
-          "sma": 1.1633275233782254,
+          "ema": 1.1622757453213342,
+          "sma": 1.1633295893669129,
           "vwap": null
         }
       ]
@@ -31030,14 +31030,14 @@
   "errors": {},
   "macro": {
     "verdict": "NEUTRAL",
-    "risk_off_score": 7,
+    "risk_off_score": 6,
     "risk_on_score": 7,
     "theme_hits": {
       "war": 4,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 3,
+      "crash": 2,
       "rate_cut": 0,
       "risk_on": 7
     },
@@ -31051,15 +31051,14 @@
       "recession": [],
       "rate_hike": [],
       "crash": [
-        "Is the housing market going to crash in 2026?",
         "Bitcoin selloff continues as prices slide below $63,000 for the first time since February - CoinDesk",
         "KKR, Blue Owl, and Blackstone Tumble. Why Private-Market Jitters Are Back and Hitting the Stocks. - Barron's"
       ],
       "rate_cut": [],
       "risk_on": [
-        "Western Digital (WDC) Hits All-Time High as Citi Hikes PT by 37%",
-        "Sandisk (SNDK) Soars to All-Time High; Up 4,573% in 1 Year",
-        "POET Technologies (POET) Soars 11%, Mimics Industry Rally"
+        "Navitas (NVTS) Hits All-Time High \u2014 Nvidia May Hold the Reason",
+        "POET Technologies (POET) Soars 11%, Mimics Industry Rally",
+        "Sandisk (SNDK) Soars to All-Time High; Up 4,573% in 1 Year"
       ]
     },
     "n_headlines": 113,
@@ -31070,7 +31069,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780664460.381986,
+    "fetched_at": 1780664760.603711,
     "risk_off_themes": [
       "banking",
       "crash",
