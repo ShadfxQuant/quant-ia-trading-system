@@ -1,5 +1,5 @@
 {
-  "equity": 100000.0,
+  "equity": 100600.0,
   "initial_capital": 100000.0,
   "cash": 100000.0,
   "open_positions": [
@@ -75,8 +75,8 @@
       "tp2_pct": 0.15,
       "tp1_size_frac": 0.5,
       "bar_time_at_entry": "2026-06-04T14:30:00+00:00",
-      "tp1_hit": false,
-      "remaining_size": 30000.0
+      "tp1_hit": true,
+      "remaining_size": 15000.0
     },
     {
       "symbol": "QQQ",
@@ -124,7 +124,20 @@
       "remaining_size": 30000.0
     }
   ],
-  "closed_trades": [],
-  "n_trades_total": 0,
-  "last_updated_utc": "2026-06-05T13:26:32.408743+00:00"
+  "closed_trades": [
+    {
+      "symbol": "SLV",
+      "strategy": "pullback",
+      "side": -1,
+      "entry_time": "2026-06-04T14:31:56.894544+00:00",
+      "entry_price": 66.88899993896484,
+      "exit_time": "2026-06-05T13:31:29.909567+00:00",
+      "exit_price": 64.21343994140625,
+      "size": 15000.0,
+      "pnl": 600.0,
+      "reason": "tp1"
+    }
+  ],
+  "n_trades_total": 1,
+  "last_updated_utc": "2026-06-05T13:31:29.909612+00:00"
 }
