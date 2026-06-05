@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-05T10:55:58.516585+00:00",
+  "generated_at_utc": "2026-06-05T11:00:58.607577+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-05T10:00:00+00:00",
-      "close": 4493.89990234375,
-      "ema": 4494.353130419465,
-      "sma": 4518.521555739183,
-      "vwap": 4479.351532158929,
+      "close": 4494.60009765625,
+      "ema": 4494.38058905917,
+      "sma": 4518.5269418569715,
+      "vwap": 4479.539112187804,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13320,18 +13320,17 @@
       "trend_carry_pyramid_ok": false,
       "trend_carry_pyramid_cap": 0,
       "read": {
-        "bias": "bearish",
+        "bias": "neutral",
         "strength": "weak",
         "adx": 23.31,
-        "ema_slope_4bar": -0.5943,
+        "ema_slope_4bar": -0.5669,
         "regime_pct_24h": 4.2,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
-          "Close > EMA50 (4,494.35)",
-          "ADX falls below 20 (now 23.3)",
-          "EMA50 crosses back above SMA130"
+          "Close + ADX both push above EMA50 with ADX \u2265 20",
+          "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F leans short (ADX 23.3, close 4,493.90 vs EMA50 4,494.35) but the trend is only weak. The regime filter is mostly blocking \u2014 only 4% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F is neutral (ADX 23.3, close 4,494.60 vs EMA50 4,494.38) but the trend is only weak. The regime filter is mostly blocking \u2014 only 4% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -17728,11 +17727,11 @@
           "o": 4491.60009765625,
           "h": 4495.0,
           "l": 4488.7001953125,
-          "c": 4493.89990234375,
-          "v": 1208.0,
-          "ema": 4494.353130419465,
-          "sma": 4518.521555739183,
-          "vwap": 4479.351532158929
+          "c": 4494.60009765625,
+          "v": 1722.0,
+          "ema": 4494.38058905917,
+          "sma": 4518.5269418569715,
+          "vwap": 4479.539112187804
         }
       ]
     },
@@ -26598,10 +26597,10 @@
     },
     "EURUSD=X": {
       "symbol": "EURUSD=X",
-      "bar_time_utc": "2026-06-05T10:00:00+00:00",
-      "close": 1.1642799377441406,
-      "ema": 1.1624537291558323,
-      "sma": 1.163422052676861,
+      "bar_time_utc": "2026-06-05T11:00:00+00:00",
+      "close": 1.1644154787063599,
+      "ema": 1.1625357673982204,
+      "sma": 1.1634168331439678,
       "vwap": null,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -26612,7 +26611,7 @@
       "read": {
         "bias": "neutral",
         "strength": "weak",
-        "adx": 21.64,
+        "adx": 23.53,
         "ema_slope_4bar": 0.0003,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
@@ -26620,20 +26619,9 @@
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "EURUSD=X is neutral (ADX 21.6, close 1.16 vs EMA50 1.16) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "EURUSD=X is neutral (ADX 23.5, close 1.16 vs EMA50 1.16) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
-        {
-          "t": "2026-05-13T16:00:00+00:00",
-          "o": 1.1713716983795166,
-          "h": 1.17205810546875,
-          "l": 1.1712344884872437,
-          "c": 1.1712344884872437,
-          "v": 0.0,
-          "ema": 1.1738035662292197,
-          "sma": 1.1755477226697482,
-          "vwap": null
-        },
         {
           "t": "2026-05-13T17:00:00+00:00",
           "o": 1.1712344884872437,
@@ -31017,10 +31005,21 @@
           "o": 1.1642799377441406,
           "h": 1.164686679840088,
           "l": 1.1641442775726318,
-          "c": 1.1642799377441406,
+          "c": 1.1644154787063599,
           "v": 0.0,
-          "ema": 1.1624537291558323,
-          "sma": 1.163422052676861,
+          "ema": 1.1624590444876841,
+          "sma": 1.1634230952996474,
+          "vwap": null
+        },
+        {
+          "t": "2026-06-05T11:00:00+00:00",
+          "o": 1.1644154787063599,
+          "h": 1.1644154787063599,
+          "l": 1.1644154787063599,
+          "c": 1.1644154787063599,
+          "v": 0.0,
+          "ema": 1.1625357673982204,
+          "sma": 1.1634168331439678,
           "vwap": null
         }
       ]
@@ -31030,7 +31029,7 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 6,
-    "risk_on_score": 4,
+    "risk_on_score": 2,
     "theme_hits": {
       "war": 3,
       "banking": 0,
@@ -31038,7 +31037,7 @@
       "rate_hike": 0,
       "crash": 3,
       "rate_cut": 0,
-      "risk_on": 4
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
@@ -31057,7 +31056,6 @@
       "rate_cut": [],
       "risk_on": [
         "Marvell, AMD Rally, Lead Chip Stocks To Record High",
-        "Western Digital (WDC) Hits All-Time High as Citi Hikes PT by 37%",
         "Eli Manning weighs in on Giants QB Jaxson Dart's Trump rally fallout"
       ]
     },
@@ -31069,7 +31067,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780656959.5141914,
+    "fetched_at": 1780657259.652093,
     "risk_off_themes": [
       "banking",
       "crash",
