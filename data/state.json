@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-06T12:45:59.789997+00:00",
+  "generated_at_utc": "2026-06-06T12:51:01.758630+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -8893,13 +8893,13 @@
         "adx": 30.73,
         "ema_slope_4bar": -1.9771,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close > EMA50 (408.54)",
           "ADX falls below 20 (now 30.7)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 30.7, close 396.25 vs EMA50 408.54) and the trend is strong. The regime filter is mostly green."
+        "narrative": "GLD leans short (ADX 30.7, close 396.25 vs EMA50 408.54) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -13323,13 +13323,13 @@
         "adx": 42.7,
         "ema_slope_4bar": -17.7103,
         "regime_pct_24h": 0.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close > EMA50 (4,457.46)",
           "ADX falls below 20 (now 42.7)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 42.7, close 4,365.30 vs EMA50 4,457.46) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F leans short (ADX 42.7, close 4,365.30 vs EMA50 4,457.46) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17753,13 +17753,13 @@
         "adx": 34.91,
         "ema_slope_4bar": -0.7746,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close > EMA50 (66.29)",
           "ADX falls below 20 (now 34.9)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "SLV leans short (ADX 34.9, close 61.56 vs EMA50 66.29) and the trend is strong. The regime filter is mostly green."
+        "narrative": "SLV leans short (ADX 34.9, close 61.56 vs EMA50 66.29) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -26612,13 +26612,13 @@
         "adx": 42.79,
         "ema_slope_4bar": -0.0012,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "supports",
         "flip": [
           "Close > EMA50 (1.16)",
           "ADX falls below 20 (now 42.8)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "EURUSD=X leans short (ADX 42.8, close 1.15 vs EMA50 1.16) and the trend is strong. The regime filter is mostly green."
+        "narrative": "EURUSD=X leans short (ADX 42.8, close 1.15 vs EMA50 1.16) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -31026,9 +31026,9 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
+    "verdict": "RISK_OFF",
     "risk_off_score": 7,
-    "risk_on_score": 6,
+    "risk_on_score": 5,
     "theme_hits": {
       "war": 2,
       "banking": 0,
@@ -31036,7 +31036,7 @@
       "rate_hike": 2,
       "crash": 2,
       "rate_cut": 1,
-      "risk_on": 5
+      "risk_on": 4
     },
     "sample_headlines": {
       "war": [
@@ -31072,7 +31072,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780749960.6404903,
+    "fetched_at": 1780750263.1998265,
     "risk_off_themes": [
       "banking",
       "crash",
