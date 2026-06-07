@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-07T20:55:39.157118+00:00",
+  "generated_at_utc": "2026-06-07T23:46:56.305408+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13306,11 +13306,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-05T20:00:00+00:00",
-      "close": 4365.2998046875,
-      "ema": 4457.4592634074725,
-      "sma": 4507.341560246394,
-      "vwap": 4413.076030225498,
+      "bar_time_utc": "2026-06-07T23:00:00+00:00",
+      "close": 4359.2001953125,
+      "ema": 4449.233103342139,
+      "sma": 4504.1931002103365,
+      "vwap": 4347.618806078565,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13320,40 +13320,18 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 42.7,
-        "ema_slope_4bar": -17.7103,
+        "adx": 43.85,
+        "ema_slope_4bar": -16.7927,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,457.46)",
-          "ADX falls below 20 (now 42.7)",
+          "Close > EMA50 (4,449.23)",
+          "ADX falls below 20 (now 43.9)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 42.7, close 4,365.30 vs EMA50 4,457.46) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 43.9, close 4,359.20 vs EMA50 4,449.23) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
-        {
-          "t": "2026-05-12T06:00:00+00:00",
-          "o": 4722.60009765625,
-          "h": 4722.60009765625,
-          "l": 4701.60009765625,
-          "c": 4705.39990234375,
-          "v": 6639.0,
-          "ema": 4718.891942022411,
-          "sma": 4676.761534705529,
-          "vwap": 4734.3593350918345
-        },
-        {
-          "t": "2026-05-12T07:00:00+00:00",
-          "o": 4705.0,
-          "h": 4711.7001953125,
-          "l": 4692.39990234375,
-          "c": 4707.7998046875,
-          "v": 5043.0,
-          "ema": 4718.456956244571,
-          "sma": 4678.116917067307,
-          "vwap": 4729.88245721392
-        },
         {
           "t": "2026-05-12T08:00:00+00:00",
           "o": 4707.5,
@@ -17731,6 +17709,28 @@
           "ema": 4457.4592634074725,
           "sma": 4507.341560246394,
           "vwap": 4413.076030225498
+        },
+        {
+          "t": "2026-06-07T22:00:00+00:00",
+          "o": 4342.2001953125,
+          "h": 4354.7001953125,
+          "l": 4337.2998046875,
+          "c": 4341.39990234375,
+          "v": 2919.0,
+          "ema": 4452.907915914778,
+          "sma": 4505.703098707932,
+          "vwap": 4344.466634114583
+        },
+        {
+          "t": "2026-06-07T23:00:00+00:00",
+          "o": 4341.5,
+          "h": 4361.60009765625,
+          "l": 4341.39990234375,
+          "c": 4359.2001953125,
+          "v": 1427.0,
+          "ema": 4449.233103342139,
+          "sma": 4504.1931002103365,
+          "vwap": 4347.618806078565
         }
       ]
     },
@@ -26595,10 +26595,10 @@
     },
     "EURUSD=X": {
       "symbol": "EURUSD=X",
-      "bar_time_utc": "2026-06-05T21:00:00+00:00",
-      "close": 1.1527377367019653,
-      "ema": 1.1597669047861228,
-      "sma": 1.1626343607902527,
+      "bar_time_utc": "2026-06-07T23:00:00+00:00",
+      "close": 1.1522064208984375,
+      "ema": 1.1594704152218998,
+      "sma": 1.1625341828052813,
       "vwap": null,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -26609,29 +26609,18 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 42.79,
+        "adx": 44.72,
         "ema_slope_4bar": -0.0012,
         "regime_pct_24h": 100.0,
         "macro_tilt": "supports",
         "flip": [
           "Close > EMA50 (1.16)",
-          "ADX falls below 20 (now 42.8)",
+          "ADX falls below 20 (now 44.7)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "EURUSD=X leans short (ADX 42.8, close 1.15 vs EMA50 1.16) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "EURUSD=X leans short (ADX 44.7, close 1.15 vs EMA50 1.16) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-05-14T03:00:00+00:00",
-          "o": 1.1716461181640625,
-          "h": 1.171783447265625,
-          "l": 1.1713716983795166,
-          "c": 1.1715089082717896,
-          "v": 0.0,
-          "ema": 1.1730346287189897,
-          "sma": 1.175174458210285,
-          "vwap": null
-        },
         {
           "t": "2026-05-14T04:00:00+00:00",
           "o": 1.1715089082717896,
@@ -31020,6 +31009,17 @@
           "ema": 1.1597669047861228,
           "sma": 1.1626343607902527,
           "vwap": null
+        },
+        {
+          "t": "2026-06-07T23:00:00+00:00",
+          "o": 1.1518083810806274,
+          "h": 1.152339220046997,
+          "l": 1.1518083810806274,
+          "c": 1.1522064208984375,
+          "v": 0.0,
+          "ema": 1.1594704152218998,
+          "sma": 1.1625341828052813,
+          "vwap": null
         }
       ]
     }
@@ -31027,42 +31027,38 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 7,
-    "risk_on_score": 3,
+    "risk_off_score": 5,
+    "risk_on_score": 2,
     "theme_hits": {
-      "war": 3,
+      "war": 1,
       "banking": 0,
-      "recession": 2,
+      "recession": 1,
       "rate_hike": 0,
-      "crash": 2,
-      "rate_cut": 1,
+      "crash": 3,
+      "rate_cut": 0,
       "risk_on": 2
     },
     "sample_headlines": {
       "war": [
-        "Zelensky in Downing Street for Ukraine war talks with European leaders",
-        "Fragile ceasefire in jeopardy as Iran reportedly fires first missiles at Israel",
-        "It Sure Seems Like Pete Hegseth Is Losing His War Against Anthropic - Gizmodo"
+        "Fragile ceasefire in jeopardy as Iran reportedly fires missiles at Israel"
       ],
       "banking": [],
       "recession": [
-        "Amazon unveils latest warehouse robot as tech giants continue AI layoffs",
-        "AI Layoffs Already Have Surpassed Last Year\u2019s Total. Tech Workers Are Being Cut First. - 24/7 Wall St."
+        "Amazon unveils latest warehouse robot as tech giants continue AI layoffs"
       ],
       "rate_hike": [],
       "crash": [
+        "'We don't look at the sky anymore': The Air India crash victims who were not on the plane",
         "Wall Street's 'fear gauge' punches back as the 'crash up' in chip stocks finally reverses",
         "S&P 500 sees $1.8 trillion wipeout, Nasdaq tallies biggest point drop on record: What investors need to know about Friday\u2019s selloff"
       ],
-      "rate_cut": [
-        "Hot jobs report puts Fed cuts further out of reach as Chair Warsh faces policy tests - CNBC"
-      ],
+      "rate_cut": [],
       "risk_on": [
-        "Dow Jones Futures Due As Iran Attacks Israel; Market Rally Faces First Real Test",
+        "Dow Jones Futures Fall As Trump Says This After Iran Attacks Israel; Market Rally Faces First Real Test",
         "Mythos rejuvenated the cybersecurity sector. Earnings put the recent rally to the test"
       ]
     },
-    "n_headlines": 109,
+    "n_headlines": 113,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -31070,7 +31066,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780865739.9362934,
+    "fetched_at": 1780876017.48811,
     "risk_off_themes": [
       "banking",
       "crash",
