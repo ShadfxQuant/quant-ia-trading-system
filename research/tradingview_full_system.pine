@@ -160,11 +160,10 @@ for s in str.split(str.upper(str.replace_all(flip_symbols, " ", "")), ",")
 bars_since_entry = ta.barssince(strategy.position_size != strategy.position_size[1] and
                                   strategy.position_size[1] == 0)
 
-unreal_pct = strategy.position_size != 0 and strategy.position_avg_price > 0 ?
-             (strategy.position_size > 0 ?
-              (close - strategy.position_avg_price) / strategy.position_avg_price * 100 :
-              (strategy.position_avg_price - close) / strategy.position_avg_price * 100)
-             : 0.0
+has_position = (strategy.position_size != 0) and (strategy.position_avg_price > 0)
+unreal_long  = (close - strategy.position_avg_price) / strategy.position_avg_price * 100
+unreal_short = (strategy.position_avg_price - close) / strategy.position_avg_price * 100
+unreal_pct   = has_position ? (strategy.position_size > 0 ? unreal_long : unreal_short) : 0.0
 
 regime_flip_long_to_close  = use_flip and is_flip_symbol and
                               strategy.position_size > 0 and
@@ -248,10 +247,10 @@ plotshape(regime_flip_long_to_close or regime_flip_short_to_close,
 
 // ============== STATS TABLE ==============
 // MT5 label mapping
-mt5_label = ticker_uppr == "SPY"   or str.contains(ticker_uppr, "ES1") ? "US500"  :
-            str.contains(ticker_uppr, "NDX") or str.contains(ticker_uppr, "QQQ") or str.contains(ticker_uppr, "NQ1") ? "US100" :
-            str.contains(ticker_uppr, "GLD") or str.contains(ticker_uppr, "GC1") or str.contains(ticker_uppr, "GOLD") or str.contains(ticker_uppr, "XAU") ? "XAUUSD" :
-            syminfo.ticker
+is_us500   = (ticker_uppr == "SPY") or str.contains(ticker_uppr, "ES1")
+is_us100   = str.contains(ticker_uppr, "NDX") or str.contains(ticker_uppr, "QQQ") or str.contains(ticker_uppr, "NQ1")
+is_xauusd  = str.contains(ticker_uppr, "GLD") or str.contains(ticker_uppr, "GC1") or str.contains(ticker_uppr, "GOLD") or str.contains(ticker_uppr, "XAU")
+mt5_label  = is_us500 ? "US500" : is_us100 ? "US100" : is_xauusd ? "XAUUSD" : syminfo.ticker
 
 regime_str = regime_bull  ? "🟢 Kalman bull"  :
              regime_bear  ? "🔴 Kalman bear"  : "⚪ Range"
