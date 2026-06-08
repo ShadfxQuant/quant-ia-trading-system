@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-08T10:05:51.688979+00:00",
+  "generated_at_utc": "2026-06-08T10:10:54.308758+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13306,11 +13306,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-08T09:00:00+00:00",
-      "close": 4318.2001953125,
-      "ema": 4410.312314442977,
-      "sma": 4485.606171123798,
-      "vwap": 4330.074987102271,
+      "bar_time_utc": "2026-06-08T10:00:00+00:00",
+      "close": 4317.0,
+      "ema": 4406.675599966071,
+      "sma": 4483.555397385818,
+      "vwap": 4329.992068400178,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13320,29 +13320,18 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 46.89,
-        "ema_slope_4bar": -15.8483,
+        "adx": 47.61,
+        "ema_slope_4bar": -15.5297,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,410.31)",
-          "ADX falls below 20 (now 46.9)",
+          "Close > EMA50 (4,406.68)",
+          "ADX falls below 20 (now 47.6)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 46.9, close 4,318.20 vs EMA50 4,410.31) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 47.6, close 4,317.00 vs EMA50 4,406.68) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
-        {
-          "t": "2026-05-12T18:00:00+00:00",
-          "o": 4685.7001953125,
-          "h": 4705.5,
-          "l": 4683.0,
-          "c": 4703.0,
-          "v": 4942.0,
-          "ema": 4710.057946404783,
-          "sma": 4691.803072415865,
-          "vwap": 4700.935349999364
-        },
         {
           "t": "2026-05-12T19:00:00+00:00",
           "o": 4704.10009765625,
@@ -17726,11 +17715,22 @@
           "o": 4313.5,
           "h": 4326.39990234375,
           "l": 4297.10009765625,
-          "c": 4318.2001953125,
-          "v": 7370.0,
-          "ema": 4410.312314442977,
-          "sma": 4485.606171123798,
-          "vwap": 4330.074987102271
+          "c": 4318.7998046875,
+          "v": 7699.0,
+          "ema": 4410.335828536115,
+          "sma": 4485.6107835036055,
+          "vwap": 4330.00707414336
+        },
+        {
+          "t": "2026-06-08T10:00:00+00:00",
+          "o": 4319.0,
+          "h": 4319.60009765625,
+          "l": 4314.7998046875,
+          "c": 4317.0,
+          "v": 65.0,
+          "ema": 4406.675599966071,
+          "sma": 4483.555397385818,
+          "vwap": 4329.992068400178
         }
       ]
     },
@@ -26596,9 +26596,9 @@
     "EURUSD=X": {
       "symbol": "EURUSD=X",
       "bar_time_utc": "2026-06-08T10:00:00+00:00",
-      "close": 1.151410460472107,
-      "ema": 1.1569606526883518,
-      "sma": 1.16135526070228,
+      "close": 1.1520737409591675,
+      "ema": 1.1569866636878445,
+      "sma": 1.1613603628598728,
       "vwap": null,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -26609,16 +26609,16 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 52.57,
+        "adx": 52.01,
         "ema_slope_4bar": -0.0009,
         "regime_pct_24h": 100.0,
         "macro_tilt": "supports",
         "flip": [
           "Close > EMA50 (1.16)",
-          "ADX falls below 20 (now 52.6)",
+          "ADX falls below 20 (now 52.0)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "EURUSD=X leans short (ADX 52.6, close 1.15 vs EMA50 1.16) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "EURUSD=X leans short (ADX 52.0, close 1.15 vs EMA50 1.16) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -31013,12 +31013,12 @@
         {
           "t": "2026-06-08T10:00:00+00:00",
           "o": 1.151543140411377,
-          "h": 1.151543140411377,
+          "h": 1.1520737409591675,
           "l": 1.151410460472107,
-          "c": 1.151410460472107,
+          "c": 1.1520737409591675,
           "v": 0.0,
-          "ema": 1.1569606526883518,
-          "sma": 1.16135526070228,
+          "ema": 1.1569866636878445,
+          "sma": 1.1613603628598728,
           "vwap": null
         }
       ]
@@ -31068,7 +31068,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780913152.197506,
+    "fetched_at": 1780913454.6856325,
     "risk_off_themes": [
       "banking",
       "crash",
