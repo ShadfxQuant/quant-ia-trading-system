@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-08T11:00:54.177021+00:00",
+  "generated_at_utc": "2026-06-08T11:05:54.553511+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13307,10 +13307,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-08T10:00:00+00:00",
-      "close": 4323.0,
-      "ema": 4406.91089408372,
-      "sma": 4483.601551231971,
-      "vwap": 4329.373914357023,
+      "close": 4322.10009765625,
+      "ema": 4406.87560379573,
+      "sma": 4483.59462890625,
+      "vwap": 4329.3059175157305,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13321,15 +13321,15 @@
         "bias": "bearish",
         "strength": "strong",
         "adx": 47.33,
-        "ema_slope_4bar": -15.2944,
+        "ema_slope_4bar": -15.3297,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,406.91)",
+          "Close > EMA50 (4,406.88)",
           "ADX falls below 20 (now 47.3)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 47.3, close 4,323.00 vs EMA50 4,406.91) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 47.3, close 4,322.10 vs EMA50 4,406.88) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17726,11 +17726,11 @@
           "o": 4319.0,
           "h": 4330.2998046875,
           "l": 4310.60009765625,
-          "c": 4323.0,
-          "v": 4368.0,
-          "ema": 4406.91089408372,
-          "sma": 4483.601551231971,
-          "vwap": 4329.373914357023
+          "c": 4322.10009765625,
+          "v": 4702.0,
+          "ema": 4406.87560379573,
+          "sma": 4483.59462890625,
+          "vwap": 4329.3059175157305
         }
       ]
     },
@@ -26596,9 +26596,9 @@
     "EURUSD=X": {
       "symbol": "EURUSD=X",
       "bar_time_utc": "2026-06-08T11:00:00+00:00",
-      "close": 1.1528706550598145,
-      "ema": 1.1568552775678156,
-      "sma": 1.1612724689336924,
+      "close": 1.1527377367019653,
+      "ema": 1.156850065083194,
+      "sma": 1.1612714464847858,
       "vwap": null,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -31015,10 +31015,10 @@
           "o": 1.1527377367019653,
           "h": 1.1528706550598145,
           "l": 1.1527377367019653,
-          "c": 1.1528706550598145,
+          "c": 1.1527377367019653,
           "v": 0.0,
-          "ema": 1.1568552775678156,
-          "sma": 1.1612724689336924,
+          "ema": 1.156850065083194,
+          "sma": 1.1612714464847858,
           "vwap": null
         }
       ]
@@ -31027,39 +31027,37 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 8,
+    "risk_off_score": 9,
     "risk_on_score": 1,
     "theme_hits": {
-      "war": 3,
+      "war": 4,
       "banking": 0,
       "recession": 0,
-      "rate_hike": 1,
-      "crash": 4,
+      "rate_hike": 0,
+      "crash": 5,
       "rate_cut": 0,
       "risk_on": 1
     },
     "sample_headlines": {
       "war": [
         "Morning Bid: Chip chill, jobs heat and war",
-        "Bidding war erupts for world\u2019s oldest bank as Italy\u2019s Intesa gatecrashes BPM offer",
-        "100 days of the Iran war: How global markets and the economy have been affected, in charts"
+        "Intel Comeback or AMD Takeover? Which Chip Stock Will Win the AI CPU War?",
+        "Bidding war erupts for world\u2019s oldest bank as Italy\u2019s Intesa gatecrashes BPM offer"
       ],
       "banking": [],
       "recession": [],
-      "rate_hike": [
-        "Stocks reel from a coming rate hike \u2014 and brace for a huge IPO: What to watch this week"
-      ],
+      "rate_hike": [],
       "crash": [
         "Stock markets fall on tech plunge and renewed Middle East attacks",
         "'We don't look at the sky anymore': The Air India crash victims who were not on the plane",
-        "Wall Street's 'fear gauge' punches back as the 'crash up' in chip stocks finally reverses"
+        "Nvidia Stock Rises as CEO Says Chip Selloff Should Make Investors \u2018Very Happy\u2019"
       ],
       "rate_cut": [],
       "risk_on": [
         "Foreign investors have dumped billions of dollars of Korean stocks this year despite record rally. Here's why"
       ]
     },
-    "n_headlines": 112,
+    "n_headlines": 110,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -31067,7 +31065,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780916455.102891,
+    "fetched_at": 1780916755.7260416,
     "risk_off_themes": [
       "banking",
       "crash",
