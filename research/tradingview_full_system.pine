@@ -242,7 +242,7 @@ pos_str = strategy.position_size > 0 ? "LONG · " + str.tostring(strategy.positi
 // Everything single-line below — Pine v5 multi-line function calls are
 // fragile when copy/pasted into TV's editor (whitespace mangling breaks
 // continuation detection).
-var table stats = table.new(position.top_right, 2, 14, color.new(color.gray, 70), color.new(color.gray, 50), 1)
+var table stats = table.new(position=position.top_right, columns=2, rows=14)
 
 // Precompute colors / strings so table.cell calls stay on one line
 c_pbull   = p_bull_kalman > 0.55 ? color.lime : p_bull_kalman < 0.45 ? color.red : color.white
