@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-08T09:55:50.128602+00:00",
+  "generated_at_utc": "2026-06-08T10:00:51.489723+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13307,10 +13307,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-08T09:00:00+00:00",
-      "close": 4321.2001953125,
-      "ema": 4410.429961501803,
-      "sma": 4485.629248046875,
-      "vwap": 4330.442547360797,
+      "close": 4321.0,
+      "ema": 4410.4221107052335,
+      "sma": 4485.627708082932,
+      "vwap": 4330.336399926304,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13321,15 +13321,15 @@
         "bias": "bearish",
         "strength": "strong",
         "adx": 46.89,
-        "ema_slope_4bar": -15.7306,
+        "ema_slope_4bar": -15.7385,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,410.43)",
+          "Close > EMA50 (4,410.42)",
           "ADX falls below 20 (now 46.9)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 46.9, close 4,321.20 vs EMA50 4,410.43) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 46.9, close 4,321.00 vs EMA50 4,410.42) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17724,13 +17724,13 @@
         {
           "t": "2026-06-08T09:00:00+00:00",
           "o": 4313.5,
-          "h": 4322.10009765625,
+          "h": 4326.39990234375,
           "l": 4297.10009765625,
-          "c": 4321.2001953125,
-          "v": 5983.0,
-          "ema": 4410.429961501803,
-          "sma": 4485.629248046875,
-          "vwap": 4330.442547360797
+          "c": 4321.0,
+          "v": 6880.0,
+          "ema": 4410.4221107052335,
+          "sma": 4485.627708082932,
+          "vwap": 4330.336399926304
         }
       ]
     },
@@ -26595,10 +26595,10 @@
     },
     "EURUSD=X": {
       "symbol": "EURUSD=X",
-      "bar_time_utc": "2026-06-08T09:00:00+00:00",
-      "close": 1.1516757011413574,
-      "ema": 1.1571871911461578,
-      "sma": 1.1614615614597614,
+      "bar_time_utc": "2026-06-08T10:00:00+00:00",
+      "close": 1.151410460472107,
+      "ema": 1.1569606526883518,
+      "sma": 1.16135526070228,
       "vwap": null,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -26609,29 +26609,18 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 51.72,
+        "adx": 52.57,
         "ema_slope_4bar": -0.0009,
         "regime_pct_24h": 100.0,
         "macro_tilt": "supports",
         "flip": [
           "Close > EMA50 (1.16)",
-          "ADX falls below 20 (now 51.7)",
+          "ADX falls below 20 (now 52.6)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "EURUSD=X leans short (ADX 51.7, close 1.15 vs EMA50 1.16) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "EURUSD=X leans short (ADX 52.6, close 1.15 vs EMA50 1.16) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-05-14T14:00:00+00:00",
-          "o": 1.1690436601638794,
-          "h": 1.1702749729156494,
-          "l": 1.1683608293533325,
-          "c": 1.1683608293533325,
-          "v": 0.0,
-          "ema": 1.1722004045001537,
-          "sma": 1.1747870876238897,
-          "vwap": null
-        },
         {
           "t": "2026-05-14T15:00:00+00:00",
           "o": 1.1680878400802612,
@@ -31020,6 +31009,17 @@
           "ema": 1.1571871911461578,
           "sma": 1.1614615614597614,
           "vwap": null
+        },
+        {
+          "t": "2026-06-08T10:00:00+00:00",
+          "o": 1.151543140411377,
+          "h": 1.151543140411377,
+          "l": 1.151410460472107,
+          "c": 1.151410460472107,
+          "v": 0.0,
+          "ema": 1.1569606526883518,
+          "sma": 1.16135526070228,
+          "vwap": null
         }
       ]
     }
@@ -31027,10 +31027,10 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 11,
+    "risk_off_score": 10,
     "risk_on_score": 2,
     "theme_hits": {
-      "war": 5,
+      "war": 4,
       "banking": 0,
       "recession": 0,
       "rate_hike": 1,
@@ -31041,8 +31041,8 @@
     "sample_headlines": {
       "war": [
         "Tumbling tech puts brakes on AI rally, Middle East escalation lifts oil",
-        "Iran and Israel exchange strikes, threatening fragile ceasefire",
-        "Bidding war erupts for world\u2019s oldest bank as Italy\u2019s Intesa gatecrashes BPM offer"
+        "Bidding war erupts for world\u2019s oldest bank as Italy\u2019s Intesa gatecrashes BPM offer",
+        "100 days of the Iran war: How global markets and the economy have been affected, in charts"
       ],
       "banking": [],
       "recession": [],
@@ -31068,7 +31068,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780912550.9328856,
+    "fetched_at": 1780912852.9100406,
     "risk_off_themes": [
       "banking",
       "crash",
