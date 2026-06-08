@@ -1978,3 +1978,80 @@ The `research/inspect_symbol.py` tool gives me functional equivalent: when you n
 | Add volume profile (POC + value area) to inspector output | Medium | matches not-a-lil-fish pillar 1 |
 | Add session VWAP + anchored VWAP | Medium | matches not-a-lil-fish setup 3 (VWAP reclaim) |
 
+
+---
+
+## Part 8.21 — HMM postmortem on the live paper book (2026-06-05)
+
+### What the paper book looks like
+
+- Equity $99,100 · Initial $100,000 · Realized PnL **−$900**
+- **3 closed trades, 6 open positions**
+- Last update: 2026-06-05 16:46 UTC
+
+### Closed trades — graded against HMM at entry
+
+| Symbol | Side | PnL | Reason | HMM entry | HMM exit | Flipped? | **Grade** |
+|---|---|---|---|---|---|---|---|
+| SLV | SHORT | +$600 | tp1 | bear | bear | No | **A** ✓ |
+| IWM | LONG | −$750 | stop | **bear** | bear | No | **D** ❌ |
+| QQQ | LONG | −$750 | stop | range | range | No | N (neutral) |
+
+**Grade definitions:**
+- A — HMM aligned with direction at entry AND won (structural edge captured)
+- B — HMM aligned AND lost (entry was right; market moved against)
+- C — HMM fighting AND won (lucky / chop edge)
+- D — HMM fighting AND lost (**avoidable** — HMM disagreed and was right)
+- N — HMM neutral/range at entry (no HMM signal)
+
+### Counterfactual
+
+| Scenario | Realized P&L | Trade count |
+|---|---|---|
+| As-actually-traded | **−$900** | 3 |
+| If we'd filtered out D-grade entries | **−$150** | 2 |
+| If we'd kept only A-grade | **+$600** | 1 |
+
+**Filtering out one single bad entry (IWM LONG into bear HMM) would have improved P&L by 5×.** This is exactly the Part 8.8 finding manifesting in live paper data: when you enter against the HMM, the loss probability is materially higher.
+
+### Open positions — current HMM state
+
+| Symbol | Strategy | Side | HMM entry | HMM now | Alignment |
+|---|---|---|---|---|---|
+| GLD | pullback | SHORT | range | range | neutral |
+| GLD | trend_carry | SHORT | range | range | neutral |
+| EURUSD=X | pullback | SHORT | bear | bear | **aligned** ✓ |
+| SPY | pullback | LONG | range | range | neutral |
+| SLV (50% runner) | pullback | SHORT | bear | bear | **aligned** ✓ |
+| QQQ | trend_carry | LONG | range | range | neutral |
+
+**Read:**
+- 0 of 6 open positions have HMM flipped against direction (no regime-flip exit signals)
+- 2 of 6 are HMM-aligned (EURUSD short, SLV short remainder) — these are highest-conviction holds
+- 4 of 6 are HMM-neutral (range) — neither hurting nor helping the thesis; ride them on the existing exit ladder
+- **Zero fighting-HMM open trades** — the book is currently clean of D-grade exposure
+
+### The one strong takeaway
+
+> The IWM LONG was Grade D and lost exactly as the HMM said it would.
+
+Three trades is far below statistical significance (~50+ needed), but the loss pattern matches the Part 8.8 prediction precisely. The Kalman-smoothed HMM correctly flagged IWM as bearish at the entry bar; the live pullback engine took the long anyway because HMM is currently a diagnostic, not a gate (production design: "indicators NEVER block entries" — Part 8 CRITICAL RULE).
+
+This is the **exact case that justifies the next big build**: re-encoding HMM-as-feature into the LightGBM exit-trigger classifier (Part 8.9 item 3), where the model would learn that "long entry on a Kalman-bear bar" is a high-prob loser and could either skip the entry or apply a size discount.
+
+### Tools used
+
+- `_analyze_paper_trades.py` (NEW) — reusable HMM postmortem script. Re-run anytime to get current grading + open-position flags
+- Live data via `core.data_loader` + `main_portfolio.prepare_dual`
+- HMM state via `HMM_state_kalman` (Part 8.10 shipped Kalman smoother)
+- Grading scaffold from Part 8.8 (entry vs exit attribution) + Part 8.18 (not-a-lil-fish A/B/C/D framework)
+
+### Queue items added
+
+| Task | Priority | Notes |
+|---|---|---|
+| Re-run postmortem weekly (cron) | Medium | Builds a grade-mix time series; identify drift |
+| Add D-grade warning to Discord signal cards | Medium | "⚠️ entry is FIGHTING HMM" displayed pre-entry |
+| LightGBM exit-classifier training set | High | Use grade labels as supervision target |
+| Sample-size threshold gate | Low | Don't draw conclusions until N≥30 closed trades |
+
