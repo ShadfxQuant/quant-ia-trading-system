@@ -25,17 +25,7 @@
 // NOT a hypothetical — every parameter matches the live config in
 // config/settings.py as of commit aa3af8c (2026-06-08).
 // =============================================================================
-strategy("Quant IA — Full System", overlay=true, pyramiding=8,
-         default_qty_type=strategy.percent_of_equity,
-         default_qty_value=30,                  // base_size_pct
-         initial_capital=100000,
-         currency="USD",
-         commission_type=strategy.commission.percent,
-         commission_value=0.01,
-         calc_on_every_tick=false,
-         process_orders_on_close=true,
-         max_labels_count=300, max_lines_count=200,
-         max_bars_back=500)
+strategy("Quant IA - Full System", overlay=true, pyramiding=8, default_qty_type=strategy.percent_of_equity, default_qty_value=30, initial_capital=100000, currency="USD", commission_type=strategy.commission.percent, commission_value=0.01, calc_on_every_tick=false, process_orders_on_close=true, max_labels_count=300, max_lines_count=200, max_bars_back=500)
 
 // ============== INPUTS ==============
 grp_trend = "Trend filter"
@@ -157,67 +147,60 @@ for s in str.split(str.upper(str.replace_all(flip_symbols, " ", "")), ",")
     if str.contains(ticker_uppr, s)
         is_flip_symbol := true
 
-bars_since_entry = ta.barssince(strategy.position_size != strategy.position_size[1] and
-                                  strategy.position_size[1] == 0)
+entered_new = (strategy.position_size != strategy.position_size[1]) and (strategy.position_size[1] == 0)
+bars_since_entry = ta.barssince(entered_new)
 
 has_position = (strategy.position_size != 0) and (strategy.position_avg_price > 0)
 unreal_long  = (close - strategy.position_avg_price) / strategy.position_avg_price * 100
 unreal_short = (strategy.position_avg_price - close) / strategy.position_avg_price * 100
 unreal_pct   = has_position ? (strategy.position_size > 0 ? unreal_long : unreal_short) : 0.0
 
-regime_flip_long_to_close  = use_flip and is_flip_symbol and
-                              strategy.position_size > 0 and
-                              regime_bear and
-                              bars_since_entry >= flip_min_hold and
-                              unreal_pct <= flip_dd_th
-regime_flip_short_to_close = use_flip and is_flip_symbol and
-                              strategy.position_size < 0 and
-                              regime_bull and
-                              bars_since_entry >= flip_min_hold and
-                              unreal_pct <= flip_dd_th
+flip_armed         = use_flip and is_flip_symbol and (bars_since_entry >= flip_min_hold) and (unreal_pct <= flip_dd_th)
+regime_flip_long_to_close  = flip_armed and (strategy.position_size > 0) and regime_bear
+regime_flip_short_to_close = flip_armed and (strategy.position_size < 0) and regime_bull
 
-// ============== ORDER MANAGEMENT ==============
+// ============== ORDER MANAGEMENT (all single-line) ==============
+// Precompute sizes
+pb_qty = strategy.equity * pullback_qty_pct / 100 / close
+tc_qty = strategy.equity * tc_qty_pct / 100 / close
+
+// Precompute exit levels (referenced after position is open)
+pb_stop_long  = strategy.position_avg_price * (1 - stop_pct/100)
+pb_tp1_long   = strategy.position_avg_price * (1 + tp1_pct/100)
+pb_tp2_long   = strategy.position_avg_price * (1 + tp2_pct/100)
+pb_stop_short = strategy.position_avg_price * (1 + stop_pct/100)
+pb_tp1_short  = strategy.position_avg_price * (1 - tp1_pct/100)
+pb_tp2_short  = strategy.position_avg_price * (1 - tp2_pct/100)
+pb_be_long    = move_stop_be ? strategy.position_avg_price : pb_stop_long
+pb_be_short   = move_stop_be ? strategy.position_avg_price : pb_stop_short
+tc_stop_long  = strategy.position_avg_price * (1 - tc_stop_pct/100)
+tc_tp1_long   = strategy.position_avg_price * (1 + tc_tp1_pct/100)
+tc_stop_short = strategy.position_avg_price * (1 + tc_stop_pct/100)
+tc_tp1_short  = strategy.position_avg_price * (1 - tc_tp1_pct/100)
+
 // PULLBACK entries
 if long_entry
-    strategy.entry("PB_L", strategy.long, qty=strategy.equity * pullback_qty_pct / 100 / close,
-                   comment="PB LONG")
+    strategy.entry("PB_L", strategy.long, qty=pb_qty, comment="PB LONG")
 if short_entry
-    strategy.entry("PB_S", strategy.short, qty=strategy.equity * pullback_qty_pct / 100 / close,
-                   comment="PB SHORT")
+    strategy.entry("PB_S", strategy.short, qty=pb_qty, comment="PB SHORT")
 
 // TREND_CARRY entries (gated by stronger regime conviction)
 tc_active = use_tc and p_bull_kalman > 0.65 and bull_structure
 tc_active_short = use_tc and p_bull_kalman < 0.35 and bear_structure
 if tc_active and long_entry
-    strategy.entry("TC_L", strategy.long, qty=strategy.equity * tc_qty_pct / 100 / close,
-                   comment="TC LONG")
+    strategy.entry("TC_L", strategy.long, qty=tc_qty, comment="TC LONG")
 if tc_active_short and short_entry
-    strategy.entry("TC_S", strategy.short, qty=strategy.equity * tc_qty_pct / 100 / close,
-                   comment="TC SHORT")
+    strategy.entry("TC_S", strategy.short, qty=tc_qty, comment="TC SHORT")
 
-// EXIT ladder — pullback
-strategy.exit("PB Exit", from_entry="PB_L",
-              stop  = strategy.position_avg_price * (1 - stop_pct/100),
-              limit = strategy.position_avg_price * (1 + tp1_pct/100),
-              qty_percent = tp1_size_frac)
-strategy.exit("PB Final", from_entry="PB_L",
-              stop  = move_stop_be ? strategy.position_avg_price : strategy.position_avg_price * (1 - stop_pct/100),
-              limit = strategy.position_avg_price * (1 + tp2_pct/100))
-strategy.exit("PB Exit S", from_entry="PB_S",
-              stop  = strategy.position_avg_price * (1 + stop_pct/100),
-              limit = strategy.position_avg_price * (1 - tp1_pct/100),
-              qty_percent = tp1_size_frac)
-strategy.exit("PB Final S", from_entry="PB_S",
-              stop  = move_stop_be ? strategy.position_avg_price : strategy.position_avg_price * (1 + stop_pct/100),
-              limit = strategy.position_avg_price * (1 - tp2_pct/100))
+// EXIT ladder — pullback longs (TP1 partial then TP2 final)
+strategy.exit("PB TP1 L", from_entry="PB_L", stop=pb_stop_long, limit=pb_tp1_long, qty_percent=tp1_size_frac)
+strategy.exit("PB TP2 L", from_entry="PB_L", stop=pb_be_long, limit=pb_tp2_long)
+strategy.exit("PB TP1 S", from_entry="PB_S", stop=pb_stop_short, limit=pb_tp1_short, qty_percent=tp1_size_frac)
+strategy.exit("PB TP2 S", from_entry="PB_S", stop=pb_be_short, limit=pb_tp2_short)
 
 // EXIT ladder — trend_carry sleeve
-strategy.exit("TC Exit", from_entry="TC_L",
-              stop  = strategy.position_avg_price * (1 - tc_stop_pct/100),
-              limit = strategy.position_avg_price * (1 + tc_tp1_pct/100))
-strategy.exit("TC Exit S", from_entry="TC_S",
-              stop  = strategy.position_avg_price * (1 + tc_stop_pct/100),
-              limit = strategy.position_avg_price * (1 - tc_tp1_pct/100))
+strategy.exit("TC Exit L", from_entry="TC_L", stop=tc_stop_long, limit=tc_tp1_long)
+strategy.exit("TC Exit S", from_entry="TC_S", stop=tc_stop_short, limit=tc_tp1_short)
 
 // REGIME-FLIP EXIT (Part 8.11)
 if regime_flip_long_to_close
@@ -237,13 +220,10 @@ bgcolor(show_kalman_bg and regime_bull  ? color.new(color.green, 92) : na, title
 bgcolor(show_kalman_bg and regime_bear  ? color.new(color.red,   92) : na, title="Bear regime tint")
 bgcolor(show_kalman_bg and regime_range ? color.new(color.gray,  95) : na, title="Range regime tint")
 
-plotshape(long_entry,  title="PB LONG entry",  location=location.belowbar,
-          style=shape.triangleup,   color=color.new(color.lime,  0), size=size.small, text="L")
-plotshape(short_entry, title="PB SHORT entry", location=location.abovebar,
-          style=shape.triangledown, color=color.new(color.red,   0), size=size.small, text="S")
-plotshape(regime_flip_long_to_close or regime_flip_short_to_close,
-          title="Regime-flip exit", location=location.abovebar,
-          style=shape.xcross, color=color.new(color.yellow, 0), size=size.normal, text="FLIP")
+flip_signal = regime_flip_long_to_close or regime_flip_short_to_close
+plotshape(long_entry, title="PB LONG entry", location=location.belowbar, style=shape.triangleup, color=color.new(color.lime, 0), size=size.small, text="L")
+plotshape(short_entry, title="PB SHORT entry", location=location.abovebar, style=shape.triangledown, color=color.new(color.red, 0), size=size.small, text="S")
+plotshape(flip_signal, title="Regime-flip exit", location=location.abovebar, style=shape.xcross, color=color.new(color.yellow, 0), size=size.normal, text="FLIP")
 
 // ============== STATS TABLE ==============
 // MT5 label mapping
@@ -259,56 +239,64 @@ pos_str = strategy.position_size > 0 ? "LONG · " + str.tostring(strategy.positi
           strategy.position_size < 0 ? "SHORT · " + str.tostring(strategy.position_size, "#.##") :
           "flat"
 
-var table stats = table.new(position=position.top_right, columns=2, rows=14,
-                            border_width=1,
-                            frame_color=color.new(color.gray, 50),
-                            border_color=color.new(color.gray, 70))
+// Everything single-line below — Pine v5 multi-line function calls are
+// fragile when copy/pasted into TV's editor (whitespace mangling breaks
+// continuation detection).
+var table stats = table.new(position.top_right, 2, 14, color.new(color.gray, 70), color.new(color.gray, 50), 1)
+
+// Precompute colors / strings so table.cell calls stay on one line
+c_pbull   = p_bull_kalman > 0.55 ? color.lime : p_bull_kalman < 0.45 ? color.red : color.white
+trend_str = ema_fast > sma_slow ? "bull" : "bear"
+c_trend   = ema_fast > sma_slow ? color.lime : color.red
+slope_str = str.tostring(ema_slope_3 * 100 / close, "#.000") + "%"
+c_slope   = ema_slope_3 > 0 ? color.lime : color.red
+rsi_str   = str.tostring(rsi_v, "#.0") + " · " + str.tostring(size_mult, "#.0") + "x"
+c_rsi     = size_mult > 1.0 ? color.lime : size_mult < 1.0 ? color.red : color.white
+pull_str  = in_pullback ? "YES" : "no"
+c_pull    = in_pullback ? color.lime : color.gray
+flip_str  = is_flip_symbol ? "ARMED" : "off"
+c_flip    = is_flip_symbol ? color.aqua : color.gray
+bars_str  = strategy.position_size != 0 ? str.tostring(bars_since_entry) : "—"
+unr_str   = strategy.position_size != 0 ? str.tostring(unreal_pct, "+#.00") + "%" : "—"
+c_unr     = unreal_pct > 0 ? color.lime : unreal_pct < 0 ? color.red : color.white
+pnl_str   = "$" + str.tostring(strategy.netprofit, "#,###")
+c_pnl     = strategy.netprofit > 0 ? color.lime : color.red
+wr_pct    = strategy.wintrades / math.max(1, strategy.closedtrades) * 100
+wr_str    = str.tostring(wr_pct, "#") + "%  $" + str.tostring(strategy.max_drawdown, "#,###")
 
 if barstate.islast and show_table
     table.clear(stats, 0, 0, 1, 13)
-    table.cell(stats, 0, 0,  "Quant IA",       text_color=color.white, bgcolor=color.new(color.blue, 30), text_size=size.small)
-    table.cell(stats, 1, 0,  syminfo.ticker,   text_color=color.white, bgcolor=color.new(color.blue, 30), text_size=size.small)
-    table.cell(stats, 0, 1,  "MT5 label",       text_color=color.white)
-    table.cell(stats, 1, 1,  mt5_label,         text_color=color.aqua)
-    table.cell(stats, 0, 2,  "Regime",          text_color=color.white)
-    table.cell(stats, 1, 2,  regime_str,        text_color=color.white)
-    table.cell(stats, 0, 3,  "P_bull (Kalman)", text_color=color.white)
-    table.cell(stats, 1, 3,  str.tostring(p_bull_kalman, "#.000"),
-                              text_color = p_bull_kalman > 0.55 ? color.lime : p_bull_kalman < 0.45 ? color.red : color.white)
-    table.cell(stats, 0, 4,  "Trend (EMA>SMA)", text_color=color.white)
-    table.cell(stats, 1, 4,  ema_fast > sma_slow ? "bull" : "bear",
-                              text_color = ema_fast > sma_slow ? color.lime : color.red)
-    table.cell(stats, 0, 5,  "EMA slope (3b)",   text_color=color.white)
-    table.cell(stats, 1, 5,  str.tostring(ema_slope_3 * 100 / close, "#.000") + "%",
-                              text_color = ema_slope_3 > 0 ? color.lime : color.red)
-    table.cell(stats, 0, 6,  "RSI · size×",      text_color=color.white)
-    table.cell(stats, 1, 6,  str.tostring(rsi_v, "#.0") + " · " + str.tostring(size_mult, "#.0") + "×",
-                              text_color = size_mult > 1.0 ? color.lime : size_mult < 1.0 ? color.red : color.white)
-    table.cell(stats, 0, 7,  "In pullback?",     text_color=color.white)
-    table.cell(stats, 1, 7,  in_pullback ? "YES" : "no",
-                              text_color = in_pullback ? color.lime : color.gray)
-    table.cell(stats, 0, 8,  "Flip-exit gated?", text_color=color.white)
-    table.cell(stats, 1, 8,  is_flip_symbol ? "✓ ARMED" : "off",
-                              text_color = is_flip_symbol ? color.aqua : color.gray)
-    table.cell(stats, 0, 9,  "Position",         text_color=color.white)
-    table.cell(stats, 1, 9,  pos_str, text_color=color.yellow)
-    table.cell(stats, 0, 10, "Bars held",        text_color=color.white)
-    table.cell(stats, 1, 10, strategy.position_size != 0 ? str.tostring(bars_since_entry) : "—",
-                              text_color=color.white)
-    table.cell(stats, 0, 11, "Unreal %",         text_color=color.white)
-    table.cell(stats, 1, 11, strategy.position_size != 0 ? str.tostring(unreal_pct, "+#.00") + "%" : "—",
-                              text_color = unreal_pct > 0 ? color.lime : unreal_pct < 0 ? color.red : color.white)
-    table.cell(stats, 0, 12, "Net P&L",          text_color=color.white)
-    table.cell(stats, 1, 12, "$" + str.tostring(strategy.netprofit, "#,###"),
-                              text_color = strategy.netprofit > 0 ? color.lime : color.red)
-    table.cell(stats, 0, 13, "WR · DD",          text_color=color.gray, text_size=size.tiny)
-    table.cell(stats, 1, 13, str.tostring(strategy.wintrades / math.max(1, strategy.closedtrades) * 100, "#") + "%  ·  $" + str.tostring(strategy.max_drawdown, "#,###"),
-                              text_color=color.gray, text_size=size.tiny)
+    table.cell(stats, 0, 0, "Quant IA", text_color=color.white, bgcolor=color.new(color.blue, 30), text_size=size.small)
+    table.cell(stats, 1, 0, syminfo.ticker, text_color=color.white, bgcolor=color.new(color.blue, 30), text_size=size.small)
+    table.cell(stats, 0, 1, "MT5 label", text_color=color.white)
+    table.cell(stats, 1, 1, mt5_label, text_color=color.aqua)
+    table.cell(stats, 0, 2, "Regime", text_color=color.white)
+    table.cell(stats, 1, 2, regime_str, text_color=color.white)
+    table.cell(stats, 0, 3, "P_bull (Kalman)", text_color=color.white)
+    table.cell(stats, 1, 3, str.tostring(p_bull_kalman, "#.000"), text_color=c_pbull)
+    table.cell(stats, 0, 4, "Trend (EMA>SMA)", text_color=color.white)
+    table.cell(stats, 1, 4, trend_str, text_color=c_trend)
+    table.cell(stats, 0, 5, "EMA slope (3b)", text_color=color.white)
+    table.cell(stats, 1, 5, slope_str, text_color=c_slope)
+    table.cell(stats, 0, 6, "RSI . size x", text_color=color.white)
+    table.cell(stats, 1, 6, rsi_str, text_color=c_rsi)
+    table.cell(stats, 0, 7, "In pullback?", text_color=color.white)
+    table.cell(stats, 1, 7, pull_str, text_color=c_pull)
+    table.cell(stats, 0, 8, "Flip-exit gated?", text_color=color.white)
+    table.cell(stats, 1, 8, flip_str, text_color=c_flip)
+    table.cell(stats, 0, 9, "Position", text_color=color.white)
+    table.cell(stats, 1, 9, pos_str, text_color=color.yellow)
+    table.cell(stats, 0, 10, "Bars held", text_color=color.white)
+    table.cell(stats, 1, 10, bars_str, text_color=color.white)
+    table.cell(stats, 0, 11, "Unreal %", text_color=color.white)
+    table.cell(stats, 1, 11, unr_str, text_color=c_unr)
+    table.cell(stats, 0, 12, "Net PnL", text_color=color.white)
+    table.cell(stats, 1, 12, pnl_str, text_color=c_pnl)
+    table.cell(stats, 0, 13, "WR / DD", text_color=color.gray, text_size=size.tiny)
+    table.cell(stats, 1, 13, wr_str, text_color=color.gray, text_size=size.tiny)
 
 // ============== ALERTS ==============
-alertcondition(long_entry,  "PB Long entry",   "PB LONG entry on {{ticker}} @ {{close}}")
-alertcondition(short_entry, "PB Short entry",  "PB SHORT entry on {{ticker}} @ {{close}}")
-alertcondition(regime_flip_long_to_close,  "Regime-flip CLOSE long",
-               "REGIME FLIP — close long on {{ticker}} @ {{close}}")
-alertcondition(regime_flip_short_to_close, "Regime-flip CLOSE short",
-               "REGIME FLIP — close short on {{ticker}} @ {{close}}")
+alertcondition(long_entry, "PB Long entry", "PB LONG entry on {{ticker}} @ {{close}}")
+alertcondition(short_entry, "PB Short entry", "PB SHORT entry on {{ticker}} @ {{close}}")
+alertcondition(regime_flip_long_to_close, "Regime-flip CLOSE long", "REGIME FLIP - close long on {{ticker}} @ {{close}}")
+alertcondition(regime_flip_short_to_close, "Regime-flip CLOSE short", "REGIME FLIP - close short on {{ticker}} @ {{close}}")
