@@ -53,9 +53,14 @@ class DataConfig:
         # Watchlist (signal stream only, no live trading):
         #   SLV (HMM-aligned short, Grade A in postmortem — capped at
         #        watchlist until n>=10 trades validate)
-        #   EURUSD=X (FX engine broken per Part 8.7)
+        # DROPPED 2026-06-08 (Part 8.23):
+        #   EURUSD=X — FX engine broken (PF 1.01 per Part 8.7).
+        #     Open positions manually closed +$94 net. User decision:
+        #     "forget about its integration as we agreed it is minimally
+        #     beneficial." Reach back for FX only after building a proper
+        #     session-aware FX framework.
         "SPY", "^NDX", "GLD", "GC=F",
-        "SLV", "EURUSD=X",
+        "SLV",
     ])
     start: str = "2024-05-06"
     end: str = "2026-05-06"

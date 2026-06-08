@@ -2147,3 +2147,60 @@ REGIME_FLIP_EXIT_SYMBOLS: {GC=F}
 KALMAN: P_bull → P_bull_kalman + HMM_state_kalman (q=1e-4, r=1e-2)
 ```
 
+
+---
+
+## Part 8.23 — Closed all EURUSD=X, removed from universe (2026-06-08)
+
+### User decision
+
+> "close all of EUR USD =x and forget about its integration as we agreed it is is minimally beneficial"
+
+### Manual close execution
+
+Two open EURUSD=X positions closed at current bar (2026-06-08 15:00 UTC, EURUSD=X at 1.154734):
+
+| Strategy | Entry | Exit | PnL |
+|---|---|---|---|
+| pullback SHORT | 1.160901 | 1.154734 | **+$159.35** |
+| trend_carry SHORT | 1.152206 | 1.154734 | **−$65.43** |
+| **Net** | — | — | **+$93.93** |
+
+Both trades closed with `exit_reason: "manual_close_universe_drop"`. Equity adjusted: $98,650 → **$98,743.93**.
+
+### Universe change
+
+```diff
+- DATA.symbols: ["SPY", "^NDX", "GLD", "GC=F", "SLV", "EURUSD=X"]
++ DATA.symbols: ["SPY", "^NDX", "GLD", "GC=F", "SLV"]
+```
+
+### Why this was the right call
+
+- **PF 1.01** — Part 8.7 already flagged EURUSD=X as broken on the pullback engine (essentially zero edge, 17K bars wasted compute)
+- **No MT5 alignment benefit** — user trades US500/US100/XAUUSD on MT5, not FX pairs through this engine
+- **FX needs a different engine** — 24/5 hourly without a session filter framework will keep producing edgeless signals. The proper fix is the session-aware FX framework queued from Part 8.7, not patching EURUSD=X here.
+
+### What's still in the live universe (post-trim)
+
+| Symbol | Tier | MT5 label | Backtest PF |
+|---|---|---|---|
+| SPY | LIVE signal | US500 | 3.18 |
+| ^NDX | LIVE signal | US100 | 3.13 |
+| GLD | LIVE signal | XAUUSD | 3.40 |
+| GC=F | LIVE signal | XAUUSD (cross) | regime-flip gated |
+| SLV | watchlist | — | aligned-short hold only |
+
+5 symbols total, all with proven edge or kept on probation only when explicitly aligned.
+
+### Remaining open paper positions
+
+3 left after the EURUSD close. Existing exit ladders ride untouched. Re-run `_analyze_paper_trades.py` anytime to see updated grading.
+
+### Queue update
+
+- ✅ Closed EURUSD=X positions (done this part)
+- ✅ Removed from DATA.symbols
+- ⏳ FX engine rework (session-aware framework) — **shelved indefinitely** until clear MT5 FX execution use case appears
+- ⏳ Cron will pick up the trimmed universe on next tick
+

@@ -1,7 +1,7 @@
 {
-  "equity": 98650.0,
+  "equity": 98743.92824218668,
   "initial_capital": 100000.0,
-  "cash": 100000.0,
+  "cash": 100093.92824218668,
   "open_positions": [
     {
       "symbol": "GLD",
@@ -34,21 +34,6 @@
       "remaining_size": 30000.0
     },
     {
-      "symbol": "EURUSD=X",
-      "strategy": "pullback",
-      "side": -1,
-      "entry_time": "2026-06-03T15:55:55.647618+00:00",
-      "entry_price": 1.1609008312225342,
-      "size": 30000.0,
-      "stop_pct": 0.025,
-      "tp1_pct": 0.04,
-      "tp2_pct": 0.15,
-      "tp1_size_frac": 0.5,
-      "bar_time_at_entry": "2026-06-03T15:00:00+00:00",
-      "tp1_hit": false,
-      "remaining_size": 30000.0
-    },
-    {
       "symbol": "SLV",
       "strategy": "pullback",
       "side": -1,
@@ -62,21 +47,6 @@
       "bar_time_at_entry": "2026-06-04T14:30:00+00:00",
       "tp1_hit": true,
       "remaining_size": 15000.0
-    },
-    {
-      "symbol": "EURUSD=X",
-      "strategy": "trend_carry",
-      "side": -1,
-      "entry_time": "2026-06-05T19:16:33.456648+00:00",
-      "entry_price": 1.1522064208984375,
-      "size": 29820.0,
-      "stop_pct": 0.04,
-      "tp1_pct": 0.08,
-      "tp2_pct": 0.25,
-      "tp1_size_frac": 0.3,
-      "bar_time_at_entry": "2026-06-05T19:00:00+00:00",
-      "tp1_hit": false,
-      "remaining_size": 29820.0
     }
   ],
   "closed_trades": [
@@ -151,8 +121,32 @@
       "size": 30000.0,
       "pnl": -750.0000000000027,
       "reason": "stop"
+    },
+    {
+      "symbol": "EURUSD=X",
+      "strategy": "pullback",
+      "side": -1,
+      "entry_time": "2026-06-03T15:55:55.647618+00:00",
+      "entry_price": 1.1609008312225342,
+      "exit_time": "2026-06-08T16:38:19.164919+00:00",
+      "exit_price": 1.1547343730926514,
+      "size": 30000.0,
+      "pnl": 159.3536148145136,
+      "reason": "manual_close_universe_drop"
+    },
+    {
+      "symbol": "EURUSD=X",
+      "strategy": "trend_carry",
+      "side": -1,
+      "entry_time": "2026-06-05T19:16:33.456648+00:00",
+      "entry_price": 1.1522064208984375,
+      "exit_time": "2026-06-08T16:38:19.164919+00:00",
+      "exit_price": 1.1547343730926514,
+      "size": 29820.0,
+      "pnl": -65.42537262782905,
+      "reason": "manual_close_universe_drop"
     }
   ],
-  "n_trades_total": 6,
-  "last_updated_utc": "2026-06-08T16:36:26.607438+00:00"
+  "n_trades_total": 8,
+  "last_updated_utc": "2026-06-08T16:39:25.135867+00:00"
 }
