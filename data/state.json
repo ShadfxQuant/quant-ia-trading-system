@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-08T10:10:54.308758+00:00",
+  "generated_at_utc": "2026-06-08T10:15:52.661068+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13307,10 +13307,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-08T10:00:00+00:00",
-      "close": 4317.0,
-      "ema": 4406.675599966071,
-      "sma": 4483.555397385818,
-      "vwap": 4329.992068400178,
+      "close": 4315.39990234375,
+      "ema": 4406.612851038375,
+      "sma": 4483.543088942308,
+      "vwap": 4329.822261766928,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13321,15 +13321,15 @@
         "bias": "bearish",
         "strength": "strong",
         "adx": 47.61,
-        "ema_slope_4bar": -15.5297,
+        "ema_slope_4bar": -15.5924,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,406.68)",
+          "Close > EMA50 (4,406.61)",
           "ADX falls below 20 (now 47.6)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 47.6, close 4,317.00 vs EMA50 4,406.68) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 47.6, close 4,315.40 vs EMA50 4,406.61) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17725,12 +17725,12 @@
           "t": "2026-06-08T10:00:00+00:00",
           "o": 4319.0,
           "h": 4319.60009765625,
-          "l": 4314.7998046875,
-          "c": 4317.0,
-          "v": 65.0,
-          "ema": 4406.675599966071,
-          "sma": 4483.555397385818,
-          "vwap": 4329.992068400178
+          "l": 4310.60009765625,
+          "c": 4315.39990234375,
+          "v": 704.0,
+          "ema": 4406.612851038375,
+          "sma": 4483.543088942308,
+          "vwap": 4329.822261766928
         }
       ]
     },
@@ -26596,9 +26596,9 @@
     "EURUSD=X": {
       "symbol": "EURUSD=X",
       "bar_time_utc": "2026-06-08T10:00:00+00:00",
-      "close": 1.1520737409591675,
-      "ema": 1.1569866636878445,
-      "sma": 1.1613603628598728,
+      "close": 1.1519410610198975,
+      "ema": 1.1569814605529711,
+      "sma": 1.1613593422449553,
       "vwap": null,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -31015,10 +31015,10 @@
           "o": 1.151543140411377,
           "h": 1.1520737409591675,
           "l": 1.151410460472107,
-          "c": 1.1520737409591675,
+          "c": 1.1519410610198975,
           "v": 0.0,
-          "ema": 1.1569866636878445,
-          "sma": 1.1613603628598728,
+          "ema": 1.1569814605529711,
+          "sma": 1.1613593422449553,
           "vwap": null
         }
       ]
@@ -31027,22 +31027,22 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 10,
-    "risk_on_score": 2,
+    "risk_off_score": 9,
+    "risk_on_score": 1,
     "theme_hits": {
-      "war": 4,
+      "war": 3,
       "banking": 0,
       "recession": 0,
       "rate_hike": 1,
       "crash": 5,
       "rate_cut": 0,
-      "risk_on": 2
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
-        "Tumbling tech puts brakes on AI rally, Middle East escalation lifts oil",
         "Bidding war erupts for world\u2019s oldest bank as Italy\u2019s Intesa gatecrashes BPM offer",
-        "100 days of the Iran war: How global markets and the economy have been affected, in charts"
+        "100 days of the Iran war: How global markets and the economy have been affected, in charts",
+        "Oil prices jump by the most in over a month as fresh attacks threaten the ceasefire with Iran"
       ],
       "banking": [],
       "recession": [],
@@ -31056,7 +31056,6 @@
       ],
       "rate_cut": [],
       "risk_on": [
-        "Tumbling tech puts brakes on AI rally, Middle East escalation lifts oil",
         "Foreign investors have dumped billions of dollars of Korean stocks this year despite record rally. Here's why"
       ]
     },
@@ -31068,7 +31067,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780913454.6856325,
+    "fetched_at": 1780913753.2460308,
     "risk_off_themes": [
       "banking",
       "crash",
