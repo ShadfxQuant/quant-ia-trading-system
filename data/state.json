@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-08T12:55:51.438018+00:00",
+  "generated_at_utc": "2026-06-08T13:00:49.443978+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13307,10 +13307,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-08T12:00:00+00:00",
-      "close": 4361.39990234375,
-      "ema": 4403.342311315562,
-      "sma": 4480.150011268029,
-      "vwap": 4333.928304306985,
+      "close": 4356.39990234375,
+      "ema": 4403.14623288419,
+      "sma": 4480.111549729568,
+      "vwap": 4333.8609865786875,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13321,15 +13321,15 @@
         "bias": "bearish",
         "strength": "strong",
         "adx": 44.25,
-        "ema_slope_4bar": -10.7297,
+        "ema_slope_4bar": -10.9258,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,403.34)",
+          "Close > EMA50 (4,403.15)",
           "ADX falls below 20 (now 44.2)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 44.2, close 4,361.40 vs EMA50 4,403.34) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 44.2, close 4,356.40 vs EMA50 4,403.15) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17726,11 +17726,11 @@
           "o": 4355.7001953125,
           "h": 4364.7998046875,
           "l": 4344.7998046875,
-          "c": 4361.39990234375,
-          "v": 7168.0,
-          "ema": 4403.342311315562,
-          "sma": 4480.150011268029,
-          "vwap": 4333.928304306985
+          "c": 4356.39990234375,
+          "v": 7482.0,
+          "ema": 4403.14623288419,
+          "sma": 4480.111549729568,
+          "vwap": 4333.8609865786875
         }
       ]
     },
@@ -26595,12 +26595,12 @@
     },
     "EURUSD=X": {
       "symbol": "EURUSD=X",
-      "bar_time_utc": "2026-06-08T12:00:00+00:00",
-      "close": 1.1542012691497803,
-      "ema": 1.156791299326369,
-      "sma": 1.16119895531581,
+      "bar_time_utc": "2026-06-08T13:00:00+00:00",
+      "close": 1.1546010971069336,
+      "ema": 1.1567154521394478,
+      "sma": 1.1611213363133943,
       "vwap": null,
-      "pullback_signal": 0,
+      "pullback_signal": -1,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
       "pullback_pyramid_cap": 0,
@@ -26609,29 +26609,18 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 46.13,
-        "ema_slope_4bar": -0.0006,
+        "adx": 44.01,
+        "ema_slope_4bar": -0.0005,
         "regime_pct_24h": 100.0,
         "macro_tilt": "supports",
         "flip": [
           "Close > EMA50 (1.16)",
-          "ADX falls below 20 (now 46.1)",
+          "ADX falls below 20 (now 44.0)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "EURUSD=X leans short (ADX 46.1, close 1.15 vs EMA50 1.16) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "EURUSD=X leans short (ADX 44.0, close 1.15 vs EMA50 1.16) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-05-14T17:00:00+00:00",
-          "o": 1.1680878400802612,
-          "h": 1.1683608293533325,
-          "l": 1.1680878400802612,
-          "c": 1.1680878400802612,
-          "v": 0.0,
-          "ema": 1.1717301608094723,
-          "sma": 1.1746181176258967,
-          "vwap": null
-        },
         {
           "t": "2026-05-14T18:00:00+00:00",
           "o": 1.1680878400802612,
@@ -31015,10 +31004,21 @@
           "o": 1.154068112373352,
           "h": 1.1547343730926514,
           "l": 1.1539349555969238,
-          "c": 1.1542012691497803,
+          "c": 1.1544678211212158,
           "v": 0.0,
-          "ema": 1.156791299326369,
-          "sma": 1.16119895531581,
+          "ema": 1.1568017523448566,
+          "sma": 1.1612010057155902,
+          "vwap": null
+        },
+        {
+          "t": "2026-06-08T13:00:00+00:00",
+          "o": 1.1546010971069336,
+          "h": 1.1546010971069336,
+          "l": 1.1546010971069336,
+          "c": 1.1546010971069336,
+          "v": 0.0,
+          "ema": 1.1567154521394478,
+          "sma": 1.1611213363133943,
           "vwap": null
         }
       ]
@@ -31066,7 +31066,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780923352.5733604,
+    "fetched_at": 1780923650.310233,
     "risk_off_themes": [
       "banking",
       "crash",
