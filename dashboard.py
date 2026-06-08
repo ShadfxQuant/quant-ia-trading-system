@@ -189,10 +189,10 @@ st.title("📈 Quant IA — Live Signals")
 st.caption(
     "Pullback engine + trend-carry sleeve · "
     + " · ".join(DATA.symbols)
-    + " · 1× lev · proxy-signal architecture (SPY/QQQ/GLD signals → MT5 US500/US100/XAUUSD execution) · "
+    + " · 1× lev · proxy-signal architecture (SPY/^NDX/GLD signals → MT5 US500/US100/XAUUSD execution) · "
     "Kalman-smoothed HMM + regime-flip exit (GC=F) · "
-    "**realized 2.83yr: $100K → $378,649 (+$278,649 / +60.1% CAGR / −9.1% DD / WR 70.1% / n=923)** · "
-    "3yr MC: mean $416K, P(2×) 100%, P(ruin) 0%. "
+    "**realized 2.83yr: $100K → $409,279 (+$309,279 / +64.5% CAGR / −9.1% DD / WR 71.0% / n=920)** · "
+    "3yr MC: mean $452K, P(2×) 100%, P(5×) 23%, P(ruin) 0%. "
     "**Educational only — not investment advice. Past performance is not "
     "indicative of future results.**"
 )
@@ -297,9 +297,9 @@ yfinance bars  →  indicators  →  5-state regime
 
 | Knob | Value |
 |---|---|
-| Signals computed on | SPY, QQQ, GLD, GC=F |
-| Execute on MT5 as | US500, US100, XAUUSD (+ XAUUSD cross-confirm) |
-| Watchlist | SLV, IWM, EURUSD=X |
+| Signals computed on | SPY, ^NDX, GLD, GC=F |
+| Execute on MT5 as | US500, **US100**, XAUUSD (+ XAUUSD cross-confirm) |
+| Watchlist | SLV, EURUSD=X (IWM + QQQ dropped — Part 8.22) |
 | Pullback size | 0.30 of equity, cap 1.00 |
 | Max pyramid | 8 legs |
 | Stop / TP1 / TP2 | −2.5% / +4% / +15% |
@@ -313,20 +313,20 @@ yfinance bars  →  indicators  →  5-state regime
 
 | Metric | Value |
 |---|---|
-| Mean wealth | $416,444 |
-| p5 wealth | $309,949 |
-| p50 wealth | $410,776 |
-| p95 wealth | $543,322 |
+| Mean wealth | $451,629 |
+| p5 wealth | $344,812 |
+| p50 wealth | $445,530 |
+| p95 wealth | $579,452 |
 | P(double 2×) | 100% |
-| P(5×) | 12.2% |
+| P(5×) | **23.6%** |
 | P(any loss) | 0.0% |
 | P(ruin −50%) | 0.00% |
 
 Per-symbol realized — signal source → MT5 execution:
-- SPY → **US500**: $170,871 (+20.9% CAGR, 75.7% WR)
-- QQQ → **US100**: $140,333 (+12.7% CAGR, 73.1% WR)
-- GLD → **XAUUSD**: $233,411 (+34.9% CAGR, 80.1% WR)
-- GC=F → **XAUUSD** cross-confirm: $134,034 (+13.2% CAGR, regime-flip exit)
+- SPY → **US500**: $170,758 (+20.9% CAGR, 75.7% WR, PF 3.18)
+- **^NDX** → **US100**: $170,920 (+20.9% CAGR, 78.3% WR, PF **3.13**)
+- GLD → **XAUUSD**: $233,533 (+34.9% CAGR, 80.1% WR, PF 3.40)
+- GC=F → **XAUUSD** cross-confirm: $134,068 (+13.3% CAGR, regime-flip exit)
 """)
     st.caption(
         "Documented in SYSTEM_LOG.md Parts 8.7 → 8.12. "
@@ -582,17 +582,17 @@ st.divider()
 with tab_chart:
     st.subheader(f"TradingView — {symbol} (interactive)")
     TV_SYMBOL_MAP = {
-        # MT5-aligned (live live)
-        "ES=F": "CME_MINI:ES1!",     # E-mini S&P 500 continuous → US500
-        "NQ=F": "CME_MINI:NQ1!",     # E-mini Nasdaq-100 continuous → US100
-        "GC=F": "COMEX:GC1!",        # Gold continuous → XAUUSD
-        # Paper / watchlist
-        "GLD": "AMEX:GLD",
-        "SLV": "AMEX:SLV",
-        "IWM": "AMEX:IWM",
+        # Live signal sources (Part 8.22)
+        "SPY":   "AMEX:SPY",          # → MT5 US500
+        "^NDX":  "NASDAQ:NDX",        # → MT5 US100 (cash index, replaced QQQ)
+        "GLD":   "AMEX:GLD",          # → MT5 XAUUSD
+        "GC=F":  "COMEX:GC1!",        # → MT5 XAUUSD cross-confirm
+        # Watchlist
+        "SLV":      "AMEX:SLV",
         "EURUSD=X": "FX:EURUSD",
-        # Legacy (kept in case user pivots back)
-        "SPY": "AMEX:SPY", "DIA": "AMEX:DIA", "QQQ": "NASDAQ:QQQ",
+        # Legacy mappings (in case of pivot)
+        "QQQ": "NASDAQ:QQQ", "DIA": "AMEX:DIA", "IWM": "AMEX:IWM",
+        "ES=F": "CME_MINI:ES1!", "NQ=F": "CME_MINI:NQ1!",
         "XLK": "AMEX:XLK", "XLF": "AMEX:XLF",
         "BTCUSDT": "BINANCE:BTCUSDT", "ETHUSDT": "BINANCE:ETHUSDT",
     }

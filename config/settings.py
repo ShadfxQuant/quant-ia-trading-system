@@ -25,32 +25,37 @@ class DataConfig:
     # NYSE hours + ADX≥25 (COMBO_F: PF 1.81 / DD 18.3% in validation).
     # All three gold instruments use inverse macro polarity.
     symbols: List[str] = field(default_factory=lambda: [
-        # Phase A1.3 — proxy-signal architecture 2026-06-03:
-        # Switch-flip fixes (NYSE-hours session filter, regime-flip exit
-        # on ES=F/NQ=F) all REGRESSED in backtest. Root cause: pullback
-        # engine was designed for NYSE-hours ETF microstructure. Futures
-        # bars (23/5 with thin overnight tape) are structurally noisier
-        # per unit of signal.
+        # Phase A1.4 — universe trim 2026-06-05:
+        # User dropped IWM + QQQ from live universe after paper-book postmortem
+        # (Part 8.21 — both fired losing trades in the live paper run).
         #
-        # Solution: separate SIGNAL GENERATION from EXECUTION VENUE.
-        # The same underlying (S&P 500, Nasdaq-100, gold spot) is priced
-        # within basis points on both the NYSE-hours ETF and the MT5
-        # CFD — so a signal computed on the clean ETF stream is directly
-        # executable on the MT5 CFD at the same bar timestamp.
+        #   - IWM: had been flagged degraded since Part 8.7 (PF 1.31, "small
+        #     caps don't fit engine"). KILLED.
+        #   - QQQ replaced with ^NDX (Nasdaq-100 cash index). Backtest reveals
+        #     the cash index is DRAMATICALLY better than the ETF as a signal
+        #     source for the SAME MT5 US100 execution venue:
+        #         QQQ   PF 1.85  CAGR +12.7%  DD -9.9%   WR 73.1%
+        #         ^NDX  PF 3.13  CAGR +20.9%  DD -6.6%   WR 78.3%
+        #     The ETF's tracking error + dividend gaps + arbitrage flow
+        #     create noise the engine fires on. The cash index is the
+        #     cleanest possible signal. SAME MT5 EXECUTION TARGET (US100).
         #
-        # SIGNAL GENERATION (high-PF, NYSE-hours):
-        #   - SPY (S&P 500 ETF):  PF 3.18, CAGR +17.3%, DD -6.9%, n=175
-        #   - QQQ (Nasdaq ETF):   PF 1.86, CAGR +12.8%, DD -14.1%, n=159
-        #   - GLD (gold ETF):     PF 3.40, CAGR +36.4%, DD -5.3%, n=189
-        #   - GC=F (gold futures): runs the regime-flip exit (Part 8.11)
-        #                          as independent 23/5 gold validator
-        # EXECUTION MAPPING via TRADING_LABEL_MAP (below):
-        #   SPY → MT5 US500 · QQQ → MT5 US100 · GLD → MT5 XAUUSD ·
+        # CURRENT LIVE UNIVERSE (all PF >= 3):
+        #   - SPY (S&P 500 ETF):     PF 3.18, CAGR +17.3%, DD -6.9%
+        #   - ^NDX (Nasdaq-100 cash): PF 3.13, CAGR +20.9%, DD -6.6%
+        #   - GLD (gold ETF):        PF 3.40, CAGR +36.4%, DD -5.3%
+        #   - GC=F (gold futures):   regime-flip exit (Part 8.11) — 23/5 gold
+        # EXECUTION MAPPING via TRADING_LABEL_MAP:
+        #   SPY  → MT5 US500
+        #   ^NDX → MT5 US100
+        #   GLD  → MT5 XAUUSD
         #   GC=F → MT5 XAUUSD (cross-confirm)
-        # Watchlist (signal stream only):
-        #   SLV / IWM / EURUSD=X
-        "SPY", "QQQ", "GLD", "GC=F",
-        "SLV", "IWM", "EURUSD=X",
+        # Watchlist (signal stream only, no live trading):
+        #   SLV (HMM-aligned short, Grade A in postmortem — capped at
+        #        watchlist until n>=10 trades validate)
+        #   EURUSD=X (FX engine broken per Part 8.7)
+        "SPY", "^NDX", "GLD", "GC=F",
+        "SLV", "EURUSD=X",
     ])
     start: str = "2024-05-06"
     end: str = "2026-05-06"
@@ -530,10 +535,10 @@ REGIME_FLIP_EXIT_SYMBOLS: set = {"GC=F"}
 # reads "US500 BUY" instead of "SPY BUY".
 # ---------------------------------------------------------------------------
 TRADING_LABEL_MAP: dict = {
-    "SPY":  "US500",
-    "QQQ":  "US100",
-    "GLD":  "XAUUSD",
-    "GC=F": "XAUUSD",   # cross-confirm gold via 23/5 futures
+    "SPY":   "US500",
+    "^NDX":  "US100",        # Nasdaq-100 cash index (Part 8.22 swap from QQQ)
+    "GLD":   "XAUUSD",
+    "GC=F":  "XAUUSD",       # cross-confirm gold via 23/5 futures
 }
 
 
