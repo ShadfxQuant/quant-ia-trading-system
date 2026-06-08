@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-08T20:55:45.672838+00:00",
+  "generated_at_utc": "2026-06-08T23:04:28.088643+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13306,11 +13306,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-08T20:00:00+00:00",
-      "close": 4351.2001953125,
-      "ema": 4390.729389798495,
-      "sma": 4467.872310697116,
-      "vwap": 4343.495130869277,
+      "bar_time_utc": "2026-06-08T22:00:00+00:00",
+      "close": 4351.60009765625,
+      "ema": 4389.292855357988,
+      "sma": 4466.5069223257215,
+      "vwap": 4343.599578093917,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13319,30 +13319,19 @@
       "trend_carry_pyramid_cap": 0,
       "read": {
         "bias": "bearish",
-        "strength": "strong",
-        "adx": 30.98,
-        "ema_slope_4bar": -6.0788,
+        "strength": "weak",
+        "adx": 29.41,
+        "ema_slope_4bar": -6.2052,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,390.73)",
-          "ADX falls below 20 (now 31.0)",
+          "Close > EMA50 (4,389.29)",
+          "ADX falls below 20 (now 29.4)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 31.0, close 4,351.20 vs EMA50 4,390.73) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 29.4, close 4,351.60 vs EMA50 4,389.29) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
-        {
-          "t": "2026-05-13T06:00:00+00:00",
-          "o": 4711.7998046875,
-          "h": 4723.10009765625,
-          "l": 4706.89990234375,
-          "c": 4709.7998046875,
-          "v": 4357.0,
-          "ema": 4711.421635990531,
-          "sma": 4704.349230018029,
-          "vwap": 4711.737290170546
-        },
         {
           "t": "2026-05-13T07:00:00+00:00",
           "o": 4709.7998046875,
@@ -17724,13 +17713,24 @@
         {
           "t": "2026-06-08T20:00:00+00:00",
           "o": 4350.5,
-          "h": 4353.7998046875,
+          "h": 4354.39990234375,
           "l": 4348.0,
-          "c": 4351.2001953125,
-          "v": 1125.0,
-          "ema": 4390.729389798495,
-          "sma": 4467.872310697116,
-          "vwap": 4343.495130869277
+          "c": 4353.7998046875,
+          "v": 1396.0,
+          "ema": 4390.831335264181,
+          "sma": 4467.892307692307,
+          "vwap": 4343.521864747542
+        },
+        {
+          "t": "2026-06-08T22:00:00+00:00",
+          "o": 4354.7001953125,
+          "h": 4363.39990234375,
+          "l": 4345.7998046875,
+          "c": 4351.60009765625,
+          "v": 1024.0,
+          "ema": 4389.292855357988,
+          "sma": 4466.5069223257215,
+          "vwap": 4343.599578093917
         }
       ]
     },
@@ -22168,35 +22168,35 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 5,
-    "risk_on_score": 1,
+    "risk_off_score": 8,
+    "risk_on_score": 0,
     "theme_hits": {
       "war": 4,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 1,
-      "rate_cut": 1,
+      "crash": 4,
+      "rate_cut": 0,
       "risk_on": 0
     },
     "sample_headlines": {
       "war": [
+        "Iran and Israel say they will pause strikes but warn of retaliation if ceasefire breached again",
         "Iran's strike on Israel suggests the regime's sense of resilience is growing",
-        "Netanyahu says war with Iran, Hezbollah isn't over after Tehran says it's halting strikes",
-        "Oil prices ease after Iran says military operations against Israel are over"
+        "Netanyahu says war with Iran, Hezbollah isn't over after Tehran says it's halting strikes"
       ],
       "banking": [],
       "recession": [],
       "rate_hike": [],
       "crash": [
-        "'We don't look at the sky any more': The Air India crash victims who were not on the plane"
+        "'We don't look at the sky any more': The Air India crash victims who were not on the plane",
+        "Knicks ticket prices plunge more than 50% ahead of Game 3 at MSG \u2014 but not just because Trump\u2019s going",
+        "US Stock Futures Drop After Tech Selloff, Oil Up: Markets Wrap - Bloomberg.com"
       ],
-      "rate_cut": [
-        "Donald Trump piles pressure on Kevin Warsh with call for rate cut - Financial Times"
-      ],
+      "rate_cut": [],
       "risk_on": []
     },
-    "n_headlines": 112,
+    "n_headlines": 114,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -22204,7 +22204,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1780952146.435768,
+    "fetched_at": 1780959868.7808661,
     "risk_off_themes": [
       "banking",
       "crash",
