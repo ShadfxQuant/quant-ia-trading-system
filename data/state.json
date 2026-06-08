@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-08T09:05:51.771373+00:00",
+  "generated_at_utc": "2026-06-08T09:11:01.734412+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13306,11 +13306,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-08T08:00:00+00:00",
-      "close": 4311.2001953125,
-      "ema": 4413.997486800569,
-      "sma": 4487.6392465444715,
-      "vwap": 4332.617857861263,
+      "bar_time_utc": "2026-06-08T09:00:00+00:00",
+      "close": 4314.7998046875,
+      "ema": 4410.178965791017,
+      "sma": 4485.580014272837,
+      "vwap": 4332.532062204036,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13320,29 +13320,18 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 46.11,
-        "ema_slope_4bar": -16.5982,
+        "adx": 46.63,
+        "ema_slope_4bar": -15.9816,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,414.00)",
-          "ADX falls below 20 (now 46.1)",
+          "Close > EMA50 (4,410.18)",
+          "ADX falls below 20 (now 46.6)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 46.1, close 4,311.20 vs EMA50 4,414.00) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 46.6, close 4,314.80 vs EMA50 4,410.18) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
-        {
-          "t": "2026-05-12T17:00:00+00:00",
-          "o": 4678.39990234375,
-          "h": 4689.7998046875,
-          "l": 4678.39990234375,
-          "c": 4685.7001953125,
-          "v": 10977.0,
-          "ema": 4710.346025849877,
-          "sma": 4690.585381610577,
-          "vwap": 4701.094468607054
-        },
         {
           "t": "2026-05-12T18:00:00+00:00",
           "o": 4685.7001953125,
@@ -17726,11 +17715,22 @@
           "o": 4319.2998046875,
           "h": 4322.39990234375,
           "l": 4309.60009765625,
-          "c": 4311.2001953125,
-          "v": 6188.0,
-          "ema": 4413.997486800569,
-          "sma": 4487.6392465444715,
-          "vwap": 4332.617857861263
+          "c": 4313.10009765625,
+          "v": 6573.0,
+          "ema": 4414.071992774833,
+          "sma": 4487.653861177884,
+          "vwap": 4332.558459845048
+        },
+        {
+          "t": "2026-06-08T09:00:00+00:00",
+          "o": 4313.5,
+          "h": 4316.7001953125,
+          "l": 4313.2998046875,
+          "c": 4314.7998046875,
+          "v": 72.0,
+          "ema": 4410.178965791017,
+          "sma": 4485.580014272837,
+          "vwap": 4332.532062204036
         }
       ]
     },
@@ -26596,9 +26596,9 @@
     "EURUSD=X": {
       "symbol": "EURUSD=X",
       "bar_time_utc": "2026-06-08T09:00:00+00:00",
-      "close": 1.151145339012146,
-      "ema": 1.1571663926312867,
-      "sma": 1.1614574817510752,
+      "close": 1.151012897491455,
+      "ema": 1.1571611988461614,
+      "sma": 1.1614564629701467,
       "vwap": null,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
@@ -26609,16 +26609,16 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 51.45,
+        "adx": 51.5,
         "ema_slope_4bar": -0.001,
         "regime_pct_24h": 100.0,
         "macro_tilt": "supports",
         "flip": [
           "Close > EMA50 (1.16)",
-          "ADX falls below 20 (now 51.4)",
+          "ADX falls below 20 (now 51.5)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "EURUSD=X leans short (ADX 51.4, close 1.15 vs EMA50 1.16) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "EURUSD=X leans short (ADX 51.5, close 1.15 vs EMA50 1.16) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -31014,11 +31014,11 @@
           "t": "2026-06-08T09:00:00+00:00",
           "o": 1.151145339012146,
           "h": 1.151410460472107,
-          "l": 1.151145339012146,
-          "c": 1.151145339012146,
+          "l": 1.151012897491455,
+          "c": 1.151012897491455,
           "v": 0.0,
-          "ema": 1.1571663926312867,
-          "sma": 1.1614574817510752,
+          "ema": 1.1571611988461614,
+          "sma": 1.1614564629701467,
           "vwap": null
         }
       ]
@@ -31027,19 +31027,20 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 7,
-    "risk_on_score": 2,
+    "risk_off_score": 10,
+    "risk_on_score": 3,
     "theme_hits": {
-      "war": 2,
+      "war": 3,
       "banking": 0,
       "recession": 1,
-      "rate_hike": 0,
-      "crash": 4,
+      "rate_hike": 1,
+      "crash": 5,
       "rate_cut": 0,
-      "risk_on": 2
+      "risk_on": 3
     },
     "sample_headlines": {
       "war": [
+        "Tumbling tech puts brakes on AI rally, Middle East escalation lifts oil",
         "100 days of the Iran war: How global markets and the economy have been affected, in charts",
         "Oil prices jump by the most in over a month as fresh attacks threaten the ceasefire with Iran"
       ],
@@ -31047,15 +31048,18 @@
       "recession": [
         "Amazon unveils latest warehouse robot as tech giants continue AI layoffs"
       ],
-      "rate_hike": [],
+      "rate_hike": [
+        "Stocks reel from a coming rate hike \u2014 and brace for a huge IPO: What to watch this week"
+      ],
       "crash": [
         "Tech stocks plunge in Asia after record rally and renewed Middle East attacks",
         "'We don't look at the sky anymore': The Air India crash victims who were not on the plane",
-        "Wall Street's 'fear gauge' punches back as the 'crash up' in chip stocks finally reverses"
+        "Chip rout puts Korea's 'ant' investors to the test as margin debt soars"
       ],
       "rate_cut": [],
       "risk_on": [
         "Tech stocks plunge in Asia after record rally and renewed Middle East attacks",
+        "Tumbling tech puts brakes on AI rally, Middle East escalation lifts oil",
         "Foreign investors have dumped billions of dollars of Korean stocks this year despite record rally. Here's why"
       ]
     },
@@ -31066,7 +31070,7 @@
       "cnbc_top",
       "marketwatch"
     ],
-    "fetched_at": 1780909552.197802,
+    "fetched_at": 1780909862.105573,
     "risk_off_themes": [
       "banking",
       "crash",
