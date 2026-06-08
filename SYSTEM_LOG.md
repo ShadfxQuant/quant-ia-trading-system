@@ -2204,3 +2204,106 @@ Both trades closed with `exit_reason: "manual_close_universe_drop"`. Equity adju
 - ⏳ FX engine rework (session-aware framework) — **shelved indefinitely** until clear MT5 FX execution use case appears
 - ⏳ Cron will pick up the trimmed universe on next tick
 
+
+---
+
+## Part 8.24 — Production system as Pine v5 strategy (2026-06-08)
+
+### What got shipped
+
+`research/tradingview_full_system.pine` — Pine v5 **strategy** (not just indicator) that mirrors the entire live engine documented Parts 8.6 → 8.23.
+
+This is different from `tradingview_edge_overlay.pine` (Part 8.18) which shows discretionary edge markers. The new file is the **systematic engine itself**, runnable in TV's strategy tester.
+
+### What's encapsulated (mapped to code paths)
+
+| Pine block | Production source |
+|---|---|
+| EMA50 + SMA130 trend filter | `strategies/pullback.py` |
+| Pullback band (ATR-normalized) | `strategies/pullback.py` |
+| 3-bar EMA slope rollover guard | `strategies/pullback.py` |
+| Momentum re-acceleration check | `strategies/pullback.py` |
+| Symmetric long + short | `strategies/pullback.py` |
+| Pyramid up to 8 legs | `pyramiding=8` in strategy header |
+| Trend_carry runner sleeve | `strategies/trend_carry.py` |
+| Kalman-smoothed P_bull | `core/kalman.py` (single-pole, q=1e-4, r=1e-2) |
+| Regime classifier (bull/bear/range) | derived from `P_bull_kalman` thresholds 0.45/0.55 |
+| Regime-flip exit primitive (GC=F gated) | `execution/portfolio.py` |
+| RSI size multiplier (1.3× os, 0.7× ob) | `main_portfolio._apply_rsi_size_mult` |
+| Exit ladder: −2.5% / +4% / +15% / 390-bar time stop | `PULLBACK` defaults in `config/settings.py` |
+| Trend_carry exit ladder: −4% / +8% / +25% | `TRENDCARRY` defaults |
+| MT5 label mapping in stats | `TRADING_LABEL_MAP` in `config/settings.py` |
+
+### How to use
+
+```
+1. TradingView → Pine Editor
+2. Open research/tradingview_full_system.pine, copy contents
+3. Paste, Save as "Quant IA — Full System"
+4. Add to chart on any live signal source:
+     - SPY  (will show MT5 label "US500")
+     - NASDAQ:NDX  (will show "US100")
+     - GLD  (will show "XAUUSD")
+     - COMEX:GC1!  (will show "XAUUSD" + flip-exit ARMED)
+5. Click "Strategy Tester" tab → run backtest
+6. Compare to _montecarlo_final.py numbers — should be in the same ballpark
+   (TV's bar source vs yfinance: small drift expected, ±5% on CAGR)
+```
+
+### Honest fidelity caveats
+
+The Pine version is a **functional mirror**, not bit-for-bit identical:
+
+| Aspect | Production | Pine | Drift source |
+|---|---|---|---|
+| HMM regime | GaussianHMM 3-state | Kalman-smoothed indicator proxy | Pine has no HMM lib; the proxy uses EMA/SMA/slope/RSI as observation |
+| Pyramiding | first-fire-takes-slot with per-leg sizing | TV's built-in `pyramiding=8` | TV doesn't expose per-leg size scaling easily |
+| Conviction multiplier (OFF in prod) | wired but disabled | not implemented in Pine | matches production state |
+| Regime-flip gating | exact `REGIME_FLIP_EXIT_SYMBOLS = {"GC=F"}` | string-match on `GC1!`/`GOLD`/`XAUUSD` | TV ticker names differ from yfinance |
+| RegimeScore for trend_carry activation | full Layer 4 score | proxied by `P_bull_kalman > 0.65` | RegimeScore depends on macro/VIX features |
+| Exit-ladder timing | bar-close trigger | TV's `strategy.exit()` (limit+stop on same call) | TV simulates fills slightly differently |
+
+Expected drift: **±5% on CAGR vs `_montecarlo_final.py`**, less on Sharpe and DD. If TV shows PF < 2 on SPY (where production shows 3.18), something is wrong in the port and worth digging.
+
+### What's NOT in this Pine (intentional)
+
+- **Macro news polarity** (gold inverse) — TV has no news engine
+- **Discord notifier** — TV has its own alerts (already wired via `alertcondition`)
+- **MC harness** — TV has its own strategy tester
+- **The Edge Lab edges** — those live in `tradingview_edge_overlay.pine` as a separate **indicator** (you can stack both on the same chart)
+- **Cron worker, paper trader, journal, state.json** — TV is alert-based, doesn't need our cron plumbing
+
+### Two-script workflow recommended
+
+For full coverage on a TradingView chart, run BOTH scripts together:
+
+1. **`tradingview_full_system.pine`** (this part) — strategy, runs the production engine, generates entry/exit alerts you can wire to webhooks
+2. **`tradingview_edge_overlay.pine`** (Part 8.18) — indicator, overlays 9 cross-class-validated edges as visual markers for discretionary confirmation
+
+Both can coexist on one chart. The strategy fires automated signals; the overlay surfaces structural confirmations (or warnings — e.g., E6 sell-the-rip on a long entry = caution).
+
+### Two-system parallel paradigm
+
+This is a meaningful architectural milestone: the live production system can now run in **two parallel implementations** that should agree:
+
+```
+[NODE: Python production engine]      [NODE: Pine strategy mirror]
+       │                                       │
+       │ fires on cron */5 min                  │ fires on TV bar close
+       ▼                                       ▼
+[Discord webhook]                       [TV alert webhook]
+       │                                       │
+       └────────── compare ────────────────────┘
+                  drift > 5% → bug somewhere
+```
+
+Disagreements between the two are diagnostic. If TV says "go long SPY" but our Python engine doesn't, one of two things: (a) the Pine port has drifted from production code, or (b) the production code missed a signal. Either way, you investigate. This is **redundant cross-validation** in the practitioner sense.
+
+### Open queue item
+
+| Task | Priority | Notes |
+|---|---|---|
+| Compare Pine backtest vs `_montecarlo_final.py` on SPY/^NDX/GLD/GC=F | High | Confirms fidelity within ±5% CAGR drift |
+| Wire Pine alerts to existing Cloudflare webhook | Medium | Two-way confirmation: Python signals + Pine signals |
+| Per-symbol Pine-tuned input presets | Low | Save TV preset chains for each live symbol |
+

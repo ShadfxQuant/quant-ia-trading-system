@@ -1,0 +1,315 @@
+//@version=5
+// =============================================================================
+// QUANT IA — FULL SYSTEM (production mirror)
+// =============================================================================
+// Pine v5 strategy that mirrors the live production engine documented through
+// SYSTEM_LOG.md Parts 8.6 → 8.23.
+//
+// Architecture encapsulated:
+//   - Pullback engine (EMA50/SMA130 trend filter + pullback proximity +
+//     momentum re-acceleration + 3-bar slope rollover guard)
+//   - Trend_carry runner sleeve (same entry, smaller size, wider stop)
+//   - Symmetric long + short
+//   - Pyramid up to 8 legs (Pine handles via pyramiding=8)
+//   - RSI size multiplier (1.3× oversold, 0.7× overbought)
+//   - Kalman-smoothed regime score (q=1e-4, r=1e-2 — Part 8.10)
+//   - Regime-flip exit primitive (GC=F only — Part 8.11)
+//   - Exit ladder: stop −2.5% / TP1 +4% (50% off, stop→BE) / TP2 +15% (50% off)
+//   - Time stop 390 bars
+//   - 1× leverage (paper-window default)
+//   - MT5 trade-label mapping in the stats table
+//
+// Drop on any of the live signal sources (SPY, ^NDX, GLD, GC=F) or any
+// new equity/index/ETF to see how the system would behave on it.
+//
+// NOT a hypothetical — every parameter matches the live config in
+// config/settings.py as of commit aa3af8c (2026-06-08).
+// =============================================================================
+strategy("Quant IA — Full System", overlay=true, pyramiding=8,
+         default_qty_type=strategy.percent_of_equity,
+         default_qty_value=30,                  // base_size_pct
+         initial_capital=100000,
+         currency="USD",
+         commission_type=strategy.commission.percent,
+         commission_value=0.01,
+         calc_on_every_tick=false,
+         process_orders_on_close=true,
+         max_labels_count=300, max_lines_count=200,
+         max_bars_back=500)
+
+// ============== INPUTS ==============
+grp_trend = "Trend filter"
+ema_len    = input.int(50,  "EMA length",  group=grp_trend)
+sma_len    = input.int(130, "SMA length",  group=grp_trend)
+slope_n    = input.int(3,   "Slope rollover window (bars)", group=grp_trend)
+
+grp_pull = "Pullback engine"
+pullback_band_atr = input.float(1.5, "Pullback band (× ATR)", step=0.1, group=grp_pull)
+momo_min   = input.float(0.0,  "Min momentum delta", step=0.0001, group=grp_pull)
+
+grp_exit = "Exit ladder"
+stop_pct       = input.float(2.5,  "Stop loss %",            step=0.1, group=grp_exit)
+tp1_pct        = input.float(4.0,  "TP1 (partial) %",        step=0.1, group=grp_exit)
+tp1_size_frac  = input.float(50.0, "TP1 size % of position", step=5,   group=grp_exit)
+tp2_pct        = input.float(15.0, "TP2 (final) %",          step=0.5, group=grp_exit)
+move_stop_be   = input.bool (true, "Move stop to BE after TP1", group=grp_exit)
+max_hold       = input.int  (390,  "Time stop (bars)",       group=grp_exit)
+
+grp_sleeve = "Trend_carry sleeve"
+use_tc      = input.bool(true,  "Enable trend_carry runner", group=grp_sleeve)
+tc_stop_pct = input.float(4.0,  "Trend_carry stop %",  step=0.1, group=grp_sleeve)
+tc_tp1_pct  = input.float(8.0,  "Trend_carry TP1 %",   step=0.5, group=grp_sleeve)
+tc_tp2_pct  = input.float(25.0, "Trend_carry TP2 %",   step=1.0, group=grp_sleeve)
+
+grp_rsi = "RSI size mult (Part 8.10)"
+use_rsi    = input.bool(true, "Apply RSI size multiplier", group=grp_rsi)
+rsi_len    = input.int(14, "RSI length", group=grp_rsi)
+rsi_os     = input.int(40, "RSI oversold",  group=grp_rsi)
+rsi_ob     = input.int(60, "RSI overbought", group=grp_rsi)
+rsi_mult_os = input.float(1.3, "Size × at oversold", step=0.1, group=grp_rsi)
+rsi_mult_ob = input.float(0.7, "Size × at overbought", step=0.1, group=grp_rsi)
+
+grp_kalman = "Kalman regime smoother (Part 8.10)"
+kalman_q = input.float(0.0001, "Process variance q", step=0.0001, group=grp_kalman)
+kalman_r = input.float(0.01,   "Observation variance r", step=0.01, group=grp_kalman)
+
+grp_flip = "Regime-flip exit (Part 8.11 — GC=F gated)"
+use_flip      = input.bool(true, "Enable regime-flip exit primitive", group=grp_flip)
+flip_min_hold = input.int(3,   "Min bars held before flip can fire", group=grp_flip)
+flip_dd_th    = input.float(-2.0, "Underwater % required (max)", step=0.1, group=grp_flip)
+flip_symbols  = input.string("GC1!,GOLD,XAUUSD", "Symbols subject to flip exit (comma-sep)", group=grp_flip)
+
+grp_display = "Display"
+show_table = input.bool(true, "Show stats table", group=grp_display)
+show_lines = input.bool(true, "Show EMA50/SMA130", group=grp_display)
+show_kalman_bg = input.bool(true, "Tint background by Kalman regime", group=grp_display)
+
+// ============== INDICATORS ==============
+ema_fast = ta.ema(close, ema_len)
+sma_slow = ta.sma(close, sma_len)
+atr      = ta.atr(14)
+rsi_v    = ta.rsi(close, rsi_len)
+
+// 3-bar EMA slope mean (rollover guard)
+ema_slope_3 = (ema_fast - ema_fast[slope_n]) / slope_n
+
+// Momentum: smoothed price ROC over recent N bars
+momo = (close - close[5]) / close[5]
+momo_delta = momo - momo[1]
+
+// Pullback band (ATR-normalized distance from EMA)
+band_dist = math.abs(close - ema_fast)
+in_pullback = band_dist <= pullback_band_atr * atr
+
+// ============== KALMAN P_BULL SMOOTHER (single-pole, level state) ==============
+// raw "P_bull-like" probability proxy from indicators:
+//   slope positive + price > EMA + RSI > 50 → push toward 1.0
+//   slope negative + price < EMA + RSI < 50 → push toward 0.0
+var float p_bull_kalman = 0.5
+var float p_var = 1.0
+
+raw_score = 0.0
+raw_score := raw_score + (close > ema_fast ? 0.20 : -0.20)
+raw_score := raw_score + (ema_slope_3 > 0 ? 0.20 : -0.20)
+raw_score := raw_score + (rsi_v > 50 ? 0.10 : -0.10)
+raw_score := raw_score + (ema_fast > sma_slow ? 0.20 : -0.20)
+raw_obs = 0.5 + raw_score                     // ~[0.0, 1.0]
+raw_obs := math.max(0.001, math.min(0.999, raw_obs))
+
+// Kalman update (level-only random walk)
+p_pred = p_bull_kalman
+v_pred = p_var + kalman_q
+k_gain = v_pred / (v_pred + kalman_r)
+p_bull_kalman := p_pred + k_gain * (raw_obs - p_pred)
+p_var := (1.0 - k_gain) * v_pred
+
+regime_bull  = p_bull_kalman >= 0.55
+regime_bear  = p_bull_kalman <= 0.45
+regime_range = not regime_bull and not regime_bear
+
+// ============== ENTRY CONDITIONS (mirrors strategies/pullback.py) ==============
+// Long entry: bull structure + pullback proximity + momentum + slope guard
+bull_structure  = (ema_fast > sma_slow) and (ema_slope_3 > 0)
+bear_structure  = (ema_fast < sma_slow) and (ema_slope_3 < 0)
+slope_guard_ok_long  = ema_slope_3 > 0   // rollover guard
+slope_guard_ok_short = ema_slope_3 < 0
+
+momo_ok_long  = momo_delta > momo_min
+momo_ok_short = momo_delta < -momo_min
+
+long_entry  = bull_structure and in_pullback and momo_ok_long  and slope_guard_ok_long
+short_entry = bear_structure and in_pullback and momo_ok_short and slope_guard_ok_short
+
+// ============== RSI SIZE MULT ==============
+size_mult = 1.0
+if use_rsi
+    size_mult := rsi_v < rsi_os ? rsi_mult_os :
+                 rsi_v > rsi_ob ? rsi_mult_ob : 1.0
+
+// ============== SIZE COMPUTATION (% of equity) ==============
+pullback_qty_pct = 30.0 * size_mult                   // base 30%, scaled by RSI
+tc_qty_pct       = 30.0 * size_mult * 0.30            // trend_carry sleeve at ~9%
+
+// ============== REGIME-FLIP EXIT GATING (Part 8.11) ==============
+ticker_uppr = str.upper(syminfo.ticker)
+is_flip_symbol = false
+for s in str.split(str.upper(str.replace_all(flip_symbols, " ", "")), ",")
+    if str.contains(ticker_uppr, s)
+        is_flip_symbol := true
+
+bars_since_entry = ta.barssince(strategy.position_size != strategy.position_size[1] and
+                                  strategy.position_size[1] == 0)
+
+unreal_pct = strategy.position_size != 0 and strategy.position_avg_price > 0 ?
+             (strategy.position_size > 0 ?
+              (close - strategy.position_avg_price) / strategy.position_avg_price * 100 :
+              (strategy.position_avg_price - close) / strategy.position_avg_price * 100)
+             : 0.0
+
+regime_flip_long_to_close  = use_flip and is_flip_symbol and
+                              strategy.position_size > 0 and
+                              regime_bear and
+                              bars_since_entry >= flip_min_hold and
+                              unreal_pct <= flip_dd_th
+regime_flip_short_to_close = use_flip and is_flip_symbol and
+                              strategy.position_size < 0 and
+                              regime_bull and
+                              bars_since_entry >= flip_min_hold and
+                              unreal_pct <= flip_dd_th
+
+// ============== ORDER MANAGEMENT ==============
+// PULLBACK entries
+if long_entry
+    strategy.entry("PB_L", strategy.long, qty=strategy.equity * pullback_qty_pct / 100 / close,
+                   comment="PB LONG")
+if short_entry
+    strategy.entry("PB_S", strategy.short, qty=strategy.equity * pullback_qty_pct / 100 / close,
+                   comment="PB SHORT")
+
+// TREND_CARRY entries (gated by stronger regime conviction)
+tc_active = use_tc and p_bull_kalman > 0.65 and bull_structure
+tc_active_short = use_tc and p_bull_kalman < 0.35 and bear_structure
+if tc_active and long_entry
+    strategy.entry("TC_L", strategy.long, qty=strategy.equity * tc_qty_pct / 100 / close,
+                   comment="TC LONG")
+if tc_active_short and short_entry
+    strategy.entry("TC_S", strategy.short, qty=strategy.equity * tc_qty_pct / 100 / close,
+                   comment="TC SHORT")
+
+// EXIT ladder — pullback
+strategy.exit("PB Exit", from_entry="PB_L",
+              stop  = strategy.position_avg_price * (1 - stop_pct/100),
+              limit = strategy.position_avg_price * (1 + tp1_pct/100),
+              qty_percent = tp1_size_frac)
+strategy.exit("PB Final", from_entry="PB_L",
+              stop  = move_stop_be ? strategy.position_avg_price : strategy.position_avg_price * (1 - stop_pct/100),
+              limit = strategy.position_avg_price * (1 + tp2_pct/100))
+strategy.exit("PB Exit S", from_entry="PB_S",
+              stop  = strategy.position_avg_price * (1 + stop_pct/100),
+              limit = strategy.position_avg_price * (1 - tp1_pct/100),
+              qty_percent = tp1_size_frac)
+strategy.exit("PB Final S", from_entry="PB_S",
+              stop  = move_stop_be ? strategy.position_avg_price : strategy.position_avg_price * (1 + stop_pct/100),
+              limit = strategy.position_avg_price * (1 - tp2_pct/100))
+
+// EXIT ladder — trend_carry sleeve
+strategy.exit("TC Exit", from_entry="TC_L",
+              stop  = strategy.position_avg_price * (1 - tc_stop_pct/100),
+              limit = strategy.position_avg_price * (1 + tc_tp1_pct/100))
+strategy.exit("TC Exit S", from_entry="TC_S",
+              stop  = strategy.position_avg_price * (1 + tc_stop_pct/100),
+              limit = strategy.position_avg_price * (1 - tc_tp1_pct/100))
+
+// REGIME-FLIP EXIT (Part 8.11)
+if regime_flip_long_to_close
+    strategy.close_all(comment="REGIME_FLIP")
+if regime_flip_short_to_close
+    strategy.close_all(comment="REGIME_FLIP")
+
+// TIME STOP
+if strategy.position_size != 0 and bars_since_entry >= max_hold
+    strategy.close_all(comment="TIME_STOP")
+
+// ============== VISUAL LAYER ==============
+plot(show_lines ? ema_fast : na, "EMA50", color=color.new(color.blue, 0), linewidth=2)
+plot(show_lines ? sma_slow : na, "SMA130", color=color.new(color.purple, 0), linewidth=1)
+
+bgcolor(show_kalman_bg and regime_bull  ? color.new(color.green, 92) : na, title="Bull regime tint")
+bgcolor(show_kalman_bg and regime_bear  ? color.new(color.red,   92) : na, title="Bear regime tint")
+bgcolor(show_kalman_bg and regime_range ? color.new(color.gray,  95) : na, title="Range regime tint")
+
+plotshape(long_entry,  title="PB LONG entry",  location=location.belowbar,
+          style=shape.triangleup,   color=color.new(color.lime,  0), size=size.small, text="L")
+plotshape(short_entry, title="PB SHORT entry", location=location.abovebar,
+          style=shape.triangledown, color=color.new(color.red,   0), size=size.small, text="S")
+plotshape(regime_flip_long_to_close or regime_flip_short_to_close,
+          title="Regime-flip exit", location=location.abovebar,
+          style=shape.xcross, color=color.new(color.yellow, 0), size=size.normal, text="FLIP")
+
+// ============== STATS TABLE ==============
+// MT5 label mapping
+mt5_label = ticker_uppr == "SPY"   or str.contains(ticker_uppr, "ES1") ? "US500"  :
+            str.contains(ticker_uppr, "NDX") or str.contains(ticker_uppr, "QQQ") or str.contains(ticker_uppr, "NQ1") ? "US100" :
+            str.contains(ticker_uppr, "GLD") or str.contains(ticker_uppr, "GC1") or str.contains(ticker_uppr, "GOLD") or str.contains(ticker_uppr, "XAU") ? "XAUUSD" :
+            syminfo.ticker
+
+regime_str = regime_bull  ? "🟢 Kalman bull"  :
+             regime_bear  ? "🔴 Kalman bear"  : "⚪ Range"
+
+pos_str = strategy.position_size > 0 ? "LONG · " + str.tostring(strategy.position_size, "#.##") :
+          strategy.position_size < 0 ? "SHORT · " + str.tostring(strategy.position_size, "#.##") :
+          "flat"
+
+var table stats = table.new(position=position.top_right, columns=2, rows=14,
+                            border_width=1,
+                            frame_color=color.new(color.gray, 50),
+                            border_color=color.new(color.gray, 70))
+
+if barstate.islast and show_table
+    table.clear(stats, 0, 0, 1, 13)
+    table.cell(stats, 0, 0,  "Quant IA",       text_color=color.white, bgcolor=color.new(color.blue, 30), text_size=size.small)
+    table.cell(stats, 1, 0,  syminfo.ticker,   text_color=color.white, bgcolor=color.new(color.blue, 30), text_size=size.small)
+    table.cell(stats, 0, 1,  "MT5 label",       text_color=color.white)
+    table.cell(stats, 1, 1,  mt5_label,         text_color=color.aqua)
+    table.cell(stats, 0, 2,  "Regime",          text_color=color.white)
+    table.cell(stats, 1, 2,  regime_str,        text_color=color.white)
+    table.cell(stats, 0, 3,  "P_bull (Kalman)", text_color=color.white)
+    table.cell(stats, 1, 3,  str.tostring(p_bull_kalman, "#.000"),
+                              text_color = p_bull_kalman > 0.55 ? color.lime : p_bull_kalman < 0.45 ? color.red : color.white)
+    table.cell(stats, 0, 4,  "Trend (EMA>SMA)", text_color=color.white)
+    table.cell(stats, 1, 4,  ema_fast > sma_slow ? "bull" : "bear",
+                              text_color = ema_fast > sma_slow ? color.lime : color.red)
+    table.cell(stats, 0, 5,  "EMA slope (3b)",   text_color=color.white)
+    table.cell(stats, 1, 5,  str.tostring(ema_slope_3 * 100 / close, "#.000") + "%",
+                              text_color = ema_slope_3 > 0 ? color.lime : color.red)
+    table.cell(stats, 0, 6,  "RSI · size×",      text_color=color.white)
+    table.cell(stats, 1, 6,  str.tostring(rsi_v, "#.0") + " · " + str.tostring(size_mult, "#.0") + "×",
+                              text_color = size_mult > 1.0 ? color.lime : size_mult < 1.0 ? color.red : color.white)
+    table.cell(stats, 0, 7,  "In pullback?",     text_color=color.white)
+    table.cell(stats, 1, 7,  in_pullback ? "YES" : "no",
+                              text_color = in_pullback ? color.lime : color.gray)
+    table.cell(stats, 0, 8,  "Flip-exit gated?", text_color=color.white)
+    table.cell(stats, 1, 8,  is_flip_symbol ? "✓ ARMED" : "off",
+                              text_color = is_flip_symbol ? color.aqua : color.gray)
+    table.cell(stats, 0, 9,  "Position",         text_color=color.white)
+    table.cell(stats, 1, 9,  pos_str, text_color=color.yellow)
+    table.cell(stats, 0, 10, "Bars held",        text_color=color.white)
+    table.cell(stats, 1, 10, strategy.position_size != 0 ? str.tostring(bars_since_entry) : "—",
+                              text_color=color.white)
+    table.cell(stats, 0, 11, "Unreal %",         text_color=color.white)
+    table.cell(stats, 1, 11, strategy.position_size != 0 ? str.tostring(unreal_pct, "+#.00") + "%" : "—",
+                              text_color = unreal_pct > 0 ? color.lime : unreal_pct < 0 ? color.red : color.white)
+    table.cell(stats, 0, 12, "Net P&L",          text_color=color.white)
+    table.cell(stats, 1, 12, "$" + str.tostring(strategy.netprofit, "#,###"),
+                              text_color = strategy.netprofit > 0 ? color.lime : color.red)
+    table.cell(stats, 0, 13, "WR · DD",          text_color=color.gray, text_size=size.tiny)
+    table.cell(stats, 1, 13, str.tostring(strategy.wintrades / math.max(1, strategy.closedtrades) * 100, "#") + "%  ·  $" + str.tostring(strategy.max_drawdown, "#,###"),
+                              text_color=color.gray, text_size=size.tiny)
+
+// ============== ALERTS ==============
+alertcondition(long_entry,  "PB Long entry",   "PB LONG entry on {{ticker}} @ {{close}}")
+alertcondition(short_entry, "PB Short entry",  "PB SHORT entry on {{ticker}} @ {{close}}")
+alertcondition(regime_flip_long_to_close,  "Regime-flip CLOSE long",
+               "REGIME FLIP — close long on {{ticker}} @ {{close}}")
+alertcondition(regime_flip_short_to_close, "Regime-flip CLOSE short",
+               "REGIME FLIP — close short on {{ticker}} @ {{close}}")
