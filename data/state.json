@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-09T13:05:47.873394+00:00",
+  "generated_at_utc": "2026-06-09T13:10:52.711576+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13306,11 +13306,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-09T12:00:00+00:00",
-      "close": 4362.2998046875,
-      "ema": 4375.481816235132,
-      "sma": 4449.275371844952,
-      "vwap": 4357.671125397604,
+      "bar_time_utc": "2026-06-09T13:00:00+00:00",
+      "close": 4366.2998046875,
+      "ema": 4375.238542260681,
+      "sma": 4448.153064903846,
+      "vwap": 4357.991171911462,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13320,29 +13320,18 @@
       "read": {
         "bias": "bearish",
         "strength": "chop",
-        "adx": 13.81,
-        "ema_slope_4bar": -2.4138,
+        "adx": 13.45,
+        "ema_slope_4bar": -1.7984,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,375.48)",
-          "ADX falls below 20 (now 13.8)",
+          "Close > EMA50 (4,375.24)",
+          "ADX falls below 20 (now 13.5)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 13.8, close 4,362.30 vs EMA50 4,375.48) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 13.5, close 4,366.30 vs EMA50 4,375.24) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
-        {
-          "t": "2026-05-13T22:00:00+00:00",
-          "o": 4696.7998046875,
-          "h": 4707.2998046875,
-          "l": 4695.5,
-          "c": 4706.39990234375,
-          "v": 0.0,
-          "ema": 4705.784361467237,
-          "sma": 4714.284619140625,
-          "vwap": 4700.872506568817
-        },
         {
           "t": "2026-05-13T23:00:00+00:00",
           "o": 4706.2001953125,
@@ -17726,11 +17715,22 @@
           "o": 4364.39990234375,
           "h": 4369.0,
           "l": 4359.0,
-          "c": 4362.2998046875,
-          "v": 4812.0,
-          "ema": 4375.481816235132,
-          "sma": 4449.275371844952,
-          "vwap": 4357.671125397604
+          "c": 4365.39990234375,
+          "v": 5434.0,
+          "ema": 4375.60338869224,
+          "sma": 4449.29921875,
+          "vwap": 4357.883906150312
+        },
+        {
+          "t": "2026-06-09T13:00:00+00:00",
+          "o": 4366.10009765625,
+          "h": 4370.0,
+          "l": 4364.89990234375,
+          "c": 4366.2998046875,
+          "v": 511.0,
+          "ema": 4375.238542260681,
+          "sma": 4448.153064903846,
+          "vwap": 4357.991171911462
         }
       ]
     },
@@ -22171,11 +22171,11 @@
     "risk_off_score": 7,
     "risk_on_score": 2,
     "theme_hits": {
-      "war": 5,
+      "war": 3,
       "banking": 0,
       "recession": 0,
       "rate_hike": 1,
-      "crash": 1,
+      "crash": 3,
       "rate_cut": 0,
       "risk_on": 2
     },
@@ -22191,15 +22191,17 @@
         "Markets are pricing in a rate hike by the European Central Bank \u2014 which one top economist sees as a \u2018mistake in the making\u2019"
       ],
       "crash": [
-        "'We don't look at the sky any more': The Air India crash victims who were not on the plane"
+        "'We don't look at the sky any more': The Air India crash victims who were not on the plane",
+        "Korean Stocks Tumble as AI Trades Unwind, Threatening Bull Run - Bloomberg.com",
+        "Nvidia CEO Shrugs Off Tech Stock Rout With AI Just \u2018Beginning\u2019 - Bloomberg.com"
       ],
       "rate_cut": [],
       "risk_on": [
         "Stocks rally as investors dive back into tech; oil slips",
-        "This latest rally may be a dead-cat bounce, warns normally bullish boutique"
+        "Tumbling tech darlings slam brakes on AI rally By Reuters - Investing.com"
       ]
     },
-    "n_headlines": 112,
+    "n_headlines": 114,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -22207,7 +22209,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781010348.6406682,
+    "fetched_at": 1781010653.3699245,
     "risk_off_themes": [
       "banking",
       "crash",
