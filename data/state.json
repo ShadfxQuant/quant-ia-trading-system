@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-09T20:25:55.005748+00:00",
+  "generated_at_utc": "2026-06-09T20:30:51.814240+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-09T20:00:00+00:00",
-      "close": 4283.7001953125,
-      "ema": 4354.398001304375,
-      "sma": 4435.571533203125,
-      "vwap": 4326.008537048391,
+      "close": 4282.7998046875,
+      "ema": 4354.362691868099,
+      "sma": 4435.564607121394,
+      "vwap": 4325.9964574645965,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13323,15 +13323,15 @@
         "bias": "bearish",
         "strength": "weak",
         "adx": 22.13,
-        "ema_slope_4bar": -11.7154,
+        "ema_slope_4bar": -11.7507,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,354.40)",
+          "Close > EMA50 (4,354.36)",
           "ADX falls below 20 (now 22.1)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 22.1, close 4,283.70 vs EMA50 4,354.40) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 22.1, close 4,282.80 vs EMA50 4,354.36) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17728,11 +17728,11 @@
           "o": 4282.7998046875,
           "h": 4285.2001953125,
           "l": 4280.0,
-          "c": 4283.7001953125,
-          "v": 467.0,
-          "ema": 4354.398001304375,
-          "sma": 4435.571533203125,
-          "vwap": 4326.008537048391
+          "c": 4282.7998046875,
+          "v": 500.0,
+          "ema": 4354.362691868099,
+          "sma": 4435.564607121394,
+          "vwap": 4325.9964574645965
         }
       ]
     },
@@ -22171,7 +22171,7 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 4,
-    "risk_on_score": 1,
+    "risk_on_score": 0,
     "theme_hits": {
       "war": 1,
       "banking": 0,
@@ -22179,7 +22179,7 @@
       "rate_hike": 0,
       "crash": 3,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 0
     },
     "sample_headlines": {
       "war": [
@@ -22194,9 +22194,7 @@
         "Korean Stocks Tumble as AI Trades Unwind, Threatening Bull Run - Bloomberg.com"
       ],
       "rate_cut": [],
-      "risk_on": [
-        "After Recent Rally Sparked by Jensen Huang\u2019s Comments, Marvell Stock Is a Buy"
-      ]
+      "risk_on": []
     },
     "n_headlines": 113,
     "sources_used": [
@@ -22206,7 +22204,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781036755.916351,
+    "fetched_at": 1781037052.6713257,
     "risk_off_themes": [
       "banking",
       "crash",
