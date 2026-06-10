@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-10T09:01:39.812027+00:00",
+  "generated_at_utc": "2026-06-10T09:06:37.819033+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-10T08:00:00+00:00",
-      "close": 4196.5,
-      "ema": 4306.16359362453,
-      "sma": 4407.845380108173,
-      "vwap": 4215.232128597801,
+      "close": 4193.39990234375,
+      "ema": 4306.042021167422,
+      "sma": 4407.821533203125,
+      "vwap": 4214.914028073461,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13323,15 +13323,15 @@
         "bias": "bearish",
         "strength": "strong",
         "adx": 38.03,
-        "ema_slope_4bar": -15.8327,
+        "ema_slope_4bar": -15.9542,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,306.16)",
+          "Close > EMA50 (4,306.04)",
           "ADX falls below 20 (now 38.0)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 38.0, close 4,196.50 vs EMA50 4,306.16) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 38.0, close 4,193.40 vs EMA50 4,306.04) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17728,11 +17728,11 @@
           "o": 4209.39990234375,
           "h": 4211.0,
           "l": 4184.0,
-          "c": 4196.5,
-          "v": 8878.0,
-          "ema": 4306.16359362453,
-          "sma": 4407.845380108173,
-          "vwap": 4215.232128597801
+          "c": 4193.39990234375,
+          "v": 9235.0,
+          "ema": 4306.042021167422,
+          "sma": 4407.821533203125,
+          "vwap": 4214.914028073461
         }
       ]
     },
@@ -22170,16 +22170,16 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 8,
-    "risk_on_score": 2,
+    "risk_off_score": 6,
+    "risk_on_score": 1,
     "theme_hits": {
-      "war": 5,
+      "war": 4,
       "banking": 0,
       "recession": 1,
       "rate_hike": 0,
-      "crash": 2,
+      "crash": 1,
       "rate_cut": 0,
-      "risk_on": 2
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
@@ -22193,16 +22193,14 @@
       ],
       "rate_hike": [],
       "crash": [
-        "ETF Investors Shrug Off Friday's Selloff, Pour In $41 Billion",
         "SoftBank sinks over 8% as Asia tech stocks tumble, tracking Wall Street losses"
       ],
       "rate_cut": [],
       "risk_on": [
-        "Jim Cramer says tech stocks are losing the qualities that made them the leaders of the rally",
-        "Asian Stocks Set to Rebound on Iran, AI Optimism: Markets Wrap - Bloomberg"
+        "Jim Cramer says tech stocks are losing the qualities that made them the leaders of the rally"
       ]
     },
-    "n_headlines": 112,
+    "n_headlines": 114,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -22210,7 +22208,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781082100.8968568,
+    "fetched_at": 1781082398.7567294,
     "risk_off_themes": [
       "banking",
       "crash",
