@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-10T13:11:39.269379+00:00",
+  "generated_at_utc": "2026-06-10T13:16:37.332307+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-10T13:00:00+00:00",
-      "close": 4177.7998046875,
-      "ema": 4283.300570059032,
-      "sma": 4394.923073167068,
-      "vwap": 4198.540939421853,
+      "close": 4175.7998046875,
+      "ema": 4283.222138686483,
+      "sma": 4394.907688551682,
+      "vwap": 4197.983880290167,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13323,15 +13323,15 @@
         "bias": "bearish",
         "strength": "strong",
         "adx": 42.48,
-        "ema_slope_4bar": -18.1895,
+        "ema_slope_4bar": -18.2679,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,283.30)",
+          "Close > EMA50 (4,283.22)",
           "ADX falls below 20 (now 42.5)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 42.5, close 4,177.80 vs EMA50 4,283.30) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 42.5, close 4,175.80 vs EMA50 4,283.22) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17726,13 +17726,13 @@
         {
           "t": "2026-06-10T13:00:00+00:00",
           "o": 4170.10009765625,
-          "h": 4179.0,
+          "h": 4179.39990234375,
           "l": 4167.60009765625,
-          "c": 4177.7998046875,
-          "v": 529.0,
-          "ema": 4283.300570059032,
-          "sma": 4394.923073167068,
-          "vwap": 4198.540939421853
+          "c": 4175.7998046875,
+          "v": 2763.0,
+          "ema": 4283.222138686483,
+          "sma": 4394.907688551682,
+          "vwap": 4197.983880290167
         }
       ]
     },
@@ -22170,16 +22170,16 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 8,
-    "risk_on_score": 2,
+    "risk_off_score": 7,
+    "risk_on_score": 1,
     "theme_hits": {
       "war": 5,
       "banking": 0,
       "recession": 0,
       "rate_hike": 1,
-      "crash": 2,
+      "crash": 1,
       "rate_cut": 0,
-      "risk_on": 2
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
@@ -22193,12 +22193,10 @@
         "Gold, silver and bitcoin fall as traders up Fed rate hike bets"
       ],
       "crash": [
-        "Dow Jones Futures Tumble As Trump Says Iran Will 'Have To Pay The Price'; CPI Inflation On Tap",
         "SoftBank sinks over 8% as global tech stocks tumble, tracking Wall Street losses"
       ],
       "rate_cut": [],
       "risk_on": [
-        "J.Jill Shares Slide Despite First-Quarter Earnings Beat and Maintained Outlook (JILL)",
         "Two reasons for optimism after Tuesday's whipsaw market sell-off"
       ]
     },
@@ -22210,7 +22208,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781097099.8073056,
+    "fetched_at": 1781097397.841698,
     "risk_off_themes": [
       "banking",
       "crash",
