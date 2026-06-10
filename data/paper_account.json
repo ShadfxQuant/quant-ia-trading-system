@@ -1,5 +1,5 @@
 {
-  "equity": 98743.92824218668,
+  "equity": 99463.92824218668,
   "initial_capital": 100000.0,
   "cash": 100093.92824218668,
   "open_positions": [
@@ -30,8 +30,8 @@
       "tp2_pct": 0.25,
       "tp1_size_frac": 0.3,
       "bar_time_at_entry": "2026-05-28T19:30:00+00:00",
-      "tp1_hit": false,
-      "remaining_size": 30000.0
+      "tp1_hit": true,
+      "remaining_size": 21000.0
     },
     {
       "symbol": "SLV",
@@ -175,8 +175,20 @@
       "size": 29820.0,
       "pnl": -65.42537262782905,
       "reason": "manual_close_universe_drop"
+    },
+    {
+      "symbol": "GLD",
+      "strategy": "trend_carry",
+      "side": -1,
+      "entry_time": "2026-05-29T14:25:17.804263+00:00",
+      "entry_price": 412.8299865722656,
+      "exit_time": "2026-06-10T14:52:05.120124+00:00",
+      "exit_price": 379.8035876464844,
+      "size": 9000.0,
+      "pnl": 719.9999999999994,
+      "reason": "tp1"
     }
   ],
-  "n_trades_total": 8,
-  "last_updated_utc": "2026-06-10T14:47:06.039726+00:00"
+  "n_trades_total": 9,
+  "last_updated_utc": "2026-06-10T14:52:05.120170+00:00"
 }
