@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-10T11:21:39.923138+00:00",
+  "generated_at_utc": "2026-06-10T11:26:38.221096+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-10T11:00:00+00:00",
-      "close": 4188.0,
-      "ema": 4293.121352287361,
-      "sma": 4400.335381610577,
-      "vwap": 4209.217894582802,
+      "close": 4189.60009765625,
+      "ema": 4293.184101215058,
+      "sma": 4400.347690054086,
+      "vwap": 4209.043938430228,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13323,15 +13323,15 @@
         "bias": "bearish",
         "strength": "strong",
         "adx": 40.02,
-        "ema_slope_4bar": -17.5183,
+        "ema_slope_4bar": -17.4556,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,293.12)",
+          "Close > EMA50 (4,293.18)",
           "ADX falls below 20 (now 40.0)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 40.0, close 4,188.00 vs EMA50 4,293.12) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 40.0, close 4,189.60 vs EMA50 4,293.18) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17728,11 +17728,11 @@
           "o": 4197.5,
           "h": 4198.60009765625,
           "l": 4176.0,
-          "c": 4188.0,
-          "v": 2699.0,
-          "ema": 4293.121352287361,
-          "sma": 4400.335381610577,
-          "vwap": 4209.217894582802
+          "c": 4189.60009765625,
+          "v": 3321.0,
+          "ema": 4293.184101215058,
+          "sma": 4400.347690054086,
+          "vwap": 4209.043938430228
         }
       ]
     },
@@ -22170,14 +22170,14 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 6,
+    "risk_off_score": 7,
     "risk_on_score": 0,
     "theme_hits": {
       "war": 5,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 1,
+      "crash": 2,
       "rate_cut": 0,
       "risk_on": 0
     },
@@ -22191,6 +22191,7 @@
       "recession": [],
       "rate_hike": [],
       "crash": [
+        "Dow Jones Futures Tumble As Trump Says Iran Will 'Have To Pay The Price'; CPI Inflation On Tap",
         "SoftBank sinks over 8% as Asia tech stocks tumble, tracking Wall Street losses"
       ],
       "rate_cut": [],
@@ -22204,7 +22205,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781090500.8357303,
+    "fetched_at": 1781090798.8774807,
     "risk_off_themes": [
       "banking",
       "crash",
