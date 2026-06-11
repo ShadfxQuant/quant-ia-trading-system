@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-11T07:06:07.661707+00:00",
+  "generated_at_utc": "2026-06-11T07:11:10.888064+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13308,11 +13308,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-11T06:00:00+00:00",
-      "close": 4115.7001953125,
-      "ema": 4201.5487636646385,
-      "sma": 4348.283079176683,
-      "vwap": 4102.945288939056,
+      "bar_time_utc": "2026-06-11T07:00:00+00:00",
+      "close": 4115.0,
+      "ema": 4198.15469450132,
+      "sma": 4345.553849909856,
+      "vwap": 4103.010890787465,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,29 +13322,18 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 43.18,
-        "ema_slope_4bar": -16.2367,
+        "adx": 41.26,
+        "ema_slope_4bar": -14.8353,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,201.55)",
-          "ADX falls below 20 (now 43.2)",
+          "Close > EMA50 (4,198.15)",
+          "ADX falls below 20 (now 41.3)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 43.2, close 4,115.70 vs EMA50 4,201.55) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 41.3, close 4,115.00 vs EMA50 4,198.15) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
-        {
-          "t": "2026-05-15T15:00:00+00:00",
-          "o": 4567.2998046875,
-          "h": 4568.0,
-          "l": 4538.0,
-          "c": 4543.7998046875,
-          "v": 7788.0,
-          "ema": 4636.920460377611,
-          "sma": 4691.839231520433,
-          "vwap": 4571.729552912821
-        },
         {
           "t": "2026-05-15T16:00:00+00:00",
           "o": 4543.7998046875,
@@ -17729,10 +17718,21 @@
           "h": 4118.5,
           "l": 4097.0,
           "c": 4115.7001953125,
-          "v": 4342.0,
+          "v": 4578.0,
           "ema": 4201.5487636646385,
           "sma": 4348.283079176683,
-          "vwap": 4102.945288939056
+          "vwap": 4102.981667987772
+        },
+        {
+          "t": "2026-06-11T07:00:00+00:00",
+          "o": 4115.60009765625,
+          "h": 4117.0,
+          "l": 4113.89990234375,
+          "c": 4115.0,
+          "v": 115.0,
+          "ema": 4198.15469450132,
+          "sma": 4345.553849909856,
+          "vwap": 4103.010890787465
         }
       ]
     },
@@ -22170,13 +22170,13 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 10,
+    "risk_off_score": 12,
     "risk_on_score": 0,
     "theme_hits": {
-      "war": 5,
+      "war": 6,
       "banking": 0,
       "recession": 1,
-      "rate_hike": 1,
+      "rate_hike": 2,
       "crash": 3,
       "rate_cut": 0,
       "risk_on": 0
@@ -22192,7 +22192,8 @@
         "As Salesforce begins layoffs, here's the standard severance package the company offers employees - Business Insider"
       ],
       "rate_hike": [
-        "Markets are pricing in a rate hike by the European Central Bank \u2014 which one top economist sees as a \u2018mistake in the making\u2019"
+        "Markets are pricing in a rate hike by the European Central Bank \u2014 which one top economist sees as a \u2018mistake in the making\u2019",
+        "Gold And Silver Price Hit 2-Month Lows Following Iran Tensions, Interest Rate Hike Fears - Forbes"
       ],
       "crash": [
         "The furious dispute over what caused Air India flight 171 to crash",
@@ -22202,7 +22203,7 @@
       "rate_cut": [],
       "risk_on": []
     },
-    "n_headlines": 111,
+    "n_headlines": 112,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -22210,7 +22211,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781161568.2969298,
+    "fetched_at": 1781161871.5294638,
     "risk_off_themes": [
       "banking",
       "crash",
