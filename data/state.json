@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-11T09:31:12.684381+00:00",
+  "generated_at_utc": "2026-06-11T09:36:08.605935+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-11T09:00:00+00:00",
-      "close": 4107.2001953125,
-      "ema": 4191.491551986733,
-      "sma": 4340.06923452524,
-      "vwap": 4106.232769027833,
+      "close": 4102.0,
+      "ema": 4191.287622758791,
+      "sma": 4340.029233022837,
+      "vwap": 4106.154685167249,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,16 +13322,16 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 36.73,
-        "ema_slope_4bar": -13.5612,
+        "adx": 36.8,
+        "ema_slope_4bar": -13.7652,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,191.49)",
-          "ADX falls below 20 (now 36.7)",
+          "Close > EMA50 (4,191.29)",
+          "ADX falls below 20 (now 36.8)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 36.7, close 4,107.20 vs EMA50 4,191.49) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 36.8, close 4,102.00 vs EMA50 4,191.29) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17727,12 +17727,12 @@
           "t": "2026-06-11T09:00:00+00:00",
           "o": 4105.0,
           "h": 4110.0,
-          "l": 4101.89990234375,
-          "c": 4107.2001953125,
-          "v": 1686.0,
-          "ema": 4191.491551986733,
-          "sma": 4340.06923452524,
-          "vwap": 4106.232769027833
+          "l": 4100.0,
+          "c": 4102.0,
+          "v": 2081.0,
+          "ema": 4191.287622758791,
+          "sma": 4340.029233022837,
+          "vwap": 4106.154685167249
         }
       ]
     },
@@ -22170,16 +22170,16 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 13,
-    "risk_on_score": 1,
+    "risk_off_score": 14,
+    "risk_on_score": 0,
     "theme_hits": {
-      "war": 6,
+      "war": 7,
       "banking": 0,
       "recession": 1,
       "rate_hike": 2,
       "crash": 4,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 0
     },
     "sample_headlines": {
       "war": [
@@ -22201,9 +22201,7 @@
         "Wall Street needs a crash course in the token economy ahead of AI IPOs. SpaceX offers a preview"
       ],
       "rate_cut": [],
-      "risk_on": [
-        "Nuvalent Stock Hits All-Time High Following GSK's Buyout Offer"
-      ]
+      "risk_on": []
     },
     "n_headlines": 112,
     "sources_used": [
@@ -22213,7 +22211,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781170273.2420046,
+    "fetched_at": 1781170569.3175514,
     "risk_off_themes": [
       "banking",
       "crash",
