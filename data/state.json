@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-11T20:36:09.864576+00:00",
+  "generated_at_utc": "2026-06-11T20:41:08.937867+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13308,10 +13308,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-11T20:00:00+00:00",
-      "close": 4234.5,
-      "ema": 4175.4517390927795,
-      "sma": 4310.999230018029,
-      "vwap": 4125.443959869129,
+      "close": 4235.0,
+      "ema": 4175.471346935917,
+      "sma": 4311.003076171875,
+      "vwap": 4125.660629824229,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,14 +13322,14 @@
         "bias": "neutral",
         "strength": "strong",
         "adx": 30.65,
-        "ema_slope_4bar": 5.358,
+        "ema_slope_4bar": 5.3776,
         "regime_pct_24h": 4.2,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 30.7, close 4,234.50 vs EMA50 4,175.45) and the trend is strong. The regime filter is mostly blocking \u2014 only 4% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 30.7, close 4,235.00 vs EMA50 4,175.47) and the trend is strong. The regime filter is mostly blocking \u2014 only 4% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -17726,11 +17726,11 @@
           "o": 4230.2001953125,
           "h": 4240.0,
           "l": 4229.2001953125,
-          "c": 4234.5,
-          "v": 2055.0,
-          "ema": 4175.4517390927795,
-          "sma": 4310.999230018029,
-          "vwap": 4125.443959869129
+          "c": 4235.0,
+          "v": 2416.0,
+          "ema": 4175.471346935917,
+          "sma": 4311.003076171875,
+          "vwap": 4125.660629824229
         }
       ]
     },
@@ -22168,13 +22168,13 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 6,
+    "risk_off_score": 7,
     "risk_on_score": 1,
     "theme_hits": {
       "war": 2,
       "banking": 0,
       "recession": 0,
-      "rate_hike": 0,
+      "rate_hike": 1,
       "crash": 4,
       "rate_cut": 0,
       "risk_on": 1
@@ -22186,7 +22186,9 @@
       ],
       "banking": [],
       "recession": [],
-      "rate_hike": [],
+      "rate_hike": [
+        "Annual CPI inflation surges to 4.2% in May, the highest level since 2023, as energy prices rise"
+      ],
       "crash": [
         "The furious dispute over what caused Air India flight 171 to crash",
         "Air India crash pilot's father vows to defend son's reputation",
@@ -22204,7 +22206,7 @@
       "cnbc_top",
       "marketwatch"
     ],
-    "fetched_at": 1781210170.6726623,
+    "fetched_at": 1781210470.206773,
     "risk_off_themes": [
       "banking",
       "crash",
