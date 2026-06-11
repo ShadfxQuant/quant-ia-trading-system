@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-11T09:16:16.258499+00:00",
+  "generated_at_utc": "2026-06-11T09:21:17.268792+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-11T09:00:00+00:00",
-      "close": 4104.2998046875,
-      "ema": 4191.377811177908,
-      "sma": 4340.046923828125,
-      "vwap": 4106.222768572464,
+      "close": 4104.5,
+      "ema": 4191.385661974477,
+      "sma": 4340.048463792067,
+      "vwap": 4106.211400946783,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,16 +13322,16 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 36.67,
-        "ema_slope_4bar": -13.675,
+        "adx": 36.73,
+        "ema_slope_4bar": -13.6671,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,191.38)",
+          "Close > EMA50 (4,191.39)",
           "ADX falls below 20 (now 36.7)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 36.7, close 4,104.30 vs EMA50 4,191.38) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 36.7, close 4,104.50 vs EMA50 4,191.39) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17727,12 +17727,12 @@
           "t": "2026-06-11T09:00:00+00:00",
           "o": 4105.0,
           "h": 4108.5,
-          "l": 4103.5,
-          "c": 4104.2998046875,
-          "v": 478.0,
-          "ema": 4191.377811177908,
-          "sma": 4340.046923828125,
-          "vwap": 4106.222768572464
+          "l": 4101.89990234375,
+          "c": 4104.5,
+          "v": 854.0,
+          "ema": 4191.385661974477,
+          "sma": 4340.048463792067,
+          "vwap": 4106.211400946783
         }
       ]
     },
@@ -22170,22 +22170,22 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 12,
-    "risk_on_score": 2,
+    "risk_off_score": 13,
+    "risk_on_score": 1,
     "theme_hits": {
-      "war": 5,
+      "war": 6,
       "banking": 0,
       "recession": 1,
       "rate_hike": 2,
       "crash": 4,
       "rate_cut": 0,
-      "risk_on": 2
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
+        "Three Indian sailors killed in US strike on oil tanker",
         "Pakistan launches deadly air strikes in Afghanistan, reigniting tensions",
-        "Ukraine says missiles hit military plant deep inside Russia",
-        "Investors brace for a 'long grind' as Iran war escalation dims hopes of an early end to hostilities"
+        "Ukraine says missiles hit military plant deep inside Russia"
       ],
       "banking": [],
       "recession": [
@@ -22202,8 +22202,7 @@
       ],
       "rate_cut": [],
       "risk_on": [
-        "Nuvalent Stock Hits All-Time High Following GSK's Buyout Offer",
-        "Reading the Retail Sales Rally"
+        "Nuvalent Stock Hits All-Time High Following GSK's Buyout Offer"
       ]
     },
     "n_headlines": 112,
@@ -22214,7 +22213,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781169377.1763282,
+    "fetched_at": 1781169677.893013,
     "risk_off_themes": [
       "banking",
       "crash",
