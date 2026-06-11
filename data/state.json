@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-11T09:06:16.699698+00:00",
+  "generated_at_utc": "2026-06-11T09:11:13.496173+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13308,11 +13308,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-11T08:00:00+00:00",
-      "close": 4107.10009765625,
-      "ema": 4194.990839053868,
-      "sma": 4342.85000375601,
-      "vwap": 4106.257412599493,
+      "bar_time_utc": "2026-06-11T09:00:00+00:00",
+      "close": 4104.7001953125,
+      "ema": 4191.393512771046,
+      "sma": 4340.05000375601,
+      "vwap": 4106.227457109837,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,29 +13322,18 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 38.53,
-        "ema_slope_4bar": -13.7172,
+        "adx": 36.66,
+        "ema_slope_4bar": -13.6593,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,194.99)",
-          "ADX falls below 20 (now 38.5)",
+          "Close > EMA50 (4,191.39)",
+          "ADX falls below 20 (now 36.7)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 38.5, close 4,107.10 vs EMA50 4,194.99) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 36.7, close 4,104.70 vs EMA50 4,191.39) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
-        {
-          "t": "2026-05-15T17:00:00+00:00",
-          "o": 4548.5,
-          "h": 4568.7001953125,
-          "l": 4547.2001953125,
-          "c": 4564.0,
-          "v": 7373.0,
-          "ema": 4630.736886833973,
-          "sma": 4689.222306941106,
-          "vwap": 4570.103814248199
-        },
         {
           "t": "2026-05-15T18:00:00+00:00",
           "o": 4564.2998046875,
@@ -17727,12 +17716,23 @@
           "t": "2026-06-11T08:00:00+00:00",
           "o": 4125.7001953125,
           "h": 4133.60009765625,
-          "l": 4105.89990234375,
-          "c": 4107.10009765625,
-          "v": 5298.0,
-          "ema": 4194.990839053868,
-          "sma": 4342.85000375601,
-          "vwap": 4106.257412599493
+          "l": 4105.60009765625,
+          "c": 4105.60009765625,
+          "v": 5467.0,
+          "ema": 4194.932015524456,
+          "sma": 4342.8384652944715,
+          "vwap": 4106.2290253064
+        },
+        {
+          "t": "2026-06-11T09:00:00+00:00",
+          "o": 4105.0,
+          "h": 4107.5,
+          "l": 4103.7001953125,
+          "c": 4104.7001953125,
+          "v": 102.0,
+          "ema": 4191.393512771046,
+          "sma": 4340.05000375601,
+          "vwap": 4106.227457109837
         }
       ]
     },
@@ -22170,16 +22170,16 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 11,
-    "risk_on_score": 1,
+    "risk_off_score": 12,
+    "risk_on_score": 2,
     "theme_hits": {
       "war": 5,
       "banking": 0,
       "recession": 1,
       "rate_hike": 2,
-      "crash": 3,
+      "crash": 4,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
@@ -22197,12 +22197,13 @@
       ],
       "crash": [
         "The furious dispute over what caused Air India flight 171 to crash",
-        "Wall Street needs a crash course in the token economy ahead of AI IPOs. SpaceX offers a preview",
-        "As gold's tumble continues, traders bet the pain may last for two more years"
+        "Is the housing market going to crash in 2026? Learn what experts predict.",
+        "Wall Street needs a crash course in the token economy ahead of AI IPOs. SpaceX offers a preview"
       ],
       "rate_cut": [],
       "risk_on": [
-        "Nuvalent Stock Hits All-Time High Following GSK's Buyout Offer"
+        "Nuvalent Stock Hits All-Time High Following GSK's Buyout Offer",
+        "Reading the Retail Sales Rally"
       ]
     },
     "n_headlines": 112,
@@ -22213,7 +22214,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781168777.7170296,
+    "fetched_at": 1781169073.8774202,
     "risk_off_themes": [
       "banking",
       "crash",
