@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-11T11:01:14.530278+00:00",
+  "generated_at_utc": "2026-06-11T11:06:18.137702+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-11T10:00:00+00:00",
-      "close": 4110.7001953125,
-      "ema": 4188.519177095649,
-      "sma": 4337.344617638221,
-      "vwap": 4106.62653058067,
+      "close": 4110.2001953125,
+      "ema": 4188.499569252512,
+      "sma": 4337.340771484375,
+      "vwap": 4106.632637428511,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13323,15 +13323,15 @@
         "bias": "bearish",
         "strength": "strong",
         "adx": 35.33,
-        "ema_slope_4bar": -13.0296,
+        "ema_slope_4bar": -13.0492,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,188.52)",
+          "Close > EMA50 (4,188.50)",
           "ADX falls below 20 (now 35.3)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 35.3, close 4,110.70 vs EMA50 4,188.52) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 35.3, close 4,110.20 vs EMA50 4,188.50) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17728,11 +17728,11 @@
           "o": 4111.7998046875,
           "h": 4115.60009765625,
           "l": 4107.2001953125,
-          "c": 4110.7001953125,
-          "v": 2211.0,
-          "ema": 4188.519177095649,
-          "sma": 4337.344617638221,
-          "vwap": 4106.62653058067
+          "c": 4110.2001953125,
+          "v": 2390.0,
+          "ema": 4188.499569252512,
+          "sma": 4337.340771484375,
+          "vwap": 4106.632637428511
         }
       ]
     },
@@ -22170,41 +22170,38 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 13,
-    "risk_on_score": 1,
+    "risk_off_score": 10,
+    "risk_on_score": 0,
     "theme_hits": {
-      "war": 8,
+      "war": 6,
       "banking": 0,
       "recession": 1,
-      "rate_hike": 2,
+      "rate_hike": 1,
       "crash": 2,
-      "rate_cut": 1,
+      "rate_cut": 0,
       "risk_on": 0
     },
     "sample_headlines": {
       "war": [
-        "Three Indian sailors killed in US strike on oil tanker",
         "Pakistan launches deadly air strikes in Afghanistan, reigniting tensions",
-        "Ukraine says missiles hit military plant deep inside Russia"
+        "Ukraine says missiles hit military plant deep inside Russia",
+        "U.S. becomes India\u2019s top gas supplier, as Iran war cuts it off from the Gulf"
       ],
       "banking": [],
       "recession": [
         "As Salesforce begins layoffs, here's the standard severance package the company offers employees - Business Insider"
       ],
       "rate_hike": [
-        "Markets are pricing in a rate hike by the European Central Bank \u2014 which one top economist sees as a \u2018mistake in the making\u2019",
-        "Gold And Silver Price Hit 2-Month Lows Following Iran Tensions, Interest Rate Hike Fears - Forbes"
+        "Markets are pricing in a rate hike by the European Central Bank \u2014 which one top economist sees as a \u2018mistake in the making\u2019"
       ],
       "crash": [
         "The furious dispute over what caused Air India flight 171 to crash",
         "Wall Street needs a crash course in the token economy ahead of AI IPOs. SpaceX offers a preview"
       ],
-      "rate_cut": [
-        "Goldman Sachs sends strong message on next Fed rate cut"
-      ],
+      "rate_cut": [],
       "risk_on": []
     },
-    "n_headlines": 112,
+    "n_headlines": 111,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -22212,7 +22209,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781175674.9916263,
+    "fetched_at": 1781175978.586926,
     "risk_off_themes": [
       "banking",
       "crash",
