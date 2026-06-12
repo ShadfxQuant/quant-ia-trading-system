@@ -624,6 +624,36 @@ REGIME_FLIP_EXIT_SYMBOLS: set = {"GC=F"}
 
 
 # ---------------------------------------------------------------------------
+# Per-symbol exit ladder overrides (Part 8.30).
+# The 8.29 exit sweep found GLD wants wider exits (PF 4.04 -> 5.31 at
+# TP1=5%/TP2=20%) but a UNIVERSAL change regressed SPY/^NDX. Solution:
+# per-symbol overrides. Only GLD gets the wider ladder.
+#
+# Format: { symbol: { field: value } } — partial overrides on PULLBACK
+# fields. None / empty dict = use defaults.
+# ---------------------------------------------------------------------------
+SYMBOL_EXIT_OVERRIDES: dict = {
+    "GLD": {
+        "partial_tp_pct": 0.05,    # wider TP1 to capture gold's longer runs
+        "final_tp_pct":   0.20,    # wider TP2 (was 15%, gold trends run further)
+    },
+}
+
+
+def get_pullback_cfg(symbol: str):
+    """Return a PULLBACK config for the symbol, applying per-symbol overrides."""
+    from copy import copy
+    base = PULLBACK
+    overrides = SYMBOL_EXIT_OVERRIDES.get(symbol)
+    if not overrides:
+        return base
+    cfg = copy(base)
+    for k, v in overrides.items():
+        setattr(cfg, k, v)
+    return cfg
+
+
+# ---------------------------------------------------------------------------
 # Trading-venue label map (Part 8.16).
 # The signal engine runs on yfinance proxy tickers (clean PF, NYSE-hours
 # microstructure). The user executes on MT5 CFDs. SPY ↔ US500, QQQ ↔ US100,

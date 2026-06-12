@@ -2806,3 +2806,76 @@ That's exactly its job. The gate-first / MC-validated process is working.
 | Slippage / execution friction in MC | Medium | Realistic live CAGR estimation |
 | Cross-sectional momentum scoring | Low | Clenow lesson, modest expected lift |
 | Ensemble weak alphas | Low | WorldQuant lesson, not blocking |
+
+---
+
+## Part 8.30 — Walk-forward + per-symbol exits + slippage MC (2026-06-12)
+
+### Three validations shipped
+
+**Phase 1 — Walk-forward (3 chronological chunks per symbol)**
+
+| Symbol | Min chunk PF | Mean PF | Min chunk CAGR | Verdict |
+|---|---|---|---|---|
+| **^NDX** | 2.45 | 2.71 | +19.0% | ✅ stable — edge persistent across regimes |
+| **GLD** | 2.79 | 3.83 | +26.1% | ✅ stable — edge persistent |
+| **SPY** | 1.28 | 2.85 | **+4.2%** (most recent 12mo) | ⚠️ unstable — SPY edge degrading recently |
+| **GC=F** | 1.07 | 1.36 | +2.2% (middle chunk) | ⚠️ unstable — middle period weak |
+
+**Important takeaway: SPY's most recent 12 months (2025-06 → 2026-06) shows PF dropping to 1.28 from chunk-1/2 of 3.4/3.8.** Engine is losing grip on SPY in the current regime. ^NDX still strong, so this is SPY-specific not engine-wide. Worth monitoring.
+
+**Phase 2 — Per-symbol exit overrides shipped**
+
+Built `SYMBOL_EXIT_OVERRIDES` dict + `get_pullback_cfg(symbol)` helper. GLD now uses TP1=5%/TP2=20% (per Part 8.29 finding). SPY/^NDX/GC=F unchanged.
+
+| Metric | Before | After per-symbol override | Δ |
+|---|---|---|---|
+| Realized profit | +$309,279 | **+$318,872** | +$9,593 |
+| GLD specific | +$133,533 | **+$151,524** | +$17,991 |
+| GLD CAGR | +34.9% | **+38.5%** | +3.6pp |
+| GLD DD | −7.5% | **−5.6%** | tighter |
+| 3yr MC mean wealth | $451,629 | **$462,517** | +$10,888 |
+| P(ruin) | 0.00% | 0.00% | same |
+
+GLD's wider exits captured cleanly. Other symbols untouched. The MC harness confirms no regression elsewhere.
+
+**Phase 3 — Slippage / friction MC (the sobering one)**
+
+Added `_montecarlo_with_slippage.py` — subtracts per-trade friction from each bootstrap sample. Shows realistic CAGR by friction tier.
+
+| Friction (per round trip) | 3yr mean wealth | p50 CAGR | P(double) | P(ruin) | Venue typical |
+|---|---|---|---|---|---|
+| 0 bp | +$462K | +65.8% | 100.0% | 0.00% | idealized backtest |
+| 5 bp | +$286K | +41.3% | 98.7% | 0.00% | best-case MT5 |
+| **10 bp** | **+$177K** | **+20.5%** | **19.8%** | **0.00%** | **typical MT5 CFD** |
+| 15 bp | +$110K | +2.7% | 0.0% | 0.00% | wide-spread MT5 |
+| 20 bp | +$68K | −12.4% | 0.0% | 2.96% | typical tokenized perp |
+| 30 bp | +$26K | −36.2% | 0.0% | 100% | high-friction perp |
+| 50 bp | +$4K | −66.3% | 0.0% | 100% | catastrophic |
+
+**The honest realistic 3-year expectation at typical MT5 friction (10 bp) is +$177K mean, NOT +$462K.** P(double) drops from 100% (idealized) to 19.8% (realistic). P(ruin) stays 0% across all reasonable friction tiers.
+
+### Honest forecast update
+
+| Forecast view | 3yr mean wealth | p50 CAGR |
+|---|---|---|
+| Backtest no-friction (used everywhere prior to 8.30) | $462K | +65.8% |
+| **Realistic at typical MT5 (10 bp)** | **$177K** | **+20.5%** |
+| Best-case MT5 (5 bp) | $286K | +41.3% |
+| Worst-case MT5 (15 bp) | $110K | +2.7% |
+
+The system is still profitable on realistic friction. The CAGR halves but P(ruin) stays zero. This is the number to anchor expectations on, not the idealized backtest.
+
+### What this changes in the brain
+
+The Part 8.12 / 8.22 headline number "$100K → $462K mean over 3 years" needs an asterisk. The realistic expectation accounting for real-world MT5 friction is more like **$100K → $180K-$280K range over 3 years** depending on broker quality. Still profitable, still zero-ruin, still beats most retail benchmarks — but materially less impressive than the no-friction headline.
+
+### Queue items added
+
+| Task | Priority | Source |
+|---|---|---|
+| Track SPY chunk-3 degradation — is it temporary or structural? | High | Walk-forward finding |
+| Measure actual MT5 friction on user's broker | High | Slippage MC needs ground truth |
+| Per-symbol regime-flip threshold tuning for GC=F | Medium | Walk-forward chunk 2 weakness |
+| Re-test friction-realistic numbers when paper window closes | Medium | Calibrate against live data |
+

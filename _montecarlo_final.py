@@ -23,7 +23,7 @@ except Exception: pass
 
 import numpy as np
 import pandas as pd
-from config.settings import PULLBACK, TRENDCARRY
+from config.settings import PULLBACK, TRENDCARRY, get_pullback_cfg
 from core.data_loader import load_symbol
 from main_portfolio import prepare_dual
 from strategies.pullback import exit_profile_for as pb_exit
@@ -44,7 +44,7 @@ RNG = np.random.default_rng(2026)
 def trades_for(symbol):
     df = prepare_dual(load_symbol(symbol))
     bt = run_portfolio(df, [
-        StrategySpec("pullback", PULLBACK, pb_exit()),
+        StrategySpec("pullback", get_pullback_cfg(symbol), pb_exit(get_pullback_cfg(symbol))),
         StrategySpec("trend_carry", TRENDCARRY, tc_exit()),
     ], symbol=symbol, initial_capital=INITIAL)
     tr = bt["trades"].copy()

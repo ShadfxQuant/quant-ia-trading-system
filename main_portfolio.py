@@ -191,8 +191,11 @@ def run(symbol: str = "SPY") -> dict:
     prepared = prepare_dual(raw)
     weeks = (prepared.index.max() - prepared.index.min()).days / 7.0
 
+    # Part 8.30: per-symbol exit overrides (e.g. GLD wants wider TPs)
+    from config.settings import get_pullback_cfg
+    pb_cfg = get_pullback_cfg(symbol)
     strategies = [
-        StrategySpec(name="pullback",    cfg=PULLBACK,   exit_profile=pullback_exit_profile()),
+        StrategySpec(name="pullback",    cfg=pb_cfg,     exit_profile=pullback_exit_profile(pb_cfg)),
         StrategySpec(name="trend_carry", cfg=TRENDCARRY, exit_profile=trend_carry_exit_profile()),
     ]
     bt = run_portfolio(prepared, strategies, symbol=symbol)
