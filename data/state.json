@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-12T07:11:08.813013+00:00",
+  "generated_at_utc": "2026-06-12T07:16:10.858925+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13308,10 +13308,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-12T07:00:00+00:00",
-      "close": 4205.0,
-      "ema": 4189.305647698648,
-      "sma": 4288.899222506009,
-      "vwap": 4213.977548911923,
+      "close": 4200.2998046875,
+      "ema": 4189.121326313844,
+      "sma": 4288.863067157452,
+      "vwap": 4213.848424861787,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,14 +13322,14 @@
         "bias": "neutral",
         "strength": "weak",
         "adx": 25.05,
-        "ema_slope_4bar": 2.5853,
+        "ema_slope_4bar": 2.401,
         "regime_pct_24h": 16.7,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 25.0, close 4,205.00 vs EMA50 4,189.31) but the trend is only weak. The regime filter is mostly blocking \u2014 only 17% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 25.0, close 4,200.30 vs EMA50 4,189.12) but the trend is only weak. The regime filter is mostly blocking \u2014 only 17% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -17725,12 +17725,12 @@
           "t": "2026-06-12T07:00:00+00:00",
           "o": 4205.5,
           "h": 4206.2998046875,
-          "l": 4202.7001953125,
-          "c": 4205.0,
-          "v": 84.0,
-          "ema": 4189.305647698648,
-          "sma": 4288.899222506009,
-          "vwap": 4213.977548911923
+          "l": 4197.5,
+          "c": 4200.2998046875,
+          "v": 323.0,
+          "ema": 4189.121326313844,
+          "sma": 4288.863067157452,
+          "vwap": 4213.848424861787
         }
       ]
     },
@@ -22168,13 +22168,13 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 8,
+    "risk_off_score": 7,
     "risk_on_score": 0,
     "theme_hits": {
       "war": 6,
       "banking": 0,
       "recession": 0,
-      "rate_hike": 1,
+      "rate_hike": 0,
       "crash": 1,
       "rate_cut": 0,
       "risk_on": 0
@@ -22187,9 +22187,7 @@
       ],
       "banking": [],
       "recession": [],
-      "rate_hike": [
-        "Dollar slips as US inflation data keeps rate hike at bay"
-      ],
+      "rate_hike": [],
       "crash": [
         "The furious dispute over what caused Air India flight 171 to crash"
       ],
@@ -22204,7 +22202,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781248269.5373435,
+    "fetched_at": 1781248571.6082323,
     "risk_off_themes": [
       "banking",
       "crash",
