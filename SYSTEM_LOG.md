@@ -2439,3 +2439,81 @@ Output goes to `research/results/portfolio_scan_<timestamp>.csv` and `portfolio_
 | Add walk-forward 3-fold to scanner | Medium | Filter out 2024-26 bull-year edges |
 | Track promotion candidates across runs (history) | Medium | Surface "improving" symbols vs "degrading" |
 
+
+---
+
+## Part 8.26 — Symbol Edge Explorer (2026-06-11)
+
+### The reframing
+
+User asked: "don't see which ones fit our edge — see which ones we can find an edge on." The previous portfolio_scanner asked "does the pullback engine work?" This asks the inverse: "**which edge family does each symbol prefer**, regardless of our current engine?"
+
+### Tool shipped
+
+`research/symbol_edge_explorer.py` — for any yfinance ticker, runs the full 46-edge library across 3 horizons, ranks by t-stat, identifies the dominant category, and emits an engine-build recommendation.
+
+```bash
+python3 -m research.symbol_edge_explorer AAPL NVDA TSLA
+python3 -m research.symbol_edge_explorer --watchlist  # 60-symbol universe
+python3 -m research.symbol_edge_explorer AAPL --json
+```
+
+Output per symbol:
+- Best edge name + category + t-stat + hit rate + mean bps + direction
+- Top 5 distinct edges
+- Category density (count of strong edges per family, |t|>3)
+- **Engine recommendation** (pullback / mean-rev / vol-breakout / orderflow / etc.)
+
+### Universe edge-family breakdown (from existing 44-symbol mining)
+
+Every single symbol has at least one strong edge. The question is which engine captures it:
+
+| Edge family | Symbols where strongest | Engine status |
+|---|---|---|
+| **MOMENTUM** | SPY, QQQ, GLD, ^NDX, DIA, MDY, NQ=F, ES=F, IWM, USO, NG=F, HG=F, AUDUSD, GBPUSD, XLI, SLV, XLE, RTY=F, CL=F, DBC | ✅ pullback (shipped) |
+| **ORDERFLOW** | XLC, XLF, XLY, XLB, LQD, SHY, XLRE, YM=F | ❌ NEEDS BUILD |
+| **GAMMA_PROXY** | ^VIX, USDJPY, SI=F, TLT, BTC-USD | ❌ NEEDS BUILD |
+| **VOL_REGIME** | CPER, XLP, UNG, USDCAD, **AAPL, TSLA** | ❌ NEEDS BUILD |
+| **MEAN_REV** | XLK, HYG | ❌ NEEDS BUILD |
+| **STACK** | DIA-bearish, XLV, IEF, ETH | ❌ NEEDS BUILD |
+| **TIME_OF_DAY** | GC=F, XLU, EURUSD, **NVDA** | ❌ NEEDS BUILD (overlay) |
+
+### Mega-cap discovery (rejected by pullback, but rich in other edges)
+
+| Symbol | Pullback engine | Strong edges | Best edge (h=100) | Best engine |
+|---|---|---|---|---|
+| NVDA | DD −38.8% ❌ | **72** | dow_midweek t=20.17 | calendar overlay |
+| AAPL | DD −15.2% ❌ | 44 | rvol_high_decile t=16.25 | **vol-breakout** |
+| **TSLA** | DD −24.2% ❌ | 42 | rvol_high_decile t=11.69, **+528 bps** | **vol-breakout** |
+| META | weak | 46 | trend_below_50sma t=14.75 | pullback (tunable) |
+| MSFT | weak | 17 | death_cross_state t=6.33 | pullback (tunable) |
+
+**TSLA single finding**: rvol_high_decile fires at 66.9% hit rate with **+528 bps mean forward return over 100 bars**. Our current engine ignores TSLA. A volatility-breakout engine harvests this directly.
+
+### Implications for the roadmap
+
+| Engine to build | Priority | Symbols unlocked | Mean edge strength |
+|---|---|---|---|
+| **Vol-breakout** | **HIGH** | AAPL, TSLA, CPER, XLP, UNG, USDCAD + others | t=8-16, often +100-500bp |
+| **Orderflow-exhaustion** | HIGH | XLC, XLF, XLY, XLB, LQD, SHY, XLRE, YM=F | t=5-9, +30-80bp |
+| **Stack-conditions** | MEDIUM | DIA bearish, XLV, IEF, ETH | t=5-9, +30-90bp |
+| **Vol-compression** | MEDIUM | ^VIX, USDJPY, SI=F, TLT, BTC | t=4-9, varies wildly |
+| **Calendar overlay** | LOW (boost) | NVDA + applies on everything | additive boost |
+| **Mean-rev** | LOW | XLK, HYG | t=5-7, +60-80bp |
+
+Each engine is its own pullback-engine-equivalent build: signal logic, exit ladder, sizing rules, MC validation, paper validation, then live. Same shipping discipline as everything in Part 8.
+
+### What this means for the user
+
+> The universe of tradeable symbols is at least **2-3× bigger** than we currently exploit. We've been measuring "does the pullback engine work?" which rejects ~75% of the universe. We should be measuring "what engine does this symbol want?" which would unlock most of those rejections.
+
+### Open queue additions (Part 8.26)
+
+| Task | Priority | Connects to |
+|---|---|---|
+| **Build vol-breakout engine** | High | TSLA/AAPL alone justify it (+528bp/+200bp expected) |
+| **Build orderflow-exhaustion engine** | High | 8 sector ETFs + YM futures |
+| Run symbol_edge_explorer on full 60-symbol universe | Medium | Build the complete engine-roadmap |
+| Auto-update the engine recommendation per symbol weekly | Medium | Track when symbols change preferred engine |
+| Cross-reference with portfolio_scanner output | Medium | "Engine X exists, here are 8 symbols pullback rejected" |
+
