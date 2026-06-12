@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-12T13:56:08.343967+00:00",
+  "generated_at_utc": "2026-06-12T14:01:09.805156+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -19,10 +19,10 @@
     "SPY": {
       "symbol": "SPY",
       "bar_time_utc": "2026-06-12T13:30:00+00:00",
-      "close": 736.4349975585938,
-      "ema": 739.2969297746744,
-      "sma": 745.3249060997596,
-      "vwap": 737.4583333333334,
+      "close": 738.0599975585938,
+      "ema": 739.3606552648704,
+      "sma": 745.3374060997596,
+      "vwap": 738.0,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -33,15 +33,15 @@
         "bias": "bearish",
         "strength": "weak",
         "adx": 25.29,
-        "ema_slope_4bar": -0.4584,
+        "ema_slope_4bar": -0.3947,
         "regime_pct_24h": 100.0,
         "macro_tilt": "supports",
         "flip": [
-          "Close > EMA50 (739.30)",
+          "Close > EMA50 (739.36)",
           "ADX falls below 20 (now 25.3)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "SPY leans short (ADX 25.3, close 736.43 vs EMA50 739.30) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "SPY leans short (ADX 25.3, close 738.06 vs EMA50 739.36) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -4438,21 +4438,21 @@
           "o": 740.7100219726562,
           "h": 740.8900146484375,
           "l": 735.0499877929688,
-          "c": 736.4349975585938,
-          "v": 6418049.0,
-          "ema": 739.2969297746744,
-          "sma": 745.3249060997596,
-          "vwap": 737.4583333333334
+          "c": 738.0599975585938,
+          "v": 7543288.0,
+          "ema": 739.3606552648704,
+          "sma": 745.3374060997596,
+          "vwap": 738.0
         }
       ]
     },
     "^NDX": {
       "symbol": "^NDX",
       "bar_time_utc": "2026-06-12T13:30:00+00:00",
-      "close": 29330.09375,
-      "ema": 29347.863403662086,
-      "sma": 29640.843719951925,
-      "vwap": 29336.938802083332,
+      "close": 29420.767578125,
+      "ema": 29351.419240059146,
+      "sma": 29641.5412109375,
+      "vwap": 29367.163411458332,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4460,18 +4460,17 @@
       "trend_carry_pyramid_ok": false,
       "trend_carry_pyramid_cap": 0,
       "read": {
-        "bias": "bearish",
+        "bias": "neutral",
         "strength": "weak",
         "adx": 23.18,
-        "ema_slope_4bar": -3.0277,
+        "ema_slope_4bar": 0.5281,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "supports",
+        "macro_tilt": "neutral",
         "flip": [
-          "Close > EMA50 (29,347.86)",
-          "ADX falls below 20 (now 23.2)",
-          "EMA50 crosses back above SMA130"
+          "Close + ADX both push above EMA50 with ADX \u2265 20",
+          "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "^NDX leans short (ADX 23.2, close 29,330.09 vs EMA50 29,347.86) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "^NDX is neutral (ADX 23.2, close 29,420.77 vs EMA50 29,351.42) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -8868,21 +8867,21 @@
           "o": 29396.677734375,
           "h": 29452.2421875,
           "l": 29228.48046875,
-          "c": 29330.09375,
-          "v": 136349652.0,
-          "ema": 29347.863403662086,
-          "sma": 29640.843719951925,
-          "vwap": 29336.938802083332
+          "c": 29420.767578125,
+          "v": 156675918.0,
+          "ema": 29351.419240059146,
+          "sma": 29641.5412109375,
+          "vwap": 29367.163411458332
         }
       ]
     },
     "GLD": {
       "symbol": "GLD",
       "bar_time_utc": "2026-06-12T13:30:00+00:00",
-      "close": 384.4700012207031,
-      "ema": 391.8878639318095,
-      "sma": 406.4884000338041,
-      "vwap": 384.90333048502606,
+      "close": 384.95001220703125,
+      "ema": 391.9066878920576,
+      "sma": 406.4920924260066,
+      "vwap": 385.06333414713544,
       "pullback_signal": -1,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8893,15 +8892,15 @@
         "bias": "bearish",
         "strength": "strong",
         "adx": 40.62,
-        "ema_slope_4bar": -1.3275,
+        "ema_slope_4bar": -1.3086,
         "regime_pct_24h": 100.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (391.89)",
+          "Close > EMA50 (391.91)",
           "ADX falls below 20 (now 40.6)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 40.6, close 384.47 vs EMA50 391.89) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GLD leans short (ADX 40.6, close 384.95 vs EMA50 391.91) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -13298,21 +13297,21 @@
           "o": 385.7300109863281,
           "h": 386.3599853515625,
           "l": 383.8800048828125,
-          "c": 384.4700012207031,
-          "v": 1000345.0,
-          "ema": 391.8878639318095,
-          "sma": 406.4884000338041,
-          "vwap": 384.90333048502606
+          "c": 384.95001220703125,
+          "v": 1206182.0,
+          "ema": 391.9066878920576,
+          "sma": 406.4920924260066,
+          "vwap": 385.06333414713544
         }
       ]
     },
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-12T13:00:00+00:00",
-      "close": 4211.0,
-      "ema": 4197.676147795481,
-      "sma": 4276.18076547476,
-      "vwap": 4220.933231207744,
+      "close": 4209.2998046875,
+      "ema": 4197.6094734695,
+      "sma": 4276.167687049279,
+      "vwap": 4220.746460133076,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13323,14 +13322,14 @@
         "bias": "neutral",
         "strength": "weak",
         "adx": 21.64,
-        "ema_slope_4bar": 3.9364,
+        "ema_slope_4bar": 3.8697,
         "regime_pct_24h": 29.2,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 21.6, close 4,211.00 vs EMA50 4,197.68) but the trend is only weak. The regime filter is mostly blocking \u2014 only 29% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 21.6, close 4,209.30 vs EMA50 4,197.61) but the trend is only weak. The regime filter is mostly blocking \u2014 only 29% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -17727,21 +17726,21 @@
           "o": 4212.10009765625,
           "h": 4231.2001953125,
           "l": 4203.0,
-          "c": 4211.0,
-          "v": 9068.0,
-          "ema": 4197.676147795481,
-          "sma": 4276.18076547476,
-          "vwap": 4220.933231207744
+          "c": 4209.2998046875,
+          "v": 10376.0,
+          "ema": 4197.6094734695,
+          "sma": 4276.167687049279,
+          "vwap": 4220.746460133076
         }
       ]
     },
     "SLV": {
       "symbol": "SLV",
       "bar_time_utc": "2026-06-12T13:30:00+00:00",
-      "close": 60.005001068115234,
-      "ema": 61.55337276568751,
-      "sma": 65.90537936870868,
-      "vwap": 60.18866729736328,
+      "close": 60.224998474121094,
+      "ema": 61.56200011494265,
+      "sma": 65.90707165644719,
+      "vwap": 60.242000579833984,
       "pullback_signal": -1,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -17751,16 +17750,16 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 46.76,
-        "ema_slope_4bar": -0.2265,
+        "adx": 46.83,
+        "ema_slope_4bar": -0.2179,
         "regime_pct_24h": 100.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (61.55)",
+          "Close > EMA50 (61.56)",
           "ADX falls below 20 (now 46.8)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "SLV leans short (ADX 46.8, close 60.01 vs EMA50 61.55) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "SLV leans short (ADX 46.8, close 60.22 vs EMA50 61.56) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -22156,12 +22155,12 @@
           "t": "2026-06-12T13:30:00+00:00",
           "o": 60.529998779296875,
           "h": 60.63600158691406,
-          "l": 59.92499923706055,
-          "c": 60.005001068115234,
-          "v": 4168886.0,
-          "ema": 61.55337276568751,
-          "sma": 65.90537936870868,
-          "vwap": 60.18866729736328
+          "l": 59.8650016784668,
+          "c": 60.224998474121094,
+          "v": 4969495.0,
+          "ema": 61.56200011494265,
+          "sma": 65.90707165644719,
+          "vwap": 60.242000579833984
         }
       ]
     }
@@ -22190,7 +22189,7 @@
       "recession": [],
       "rate_hike": [],
       "crash": [
-        "Investigation into cause of Air India crash ongoing, officials say",
+        "Air India crash investigation update reveals few details",
         "The furious dispute over what caused Air India flight 171 to crash",
         "The unknown man in my mother's coffin: A year after Air India crash, families still waiting for answers"
       ],
@@ -22211,7 +22210,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781272569.013482,
+    "fetched_at": 1781272870.3498573,
     "risk_off_themes": [
       "banking",
       "crash",
