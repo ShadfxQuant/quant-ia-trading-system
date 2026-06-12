@@ -2517,3 +2517,87 @@ Each engine is its own pullback-engine-equivalent build: signal logic, exit ladd
 | Auto-update the engine recommendation per symbol weekly | Medium | Track when symbols change preferred engine |
 | Cross-reference with portfolio_scanner output | Medium | "Engine X exists, here are 8 symbols pullback rejected" |
 
+
+---
+
+## Part 8.27 — Orderflow-exhaustion engine: built, gate FAILED, shelved (2026-06-11)
+
+### User rule
+
+> "don't do any of this if it doesn't prove effective on the main mt5 tickers"
+
+A hard gate before infrastructure (Discord page, bot notification): engine
+must pass on ≥ 2 of 4 MT5-aligned tickers (SPY, ^NDX, GLD, GC=F) per
+quality bar (PF≥1.5, CAGR≥8%, DD≤18%, WR≥55%; 3/4 metrics to pass per symbol).
+
+### What got built
+
+| Artifact | Purpose | Status |
+|---|---|---|
+| `strategies/orderflow_exhaustion.py` | Signal generator (CVD slope + tick imbalance percentile tails + freefall/parabolic guard + RSI sentiment) | code only, not wired |
+| `config/settings.py` `ORDERFLOW` | Dataclass with entry/exit/sizing params | code only |
+| `_test_orderflow_gate.py` | Standalone gate runner | code only |
+
+### Gate result
+
+| Symbol | PF | CAGR | DD | WR | n | Score |
+|---|---|---|---|---|---|---|
+| SPY | 0.97 | −0.2% | −2.9% | 63.2% | 288 | 2/4 ❌ |
+| ^NDX | 0.99 | −0.1% | −2.6% | 64.9% | 336 | 2/4 ❌ |
+| GLD | 1.11 | +0.7% | −1.5% | 66.1% | 330 | 2/4 ❌ |
+| GC=F | 0.80 | −2.6% | −7.2% | 59.3% | 583 | 2/4 ❌ |
+
+**0 of 4 MT5 symbols pass. Project gate FAILED.**
+
+### Why it failed (the diagnosis is useful)
+
+Win rate is actually fine — 59-66% means **the orderflow signal IS catching real exhaustion reversals**. The entry is correct. The losing PF comes from asymmetric exit math:
+
+- Lab measured edge: ~+35 bp mean over 20 bars (Part 8.18)
+- Engine stop: −150 bp (fixed −1.5%)
+- Expected value: 0.62 × (+35) − 0.38 × (−150) = +22 − 57 = **−35 bp per trade**
+
+The wins capture the +35 bp lab edge cleanly. The losses overshoot by 5×. The stop ladder was configured for pullback-style moves (hours, larger %); orderflow exhaustion plays a tiny move and needs a proportionally tiny stop.
+
+### Following the user's rule — what we did NOT build
+
+- ❌ Did NOT add a dashboard page for the engine
+- ❌ Did NOT add a Discord notifier route
+- ❌ Did NOT wire `worker.py` to fire `orderflow_exhaustion_signals(df)`
+- ❌ Did NOT add to live `DATA.symbols` watchlist
+- ❌ Did NOT touch `main_portfolio.prepare_dual` execution path
+- ❌ Did NOT touch `execution/portfolio.py` strategy list
+
+Engine code exists in the repo but is **dead code** until someone re-runs the gate with retuned params and clears it.
+
+### Queued for future revisit (NOT shipping this session)
+
+These are the param changes that would likely flip the gate to PASS — but per the user's rule we don't try them now without a fresh decision to re-open the project:
+
+| Change | Rationale |
+|---|---|
+| Stop = 0.5× ATR (not fixed 1.5%) | Match loss magnitude to small-move edge |
+| TP1 = 0.5× ATR (~30bp), TP2 = 1.0× ATR (~60bp) | Exit ladder sized to lab-measured edge |
+| Volatility-scaled position size | Bigger on low-vol bars where +35bp is meaningful |
+| Require BOTH tick_imb AND cvd_falling to fire (stacked) | Lab showed strongest edges when both trigger |
+| Stricter sentiment filter (RSI < 40 for longs) | Avoid false exhaustion on already-stretched tape |
+
+### Key brain lesson
+
+> A measured lab edge (mean forward return per signal bar) doesn't automatically translate to a tradeable strategy. The exit ladder geometry has to match the edge geometry. A +35 bp edge needs ~50 bp stops, not 150 bp stops — otherwise the loss tail eats all the wins.
+
+This is the **opposite** of the Part 8.7 lesson ("V1/V2 brain items were stale — re-test before shipping"). This one is "the gate caught a structurally bad ship attempt." The gate worked. The discipline held.
+
+### What this means for the broader roadmap (Part 8.26 engines)
+
+The orderflow-exhaustion engine was the highest-priority Part 8.26 new-engine candidate. **It failed the cheapest possible test.** This updates the roadmap:
+
+| Engine to build | Updated priority | Reason |
+|---|---|---|
+| ~~Orderflow-exhaustion~~ | **SHELVED** | Gate failed, exit-geometry mismatch |
+| Vol-breakout (TSLA/AAPL) | **HIGH** (was) | Now the top candidate; TSLA +528bp edge has more headroom for stop math |
+| Stack-conditions (DIA bearish) | MED | DIA already had 75% hit rate in the lab; promotion-friendly |
+| Mean-reversion (XLK/HYG) | LOW | Small symbol set |
+
+Next session, if user wants more engines, **build vol-breakout next**. Same gate-first discipline.
+

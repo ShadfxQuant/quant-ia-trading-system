@@ -431,6 +431,46 @@ MEANREV = MeanRevExtremesStratConfig()
 TRENDCARRY = TrendCarryConfig()
 
 
+# ---------------------------------------------------------------------------
+# Orderflow-exhaustion engine (Part 8.27)
+# Fades aggressive selling/buying when it exhausts vs trailing 200-bar
+# distribution. Captures the +35bp/+33bp mean-reversion edge documented in
+# Part 8.18 (lab) on 23+ symbols including MT5-aligned tickers.
+# ---------------------------------------------------------------------------
+@dataclass
+class OrderflowStratConfig:
+    name: str = "orderflow_exhaustion"
+    # ----- entry: orderflow proxy windows -----
+    cvd_slope_window: int = 20
+    tick_window: int = 20
+    percentile_window: int = 200
+    exhaustion_pct_low: float = 0.20    # bottom 20% = sell exhausted
+    exhaustion_pct_high: float = 0.80   # top 20%    = buy exhausted
+    # ----- entry: context filters -----
+    min_liquidity_frac: float = 0.5     # Vol > 0.5 × MA(20)
+    freefall_pad_pct: float = 0.005     # 0.5% pad away from 50-bar extreme
+    rsi_floor: float = 25.0             # below this = deep-crisis tape, skip
+    rsi_ceiling: float = 75.0           # above this = euphoria, skip shorts on a/symbol
+    # ----- sizing -----
+    base_size_pct: float = 0.15         # half of pullback (smaller edge per trade)
+    capital_cap_pct: float = 0.60       # less stacking than pullback's 1.00
+    max_pyramid_positions: int = 1      # single-shot only
+    # ----- exit ladder (tighter than pullback because edge is smaller) -----
+    stop_loss_pct: float = 0.015        # -1.5%
+    partial_tp_pct: float = 0.010       # +1.0% close 50%, stop -> BE
+    partial_tp_size: float = 0.50
+    final_tp_pct: float = 0.025         # +2.5% close remainder
+    final_tp_size: float = 0.50
+    move_stop_to_be_after_partial: bool = True
+    trailing_stop_enabled: bool = False  # pure structural ladder
+    trailing_logic_type: str = "ema_50"
+    trailing_starts_at: str = "after_partial"
+    max_hold_bars: int = 20              # MUCH shorter than pullback's 390
+
+
+ORDERFLOW = OrderflowStratConfig()
+
+
 @dataclass
 class NewsFilterConfig:
     """
