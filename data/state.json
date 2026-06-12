@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-12T13:16:09.433496+00:00",
+  "generated_at_utc": "2026-06-12T13:21:08.448267+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13308,10 +13308,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-12T13:00:00+00:00",
-      "close": 4215.39990234375,
-      "ema": 4197.848692985432,
-      "sma": 4276.214610877404,
-      "vwap": 4221.652979127131,
+      "close": 4220.0,
+      "ema": 4198.029088971951,
+      "sma": 4276.249996243991,
+      "vwap": 4221.653537412273,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,14 +13322,14 @@
         "bias": "neutral",
         "strength": "weak",
         "adx": 21.84,
-        "ema_slope_4bar": 4.1089,
+        "ema_slope_4bar": 4.2893,
         "regime_pct_24h": 29.2,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 21.8, close 4,215.40 vs EMA50 4,197.85) but the trend is only weak. The regime filter is mostly blocking \u2014 only 29% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 21.8, close 4,220.00 vs EMA50 4,198.03) but the trend is only weak. The regime filter is mostly blocking \u2014 only 29% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -17724,13 +17724,13 @@
         {
           "t": "2026-06-12T13:00:00+00:00",
           "o": 4212.10009765625,
-          "h": 4218.7001953125,
+          "h": 4222.0,
           "l": 4207.2998046875,
-          "c": 4215.39990234375,
-          "v": 1074.0,
-          "ema": 4197.848692985432,
-          "sma": 4276.214610877404,
-          "vwap": 4221.652979127131
+          "c": 4220.0,
+          "v": 1609.0,
+          "ema": 4198.029088971951,
+          "sma": 4276.249996243991,
+          "vwap": 4221.653537412273
         }
       ]
     },
@@ -22169,15 +22169,15 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 8,
-    "risk_on_score": 1,
+    "risk_on_score": 4,
     "theme_hits": {
       "war": 6,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
       "crash": 2,
-      "rate_cut": 0,
-      "risk_on": 1
+      "rate_cut": 1,
+      "risk_on": 3
     },
     "sample_headlines": {
       "war": [
@@ -22192,8 +22192,12 @@
         "The furious dispute over what caused Air India flight 171 to crash",
         "Oracle Shares Tumble Amid Pricey Data-Center Build-Out - WSJ"
       ],
-      "rate_cut": [],
+      "rate_cut": [
+        "Just How Good Are Advisors at Easing Retirement Worries?"
+      ],
       "risk_on": [
+        "Applied Optoelectronics (AAOI) Soars Anew on AI Optimism",
+        "AXT Inc. (AXTI) Gets 8.8% Jump from AI Optimism",
         "Elections advertising spend for 2026 expected to reach record high, outpacing presidential years"
       ]
     },
@@ -22205,7 +22209,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781270170.4030044,
+    "fetched_at": 1781270469.4217043,
     "risk_off_themes": [
       "banking",
       "crash",
