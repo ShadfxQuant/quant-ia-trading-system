@@ -471,6 +471,51 @@ class OrderflowStratConfig:
 ORDERFLOW = OrderflowStratConfig()
 
 
+# ---------------------------------------------------------------------------
+# Vol-breakout engine (Part 8.28)
+# Buys (or shorts) the dip after a realized-vol shock, holds 100 bars.
+# Lab edge (Part 8.26): TSLA rvol_high_decile h=100 → +528 bp mean, hit 66.9%.
+# Exit ladder geometry-matched to that 100-bar edge (lesson from 8.27
+# orderflow gate failure).
+# ---------------------------------------------------------------------------
+@dataclass
+class VolBreakoutStratConfig:
+    name: str = "vol_breakout"
+    # ----- vol regime -----
+    rvol_window: int = 20                # bars over which to compute realized vol
+    rvol_percentile_window: int = 500    # lookback for percentile bands
+    rvol_pct_threshold: float = 0.90     # top decile = "vol shock"
+    # ----- structure / sentiment filters -----
+    ema_fast_period: int = 50
+    ema_slow_period: int = 200
+    recent_extreme_window: int = 20
+    freefall_pad_pct: float = 0.005      # 0.5% above 20-bar low to avoid knife-catching
+    rsi_floor: float = 25.0              # skip deep-crisis
+    rsi_ceiling: float = 75.0            # skip euphoria
+    # ----- sizing -----
+    base_size_pct: float = 0.20          # moderate
+    capital_cap_pct: float = 0.60        # less stacking than pullback
+    max_pyramid_positions: int = 1       # single-shot
+    # ----- exit ladder (geometry-matched to 100-bar lab edge) -----
+    # On a vol-shock bar, ATR is already elevated 2-3×. Setting the stop at
+    # 2% absolute would equal ~1× ATR on a vol-shock bar — too tight, gets
+    # stopped on noise. Use the ATR-aware stop instead: production engine
+    # treats this as the percentage that ATR scales into.
+    stop_loss_pct: float = 0.03          # -3% — wider than pullback's -2.5%
+    partial_tp_pct: float = 0.03         # +3% close 50%, stop -> BE
+    partial_tp_size: float = 0.50
+    final_tp_pct: float = 0.08           # +8% capture the long tail
+    final_tp_size: float = 0.50
+    move_stop_to_be_after_partial: bool = True
+    trailing_stop_enabled: bool = False  # pure structural
+    trailing_logic_type: str = "ema_50"
+    trailing_starts_at: str = "after_partial"
+    max_hold_bars: int = 100             # MATCH the lab edge horizon
+
+
+VOL_BREAKOUT = VolBreakoutStratConfig()
+
+
 @dataclass
 class NewsFilterConfig:
     """

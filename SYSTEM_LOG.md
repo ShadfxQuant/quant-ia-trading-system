@@ -2601,3 +2601,78 @@ The orderflow-exhaustion engine was the highest-priority Part 8.26 new-engine ca
 
 Next session, if user wants more engines, **build vol-breakout next**. Same gate-first discipline.
 
+
+---
+
+## Part 8.28 — Vol-breakout engine: built, gate FAILED, shelved (2026-06-11)
+
+### Setup
+
+User asked to attempt the vol-breakout engine after orderflow (Part 8.27) was shelved. Same gate-first discipline: MT5 + Infinex tickers must pass before infrastructure ships.
+
+### Built (in repo as dead code)
+
+- `strategies/vol_breakout.py` — signal generator (rvol top-decile + trend regime + freefall guard + RSI sentiment filter, ATR-inverse size mult)
+- `config/settings.py` `VOL_BREAKOUT` dataclass — exit ladder geometry-matched to lab's 100-bar edge (lesson from 8.27)
+- `_test_volbreakout_gate.py` — gate runner across MT5 + Infinex
+
+### Gate result (1 of 6 passed)
+
+| Ticker | Class | Verdict | PF | CAGR | DD | WR | n |
+|---|---|---|---|---|---|---|---|
+| SPY | MT5 US500 | FAIL | 0.62 | −0.9% | −2.9% | 47.5% | 40 |
+| ^NDX | MT5 US100 | FAIL | 0.88 | −0.3% | −2.3% | 50.0% | 46 |
+| **GLD** | MT5 XAUUSD | **PASS** | **5.14** | +2.0% | −0.7% | **86.0%** | 43 |
+| GC=F | MT5 XAUUSD cross | FAIL | 1.30 | +1.0% | −2.1% | 57.1% | 91 |
+| BTC-USD | Infinex | FAIL | 1.14 | +1.6% | −3.6% | 57.4% | 188 |
+| ETH-USD | Infinex | FAIL | 1.47 | +7.1% | −2.9% | 58.2% | 299 |
+
+### Why it failed (different mode from orderflow's failure)
+
+**Signal density problem, not signal strength problem.** GLD shows the edge IS real (PF 5.14, 86% WR) — but only 43 trades in 2.3 years gives just +2% CAGR. The vol-breakout trigger fires too rarely on liquid broad-market instruments.
+
+Asset-class fit:
+- High-beta single stocks (TSLA, NVDA): vol regularly hits top-decile → many fires → +528 bp accumulates
+- Broad indices (SPY, ^NDX): vol-compressed by definition → rare fires → no compounding
+- Gold (GLD): rare but high-quality fires → great PF, low CAGR
+- Crypto (BTC, ETH): moderate fires, edge per trade not enough to clear bar
+
+### The cumulative pattern from 8.27 + 8.28
+
+Two engines attempted, both shelved by the gate. Two distinct failure modes — both useful:
+
+| Engine | Failure mode | Lesson |
+|---|---|---|
+| Orderflow | Right entry, wrong exit math | Exit geometry must match edge geometry |
+| Vol-breakout | Right exit math, wrong asset class | Signal density matters as much as strength |
+
+### Strategic implication for the user's executable universe
+
+The user's venues (MT5 indices + XAUUSD + Infinex crypto) are **structurally biased toward the engines already shipped**. Pullback/trend_carry is what works on liquid broad-market instruments. Alternative engines need:
+
+- Single-stock access (not available to user)
+- Higher-vol single-asset CFDs (limited)
+- L2 orderflow data (paid)
+
+This is information, not failure. **The gate-first protocol is doing exactly its job** — preventing infrastructure buildup for engines that can't translate to executable instruments.
+
+### Remaining Part 8.26 candidates — updated
+
+| Engine | Updated priority | Why |
+|---|---|---|
+| ~~Orderflow-exhaustion~~ | **SHELVED** (Part 8.27) | Exit math mismatch |
+| ~~Vol-breakout~~ | **SHELVED** (Part 8.28) | Asset-class mismatch with user's venues |
+| Stack-conditions | MED | DIA bearish + XLV — would need DIA or alternative ^DJI source |
+| Mean-reversion (XLK/HYG) | LOW | Tiny symbol set, less applicable to MT5 |
+| Calendar overlay | LOW | Boost on existing engine, not standalone |
+
+### Honest path forward
+
+Three options to surface to user:
+
+1. **Stop attempting new engines on this venue mix** — accept pullback/trend_carry is the best fit for MT5 indices + crypto, focus on optimizing what's shipped
+2. **Build stack-conditions engine for ^DJI (if MT5 has US30)** — DIA stack_overbought_downtrend was 75% hit rate, may translate
+3. **Look outside Python/yfinance entirely** — accept lab data has a survivorship bias toward universes we can't trade and stop running these gates
+
+User decision needed. No further engines built without explicit re-open.
+
