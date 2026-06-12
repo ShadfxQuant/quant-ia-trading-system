@@ -1,0 +1,151 @@
+//@version=5
+// =============================================================================
+// QUANT IA — PULLBACK ENGINE (Pine v3 LITE)
+// =============================================================================
+// Stripped-down version of tradingview_full_system.pine after the Part 8.25
+// fidelity test showed the full Pine port lost on SPX 1H while Python
+// production made +$74K on the same instrument/timeframe (PF 3.88).
+//
+// REMOVED (these layers don't port cleanly to Pine):
+//   - Kalman P_bull proxy (too crude vs production GaussianHMM)
+//   - Regime-flip exit primitive (depends on Kalman regime)
+//   - Trend_carry runner sleeve (depends on regime conviction)
+//
+// KEPT (these are the core edge):
+//   - EMA50 + SMA130 trend filter
+//   - ATR-normalized pullback band
+//   - 3-bar EMA slope rollover guard
+//   - Momentum re-acceleration
+//   - Symmetric long + short
+//   - RSI size multiplier (1.3x os, 0.7x ob)
+//   - Exit ladder: stop -2.5% / TP1 +4% (50% off, stop -> BE) / TP2 +15% / 390-bar time
+//
+// PYRAMIDING reduced 8 -> 2 (Pine's pyramid semantics are looser than
+// production's, so 8 legs over-stacks compared to Python).
+//
+// All single-line function calls to avoid Pine v5 multi-line parser issues.
+// =============================================================================
+strategy("Quant IA - Pullback Lite", overlay=true, pyramiding=2, default_qty_type=strategy.percent_of_equity, default_qty_value=30, initial_capital=100000, currency="USD", commission_type=strategy.commission.percent, commission_value=0.01, process_orders_on_close=true)
+
+// ============== INPUTS ==============
+ema_len  = input.int(50,  "EMA length")
+sma_len  = input.int(130, "SMA length")
+slope_n  = input.int(3,   "Slope rollover window (bars)")
+pull_atr = input.float(1.5, "Pullback band (x ATR)", step=0.1)
+
+stop_pct      = input.float(2.5,  "Stop loss %", step=0.1)
+tp1_pct       = input.float(4.0,  "TP1 (partial) %", step=0.1)
+tp1_size_frac = input.float(50.0, "TP1 size % of position", step=5)
+tp2_pct       = input.float(15.0, "TP2 (final) %", step=0.5)
+move_be       = input.bool(true,  "Move stop to BE after TP1")
+max_hold      = input.int(390,   "Time stop (bars)")
+
+use_rsi    = input.bool(true, "Apply RSI size mult")
+rsi_len    = input.int(14, "RSI length")
+rsi_os     = input.int(40, "RSI oversold")
+rsi_ob     = input.int(60, "RSI overbought")
+rsi_mul_os = input.float(1.3, "Size x at oversold", step=0.1)
+rsi_mul_ob = input.float(0.7, "Size x at overbought", step=0.1)
+
+show_table = input.bool(true, "Show stats table")
+show_ma    = input.bool(true, "Show EMA50/SMA130")
+
+// ============== INDICATORS ==============
+ema_fast = ta.ema(close, ema_len)
+sma_slow = ta.sma(close, sma_len)
+atr      = ta.atr(14)
+rsi_v    = ta.rsi(close, rsi_len)
+slope_3  = (ema_fast - ema_fast[slope_n]) / slope_n
+momo     = (close - close[5]) / close[5]
+momo_d   = momo - momo[1]
+
+// Pullback band
+band_dist   = math.abs(close - ema_fast)
+in_pullback = band_dist <= pull_atr * atr
+
+// ============== ENTRY CONDITIONS ==============
+bull_struct = (ema_fast > sma_slow) and (slope_3 > 0)
+bear_struct = (ema_fast < sma_slow) and (slope_3 < 0)
+
+long_entry  = bull_struct and in_pullback and (momo_d > 0)
+short_entry = bear_struct and in_pullback and (momo_d < 0)
+
+// ============== RSI SIZE MULT ==============
+size_mult = use_rsi ? (rsi_v < rsi_os ? rsi_mul_os : rsi_v > rsi_ob ? rsi_mul_ob : 1.0) : 1.0
+
+// ============== ORDER MANAGEMENT (all single-line) ==============
+qty_pct = 30.0 * size_mult
+qty     = strategy.equity * qty_pct / 100 / close
+
+pb_stop_long  = strategy.position_avg_price * (1 - stop_pct/100)
+pb_tp1_long   = strategy.position_avg_price * (1 + tp1_pct/100)
+pb_tp2_long   = strategy.position_avg_price * (1 + tp2_pct/100)
+pb_stop_short = strategy.position_avg_price * (1 + stop_pct/100)
+pb_tp1_short  = strategy.position_avg_price * (1 - tp1_pct/100)
+pb_tp2_short  = strategy.position_avg_price * (1 - tp2_pct/100)
+pb_be_long    = move_be ? strategy.position_avg_price : pb_stop_long
+pb_be_short   = move_be ? strategy.position_avg_price : pb_stop_short
+
+if long_entry
+    strategy.entry("PB_L", strategy.long, qty=qty, comment="PB LONG")
+if short_entry
+    strategy.entry("PB_S", strategy.short, qty=qty, comment="PB SHORT")
+
+strategy.exit("TP1 L", from_entry="PB_L", stop=pb_stop_long, limit=pb_tp1_long, qty_percent=tp1_size_frac)
+strategy.exit("TP2 L", from_entry="PB_L", stop=pb_be_long, limit=pb_tp2_long)
+strategy.exit("TP1 S", from_entry="PB_S", stop=pb_stop_short, limit=pb_tp1_short, qty_percent=tp1_size_frac)
+strategy.exit("TP2 S", from_entry="PB_S", stop=pb_be_short, limit=pb_tp2_short)
+
+// TIME STOP
+entered_new = (strategy.position_size != strategy.position_size[1]) and (strategy.position_size[1] == 0)
+bars_since_entry = ta.barssince(entered_new)
+if strategy.position_size != 0 and bars_since_entry >= max_hold
+    strategy.close_all(comment="TIME_STOP")
+
+// ============== VISUAL ==============
+plot(show_ma ? ema_fast : na, "EMA50", color=color.new(color.blue, 0), linewidth=2)
+plot(show_ma ? sma_slow : na, "SMA130", color=color.new(color.purple, 0), linewidth=1)
+
+bgcolor(bull_struct ? color.new(color.green, 95) : na, title="Bull regime tint")
+bgcolor(bear_struct ? color.new(color.red, 95) : na, title="Bear regime tint")
+
+plotshape(long_entry, title="Long entry", location=location.belowbar, style=shape.triangleup, color=color.new(color.lime, 0), size=size.small, text="L")
+plotshape(short_entry, title="Short entry", location=location.abovebar, style=shape.triangledown, color=color.new(color.red, 0), size=size.small, text="S")
+
+// ============== STATS TABLE (precomputed strings + single-line cells) ==============
+var table stats = table.new(position=position.top_right, columns=2, rows=8)
+
+regime_str = bull_struct ? "Golden Cross" : bear_struct ? "Death Cross" : "Mixed"
+c_regime   = bull_struct ? color.lime : bear_struct ? color.red : color.gray
+c_rsi      = rsi_v < rsi_os ? color.lime : rsi_v > rsi_ob ? color.red : color.white
+pull_str   = in_pullback ? "YES" : "no"
+c_pull     = in_pullback ? color.lime : color.gray
+pos_str    = strategy.position_size > 0 ? "LONG" : strategy.position_size < 0 ? "SHORT" : "flat"
+c_pos      = strategy.position_size > 0 ? color.lime : strategy.position_size < 0 ? color.red : color.gray
+pnl_str    = "$" + str.tostring(strategy.netprofit, "#,###")
+c_pnl      = strategy.netprofit > 0 ? color.lime : color.red
+wr_pct     = strategy.wintrades / math.max(1, strategy.closedtrades) * 100
+wr_str     = str.tostring(wr_pct, "#") + "%"
+
+if barstate.islast and show_table
+    table.clear(stats, 0, 0, 1, 7)
+    table.cell(stats, 0, 0, "Quant IA Lite", text_color=color.white, bgcolor=color.new(color.blue, 30))
+    table.cell(stats, 1, 0, syminfo.ticker, text_color=color.white, bgcolor=color.new(color.blue, 30))
+    table.cell(stats, 0, 1, "Regime", text_color=color.white)
+    table.cell(stats, 1, 1, regime_str, text_color=c_regime)
+    table.cell(stats, 0, 2, "RSI", text_color=color.white)
+    table.cell(stats, 1, 2, str.tostring(rsi_v, "#.0") + " (x" + str.tostring(size_mult, "#.0") + ")", text_color=c_rsi)
+    table.cell(stats, 0, 3, "In pullback?", text_color=color.white)
+    table.cell(stats, 1, 3, pull_str, text_color=c_pull)
+    table.cell(stats, 0, 4, "Position", text_color=color.white)
+    table.cell(stats, 1, 4, pos_str, text_color=c_pos)
+    table.cell(stats, 0, 5, "Net PnL", text_color=color.white)
+    table.cell(stats, 1, 5, pnl_str, text_color=c_pnl)
+    table.cell(stats, 0, 6, "Win rate", text_color=color.white)
+    table.cell(stats, 1, 6, wr_str, text_color=color.white)
+    table.cell(stats, 0, 7, "Trades", text_color=color.white)
+    table.cell(stats, 1, 7, str.tostring(strategy.closedtrades), text_color=color.white)
+
+// ============== ALERTS ==============
+alertcondition(long_entry, "Long entry", "PB LONG entry on {{ticker}} @ {{close}}")
+alertcondition(short_entry, "Short entry", "PB SHORT entry on {{ticker}} @ {{close}}")

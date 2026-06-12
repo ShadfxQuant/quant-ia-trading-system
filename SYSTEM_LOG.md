@@ -2307,3 +2307,135 @@ Disagreements between the two are diagnostic. If TV says "go long SPY" but our P
 | Wire Pine alerts to existing Cloudflare webhook | Medium | Two-way confirmation: Python signals + Pine signals |
 | Per-symbol Pine-tuned input presets | Low | Save TV preset chains for each live symbol |
 
+
+---
+
+## Part 8.25 — Pine fidelity test + portfolio scanner (2026-06-11)
+
+### The fidelity gap (Part 8.24 follow-up)
+
+User ran Pine v2 strategy on TradingView SPX:
+- **1H**: 40% WR, 16% DD, **−$600**
+- **1D**: 43% WR, **+$63,000**
+
+Production Python engine on same instrument (^GSPC cash index, hourly):
+- **PF 3.88, WR 73.1%, CAGR +21.7%, DD −4.1%, +$74K**
+
+Conclusion: **The Pine port lost on the exact same instrument and timeframe where Python made +$74K.** The strategy is fine; the Pine implementation was broken.
+
+Root causes identified:
+1. Kalman P_bull proxy too crude vs production GaussianHMM
+2. Regime-flip exit depends on the broken Kalman proxy
+3. Trend_carry sleeve depends on regime conviction (broken Kalman)
+4. Pyramiding=8 over-stacks vs production's gated pyramid logic
+
+### Option A shipped: Pine v3 LITE
+
+`research/tradingview_full_system_lite.pine` — stripped-down pure-pullback engine.
+
+| Component | Status |
+|---|---|
+| EMA50 + SMA130 trend filter | ✅ kept |
+| ATR-normalized pullback band | ✅ kept |
+| 3-bar EMA slope rollover guard | ✅ kept |
+| Momentum re-acceleration | ✅ kept |
+| Symmetric long + short | ✅ kept |
+| RSI size multiplier (1.3× os, 0.7× ob) | ✅ kept |
+| Exit ladder (-2.5/+4/+15/390-bar) | ✅ kept |
+| Pyramiding | reduced 8 → 2 |
+| Kalman P_bull proxy | ❌ removed |
+| Regime-flip exit | ❌ removed |
+| Trend_carry sleeve | ❌ removed |
+
+All single-line function calls to avoid Pine v5 multi-line parser issues. ~100 lines total vs ~315 for the full version. Should match Python edge more closely on hourly timeframes since the broken regime layer is gone.
+
+### Option B queued
+
+Train a calibrated HMM proxy in Pine using weights fit against Python's actual `HMM_state_kalman` outputs. Estimated effort: 1-2 days. Goal: ±5% drift vs Python.
+
+### Continuous portfolio scanner shipped
+
+`research/portfolio_scanner.py` — runs the FULL production strategy on every yfinance-loadable symbol in a 60+ candidate universe, ranks by composite edge score, surfaces promotion-ready candidates.
+
+Different from the Edge Lab (`research/edge_lab.py`):
+- **Edge Lab** tests individual edges (RSI, CVD, etc.) per-bar
+- **Portfolio Scanner** tests the FULL production strategy as one backtest per symbol
+
+Output: `research/results/portfolio_scan_<ts>.csv` + `portfolio_scan_latest.csv`
+
+### Universe scanned (60 candidates)
+
+```
+Indices:        SPY QQQ DIA IWM MDY ^GSPC ^NDX ^DJI ^RUT
+Sector ETFs:    XLK XLF XLE XLV XLI XLY XLP XLU XLB XLRE XLC
+Themes:         ARKK SOXX SMH IBB
+Commodities:    GLD SLV USO UNG DBC CPER PALL PPLT
+Index futures:  ES=F NQ=F YM=F RTY=F
+Metal/energy:   GC=F SI=F HG=F CL=F NG=F RB=F HO=F
+Bonds:          TLT IEF SHY HYG LQD TIP AGG
+FX:             EURUSD GBPUSD USDJPY USDCHF AUDUSD USDCAD NZDUSD
+Vol/crypto:     ^VIX BTC-USD ETH-USD
+Mega-caps:      AAPL MSFT NVDA GOOGL META TSLA
+```
+
+### Quick-set leaderboard (13 symbols, 2026-06-11)
+
+| Rank | Symbol | PF | CAGR | DD | WR | Profit | Promo? |
+|---|---|---|---|---|---|---|---|
+| 1 | **GLD** | **4.04** | +35.3% | −7.5% | 80.1% | +$135,617 | ✓ |
+| 2 | SPY | 3.53 | +20.0% | −6.5% | 75.7% | +$67,732 | ✓ |
+| 3 | **DIA** | 3.35 | +16.6% | −6.0% | 82.9% | +$53,678 | ✓ ← **NEW** |
+| 4 | ^NDX | 2.60 | +18.2% | −6.6% | 76.4% | +$60,723 | ✓ |
+| 5 | NQ=F | 1.73 | +19.6% | −11.7% | 61.2% | +$52,596 | — |
+| 6 | ES=F | 1.77 | +12.4% | −9.1% | 62.4% | +$31,614 | — |
+| 7 | QQQ | 1.85 | +12.7% | −9.9% | 73.1% | +$40,237 | — |
+| 8 | GC=F | 1.36 | +13.5% | −13.9% | 60.0% | +$35,051 | — |
+| 9 | AAPL | 1.52 | +9.7% | −15.2% | 70.2% | +$29,695 | — |
+| 10 | TSLA | 1.48 | +11.8% | −24.2% | 77.5% | +$37,118 | — |
+| 11 | IWM | 1.39 | +6.8% | −18.8% | 63.2% | +$20,310 | — |
+| 12 | NVDA | 1.21 | +10.4% | **−38.8%** | 76.6% | +$31,823 | — |
+| 13 | BTC-USD | 1.03 | +3.1% | −41.4% | 66.9% | +$6,271 | — |
+
+### Findings from the quick-set scan
+
+1. **DIA promotion candidate identified** — PF 3.35, CAGR +16.6%, DD only −6%. Could be the **US30** signal source on MT5 (Dow Jones CFD), adding a 5th asset to the live universe. Worth re-MC'ing combined.
+2. **Individual stocks too volatile** — NVDA (DD −38.8%), TSLA (DD −24.2%) blow past the 25% DD budget. Mega-caps don't fit the pullback engine cleanly.
+3. **BTC barely positive** — PF 1.03, CAGR +3.1%. Crypto 24/7 doesn't fit (already known from Part 8.18).
+4. **GLD is the workhorse** — 80.1% WR, PF 4.04 confirmed across runs.
+
+### Promotion gate (passes all 4 conditions)
+
+- PF ≥ 2.0
+- |Max DD| ≤ 25%
+- n_trades ≥ 30
+- CAGR ≥ 5%
+
+### Usage
+
+```bash
+# Quick run (13 symbols, ~2 min)
+python3 -m research.portfolio_scanner --quick
+
+# Full run (60 symbols, ~15 min)
+python3 -m research.portfolio_scanner
+
+# Parallel workers (default 4)
+python3 -m research.portfolio_scanner --parallel 8
+
+# Custom symbol list
+python3 -m research.portfolio_scanner --symbols "AAPL,MSFT,NVDA"
+```
+
+Output goes to `research/results/portfolio_scan_<timestamp>.csv` and `portfolio_scan_latest.csv` (rolling pointer).
+
+### Open queue (Part 8.25)
+
+| Task | Priority | Notes |
+|---|---|---|
+| Test Pine v3 LITE on SPX 1H to verify it matches Python +$74K | High | Validates Option A fixed the fidelity |
+| Re-MC universe including DIA (5-symbol live) | High | DIA cleared promotion gate |
+| Run full 60-symbol scan weekly via cron | Medium | Track degradation over time |
+| Option B: train Pine HMM proxy weights against Python | Low | Only needed if Pine LITE still drifts >10% |
+| Add walk-forward 3-fold to scanner | Medium | Filter out 2024-26 bull-year edges |
+| Track promotion candidates across runs (history) | Medium | Surface "improving" symbols vs "degrading" |
+
