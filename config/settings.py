@@ -253,6 +253,14 @@ class PullbackStratConfig:
     # Production v3 (Structure 1, validated): no BE-trail clip + extended runner.
     # The trailing-after-partial was the binding constraint on PF — disabling
     # it and pushing TP2 to +15% lets winners express their full distribution.
+    # Exit ladder.
+    # Part 8.29 sweep tried widening to TP1=5%/TP2=20% (per-symbol PF lifts
+    # on GLD 4.04->5.31, SPY 3.53->3.67) but the combined portfolio MC
+    # REGRESSED ($309K -> $287K realized, p5 CAGR -2.9pp). Revert.
+    # Real finding: GLD wants wider TPs (per-symbol override would help),
+    # but SPY/^NDX prefer the tighter 4%/15% structure. Universal retune
+    # hurts.  Per-symbol exit overrides are queued as future work, not
+    # this session.
     stop_loss_pct: float = 0.025
     partial_tp_pct: float = 0.04
     partial_tp_size: float = 0.50

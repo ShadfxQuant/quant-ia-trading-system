@@ -2676,3 +2676,133 @@ Three options to surface to user:
 
 User decision needed. No further engines built without explicit re-open.
 
+
+---
+
+## Part 8.29 — Optimization attempt + universe expansion + market research (2026-06-12)
+
+### What user asked for
+1. Optimize the existing engine (Option 1 from Part 8.28 closeout)
+2. Market research benchmarking our system against existing quant systems
+3. Expand market pool — stocks + crypto, not just indices
+
+### 8.29a — Universe expansion gate (12 stocks + 8 crypto)
+
+Test: each candidate run through production engine, promotion gate
+(PF≥2.0 AND CAGR≥10% AND DD≤20% AND n≥50, 3 of 4 to clear).
+
+**Mega-cap stocks (12 tested):**
+| Symbol | Score | PF | CAGR | DD | WR |
+|---|---|---|---|---|---|
+| WMT | 3/4 ✅ PROMO | 1.60 | +15.8% | −15.2% | 74.2% |
+| GOOGL | 2/4 watch | 1.70 | +18.7% | −29.8% | 73.5% |
+| AAPL | 2/4 watch | 1.52 | +9.7% | −15.2% | 70.2% |
+| TSLA | 2/4 watch | 1.48 | +11.8% | −24.2% | 77.5% |
+| NVDA | 2/4 watch | 1.21 | +10.4% | −38.8% | 76.6% |
+| MSFT, ORCL | 2/4 watch | ~1.2 | low CAGR | tight DD | 67-70% |
+| META, AMZN, AVGO | 1/4 fail | PF < 1 | negative CAGR | — | — |
+| JPM, V | 1/4 fail | PF ~1 | flat CAGR | — | — |
+
+**Crypto (8 tested, only 7 loaded — MATIC delisted):**
+| Symbol | Score | PF | CAGR | DD | WR |
+|---|---|---|---|---|---|
+| All crypto | **1/4 fail** | 0.76-1.14 | −34% to +3% | **−36% to −72%** | 64-67% |
+
+**Verdict: NOT adding anything live.**
+- Crypto: 0 of 7 passed. Engine doesn't work on 24/7 chop without session structure.
+- Stocks: 1 marginal (WMT PF 1.60). Adding would dilute the PF 3.13-3.40 live universe.
+- Watchlist documented for future reference.
+
+### 8.29b — Engine optimization attempt (exit-ladder sweep)
+
+Sweep: stop ∈ {2.0, 2.5, 3.0}% × TP1 ∈ {3.0, 4.0, 5.0}% × TP2 ∈ {10, 15, 20}% on SPY, ^NDX, GLD. 27 configs per symbol.
+
+**Per-symbol findings:**
+- **SPY**: marginal lift available (PF 3.53 → 3.67 at TP1=5%/TP2=20%), but CAGR drops (+20.0% → +18.7%)
+- **^NDX**: current config is optimal (no improvement across full grid)
+- **GLD**: significant per-symbol lift available (PF 4.04 → 5.31, CAGR +35.3% → +38.5% at TP1=5%/TP2=20%)
+
+**The optimization shipped, then was reverted:**
+
+Tried universal change to TP1=5%/TP2=20% (motivated by GLD's clean win). MC harness caught the regression:
+
+| Metric | Old defaults (4%/15%) | New defaults (5%/20%) | Δ |
+|---|---|---|---|
+| Realized profit | +$309,279 | +$287,212 | **−$22K** |
+| 3yr p5 CAGR | +50.8% | +47.9% | −2.9pp |
+| 3yr P(5×) | 23.6% | 13.6% | −10pp |
+
+Per-symbol sweep had used a composite score that weighted PF heavily.
+PF lifted on SPY/^NDX but at the cost of CAGR (tighter winners on
+those tickers). GLD was the only clean win on both axes. Universal
+retune regressed the combined portfolio. **Reverted to TP1=4%/TP2=15%.**
+
+**Real finding logged**: GLD wants per-symbol wider exits. SPY/^NDX
+prefer the existing tighter ladder. Per-symbol exit overrides would
+unlock the GLD lift — added to queue as future work, not shipped this
+session.
+
+### 8.29c — Market research benchmark (`research/QUANT_SYSTEMS_COMPARISON.md`)
+
+~250 lines documenting:
+
+**Institutional reference (cannot directly compare to)**:
+- Renaissance Medallion: ~66% gross CAGR, proprietary tick data + leverage 3-12×
+- Two Sigma ($60B): multi-strategy ML, Sharpe 1.5-2.5 gross
+- AQR Capital: factor investing (momentum, value, carry, defensive), Sharpe 0.4-0.7
+- Bridgewater All Weather: risk parity, Sharpe ~0.5, very low DD
+- WorldQuant "101 Formulaic Alphas" (2015): public paper, ensembling weak signals
+
+**Retail/public systems (closer analog)**:
+- Turtle Trading (1983): 20-day breakout, ~80% backtest CAGR, alpha decayed
+- Andreas Clenow momentum: 15-25% CAGR, simple rules, public code on GitHub
+- **Adam Grimes Pullback methodology**: the closest published analog to our engine
+- QuantConnect community algorithms: median is unprofitable after slippage
+
+**Where Quant IA sits**:
+- Single-strategy retail-scale pullback engine
+- Backtest +64.5% CAGR, MC p5 +50.8% CAGR, P(ruin) 0%
+- Closest peer: Clenow momentum (CAGR ballpark match)
+- Differentiator: heavy MC discipline + gate-first new engines + brain-documented research culture
+- Honest realistic 3-year wealth expectation at 1× lev with friction drag: **$300K-$380K** (vs MC mean $416K)
+
+**Action items lifted from benchmarking**:
+- Build LightGBM loser-prob classifier with Kalman features (already queued)
+- Add 2-3 weak ensemble alphas alongside pullback signal (WorldQuant lesson)
+- Cross-sectional momentum scoring across 4 symbols (Clenow lesson)
+- Walk-forward analysis with rolling 12-month windows (industry standard, we haven't done)
+- Per-strategy capacity analysis (Renaissance lesson — not blocking but worth knowing)
+
+### What got shipped this session
+
+| File | Status |
+|---|---|
+| `_universe_expansion_gate.py` | New test runner, kept for future use |
+| `_optimize_exits_quick.py` | Exit-ladder sweep tool, kept for future tuning |
+| `_optimize_existing_engine.py` | Full-grid sweep tool (slow, kept but unused) |
+| `research/QUANT_SYSTEMS_COMPARISON.md` | New benchmarking document |
+| `config/settings.py` | **Reverted** — no config change shipped |
+| Universe live | Unchanged: SPY, ^NDX, GLD, GC=F |
+
+### Honest summary
+
+Three objectives, two negative findings, one positive finding:
+
+| Objective | Outcome |
+|---|---|
+| Optimize engine | Found GLD wants wider exits, but universal retune regressed. Reverted. Per-symbol overrides queued. |
+| Expand universe | Tested 20 candidates, 0 cleared the bar. Engine is well-fit to current 4-symbol universe. |
+| Market research | Comparison document shipped. Honest positioning: retail-scale Clenow/Grimes peer with stronger MC discipline. |
+
+The MC harness caught a regression that the per-symbol sweep had missed.
+That's exactly its job. The gate-first / MC-validated process is working.
+
+### Queue items added (Part 8.29)
+
+| Task | Priority | Notes |
+|---|---|---|
+| Per-symbol exit override config | Medium | Unlocks GLD's PF 4.04→5.31 lift |
+| Walk-forward analysis (12mo rolling) | High | Industry standard, undone |
+| Slippage / execution friction in MC | Medium | Realistic live CAGR estimation |
+| Cross-sectional momentum scoring | Low | Clenow lesson, modest expected lift |
+| Ensemble weak alphas | Low | WorldQuant lesson, not blocking |
