@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-12T20:56:09.037996+00:00",
+  "generated_at_utc": "2026-06-12T23:01:07.426434+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13307,10 +13307,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-12T20:00:00+00:00",
-      "close": 4234.5,
-      "ema": 4206.463479846629,
-      "sma": 4263.211538461538,
-      "vwap": 4225.2854284931955,
+      "close": 4239.89990234375,
+      "ema": 4206.675240722854,
+      "sma": 4263.253076171875,
+      "vwap": 4225.362066448725,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13321,14 +13321,14 @@
         "bias": "neutral",
         "strength": "chop",
         "adx": 18.2,
-        "ema_slope_4bar": 5.1206,
+        "ema_slope_4bar": 5.3323,
         "regime_pct_24h": 29.2,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 18.2, close 4,234.50 vs EMA50 4,206.46) and the tape is choppy. The regime filter is mostly blocking \u2014 only 29% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 18.2, close 4,239.90 vs EMA50 4,206.68) and the tape is choppy. The regime filter is mostly blocking \u2014 only 29% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -17723,13 +17723,13 @@
         {
           "t": "2026-06-12T20:00:00+00:00",
           "o": 4231.60009765625,
-          "h": 4238.10009765625,
+          "h": 4240.60009765625,
           "l": 4230.7001953125,
-          "c": 4234.5,
-          "v": 1183.0,
-          "ema": 4206.463479846629,
-          "sma": 4263.211538461538,
-          "vwap": 4225.2854284931955
+          "c": 4239.89990234375,
+          "v": 1729.0,
+          "ema": 4206.675240722854,
+          "sma": 4263.253076171875,
+          "vwap": 4225.362066448725
         }
       ]
     },
@@ -22167,42 +22167,41 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 5,
+    "risk_off_score": 6,
     "risk_on_score": 0,
     "theme_hits": {
-      "war": 1,
+      "war": 2,
       "banking": 0,
       "recession": 0,
-      "rate_hike": 1,
-      "crash": 3,
+      "rate_hike": 0,
+      "crash": 4,
       "rate_cut": 0,
       "risk_on": 0
     },
     "sample_headlines": {
       "war": [
-        "More than 50 Iranian military bases damaged in US strikes since start of war, satellite images show"
+        "More than 50 Iranian military bases damaged in US strikes since start of war, satellite images show",
+        "Crude Oil Prices Climb as US-Iran Tensions Escalate"
       ],
       "banking": [],
       "recession": [],
-      "rate_hike": [
-        "The Odds Of A Rate Hike Are Soaring \u2014 What To Do Now"
-      ],
+      "rate_hike": [],
       "crash": [
         "More time needed for deadly Air India crash inquiry, officials say",
-        "SpaceX 'proxies' plunge as real deal arrives: Here's where traders are buying the dip",
-        "Bitcoin's latest plunge revives the debate over owning it\u2014and whether it's just 'crypto being crypto'"
+        "Oracle\u2019s 20% Plunge Proves What Micron Knew All Along: AI Demand Is About to Collapse",
+        "SpaceX 'proxies' plunge as real deal arrives: Here's where traders are buying the dip"
       ],
       "rate_cut": [],
       "risk_on": []
     },
-    "n_headlines": 85,
+    "n_headlines": 83,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
       "cnbc_top",
       "marketwatch"
     ],
-    "fetched_at": 1781297770.2032309,
+    "fetched_at": 1781305268.6437392,
     "risk_off_themes": [
       "banking",
       "crash",
