@@ -2986,3 +2986,79 @@ still works. Public alternatives are competitive. The discipline /
 pipeline / brain documentation / MC validation is what differentiates
 us from the median retail system — not the strategy logic itself.
 
+
+---
+
+## Part 8.31 — Donchian gate (failed) + SPY chunk-3 diagnosis (2026-06-12)
+
+### Task 1 — Donchian breakout engine attempt
+
+Built `strategies/donchian_breakout.py` + `DONCHIAN` config + `_test_donchian_gate.py`. Phase 5 of Part 8.30 found Donchian beat our pullback on GC=F by +17pp. Tested if a real engine implementation could capture that gap.
+
+**Result: gate FAILED on every MT5 ticker.**
+
+| Symbol | Donchian engine | Pullback prod | Δ |
+|---|---|---|---|
+| SPY | +3.7% | +20.0% | −16.3pp |
+| ^NDX | +3.1% | +20.9% | −17.8pp |
+| GLD | −0.1% | +38.5% | −38.6pp |
+| **GC=F** | **−0.0%** | **+13.3%** | **−13.3pp** |
+
+**Why Phase 5 was misleading**: the `_test_public_strategies.py` test used pure-Donchian (no stops, no partial TPs, no shorts — enter on 20-day high, exit on 10-day low). When wrapped in our production exit framework (stop 4% / TP1 5% / TP2 20% / time 200 bars), the stop cuts winners too early. Donchian's edge requires its specific exit philosophy (hold through retracements, no fixed % stops) that doesn't blend with our pullback-tuned ladder.
+
+**Same lesson as Part 8.27 orderflow**: right entry, wrong exit math. The geometry mismatch killed it.
+
+**Shelved**. Engine code stays as dead code. Could revisit with custom Turtle-style exit (8× ATR stop, no partial TP, 500-bar time) — that's a Part 8.32 problem if anyone wants it.
+
+### Task 2 — SPY chunk-3 degradation diagnostic
+
+Ran `_diagnose_spy_chunk3.py` to understand why SPY chunk-3 dropped to PF 1.28, CAGR +4.2% (vs chunks 1-2 PF 3.4/3.8, CAGR +23%/+18%).
+
+**Key per-chunk metrics:**
+
+| Metric | Ch1 (2023-08) | Ch2 (2024-07) | Ch3 (2025-06) | Verdict |
+|---|---|---|---|---|
+| n trades | 56 | 56 | 57 | flat |
+| Win rate | 71.4% | 85.7% | 70.2% | flat (ch2 outlier) |
+| **Avg win $** | $654 | $1,015 | **$489** | **−25% vs ch1** |
+| Avg loss $ | −$649 | −$858 | −$558 | actually better |
+| TP2 hits | 0 | 1 | 0 | winners never extend to +15% |
+| Time-stop % | 19.6% | 30.4% | 21.1% | similar |
+| Avg hold (hrs) | 1128 | 1344 | 943 | shorter |
+
+**HMM regime distribution at entry (the smoking gun):**
+
+| Regime | Ch1 | Ch2 | Ch3 |
+|---|---|---|---|
+| Bull | 4 | 10 | 1 |
+| Bear | 42 | 7 | 26 |
+| **Range** | **10** | **39** | **30** |
+
+**Diagnosis**: SPY chunk 3 has 53% range-regime entries. **The market is choppier.** Winners get TP1 but don't extend to TP2. The +15% TP2 is too ambitious for the current SPY regime. Avg win dropped 25% as a result.
+
+**This is not engine breakage — it's market regime change.** The pullback engine still works (PF > 1, positive CAGR, 70% WR). It just produces smaller winners in chop.
+
+**What we considered as fixes (and rejected):**
+
+1. **Tighten SPY's TP2 from 15% to 10%** — Part 8.29 already proved this hurts SPY in trending periods. The regime-specific optimal is a moving target.
+2. **Switch SPY's engine entirely** — no candidate engine cleared the Part 8.27/8.28/8.31 gates anyway.
+3. **Add a regime-aware TP2** (15% in trend, 10% in chop) — would require regime classifier in execution path. Doable but adds complexity for marginal gain.
+
+**Action: NONE. Accept it.** The fix is portfolio diversification across symbols, which we already do (^NDX and GLD still strong because their regimes are different). The engine being regime-sensitive is a feature not a bug — when chop is over, SPY will return. Monitor.
+
+### Summary
+
+Two clean process wins, no new shipping:
+- Donchian engine: gate-first discipline caught a misleading Phase 5 finding
+- SPY chunk-3: diagnostic showed market regime change, not engine fault
+
+The brain now has a documented diagnostic for "is the engine breaking?" — apply the same per-chunk + HMM-distribution analysis to any symbol that shows recent weakness.
+
+### Queue updates
+
+| Item | Status | Notes |
+|---|---|---|
+| Donchian for GC=F | ❌ Shelved | Wrong exit math, doesn't blend with our framework |
+| SPY degradation | ✅ Diagnosed | Market regime, not engine fault. Monitor, don't tune. |
+| MT5 friction measurement | ⏳ Blocked on user | Needs your broker spread/slippage data |
+| Paper validation | ⏳ Passive | Don't touch config, accumulate data |

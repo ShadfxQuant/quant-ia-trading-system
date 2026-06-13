@@ -524,6 +524,37 @@ class VolBreakoutStratConfig:
 VOL_BREAKOUT = VolBreakoutStratConfig()
 
 
+# ---------------------------------------------------------------------------
+# Donchian breakout engine (Part 8.31)
+# Turtle-style 20/10 channel breakout. Phase 5 of Part 8.30 found this
+# beats our pullback engine on GC=F by +17pp CAGR (+30.1% vs +13.3%).
+# Gate-test in _test_donchian_gate.py; only ship to live if it clears.
+# ---------------------------------------------------------------------------
+@dataclass
+class DonchianStratConfig:
+    name: str = "donchian"
+    entry_window: int = 20         # Turtle classic
+    exit_window: int = 10          # Turtle classic
+    # ----- sizing -----
+    base_size_pct: float = 0.20
+    capital_cap_pct: float = 0.50
+    max_pyramid_positions: int = 1
+    # ----- exit ladder (geometry matched to Turtle's longer holds) -----
+    stop_loss_pct: float = 0.04        # -4% (wider — Turtle holds longer)
+    partial_tp_pct: float = 0.05       # +5%
+    partial_tp_size: float = 0.50
+    final_tp_pct: float = 0.20         # +20% capture the breakout extension
+    final_tp_size: float = 0.50
+    move_stop_to_be_after_partial: bool = True
+    trailing_stop_enabled: bool = False
+    trailing_logic_type: str = "ema_50"
+    trailing_starts_at: str = "after_partial"
+    max_hold_bars: int = 200          # let breakouts run
+
+
+DONCHIAN = DonchianStratConfig()
+
+
 @dataclass
 class NewsFilterConfig:
     """
