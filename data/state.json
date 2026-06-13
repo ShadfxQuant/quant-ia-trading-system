@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-13T16:15:49.351389+00:00",
+  "generated_at_utc": "2026-06-13T16:20:48.789028+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -8893,13 +8893,13 @@
         "adx": 28.12,
         "ema_slope_4bar": -0.6731,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close > EMA50 (390.87)",
           "ADX falls below 20 (now 28.1)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 28.1, close 386.55 vs EMA50 390.87) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "GLD leans short (ADX 28.1, close 386.55 vs EMA50 390.87) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17752,13 +17752,13 @@
         "adx": 34.15,
         "ema_slope_4bar": -0.0164,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close > EMA50 (61.52)",
           "ADX falls below 20 (now 34.2)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "SLV leans short (ADX 34.2, close 61.28 vs EMA50 61.52) and the trend is strong. The regime filter is mostly green."
+        "narrative": "SLV leans short (ADX 34.2, close 61.28 vs EMA50 61.52) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -22166,9 +22166,9 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
+    "verdict": "RISK_OFF",
     "risk_off_score": 2,
-    "risk_on_score": 1,
+    "risk_on_score": 0,
     "theme_hits": {
       "war": 2,
       "banking": 0,
@@ -22176,7 +22176,7 @@
       "rate_hike": 0,
       "crash": 0,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 0
     },
     "sample_headlines": {
       "war": [
@@ -22188,9 +22188,7 @@
       "rate_hike": [],
       "crash": [],
       "rate_cut": [],
-      "risk_on": [
-        "Amtagvi Approval Boosted Iovance Biotherapeutics, Inc. (IOVA), But Can the Rally Last?"
-      ]
+      "risk_on": []
     },
     "n_headlines": 94,
     "sources_used": [
@@ -22200,7 +22198,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781367350.417991,
+    "fetched_at": 1781367649.9150755,
     "risk_off_themes": [
       "banking",
       "crash",
