@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-14T17:21:45.001458+00:00",
+  "generated_at_utc": "2026-06-14T17:26:42.987211+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -8893,13 +8893,13 @@
         "adx": 28.12,
         "ema_slope_4bar": -0.6731,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close > EMA50 (390.87)",
           "ADX falls below 20 (now 28.1)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 28.1, close 386.55 vs EMA50 390.87) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GLD leans short (ADX 28.1, close 386.55 vs EMA50 390.87) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -17752,13 +17752,13 @@
         "adx": 34.15,
         "ema_slope_4bar": -0.0164,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close > EMA50 (61.52)",
           "ADX falls below 20 (now 34.2)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "SLV leans short (ADX 34.2, close 61.28 vs EMA50 61.52) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "SLV leans short (ADX 34.2, close 61.28 vs EMA50 61.52) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -22166,15 +22166,15 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_OFF",
-    "risk_off_score": 3,
+    "verdict": "NEUTRAL",
+    "risk_off_score": 2,
     "risk_on_score": 1,
     "theme_hits": {
       "war": 2,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 1,
+      "crash": 0,
       "rate_cut": 0,
       "risk_on": 1
     },
@@ -22186,9 +22186,7 @@
       "banking": [],
       "recession": [],
       "rate_hike": [],
-      "crash": [
-        "Bank of America revisits Oracle stock price target after post-earnings selloff"
-      ],
+      "crash": [],
       "rate_cut": [],
       "risk_on": [
         "Amtagvi Approval Boosted Iovance Biotherapeutics, Inc. (IOVA), But Can the Rally Last?"
@@ -22202,7 +22200,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781457705.7614439,
+    "fetched_at": 1781458004.0023472,
     "risk_off_themes": [
       "banking",
       "crash",
