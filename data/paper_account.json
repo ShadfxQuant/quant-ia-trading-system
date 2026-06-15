@@ -1,5 +1,5 @@
 {
-  "equity": 99463.92824218668,
+  "equity": 97529.78164146404,
   "initial_capital": 100000.0,
   "cash": 100093.92824218668,
   "open_positions": [
@@ -64,21 +64,6 @@
       "remaining_size": 29623.178472656004
     },
     {
-      "symbol": "^NDX",
-      "strategy": "pullback",
-      "side": -1,
-      "entry_time": "2026-06-10T13:47:06.854737+00:00",
-      "entry_price": 29029.076171875,
-      "size": 29623.178472656004,
-      "stop_pct": 0.025,
-      "tp1_pct": 0.04,
-      "tp2_pct": 0.15,
-      "tp1_size_frac": 0.5,
-      "bar_time_at_entry": "2026-06-10T13:30:00+00:00",
-      "tp1_hit": false,
-      "remaining_size": 29623.178472656004
-    },
-    {
       "symbol": "SPY",
       "strategy": "trend_carry",
       "side": -1,
@@ -90,21 +75,6 @@
       "tp2_pct": 0.25,
       "tp1_size_frac": 0.3,
       "bar_time_at_entry": "2026-06-12T14:30:00+00:00",
-      "tp1_hit": false,
-      "remaining_size": 29839.178472656004
-    },
-    {
-      "symbol": "SLV",
-      "strategy": "trend_carry",
-      "side": -1,
-      "entry_time": "2026-06-12T15:31:29.882110+00:00",
-      "entry_price": 61.18000030517578,
-      "size": 29839.178472656004,
-      "stop_pct": 0.04,
-      "tp1_pct": 0.08,
-      "tp2_pct": 0.25,
-      "tp1_size_frac": 0.3,
-      "bar_time_at_entry": "2026-06-12T15:30:00+00:00",
       "tp1_hit": false,
       "remaining_size": 29839.178472656004
     }
@@ -217,8 +187,32 @@
       "size": 9000.0,
       "pnl": 719.9999999999994,
       "reason": "tp1"
+    },
+    {
+      "symbol": "^NDX",
+      "strategy": "pullback",
+      "side": -1,
+      "entry_time": "2026-06-10T13:47:06.854737+00:00",
+      "entry_price": 29029.076171875,
+      "exit_time": "2026-06-15T13:31:26.656902+00:00",
+      "exit_price": 29754.803076171873,
+      "size": 29623.178472656004,
+      "pnl": -740.5794618163978,
+      "reason": "stop"
+    },
+    {
+      "symbol": "SLV",
+      "strategy": "trend_carry",
+      "side": -1,
+      "entry_time": "2026-06-12T15:31:29.882110+00:00",
+      "entry_price": 61.18000030517578,
+      "exit_time": "2026-06-15T13:31:26.656934+00:00",
+      "exit_price": 63.627200317382815,
+      "size": 29839.178472656004,
+      "pnl": -1193.5671389062416,
+      "reason": "stop"
     }
   ],
-  "n_trades_total": 9,
-  "last_updated_utc": "2026-06-15T13:26:32.634494+00:00"
+  "n_trades_total": 11,
+  "last_updated_utc": "2026-06-15T13:31:26.656964+00:00"
 }
