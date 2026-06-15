@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-15T09:06:02.522340+00:00",
+  "generated_at_utc": "2026-06-15T09:11:07.845814+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13306,11 +13306,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-15T08:00:00+00:00",
-      "close": 4357.2998046875,
-      "ema": 4252.646362025159,
-      "sma": 4253.953838641827,
-      "vwap": 4338.120147416749,
+      "bar_time_utc": "2026-06-15T09:00:00+00:00",
+      "close": 4358.39990234375,
+      "ema": 4256.72197551336,
+      "sma": 4253.879221754808,
+      "vwap": 4338.16402628733,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13318,30 +13318,20 @@
       "trend_carry_pyramid_ok": false,
       "trend_carry_pyramid_cap": 0,
       "read": {
-        "bias": "neutral",
+        "bias": "bullish",
         "strength": "strong",
-        "adx": 35.34,
-        "ema_slope_4bar": 15.3312,
+        "adx": 36.34,
+        "ema_slope_4bar": 15.7172,
         "regime_pct_24h": 20.8,
-        "macro_tilt": "neutral",
+        "macro_tilt": "supports",
         "flip": [
-          "Close + ADX both push above EMA50 with ADX \u2265 20",
-          "Or close below EMA50 with ADX rising past 20"
+          "Close < EMA50 (4,256.72)",
+          "ADX falls below 20 (now 36.3)",
+          "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GC=F is neutral (ADX 35.3, close 4,357.30 vs EMA50 4,252.65) and the trend is strong. The regime filter is mostly blocking \u2014 only 21% of the last 24h was tradable."
+        "narrative": "GC=F leans long (ADX 36.3, close 4,358.40 vs EMA50 4,256.72) and the trend is strong. The regime filter is mostly blocking \u2014 only 21% of the last 24h was tradable. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-05-19T17:00:00+00:00",
-          "o": 4511.0,
-          "h": 4514.60009765625,
-          "l": 4502.60009765625,
-          "c": 4504.60009765625,
-          "v": 4982.0,
-          "ema": 4556.248268523359,
-          "sma": 4628.275379356971,
-          "vwap": 4524.722485263194
-        },
         {
           "t": "2026-05-19T18:00:00+00:00",
           "o": 4504.5,
@@ -17725,11 +17715,22 @@
           "o": 4344.10009765625,
           "h": 4366.10009765625,
           "l": 4342.7001953125,
-          "c": 4357.2998046875,
-          "v": 6229.0,
-          "ema": 4252.646362025159,
-          "sma": 4253.953838641827,
-          "vwap": 4338.120147416749
+          "c": 4355.39990234375,
+          "v": 6463.0,
+          "ema": 4252.571856050895,
+          "sma": 4253.9392240084135,
+          "vwap": 4338.118654763459
+        },
+        {
+          "t": "2026-06-15T09:00:00+00:00",
+          "o": 4355.5,
+          "h": 4360.2001953125,
+          "l": 4355.2998046875,
+          "c": 4358.39990234375,
+          "v": 88.0,
+          "ema": 4256.72197551336,
+          "sma": 4253.879221754808,
+          "vwap": 4338.16402628733
         }
       ]
     },
@@ -22182,7 +22183,7 @@
       "war": [
         "World leaders welcome U.S.-Iran deal as Europe signals sanctions relief, urges Hormuz reopening",
         "Trump heads to G7 summit in France after reaching deal to end war with Iran",
-        "China opposes US move to list top firms as military companies - AP News"
+        "Beijing blasts Pentagon\u2019s latest Chinese military company list - Politico"
       ],
       "banking": [],
       "recession": [],
@@ -22191,7 +22192,7 @@
       "rate_cut": [],
       "risk_on": []
     },
-    "n_headlines": 101,
+    "n_headlines": 103,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -22199,7 +22200,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781514363.3735085,
+    "fetched_at": 1781514668.281157,
     "risk_off_themes": [
       "banking",
       "crash",
