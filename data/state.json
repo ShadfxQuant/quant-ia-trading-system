@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-16T20:31:07.255134+00:00",
+  "generated_at_utc": "2026-06-16T20:36:10.745647+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13306,10 +13306,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-16T20:00:00+00:00",
-      "close": 4354.39990234375,
-      "ema": 4329.670673768205,
-      "sma": 4255.550011268029,
-      "vwap": 4354.472593575703,
+      "close": 4355.2998046875,
+      "ema": 4329.705964056196,
+      "sma": 4255.55693359375,
+      "vwap": 4354.474449719027,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13320,14 +13320,14 @@
         "bias": "bullish",
         "strength": "chop",
         "adx": 14.76,
-        "ema_slope_4bar": 4.8722,
+        "ema_slope_4bar": 4.9075,
         "regime_pct_24h": 12.5,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,329.67)",
+          "Close < EMA50 (4,329.71)",
           "ADX falls below 20 (now 14.8)"
         ],
-        "narrative": "GC=F leans long (ADX 14.8, close 4,354.40 vs EMA50 4,329.67) and the tape is choppy. The regime filter is mostly blocking \u2014 only 12% of the last 24h was tradable. Macro backdrop supports this read."
+        "narrative": "GC=F leans long (ADX 14.8, close 4,355.30 vs EMA50 4,329.71) and the tape is choppy. The regime filter is mostly blocking \u2014 only 12% of the last 24h was tradable. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -17724,11 +17724,11 @@
           "o": 4355.2998046875,
           "h": 4355.60009765625,
           "l": 4352.5,
-          "c": 4354.39990234375,
-          "v": 518.0,
-          "ema": 4329.670673768205,
-          "sma": 4255.550011268029,
-          "vwap": 4354.472593575703
+          "c": 4355.2998046875,
+          "v": 546.0,
+          "ema": 4329.705964056196,
+          "sma": 4255.55693359375,
+          "vwap": 4354.474449719027
         }
       ]
     },
@@ -22165,13 +22165,13 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 5,
+    "risk_off_score": 6,
     "risk_on_score": 0,
     "theme_hits": {
       "war": 3,
       "banking": 0,
       "recession": 0,
-      "rate_hike": 0,
+      "rate_hike": 1,
       "crash": 2,
       "rate_cut": 0,
       "risk_on": 0
@@ -22184,7 +22184,9 @@
       ],
       "banking": [],
       "recession": [],
-      "rate_hike": [],
+      "rate_hike": [
+        "Kevin Warsh faces rate hike pressure at first FOMC meeting"
+      ],
       "crash": [
         "A year on, six questions still haunt the Air India crash investigation",
         "Odds that a proposed billionaire tax appears on California ballots plunge on prediction markets"
@@ -22199,7 +22201,7 @@
       "cnbc_top",
       "marketwatch"
     ],
-    "fetched_at": 1781641867.9193897,
+    "fetched_at": 1781642171.364515,
     "risk_off_themes": [
       "banking",
       "crash",
