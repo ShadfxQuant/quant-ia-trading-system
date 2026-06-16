@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-16T09:06:07.951935+00:00",
+  "generated_at_utc": "2026-06-16T09:10:56.928128+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13305,11 +13305,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-16T08:00:00+00:00",
-      "close": 4366.5,
-      "ema": 4311.2364109758855,
-      "sma": 4255.141541466346,
-      "vwap": 4345.023129921744,
+      "bar_time_utc": "2026-06-16T09:00:00+00:00",
+      "close": 4368.10009765625,
+      "ema": 4313.534172183411,
+      "sma": 4255.191541466346,
+      "vwap": 4345.5948025012685,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -13319,29 +13319,18 @@
       "read": {
         "bias": "bullish",
         "strength": "weak",
-        "adx": 20.37,
-        "ema_slope_4bar": 7.0432,
-        "regime_pct_24h": 62.5,
+        "adx": 20.83,
+        "ema_slope_4bar": 8.0466,
+        "regime_pct_24h": 58.3,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,311.24)",
-          "ADX falls below 20 (now 20.4)",
+          "Close < EMA50 (4,313.53)",
+          "ADX falls below 20 (now 20.8)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GC=F leans long (ADX 20.4, close 4,366.50 vs EMA50 4,311.24) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "GC=F leans long (ADX 20.8, close 4,368.10 vs EMA50 4,313.53) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-05-20T17:00:00+00:00",
-          "o": 4537.7001953125,
-          "h": 4542.0,
-          "l": 4533.0,
-          "c": 4535.10009765625,
-          "v": 6397.0,
-          "ema": 4521.146948767515,
-          "sma": 4590.509224759616,
-          "vwap": 4502.665097217321
-        },
         {
           "t": "2026-05-20T18:00:00+00:00",
           "o": 4534.60009765625,
@@ -17723,13 +17712,24 @@
         {
           "t": "2026-06-16T08:00:00+00:00",
           "o": 4356.39990234375,
-          "h": 4367.10009765625,
+          "h": 4369.5,
           "l": 4354.2001953125,
-          "c": 4366.5,
-          "v": 3602.0,
-          "ema": 4311.2364109758855,
-          "sma": 4255.141541466346,
-          "vwap": 4345.023129921744
+          "c": 4368.2998046875,
+          "v": 3940.0,
+          "ema": 4311.306991551866,
+          "sma": 4255.155386117788,
+          "vwap": 4345.497171229616
+        },
+        {
+          "t": "2026-06-16T09:00:00+00:00",
+          "o": 4368.10009765625,
+          "h": 4369.0,
+          "l": 4367.10009765625,
+          "c": 4368.10009765625,
+          "v": 105.0,
+          "ema": 4313.534172183411,
+          "sma": 4255.191541466346,
+          "vwap": 4345.5948025012685
         }
       ]
     },
@@ -22167,7 +22167,7 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 7,
-    "risk_on_score": 2,
+    "risk_on_score": 1,
     "theme_hits": {
       "war": 5,
       "banking": 0,
@@ -22175,7 +22175,7 @@
       "rate_hike": 0,
       "crash": 2,
       "rate_cut": 0,
-      "risk_on": 2
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
@@ -22192,7 +22192,6 @@
       ],
       "rate_cut": [],
       "risk_on": [
-        "Gold's record rally falters as bulls run into Fed rate expectations, stronger dollar",
         "Equity Funding Squeeze Driven By AI Rally, SpaceX IPO Stretches Banks - Bloomberg.com"
       ]
     },
@@ -22204,7 +22203,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781600768.7003553,
+    "fetched_at": 1781601057.4696822,
     "risk_off_themes": [
       "banking",
       "crash",
