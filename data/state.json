@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-16T10:06:09.849447+00:00",
+  "generated_at_utc": "2026-06-16T10:11:04.341487+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13305,11 +13305,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-16T09:00:00+00:00",
-      "close": 4366.89990234375,
-      "ema": 4313.487105700568,
-      "sma": 4255.182309194712,
-      "vwap": 4348.596750572262,
+      "bar_time_utc": "2026-06-16T10:00:00+00:00",
+      "close": 4365.2998046875,
+      "ema": 4315.4926128161405,
+      "sma": 4255.226926832933,
+      "vwap": 4348.652288060773,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -13319,29 +13319,18 @@
       "read": {
         "bias": "bullish",
         "strength": "weak",
-        "adx": 20.84,
-        "ema_slope_4bar": 7.9995,
-        "regime_pct_24h": 58.3,
+        "adx": 21.17,
+        "ema_slope_4bar": 8.4555,
+        "regime_pct_24h": 54.2,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,313.49)",
-          "ADX falls below 20 (now 20.8)",
+          "Close < EMA50 (4,315.49)",
+          "ADX falls below 20 (now 21.2)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GC=F leans long (ADX 20.8, close 4,366.90 vs EMA50 4,313.49) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "GC=F leans long (ADX 21.2, close 4,365.30 vs EMA50 4,315.49) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-05-20T18:00:00+00:00",
-          "o": 4534.60009765625,
-          "h": 4548.5,
-          "l": 4532.2998046875,
-          "c": 4545.60009765625,
-          "v": 3543.0,
-          "ema": 4522.105895782759,
-          "sma": 4589.298456280048,
-          "vwap": 4503.67471315063
-        },
         {
           "t": "2026-05-20T19:00:00+00:00",
           "o": 4545.7998046875,
@@ -17725,11 +17714,22 @@
           "o": 4368.10009765625,
           "h": 4369.7998046875,
           "l": 4359.39990234375,
-          "c": 4366.89990234375,
-          "v": 4467.0,
-          "ema": 4313.487105700568,
-          "sma": 4255.182309194712,
-          "vwap": 4348.596750572262
+          "c": 4366.2001953125,
+          "v": 4587.0,
+          "ema": 4313.459666209146,
+          "sma": 4255.176926832933,
+          "vwap": 4348.629528254597
+        },
+        {
+          "t": "2026-06-16T10:00:00+00:00",
+          "o": 4366.2001953125,
+          "h": 4366.2998046875,
+          "l": 4364.7001953125,
+          "c": 4365.2998046875,
+          "v": 39.0,
+          "ema": 4315.4926128161405,
+          "sma": 4255.226926832933,
+          "vwap": 4348.652288060773
         }
       ]
     },
@@ -22166,10 +22166,10 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 11,
+    "risk_off_score": 7,
     "risk_on_score": 2,
     "theme_hits": {
-      "war": 9,
+      "war": 5,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
@@ -22181,7 +22181,7 @@
       "war": [
         "Bowen: Iran deal ends Trump's war that revealed limit of US dominance",
         "Watch: What does the US-Iran deal to end war mean for Lebanon and Israel?",
-        "Stocks leap worldwide, and oil prices drop after the US and Iran reach a tentative deal on their war"
+        "South Korean defense stocks surge on prospects for post-Iran-war sales boosts"
       ],
       "banking": [],
       "recession": [],
@@ -22196,7 +22196,7 @@
         "Equity Funding Squeeze Driven By AI Rally, SpaceX IPO Stretches Banks - Bloomberg.com"
       ]
     },
-    "n_headlines": 112,
+    "n_headlines": 111,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -22204,7 +22204,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781604370.4239094,
+    "fetched_at": 1781604664.9936264,
     "risk_off_themes": [
       "banking",
       "crash",
