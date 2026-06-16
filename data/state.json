@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-16T11:16:02.684920+00:00",
+  "generated_at_utc": "2026-06-16T11:21:13.961344+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13306,10 +13306,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-16T11:00:00+00:00",
-      "close": 4365.39990234375,
-      "ema": 4317.623083059173,
-      "sma": 4255.378466796875,
-      "vwap": 4350.264798517637,
+      "close": 4362.7998046875,
+      "ema": 4317.521118445203,
+      "sma": 4255.358466045673,
+      "vwap": 4350.466275681796,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13319,16 +13319,16 @@
       "read": {
         "bias": "bullish",
         "strength": "weak",
-        "adx": 21.52,
-        "ema_slope_4bar": 8.6423,
+        "adx": 21.19,
+        "ema_slope_4bar": 8.5404,
         "regime_pct_24h": 50.0,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,317.62)",
-          "ADX falls below 20 (now 21.5)",
+          "Close < EMA50 (4,317.52)",
+          "ADX falls below 20 (now 21.2)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GC=F leans long (ADX 21.5, close 4,365.40 vs EMA50 4,317.62) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "GC=F leans long (ADX 21.2, close 4,362.80 vs EMA50 4,317.52) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -17724,12 +17724,12 @@
           "t": "2026-06-16T11:00:00+00:00",
           "o": 4369.89990234375,
           "h": 4370.60009765625,
-          "l": 4364.5,
-          "c": 4365.39990234375,
-          "v": 514.0,
-          "ema": 4317.623083059173,
-          "sma": 4255.378466796875,
-          "vwap": 4350.264798517637
+          "l": 4360.2001953125,
+          "c": 4362.7998046875,
+          "v": 1049.0,
+          "ema": 4317.521118445203,
+          "sma": 4255.358466045673,
+          "vwap": 4350.466275681796
         }
       ]
     },
@@ -22166,21 +22166,20 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 5,
-    "risk_on_score": 1,
+    "risk_off_score": 4,
+    "risk_on_score": 0,
     "theme_hits": {
-      "war": 3,
+      "war": 2,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
       "crash": 2,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 0
     },
     "sample_headlines": {
       "war": [
         "Bowen: Iran deal ends Trump's war that revealed limit of US dominance",
-        "Watch: What does the US-Iran deal to end war mean for Lebanon and Israel?",
         "South Korean defense stocks surge on prospects for post-Iran-war sales boosts"
       ],
       "banking": [],
@@ -22191,9 +22190,7 @@
         "The biggest risk to your retirement isn\u2019t a market crash \u2014 it\u2019s a crisis you probably haven\u2019t planned for"
       ],
       "rate_cut": [],
-      "risk_on": [
-        "SpaceX set to surpass Amazon's market cap as post-IPO rally continues"
-      ]
+      "risk_on": []
     },
     "n_headlines": 112,
     "sources_used": [
@@ -22203,7 +22200,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781608563.5993063,
+    "fetched_at": 1781608874.6346135,
     "risk_off_themes": [
       "banking",
       "crash",
