@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-16T12:26:05.936581+00:00",
+  "generated_at_utc": "2026-06-16T12:31:01.500689+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13306,10 +13306,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-16T12:00:00+00:00",
-      "close": 4364.39990234375,
-      "ema": 4319.306756864259,
-      "sma": 4255.429236778846,
-      "vwap": 4351.947417093234,
+      "close": 4359.10009765625,
+      "ema": 4319.098921386318,
+      "sma": 4255.388469050481,
+      "vwap": 4351.976285652173,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13320,15 +13320,15 @@
         "bias": "bullish",
         "strength": "weak",
         "adx": 20.41,
-        "ema_slope_4bar": 7.9998,
+        "ema_slope_4bar": 7.7919,
         "regime_pct_24h": 45.8,
-        "macro_tilt": "supports",
+        "macro_tilt": "neutral",
         "flip": [
-          "Close < EMA50 (4,319.31)",
+          "Close < EMA50 (4,319.10)",
           "ADX falls below 20 (now 20.4)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GC=F leans long (ADX 20.4, close 4,364.40 vs EMA50 4,319.31) but the trend is only weak. The regime filter is mostly blocking \u2014 only 46% of the last 24h was tradable. Macro backdrop supports this read."
+        "narrative": "GC=F leans long (ADX 20.4, close 4,359.10 vs EMA50 4,319.10) but the trend is only weak. The regime filter is mostly blocking \u2014 only 46% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -17724,12 +17724,12 @@
           "t": "2026-06-16T12:00:00+00:00",
           "o": 4361.60009765625,
           "h": 4366.89990234375,
-          "l": 4359.0,
-          "c": 4364.39990234375,
-          "v": 1047.0,
-          "ema": 4319.306756864259,
-          "sma": 4255.429236778846,
-          "vwap": 4351.947417093234
+          "l": 4358.2001953125,
+          "c": 4359.10009765625,
+          "v": 1385.0,
+          "ema": 4319.098921386318,
+          "sma": 4255.388469050481,
+          "vwap": 4351.976285652173
         }
       ]
     },
@@ -22165,9 +22165,9 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_OFF",
+    "verdict": "NEUTRAL",
     "risk_off_score": 3,
-    "risk_on_score": 1,
+    "risk_on_score": 2,
     "theme_hits": {
       "war": 2,
       "banking": 0,
@@ -22175,7 +22175,7 @@
       "rate_hike": 0,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
@@ -22190,7 +22190,8 @@
       ],
       "rate_cut": [],
       "risk_on": [
-        "Nutanix (NTNX) Reports Earnings Beat. Here\u2019s Why It Is Still Among The Most Shorted Cloud Stocks?"
+        "Nutanix (NTNX) Reports Earnings Beat. Here\u2019s Why It Is Still Among The Most Shorted Cloud Stocks?",
+        "The Sandisk Rally Isn't Over Yet"
       ]
     },
     "n_headlines": 112,
@@ -22201,7 +22202,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781612766.7663238,
+    "fetched_at": 1781613062.3046288,
     "risk_off_themes": [
       "banking",
       "crash",
