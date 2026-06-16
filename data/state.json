@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-16T13:16:11.553583+00:00",
+  "generated_at_utc": "2026-06-16T13:21:07.117162+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13306,10 +13306,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-16T13:00:00+00:00",
-      "close": 4367.39990234375,
-      "ema": 4321.626057455919,
-      "sma": 4255.640005258413,
-      "vwap": 4354.592202693944,
+      "close": 4364.60009765625,
+      "ema": 4321.516261193664,
+      "sma": 4255.618468299279,
+      "vwap": 4354.71816371052,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13320,15 +13320,15 @@
         "bias": "bullish",
         "strength": "weak",
         "adx": 20.8,
-        "ema_slope_4bar": 8.1664,
+        "ema_slope_4bar": 8.0566,
         "regime_pct_24h": 41.7,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,321.63)",
+          "Close < EMA50 (4,321.52)",
           "ADX falls below 20 (now 20.8)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GC=F leans long (ADX 20.8, close 4,367.40 vs EMA50 4,321.63) but the trend is only weak. The regime filter is mostly blocking \u2014 only 42% of the last 24h was tradable. Macro backdrop supports this read."
+        "narrative": "GC=F leans long (ADX 20.8, close 4,364.60 vs EMA50 4,321.52) but the trend is only weak. The regime filter is mostly blocking \u2014 only 42% of the last 24h was tradable. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -17724,12 +17724,12 @@
           "t": "2026-06-16T13:00:00+00:00",
           "o": 4375.89990234375,
           "h": 4376.5,
-          "l": 4366.7998046875,
-          "c": 4367.39990234375,
-          "v": 1108.0,
-          "ema": 4321.626057455919,
-          "sma": 4255.640005258413,
-          "vwap": 4354.592202693944
+          "l": 4363.2998046875,
+          "c": 4364.60009765625,
+          "v": 1679.0,
+          "ema": 4321.516261193664,
+          "sma": 4255.618468299279,
+          "vwap": 4354.71816371052
         }
       ]
     },
@@ -22166,16 +22166,16 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 4,
-    "risk_on_score": 1,
+    "risk_off_score": 5,
+    "risk_on_score": 2,
     "theme_hits": {
       "war": 3,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 1,
+      "crash": 2,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
@@ -22187,10 +22187,12 @@
       "recession": [],
       "rate_hike": [],
       "crash": [
-        "A year on, six questions still haunt the Air India crash investigation"
+        "A year on, six questions still haunt the Air India crash investigation",
+        "Oil prices tumble below $80 per barrel for first time since March"
       ],
       "rate_cut": [],
       "risk_on": [
+        "Oil Futures Extend Decline on Optimism About U.S.-Iran Deal",
         "Retirement savings set record high \u2014 but so do hardship withdrawals: Vanguard"
       ]
     },
@@ -22202,7 +22204,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781615772.5190644,
+    "fetched_at": 1781616068.0929499,
     "risk_off_themes": [
       "banking",
       "crash",
