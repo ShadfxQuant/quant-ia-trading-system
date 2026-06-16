@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-16T20:41:00.524143+00:00",
+  "generated_at_utc": "2026-06-16T20:46:09.362764+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13306,10 +13306,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-16T20:00:00+00:00",
-      "close": 4355.10009765625,
-      "ema": 4329.6981324079115,
-      "sma": 4255.555397385818,
-      "vwap": 4354.4739532186895,
+      "close": 4354.5,
+      "ema": 4329.67459916649,
+      "sma": 4255.55078125,
+      "vwap": 4354.472282501914,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13320,14 +13320,14 @@
         "bias": "bullish",
         "strength": "chop",
         "adx": 14.76,
-        "ema_slope_4bar": 4.8996,
+        "ema_slope_4bar": 4.8761,
         "regime_pct_24h": 12.5,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,329.70)",
+          "Close < EMA50 (4,329.67)",
           "ADX falls below 20 (now 14.8)"
         ],
-        "narrative": "GC=F leans long (ADX 14.8, close 4,355.10 vs EMA50 4,329.70) and the tape is choppy. The regime filter is mostly blocking \u2014 only 12% of the last 24h was tradable. Macro backdrop supports this read."
+        "narrative": "GC=F leans long (ADX 14.8, close 4,354.50 vs EMA50 4,329.67) and the tape is choppy. The regime filter is mostly blocking \u2014 only 12% of the last 24h was tradable. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -17724,11 +17724,11 @@
           "o": 4355.2998046875,
           "h": 4355.60009765625,
           "l": 4352.5,
-          "c": 4355.10009765625,
-          "v": 616.0,
-          "ema": 4329.6981324079115,
-          "sma": 4255.555397385818,
-          "vwap": 4354.4739532186895
+          "c": 4354.5,
+          "v": 677.0,
+          "ema": 4329.67459916649,
+          "sma": 4255.55078125,
+          "vwap": 4354.472282501914
         }
       ]
     },
@@ -22165,10 +22165,10 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 6,
+    "risk_off_score": 7,
     "risk_on_score": 0,
     "theme_hits": {
-      "war": 3,
+      "war": 4,
       "banking": 0,
       "recession": 0,
       "rate_hike": 1,
@@ -22194,14 +22194,15 @@
       "rate_cut": [],
       "risk_on": []
     },
-    "n_headlines": 85,
+    "n_headlines": 96,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
       "cnbc_top",
-      "marketwatch"
+      "marketwatch",
+      "newsapi"
     ],
-    "fetched_at": 1781642461.2363896,
+    "fetched_at": 1781642770.1192453,
     "risk_off_themes": [
       "banking",
       "crash",
