@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-16T12:01:07.472158+00:00",
+  "generated_at_utc": "2026-06-16T12:06:12.797242+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13306,10 +13306,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-16T11:00:00+00:00",
-      "close": 4361.7001953125,
-      "ema": 4317.477996508928,
-      "sma": 4255.350007512019,
-      "vwap": 4351.443964535768,
+      "close": 4360.0,
+      "ema": 4317.4113221829475,
+      "sma": 4255.3369290865385,
+      "vwap": 4351.4520036373315,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13320,15 +13320,15 @@
         "bias": "bullish",
         "strength": "weak",
         "adx": 20.78,
-        "ema_slope_4bar": 8.4972,
+        "ema_slope_4bar": 8.4306,
         "regime_pct_24h": 50.0,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,317.48)",
+          "Close < EMA50 (4,317.41)",
           "ADX falls below 20 (now 20.8)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GC=F leans long (ADX 20.8, close 4,361.70 vs EMA50 4,317.48) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "GC=F leans long (ADX 20.8, close 4,360.00 vs EMA50 4,317.41) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -17725,11 +17725,11 @@
           "o": 4369.89990234375,
           "h": 4370.60009765625,
           "l": 4355.7001953125,
-          "c": 4361.7001953125,
-          "v": 4013.0,
-          "ema": 4317.477996508928,
-          "sma": 4255.350007512019,
-          "vwap": 4351.443964535768
+          "c": 4360.0,
+          "v": 4253.0,
+          "ema": 4317.4113221829475,
+          "sma": 4255.3369290865385,
+          "vwap": 4351.4520036373315
         }
       ]
     },
@@ -22167,7 +22167,7 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 3,
-    "risk_on_score": 1,
+    "risk_on_score": 0,
     "theme_hits": {
       "war": 2,
       "banking": 0,
@@ -22175,7 +22175,7 @@
       "rate_hike": 0,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 0
     },
     "sample_headlines": {
       "war": [
@@ -22189,9 +22189,7 @@
         "A year on, six questions still haunt the Air India crash investigation"
       ],
       "rate_cut": [],
-      "risk_on": [
-        "Dow record, SpaceX rally, Federal Reserve decision 2026"
-      ]
+      "risk_on": []
     },
     "n_headlines": 112,
     "sources_used": [
@@ -22201,7 +22199,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781611268.347357,
+    "fetched_at": 1781611573.7009132,
     "risk_off_themes": [
       "banking",
       "crash",
