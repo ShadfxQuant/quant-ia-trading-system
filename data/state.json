@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-16T13:06:02.626590+00:00",
+  "generated_at_utc": "2026-06-16T13:11:09.891759+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13305,11 +13305,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-16T12:00:00+00:00",
-      "close": 4374.5,
-      "ema": 4319.702839125289,
-      "sma": 4255.50692983774,
-      "vwap": 4353.9905385341235,
+      "bar_time_utc": "2026-06-16T13:00:00+00:00",
+      "close": 4371.0,
+      "ema": 4321.767237756164,
+      "sma": 4255.667698317307,
+      "vwap": 4354.28282596658,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13319,29 +13319,18 @@
       "read": {
         "bias": "bullish",
         "strength": "weak",
-        "adx": 20.76,
-        "ema_slope_4bar": 8.3958,
-        "regime_pct_24h": 45.8,
+        "adx": 20.8,
+        "ema_slope_4bar": 8.3076,
+        "regime_pct_24h": 41.7,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,319.70)",
+          "Close < EMA50 (4,321.77)",
           "ADX falls below 20 (now 20.8)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GC=F leans long (ADX 20.8, close 4,374.50 vs EMA50 4,319.70) but the trend is only weak. The regime filter is mostly blocking \u2014 only 46% of the last 24h was tradable. Macro backdrop supports this read."
+        "narrative": "GC=F leans long (ADX 20.8, close 4,371.00 vs EMA50 4,321.77) but the trend is only weak. The regime filter is mostly blocking \u2014 only 42% of the last 24h was tradable. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-05-20T22:00:00+00:00",
-          "o": 4548.0,
-          "h": 4549.89990234375,
-          "l": 4536.0,
-          "c": 4541.2001953125,
-          "v": 0.0,
-          "ema": 4524.703509163736,
-          "sma": 4585.501539963942,
-          "vwap": 4505.456207976599
-        },
         {
           "t": "2026-05-20T23:00:00+00:00",
           "o": 4540.89990234375,
@@ -17723,13 +17712,24 @@
         {
           "t": "2026-06-16T12:00:00+00:00",
           "o": 4361.60009765625,
-          "h": 4376.0,
+          "h": 4376.5,
           "l": 4358.2001953125,
-          "c": 4374.5,
-          "v": 5435.0,
-          "ema": 4319.702839125289,
-          "sma": 4255.50692983774,
-          "vwap": 4353.9905385341235
+          "c": 4375.89990234375,
+          "v": 5684.0,
+          "ema": 4319.757737256416,
+          "sma": 4255.517698317308,
+          "vwap": 4354.1719018537115
+        },
+        {
+          "t": "2026-06-16T13:00:00+00:00",
+          "o": 4375.89990234375,
+          "h": 4376.5,
+          "l": 4370.89990234375,
+          "c": 4371.0,
+          "v": 247.0,
+          "ema": 4321.767237756164,
+          "sma": 4255.667698317307,
+          "vwap": 4354.28282596658
         }
       ]
     },
@@ -22166,10 +22166,10 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 3,
+    "risk_off_score": 4,
     "risk_on_score": 1,
     "theme_hits": {
-      "war": 2,
+      "war": 3,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
@@ -22180,7 +22180,8 @@
     "sample_headlines": {
       "war": [
         "Bowen: Iran deal ends Trump's war that revealed limit of US dominance",
-        "South Korean defense stocks surge on prospects for post-Iran-war sales boosts"
+        "South Korean defense stocks surge on prospects for post-Iran-war sales boosts",
+        "Dow jumps 600 points, hits fresh record on potential Iran deal to end the war; SpaceX rises in second day of trading: Live updates - CNBC"
       ],
       "banking": [],
       "recession": [],
@@ -22193,7 +22194,7 @@
         "Retirement savings set record high \u2014 but so do hardship withdrawals: Vanguard"
       ]
     },
-    "n_headlines": 112,
+    "n_headlines": 111,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -22201,7 +22202,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781615163.2215698,
+    "fetched_at": 1781615471.102296,
     "risk_off_themes": [
       "banking",
       "crash",
