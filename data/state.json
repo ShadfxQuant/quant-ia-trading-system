@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-16T11:06:08.023084+00:00",
+  "generated_at_utc": "2026-06-16T11:11:12.815201+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13305,43 +13305,32 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-16T10:00:00+00:00",
-      "close": 4368.39990234375,
-      "ema": 4315.614185273248,
-      "sma": 4255.250773737981,
-      "vwap": 4349.897837757574,
+      "bar_time_utc": "2026-06-16T11:00:00+00:00",
+      "close": 4369.2001953125,
+      "ema": 4317.772114155987,
+      "sma": 4255.4076998197115,
+      "vwap": 4350.086198018111,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
-      "pullback_pyramid_ok": true,
-      "pullback_pyramid_cap": 8,
+      "pullback_pyramid_ok": false,
+      "pullback_pyramid_cap": 0,
       "trend_carry_pyramid_ok": false,
       "trend_carry_pyramid_cap": 0,
       "read": {
         "bias": "bullish",
         "strength": "weak",
-        "adx": 21.17,
-        "ema_slope_4bar": 8.5771,
-        "regime_pct_24h": 54.2,
+        "adx": 21.52,
+        "ema_slope_4bar": 8.7914,
+        "regime_pct_24h": 50.0,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,315.61)",
-          "ADX falls below 20 (now 21.2)",
+          "Close < EMA50 (4,317.77)",
+          "ADX falls below 20 (now 21.5)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GC=F leans long (ADX 21.2, close 4,368.40 vs EMA50 4,315.61) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "GC=F leans long (ADX 21.5, close 4,369.20 vs EMA50 4,317.77) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-05-20T19:00:00+00:00",
-          "o": 4545.7998046875,
-          "h": 4553.7998046875,
-          "l": 4544.89990234375,
-          "c": 4548.10009765625,
-          "v": 3444.0,
-          "ema": 4523.1252762068,
-          "sma": 4588.069227013221,
-          "vwap": 4504.772794586723
-        },
         {
           "t": "2026-05-20T20:00:00+00:00",
           "o": 4548.39990234375,
@@ -17725,11 +17714,22 @@
           "o": 4366.2001953125,
           "h": 4369.89990234375,
           "l": 4363.10009765625,
-          "c": 4368.39990234375,
-          "v": 2116.0,
-          "ema": 4315.614185273248,
-          "sma": 4255.250773737981,
-          "vwap": 4349.897837757574
+          "c": 4369.89990234375,
+          "v": 2217.0,
+          "ema": 4315.67300880266,
+          "sma": 4255.262312199519,
+          "vwap": 4349.989833165213
+        },
+        {
+          "t": "2026-06-16T11:00:00+00:00",
+          "o": 4369.89990234375,
+          "h": 4370.60009765625,
+          "l": 4368.60009765625,
+          "c": 4369.2001953125,
+          "v": 154.0,
+          "ema": 4317.772114155987,
+          "sma": 4255.4076998197115,
+          "vwap": 4350.086198018111
         }
       ]
     },
@@ -22166,16 +22166,16 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 6,
-    "risk_on_score": 2,
+    "risk_off_score": 5,
+    "risk_on_score": 1,
     "theme_hits": {
-      "war": 4,
+      "war": 3,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
       "crash": 2,
       "rate_cut": 0,
-      "risk_on": 2
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
@@ -22192,8 +22192,7 @@
       ],
       "rate_cut": [],
       "risk_on": [
-        "SpaceX set to surpass Amazon's market cap as post-IPO rally continues",
-        "Equity Funding Squeeze Driven By AI Rally, SpaceX IPO Stretches Banks - Bloomberg.com"
+        "SpaceX set to surpass Amazon's market cap as post-IPO rally continues"
       ]
     },
     "n_headlines": 112,
@@ -22204,7 +22203,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781607968.9798641,
+    "fetched_at": 1781608273.6708422,
     "risk_off_themes": [
       "banking",
       "crash",
