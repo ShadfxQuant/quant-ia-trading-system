@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-17T08:11:00.289559+00:00",
+  "generated_at_utc": "2026-06-17T08:16:02.190800+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13306,10 +13306,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-17T08:00:00+00:00",
-      "close": 4344.5,
-      "ema": 4336.960360727948,
-      "sma": 4256.331554236779,
-      "vwap": 4351.313130596777,
+      "close": 4346.2998046875,
+      "ema": 4337.030941303929,
+      "sma": 4256.345398888221,
+      "vwap": 4351.267822536152,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13320,14 +13320,14 @@
         "bias": "bullish",
         "strength": "chop",
         "adx": 12.92,
-        "ema_slope_4bar": 1.6672,
+        "ema_slope_4bar": 1.7378,
         "regime_pct_24h": 0.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
-          "Close < EMA50 (4,336.96)",
+          "Close < EMA50 (4,337.03)",
           "ADX falls below 20 (now 12.9)"
         ],
-        "narrative": "GC=F leans long (ADX 12.9, close 4,344.50 vs EMA50 4,336.96) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F leans long (ADX 12.9, close 4,346.30 vs EMA50 4,337.03) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17722,13 +17722,13 @@
         {
           "t": "2026-06-17T08:00:00+00:00",
           "o": 4344.7998046875,
-          "h": 4346.39990234375,
+          "h": 4346.7001953125,
           "l": 4343.2998046875,
-          "c": 4344.5,
-          "v": 52.0,
-          "ema": 4336.960360727948,
-          "sma": 4256.331554236779,
-          "vwap": 4351.313130596777
+          "c": 4346.2998046875,
+          "v": 188.0,
+          "ema": 4337.030941303929,
+          "sma": 4256.345398888221,
+          "vwap": 4351.267822536152
         }
       ]
     },
@@ -22164,17 +22164,17 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
+    "verdict": "RISK_ON",
     "risk_off_score": 1,
-    "risk_on_score": 2,
+    "risk_on_score": 5,
     "theme_hits": {
       "war": 1,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
       "crash": 0,
-      "rate_cut": 0,
-      "risk_on": 2
+      "rate_cut": 1,
+      "risk_on": 4
     },
     "sample_headlines": {
       "war": [
@@ -22184,10 +22184,13 @@
       "recession": [],
       "rate_hike": [],
       "crash": [],
-      "rate_cut": [],
+      "rate_cut": [
+        "UBS' Falconio Pushes Out Expectations for Fed Rate Cut"
+      ],
       "risk_on": [
         "Stocks Settle Sharply Higher as US-Iran Peace Deal Spurs Optimism",
-        "Micron, AMD Lead Chip Stocks Rally On U.S.-Iran Deal"
+        "Micron, AMD Lead Chip Stocks Rally On U.S.-Iran Deal",
+        "Markets Rally on Interim Peace Deal"
       ]
     },
     "n_headlines": 105,
@@ -22198,7 +22201,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781683861.3941128,
+    "fetched_at": 1781684163.0100303,
     "risk_off_themes": [
       "banking",
       "crash",
