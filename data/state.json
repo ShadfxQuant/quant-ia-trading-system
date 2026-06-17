@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-17T13:06:01.958507+00:00",
+  "generated_at_utc": "2026-06-17T13:11:07.106000+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13305,11 +13305,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-17T12:00:00+00:00",
-      "close": 4351.89990234375,
-      "ema": 4338.711630245658,
-      "sma": 4258.226171875,
-      "vwap": 4349.433913625181,
+      "bar_time_utc": "2026-06-17T13:00:00+00:00",
+      "close": 4352.7998046875,
+      "ema": 4339.31685293799,
+      "sma": 4258.947708834135,
+      "vwap": 4349.510169557159,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13319,28 +13319,17 @@
       "read": {
         "bias": "bullish",
         "strength": "chop",
-        "adx": 13.69,
-        "ema_slope_4bar": 1.7373,
+        "adx": 13.64,
+        "ema_slope_4bar": 1.8592,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
-          "Close < EMA50 (4,338.71)",
-          "ADX falls below 20 (now 13.7)"
+          "Close < EMA50 (4,339.32)",
+          "ADX falls below 20 (now 13.6)"
         ],
-        "narrative": "GC=F leans long (ADX 13.7, close 4,351.90 vs EMA50 4,338.71) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F leans long (ADX 13.6, close 4,352.80 vs EMA50 4,339.32) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
-        {
-          "t": "2026-05-21T22:00:00+00:00",
-          "o": 4544.2001953125,
-          "h": 4547.0,
-          "l": 4540.39990234375,
-          "c": 4544.10009765625,
-          "v": 0.0,
-          "ema": 4528.191606832646,
-          "sma": 4555.68153921274,
-          "vwap": 4523.523370400979
-        },
         {
           "t": "2026-05-21T23:00:00+00:00",
           "o": 4544.39990234375,
@@ -17724,11 +17713,22 @@
           "o": 4342.7998046875,
           "h": 4355.2001953125,
           "l": 4338.7001953125,
-          "c": 4351.89990234375,
-          "v": 4412.0,
-          "ema": 4338.711630245658,
-          "sma": 4258.226171875,
-          "vwap": 4349.433913625181
+          "c": 4353.2998046875,
+          "v": 4742.0,
+          "ema": 4338.766528376786,
+          "sma": 4258.236940354567,
+          "vwap": 4349.4952675943905
+        },
+        {
+          "t": "2026-06-17T13:00:00+00:00",
+          "o": 4353.39990234375,
+          "h": 4354.10009765625,
+          "l": 4350.39990234375,
+          "c": 4352.7998046875,
+          "v": 161.0,
+          "ema": 4339.31685293799,
+          "sma": 4258.947708834135,
+          "vwap": 4349.510169557159
         }
       ]
     },
@@ -22166,7 +22166,7 @@
   "macro": {
     "verdict": "NEUTRAL",
     "risk_off_score": 3,
-    "risk_on_score": 3,
+    "risk_on_score": 2,
     "theme_hits": {
       "war": 2,
       "banking": 0,
@@ -22174,7 +22174,7 @@
       "rate_hike": 0,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 3
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
@@ -22190,8 +22190,7 @@
       "rate_cut": [],
       "risk_on": [
         "Stock Market Today: Dow Waffles Ahead Of Fed Decision, Warsh Remarks; SpaceX Rally Continues (Live Coverage)",
-        "SpaceX's near $3 trillion rally comes with one big catch: Chart of the Day",
-        "CarMax Earnings Beat After Carvana Makes 'Most Disruptive' Move"
+        "SpaceX's near $3 trillion rally comes with one big catch: Chart of the Day"
       ]
     },
     "n_headlines": 107,
@@ -22202,7 +22201,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781701562.8923776,
+    "fetched_at": 1781701867.7953296,
     "risk_off_themes": [
       "banking",
       "crash",
