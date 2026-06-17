@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-17T09:00:58.227452+00:00",
+  "generated_at_utc": "2026-06-17T09:05:53.810366+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13306,10 +13306,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-17T08:00:00+00:00",
-      "close": 4341.2001953125,
-      "ema": 4336.856651014257,
-      "sma": 4256.312327223558,
-      "vwap": 4350.223490741476,
+      "close": 4342.60009765625,
+      "ema": 4336.911549145385,
+      "sma": 4256.323095703125,
+      "vwap": 4350.169404444216,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13320,14 +13320,14 @@
         "bias": "bullish",
         "strength": "chop",
         "adx": 13.58,
-        "ema_slope_4bar": 1.5333,
+        "ema_slope_4bar": 1.5882,
         "regime_pct_24h": 0.0,
-        "macro_tilt": "supports",
+        "macro_tilt": "neutral",
         "flip": [
-          "Close < EMA50 (4,336.86)",
+          "Close < EMA50 (4,336.91)",
           "ADX falls below 20 (now 13.6)"
         ],
-        "narrative": "GC=F leans long (ADX 13.6, close 4,341.20 vs EMA50 4,336.86) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop supports this read."
+        "narrative": "GC=F leans long (ADX 13.6, close 4,342.60 vs EMA50 4,336.91) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -17724,11 +17724,11 @@
           "o": 4344.7998046875,
           "h": 4347.5,
           "l": 4335.60009765625,
-          "c": 4341.2001953125,
-          "v": 2203.0,
-          "ema": 4336.856651014257,
-          "sma": 4256.312327223558,
-          "vwap": 4350.223490741476
+          "c": 4342.60009765625,
+          "v": 2456.0,
+          "ema": 4336.911549145385,
+          "sma": 4256.323095703125,
+          "vwap": 4350.169404444216
         }
       ]
     },
@@ -22164,9 +22164,9 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_OFF",
+    "verdict": "NEUTRAL",
     "risk_off_score": 3,
-    "risk_on_score": 1,
+    "risk_on_score": 2,
     "theme_hits": {
       "war": 3,
       "banking": 0,
@@ -22174,7 +22174,7 @@
       "rate_hike": 0,
       "crash": 0,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
@@ -22188,10 +22188,11 @@
       "crash": [],
       "rate_cut": [],
       "risk_on": [
-        "Why GOOGL Stock May Have More Room to Run Even After a 100% Rally"
+        "Why GOOGL Stock May Have More Room to Run Even After a 100% Rally",
+        "Dow closes at record high as U.S.-Iran deal lifts stocks - Honolulu Star-Advertiser"
       ]
     },
-    "n_headlines": 105,
+    "n_headlines": 108,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -22199,7 +22200,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781686858.882,
+    "fetched_at": 1781687154.5558329,
     "risk_off_themes": [
       "banking",
       "crash",
