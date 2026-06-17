@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-17T20:20:59.132751+00:00",
+  "generated_at_utc": "2026-06-17T20:25:54.233593+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13308,10 +13308,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-17T20:00:00+00:00",
-      "close": 4272.2998046875,
-      "ema": 4338.145835093351,
-      "sma": 4265.376934344952,
-      "vwap": 4334.856244845563,
+      "close": 4274.0,
+      "ema": 4338.212509419332,
+      "sma": 4265.390012770433,
+      "vwap": 4334.5096476233175,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -13322,14 +13322,14 @@
         "bias": "neutral",
         "strength": "weak",
         "adx": 22.39,
-        "ema_slope_4bar": -5.5677,
+        "ema_slope_4bar": -5.501,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 22.4, close 4,272.30 vs EMA50 4,338.15) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 22.4, close 4,274.00 vs EMA50 4,338.21) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -17724,13 +17724,13 @@
         {
           "t": "2026-06-17T20:00:00+00:00",
           "o": 4254.2001953125,
-          "h": 4276.2001953125,
+          "h": 4279.2998046875,
           "l": 4253.2998046875,
-          "c": 4272.2998046875,
-          "v": 2096.0,
-          "ema": 4338.145835093351,
-          "sma": 4265.376934344952,
-          "vwap": 4334.856244845563
+          "c": 4274.0,
+          "v": 2934.0,
+          "ema": 4338.212509419332,
+          "sma": 4265.390012770433,
+          "vwap": 4334.5096476233175
         }
       ]
     },
@@ -22168,21 +22168,20 @@
   "errors": {},
   "macro": {
     "verdict": "NEUTRAL",
-    "risk_off_score": 3,
-    "risk_on_score": 3,
+    "risk_off_score": 2,
+    "risk_on_score": 2,
     "theme_hits": {
-      "war": 2,
+      "war": 1,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 3
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
-        "Iran sends tankers loaded with oil past US military blockade",
-        "From supply shock to oil glut: IEA flags scale of demand destruction caused by Iran war"
+        "Iran sends tankers loaded with oil past US military blockade"
       ],
       "banking": [],
       "recession": [],
@@ -22192,7 +22191,6 @@
       ],
       "rate_cut": [],
       "risk_on": [
-        "Nasdaq Futures Rise as Tech Continues to Drive Market's Iran Peace Rally",
         "Nutanix (NTNX) Reports Earnings Beat. Here\u2019s Why It Is Still Among The Most Shorted Cloud Stocks?",
         "SpaceX posts first losing day as stock sinks 5%, losing momentum after a multiday rally"
       ]
@@ -22204,7 +22202,7 @@
       "cnbc_top",
       "marketwatch"
     ],
-    "fetched_at": 1781727659.7276425,
+    "fetched_at": 1781727955.1728797,
     "risk_off_themes": [
       "banking",
       "crash",
