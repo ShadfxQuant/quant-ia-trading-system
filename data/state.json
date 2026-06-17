@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-17T12:00:56.445921+00:00",
+  "generated_at_utc": "2026-06-17T12:05:59.464046+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13306,10 +13306,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-17T11:00:00+00:00",
-      "close": 4344.0,
-      "ema": 4338.228231556454,
-      "sma": 4257.720785757211,
-      "vwap": 4349.743716689601,
+      "close": 4343.2001953125,
+      "ema": 4338.196866666749,
+      "sma": 4257.714633413461,
+      "vwap": 4349.644078962544,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13319,15 +13319,15 @@
       "read": {
         "bias": "bullish",
         "strength": "chop",
-        "adx": 13.51,
-        "ema_slope_4bar": 1.5489,
+        "adx": 13.74,
+        "ema_slope_4bar": 1.5175,
         "regime_pct_24h": 0.0,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,338.23)",
-          "ADX falls below 20 (now 13.5)"
+          "Close < EMA50 (4,338.20)",
+          "ADX falls below 20 (now 13.7)"
         ],
-        "narrative": "GC=F leans long (ADX 13.5, close 4,344.00 vs EMA50 4,338.23) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop supports this read."
+        "narrative": "GC=F leans long (ADX 13.7, close 4,343.20 vs EMA50 4,338.20) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -17723,12 +17723,12 @@
           "t": "2026-06-17T11:00:00+00:00",
           "o": 4351.2998046875,
           "h": 4351.5,
-          "l": 4342.7998046875,
-          "c": 4344.0,
-          "v": 1730.0,
-          "ema": 4338.228231556454,
-          "sma": 4257.720785757211,
-          "vwap": 4349.743716689601
+          "l": 4340.10009765625,
+          "c": 4343.2001953125,
+          "v": 1860.0,
+          "ema": 4338.196866666749,
+          "sma": 4257.714633413461,
+          "vwap": 4349.644078962544
         }
       ]
     },
@@ -22166,7 +22166,7 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 3,
-    "risk_on_score": 0,
+    "risk_on_score": 1,
     "theme_hits": {
       "war": 2,
       "banking": 0,
@@ -22174,7 +22174,7 @@
       "rate_hike": 0,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 0
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
@@ -22188,7 +22188,9 @@
         "An oil bull\u2019s \u2018insane\u2019 bet: Why this veteran trader is buying energy stocks as crude prices tumble"
       ],
       "rate_cut": [],
-      "risk_on": []
+      "risk_on": [
+        "CarMax Earnings Beat After Carvana Makes 'Most Disruptive' Move"
+      ]
     },
     "n_headlines": 107,
     "sources_used": [
@@ -22198,7 +22200,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781697657.0501378,
+    "fetched_at": 1781697960.313142,
     "risk_off_themes": [
       "banking",
       "crash",
