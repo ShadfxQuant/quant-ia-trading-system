@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-17T07:20:54.644681+00:00",
+  "generated_at_utc": "2026-06-17T07:26:06.217014+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13306,10 +13306,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-17T07:00:00+00:00",
-      "close": 4349.39990234375,
-      "ema": 4336.836922586016,
-      "sma": 4255.840782752404,
-      "vwap": 4352.11090341902,
+      "close": 4351.7001953125,
+      "ema": 4336.927130153418,
+      "sma": 4255.858477313702,
+      "vwap": 4352.07766887459,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13320,14 +13320,14 @@
         "bias": "bullish",
         "strength": "chop",
         "adx": 12.74,
-        "ema_slope_4bar": 1.9849,
+        "ema_slope_4bar": 2.0751,
         "regime_pct_24h": 0.0,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,336.84)",
+          "Close < EMA50 (4,336.93)",
           "ADX falls below 20 (now 12.7)"
         ],
-        "narrative": "GC=F leans long (ADX 12.7, close 4,349.40 vs EMA50 4,336.84) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop supports this read."
+        "narrative": "GC=F leans long (ADX 12.7, close 4,351.70 vs EMA50 4,336.93) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -17723,12 +17723,12 @@
           "t": "2026-06-17T07:00:00+00:00",
           "o": 4351.10009765625,
           "h": 4352.5,
-          "l": 4348.5,
-          "c": 4349.39990234375,
-          "v": 421.0,
-          "ema": 4336.836922586016,
-          "sma": 4255.840782752404,
-          "vwap": 4352.11090341902
+          "l": 4346.60009765625,
+          "c": 4351.7001953125,
+          "v": 715.0,
+          "ema": 4336.927130153418,
+          "sma": 4255.858477313702,
+          "vwap": 4352.07766887459
         }
       ]
     },
@@ -22165,20 +22165,21 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 2,
-    "risk_on_score": 0,
+    "risk_off_score": 3,
+    "risk_on_score": 1,
     "theme_hits": {
-      "war": 1,
+      "war": 2,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 0
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
-        "Dollar Pressured by Deal to End the US-Iran War"
+        "Dollar Pressured by Deal to End the US-Iran War",
+        "Ineos and Damler Truck enlist in auto defense push as Europe bolsters military spending"
       ],
       "banking": [],
       "recession": [],
@@ -22187,7 +22188,9 @@
         "A year on, six questions still haunt the Air India crash investigation"
       ],
       "rate_cut": [],
-      "risk_on": []
+      "risk_on": [
+        "Peace Deal Reignites Tech Stock Rally"
+      ]
     },
     "n_headlines": 105,
     "sources_used": [
@@ -22197,7 +22200,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781680855.4849384,
+    "fetched_at": 1781681166.6845675,
     "risk_off_themes": [
       "banking",
       "crash",
