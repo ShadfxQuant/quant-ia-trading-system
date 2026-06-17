@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-17T09:05:53.810366+00:00",
+  "generated_at_utc": "2026-06-17T09:11:02.696599+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13305,11 +13305,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-17T08:00:00+00:00",
-      "close": 4342.60009765625,
-      "ema": 4336.911549145385,
-      "sma": 4256.323095703125,
-      "vwap": 4350.169404444216,
+      "bar_time_utc": "2026-06-17T09:00:00+00:00",
+      "close": 4342.2998046875,
+      "ema": 4337.183141469725,
+      "sma": 4256.759247295673,
+      "vwap": 4350.17603236885,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13319,28 +13319,17 @@
       "read": {
         "bias": "bullish",
         "strength": "chop",
-        "adx": 13.58,
-        "ema_slope_4bar": 1.5882,
+        "adx": 14.37,
+        "ema_slope_4bar": 1.4372,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
-          "Close < EMA50 (4,336.91)",
-          "ADX falls below 20 (now 13.6)"
+          "Close < EMA50 (4,337.18)",
+          "ADX falls below 20 (now 14.4)"
         ],
-        "narrative": "GC=F leans long (ADX 13.6, close 4,342.60 vs EMA50 4,336.91) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F leans long (ADX 14.4, close 4,342.30 vs EMA50 4,337.18) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
-        {
-          "t": "2026-05-21T17:00:00+00:00",
-          "o": 4521.0,
-          "h": 4561.2001953125,
-          "l": 4515.0,
-          "c": 4553.10009765625,
-          "v": 16159.0,
-          "ema": 4525.850972231273,
-          "sma": 4560.507688551683,
-          "vwap": 4522.050435873962
-        },
         {
           "t": "2026-05-21T18:00:00+00:00",
           "o": 4553.0,
@@ -17724,11 +17713,22 @@
           "o": 4344.7998046875,
           "h": 4347.5,
           "l": 4335.60009765625,
-          "c": 4342.60009765625,
-          "v": 2456.0,
-          "ema": 4336.911549145385,
-          "sma": 4256.323095703125,
-          "vwap": 4350.169404444216
+          "c": 4344.2001953125,
+          "v": 2581.0,
+          "ema": 4336.974298073081,
+          "sma": 4256.335404146635,
+          "vwap": 4350.186506620087
+        },
+        {
+          "t": "2026-06-17T09:00:00+00:00",
+          "o": 4344.39990234375,
+          "h": 4344.39990234375,
+          "l": 4342.10009765625,
+          "c": 4342.2998046875,
+          "v": 29.0,
+          "ema": 4337.183141469725,
+          "sma": 4256.759247295673,
+          "vwap": 4350.17603236885
         }
       ]
     },
@@ -22165,20 +22165,19 @@
   "errors": {},
   "macro": {
     "verdict": "NEUTRAL",
-    "risk_off_score": 3,
-    "risk_on_score": 2,
+    "risk_off_score": 2,
+    "risk_on_score": 1,
     "theme_hits": {
-      "war": 3,
+      "war": 2,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
       "crash": 0,
       "rate_cut": 0,
-      "risk_on": 2
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
-        "Trading Day: US-Iran war halted - now what?",
         "From supply shock to oil glut: IEA flags scale of demand destruction caused by Iran war",
         "Ineos and Daimler Truck enlist in auto defense push as Europe bolsters military spending"
       ],
@@ -22188,7 +22187,6 @@
       "crash": [],
       "rate_cut": [],
       "risk_on": [
-        "Why GOOGL Stock May Have More Room to Run Even After a 100% Rally",
         "Dow closes at record high as U.S.-Iran deal lifts stocks - Honolulu Star-Advertiser"
       ]
     },
@@ -22200,7 +22198,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781687154.5558329,
+    "fetched_at": 1781687463.3051832,
     "risk_off_themes": [
       "banking",
       "crash",
