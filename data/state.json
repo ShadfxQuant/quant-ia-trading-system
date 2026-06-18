@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-18T08:05:53.743692+00:00",
+  "generated_at_utc": "2026-06-18T08:11:03.714800+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13307,11 +13307,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-18T07:00:00+00:00",
-      "close": 4312.89990234375,
-      "ema": 4333.290687738722,
-      "sma": 4275.895391376202,
-      "vwap": 4329.825686299165,
+      "bar_time_utc": "2026-06-18T08:00:00+00:00",
+      "close": 4306.60009765625,
+      "ema": 4332.074447758556,
+      "sma": 4277.106929837741,
+      "vwap": 4329.221223181057,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13321,28 +13321,17 @@
       "read": {
         "bias": "neutral",
         "strength": "chop",
-        "adx": 18.84,
-        "ema_slope_4bar": -1.3484,
+        "adx": 19.1,
+        "ema_slope_4bar": -2.618,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 18.8, close 4,312.90 vs EMA50 4,333.29) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 19.1, close 4,306.60 vs EMA50 4,332.07) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
-        {
-          "t": "2026-05-22T16:00:00+00:00",
-          "o": 4521.2998046875,
-          "h": 4528.39990234375,
-          "l": 4512.7998046875,
-          "c": 4516.2998046875,
-          "v": 5715.0,
-          "ema": 4524.939059821726,
-          "sma": 4534.0507662259615,
-          "vwap": 4519.096685940732
-        },
         {
           "t": "2026-05-22T17:00:00+00:00",
           "o": 4516.5,
@@ -17725,12 +17714,23 @@
           "t": "2026-06-18T07:00:00+00:00",
           "o": 4326.39990234375,
           "h": 4329.7001953125,
-          "l": 4310.7001953125,
-          "c": 4312.89990234375,
-          "v": 3542.0,
-          "ema": 4333.290687738722,
-          "sma": 4275.895391376202,
-          "vwap": 4329.825686299165
+          "l": 4307.10009765625,
+          "c": 4308.39990234375,
+          "v": 4020.0,
+          "ema": 4333.114217150487,
+          "sma": 4275.860775991587,
+          "vwap": 4329.31027844121
+        },
+        {
+          "t": "2026-06-18T08:00:00+00:00",
+          "o": 4308.60009765625,
+          "h": 4309.7001953125,
+          "l": 4305.10009765625,
+          "c": 4306.60009765625,
+          "v": 130.0,
+          "ema": 4332.074447758556,
+          "sma": 4277.106929837741,
+          "vwap": 4329.221223181057
         }
       ]
     },
@@ -22169,7 +22169,7 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 8,
-    "risk_on_score": 4,
+    "risk_on_score": 3,
     "theme_hits": {
       "war": 4,
       "banking": 0,
@@ -22177,7 +22177,7 @@
       "rate_hike": 0,
       "crash": 3,
       "rate_cut": 0,
-      "risk_on": 4
+      "risk_on": 3
     },
     "sample_headlines": {
       "war": [
@@ -22197,9 +22197,9 @@
       ],
       "rate_cut": [],
       "risk_on": [
-        "US airlines stocks may need earnings upgrades to extend rally: UBS",
         "Western Digital Stock Just Hit a New All-Time High. Here's Why.",
-        "SpaceX posts first losing day as stock sinks 5%, losing momentum after a multiday rally"
+        "SpaceX posts first losing day as stock sinks 5%, losing momentum after a multiday rally",
+        "Micron Stock Falls Back From Record High. Here\u2019s the Level It Could Reach. - Barron's"
       ]
     },
     "n_headlines": 112,
@@ -22210,7 +22210,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781769954.6651516,
+    "fetched_at": 1781770264.7280235,
     "risk_off_themes": [
       "banking",
       "crash",
