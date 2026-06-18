@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-18T09:05:59.158761+00:00",
+  "generated_at_utc": "2026-06-18T09:10:59.868107+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13307,11 +13307,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-18T08:00:00+00:00",
-      "close": 4293.60009765625,
-      "ema": 4331.564643836988,
-      "sma": 4277.00692983774,
-      "vwap": 4325.417418739347,
+      "bar_time_utc": "2026-06-18T09:00:00+00:00",
+      "close": 4283.0,
+      "ema": 4329.370021456366,
+      "sma": 4278.0869290865385,
+      "vwap": 4324.0786763991055,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13320,29 +13320,18 @@
       "trend_carry_pyramid_cap": 0,
       "read": {
         "bias": "neutral",
-        "strength": "chop",
-        "adx": 19.69,
-        "ema_slope_4bar": -3.1278,
+        "strength": "weak",
+        "adx": 20.72,
+        "ema_slope_4bar": -5.06,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 19.7, close 4,293.60 vs EMA50 4,331.56) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 20.7, close 4,283.00 vs EMA50 4,329.37) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
-        {
-          "t": "2026-05-22T17:00:00+00:00",
-          "o": 4516.5,
-          "h": 4529.89990234375,
-          "l": 4514.5,
-          "c": 4520.2001953125,
-          "v": 7341.0,
-          "ema": 4524.753221997835,
-          "sma": 4533.26846078726,
-          "vwap": 4519.283180936029
-        },
         {
           "t": "2026-05-22T18:00:00+00:00",
           "o": 4520.5,
@@ -17725,12 +17714,23 @@
           "t": "2026-06-18T08:00:00+00:00",
           "o": 4308.60009765625,
           "h": 4312.60009765625,
-          "l": 4288.60009765625,
-          "c": 4293.60009765625,
-          "v": 4623.0,
-          "ema": 4331.564643836988,
-          "sma": 4277.00692983774,
-          "vwap": 4325.417418739347
+          "l": 4284.60009765625,
+          "c": 4285.89990234375,
+          "v": 5321.0,
+          "ema": 4331.26267539336,
+          "sma": 4276.9476975661055,
+          "vwap": 4324.360465188023
+        },
+        {
+          "t": "2026-06-18T09:00:00+00:00",
+          "o": 4286.0,
+          "h": 4286.7001953125,
+          "l": 4280.39990234375,
+          "c": 4283.0,
+          "v": 260.0,
+          "ema": 4329.370021456366,
+          "sma": 4278.0869290865385,
+          "vwap": 4324.0786763991055
         }
       ]
     },
@@ -22168,16 +22168,16 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 9,
-    "risk_on_score": 2,
+    "risk_off_score": 8,
+    "risk_on_score": 1,
     "theme_hits": {
       "war": 4,
       "banking": 0,
       "recession": 1,
       "rate_hike": 0,
-      "crash": 4,
+      "crash": 3,
       "rate_cut": 0,
-      "risk_on": 2
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
@@ -22197,8 +22197,7 @@
       ],
       "rate_cut": [],
       "risk_on": [
-        "SpaceX shares hold steady after three-day rally loses steam",
-        "Micron Stock Falls Back From Record High. Here\u2019s the Level It Could Reach. - Barron's"
+        "SpaceX shares hold steady after three-day rally loses steam"
       ]
     },
     "n_headlines": 112,
@@ -22209,7 +22208,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781773560.3481984,
+    "fetched_at": 1781773861.0606413,
     "risk_off_themes": [
       "banking",
       "crash",
