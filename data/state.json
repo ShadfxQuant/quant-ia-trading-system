@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-18T11:05:56.158259+00:00",
+  "generated_at_utc": "2026-06-18T11:11:05.556423+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13307,11 +13307,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-18T10:00:00+00:00",
-      "close": 4279.0,
-      "ema": 4327.571819592497,
-      "sma": 4279.307699819711,
-      "vwap": 4316.053854997813,
+      "bar_time_utc": "2026-06-18T11:00:00+00:00",
+      "close": 4269.39990234375,
+      "ema": 4325.098407393464,
+      "sma": 4280.523850661058,
+      "vwap": 4315.263632829921,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13321,28 +13321,17 @@
       "read": {
         "bias": "neutral",
         "strength": "weak",
-        "adx": 21.73,
-        "ema_slope_4bar": -6.5511,
+        "adx": 22.97,
+        "ema_slope_4bar": -8.0158,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 21.7, close 4,279.00 vs EMA50 4,327.57) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 23.0, close 4,269.40 vs EMA50 4,325.10) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
-        {
-          "t": "2026-05-22T19:00:00+00:00",
-          "o": 4516.89990234375,
-          "h": 4517.7001953125,
-          "l": 4505.60009765625,
-          "c": 4510.0,
-          "v": 3717.0,
-          "ema": 4523.882539792244,
-          "sma": 4531.708462289664,
-          "vwap": 4518.936731214504
-        },
         {
           "t": "2026-05-22T20:00:00+00:00",
           "o": 4510.10009765625,
@@ -17725,12 +17714,23 @@
           "t": "2026-06-18T10:00:00+00:00",
           "o": 4287.60009765625,
           "h": 4291.89990234375,
-          "l": 4276.60009765625,
-          "c": 4279.0,
-          "v": 4072.0,
-          "ema": 4327.571819592497,
-          "sma": 4279.307699819711,
-          "vwap": 4316.053854997813
+          "l": 4273.2001953125,
+          "c": 4273.89990234375,
+          "v": 4541.0,
+          "ema": 4327.37181576284,
+          "sma": 4279.2684682992785,
+          "vwap": 4315.457960734049
+        },
+        {
+          "t": "2026-06-18T11:00:00+00:00",
+          "o": 4274.2001953125,
+          "h": 4274.2001953125,
+          "l": 4268.2998046875,
+          "c": 4269.39990234375,
+          "v": 209.0,
+          "ema": 4325.098407393464,
+          "sma": 4280.523850661058,
+          "vwap": 4315.263632829921
         }
       ]
     },
@@ -22168,16 +22168,16 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 6,
-    "risk_on_score": 3,
+    "risk_off_score": 7,
+    "risk_on_score": 4,
     "theme_hits": {
-      "war": 4,
+      "war": 5,
       "banking": 0,
       "recession": 1,
       "rate_hike": 0,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 3
+      "risk_on": 4
     },
     "sample_headlines": {
       "war": [
@@ -22196,8 +22196,8 @@
       "rate_cut": [],
       "risk_on": [
         "Keel Infrastructure (KEEL) Climbs, Rides Renewed AI Optimism",
-        "SpaceX shares hold steady after three-day rally loses steam",
-        "Intel shares rally as Trump says company will build chips for Apple in the U.S."
+        "Lionsgate (LION) Hits All-Time High on Netflix Merger Buzz",
+        "SpaceX shares hold steady after three-day rally loses steam"
       ]
     },
     "n_headlines": 112,
@@ -22208,7 +22208,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1781780757.0805285,
+    "fetched_at": 1781781067.808329,
     "risk_off_themes": [
       "banking",
       "crash",
