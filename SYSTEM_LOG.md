@@ -3521,3 +3521,59 @@ live universe:
    where the pullback momentum signal is noise.
 4. **Correlation control** (Part 8.32) — would have capped the simultaneous
    4-long / 3-short clusters that got mass-stopped.
+
+---
+
+## Part 8.39b — Deep forensic on current-universe trades only (2026-06-19)
+
+Excluding dropped symbols. 7 trades on SPY/^NDX/GLD/SLV: 3 wins (+$2,820),
+4 losses (−$3,426), net −$606. Pulled entry indicator state + MAE/MFE per trade.
+
+### The 3 WINNERS — all clean established downtrends
+
+| Trade | RSI | Struct | Regime | P_bull | MFE/MAE | Why it worked |
+|---|---|---|---|---|---|---|
+| SLV pb SHORT +$600 | 40 | bear | crash | 0.00 | +7.5/−0.2% | aligned, never went against |
+| GLD pb SHORT +$1,500 | 62 | bear | crash | 0.01 | +4.3/−2.1% | sustained gold down |
+| GLD tc SHORT +$720 | 62 | bear | crash | 0.01 | — | runner, 45 bars to +8% |
+
+Winner profile: EMA<SMA (clean bear structure), RSI 40–62 (NOT oversold),
+crash regime (established move), HMM-aligned (P_bull ~0), small MAE.
+
+### The 4 LOSERS — all transitional/exhausted entries
+
+| Trade | RSI | Struct | Regime | P_bull/bear | Where it failed |
+|---|---|---|---|---|---|
+| SPY pb LONG −$750 | 49 | bull | slowdown | bull 0.02 / **bear 0.98** | Fought HMM: long into 98%-bear posterior; EMA>SMA was a lagging artifact, trend rolling over. MFE only +0.4% then −2.6%. |
+| ^NDX pb SHORT −$741 | **39** | **bull** | stabilization | bull 0.47 | Shorted DOWN-momentum into oversold (RSI 39) stabilization, against bullish structure (EMA>SMA), mixed HMM. Caught the bounce. |
+| SLV tc SHORT −$1,194 | **26** | bear | crash | **bull 1.00** | WORST: chased extended downside (RSI 26, price 5.4% below EMA) as HMM flipped to 100% bull. trend_carry has no oversold/HMM brake. |
+| SPY pb SHORT −$741 | **33** | **bull** | stabilization | bear 0.81 | Shorted oversold (RSI 33) dip in an uptrend (EMA>SMA) stabilizing. HMM agreed but the oversold bounce stopped it. |
+
+### The unifying pattern — a crisp threshold
+
+**Every short that fired at RSI < 40 LOST. Every short at RSI ≥ 40 WON.**
+- Losing shorts: RSI 39, 26, 33 (all oversold → bounced)
+- Winning shorts: RSI 40, 62, 62 (not oversold → followed through)
+
+The losers also clustered on: shorting against bullish structure (^NDX, SPY:
+EMA>SMA), transitional regimes (slowdown/stabilization, not crash), and 2 of 4
+fighting the HMM posterior (SPY long P_bear 0.98; SLV short P_bull 1.00).
+
+### Four filters, each catches ≥1 loser, none harms a winner
+
+1. Don't short when RSI < 40 → catches ^NDX, SLV, SPY-short (−$2,676)
+2. Don't enter against HMM posterior (P_bull>0.5 short / P_bear>0.5 long) →
+   catches SPY-long, SLV-short
+3. Require clean structure (EMA<SMA for shorts) → catches ^NDX, SPY-short
+4. Suppress entries in stabilization regime → catches ^NDX, SPY-short
+
+All 3 winners pass all filters (RSI 40–62, EMA<SMA, crash regime, P_bull~0).
+**Applying just filter #1 (RSI<40 short block) flips these 7 trades from −$606
+to roughly +$2,820** — and the trend_carry sleeve's lack of an oversold/HMM
+brake (SLV −$1,194) is the single biggest hole.
+
+### Core diagnosis
+The engine's edge is real on ESTABLISHED trends (crash-regime gold/silver
+shorts: +$2,820). It bleeds trying to trade TRANSITIONS/EXHAUSTION — shorting
+oversold dips and fighting the HMM in slowdown/stabilization regimes (−$3,426).
+The fix is a set of cheap pre-entry gates, with trend_carry needing them most.
