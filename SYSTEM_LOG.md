@@ -3783,3 +3783,59 @@ compounds into ~3× the basket.
 Over the whole book, the system delivers ~3× buy-hold return at lower risk —
 and that's BEFORE leverage. Add ~1.4× (Part 8.43) and it targets ~80% CAGR
 net at 0% ruin.
+
+---
+
+## Part 8.46 — Tier 1+2 gates + SP500/NASDAQ double-trade (2026-06-19)
+
+SLV already dropped from DATA.symbols (Tier 1 config done). Tested Tier 1+2
+gates and the new double-trade lead-lag overlay.
+
+### Tier 1 (ship) vs Tier 1+2 (regime suppression REJECTED)
+
+| Symbol | Tier 1 profit | Tier 1+2 profit |
+|---|---|---|
+| SPY | +$67,999 (PF 3.64) | +$56,960 (PF 3.18) |
+| ^NDX | +$59,653 | +$51,084 |
+| GLD | +$150,982 | +$113,177 |
+| GC=F | +$51,800 | +$35,208 |
+| **TOTAL** | **+$330,434 (843 tr)** | **+$256,429 (735 tr)** |
+
+**Tier 2 regime suppression (stand down in stabilization/high P_range) costs
+−$74,005** — same overfit trap as the blanket HMM veto: many WINNING trades
+also fire in those regimes; suppressing them throws out the babies with the
+bathwater. REJECT regime suppression. (trend_carry guards are already in
+Tier 1 — gates applied to both sleeves. Post-stop cooldown / correlation cap
+are execution-layer, not tested here.)
+
+**Tier 1 stands as the shippable config: +$330,434.**
+
+### Double-trade: SP500 <-> NASDAQ lead-lag copy (NEW — WORKS)
+
+Logic: when a STRONG, high-conviction (HMM posterior > 0.65) entry fires on the
+LEADING one, and the other is TRAILING (lower 20-bar return in trade
+direction), copy onto the laggard with 1.5× WIDER TP/SL (stop −3.75%, TP +7.5%,
+time ×1.5) so it has room to catch up.
+
+Results:
+- 80 copy trades, **WR 53.8%, PF 2.32, total +$55,125**
+- avg conviction 0.95, avg move +2.30%, 52 long / 28 short
+- SP500+NASDAQ Tier-1 base +$127,652 → **+$182,777 combined (+43.2% uplift)**
+
+Lower WR than base engine (53.8% vs ~75%) but the wider TP makes winners
+bigger → PF 2.32. The thesis holds: the 0.95-correlated laggard catches up to
+the confirmed leader, and the wider target harvests the catch-up.
+
+**Honest caveats before shipping the double-trade:**
+- Deliberately ADDS correlated exposure (SPY/^NDX 0.95) — in a correlated
+  crash both copies lose together. Mitigated by conviction>0.65 + laggard
+  filter, but needs a correlated-crash stress test.
+- Simulation ignores capital contention (assumes copy can always open) and
+  friction. Needs MC + friction + concurrency modeling.
+- WR 53.8% is psychologically harder (more losers, bigger winners).
+
+### Verdict
+- **Tier 1: SHIP** (+$330k, validated).
+- **Tier 2 regime suppression: REJECT** (−$74k; gate-first caught it).
+- **Double-trade: PROMISING** (+43% on SPY/^NDX) — advance to MC + friction +
+  crash stress before live. Highest-upside new idea this session.
