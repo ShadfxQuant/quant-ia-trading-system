@@ -3230,3 +3230,68 @@ actual edge in this regime, or add complexity without lift.
 Vol-targeted sizing layer on the production engine → gate-test on MT5 tickers
 → friction MC → leverage sensitivity. Highest value-per-effort, repeatedly
 validated.
+
+---
+
+## Part 8.35 — Pullback / Golden-Cross / VWAP strategy suite (2026-06-19)
+
+User: try more strategies, look into pullback golden-cross using EMA, SMA, VWAP.
+Built 10 strategies on HOURLY bars (session-anchored VWAP resets each day).
+
+### Subset ranking (10 symbols, mean Sharpe)
+
+| Strategy | meanSharpe | medSharpe | meanCAGR | meanDD | meanWR | %+ |
+|---|---|---|---|---|---|---|
+| **VWAP_Pullback** | **0.87** | 0.99 | +12.1% | −19.7% | 52.3% | 100% |
+| Triple_Confluence | 0.77 | 0.84 | +8.5% | −15.9% | 52.6% | 100% |
+| GC_Pullback_EMA | 0.76 | 0.60 | +11.2% | −19.9% | 52.4% | 100% |
+| EMA_SMA_Ribbon | 0.71 | 0.74 | +9.4% | −22.3% | 52.4% | 90% |
+| GC_Pullback_SMA | 0.67 | 0.59 | +9.6% | −21.7% | 52.5% | 90% |
+| VWAP_Band_Break | 0.63 | 0.31 | +4.7% | −18.4% | 52.0% | 90% |
+| VWAP_Reclaim | 0.63 | 0.49 | +7.1% | −20.9% | 51.7% | 100% |
+| AnchoredVWAP_Trend | 0.62 | 0.70 | +8.5% | −24.9% | 51.9% | 80% |
+| VWAP_MeanRev | 0.43 | 0.29 | +1.1% | −13.7% | 53.7% | 70% |
+| GC_VWAP_Combo | 0.14 | 0.40 | +0.2% | −11.8% | 51.6% | 60% |
+
+### Key findings
+
+1. **VWAP_Pullback wins** (golden cross EMA50>SMA200 + price dips to session
+   VWAP + closes back above). meanSharpe 0.87, positive on 100% of symbols.
+2. **VWAP as the pullback TARGET beats EMA/SMA as the target**: VWAP_Pullback
+   0.87 > GC_Pullback_EMA 0.76 > GC_Pullback_SMA 0.67. Pulling back to VWAP
+   is a better entry trigger than pulling back to a moving average.
+3. **EMA > SMA for the trend filter** (0.76 vs 0.67) — confirms the production
+   engine's EMA50 choice is right.
+4. **Over-confluence kills edge**: GC_VWAP_Combo (require golden cross AND
+   above-VWAP AND pullback) collapsed to 0.14. Too many gates = too few/late
+   entries.
+
+### Best single edges (full universe)
+
+| Strategy | Symbol | Sharpe | CAGR | DD | WR |
+|---|---|---|---|---|---|
+| GC_Pullback_EMA | ^GSPC | 1.54 | +12.8% | −5.7% | 55.1% |
+| **VWAP_Pullback** | **GC=F** | **1.48** | +18.8% | −18.8% | 52.2% |
+| VWAP_Pullback | SI=F | 1.45 | +41.8% | −19.3% | 52.0% |
+| GC_Pullback_EMA | GC=F | 1.41 | +20.5% | −15.4% | 52.2% |
+| GC_Pullback_EMA | SPY | 1.41 | +11.7% | −5.7% | 54.8% |
+
+### GC=F keeps surfacing as the underutilized symbol
+
+GC=F appears at/near the top for BOTH VWAP_Pullback (1.48) and GC_Pullback_EMA
+(1.41) — consistent with Parts 8.30/8.33 (GC=F is the weakest symbol under the
+current production pullback engine at +13.3% CAGR). The production engine
+already uses VWAP but ONLY as pyramid confirmation (per pullback.py docstring);
+these results suggest VWAP as a PRIMARY pullback target could lift GC=F.
+
+### Honest caveats
+- Unlevered, no friction. PF is low (1.08–1.20) = high-frequency hourly grind;
+  friction will bite hard (Part 8.30 showed 10bp halves edge). Mean Sharpe
+  ~0.7–0.9 is below the production engine's realized ~2.5.
+- These RANK entry-trigger ideas; the takeaway is "VWAP pullback target > MA
+  pullback target," not "ship VWAP_Pullback standalone."
+
+### Actionable
+Test adding a VWAP-pullback entry trigger to the production pullback engine,
+GC=F first (where it shows Sharpe 1.48 and the engine is weakest). Gate-test
++ friction MC before ship, same discipline.
