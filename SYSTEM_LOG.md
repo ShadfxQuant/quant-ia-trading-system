@@ -3942,3 +3942,51 @@ leverage modest as planned.
 - Leverage: ~1.0–1.5× to taste (0% ruin throughout)
 - REJECTED: regime suppression, blanket HMM veto, volume/CVD filters,
   conviction sizing
+
+---
+
+## Part 8.49 — Infinex scenario: $700, fractional sizing, leverage cliff (2026-06-19)
+
+User trades on Infinex (perp DEX) not MT5: fractional sizing, 0.1% fee, "crazy
+leverage". Modeled $700 start, block bootstrap + intra-path liquidation, friction
+tiers (10/30/60bp to bracket fee+funding on multi-day holds).
+
+### Infinex changes the small-account picture
+- GOOD: no minimum lot sizes (fractional sizing works) + flat % fees scale →
+  the MT5 small-account problem GOES AWAY. $700 CAN run the strategy.
+- COST: 0.1% fee + FUNDING over multi-day holds (avg hold ~days) → effective
+  friction 30–60bp, not 10bp.
+
+### Realistic figures ($700, SAFE leverage)
+| Leverage | 30bp friction | 60bp friction |
+|---|---|---|
+| 1× | $12,200 p50 / $4,400 p5 | $5,400 / $2,000 |
+| 1.5× | $48,400 p50 / $11,000 p5 | $14,200 / $3,200 |
+| 2× | $187k p50 / $24k p5 | $36k / $4,900 |
+
+### THE TRAP — high-leverage numbers are FANTASY
+At 3×+ the MC spits out $2.6M → $5B → $1.3 TRILLION. **These are artifacts** of
+compounding an over-optimistic backtest CAGR (~70%) over 3 years at leverage. No
+$700 becomes billions. The model also UNDERSTATES liquidation (it assumes the
+backtest loss distribution holds; a real −11% to −16% drawdown at 10× = instant
+liquidation).
+
+### The leverage cliff (P liquidated)
+| Leverage | 10bp | 30bp | 60bp |
+|---|---|---|---|
+| 1–3× | 0% | 0% | 0–0.1% |
+| 5× | 0% | 0.1% | 0.9% |
+| 10× | 1.8% | 4.0% | 12.7% |
+| **25×** | **91.8%** | **92.7%** | **94.9% ☠** |
+
+### Honest verdict
+- $700 on Infinex at **1–1.5×** realistically targets **~$10k–$50k over 3 years**
+  IF the edge persists and funding stays moderate. Still a 15–70× multiple.
+- **"Crazy leverage" = account suicide.** Above ~3× the numbers are fantasy;
+  at 10–25× you get liquidated. The strategy's normal −16% drawdowns become
+  −100%+ wipeouts at high leverage.
+- NONE of this is live-proven. The backtest is bull-favorable; funding cost is
+  an unmodeled unknown; start at 1×, prove it live, never touch crazy leverage.
+
+The single most important number is NOT the median — it's that at the leverage
+the user is excited about (10–25×), liquidation runs 13–95%.
