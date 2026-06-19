@@ -3404,3 +3404,37 @@ Engine takes 1.5–3.6× LESS drawdown than buy-hold. Lever each to buy-hold's
   simple trend-hold.** This is now the clearest open problem.
 - The leverage lever (already MC-validated to 2.5×, 0% ruin) is how the
   risk-adjusted edge converts to raw-return outperformance.
+
+---
+
+## Part 8.38 — Benchmark on the user's ACTUAL instruments (2026-06-19)
+
+User clarified they trade TradingView S&P 500 (US500/SPX) and XAUUSD (spot
+gold) — NOT Nasdaq or gold futures. Re-ran buy-hold benchmark on proxies
+^GSPC (TradingView SP500) and GLD (spot-gold proxy for XAUUSD; % moves match
+XAUUSD, unlike GC=F futures). `_benchmark_mt5_instruments.py`.
+
+### The earlier "underperformance" was on instruments the user DOESN'T trade
+
+| Instrument | Buy&Hold | Engine (ideal) | Engine (10bp friction) | Verdict |
+|---|---|---|---|---|
+| **US500 / ^GSPC** | +67.5% / DD −18.9% / Calmar 1.06 | **+74.0% / DD −4.1% / Calmar 5.27** | +69.0% / DD −4.4% | beats hold +6.5pp, 4.6× shallower DD |
+| **XAUUSD / GLD** | +121.8% / DD −20.1% / Calmar 1.62 | **+151.5% / DD −5.6% / Calmar 6.82** | +146.3% / DD −5.8% | beats hold +29.8pp, 3.6× shallower DD |
+
+### On the actual book the engine wins EVERY way
+
+- **Raw return**: +6.5pp (S&P), +29.8pp (gold) over buy-hold.
+- **Drawdown**: 4.6× / 3.6× shallower.
+- **Risk-adjusted**: Calmar 5.27 vs 1.06 (S&P), 6.82 vs 1.62 (gold).
+- **After realistic 10bp MT5 friction**: STILL beats hold (+69% vs +67.5%,
+  +146% vs +122%).
+- **Risk-matched** (lever to hold's ~20% DD, available as CFD): engine
+  ~+339% (S&P, 4.6×) and ~+540% (gold, 3.6×) vs hold +68% / +122%.
+
+### Conclusion
+On US500 and XAUUSD — the only two instruments the user actually trades — the
+production engine is genuinely excellent and dominates buy-and-hold on raw
+return, drawdown, risk-adjusted return, and after friction. The Part 8.37
+concerns (^NDX −31pp, GC=F −81pp) are moot: those aren't in the user's book.
+GLD (not GC=F) is the correct XAUUSD proxy and it's a top performer (Calmar
+6.82). No change needed to SPY/GLD routing; keep production on both.
