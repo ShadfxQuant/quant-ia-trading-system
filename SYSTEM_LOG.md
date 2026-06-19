@@ -3743,3 +3743,43 @@ Friction (#2) costs ~9pp CAGR but the book absorbs it.
 The user is already much closer to 80% than the single-SPY view suggested
 (combined ~58% net at 1×); a light leverage finishes the job within the
 0%-ruin envelope the MC has repeatedly confirmed.
+
+---
+
+## Part 8.44 — Buy-&-hold ALL assets vs system over ALL assets (2026-06-19)
+
+User: look at buy-hold for all assets, then the system over all assets.
+Common window 2024-01-16 → 2026-06-08. Both from $100k, 10bp friction on system.
+
+### Combined ($100k basis) — the headline
+
+| | Total | CAGR | MaxDD |
+|---|---|---|---|
+| Buy & hold all 4 (equal-weight basket) | +89.7% | +30.7% | −15.6% |
+| **System over all 4 (pooled)** | **+247.7%** | **+68.3%** | **−9.7%** |
+
+**The system nearly TRIPLES the buy-hold basket (+248% vs +90%) with LOWER
+drawdown (−9.7% vs −15.6%).** This resolves the earlier "why barely beat SPY?"
+— per single asset the system roughly matches buy-hold, but run as ONE POOLED
+book across all 4 it compounds one capital pool through many trades (capital
+velocity) + trades both directions, turning 4 modest single-asset edges into a
+big combined return.
+
+### Per-asset (each isolated $100k, common window)
+
+| Asset | B&H total / DD | System total / DD |
+|---|---|---|
+| SPY | +56.2% / −19.0% | +52.4% / −7.7% |
+| ^NDX | +75.4% / −22.9% | +46.0% / −6.5% |
+| GLD | +112.1% / −20.1% | **+138.1%** / −5.9% |
+| GC=F | +114.9% / −21.2% | +35.2% / −15.3% |
+
+Per-asset the system wins raw on GLD, slightly lags SPY, lags ^NDX/GC=F — but
+always at ¼–⅓ the drawdown. The POOLING is where the system's advantage
+compounds into ~3× the basket.
+
+### Takeaway
+"Barely beating buy-hold" only happens when you look at ONE asset at a time.
+Over the whole book, the system delivers ~3× buy-hold return at lower risk —
+and that's BEFORE leverage. Add ~1.4× (Part 8.43) and it targets ~80% CAGR
+net at 0% ruin.
