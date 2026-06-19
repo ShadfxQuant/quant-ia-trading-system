@@ -3670,3 +3670,31 @@ ruining trade count. Blanket "both" is REJECTED (the discipline worked).
 
 Next: wire RSI gate into both sleeves + per-symbol HMM veto for GC=F, then
 MC-validate before live.
+
+---
+
+## Part 8.42 — Three-way: gated vs production vs buy-&-hold (2026-06-19)
+
+Gated = RSI gate on SPY/^NDX/GLD, HMM veto on GC=F (each symbol's best gate
+from 8.41). Daily curves + WR/CAGR/return/DD for all three.
+
+| Symbol | Model | Return | CAGR | WR | MaxDD |
+|---|---|---|---|---|---|
+| SPY | hold / prod / gated | +64.6 / +67.7 / +68.0% | 19.2/20.0/20.1 | —/75.7/74.6 | −19.0/−6.5/−6.5 |
+| ^NDX | hold / prod / gated | +91.6 / +60.7 / +59.7% | 25.8/18.2/17.9 | —/76.4/75.3 | −22.9/−6.6/−6.0 |
+| GLD | hold / prod / gated | +121.8 / +151.5 / +151.0% | 32.4/38.4/38.3 | —/80.9/81.7 | −20.1/−5.6/−5.6 |
+| GC=F | hold / prod / gated | +116.1 / +38.9 / +51.8% | 38.4/14.9/19.3 | —/60.0/64.8 | −21.2/−13.9/−13.1 |
+
+Portfolio: production +$318,800 vs gated +$330,500 (+$11,700).
+
+Findings:
+- Gated lift is almost all GC=F (HMM veto: +12.9pp return, WR 60→65, PF
+  1.41→1.66, DD −13.9→−13.1). RSI gate near-neutral on the strong 3 (quality
+  up, trade count intact — meets the user's bar).
+- vs buy-hold on the user's core instruments: gated BEATS hold on SPY (US500)
+  +68 vs +64.6 (3× less DD) and GLD (XAUUSD) +151 vs +121.8 (4× less DD).
+  ^NDX/GC=F lag raw hold but with ¼ the drawdown; gated narrows the GC=F gap.
+
+Shipped `_gated_vs_prod_vs_buyhold.py` + research/results/three_way.json.
+Still backtest-only (no friction/MC). Next: MC + friction gate on the gated
+config, then wire into engine if it holds.
