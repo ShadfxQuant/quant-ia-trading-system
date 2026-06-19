@@ -3698,3 +3698,48 @@ Findings:
 Shipped `_gated_vs_prod_vs_buyhold.py` + research/results/three_way.json.
 Still backtest-only (no friction/MC). Next: MC + friction gate on the gated
 config, then wire into engine if it holds.
+
+---
+
+## Part 8.43 — Three fixes toward ~80% return (2026-06-19)
+
+User asked to try the 3 fixes (leverage, friction-cut, conviction sizing) to
+reach ~80%. Combined GATED portfolio (RSI gate SPY/^NDX/GLD + HMM veto GC=F).
+
+### Incremental effect (realized, 1× leverage)
+
+| Config | CAGR | MaxDD | total |
+|---|---|---|---|
+| gated, no friction, flat size | +67.3% | −6.6% | +330% |
+| + 10bp friction | +57.9% | −8.0% | +265% |
+| + conviction sizing | +55.5% | −10.3% | +250% |
+
+**Key reveal: the COMBINED book is ~58% net CAGR at 1×** — not the +20% of
+single-SPY. The user's "barely beat SPY" was a single-asset illusion; the
+4-symbol portfolio compounds far higher.
+
+**Fix #3 (conviction sizing) FAILED** — scaling size by HMM posterior cost
+−2.4pp CAGR AND deepened drawdown (−8.0→−10.3%). Honest negative; DROP it.
+Friction (#2) costs ~9pp CAGR but the book absorbs it.
+
+### Leverage sweep (gated + friction + conviction), 3yr MC, 10k paths
+
+| Leverage | p50 CAGR | p5 CAGR | p5 DD | P(ruin) |
+|---|---|---|---|---|
+| 1.0× | +55.4% | +41.1% | −7.9% | 0.00% |
+| **1.5×** | **+92.8%** | +66.5% | −11.4% | 0.00% |
+| 2.0× | +139.5% | +96.8% | −15.0% | 0.00% |
+| 2.5× | +195.5% | +131.2% | −18.5% | 0.00% |
+| 3.0× | +264.2% | +171.7% | −22.2% | 0.00% |
+
+### Verdict — how to get ~80%
+
+~80% net CAGR sits at **~1.3–1.5× leverage** on the combined gated book.
+- At 1.5×: p50 +93%, p5 +67%, p5 DD −11%, **P(ruin) 0.00%**.
+- Drawdown stays BELOW buy-&-hold's −19 to −21% even leveraged.
+- Conviction sizing dropped (hurt). The working recipe is just:
+  **gated engine + full 4-symbol portfolio + ~1.4× leverage.**
+
+The user is already much closer to 80% than the single-SPY view suggested
+(combined ~58% net at 1×); a light leverage finishes the job within the
+0%-ruin envelope the MC has repeatedly confirmed.
