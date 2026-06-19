@@ -3340,3 +3340,67 @@ drawdown (−10.1% vs −13.9%), so it's a pure improvement, not a risk trade.
 Unlevered, no friction. GC=F PF still only 1.57 (friction-sensitive). Gate +
 friction MC before wiring live. But the per-symbol routing is the cleanest
 win surfaced this whole research arc and is consistent with every prior finding.
+
+---
+
+## Part 8.37 — Both engines vs buy-&-hold the underlying (2026-06-19)
+
+User: compare growth of both models to actual stock movement — are we
+underperforming? Built `_benchmark_vs_buyhold.py`, daily calendar curves.
+
+### Raw return — the engine LAGS buy-hold on 2 of 4
+
+| Symbol | Buy&Hold | Production | VWAP | Verdict (prod vs B&H) |
+|---|---|---|---|---|
+| SPY | +64.6% | +67.7% | +59.2% | beats +3.2pp, DD 2.9× shallower |
+| ^NDX | **+91.6%** | +60.7% | +48.2% | **LAGS −30.9pp** (DD 3.5× shallower) |
+| GLD | +121.8% | +151.5% | +134.1% | beats +29.8pp, DD 3.6× shallower |
+| GC=F | **+116.1%** | +35.1% | +54.9% | **LAGS −81pp** (DD 1.5× shallower) |
+
+### Risk-adjusted — better, but GC=F is genuinely broken
+
+| Symbol | B&H Sharpe/Calmar | Prod Sharpe/Calmar | VWAP Sharpe/Calmar |
+|---|---|---|---|
+| SPY | 1.25 / 1.01 | **1.85 / 3.09** | 1.50 / 2.09 |
+| ^NDX | 1.25 / 1.13 | **1.50 / 2.77** | 1.16 / 1.20 |
+| GLD | 1.50 / 1.62 | **2.20 / 6.82** | 2.12 / 6.33 |
+| GC=F | **1.43 / 1.81** | 0.80 / 0.97 | 1.17 / 2.01 |
+
+### Risk-matched (drawdown-equalized via leverage, first-order)
+
+Engine takes 1.5–3.6× LESS drawdown than buy-hold. Lever each to buy-hold's
+~20% DD (lever = bh_dd / engine_dd), compare returns at equal risk:
+
+| Symbol | B&H | Prod risk-matched | Winner |
+|---|---|---|---|
+| SPY | +64.6% | ~+198% (2.9×) | **engine crushes** |
+| ^NDX | +91.6% | ~+211% (3.5×) | **engine crushes** |
+| GLD | +121.8% | ~+544% (3.6×) | **engine crushes** |
+| GC=F | +116.1% | ~+54% prod (1.5×) / ~+115% VWAP (2.1×) | B&H ≈ VWAP, prod lags |
+
+### Honest conclusions
+
+1. **On raw unlevered return the engine underperforms buy-hold on ^NDX
+   (−31pp) and badly on GC=F (−81pp)** — because it's only ~30% deployed and
+   sits in cash, and takes losing shorts, in one-directional bull markets.
+   Buy-hold is 100% exposed.
+2. **The engine's edge is RISK-ADJUSTED**: Calmar 2.8–6.8× vs buy-hold's
+   1.0–1.6×. It makes most of the upside with 1.5–3.6× smaller drawdowns. At
+   equal risk (leverage to match DD), it dramatically beats buy-hold on
+   SPY/^NDX/GLD. That's the real value proposition + capital efficiency
+   (un-deployed capital trades other symbols).
+3. **GC=F is genuinely underperforming, even risk-adjusted** — production
+   Sharpe 0.80 < buy-hold 1.43. This is not a return/risk tradeoff, it's a
+   weak engine on gold futures. VWAP challenger lifts it to Sharpe 1.17 /
+   Calmar 2.01 and risk-matched ~parity with gold buy-hold — reinforcing the
+   Part 8.36 GC=F→VWAP routing decision, but even VWAP only reaches PARITY
+   with just holding gold. Active trading of GC=F barely justifies itself.
+
+### Action implications
+- Keep production on SPY/GLD (beats B&H raw AND risk-adjusted).
+- ^NDX: defensible (much lower DD) but consider higher exposure / less
+  shorting to close the raw-return gap in bull regimes.
+- **GC=F: route to VWAP (8.36) AND reconsider whether active trading beats a
+  simple trend-hold.** This is now the clearest open problem.
+- The leverage lever (already MC-validated to 2.5×, 0% ruin) is how the
+  risk-adjusted edge converts to raw-return outperformance.
