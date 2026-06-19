@@ -3438,3 +3438,86 @@ return, drawdown, risk-adjusted return, and after friction. The Part 8.37
 concerns (^NDX −31pp, GC=F −81pp) are moot: those aren't in the user's book.
 GLD (not GC=F) is the correct XAUUSD proxy and it's a top performer (Calmar
 6.82). No change needed to SPY/GLD routing; keep production on both.
+
+---
+
+## Part 8.39 — Paper-trade forensic postmortem (2026-06-19)
+
+User: pull all recent paper trades, explain poor performance per trade via
+metrics, entry stats, and timing. Book: 12 closed, realized −$3,210.80; 4 open.
+
+### Per-trade entry context (system state at entry)
+
+| # | Result | Sym | Strat | Side | PnL | Regime | RSI | P_bull | P_range | Diagnosis |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | WIN | SLV | pb | SHORT | +600 | crash | 40 | 0.00 | 1.00 | gold-complex down, worked |
+| 2 | LOSS | IWM | pb | LONG | −750 | slowdown | 40 | 0.00 | 1.00 | fight-HMM (Prange 1.0) + dropped sym |
+| 3 | LOSS | QQQ | pb | LONG | −750 | growth | 59 | 0.77 | 0.00 | good signal, exogenous drop + dropped sym |
+| 4 | LOSS | QQQ | tc | LONG | −1200 | growth | 59 | 0.77 | 0.00 | same, wider stop lost more |
+| 5 | WIN | GLD | pb | SHORT | +1500 | crash | 62 | 0.01 | 0.99 | sustained gold down, 172h hold |
+| 6 | LOSS | SPY | pb | LONG | −750 | slowdown | 49 | 0.02 | 0.00 | fight-HMM (Pbull 0.02) |
+| 7 | WIN | EURUSD | pb | SHORT | +159 | — | — | — | — | manual close, dropped sym |
+| 8 | LOSS | EURUSD | tc | SHORT | −65 | — | — | — | — | manual close, dropped sym |
+| 9 | WIN | GLD | tc | SHORT | +720 | crash | 62 | 0.01 | 0.99 | gold runner, 288h hold |
+| 10 | LOSS | ^NDX | pb | SHORT | −741 | stabilization | 39 | 0.47 | 0.53 | shorted oversold bounce, mixed HMM |
+| 11 | LOSS | SLV | tc | SHORT | −1194 | crash | 26 | 1.00 | 0.00 | WORST: shorted RSI26 with Pbull=1.0 |
+| 12 | LOSS | SPY | pb | SHORT | −741 | stabilization | 33 | 0.19 | 0.00 | shorted oversold stabilization |
+
+### Three failure buckets
+
+1. **Fighting the HMM (Grade-D, avoidable): #2, #6, #11 = −$2,694.** Entered
+   against the HMM posterior. #11 is the worst trade in the book — shorted
+   silver at RSI 26 (deeply oversold) while P_bull = 1.00 (HMM maximally
+   bullish); silver bounced +4%, stopped. The deterministic "crash" label
+   disagreed with the posterior and the posterior was right.
+2. **Shorting oversold stabilization (bad timing): #10, #12 = −$1,482.**
+   Shorted ^NDX (RSI 39) and SPY (RSI 33) into a stabilizing/recovering
+   market. Shorted the bottom; both stopped on the rally.
+3. **Legit signal, exogenous reversal (bad luck): #3, #4 = −$1,950.** QQQ
+   longs in growth regime, P_bull 0.77 — genuinely good setups caught by a
+   1-day drop. Not a system flaw (but QQQ is a dropped symbol).
+
+### The two macro patterns
+
+**WHIPSAW.** SPY went LONG (#6, entered Jun 3, stopped Jun 5 on a drop) then
+SHORT (#12, entered Jun 9, stopped Jun 15 on a rally). Bought the top, shorted
+the bottom — lost both ways, −$1,491 on SPY alone. Signature of momentum
+signals firing as noise in a ranging/choppy regime.
+
+**CORRELATED CLUSTERING (Part 8.32 again).** Jun 3–5: 4 simultaneous equity
+LONGS (IWM, QQQ×2, SPY) all stopped together by one drop (−$3,450). Jun 9–15:
+3 simultaneous SHORTS (^NDX, SLV, SPY) all stopped together by one rally
+(−$2,676). No correlation control — the book makes one big directional bet at
+a time and gets stopped en masse.
+
+### Critical reframe — most damage is from DROPPED symbols
+
+| Universe | Realized PnL |
+|---|---|
+| Full book (incl. dropped IWM/QQQ/EURUSD) | −$3,210 |
+| **Current universe only (SPY/^NDX/GLD/SLV)** | **−$606** |
+
+Dropped symbols (IWM, QQQ, EURUSD) account for −$2,606 of the −$3,210. On the
+live universe:
+- GLD: **+$2,220** (the hero — sustained gold shorts, long holds)
+- SPY: **−$1,491** (pure whipsaw)
+- ^NDX: −$741 (one mistimed short)
+- SLV: −$594 (one win +600, one fight-HMM short −1,194)
+
+### What WORKED vs what failed
+- WINNERS held 23–288h (gold/silver crash-regime shorts with real follow-
+  through, runner sleeve gave them time). +$2,820 from gold complex.
+- LOSERS were whipsaws/mistimed entries stopped in 20–139h.
+
+### Actionable conclusions
+1. **Re-confirm the universe cleanup is live in the paper trader** — it's still
+   trading dropped IWM/QQQ/EURUSD, which caused 81% of the loss.
+2. **The Grade-D / fight-HMM filter is the #1 fix** — #2/#6/#11 (−$2,694) all
+   entered against the HMM posterior. A hard gate "don't enter when P_bull/
+   P_bear posterior contradicts the trade direction" would have skipped all 3.
+   This is the meta-labeling case (Part 8.32) in live miniature.
+3. **Range/stabilization regime should suppress momentum entries** — the
+   whipsaw and oversold-short losses all fired in range/stabilization regimes
+   where the pullback momentum signal is noise.
+4. **Correlation control** (Part 8.32) — would have capped the simultaneous
+   4-long / 3-short clusters that got mass-stopped.
