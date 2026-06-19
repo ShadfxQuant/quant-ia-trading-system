@@ -3577,3 +3577,43 @@ The engine's edge is real on ESTABLISHED trends (crash-regime gold/silver
 shorts: +$2,820). It bleeds trying to trade TRANSITIONS/EXHAUSTION — shorting
 oversold dips and fighting the HMM in slowdown/stabilization regimes (−$3,426).
 The fix is a set of cheap pre-entry gates, with trend_carry needing them most.
+
+---
+
+## Part 8.40 — Universe fix + entry-gate solutions (2026-06-19)
+
+User: fix the symbols we trade + lay out solutions to the entry-timing problems.
+Chose live universe = US500 + US100 + XAUUSD (keep SPY/^NDX/GLD/GC=F, drop SLV);
+keep paper history.
+
+### Symbol fix (done)
+- **Removed SLV from DATA.symbols.** Reasons: (1) no MT5 execution venue (not in
+  TRADING_LABEL_MAP — user trades US500/US100/XAUUSD only), (2) was meant to be
+  watchlist-only but code traded it, (3) inconsistent performer.
+- Config already clean of IWM/QQQ/EURUSD (trimmed 8.21–8.23); the dropped-symbol
+  trades in the book are stale closed history, 0 active.
+- **Closed the open SLV position to avoid orphaning** (worker no longer feeds SLV
+  bars, so _manage_open couldn't manage it). The runner was +11% in the money
+  (entry 66.89 → 59.51); realized **+$1,654.76**. Equity $96,789 → $98,444.
+  SLV net across all trades was actually +$1,061 (the runner more than offset the
+  −$1,194 trend_carry stop).
+- Open book now clean: GLD pullback, GLD trend_carry, SPY trend_carry — all in
+  the live universe.
+
+### Entry-gate solutions (proposed, gate-first — not yet shipped)
+From the 8.39b forensic, each loss maps to a cheap pre-entry gate; all data is
+already computed:
+
+| Problem | Solution | Catches |
+|---|---|---|
+| Shorting oversold (RSI 39/26/33) | RSI gate: block short if RSI<40, long if RSI>60 | ^NDX, SLV, SPY-short |
+| Fighting HMM (P_bear .98 / P_bull 1.0) | HMM-posterior veto: block long if P_bear>.6, short if P_bull>.6 | SPY-long, SLV-short |
+| Shorting vs structure (EMA>SMA) | Strict structure: short only if EMA<SMA | ^NDX, SPY-short |
+| Transition regimes | Regime suppression: enter only in growth/crash | ^NDX, SPY-short/long |
+| trend_carry has no brake (−$1,194) | Port rollover + RSI + HMM guards to trend_carry | SLV-short |
+| Correlated mass-stops | Correlation cap on simultaneous same-direction exposure | the clusters |
+| Whipsaw (SPY long→short) | Post-stop cooldown per symbol | SPY round-trip |
+
+Top 2 by value/risk: RSI gate + HMM-posterior veto (catch all 4 losses, harm
+no winners per forensic). Biggest structural hole: trend_carry sleeve has none
+of the pullback engine's guards. All must clear backtest + MC before shipping.

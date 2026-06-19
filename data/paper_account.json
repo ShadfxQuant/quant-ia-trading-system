@@ -1,5 +1,5 @@
 {
-  "equity": 96789.20217964765,
+  "equity": 98443.95893131792,
   "initial_capital": 100000.0,
   "cash": 100093.92824218668,
   "open_positions": [
@@ -32,21 +32,6 @@
       "bar_time_at_entry": "2026-05-28T19:30:00+00:00",
       "tp1_hit": true,
       "remaining_size": 21000.0
-    },
-    {
-      "symbol": "SLV",
-      "strategy": "pullback",
-      "side": -1,
-      "entry_time": "2026-06-04T14:31:56.894544+00:00",
-      "entry_price": 66.88899993896484,
-      "size": 30000.0,
-      "stop_pct": 0.025,
-      "tp1_pct": 0.04,
-      "tp2_pct": 0.15,
-      "tp1_size_frac": 0.5,
-      "bar_time_at_entry": "2026-06-04T14:30:00+00:00",
-      "tp1_hit": true,
-      "remaining_size": 15000.0
     },
     {
       "symbol": "SPY",
@@ -208,8 +193,20 @@
       "size": 29623.178472656004,
       "pnl": -740.5794618163992,
       "reason": "stop"
+    },
+    {
+      "symbol": "SLV",
+      "strategy": "pullback",
+      "side": -1,
+      "entry_time": "2026-06-04T14:31:56.894544+00:00",
+      "entry_price": 66.88899993896484,
+      "exit_time": "2026-06-19T02:37:20.083550+00:00",
+      "exit_price": 59.5099983215332,
+      "size": 15000.0,
+      "pnl": 1654.7567516702738,
+      "reason": "manual_close_universe_drop_SLV"
     }
   ],
-  "n_trades_total": 12,
-  "last_updated_utc": "2026-06-19T00:14:01.666816+00:00"
+  "n_trades_total": 13,
+  "last_updated_utc": "2026-06-19T02:37:20.083713+00:00"
 }

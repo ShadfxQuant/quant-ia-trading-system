@@ -50,17 +50,21 @@ class DataConfig:
         #   ^NDX → MT5 US100
         #   GLD  → MT5 XAUUSD
         #   GC=F → MT5 XAUUSD (cross-confirm)
-        # Watchlist (signal stream only, no live trading):
-        #   SLV (HMM-aligned short, Grade A in postmortem — capped at
-        #        watchlist until n>=10 trades validate)
+        # DROPPED 2026-06-19 (Part 8.39):
+        #   SLV — removed from live trading. (1) NO MT5 EXECUTION VENUE: not
+        #     in TRADING_LABEL_MAP; user trades US500/US100/XAUUSD only, so an
+        #     SLV signal can't be executed. (2) Net loser in paper (-$594,
+        #     incl. the -$1,194 worst single trade — trend_carry shorted
+        #     RSI 26 with HMM P_bull=1.00). (3) Was only ever meant to be
+        #     watchlist. Reach back only if a silver MT5 mapping is added.
         # DROPPED 2026-06-08 (Part 8.23):
         #   EURUSD=X — FX engine broken (PF 1.01 per Part 8.7).
         #     Open positions manually closed +$94 net. User decision:
         #     "forget about its integration as we agreed it is minimally
         #     beneficial." Reach back for FX only after building a proper
         #     session-aware FX framework.
+        # LIVE UNIVERSE (US500 + US100 + XAUUSD — user's MT5 instruments):
         "SPY", "^NDX", "GLD", "GC=F",
-        "SLV",
     ])
     start: str = "2024-05-06"
     end: str = "2026-05-06"
