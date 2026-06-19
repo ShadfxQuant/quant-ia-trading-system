@@ -3062,3 +3062,81 @@ The brain now has a documented diagnostic for "is the engine breaking?" — appl
 | SPY degradation | ✅ Diagnosed | Market regime, not engine fault. Monitor, don't tune. |
 | MT5 friction measurement | ⏳ Blocked on user | Needs your broker spread/slippage data |
 | Paper validation | ⏳ Passive | Don't touch config, accumulate data |
+
+---
+
+## Part 8.33 — Strategy × Universe edge matrix (2026-06-19)
+
+User: test many strategies (new + real quant) across a large multi-asset
+universe to find the biggest edge. Built `_strategy_universe_matrix.py`:
+13 strategies × 32 symbols (INDEX/FUTURE/CRYPTO/STOCK/COMMOD), ranked by
+annualized Sharpe (cleanest cross-asset comparable). Signal backtests are
+unlevered, no stops/friction — for RANKING edge families, not absolute P&L.
+
+### Overall strategy ranking (mean Sharpe across 32 symbols)
+
+| Rank | Strategy | meanSharpe | meanCAGR | meanDD | %symbols+ |
+|---|---|---|---|---|---|
+| 1 | GoldenCross 50/200 | 0.71 | +11.1% | −27.3% | 91% |
+| 2 | **VolTarget_Trend** | 0.70 | +12.7% | **−20.6%** | 88% |
+| 3 | DualMomo 240 | 0.70 | +12.2% | −28.3% | 91% |
+| 4 | Clenow Momo | 0.51 | +6.6% | −27.2% | 84% |
+| 5 | Connors RSI2 | 0.51 | +3.1% | −16.7% | 75% |
+| 6 | Bollinger MR | 0.46 | +5.1% | −23.4% | 84% |
+| 7 | TSMOM 200 | 0.20 | +1.6% | −42.4% | 66% |
+| ... | MACD / Keltner | 0.07–0.15 | low | −43 to −47% | ~55% |
+| 12-13 | **Donchian 20/10, 55/20** | **−0.20, −0.24** | negative | −50% | 28% |
+
+### Biggest edge per asset class
+
+| Class | Winner | Sharpe | CAGR |
+|---|---|---|---|
+| INDEX | GoldenCross 50/200 | 1.26 | +14.7% |
+| FUTURE | **VolTarget_Trend** | 1.06 | +24.7% |
+| CRYPTO | TSMOM 200 | 0.73 | +31.7% |
+| STOCK | Connors RSI2 (mean-rev) | 0.72 | +8.0% |
+| COMMOD | DualMomo 240 | 0.72 | +16.1% |
+
+### Single biggest edges (top 5 by Sharpe)
+
+| Strategy | Symbol | Sharpe | CAGR | MaxDD |
+|---|---|---|---|---|
+| **VolTarget_Trend** | **GC=F** | **2.07** | **+55.1%** | −19.2% |
+| Connors RSI2 | ^GSPC | 1.91 | +9.2% | −4.1% |
+| Connors RSI2 | SPY | 1.89 | +9.0% | −4.1% |
+| GoldenCross | ^GSPC | 1.82 | +18.1% | −6.7% |
+| VolTarget_Trend | HG=F | 1.72 | +44.7% | −12.8% |
+
+### Key findings
+
+1. **Trend-following dominates** — GoldenCross / VolTarget / DualMomo win on
+   88–91% of all symbols. Confirms our pullback engine is in the right family.
+2. **Vol-targeting (Tier-1 maths from Part 8.32) is validated.** VolTarget_Trend
+   ties for #2 overall, has the BEST drawdown of the top 3 (−20.6%), AND owns
+   the single biggest edge: GC=F Sharpe 2.07 / +55% CAGR.
+3. **GC=F is the highest-value upgrade target.** It's our WEAKEST live symbol
+   under the pullback engine (+13.3% CAGR, the walk-forward laggard, Part 8.30).
+   Vol-targeted trend on the same symbol → Sharpe 2.07. Direct replacement
+   candidate.
+4. **Donchian/Turtle is the WORST family (−0.20 Sharpe).** Confirms Part 8.31:
+   the earlier "Donchian beats us on GC=F" was an artifact of a naive long-only
+   test, not a real edge. Settled.
+5. **Connors RSI(2) mean-reversion wins on STOCKS and is #2 on INDICES**
+   (SPY/^GSPC Sharpe ~1.9, tiny −4% DD). A genuinely different, low-DD,
+   trend-uncorrelated edge — candidate diversifying sleeve.
+6. **TSMOM wins CRYPTO** (+31.7% CAGR) — if trading crypto on Infinex,
+   sign-of-trailing-return is the edge there.
+
+### Caveats
+- Unlevered signal backtests, no stops/TP/friction → DDs look large (−20 to
+  −50%). These rank edge FAMILIES, not shippable P&L. Anything promising must
+  go through the production exit ladder + MC + friction gate before shipping.
+- VolTarget GC=F PF is only 1.11 (high-frequency grind) — friction will bite.
+  Needs the friction-MC (Part 8.30) before any ship decision.
+
+### Recommended next builds (gate-first, each MC + friction validated)
+1. **Vol-targeted sizing layer on GC=F** — highest value/effort. Our weakest
+   symbol → potential Sharpe 2.07.
+2. **Connors RSI(2) mean-reversion sleeve on SPY/^GSPC** — low-DD diversifier,
+   uncorrelated with the trend book (addresses the Part 8.32 concentration).
+3. **TSMOM crypto sleeve** — only if crypto execution (Infinex) is live.
