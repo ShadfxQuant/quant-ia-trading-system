@@ -3295,3 +3295,48 @@ these results suggest VWAP as a PRIMARY pullback target could lift GC=F.
 Test adding a VWAP-pullback entry trigger to the production pullback engine,
 GC=F first (where it shows Sharpe 1.48 and the engine is weakest). Gate-test
 + friction MC before ship, same discipline.
+
+---
+
+## Part 8.36 — VWAP-enhanced pullback vs production fight (2026-06-19)
+
+Built `strategies/pullback_vwap.py` — production pullback verbatim PLUS a
+VWAP-pullback entry trigger (bar tags session VWAP, closes back across, in
+confirmed structure + slope + momentum). Identical sizing/pyramid/exits/
+trend_carry, so any P&L delta is purely the VWAP entries. Fight per symbol via
+`_fight_vwap_vs_production.py` → research/results/vwap_fight.json.
+
+### Result — production wins 3 of 4, challenger wins GC=F decisively
+
+| Symbol | Metric | Production | Challenger | Winner |
+|---|---|---|---|---|
+| SPY | profit / CAGR / PF | $67,732 / 20.0% / 3.5 | $59,184 / 17.8% / 2.5 | **P** |
+| ^NDX | profit / CAGR / PF | $60,723 / 18.2% / 2.6 | $48,239 / 14.9% / 1.8 | **P** |
+| GLD | profit / CAGR / PF | $151,524 / 38.5% / 5.3 | $134,124 / 35.0% / 3.9 | **P** |
+| **GC=F** | profit / CAGR / PF | $38,893 / 14.9% / 1.4 | **$54,862 / 20.3% / 1.6** | **C** |
+
+GC=F challenger wins on EVERY metric: CAGR +5.4pp, MaxDD −13.9%→−10.1%
+(better), WR 60%→63.5%, PF 1.41→1.57, Sharpe 1.48→2.07, profit +$15,969.
+
+### Why this is exactly as predicted
+
+VWAP added ~400–600 entries per symbol. On SPY/^NDX/GLD those diluted the
+already-excellent EMA-pullback entries with lower-quality ones (more trades,
+lower WR/PF). On GC=F — the symbol the production engine has always served
+worst (Parts 8.30/8.33/8.35) — the VWAP entries are net additive because the
+base engine was leaving edge on the table.
+
+### Best state = per-symbol routing
+
+- All-4 challenger: $296,409 (LOSES by $22K — VWAP hurts the 3 strong symbols)
+- All-4 production: $318,872
+- **Optimal routing (GC=F→VWAP, SPY/^NDX/GLD→production): $334,841 (+$15,969)**
+
+Implementation: per-symbol engine selection, same mechanism as the existing
+`get_pullback_cfg(symbol)` / `SYMBOL_EXIT_OVERRIDES`. GC=F also gets BETTER
+drawdown (−10.1% vs −13.9%), so it's a pure improvement, not a risk trade.
+
+### Caveat
+Unlevered, no friction. GC=F PF still only 1.57 (friction-sensitive). Gate +
+friction MC before wiring live. But the per-symbol routing is the cleanest
+win surfaced this whole research arc and is consistent with every prior finding.
