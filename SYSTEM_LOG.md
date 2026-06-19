@@ -3892,3 +3892,53 @@ captures the edge; broad confirmation filters just cut winners.
 3. Other orderflow ideas: **No hard filters help.** CVD removes $77k. The
    engine doesn't want fewer trades. Future orderflow value would have to come
    as an entry TRIGGER that ADDS trades (like the double-trade), not a filter.
+
+---
+
+## Part 8.48 — Monte Carlo on the safely-sized double-trade overlay (2026-06-19)
+
+User: implement the double-trade with the safety ideas, validate with MC.
+Safety: copy size 15% (half base), conviction>0.65, laggard-confirmed, 10bp
+friction, modest leverage only. **Block bootstrap (blocks of 10 consecutive
+trades)** so the correlated-loss clusters that cause the −22% copy-book DD are
+PRESERVED, not averaged away.
+
+### Realized (after friction)
+| Config | CAGR | DD | Total |
+|---|---|---|---|
+| Base only | +68.2% | −8.7% | +330% |
+| **Base + overlay** | **+72.0%** | −9.4% | +358% (+27pp) |
+
+Conservative sizing works: the standalone copy book has −22% DD, but blended at
+15% into the full portfolio it only deepens the combined DD by 0.7pp.
+
+### Block-bootstrap MC (3yr, 10k paths)
+| Config | Lev | p50 CAGR | p5 CAGR | p5 DD | P(ruin) | P(2×) |
+|---|---|---|---|---|---|---|
+| Base only | 1.0× | +68.5% | +47.2% | −10.7% | 0.00% | 100% |
+| Base only | 1.5× | +118.2% | +78.2% | −15.6% | 0.00% | 100% |
+| **Base + overlay** | 1.0× | +72.0% | +49.7% | −11.0% | 0.00% | 100% |
+| Base + overlay | 1.25× | +96.4% | +65.5% | −13.6% | 0.00% | 100% |
+| **Base + overlay** | 1.5× | +125.0% | +82.2% | −16.0% | 0.00% | 100% |
+
+### Verdict — YES, it implements safely
+At 1× the overlay adds **+4pp p50 CAGR** (and +27pp realized total) while
+**P(ruin) stays 0.00%** and p5 drawdown is essentially unchanged (−10.7% →
+−11.0%). Even under block bootstrap (which keeps the correlated-loss clusters),
+the 15%-sized overlay does not raise ruin risk. The conservative sizing is
+exactly what tames the concentration — at half size the overlay's risk is
+diluted by the larger, lower-correlation base book.
+
+**Recommendation: SHIP the double-trade as a 15%-sized, conviction-gated,
+laggard-confirmed overlay.** Validated: modest CAGR boost, negligible added
+risk, 0% ruin to 1.5× leverage. Keep it at 15% (do not upsize) and keep
+leverage modest as planned.
+
+### Final live-ready config (everything validated)
+- Universe: SPY/^NDX/GLD/GC=F (SLV dropped) ✓
+- RSI gate (both sleeves) + GC=F HMM veto ✓
+- GLD per-symbol wider exits (already live) ✓
+- Double-trade overlay: 15% size, SPY↔^NDX, conv>0.65, laggard ✓ (NEW)
+- Leverage: ~1.0–1.5× to taste (0% ruin throughout)
+- REJECTED: regime suppression, blanket HMM veto, volume/CVD filters,
+  conviction sizing
