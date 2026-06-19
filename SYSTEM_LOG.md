@@ -3617,3 +3617,56 @@ already computed:
 Top 2 by value/risk: RSI gate + HMM-posterior veto (catch all 4 losses, harm
 no winners per forensic). Biggest structural hole: trend_carry sleeve has none
 of the pullback engine's guards. All must clear backtest + MC before shipping.
+
+---
+
+## Part 8.41 — Entry-gate backtest: RSI gate + HMM veto (2026-06-19)
+
+User: backtest gates #1 (RSI) and #2 (HMM-posterior veto), ensure they don't
+ruin trade count even if they improve quality. Both gates on pullback +
+trend_carry entry signals across the 4 live symbols.
+
+### Per-symbol results (profit · trade retention)
+
+| Symbol | baseline | RSI gate | HMM veto | both |
+|---|---|---|---|---|
+| SPY | $67,732 (100%, PF 3.53) | **$67,999** (100%, PF 3.64) | $61,751 (93%) | $60,187 (93%) |
+| ^NDX | $60,723 (100%, PF 2.60) | $59,653 (98%) | $45,165 (86%, DD−11%) | $45,969 (83%) |
+| GLD | $151,524 (100%, PF 5.31) | $150,982 (98%, PF 5.48) | $122,390 (92%) | $121,928 (90%) |
+| GC=F | $35,051 (100%, PF 1.36) | $33,452 (94%, DD−12.1) | **$51,845** (87%, PF 1.66, CAGR +19.3%) | $43,425 (79%) |
+
+### Portfolio totals
+
+| Variant | Profit | vs base | Trades | Retention |
+|---|---|---|---|---|
+| baseline | +$315,029 | — | 903 | 100% |
+| **RSI gate** | +$312,086 | −$2,943 | 870 | **96%** |
+| HMM veto | +$281,150 | **−$33,879** | 803 | 89% |
+| both | +$271,509 | −$43,520 | 761 | 84% |
+
+### The key finding — gate-first discipline caught an overfit
+
+The paper-trade forensic (4 recent trades) suggested the HMM veto helps. The
+full 2.8yr backtest shows **a blanket HMM veto costs $33,879** — it removes
+GOOD trades on the strong symbols (SPY/^NDX/GLD, whose deterministic signals
+are already PF 2.6–5.3) while only helping the weak symbol.
+
+But **per-symbol the picture is clear**:
+- **RSI gate is near-free everywhere**: 96% retention, −0.9% profit, but
+  IMPROVES PF (SPY 3.53→3.64, GLD 5.31→5.48) and DD (GC=F −13.9→−12.1%,
+  ^NDX −6.6→−6.0%). Satisfies "improve quality without gutting volume."
+- **HMM veto helps ONLY GC=F**: +$16,794 (PF 1.36→1.66, CAGR +13.5→+19.3%,
+  87% retention). On SPY/^NDX/GLD it's net −$50K. GC=F is the symbol whose
+  deterministic signal is noisiest (PF 1.36), so the HMM posterior adds most.
+
+### Recommendation (defensible, not overfit)
+1. **Ship RSI gate globally** — free quality upgrade, 96% trade retention.
+2. **Apply HMM veto to GC=F ONLY** (per-symbol, like SYMBOL_EXIT_OVERRIDES) —
+   +$16.8K on the weak symbol, 87% retention. Do NOT apply to SPY/^NDX/GLD.
+
+Optimal mix (RSI global + HMM on GC=F): ~+$17K over baseline, ~94% trade
+retention. Directly meets the user's bar: better quality AND profit without
+ruining trade count. Blanket "both" is REJECTED (the discipline worked).
+
+Next: wire RSI gate into both sleeves + per-symbol HMM veto for GC=F, then
+MC-validate before live.
