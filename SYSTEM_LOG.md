@@ -3839,3 +3839,56 @@ the confirmed leader, and the wider target harvests the catch-up.
 - **Tier 2 regime suppression: REJECT** (−$74k; gate-first caught it).
 - **Double-trade: PROMISING** (+43% on SPY/^NDX) — advance to MC + friction +
   crash stress before live. Highest-upside new idea this session.
+
+---
+
+## Part 8.47 — Double-trade stress + volume/orderflow filters (2026-06-19)
+
+User: does the double-trade work? can we pull volume in? other orderflow ideas?
+
+### A. Double-trade WORKS but concentrates risk
+- 80 copies, WR 53.8%, PF 2.30, **net +$54,405 after 10bp friction** (friction
+  barely dents it).
+- BUT copy-book **max drawdown −22.2%**, worst 10-trade cluster −$11,340.
+- Verdict: the thesis is validated (trailing index catches the confirmed
+  leader), it adds real profit — but it concentrates correlated equity risk
+  (−22% vs base engine's −6%). Aggressive overlay, NOT to be stacked with high
+  leverage.
+
+### B. Volume confirmation (RVOL>1.0 on entry) — FAILS
+| | base | +volume filter |
+|---|---|---|
+| Total profit | +$330,434 | **+$193,968 (−$136,466)** |
+Cuts trade count ~½ and removes winners. The engine's pullback entries don't
+need high volume; many good entries fire on normal volume. REJECT.
+
+### C. CVD orderflow confirmation (CVD slope aligned) — FAILS
+| | base | +CVD filter |
+|---|---|---|
+| Total profit | +$330,434 | **+$253,314 (−$77,120)** |
+Improves PF on ^NDX/GC=F but removes $77k of profitable trades overall. REJECT
+as a hard filter.
+
+### D. Double-trade + volume surge (RVOL>1.2 on leader) — FAILS
+Only 12/80 copies qualify; PnL collapses $54k → $6.6k. Volume confirmation
+makes the double-trade worse. REJECT.
+
+### The unifying lesson (consistent all session)
+**This engine wins by TRADING its signals, not by filtering them.** Every hard
+"quality filter" tested — regime suppression (−$74k), blanket HMM veto (−$34k),
+volume (−$136k), CVD (−$77k), conviction sizing (−2.4pp) — REMOVES profitable
+trades. The only additions that helped were:
+- SURGICAL removals of specific bad patterns (RSI gate, GC=F HMM veto)
+- ADDING good trades (the double-trade overlay)
+
+Orderflow/volume as standalone or hard-filter = no. The base engine already
+captures the edge; broad confirmation filters just cut winners.
+
+### Answers to the user
+1. Your double-trade idea: **YES, works** (+$54k, PF 2.30 net) — but it's a
+   higher-risk overlay (−22% copy-book DD); size it small, don't combine with
+   max leverage.
+2. Pull volume in: **No** — volume confirmation removes $136k. Tested, rejected.
+3. Other orderflow ideas: **No hard filters help.** CVD removes $77k. The
+   engine doesn't want fewer trades. Future orderflow value would have to come
+   as an entry TRIGGER that ADDS trades (like the double-trade), not a filter.
