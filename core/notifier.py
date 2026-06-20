@@ -1,20 +1,26 @@
 """
-Notifier — Discord webhook + Twilio SMS.
+Notifier — Discord webhook + Telegram + Twilio SMS.
 
 Channels (each independent, silent if not configured, never raises on caller):
-  Discord  — set env DISCORD_WEBHOOK_URL
-  SMS      — set env TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN,
-             TWILIO_FROM_NUMBER (your Twilio number, +1...),
-             TWILIO_TO_NUMBER   (your phone, +1...)
+  Discord   — set env DISCORD_WEBHOOK_URL
+  Telegram  — set env TELEGRAM_BOT_TOKEN  (from @BotFather)
+                      TELEGRAM_CHAT_ID    (your chat id; get it from @userinfobot)
+  SMS       — set env TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN,
+                      TWILIO_FROM_NUMBER (your Twilio number, +1...),
+                      TWILIO_TO_NUMBER   (your phone, +1...)
 
-A signal goes to BOTH channels that are configured. To use SMS only, just
-leave DISCORD_WEBHOOK_URL unset.
+A signal fans out to EVERY configured channel. To use Telegram only, just set
+the two TELEGRAM_* vars and leave the others unset.
+
+Telegram is the recommended channel: free, instant push, and its inline-button
+support is what a future "tap to approve → execute" flow would build on.
 
 Public API:
     send_signal(symbol, side, snap, macro=None, engine=None) -> bool
         side: +1 long, -1 short, 0 → no-op
-    send_text(msg) -> bool      ad-hoc messages (heartbeat, errors)
-    send_sms(body) -> bool      raw SMS (used internally too)
+    send_text(msg) -> bool       ad-hoc messages (heartbeat, errors)
+    send_telegram(body) -> bool  raw Telegram message (used internally too)
+    send_sms(body) -> bool       raw SMS (used internally too)
 """
 from __future__ import annotations
 
@@ -83,11 +89,46 @@ def send_sms(body: str) -> bool:
         return False
 
 
+def _telegram_creds() -> tuple[str, str] | None:
+    token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
+    chat = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+    if token and chat:
+        return token, chat
+    return None
+
+
+def send_telegram(body: str) -> bool:
+    """Send a Telegram message via the Bot API. Silent if unconfigured."""
+    creds = _telegram_creds()
+    if not creds:
+        return False
+    token, chat = creds
+    url = f"https://api.telegram.org/bot{token}/sendMessage"
+    data = urllib.parse.urlencode({
+        "chat_id": chat,
+        "text": body[:4000],
+        "parse_mode": "Markdown",
+        "disable_web_page_preview": "true",
+    }).encode("utf-8")
+    req = urllib.request.Request(
+        url, data=data, method="POST",
+        headers={"Content-Type": "application/x-www-form-urlencoded",
+                 "User-Agent": "quant_ia_notifier/1.0"},
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=10) as r:
+            return 200 <= r.status < 300
+    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as e:
+        print(f"[notifier] telegram failed: {e}")
+        return False
+
+
 def send_text(msg: str) -> bool:
     """Ad-hoc message to every configured channel. True if any delivered."""
     ok_discord = _post({"content": msg[:1900]})
+    ok_telegram = send_telegram(msg)
     ok_sms = send_sms(msg)
-    return ok_discord or ok_sms
+    return ok_discord or ok_telegram or ok_sms
 
 
 def send_signal(symbol: str, side: int, snap: dict,
@@ -187,29 +228,44 @@ def send_signal(symbol: str, side: int, snap: dict,
     }
     ok_discord = _post(payload)
 
-    # Concise SMS — the actionable essentials only (instrument, side, levels)
-    sms_lines = [
+    # Concise plain-text body — the actionable essentials only.
+    bt = str(snap.get("bar_time_utc", ""))[:16]
+    plain_lines = [
         f"{strategy.upper()} {side_word} {_trade_label}",
         f"entry ${close:.2f} · size {base*100:.0f}%",
         f"stop -{stop*100:.1f}% · TP1 +{tp1*100:.1f}% · TP2 +{tp2*100:.1f}%",
     ]
-    bt = snap.get("bar_time_utc", "")
     if bt:
-        sms_lines.append(f"{str(bt)[:16]} UTC")
-    ok_sms = send_sms("\n".join(sms_lines))
+        plain_lines.append(f"{bt} UTC")
+    ok_sms = send_sms("\n".join(plain_lines))
 
-    return ok_discord or ok_sms
+    # Telegram: same content, lightly Markdown-formatted.
+    emoji = "🟢" if side == 1 else "🔴"
+    tg = (f"{emoji} *{strategy.upper()} {side_word}* — `{_trade_label}`\n"
+          f"entry *${close:.2f}* · size {base*100:.0f}%\n"
+          f"stop -{stop*100:.1f}% · TP1 +{tp1*100:.1f}% · TP2 +{tp2*100:.1f}% · R:R {rr:.2f}×")
+    if bt:
+        tg += f"\n_{bt} UTC_"
+    ok_telegram = send_telegram(tg)
+
+    return ok_discord or ok_telegram or ok_sms
 
 
 if __name__ == "__main__":
-    # Smoke test: python -m core.notifier
+    # Smoke test:  python -m core.notifier          (all configured channels)
+    #              python -m core.notifier --telegram (Telegram only)
+    #              python -m core.notifier --sms      (SMS only)
     import sys
-    sms_only = "--sms" in sys.argv
-    msg = "Quant IA SMS smoke test — if you got this text, SMS works."
-    ok = send_sms(msg) if sms_only else send_text(msg)
-    print(f"discord configured: {_webhook_url() is not None}")
-    print(f"twilio configured:  {_twilio_creds() is not None}")
+    msg = "Quant IA smoke test — if you got this, your channel works."
+    if "--telegram" in sys.argv:
+        ok = send_telegram(msg)
+    elif "--sms" in sys.argv:
+        ok = send_sms(msg)
+    else:
+        ok = send_text(msg)
+    print(f"discord configured:  {_webhook_url() is not None}")
+    print(f"telegram configured: {_telegram_creds() is not None}")
+    print(f"twilio configured:   {_twilio_creds() is not None}")
     print("sent:", ok)
-    if not _twilio_creds():
-        print("  → set TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, "
-              "TWILIO_FROM_NUMBER, TWILIO_TO_NUMBER for SMS")
+    if not _telegram_creds():
+        print("  → set TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID for Telegram")
