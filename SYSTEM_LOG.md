@@ -3990,3 +3990,44 @@ liquidation).
 
 The single most important number is NOT the median — it's that at the leverage
 the user is excited about (10–25×), liquidation runs 13–95%.
+
+---
+
+## Part 8.50 — Does the system work on shorter timeframes? (2026-06-19)
+
+User asked. Ran the gated engine on SPY at 1h / 15m / 5m (yfinance caps
+intraday history: 5m/15m=60d, so short-TF samples are small).
+
+| TF | window | nTrades | tr/yr | WR | PF | CAGR raw | CAGR +10bp friction |
+|---|---|---|---|---|---|---|---|
+| 1h | 1036d | 169 | 60 | 74.6% | 3.64 | +20.1% | +18.8% |
+| 15m | 77d | 34 | 161 | 67.6% | 6.00 | +56.4% | +49.6% |
+| 5m | 83d | 66 | 290 | 40.9% | 1.34 | +10.2% | **+1.1%** |
+
+### Read — NO, it degrades on shorter timeframes
+1. **Win rate collapses with the timeframe**: 74.6% (1h) → 67.6% (15m) →
+   **40.9% (5m)**. The trend-continuation edge dissolves into noise intraday.
+2. **Friction is the killer**: 5m trades 4.9× more often than 1h, so 10bp
+   friction turns +10.2% CAGR into +1.1%. On Infinex perps (fee + funding)
+   it would go negative. 1h (60 trades/yr) is already friction-sensitive;
+   5m (290/yr) is a cost disaster.
+3. **15m looks great (PF 6.0, +50%) but it's a 77-day / 34-trade sample** —
+   almost certainly small-sample luck, NOT trustworthy. Classic overfit trap.
+   And yfinance can't give multi-year intraday data to validate it properly.
+
+### Why it degrades
+The engine is a TREND-CONTINUATION system; its edge lives in multi-hour to
+multi-day trends (EMA50/SMA130, 390-bar = ~16-day time stop on 1h). On 5m,
+EMA50 = ~4 hours and the "trend" is mostly microstructure noise. Shorter TFs
+need a different strategy class (scalping / orderflow / market-making), not
+trend-continuation — and the orderflow engine attempts (Part 8.27) already
+failed the gate.
+
+### Verdict
+- **Stick with 1h** (validated, friction-robust). Daily works too as a slower
+  variant (Part 8.25).
+- **Don't go to 5m or below** — edge collapses after friction.
+- **15m is unproven**, not "working" — would need paid multi-year intraday
+  data + a full re-validation before trusting it. Treat the +56% as noise.
+- Shorter timeframes are a separate project requiring a different strategy
+  type and a paid data source, not a config tweak.
