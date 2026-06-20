@@ -59,14 +59,17 @@ jobs:
           else
             git commit -m "chore(snapshot): worker update $(date -u +%FT%TZ)"
             # Push with retry — with */5 cadence two workers can race on push.
-            # Pull-rebase + retry up to 5 times handles the race cleanly.
+            # These data files are auto-generated each run, so any rebase
+            # conflict is resolved in favour of THIS run's fresh snapshot
+            # (-X theirs). Abort any half-done rebase between retries so the
+            # tree never gets stuck in an "unmerged files" state.
             n=0
             until [ $n -ge 5 ]; do
-              git pull --rebase origin main || true
-              if git push; then
+              if git pull --rebase -X theirs origin main && git push; then
                 echo "push succeeded on attempt $((n+1))"
                 exit 0
               fi
+              git rebase --abort 2>/dev/null || true
               n=$((n+1))
               echo "push attempt $n failed, retrying in 5s..."
               sleep 5
