@@ -1,21 +1,28 @@
 """
-Discord webhook notifier.
+Notifier — Discord webhook + Twilio SMS.
 
-Reads webhook URL from env DISCORD_WEBHOOK_URL. Sends a single embed per
-fresh signal. Stays silent (returns None) if no webhook configured — never
-raises on the caller.
+Channels (each independent, silent if not configured, never raises on caller):
+  Discord  — set env DISCORD_WEBHOOK_URL
+  SMS      — set env TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN,
+             TWILIO_FROM_NUMBER (your Twilio number, +1...),
+             TWILIO_TO_NUMBER   (your phone, +1...)
+
+A signal goes to BOTH channels that are configured. To use SMS only, just
+leave DISCORD_WEBHOOK_URL unset.
 
 Public API:
     send_signal(symbol, side, snap, macro=None, engine=None) -> bool
         side: +1 long, -1 short, 0 → no-op
-    send_text(msg) -> bool
-        for ad-hoc messages (heartbeat, errors)
+    send_text(msg) -> bool      ad-hoc messages (heartbeat, errors)
+    send_sms(body) -> bool      raw SMS (used internally too)
 """
 from __future__ import annotations
 
+import base64
 import json
 import os
 import urllib.error
+import urllib.parse
 import urllib.request
 from typing import Any
 
@@ -43,8 +50,44 @@ def _post(payload: dict) -> bool:
         return False
 
 
+def _twilio_creds() -> tuple[str, str, str, str] | None:
+    sid = os.environ.get("TWILIO_ACCOUNT_SID", "").strip()
+    tok = os.environ.get("TWILIO_AUTH_TOKEN", "").strip()
+    frm = os.environ.get("TWILIO_FROM_NUMBER", "").strip()
+    to = os.environ.get("TWILIO_TO_NUMBER", "").strip()
+    if sid and tok and frm and to:
+        return sid, tok, frm, to
+    return None
+
+
+def send_sms(body: str) -> bool:
+    """Send an SMS via Twilio's REST API (no SDK needed). Silent if unconfigured."""
+    creds = _twilio_creds()
+    if not creds:
+        return False
+    sid, tok, frm, to = creds
+    url = f"https://api.twilio.com/2010-04-01/Accounts/{sid}/Messages.json"
+    data = urllib.parse.urlencode({"From": frm, "To": to, "Body": body[:1500]}).encode("utf-8")
+    auth = base64.b64encode(f"{sid}:{tok}".encode()).decode()
+    req = urllib.request.Request(
+        url, data=data, method="POST",
+        headers={"Authorization": f"Basic {auth}",
+                 "Content-Type": "application/x-www-form-urlencoded",
+                 "User-Agent": "quant_ia_notifier/1.0"},
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=10) as r:
+            return 200 <= r.status < 300
+    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as e:
+        print(f"[notifier] sms failed: {e}")
+        return False
+
+
 def send_text(msg: str) -> bool:
-    return _post({"content": msg[:1900]})
+    """Ad-hoc message to every configured channel. True if any delivered."""
+    ok_discord = _post({"content": msg[:1900]})
+    ok_sms = send_sms(msg)
+    return ok_discord or ok_sms
 
 
 def send_signal(symbol: str, side: int, snap: dict,
@@ -142,10 +185,31 @@ def send_signal(symbol: str, side: int, snap: dict,
             "footer": {"text": "Quant IA · educational only · not investment advice"},
         }]
     }
-    return _post(payload)
+    ok_discord = _post(payload)
+
+    # Concise SMS — the actionable essentials only (instrument, side, levels)
+    sms_lines = [
+        f"{strategy.upper()} {side_word} {_trade_label}",
+        f"entry ${close:.2f} · size {base*100:.0f}%",
+        f"stop -{stop*100:.1f}% · TP1 +{tp1*100:.1f}% · TP2 +{tp2*100:.1f}%",
+    ]
+    bt = snap.get("bar_time_utc", "")
+    if bt:
+        sms_lines.append(f"{str(bt)[:16]} UTC")
+    ok_sms = send_sms("\n".join(sms_lines))
+
+    return ok_discord or ok_sms
 
 
 if __name__ == "__main__":
     # Smoke test: python -m core.notifier
-    ok = send_text("✅ notifier smoke test — if you see this, the webhook works.")
-    print("sent:", ok, "(set DISCORD_WEBHOOK_URL env var if False)")
+    import sys
+    sms_only = "--sms" in sys.argv
+    msg = "Quant IA SMS smoke test — if you got this text, SMS works."
+    ok = send_sms(msg) if sms_only else send_text(msg)
+    print(f"discord configured: {_webhook_url() is not None}")
+    print(f"twilio configured:  {_twilio_creds() is not None}")
+    print("sent:", ok)
+    if not _twilio_creds():
+        print("  → set TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, "
+              "TWILIO_FROM_NUMBER, TWILIO_TO_NUMBER for SMS")
