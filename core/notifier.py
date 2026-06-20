@@ -103,19 +103,26 @@ def _telegram_creds() -> tuple[str, str] | None:
     return None
 
 
-def send_telegram(body: str) -> bool:
-    """Send a Telegram message via the Bot API. Silent if unconfigured."""
+def send_telegram(body: str, buttons: list | None = None) -> bool:
+    """Send a Telegram message via the Bot API. Silent if unconfigured.
+
+    buttons: optional list of (text, callback_data) tuples → one row of inline
+    buttons (e.g. the took/skip approval row on signals)."""
     creds = _telegram_creds()
     if not creds:
         return False
     token, chat = creds
     url = f"https://api.telegram.org/bot{token}/sendMessage"
-    data = urllib.parse.urlencode({
+    params = {
         "chat_id": chat,
         "text": body[:4000],
         "parse_mode": "Markdown",
         "disable_web_page_preview": "true",
-    }).encode("utf-8")
+    }
+    if buttons:
+        kb = {"inline_keyboard": [[{"text": t, "callback_data": cb} for t, cb in buttons]]}
+        params["reply_markup"] = json.dumps(kb)
+    data = urllib.parse.urlencode(params).encode("utf-8")
     req = urllib.request.Request(
         url, data=data, method="POST",
         headers={"Content-Type": "application/x-www-form-urlencoded",
@@ -252,7 +259,11 @@ def send_signal(symbol: str, side: int, snap: dict,
           f"stop -{stop*100:.1f}% · TP1 +{tp1*100:.1f}% · TP2 +{tp2*100:.1f}% · R:R {rr:.2f}×")
     if bt:
         tg += f"\n_{bt} UTC_"
-    ok_telegram = send_telegram(tg)
+    # Approval buttons — taps are caught by telegram_listener.py and journaled.
+    cb_payload = f"{_trade_label}:{side_word}"
+    tg_buttons = [("✅ Took it", f"took:{cb_payload}"),
+                  ("❌ Skip",    f"skip:{cb_payload}")]
+    ok_telegram = send_telegram(tg, buttons=tg_buttons)
 
     return ok_discord or ok_telegram or ok_sms
 
