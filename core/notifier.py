@@ -32,6 +32,12 @@ import urllib.parse
 import urllib.request
 from typing import Any
 
+try:
+    from core.env import load_env
+    load_env()              # pull .env into os.environ (real env wins)
+except Exception:
+    pass
+
 
 def _webhook_url() -> str | None:
     url = os.environ.get("DISCORD_WEBHOOK_URL", "").strip()
