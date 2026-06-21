@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-21T16:25:53.770971+00:00",
+  "generated_at_utc": "2026-06-21T16:30:54.455212+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -4464,12 +4464,12 @@
         "adx": 16.82,
         "ema_slope_4bar": 72.5959,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close < EMA50 (29,964.86)",
           "ADX falls below 20 (now 16.8)"
         ],
-        "narrative": "^NDX leans long (ADX 16.8, close 30,393.78 vs EMA50 29,964.86) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "^NDX leans long (ADX 16.8, close 30,393.78 vs EMA50 29,964.86) and the tape is choppy. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -8893,13 +8893,13 @@
         "adx": 27.75,
         "ema_slope_4bar": -0.9537,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close > EMA50 (392.66)",
           "ADX falls below 20 (now 27.8)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 27.8, close 387.08 vs EMA50 392.66) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GLD leans short (ADX 27.8, close 387.08 vs EMA50 392.66) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -13323,13 +13323,13 @@
         "adx": 39.27,
         "ema_slope_4bar": -15.1545,
         "regime_pct_24h": 0.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close > EMA50 (4,279.91)",
           "ADX falls below 20 (now 39.3)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 39.3, close 4,167.50 vs EMA50 4,279.91) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 39.3, close 4,167.50 vs EMA50 4,279.91) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -17737,15 +17737,15 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_OFF",
-    "risk_off_score": 2,
+    "verdict": "NEUTRAL",
+    "risk_off_score": 1,
     "risk_on_score": 0,
     "theme_hits": {
       "war": 0,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 2,
+      "crash": 1,
       "rate_cut": 0,
       "risk_on": 0
     },
@@ -17755,7 +17755,6 @@
       "recession": [],
       "rate_hike": [],
       "crash": [
-        "Micron Must Do This on June 24, or Its Stock Could Crash",
         "NetJets' first fatal crash kills influential Texas VC founder"
       ],
       "rate_cut": [],
@@ -17768,7 +17767,7 @@
       "cnbc_top",
       "marketwatch"
     ],
-    "fetched_at": 1782059154.4014325,
+    "fetched_at": 1782059455.436912,
     "risk_off_themes": [
       "banking",
       "crash",
