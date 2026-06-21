@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-21T20:55:55.507396+00:00",
+  "generated_at_utc": "2026-06-21T22:55:05.358967+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13306,11 +13306,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-19T03:00:00+00:00",
-      "close": 4167.5,
-      "ema": 4279.90785870957,
-      "sma": 4295.272318209135,
-      "vwap": 4193.278469022361,
+      "bar_time_utc": "2026-06-21T22:00:00+00:00",
+      "close": 4170.7001953125,
+      "ema": 4275.625205243018,
+      "sma": 4295.796935096154,
+      "vwap": 4166.033365885417,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13320,29 +13320,18 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 39.27,
-        "ema_slope_4bar": -15.1545,
+        "adx": 41.43,
+        "ema_slope_4bar": -16.0621,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,279.91)",
-          "ADX falls below 20 (now 39.3)",
+          "Close > EMA50 (4,275.63)",
+          "ADX falls below 20 (now 41.4)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 39.3, close 4,167.50 vs EMA50 4,279.91) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 41.4, close 4,170.70 vs EMA50 4,275.63) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
-        {
-          "t": "2026-05-26T18:00:00+00:00",
-          "o": 4490.0,
-          "h": 4499.2001953125,
-          "l": 4480.0,
-          "c": 4498.7001953125,
-          "v": 6964.0,
-          "ema": 4520.189873622832,
-          "sma": 4526.7500150240385,
-          "vwap": 4515.236566943301
-        },
         {
           "t": "2026-05-26T19:00:00+00:00",
           "o": 4499.0,
@@ -17731,6 +17720,17 @@
           "ema": 4279.90785870957,
           "sma": 4295.272318209135,
           "vwap": 4193.278469022361
+        },
+        {
+          "t": "2026-06-21T22:00:00+00:00",
+          "o": 4163.89990234375,
+          "h": 4176.0,
+          "l": 4151.39990234375,
+          "c": 4170.7001953125,
+          "v": 2277.0,
+          "ema": 4275.625205243018,
+          "sma": 4295.796935096154,
+          "vwap": 4166.033365885417
         }
       ]
     }
@@ -17738,15 +17738,15 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 2,
-    "risk_on_score": 0,
+    "risk_off_score": 4,
+    "risk_on_score": 1,
     "theme_hits": {
       "war": 1,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 1,
-      "rate_cut": 0,
+      "crash": 3,
+      "rate_cut": 1,
       "risk_on": 0
     },
     "sample_headlines": {
@@ -17757,12 +17757,16 @@
       "recession": [],
       "rate_hike": [],
       "crash": [
-        "NetJets' first fatal crash kills influential Texas VC founder"
+        "$165 Billion Stock Selloff Looms as Goldman Flags Rising Leverage",
+        "NetJets' first fatal crash kills influential Texas VC founder",
+        "Claude Guillemot, co-founder of video game maker Ubisoft, dies in plane crash - CBS News"
       ],
-      "rate_cut": [],
+      "rate_cut": [
+        "Trump\u2019s student loan rate cut excludes most of the 9 million borrowers in default - Fortune"
+      ],
       "risk_on": []
     },
-    "n_headlines": 113,
+    "n_headlines": 115,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -17770,7 +17774,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1782075356.4409125,
+    "fetched_at": 1782082506.2444298,
     "risk_off_themes": [
       "banking",
       "crash",
