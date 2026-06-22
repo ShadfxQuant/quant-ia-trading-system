@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-22T20:30:53.381379+00:00",
+  "generated_at_utc": "2026-06-22T20:35:57.990838+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -35,13 +35,13 @@
         "adx": 13.23,
         "ema_slope_4bar": -0.2361,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "supports",
+        "macro_tilt": "neutral",
         "flip": [
           "Close > EMA50 (745.75)",
           "ADX falls below 20 (now 13.2)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "SPY leans short (ADX 13.2, close 744.38 vs EMA50 745.75) and the tape is choppy. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "SPY leans short (ADX 13.2, close 744.38 vs EMA50 745.75) and the tape is choppy. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -4465,12 +4465,12 @@
         "adx": 14.3,
         "ema_slope_4bar": 43.4752,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close < EMA50 (30,049.92)",
           "ADX falls below 20 (now 14.3)"
         ],
-        "narrative": "^NDX leans long (ADX 14.3, close 30,356.97 vs EMA50 30,049.92) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "^NDX leans long (ADX 14.3, close 30,356.97 vs EMA50 30,049.92) and the tape is choppy. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -8894,13 +8894,13 @@
         "adx": 31.77,
         "ema_slope_4bar": -1.0972,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close > EMA50 (390.62)",
           "ADX falls below 20 (now 31.8)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 31.8, close 384.58 vs EMA50 390.62) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GLD leans short (ADX 31.8, close 384.58 vs EMA50 390.62) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -13308,10 +13308,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-22T20:00:00+00:00",
-      "close": 4209.2998046875,
-      "ema": 4236.946798696447,
-      "sma": 4297.434622896634,
-      "vwap": 4202.43028614375,
+      "close": 4209.2001953125,
+      "ema": 4236.942892446447,
+      "sma": 4297.433856670673,
+      "vwap": 4202.425650417208,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,15 +13322,15 @@
         "bias": "bearish",
         "strength": "weak",
         "adx": 24.78,
-        "ema_slope_4bar": -5.1242,
+        "ema_slope_4bar": -5.1282,
         "regime_pct_24h": 0.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
-          "Close > EMA50 (4,236.95)",
+          "Close > EMA50 (4,236.94)",
           "ADX falls below 20 (now 24.8)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 24.8, close 4,209.30 vs EMA50 4,236.95) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 24.8, close 4,209.20 vs EMA50 4,236.94) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -17727,26 +17727,26 @@
           "o": 4209.39990234375,
           "h": 4212.2998046875,
           "l": 4172.89990234375,
-          "c": 4209.2998046875,
-          "v": 345.0,
-          "ema": 4236.946798696447,
-          "sma": 4297.434622896634,
-          "vwap": 4202.43028614375
+          "c": 4209.2001953125,
+          "v": 443.0,
+          "ema": 4236.942892446447,
+          "sma": 4297.433856670673,
+          "vwap": 4202.425650417208
         }
       ]
     }
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_OFF",
-    "risk_off_score": 3,
+    "verdict": "NEUTRAL",
+    "risk_off_score": 2,
     "risk_on_score": 1,
     "theme_hits": {
       "war": 1,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 2,
+      "crash": 1,
       "rate_cut": 0,
       "risk_on": 1
     },
@@ -17758,8 +17758,7 @@
       "recession": [],
       "rate_hike": [],
       "crash": [
-        "Late singer Oliver Tree's body returned to US after helicopter crash",
-        "A 40% market crash is lurking in the IPO pipeline. SpaceX and OpenAI could trigger it."
+        "Late singer Oliver Tree's body returned to US after helicopter crash"
       ],
       "rate_cut": [],
       "risk_on": [
@@ -17773,7 +17772,7 @@
       "cnbc_top",
       "marketwatch"
     ],
-    "fetched_at": 1782160254.2978687,
+    "fetched_at": 1782160558.7527788,
     "risk_off_themes": [
       "banking",
       "crash",
