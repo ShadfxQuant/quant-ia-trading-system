@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-22T11:55:59.131543+00:00",
+  "generated_at_utc": "2026-06-22T12:00:56.361529+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -4464,12 +4464,12 @@
         "adx": 16.82,
         "ema_slope_4bar": 72.5959,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close < EMA50 (29,964.86)",
           "ADX falls below 20 (now 16.8)"
         ],
-        "narrative": "^NDX leans long (ADX 16.8, close 30,393.78 vs EMA50 29,964.86) and the tape is choppy. The regime filter is mostly green."
+        "narrative": "^NDX leans long (ADX 16.8, close 30,393.78 vs EMA50 29,964.86) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -8893,13 +8893,13 @@
         "adx": 27.75,
         "ema_slope_4bar": -0.9537,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close > EMA50 (392.66)",
           "ADX falls below 20 (now 27.8)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 27.8, close 387.08 vs EMA50 392.66) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "GLD leans short (ADX 27.8, close 387.08 vs EMA50 392.66) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -13307,10 +13307,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-22T11:00:00+00:00",
-      "close": 4223.2001953125,
-      "ema": 4248.8619160274975,
-      "sma": 4298.240012770432,
-      "vwap": 4202.760535628593,
+      "close": 4221.60009765625,
+      "ema": 4248.799167099802,
+      "sma": 4298.227704326923,
+      "vwap": 4202.752709973497,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13321,15 +13321,15 @@
         "bias": "bearish",
         "strength": "weak",
         "adx": 25.24,
-        "ema_slope_4bar": -4.654,
+        "ema_slope_4bar": -4.7168,
         "regime_pct_24h": 0.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,248.86)",
+          "Close > EMA50 (4,248.80)",
           "ADX falls below 20 (now 25.2)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 25.2, close 4,223.20 vs EMA50 4,248.86) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F leans short (ADX 25.2, close 4,221.60 vs EMA50 4,248.80) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17726,26 +17726,26 @@
           "o": 4222.7998046875,
           "h": 4233.7001953125,
           "l": 4172.89990234375,
-          "c": 4223.2001953125,
-          "v": 2286.0,
-          "ema": 4248.8619160274975,
-          "sma": 4298.240012770432,
-          "vwap": 4202.760535628593
+          "c": 4221.60009765625,
+          "v": 2420.0,
+          "ema": 4248.799167099802,
+          "sma": 4298.227704326923,
+          "vwap": 4202.752709973497
         }
       ]
     }
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
-    "risk_off_score": 4,
+    "verdict": "RISK_OFF",
+    "risk_off_score": 5,
     "risk_on_score": 3,
     "theme_hits": {
       "war": 1,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 3,
+      "crash": 4,
       "rate_cut": 1,
       "risk_on": 2
     },
@@ -17759,7 +17759,7 @@
       "crash": [
         "Late singer Oliver Tree's body returned to US after helicopter crash",
         "SpaceX stock falls premarket, continuing selloff after rally and blockbuster IPO",
-        "Tesla driver says it was on Autopilot before fatal Texas home crash - Electrek"
+        "A 40% market crash is lurking in the IPO pipeline. SpaceX and OpenAI could trigger it."
       ],
       "rate_cut": [
         "Trump\u2019s student loan rate cut excludes most of the 9 million borrowers in default - Fortune"
@@ -17777,7 +17777,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1782129359.561118,
+    "fetched_at": 1782129657.2027647,
     "risk_off_themes": [
       "banking",
       "crash",
