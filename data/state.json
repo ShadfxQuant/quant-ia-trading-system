@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-22T10:06:00.850062+00:00",
+  "generated_at_utc": "2026-06-22T10:10:58.200352+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13306,11 +13306,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-22T09:00:00+00:00",
-      "close": 4227.2998046875,
-      "ema": 4251.063032192426,
-      "sma": 4298.062315955529,
-      "vwap": 4201.907197846267,
+      "bar_time_utc": "2026-06-22T10:00:00+00:00",
+      "close": 4226.7998046875,
+      "ema": 4250.070102194636,
+      "sma": 4298.196931340144,
+      "vwap": 4201.909955803431,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13320,29 +13320,18 @@
       "read": {
         "bias": "bearish",
         "strength": "weak",
-        "adx": 26.13,
-        "ema_slope_4bar": -5.921,
+        "adx": 25.45,
+        "ema_slope_4bar": -5.2832,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
-          "Close > EMA50 (4,251.06)",
-          "ADX falls below 20 (now 26.1)",
+          "Close > EMA50 (4,250.07)",
+          "ADX falls below 20 (now 25.5)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 26.1, close 4,227.30 vs EMA50 4,251.06) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F leans short (ADX 25.5, close 4,226.80 vs EMA50 4,250.07) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
-        {
-          "t": "2026-05-27T07:00:00+00:00",
-          "o": 4485.2998046875,
-          "h": 4520.60009765625,
-          "l": 4479.5,
-          "c": 4513.2001953125,
-          "v": 24479.0,
-          "ema": 4514.598058426769,
-          "sma": 4523.467709585337,
-          "vwap": 4503.1515102724325
-        },
         {
           "t": "2026-05-27T08:00:00+00:00",
           "o": 4513.10009765625,
@@ -17726,11 +17715,22 @@
           "o": 4215.5,
           "h": 4228.60009765625,
           "l": 4172.89990234375,
-          "c": 4227.2998046875,
-          "v": 4576.0,
-          "ema": 4251.063032192426,
-          "sma": 4298.062315955529,
-          "vwap": 4201.907197846267
+          "c": 4226.2001953125,
+          "v": 4819.0,
+          "ema": 4251.019910256152,
+          "sma": 4298.053857421875,
+          "vwap": 4201.909955803431
+        },
+        {
+          "t": "2026-06-22T10:00:00+00:00",
+          "o": 4226.5,
+          "h": 4227.0,
+          "l": 4226.0,
+          "c": 4226.7998046875,
+          "v": 0.0,
+          "ema": 4250.070102194636,
+          "sma": 4298.196931340144,
+          "vwap": 4201.909955803431
         }
       ]
     }
@@ -17775,7 +17775,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1782122761.3670866,
+    "fetched_at": 1782123058.9622192,
     "risk_off_themes": [
       "banking",
       "crash",
