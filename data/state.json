@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-22T20:50:54.262726+00:00",
+  "generated_at_utc": "2026-06-22T20:55:52.308076+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -35,13 +35,13 @@
         "adx": 13.23,
         "ema_slope_4bar": -0.2361,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "supports",
+        "macro_tilt": "neutral",
         "flip": [
           "Close > EMA50 (745.75)",
           "ADX falls below 20 (now 13.2)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "SPY leans short (ADX 13.2, close 744.38 vs EMA50 745.75) and the tape is choppy. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "SPY leans short (ADX 13.2, close 744.38 vs EMA50 745.75) and the tape is choppy. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -4465,12 +4465,12 @@
         "adx": 14.3,
         "ema_slope_4bar": 43.4752,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close < EMA50 (30,049.92)",
           "ADX falls below 20 (now 14.3)"
         ],
-        "narrative": "^NDX leans long (ADX 14.3, close 30,356.97 vs EMA50 30,049.92) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "^NDX leans long (ADX 14.3, close 30,356.97 vs EMA50 30,049.92) and the tape is choppy. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -8894,13 +8894,13 @@
         "adx": 31.77,
         "ema_slope_4bar": -1.0972,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close > EMA50 (390.62)",
           "ADX falls below 20 (now 31.8)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 31.8, close 384.58 vs EMA50 390.62) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GLD leans short (ADX 31.8, close 384.58 vs EMA50 390.62) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -13308,10 +13308,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-22T20:00:00+00:00",
-      "close": 4211.39990234375,
-      "ema": 4237.02915546728,
-      "sma": 4297.45077749399,
-      "vwap": 4202.420409676002,
+      "close": 4210.7998046875,
+      "ema": 4237.005622225859,
+      "sma": 4297.446161358173,
+      "vwap": 4202.415125361068,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,15 +13322,15 @@
         "bias": "bearish",
         "strength": "weak",
         "adx": 24.78,
-        "ema_slope_4bar": -5.0419,
+        "ema_slope_4bar": -5.0654,
         "regime_pct_24h": 0.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
-          "Close > EMA50 (4,237.03)",
+          "Close > EMA50 (4,237.01)",
           "ADX falls below 20 (now 24.8)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 24.8, close 4,211.40 vs EMA50 4,237.03) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 24.8, close 4,210.80 vs EMA50 4,237.01) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -17727,22 +17727,22 @@
           "o": 4209.39990234375,
           "h": 4212.2998046875,
           "l": 4172.89990234375,
-          "c": 4211.39990234375,
-          "v": 672.0,
-          "ema": 4237.02915546728,
-          "sma": 4297.45077749399,
-          "vwap": 4202.420409676002
+          "c": 4210.7998046875,
+          "v": 768.0,
+          "ema": 4237.005622225859,
+          "sma": 4297.446161358173,
+          "vwap": 4202.415125361068
         }
       ]
     }
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_OFF",
-    "risk_off_score": 3,
+    "verdict": "NEUTRAL",
+    "risk_off_score": 2,
     "risk_on_score": 1,
     "theme_hits": {
-      "war": 2,
+      "war": 1,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
@@ -17752,8 +17752,7 @@
     },
     "sample_headlines": {
       "war": [
-        "Alphabet sees $225 billion market-cap wipeout as investors fear it\u2019s losing the war for AI talent",
-        "U.S. oil prices end below $74 a barrel after 60-day pause on Iran sanctions"
+        "Alphabet sees $225 billion market-cap wipeout as investors fear it\u2019s losing the war for AI talent"
       ],
       "banking": [],
       "recession": [],
@@ -17773,7 +17772,7 @@
       "cnbc_top",
       "marketwatch"
     ],
-    "fetched_at": 1782161455.4378345,
+    "fetched_at": 1782161753.2988164,
     "risk_off_themes": [
       "banking",
       "crash",
