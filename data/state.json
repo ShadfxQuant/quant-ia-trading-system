@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-22T09:10:55.738748+00:00",
+  "generated_at_utc": "2026-06-22T09:15:55.540792+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -4464,12 +4464,12 @@
         "adx": 16.82,
         "ema_slope_4bar": 72.5959,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close < EMA50 (29,964.86)",
           "ADX falls below 20 (now 16.8)"
         ],
-        "narrative": "^NDX leans long (ADX 16.8, close 30,393.78 vs EMA50 29,964.86) and the tape is choppy. The regime filter is mostly green."
+        "narrative": "^NDX leans long (ADX 16.8, close 30,393.78 vs EMA50 29,964.86) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -8893,13 +8893,13 @@
         "adx": 27.75,
         "ema_slope_4bar": -0.9537,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close > EMA50 (392.66)",
           "ADX falls below 20 (now 27.8)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 27.8, close 387.08 vs EMA50 392.66) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "GLD leans short (ADX 27.8, close 387.08 vs EMA50 392.66) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -13307,10 +13307,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-22T09:00:00+00:00",
-      "close": 4214.5,
-      "ema": 4250.561079067426,
-      "sma": 4297.963855919471,
-      "vwap": 4200.877449129205,
+      "close": 4221.5,
+      "ema": 4250.835588871348,
+      "sma": 4298.017702073317,
+      "vwap": 4201.010488050207,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13320,16 +13320,16 @@
       "read": {
         "bias": "bearish",
         "strength": "weak",
-        "adx": 25.53,
-        "ema_slope_4bar": -6.423,
+        "adx": 25.82,
+        "ema_slope_4bar": -6.1485,
         "regime_pct_24h": 0.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,250.56)",
-          "ADX falls below 20 (now 25.5)",
+          "Close > EMA50 (4,250.84)",
+          "ADX falls below 20 (now 25.8)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 25.5, close 4,214.50 vs EMA50 4,250.56) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F leans short (ADX 25.8, close 4,221.50 vs EMA50 4,250.84) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17724,28 +17724,28 @@
         {
           "t": "2026-06-22T09:00:00+00:00",
           "o": 4215.5,
-          "h": 4217.0,
+          "h": 4222.2001953125,
           "l": 4214.2001953125,
-          "c": 4214.5,
-          "v": 119.0,
-          "ema": 4250.561079067426,
-          "sma": 4297.963855919471,
-          "vwap": 4200.877449129205
+          "c": 4221.5,
+          "v": 330.0,
+          "ema": 4250.835588871348,
+          "sma": 4298.017702073317,
+          "vwap": 4201.010488050207
         }
       ]
     }
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
-    "risk_off_score": 2,
+    "verdict": "RISK_OFF",
+    "risk_off_score": 3,
     "risk_on_score": 1,
     "theme_hits": {
       "war": 1,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 1,
+      "crash": 2,
       "rate_cut": 1,
       "risk_on": 0
     },
@@ -17757,6 +17757,7 @@
       "recession": [],
       "rate_hike": [],
       "crash": [
+        "NetJets' first fatal crash kills influential Texas VC founder",
         "Tesla driver says it was on Autopilot before fatal Texas home crash - Electrek"
       ],
       "rate_cut": [
@@ -17772,7 +17773,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1782119456.4508069,
+    "fetched_at": 1782119756.5810847,
     "risk_off_themes": [
       "banking",
       "crash",
