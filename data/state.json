@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-23T12:16:02.388625+00:00",
+  "generated_at_utc": "2026-06-23T12:20:55.285923+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13308,10 +13308,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-23T12:00:00+00:00",
-      "close": 4140.39990234375,
-      "ema": 4197.6664765089645,
-      "sma": 4284.1284743088945,
-      "vwap": 4147.924748942433,
+      "close": 4138.5,
+      "ema": 4197.5919705347,
+      "sma": 4284.113859675481,
+      "vwap": 4147.865938239614,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,15 +13322,15 @@
         "bias": "bearish",
         "strength": "strong",
         "adx": 35.26,
-        "ema_slope_4bar": -10.0338,
+        "ema_slope_4bar": -10.1083,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,197.67)",
+          "Close > EMA50 (4,197.59)",
           "ADX falls below 20 (now 35.3)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 35.3, close 4,140.40 vs EMA50 4,197.67) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 35.3, close 4,138.50 vs EMA50 4,197.59) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17726,12 +17726,12 @@
           "t": "2026-06-23T12:00:00+00:00",
           "o": 4141.0,
           "h": 4145.2998046875,
-          "l": 4139.5,
-          "c": 4140.39990234375,
-          "v": 453.0,
-          "ema": 4197.6664765089645,
-          "sma": 4284.1284743088945,
-          "vwap": 4147.924748942433
+          "l": 4137.10009765625,
+          "c": 4138.5,
+          "v": 804.0,
+          "ema": 4197.5919705347,
+          "sma": 4284.113859675481,
+          "vwap": 4147.865938239614
         }
       ]
     }
@@ -17739,14 +17739,14 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 13,
+    "risk_off_score": 11,
     "risk_on_score": 1,
     "theme_hits": {
       "war": 4,
       "banking": 0,
       "recession": 1,
       "rate_hike": 1,
-      "crash": 7,
+      "crash": 5,
       "rate_cut": 0,
       "risk_on": 1
     },
@@ -17765,8 +17765,8 @@
       ],
       "crash": [
         "Tesla crash that killed a woman under US federal investigation",
-        "Stock market today: Nasdaq, S&P 500 futures plunge as global chip sell-off spurs AI doubts",
-        "Stock Market Today: Techs Dive As South Korea Leads Global Rout; Sandisk, Micron Dive As SpaceX Nears Lows"
+        "Stock Market Today: Techs Dive As South Korea Leads Global Rout; Sandisk, Micron Dive As SpaceX Nears Lows",
+        "Stock market today: Nasdaq, S&P 500 futures plunge as global chip sell-off spurs AI doubts"
       ],
       "rate_cut": [],
       "risk_on": [
@@ -17781,7 +17781,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1782216962.7848506,
+    "fetched_at": 1782217255.7231195,
     "risk_off_themes": [
       "banking",
       "crash",
