@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-23T09:00:54.894238+00:00",
+  "generated_at_utc": "2026-06-23T09:05:54.103863+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13308,10 +13308,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-23T08:00:00+00:00",
-      "close": 4121.2001953125,
-      "ema": 4207.64535222447,
-      "sma": 4290.176938100962,
-      "vwap": 4150.693614693817,
+      "close": 4124.60009765625,
+      "ema": 4207.778681728147,
+      "sma": 4290.203091195914,
+      "vwap": 4150.697689637879,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,15 +13322,15 @@
         "bias": "bearish",
         "strength": "strong",
         "adx": 35.58,
-        "ema_slope_4bar": -14.033,
+        "ema_slope_4bar": -13.8997,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,207.65)",
+          "Close > EMA50 (4,207.78)",
           "ADX falls below 20 (now 35.6)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 35.6, close 4,121.20 vs EMA50 4,207.65) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 35.6, close 4,124.60 vs EMA50 4,207.78) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17727,11 +17727,11 @@
           "o": 4116.2998046875,
           "h": 4128.39990234375,
           "l": 4108.2001953125,
-          "c": 4121.2001953125,
-          "v": 5554.0,
-          "ema": 4207.64535222447,
-          "sma": 4290.176938100962,
-          "vwap": 4150.693614693817
+          "c": 4124.60009765625,
+          "v": 5756.0,
+          "ema": 4207.778681728147,
+          "sma": 4290.203091195914,
+          "vwap": 4150.697689637879
         }
       ]
     }
@@ -17739,36 +17739,33 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 7,
-    "risk_on_score": 3,
+    "risk_off_score": 8,
+    "risk_on_score": 2,
     "theme_hits": {
-      "war": 3,
+      "war": 4,
       "banking": 0,
-      "recession": 1,
+      "recession": 0,
       "rate_hike": 0,
-      "crash": 3,
+      "crash": 4,
       "rate_cut": 0,
-      "risk_on": 3
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
+        "Jim Cramer Makes Big Revelation About Honeywell (HON) & Iran War",
         "U.S. issues sweeping Iran oil sanctions waivers, unlocking billions in revenue for Tehran",
-        "'We'll see' \u2014 Trump hedges on guarantee Iran won't use oil profits to rebuild military",
-        "These 6 fast-growing stocks sit at the cutting edge of space and military technology"
+        "'We'll see' \u2014 Trump hedges on guarantee Iran won't use oil profits to rebuild military"
       ],
       "banking": [],
-      "recession": [
-        "What New BlackRock Layoffs Mean for BLK Stock Here"
-      ],
+      "recession": [],
       "rate_hike": [],
       "crash": [
         "Late singer Oliver Tree's body returned to US after helicopter crash",
-        "SpaceX drops more than 3% following $400 billion selloff",
-        "A 40% market crash is lurking in the IPO pipeline. SpaceX and OpenAI could trigger it."
+        "Tech rout intensifies as selloff grips global stocks",
+        "SpaceX drops more than 3% following $400 billion selloff"
       ],
       "rate_cut": [],
       "risk_on": [
-        "Mueller Industries (MLI) Cut to Neutral by Northcoast after Recent Stock Rally",
         "SpaceX stock tanks 16%, extending slump following post-IPO rally",
         "Caterpillar\u2019s stock hits a milestone as AI-fueled industrials rally sweeps up Wall Street"
       ]
@@ -17781,7 +17778,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1782205255.4790926,
+    "fetched_at": 1782205554.983252,
     "risk_off_themes": [
       "banking",
       "crash",
