@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-23T09:10:55.535101+00:00",
+  "generated_at_utc": "2026-06-23T09:16:01.174937+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13308,10 +13308,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-23T09:00:00+00:00",
-      "close": 4123.89990234375,
-      "ema": 4204.4139621982695,
-      "sma": 4288.73232046274,
-      "vwap": 4150.385040410577,
+      "close": 4129.2001953125,
+      "ema": 4204.621816824495,
+      "sma": 4288.773091947115,
+      "vwap": 4150.215266157719,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13321,16 +13321,16 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 37.57,
-        "ema_slope_4bar": -14.0182,
+        "adx": 37.37,
+        "ema_slope_4bar": -13.8104,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,204.41)",
-          "ADX falls below 20 (now 37.6)",
+          "Close > EMA50 (4,204.62)",
+          "ADX falls below 20 (now 37.4)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 37.6, close 4,123.90 vs EMA50 4,204.41) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 37.4, close 4,129.20 vs EMA50 4,204.62) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17725,13 +17725,13 @@
         {
           "t": "2026-06-23T09:00:00+00:00",
           "o": 4123.0,
-          "h": 4124.39990234375,
+          "h": 4130.0,
           "l": 4122.10009765625,
-          "c": 4123.89990234375,
-          "v": 115.0,
-          "ema": 4204.4139621982695,
-          "sma": 4288.73232046274,
-          "vwap": 4150.385040410577
+          "c": 4129.2001953125,
+          "v": 451.0,
+          "ema": 4204.621816824495,
+          "sma": 4288.773091947115,
+          "vwap": 4150.215266157719
         }
       ]
     }
@@ -17740,7 +17740,7 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 7,
-    "risk_on_score": 2,
+    "risk_on_score": 1,
     "theme_hits": {
       "war": 4,
       "banking": 0,
@@ -17748,7 +17748,7 @@
       "rate_hike": 0,
       "crash": 3,
       "rate_cut": 0,
-      "risk_on": 2
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
@@ -17766,7 +17766,6 @@
       ],
       "rate_cut": [],
       "risk_on": [
-        "SpaceX stock tanks 16%, extending slump following post-IPO rally",
         "Caterpillar\u2019s stock hits a milestone as AI-fueled industrials rally sweeps up Wall Street"
       ]
     },
@@ -17778,7 +17777,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1782205856.5468802,
+    "fetched_at": 1782206161.7310772,
     "risk_off_themes": [
       "banking",
       "crash",
