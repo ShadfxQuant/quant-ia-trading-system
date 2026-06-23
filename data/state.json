@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-23T11:00:52.318464+00:00",
+  "generated_at_utc": "2026-06-23T11:06:03.758069+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13308,10 +13308,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-23T10:00:00+00:00",
-      "close": 4141.5,
-      "ema": 4202.557135976202,
-      "sma": 4287.349245042067,
-      "vwap": 4148.727120019907,
+      "close": 4140.60009765625,
+      "ema": 4202.521845688211,
+      "sma": 4287.342322716346,
+      "vwap": 4148.6805024547275,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,15 +13322,15 @@
         "bias": "bearish",
         "strength": "strong",
         "adx": 35.82,
-        "ema_slope_4bar": -12.5012,
+        "ema_slope_4bar": -12.5365,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,202.56)",
+          "Close > EMA50 (4,202.52)",
           "ADX falls below 20 (now 35.8)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 35.8, close 4,141.50 vs EMA50 4,202.56) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 35.8, close 4,140.60 vs EMA50 4,202.52) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17727,11 +17727,11 @@
           "o": 4140.0,
           "h": 4151.10009765625,
           "l": 4139.89990234375,
-          "c": 4141.5,
-          "v": 3082.0,
-          "ema": 4202.557135976202,
-          "sma": 4287.349245042067,
-          "vwap": 4148.727120019907
+          "c": 4140.60009765625,
+          "v": 3378.0,
+          "ema": 4202.521845688211,
+          "sma": 4287.342322716346,
+          "vwap": 4148.6805024547275
         }
       ]
     }
@@ -17739,16 +17739,16 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 9,
-    "risk_on_score": 1,
+    "risk_off_score": 13,
+    "risk_on_score": 2,
     "theme_hits": {
-      "war": 4,
+      "war": 5,
       "banking": 0,
       "recession": 1,
-      "rate_hike": 0,
-      "crash": 4,
+      "rate_hike": 1,
+      "crash": 6,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
@@ -17760,7 +17760,9 @@
       "recession": [
         "Oracle sheds 21,000 roles over the past year amid wave of AI layoffs from tech giants"
       ],
-      "rate_hike": [],
+      "rate_hike": [
+        "Gold Falls As Traders Weigh U.S.-Iran Progress, Hawkish Fed Signals - WSJ"
+      ],
       "crash": [
         "Tesla crash that killed a woman under US federal investigation",
         "Stock market today: Nasdaq, S&P 500 futures plunge as global chip sell-off spurs AI doubts",
@@ -17768,10 +17770,11 @@
       ],
       "rate_cut": [],
       "risk_on": [
-        "The AI rally has a new test \u2014 a rising dollar: Chart of the Day"
+        "The AI rally has a new test \u2014 a rising dollar: Chart of the Day",
+        "SpaceX stock falls premarket, continuing selloff after rally and blockbuster IPO - CNBC"
       ]
     },
-    "n_headlines": 110,
+    "n_headlines": 111,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -17779,7 +17782,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1782212452.897489,
+    "fetched_at": 1782212764.7428052,
     "risk_off_themes": [
       "banking",
       "crash",
