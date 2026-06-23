@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-23T10:00:52.639531+00:00",
+  "generated_at_utc": "2026-06-23T10:05:55.351245+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13308,10 +13308,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-23T09:00:00+00:00",
-      "close": 4135.2998046875,
-      "ema": 4204.861017192142,
-      "sma": 4288.8200120192305,
-      "vwap": 4148.998952531525,
+      "close": 4135.60009765625,
+      "ema": 4204.872793386995,
+      "sma": 4288.8223219651445,
+      "vwap": 4148.960344261745,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,15 +13322,15 @@
         "bias": "bearish",
         "strength": "strong",
         "adx": 36.42,
-        "ema_slope_4bar": -13.5712,
+        "ema_slope_4bar": -13.5594,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,204.86)",
+          "Close > EMA50 (4,204.87)",
           "ADX falls below 20 (now 36.4)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 36.4, close 4,135.30 vs EMA50 4,204.86) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 36.4, close 4,135.60 vs EMA50 4,204.87) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17727,11 +17727,11 @@
           "o": 4123.0,
           "h": 4138.5,
           "l": 4122.10009765625,
-          "c": 4135.2998046875,
-          "v": 3695.0,
-          "ema": 4204.861017192142,
-          "sma": 4288.8200120192305,
-          "vwap": 4148.998952531525
+          "c": 4135.60009765625,
+          "v": 3824.0,
+          "ema": 4204.872793386995,
+          "sma": 4288.8223219651445,
+          "vwap": 4148.960344261745
         }
       ]
     }
@@ -17740,7 +17740,7 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 6,
-    "risk_on_score": 0,
+    "risk_on_score": 1,
     "theme_hits": {
       "war": 3,
       "banking": 0,
@@ -17748,7 +17748,7 @@
       "rate_hike": 0,
       "crash": 3,
       "rate_cut": 0,
-      "risk_on": 0
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
@@ -17765,7 +17765,9 @@
         "A 40% market crash is lurking in the IPO pipeline. SpaceX and OpenAI could trigger it."
       ],
       "rate_cut": [],
-      "risk_on": []
+      "risk_on": [
+        "The AI rally has a new test \u2014 a rising dollar: Chart of the Day"
+      ]
     },
     "n_headlines": 110,
     "sources_used": [
@@ -17775,7 +17777,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1782208853.474633,
+    "fetched_at": 1782209156.0318942,
     "risk_off_themes": [
       "banking",
       "crash",
