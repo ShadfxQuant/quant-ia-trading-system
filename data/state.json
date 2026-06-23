@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-23T13:21:03.381227+00:00",
+  "generated_at_utc": "2026-06-23T13:26:00.520061+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13308,10 +13308,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-23T13:00:00+00:00",
-      "close": 4131.2998046875,
-      "ema": 4194.7096941346945,
-      "sma": 4282.377704326923,
-      "vwap": 4146.235855451751,
+      "close": 4126.89990234375,
+      "ema": 4194.537148944743,
+      "sma": 4282.343858924279,
+      "vwap": 4146.05171603364,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13321,16 +13321,16 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 35.74,
-        "ema_slope_4bar": -10.3396,
+        "adx": 35.78,
+        "ema_slope_4bar": -10.5121,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,194.71)",
-          "ADX falls below 20 (now 35.7)",
+          "Close > EMA50 (4,194.54)",
+          "ADX falls below 20 (now 35.8)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 35.7, close 4,131.30 vs EMA50 4,194.71) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 35.8, close 4,126.90 vs EMA50 4,194.54) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17726,12 +17726,12 @@
           "t": "2026-06-23T13:00:00+00:00",
           "o": 4131.10009765625,
           "h": 4137.10009765625,
-          "l": 4125.60009765625,
-          "c": 4131.2998046875,
-          "v": 1892.0,
-          "ema": 4194.7096941346945,
-          "sma": 4282.377704326923,
-          "vwap": 4146.235855451751
+          "l": 4124.7001953125,
+          "c": 4126.89990234375,
+          "v": 2402.0,
+          "ema": 4194.537148944743,
+          "sma": 4282.343858924279,
+          "vwap": 4146.05171603364
         }
       ]
     }
@@ -17739,14 +17739,14 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 11,
+    "risk_off_score": 10,
     "risk_on_score": 1,
     "theme_hits": {
       "war": 3,
       "banking": 0,
       "recession": 1,
       "rate_hike": 1,
-      "crash": 6,
+      "crash": 5,
       "rate_cut": 0,
       "risk_on": 1
     },
@@ -17781,7 +17781,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1782220864.3496547,
+    "fetched_at": 1782221161.6909552,
     "risk_off_themes": [
       "banking",
       "crash",
