@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-24T10:05:53.202572+00:00",
+  "generated_at_utc": "2026-06-24T10:10:55.113755+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13308,11 +13308,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-24T09:00:00+00:00",
-      "close": 4085.39990234375,
-      "ema": 4149.436536532975,
-      "sma": 4247.831561748798,
-      "vwap": 4094.8154540126666,
+      "bar_time_utc": "2026-06-24T10:00:00+00:00",
+      "close": 4080.300048828125,
+      "ema": 4146.589667101824,
+      "sma": 4245.852332481971,
+      "vwap": 4094.5853715409203,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,29 +13322,18 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 33.73,
-        "ema_slope_4bar": -9.7491,
+        "adx": 33.56,
+        "ema_slope_4bar": -10.4279,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,149.44)",
-          "ADX falls below 20 (now 33.7)",
+          "Close > EMA50 (4,146.59)",
+          "ADX falls below 20 (now 33.6)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 33.7, close 4,085.40 vs EMA50 4,149.44) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 33.6, close 4,080.30 vs EMA50 4,146.59) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
-        {
-          "t": "2026-05-29T07:00:00+00:00",
-          "o": 4554.2001953125,
-          "h": 4557.2001953125,
-          "l": 4541.2998046875,
-          "c": 4555.5,
-          "v": 5830.0,
-          "ema": 4501.551132580165,
-          "sma": 4508.660021033654,
-          "vwap": 4541.601645473064
-        },
         {
           "t": "2026-05-29T08:00:00+00:00",
           "o": 4555.0,
@@ -17727,12 +17716,23 @@
           "t": "2026-06-24T09:00:00+00:00",
           "o": 4093.300048828125,
           "h": 4095.800048828125,
-          "l": 4082.699951171875,
-          "c": 4085.39990234375,
-          "v": 3660.0,
-          "ema": 4149.436536532975,
-          "sma": 4247.831561748798,
-          "vwap": 4094.8154540126666
+          "l": 4081.60009765625,
+          "c": 4081.800048828125,
+          "v": 3869.0,
+          "ema": 4149.295365806872,
+          "sma": 4247.803870567908,
+          "vwap": 4094.63040476818
+        },
+        {
+          "t": "2026-06-24T10:00:00+00:00",
+          "o": 4082.0,
+          "h": 4083.5,
+          "l": 4078.199951171875,
+          "c": 4080.300048828125,
+          "v": 131.0,
+          "ema": 4146.589667101824,
+          "sma": 4245.852332481971,
+          "vwap": 4094.5853715409203
         }
       ]
     }
@@ -17740,14 +17740,14 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 11,
+    "risk_off_score": 12,
     "risk_on_score": 0,
     "theme_hits": {
       "war": 6,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 5,
+      "crash": 6,
       "rate_cut": 0,
       "risk_on": 0
     },
@@ -17761,9 +17761,9 @@
       "recession": [],
       "rate_hike": [],
       "crash": [
+        "Stock market today: S&P 500, Nasdaq eye rebound from tech rout with Micron in focus",
         "Tech stocks rebound after global rout",
-        "Tankmaker KNDS lays out IPO plans amid defense selloff in Europe",
-        "World\u2019s hottest stock market rallies after 10% plunge"
+        "Tankmaker KNDS lays out IPO plans amid defense selloff in Europe"
       ],
       "rate_cut": [],
       "risk_on": []
@@ -17776,7 +17776,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1782295554.2066305,
+    "fetched_at": 1782295855.9810374,
     "risk_off_themes": [
       "banking",
       "crash",
