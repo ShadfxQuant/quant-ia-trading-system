@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-24T07:00:52.125954+00:00",
+  "generated_at_utc": "2026-06-24T07:05:51.603915+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-24T06:00:00+00:00",
-      "close": 4103.0,
-      "ema": 4156.704025935104,
-      "sma": 4253.459252929688,
-      "vwap": 4096.2455732463195,
+      "close": 4107.10009765625,
+      "ema": 4156.864814078486,
+      "sma": 4253.490792142428,
+      "vwap": 4096.53330621889,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13323,15 +13323,15 @@
         "bias": "bearish",
         "strength": "strong",
         "adx": 35.64,
-        "ema_slope_4bar": -11.9783,
+        "ema_slope_4bar": -11.8175,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,156.70)",
+          "Close > EMA50 (4,156.86)",
           "ADX falls below 20 (now 35.6)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 35.6, close 4,103.00 vs EMA50 4,156.70) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 35.6, close 4,107.10 vs EMA50 4,156.86) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17728,11 +17728,11 @@
           "o": 4093.10009765625,
           "h": 4114.7001953125,
           "l": 4093.10009765625,
-          "c": 4103.0,
-          "v": 4670.0,
-          "ema": 4156.704025935104,
-          "sma": 4253.459252929688,
-          "vwap": 4096.2455732463195
+          "c": 4107.10009765625,
+          "v": 4870.0,
+          "ema": 4156.864814078486,
+          "sma": 4253.490792142428,
+          "vwap": 4096.53330621889
         }
       ]
     }
@@ -17740,16 +17740,16 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 7,
-    "risk_on_score": 0,
+    "risk_off_score": 9,
+    "risk_on_score": 1,
     "theme_hits": {
       "war": 4,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 3,
+      "crash": 5,
       "rate_cut": 0,
-      "risk_on": 0
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
@@ -17766,16 +17766,19 @@
         "Micron and Sandisk lead a sharp tech selloff in a \u2018gut-check\u2019 moment for AI stocks"
       ],
       "rate_cut": [],
-      "risk_on": []
+      "risk_on": [
+        "S. Korea\u2019s KOSPI slumps 8%, triggers circuit breaker as AI rally turns tail - Investing.com"
+      ]
     },
-    "n_headlines": 85,
+    "n_headlines": 110,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
       "cnbc_top",
-      "marketwatch"
+      "marketwatch",
+      "newsapi"
     ],
-    "fetched_at": 1782284452.7607846,
+    "fetched_at": 1782284752.383404,
     "risk_off_themes": [
       "banking",
       "crash",
