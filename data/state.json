@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-24T12:55:51.724687+00:00",
+  "generated_at_utc": "2026-06-24T13:00:52.535329+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-24T12:00:00+00:00",
-      "close": 4029.800048828125,
-      "ema": 4138.578137641226,
-      "sma": 4241.190024038461,
-      "vwap": 4077.1133326221234,
+      "close": 4018.10009765625,
+      "ema": 4138.119316026643,
+      "sma": 4241.100024414062,
+      "vwap": 4074.9530359931664,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,16 +13322,16 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 36.09,
-        "ema_slope_4bar": -13.4721,
+        "adx": 36.19,
+        "ema_slope_4bar": -13.931,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,138.58)",
-          "ADX falls below 20 (now 36.1)",
+          "Close > EMA50 (4,138.12)",
+          "ADX falls below 20 (now 36.2)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 36.1, close 4,029.80 vs EMA50 4,138.58) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 36.2, close 4,018.10 vs EMA50 4,138.12) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17727,12 +17727,12 @@
           "t": "2026-06-24T12:00:00+00:00",
           "o": 4063.39990234375,
           "h": 4065.199951171875,
-          "l": 4022.60009765625,
-          "c": 4029.800048828125,
-          "v": 15953.0,
-          "ema": 4138.578137641226,
-          "sma": 4241.190024038461,
-          "vwap": 4077.1133326221234
+          "l": 4017.699951171875,
+          "c": 4018.10009765625,
+          "v": 17345.0,
+          "ema": 4138.119316026643,
+          "sma": 4241.100024414062,
+          "vwap": 4074.9530359931664
         }
       ]
     }
@@ -17746,8 +17746,8 @@
       "war": 5,
       "banking": 0,
       "recession": 0,
-      "rate_hike": 0,
-      "crash": 6,
+      "rate_hike": 1,
+      "crash": 5,
       "rate_cut": 0,
       "risk_on": 0
     },
@@ -17759,7 +17759,9 @@
       ],
       "banking": [],
       "recession": [],
-      "rate_hike": [],
+      "rate_hike": [
+        "Gold tumbles as US dollar rises, investors price in hawkish Fed"
+      ],
       "crash": [
         "Stock market today: S&P 500, Nasdaq eye rebound from tech rout with Micron in focus",
         "'No cracks in the armor': Tech stocks rebound after global AI selloff batters chip companies",
@@ -17776,7 +17778,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1782305752.3656075,
+    "fetched_at": 1782306053.2478564,
     "risk_off_themes": [
       "banking",
       "crash",
