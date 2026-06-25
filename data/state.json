@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-25T12:50:52.245866+00:00",
+  "generated_at_utc": "2026-06-25T12:55:58.509956+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-25T12:00:00+00:00",
-      "close": 4009.800048828125,
-      "ema": 4059.0425436767873,
-      "sma": 4179.523863807091,
-      "vwap": 4002.948502089112,
+      "close": 4022.800048828125,
+      "ema": 4059.552347598356,
+      "sma": 4179.623863807092,
+      "vwap": 4003.904309424895,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,16 +13322,16 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 42.68,
-        "ema_slope_4bar": -9.8853,
+        "adx": 42.67,
+        "ema_slope_4bar": -9.3755,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,059.04)",
+          "Close > EMA50 (4,059.55)",
           "ADX falls below 20 (now 42.7)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 42.7, close 4,009.80 vs EMA50 4,059.04) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 42.7, close 4,022.80 vs EMA50 4,059.55) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17726,13 +17726,13 @@
         {
           "t": "2026-06-25T12:00:00+00:00",
           "o": 3995.39990234375,
-          "h": 4027.39990234375,
+          "h": 4027.5,
           "l": 3993.5,
-          "c": 4009.800048828125,
-          "v": 8111.0,
-          "ema": 4059.0425436767873,
-          "sma": 4179.523863807091,
-          "vwap": 4002.948502089112
+          "c": 4022.800048828125,
+          "v": 10230.0,
+          "ema": 4059.552347598356,
+          "sma": 4179.623863807092,
+          "vwap": 4003.904309424895
         }
       ]
     }
@@ -17741,7 +17741,7 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 11,
-    "risk_on_score": 3,
+    "risk_on_score": 2,
     "theme_hits": {
       "war": 4,
       "banking": 0,
@@ -17749,7 +17749,7 @@
       "rate_hike": 1,
       "crash": 5,
       "rate_cut": 0,
-      "risk_on": 3
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
@@ -17771,12 +17771,11 @@
       ],
       "rate_cut": [],
       "risk_on": [
-        "Western Digital And Seagate Stocks Get Boost From Big Micron Earnings Beat",
         "Darden Restaurants earnings beat estimates but Olive Garden growth weakens",
         "Gold hovers around $4,000, silver holds below $60 \u2014 has the shimmer worn off the precious metal rally?"
       ]
     },
-    "n_headlines": 110,
+    "n_headlines": 111,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -17784,7 +17783,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1782391853.1980813,
+    "fetched_at": 1782392159.6508427,
     "risk_off_themes": [
       "banking",
       "crash",
