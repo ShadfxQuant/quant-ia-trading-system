@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-25T07:15:47.541262+00:00",
+  "generated_at_utc": "2026-06-25T07:20:56.603609+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-25T07:00:00+00:00",
-      "close": 3994.199951171875,
-      "ema": 4071.176497723355,
-      "sma": 4192.976941856971,
-      "vwap": 4001.5151354942104,
+      "close": 3998.89990234375,
+      "ema": 4071.360809534017,
+      "sma": 4193.013095327524,
+      "vwap": 4001.4488693842845,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13323,15 +13323,15 @@
         "bias": "bearish",
         "strength": "strong",
         "adx": 47.71,
-        "ema_slope_4bar": -12.3918,
+        "ema_slope_4bar": -12.2075,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,071.18)",
+          "Close > EMA50 (4,071.36)",
           "ADX falls below 20 (now 47.7)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 47.7, close 3,994.20 vs EMA50 4,071.18) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 47.7, close 3,998.90 vs EMA50 4,071.36) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17726,13 +17726,13 @@
         {
           "t": "2026-06-25T07:00:00+00:00",
           "o": 3992.5,
-          "h": 3997.699951171875,
+          "h": 4001.5,
           "l": 3988.5,
-          "c": 3994.199951171875,
-          "v": 479.0,
-          "ema": 4071.176497723355,
-          "sma": 4192.976941856971,
-          "vwap": 4001.5151354942104
+          "c": 3998.89990234375,
+          "v": 1148.0,
+          "ema": 4071.360809534017,
+          "sma": 4193.013095327524,
+          "vwap": 4001.4488693842845
         }
       ]
     }
@@ -17740,16 +17740,16 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 7,
-    "risk_on_score": 1,
+    "risk_off_score": 9,
+    "risk_on_score": 0,
     "theme_hits": {
       "war": 4,
       "banking": 0,
-      "recession": 1,
+      "recession": 2,
       "rate_hike": 1,
-      "crash": 1,
+      "crash": 2,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 0
     },
     "sample_headlines": {
       "war": [
@@ -17759,18 +17759,18 @@
       ],
       "banking": [],
       "recession": [
+        "Economist who predicted 2008 recession walks back his biggest conviction",
         "ORCL Stock Layoffs: What to Know as Oracle Cuts 21,000 Jobs"
       ],
       "rate_hike": [
         "These hidden PCE triggers could force a Fed rate hike \u2014 and shock the market"
       ],
       "crash": [
-        "'I thought building would fall on top of me' - Venezuelans describe earthquake panic"
+        "'I thought building would fall on top of me' - Venezuelans describe earthquake panic",
+        "US stocks plunge in global tech rout"
       ],
       "rate_cut": [],
-      "risk_on": [
-        "AbbVie Just Sparked a 46% Rally in Apogee. Here\u2019s Why This $10.9 Billion Deal Could Be a Win for AbbVie Investors."
-      ]
+      "risk_on": []
     },
     "n_headlines": 84,
     "sources_used": [
@@ -17779,7 +17779,7 @@
       "cnbc_top",
       "marketwatch"
     ],
-    "fetched_at": 1782371748.4101295,
+    "fetched_at": 1782372057.3552787,
     "risk_off_themes": [
       "banking",
       "crash",
