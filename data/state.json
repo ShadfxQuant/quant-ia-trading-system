@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-25T11:35:52.232419+00:00",
+  "generated_at_utc": "2026-06-25T11:40:51.117658+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-25T11:00:00+00:00",
-      "close": 3994.699951171875,
-      "ema": 4061.0289081842902,
-      "sma": 4182.145402644231,
-      "vwap": 4002.0896368298177,
+      "close": 3992.800048828125,
+      "ema": 4060.9544022100254,
+      "sma": 4182.130788010817,
+      "vwap": 4002.0171340625543,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13323,15 +13323,15 @@
         "bias": "bearish",
         "strength": "strong",
         "adx": 44.75,
-        "ema_slope_4bar": -10.5123,
+        "ema_slope_4bar": -10.5868,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,061.03)",
+          "Close > EMA50 (4,060.95)",
           "ADX falls below 20 (now 44.8)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 44.8, close 3,994.70 vs EMA50 4,061.03) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 44.8, close 3,992.80 vs EMA50 4,060.95) and the trend is strong. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17728,11 +17728,11 @@
           "o": 4000.0,
           "h": 4001.10009765625,
           "l": 3991.0,
-          "c": 3994.699951171875,
-          "v": 1569.0,
-          "ema": 4061.0289081842902,
-          "sma": 4182.145402644231,
-          "vwap": 4002.0896368298177
+          "c": 3992.800048828125,
+          "v": 1947.0,
+          "ema": 4060.9544022100254,
+          "sma": 4182.130788010817,
+          "vwap": 4002.0171340625543
         }
       ]
     }
@@ -17740,13 +17740,13 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 14,
+    "risk_off_score": 13,
     "risk_on_score": 2,
     "theme_hits": {
       "war": 6,
       "banking": 0,
       "recession": 1,
-      "rate_hike": 1,
+      "rate_hike": 0,
       "crash": 6,
       "rate_cut": 0,
       "risk_on": 2
@@ -17761,9 +17761,7 @@
       "recession": [
         "Oracle\u2019s 21,000 layoffs help drive its debt-fueled AI investments - Ars Technica"
       ],
-      "rate_hike": [
-        "These hidden PCE inflation triggers could force a Fed rate hike \u2014 and shock the market"
-      ],
+      "rate_hike": [],
       "crash": [
         "'I thought I was going to die' - Venezuelans describe earthquake panic",
         "Will the housing market crash in 2026?",
@@ -17783,7 +17781,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1782387353.0697987,
+    "fetched_at": 1782387651.729126,
     "risk_off_themes": [
       "banking",
       "crash",
