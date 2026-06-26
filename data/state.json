@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-26T20:52:55.996209+00:00",
+  "generated_at_utc": "2026-06-26T22:08:30.523416+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,10 +13309,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-06-26T20:00:00+00:00",
-      "close": 4084.199951171875,
-      "ema": 4061.2836546853237,
-      "sma": 4114.346163236178,
-      "vwap": 4067.9735123704427,
+      "close": 4103.0,
+      "ema": 4062.020911502113,
+      "sma": 4114.4907789963945,
+      "vwap": 4068.3867063779867,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,15 +13322,15 @@
       "read": {
         "bias": "neutral",
         "strength": "weak",
-        "adx": 21.96,
-        "ema_slope_4bar": 4.2007,
+        "adx": 22.81,
+        "ema_slope_4bar": 4.9379,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 22.0, close 4,084.20 vs EMA50 4,061.28) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 22.8, close 4,103.00 vs EMA50 4,062.02) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -17725,13 +17725,13 @@
         {
           "t": "2026-06-26T20:00:00+00:00",
           "o": 4086.39990234375,
-          "h": 4087.199951171875,
+          "h": 4104.39990234375,
           "l": 4079.0,
-          "c": 4084.199951171875,
-          "v": 1297.0,
-          "ema": 4061.2836546853237,
-          "sma": 4114.346163236178,
-          "vwap": 4067.9735123704427
+          "c": 4103.0,
+          "v": 2400.0,
+          "ema": 4062.020911502113,
+          "sma": 4114.4907789963945,
+          "vwap": 4068.3867063779867
         }
       ]
     }
@@ -17739,38 +17739,40 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 10,
+    "risk_off_score": 11,
     "risk_on_score": 1,
     "theme_hits": {
-      "war": 7,
+      "war": 6,
       "banking": 0,
       "recession": 0,
       "rate_hike": 2,
-      "crash": 1,
+      "crash": 3,
       "rate_cut": 0,
       "risk_on": 1
     },
     "sample_headlines": {
       "war": [
-        "Trump accuses Iran of ceasefire breach after Strait of Hormuz attack",
         "US sanctions Rwanda gold refinery accused of smuggling DR Congo's minerals",
-        "Trump asks Congress for billions for Iran war, after tension with Republicans"
+        "Trump asks Congress for billions for Iran war, after tension with Republicans",
+        "Oil price falls back to pre-Iran war levels"
       ],
       "banking": [],
       "recession": [],
       "rate_hike": [
         "Minneapolis Fed President Neel Kashkari says he expects a rate hike this year",
-        "Fed\u2019s Kashkari projects one interest-rate hike this year. Here\u2019s what changed his mind."
+        "Fed\u2019s Kashkari now projects one interest-rate hike this year. Here\u2019s what changed his mind."
       ],
       "crash": [
-        "Red Lobster's Ultimate Endless Shrimp promotion described as a 'car crash' for the company, lawsuit says"
+        "Red Lobster's Ultimate Endless Shrimp promotion described as a 'car crash' for the company, lawsuit says",
+        "Apple shares plunge after it hikes prices on iPads and laptops - NBC News",
+        "Palantir's selloff continues, marking the seventh straight session of declines (PLTR:NASDAQ) - Seeking Alpha"
       ],
       "rate_cut": [],
       "risk_on": [
-        "Wendy's stock swept up in meme-like rally after viral Reddit post, leadership hire"
+        "Keysight Technologies (KEYS) Rallied on Earnings Beat and Improved Outlook"
       ]
     },
-    "n_headlines": 113,
+    "n_headlines": 112,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -17778,7 +17780,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1782507176.6208572,
+    "fetched_at": 1782511711.9813058,
     "risk_off_themes": [
       "banking",
       "crash",
@@ -17799,19 +17801,6 @@
     "return_pct": -1.56,
     "open_count": 4,
     "closed_count": 13,
-    "actions": [
-      {
-        "event": "open",
-        "symbol": "SPY",
-        "strategy": "pullback",
-        "side": "SHORT",
-        "entry_price": 729.0800170898438,
-        "size_usd": 29533.19,
-        "stop": 747.31,
-        "tp1": 699.92,
-        "tp2": 619.72,
-        "equity_after": 98443.96
-      }
-    ]
+    "actions": []
   }
 }
