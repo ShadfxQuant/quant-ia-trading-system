@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-26T10:24:42.302604+00:00",
+  "generated_at_utc": "2026-06-26T12:31:54.809624+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13308,11 +13308,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-26T10:00:00+00:00",
-      "close": 4066.39990234375,
-      "ema": 4048.4038279069337,
-      "sma": 4131.319243915264,
-      "vwap": 4036.6308689866833,
+      "bar_time_utc": "2026-06-26T12:00:00+00:00",
+      "close": 4058.5,
+      "ema": 4049.3974386506698,
+      "sma": 4127.106167367789,
+      "vwap": 4040.4992152753134,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,39 +13322,17 @@
       "read": {
         "bias": "neutral",
         "strength": "chop",
-        "adx": 18.48,
-        "ema_slope_4bar": 1.2851,
+        "adx": 19.12,
+        "ema_slope_4bar": 2.3457,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 18.5, close 4,066.40 vs EMA50 4,048.40) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 19.1, close 4,058.50 vs EMA50 4,049.40) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
-        {
-          "t": "2026-06-02T08:00:00+00:00",
-          "o": 4565.2001953125,
-          "h": 4569.2998046875,
-          "l": 4556.10009765625,
-          "c": 4557.0,
-          "v": 3327.0,
-          "ema": 4531.5070419010835,
-          "sma": 4514.577715594952,
-          "vwap": 4539.812823649668
-        },
-        {
-          "t": "2026-06-02T09:00:00+00:00",
-          "o": 4557.10009765625,
-          "h": 4565.89990234375,
-          "l": 4550.89990234375,
-          "c": 4559.39990234375,
-          "v": 5891.0,
-          "ema": 4532.6008795655025,
-          "sma": 4514.869253305288,
-          "vwap": 4542.424048840097
-        },
         {
           "t": "2026-06-02T10:00:00+00:00",
           "o": 4559.7001953125,
@@ -17725,13 +17703,35 @@
         {
           "t": "2026-06-26T10:00:00+00:00",
           "o": 4062.300048828125,
-          "h": 4067.699951171875,
-          "l": 4059.699951171875,
-          "c": 4066.39990234375,
-          "v": 703.0,
-          "ema": 4048.4038279069337,
-          "sma": 4131.319243915264,
-          "vwap": 4036.6308689866833
+          "h": 4070.800048828125,
+          "l": 4057.5,
+          "c": 4069.800048828125,
+          "v": 2780.0,
+          "ema": 4048.5371669847523,
+          "sma": 4131.345398888221,
+          "vwap": 4038.03668659305
+        },
+        {
+          "t": "2026-06-26T11:00:00+00:00",
+          "o": 4070.0,
+          "h": 4071.5,
+          "l": 4057.60009765625,
+          "c": 4061.0,
+          "v": 3768.0,
+          "ema": 4049.0259055343704,
+          "sma": 4129.268475811298,
+          "vwap": 4040.0282043306324
+        },
+        {
+          "t": "2026-06-26T12:00:00+00:00",
+          "o": 4061.10009765625,
+          "h": 4066.5,
+          "l": 4056.800048828125,
+          "c": 4058.5,
+          "v": 1123.0,
+          "ema": 4049.3974386506698,
+          "sma": 4127.106167367789,
+          "vwap": 4040.4992152753134
         }
       ]
     }
@@ -17740,15 +17740,15 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 7,
-    "risk_on_score": 3,
+    "risk_on_score": 1,
     "theme_hits": {
-      "war": 3,
+      "war": 4,
       "banking": 0,
       "recession": 1,
       "rate_hike": 0,
-      "crash": 3,
+      "crash": 2,
       "rate_cut": 1,
-      "risk_on": 2
+      "risk_on": 0
     },
     "sample_headlines": {
       "war": [
@@ -17762,19 +17762,15 @@
       ],
       "rate_hike": [],
       "crash": [
-        "Micron falls 5% in premarket, paring earlier gains amid tech rout",
         "Red Lobster's Ultimate Endless Shrimp promotion described as a 'car crash' for the company, lawsuit says",
-        "Microsoft\u2019s stock is suffering a historic June rout as investors balk at heavy spending"
+        "Gold, silver and bitcoin tumble as 'debasement' trade unwinds - CoinDesk"
       ],
       "rate_cut": [
         "Chicago Fed President Goolsbee says inflation is too high; Williams sees price pressures easing"
       ],
-      "risk_on": [
-        "Global chip stocks jump as blowout Micron results reignite AI rally",
-        "Wendy's turns lower as meme rally fails to extend to a second day"
-      ]
+      "risk_on": []
     },
-    "n_headlines": 108,
+    "n_headlines": 112,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -17782,7 +17778,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1782469482.8584971,
+    "fetched_at": 1782477115.3442993,
     "risk_off_themes": [
       "banking",
       "crash",
