@@ -1,5 +1,5 @@
 {
-  "equity": 98443.95893131792,
+  "equity": 97705.62923933304,
   "initial_capital": 100000.0,
   "cash": 100093.92824218668,
   "open_positions": [
@@ -47,21 +47,6 @@
       "bar_time_at_entry": "2026-06-12T14:30:00+00:00",
       "tp1_hit": false,
       "remaining_size": 29839.178472656004
-    },
-    {
-      "symbol": "SPY",
-      "strategy": "pullback",
-      "side": -1,
-      "entry_time": "2026-06-26T20:53:14.814499+00:00",
-      "entry_price": 729.0800170898438,
-      "size": 29533.187679395374,
-      "stop_pct": 0.025,
-      "tp1_pct": 0.04,
-      "tp2_pct": 0.15,
-      "tp1_size_frac": 0.5,
-      "bar_time_at_entry": "2026-06-26T19:30:00+00:00",
-      "tp1_hit": false,
-      "remaining_size": 29533.187679395374
     }
   ],
   "closed_trades": [
@@ -220,8 +205,20 @@
       "size": 15000.0,
       "pnl": 1654.7567516702738,
       "reason": "manual_close_universe_drop_SLV"
+    },
+    {
+      "symbol": "SPY",
+      "strategy": "pullback",
+      "side": -1,
+      "entry_time": "2026-06-26T20:53:14.814499+00:00",
+      "entry_price": 729.0800170898438,
+      "exit_time": "2026-06-30T19:13:12.384309+00:00",
+      "exit_price": 747.3070175170898,
+      "size": 29533.187679395374,
+      "pnl": -738.3296919848816,
+      "reason": "stop"
     }
   ],
-  "n_trades_total": 13,
-  "last_updated_utc": "2026-06-30T17:19:25.750085+00:00"
+  "n_trades_total": 14,
+  "last_updated_utc": "2026-06-30T19:13:12.384383+00:00"
 }
