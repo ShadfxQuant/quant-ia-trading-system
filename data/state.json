@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-30T10:33:20.840338+00:00",
+  "generated_at_utc": "2026-06-30T12:31:35.714967+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13306,11 +13306,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-06-30T10:00:00+00:00",
-      "close": 4039.199951171875,
-      "ema": 4040.182417543021,
-      "sma": 4066.129231144832,
-      "vwap": 4005.340570973484,
+      "bar_time_utc": "2026-06-30T12:00:00+00:00",
+      "close": 4036.10009765625,
+      "ema": 4040.468176524079,
+      "sma": 4063.867694561298,
+      "vwap": 4009.814694839362,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13318,42 +13318,19 @@
       "trend_carry_pyramid_ok": false,
       "trend_carry_pyramid_cap": 0,
       "read": {
-        "bias": "bearish",
+        "bias": "neutral",
         "strength": "weak",
-        "adx": 26.26,
-        "ema_slope_4bar": -0.3671,
+        "adx": 22.67,
+        "ema_slope_4bar": 0.1549,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
-          "Close > EMA50 (4,040.18)",
-          "ADX falls below 20 (now 26.3)",
-          "EMA50 crosses back above SMA130"
+          "Close + ADX both push above EMA50 with ADX \u2265 20",
+          "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F leans short (ADX 26.3, close 4,039.20 vs EMA50 4,040.18) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 22.7, close 4,036.10 vs EMA50 4,040.47) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
-        {
-          "t": "2026-06-04T08:00:00+00:00",
-          "o": 4488.39990234375,
-          "h": 4496.10009765625,
-          "l": 4485.39990234375,
-          "c": 4490.2001953125,
-          "v": 2898.0,
-          "ema": 4498.455118325108,
-          "sma": 4511.966173377404,
-          "vwap": 4493.289246611176
-        },
-        {
-          "t": "2026-06-04T09:00:00+00:00",
-          "o": 4489.89990234375,
-          "h": 4503.2998046875,
-          "l": 4487.7001953125,
-          "c": 4498.2001953125,
-          "v": 3809.0,
-          "ema": 4498.445121344222,
-          "sma": 4512.091560246394,
-          "vwap": 4493.67991946445
-        },
         {
           "t": "2026-06-04T10:00:00+00:00",
           "o": 4497.89990234375,
@@ -17724,13 +17701,35 @@
         {
           "t": "2026-06-30T10:00:00+00:00",
           "o": 4038.10009765625,
-          "h": 4041.300048828125,
+          "h": 4045.5,
           "l": 4035.5,
-          "c": 4039.199951171875,
-          "v": 1041.0,
-          "ema": 4040.182417543021,
-          "sma": 4066.129231144832,
-          "vwap": 4005.340570973484
+          "c": 4043.89990234375,
+          "v": 3003.0,
+          "ema": 4040.366729353683,
+          "sma": 4066.1653846153845,
+          "vwap": 4006.616891227669
+        },
+        {
+          "t": "2026-06-30T11:00:00+00:00",
+          "o": 4043.89990234375,
+          "h": 4051.39990234375,
+          "l": 4039.300048828125,
+          "c": 4047.5,
+          "v": 3788.0,
+          "ema": 4040.6464654574597,
+          "sma": 4064.9200007512018,
+          "vwap": 4009.0272220078436
+        },
+        {
+          "t": "2026-06-30T12:00:00+00:00",
+          "o": 4048.0,
+          "h": 4048.199951171875,
+          "l": 4035.0,
+          "c": 4036.10009765625,
+          "v": 1630.0,
+          "ema": 4040.468176524079,
+          "sma": 4063.867694561298,
+          "vwap": 4009.814694839362
         }
       ]
     }
@@ -17739,7 +17738,7 @@
   "macro": {
     "verdict": "NEUTRAL",
     "risk_off_score": 2,
-    "risk_on_score": 1,
+    "risk_on_score": 2,
     "theme_hits": {
       "war": 1,
       "banking": 0,
@@ -17747,7 +17746,7 @@
       "rate_hike": 0,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
@@ -17757,11 +17756,12 @@
       "recession": [],
       "rate_hike": [],
       "crash": [
-        "Quant funds just suffered their most crippling trading rout this year as momentum stocks flopped"
+        "A 23% plunge in personal wealth leaves this country trailing its global peers"
       ],
       "rate_cut": [],
       "risk_on": [
-        "AeroVironment soars 19% on earnings beat, backlog grows to $1.2 billion"
+        "AeroVironment soars 19% on earnings beat, backlog grows to $1.2 billion",
+        "Get ready for the summer rally, Wells Fargo tells investors"
       ]
     },
     "n_headlines": 110,
@@ -17772,7 +17772,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1782815601.858241,
+    "fetched_at": 1782822696.773817,
     "risk_off_themes": [
       "banking",
       "crash",
