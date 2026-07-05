@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-05T09:43:48.806441+00:00",
+  "generated_at_utc": "2026-07-05T11:20:59.775090+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -35,12 +35,12 @@
         "adx": 13.32,
         "ema_slope_4bar": 0.0796,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close < EMA50 (742.44)",
           "ADX falls below 20 (now 13.3)"
         ],
-        "narrative": "SPY leans long (ADX 13.3, close 744.84 vs EMA50 742.44) and the tape is choppy. The regime filter is mostly green."
+        "narrative": "SPY leans long (ADX 13.3, close 744.84 vs EMA50 742.44) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -13322,13 +13322,13 @@
         "adx": 43.37,
         "ema_slope_4bar": 15.1211,
         "regime_pct_24h": 62.5,
-        "macro_tilt": "neutral",
+        "macro_tilt": "supports",
         "flip": [
           "Close < EMA50 (4,098.34)",
           "ADX falls below 20 (now 43.4)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GC=F leans long (ADX 43.4, close 4,188.50 vs EMA50 4,098.34) and the trend is strong. The regime filter is mostly green."
+        "narrative": "GC=F leans long (ADX 43.4, close 4,188.50 vs EMA50 4,098.34) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -17736,15 +17736,15 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
-    "risk_off_score": 1,
+    "verdict": "RISK_OFF",
+    "risk_off_score": 2,
     "risk_on_score": 0,
     "theme_hits": {
       "war": 0,
       "banking": 0,
       "recession": 0,
       "rate_hike": 1,
-      "crash": 0,
+      "crash": 1,
       "rate_cut": 0,
       "risk_on": 0
     },
@@ -17755,7 +17755,9 @@
       "rate_hike": [
         "Gold prices set for first weekly rise in a month as investors scale back Fed rate hike bets"
       ],
-      "crash": [],
+      "crash": [
+        "Tesla driver charged with manslaughter over crash into Texas home - NBC News"
+      ],
       "rate_cut": [],
       "risk_on": []
     },
@@ -17767,7 +17769,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1783244629.954397,
+    "fetched_at": 1783250460.2895596,
     "risk_off_themes": [
       "banking",
       "crash",
