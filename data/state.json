@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-07T10:27:24.185719+00:00",
+  "generated_at_utc": "2026-07-07T13:01:26.407265+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13305,11 +13305,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-07-07T10:00:00+00:00",
-      "close": 4145.39990234375,
-      "ema": 4143.700533227719,
-      "sma": 4087.994608248197,
-      "vwap": 4143.7117785916325,
+      "bar_time_utc": "2026-07-07T12:00:00+00:00",
+      "close": 4179.7998046875,
+      "ema": 4146.115899648162,
+      "sma": 4089.4261474609375,
+      "vwap": 4153.0127106021555,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13317,41 +13317,20 @@
       "trend_carry_pyramid_ok": false,
       "trend_carry_pyramid_cap": 0,
       "read": {
-        "bias": "neutral",
+        "bias": "bullish",
         "strength": "strong",
-        "adx": 37.25,
-        "ema_slope_4bar": -0.5822,
-        "regime_pct_24h": 45.8,
-        "macro_tilt": "neutral",
+        "adx": 33.1,
+        "ema_slope_4bar": 2.4345,
+        "regime_pct_24h": 37.5,
+        "macro_tilt": "supports",
         "flip": [
-          "Close + ADX both push above EMA50 with ADX \u2265 20",
-          "Or close below EMA50 with ADX rising past 20"
+          "Close < EMA50 (4,146.12)",
+          "ADX falls below 20 (now 33.1)",
+          "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GC=F is neutral (ADX 37.2, close 4,145.40 vs EMA50 4,143.70) and the trend is strong. The regime filter is mostly blocking \u2014 only 46% of the last 24h was tradable."
+        "narrative": "GC=F leans long (ADX 33.1, close 4,179.80 vs EMA50 4,146.12) and the trend is strong. The regime filter is mostly blocking \u2014 only 38% of the last 24h was tradable. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-06-10T14:00:00+00:00",
-          "o": 4202.60009765625,
-          "h": 4204.10009765625,
-          "l": 4139.7001953125,
-          "c": 4147.10009765625,
-          "v": 16028.0,
-          "ema": 4278.908863390652,
-          "sma": 4392.379999248798,
-          "vwap": 4192.887651057427
-        },
-        {
-          "t": "2026-06-10T15:00:00+00:00",
-          "o": 4147.7001953125,
-          "h": 4159.7001953125,
-          "l": 4129.60009765625,
-          "c": 4151.89990234375,
-          "v": 17546.0,
-          "ema": 4273.928119820186,
-          "sma": 4389.5915377103365,
-          "vwap": 4187.5446380729345
-        },
         {
           "t": "2026-06-10T16:00:00+00:00",
           "o": 4152.7001953125,
@@ -17722,13 +17701,35 @@
         {
           "t": "2026-07-07T10:00:00+00:00",
           "o": 4142.39990234375,
-          "h": 4146.5,
+          "h": 4150.5,
           "l": 4142.39990234375,
-          "c": 4145.39990234375,
-          "v": 593.0,
-          "ema": 4143.700533227719,
-          "sma": 4087.994608248197,
-          "vwap": 4143.7117785916325
+          "c": 4147.10009765625,
+          "v": 2012.0,
+          "ema": 4143.767207553699,
+          "sma": 4088.007686673678,
+          "vwap": 4143.875922032814
+        },
+        {
+          "t": "2026-07-07T11:00:00+00:00",
+          "o": 4147.10009765625,
+          "h": 4170.0,
+          "l": 4143.0,
+          "c": 4168.60009765625,
+          "v": 5278.0,
+          "ema": 4144.74104638125,
+          "sma": 4088.6830716646637,
+          "vwap": 4146.2087686020295
+        },
+        {
+          "t": "2026-07-07T12:00:00+00:00",
+          "o": 4168.60009765625,
+          "h": 4187.0,
+          "l": 4166.0,
+          "c": 4179.7998046875,
+          "v": 10429.0,
+          "ema": 4146.115899648162,
+          "sma": 4089.4261474609375,
+          "vwap": 4153.0127106021555
         }
       ]
     }
@@ -17736,10 +17737,10 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 2,
+    "risk_off_score": 3,
     "risk_on_score": 0,
     "theme_hits": {
-      "war": 1,
+      "war": 2,
       "banking": 0,
       "recession": 0,
       "rate_hike": 1,
@@ -17749,6 +17750,7 @@
     },
     "sample_headlines": {
       "war": [
+        "These global stocks benefit from high barriers to entry. And they\u2019re winning the war against AI disruption.",
         "Converting car plants to make military drones will fail, warns Japan defence titan - Financial Times"
       ],
       "banking": [],
@@ -17760,7 +17762,7 @@
       "rate_cut": [],
       "risk_on": []
     },
-    "n_headlines": 112,
+    "n_headlines": 113,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -17768,7 +17770,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1783420045.5471869,
+    "fetched_at": 1783429286.9486115,
     "risk_off_themes": [
       "banking",
       "crash",
