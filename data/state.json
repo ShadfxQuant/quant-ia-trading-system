@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-08T09:26:41.378721+00:00",
+  "generated_at_utc": "2026-07-08T11:23:57.067621+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13306,11 +13306,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-07-08T09:00:00+00:00",
-      "close": 4067.0,
-      "ema": 4134.264042854853,
-      "sma": 4102.286151592548,
-      "vwap": 4108.4731538296055,
+      "bar_time_utc": "2026-07-08T11:00:00+00:00",
+      "close": 4059.199951171875,
+      "ema": 4128.12832800714,
+      "sma": 4103.437689678485,
+      "vwap": 4097.318660226732,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13320,39 +13320,17 @@
       "read": {
         "bias": "neutral",
         "strength": "weak",
-        "adx": 23.31,
-        "ema_slope_4bar": -6.1855,
+        "adx": 27.37,
+        "ema_slope_4bar": -11.7469,
         "regime_pct_24h": 16.7,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 23.3, close 4,067.00 vs EMA50 4,134.26) but the trend is only weak. The regime filter is mostly blocking \u2014 only 17% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 27.4, close 4,059.20 vs EMA50 4,128.13) but the trend is only weak. The regime filter is mostly blocking \u2014 only 17% of the last 24h was tradable."
       },
       "bars": [
-        {
-          "t": "2026-06-11T13:00:00+00:00",
-          "o": 4102.7001953125,
-          "h": 4114.2998046875,
-          "l": 4088.0,
-          "c": 4104.2998046875,
-          "v": 12299.0,
-          "ema": 4178.782446504511,
-          "sma": 4328.860768479567,
-          "vwap": 4104.683593282572
-        },
-        {
-          "t": "2026-06-11T14:00:00+00:00",
-          "o": 4104.0,
-          "h": 4106.60009765625,
-          "l": 4072.800048828125,
-          "c": 4094.39990234375,
-          "v": 14400.0,
-          "ema": 4175.473327125658,
-          "sma": 4325.8676908052885,
-          "vwap": 4102.954285003219
-        },
         {
           "t": "2026-06-11T15:00:00+00:00",
           "o": 4094.199951171875,
@@ -17723,13 +17701,35 @@
         {
           "t": "2026-07-08T09:00:00+00:00",
           "o": 4066.60009765625,
-          "h": 4070.0,
-          "l": 4060.39990234375,
-          "c": 4067.0,
-          "v": 2694.0,
-          "ema": 4134.264042854853,
-          "sma": 4102.286151592548,
-          "vwap": 4108.4731538296055
+          "h": 4071.300048828125,
+          "l": 4051.60009765625,
+          "c": 4053.10009765625,
+          "v": 9608.0,
+          "ema": 4133.718948645294,
+          "sma": 4102.179229266827,
+          "vwap": 4101.824316299693
+        },
+        {
+          "t": "2026-07-08T10:00:00+00:00",
+          "o": 4053.5,
+          "h": 4069.0,
+          "l": 4050.0,
+          "c": 4062.89990234375,
+          "v": 5646.0,
+          "ema": 4130.9417311432735,
+          "sma": 4102.796151968149,
+          "vwap": 4097.969379642081
+        },
+        {
+          "t": "2026-07-08T11:00:00+00:00",
+          "o": 4062.89990234375,
+          "h": 4067.199951171875,
+          "l": 4058.10009765625,
+          "c": 4059.199951171875,
+          "v": 1096.0,
+          "ema": 4128.12832800714,
+          "sma": 4103.437689678485,
+          "vwap": 4097.318660226732
         }
       ]
     }
@@ -17737,35 +17737,37 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 8,
-    "risk_on_score": 1,
+    "risk_off_score": 13,
+    "risk_on_score": 0,
     "theme_hits": {
-      "war": 7,
+      "war": 9,
       "banking": 0,
-      "recession": 0,
+      "recession": 1,
       "rate_hike": 0,
-      "crash": 1,
+      "crash": 3,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 0
     },
     "sample_headlines": {
       "war": [
-        "Nato allies announce \u00a337bn for new missile project",
-        "Russian fuel shortages bite \u2013 but will Putin change tack in Ukraine war?",
-        "Fears of a massacre in this city on the front line of Sudan's war"
+        "Trump says ceasefire is 'over' after US and Iran trade strikes",
+        "US strikes target Iranian military boats",
+        "Nato allies announce \u00a337bn for new missile project"
       ],
       "banking": [],
-      "recession": [],
+      "recession": [
+        "Xbox Layoffs Announced: 1600 Now, 1600 More into 2028, Four Studios Leave and id Software Reportedly Gutted - Digital Foundry"
+      ],
       "rate_hike": [],
       "crash": [
-        "Rivian\u2019s stock sale triggers worst rout for the shares in nearly two years"
+        "Dow Jones Futures Tumble, Oil Prices Soar As Trump Says U.S.-Iran Ceasefire 'Over'",
+        "Oil surges, stocks tumble as Trump declares Iran MOU 'over'",
+        "If the stock market\u2019s double bubble bursts, it could usher in the next crash - MarketWatch"
       ],
       "rate_cut": [],
-      "risk_on": [
-        "Soybeans Rally Out of the Holiday, with Chinese Rumors"
-      ]
+      "risk_on": []
     },
-    "n_headlines": 107,
+    "n_headlines": 110,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -17773,7 +17775,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1783502802.2093086,
+    "fetched_at": 1783509837.865301,
     "risk_off_themes": [
       "banking",
       "crash",
@@ -17794,17 +17796,6 @@
     "return_pct": -3.03,
     "open_count": 4,
     "closed_count": 15,
-    "actions": [
-      {
-        "event": "close",
-        "symbol": "GC=F",
-        "strategy": "pullback",
-        "side": "LONG",
-        "reason": "stop",
-        "exit_price": 4064.4826904296874,
-        "pnl": -732.79,
-        "equity_after": 96972.84
-      }
-    ]
+    "actions": []
   }
 }
