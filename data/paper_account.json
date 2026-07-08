@@ -1,5 +1,5 @@
 {
-  "equity": 97705.62923933304,
+  "equity": 96972.83702003805,
   "initial_capital": 100000.0,
   "cash": 100093.92824218668,
   "open_positions": [
@@ -47,21 +47,6 @@
       "bar_time_at_entry": "2026-06-12T14:30:00+00:00",
       "tp1_hit": false,
       "remaining_size": 29839.178472656004
-    },
-    {
-      "symbol": "GC=F",
-      "strategy": "pullback",
-      "side": 1,
-      "entry_time": "2026-07-06T11:39:07.915566+00:00",
-      "entry_price": 4168.7001953125,
-      "size": 29311.68877179991,
-      "stop_pct": 0.025,
-      "tp1_pct": 0.04,
-      "tp2_pct": 0.15,
-      "tp1_size_frac": 0.5,
-      "bar_time_at_entry": "2026-07-06T11:00:00+00:00",
-      "tp1_hit": false,
-      "remaining_size": 29311.68877179991
     },
     {
       "symbol": "GC=F",
@@ -247,8 +232,20 @@
       "size": 29533.187679395374,
       "pnl": -738.3296919848816,
       "reason": "stop"
+    },
+    {
+      "symbol": "GC=F",
+      "strategy": "pullback",
+      "side": 1,
+      "entry_time": "2026-07-06T11:39:07.915566+00:00",
+      "entry_price": 4168.7001953125,
+      "exit_time": "2026-07-08T09:26:56.288864+00:00",
+      "exit_price": 4064.4826904296874,
+      "size": 29311.68877179991,
+      "pnl": -732.7922192949984,
+      "reason": "stop"
     }
   ],
-  "n_trades_total": 14,
-  "last_updated_utc": "2026-07-07T21:09:09.192787+00:00"
+  "n_trades_total": 15,
+  "last_updated_utc": "2026-07-08T09:26:56.288910+00:00"
 }
