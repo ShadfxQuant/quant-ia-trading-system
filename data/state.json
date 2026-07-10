@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-10T12:41:04.418400+00:00",
+  "generated_at_utc": "2026-07-10T15:20:27.256048+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -18,53 +18,31 @@
   "symbols": {
     "SPY": {
       "symbol": "SPY",
-      "bar_time_utc": "2026-07-09T19:30:00+00:00",
-      "close": 751.6500244140625,
-      "ema": 746.3839183203834,
-      "sma": 743.9226675180289,
-      "vwap": 749.8670649106485,
+      "bar_time_utc": "2026-07-10T14:30:00+00:00",
+      "close": 752.5700073242188,
+      "ema": 746.8601977835801,
+      "sma": 744.2158686711238,
+      "vwap": 751.9299209392607,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
-      "pullback_pyramid_ok": false,
-      "pullback_pyramid_cap": 0,
+      "pullback_pyramid_ok": true,
+      "pullback_pyramid_cap": 8,
       "trend_carry_pyramid_ok": false,
       "trend_carry_pyramid_cap": 0,
       "read": {
         "bias": "bullish",
         "strength": "chop",
-        "adx": 13.95,
-        "ema_slope_4bar": 0.8853,
+        "adx": 13.61,
+        "ema_slope_4bar": 0.8925,
         "regime_pct_24h": 100.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close < EMA50 (746.38)",
-          "ADX falls below 20 (now 13.9)"
+          "Close < EMA50 (746.86)",
+          "ADX falls below 20 (now 13.6)"
         ],
-        "narrative": "SPY leans long (ADX 13.9, close 751.65 vs EMA50 746.38) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "SPY leans long (ADX 13.6, close 752.57 vs EMA50 746.86) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
-        {
-          "t": "2026-04-16T19:30:00+00:00",
-          "o": 700.9099731445312,
-          "h": 701.9400024414062,
-          "l": 700.8300170898438,
-          "c": 701.5499877929688,
-          "v": 6272569.0,
-          "ema": 686.3951361583083,
-          "sma": 664.2476435734676,
-          "vwap": 700.6568581494837
-        },
-        {
-          "t": "2026-04-17T13:30:00+00:00",
-          "o": 706.1400146484375,
-          "h": 709.4600219726562,
-          "l": 705.760009765625,
-          "c": 709.2249755859375,
-          "v": 15058646.0,
-          "ema": 687.2904239789997,
-          "sma": 664.6866051307092,
-          "vwap": 708.1483357747396
-        },
         {
           "t": "2026-04-17T14:30:00+00:00",
           "o": 709.239990234375,
@@ -4442,16 +4420,38 @@
           "ema": 746.3839183203834,
           "sma": 743.9226675180289,
           "vwap": 749.8670649106485
+        },
+        {
+          "t": "2026-07-10T13:30:00+00:00",
+          "o": 752.0499877929688,
+          "h": 753.3499755859375,
+          "l": 751.7999877929688,
+          "c": 752.586181640625,
+          "v": 5555228.0,
+          "ema": 746.6271443329418,
+          "sma": 744.0770226111779,
+          "vwap": 752.5787150065104
+        },
+        {
+          "t": "2026-07-10T14:30:00+00:00",
+          "o": 752.5858764648438,
+          "h": 753.25,
+          "l": 748.0999755859375,
+          "c": 752.5700073242188,
+          "v": 5782818.0,
+          "ema": 746.8601977835801,
+          "sma": 744.2158686711238,
+          "vwap": 751.9299209392607
         }
       ]
     },
     "^NDX": {
       "symbol": "^NDX",
-      "bar_time_utc": "2026-07-09T19:30:00+00:00",
-      "close": 29717.931640625,
-      "ema": 29516.9295899069,
-      "sma": 29719.958774038463,
-      "vwap": 29689.78256653734,
+      "bar_time_utc": "2026-07-10T14:30:00+00:00",
+      "close": 29716.130859375,
+      "ema": 29531.605982395315,
+      "sma": 29729.42765925481,
+      "vwap": 29669.776478769018,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4460,40 +4460,18 @@
       "trend_carry_pyramid_cap": 0,
       "read": {
         "bias": "neutral",
-        "strength": "weak",
-        "adx": 20.89,
-        "ema_slope_4bar": 37.5357,
+        "strength": "chop",
+        "adx": 18.64,
+        "ema_slope_4bar": 31.2157,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "^NDX is neutral (ADX 20.9, close 29,717.93 vs EMA50 29,516.93) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "^NDX is neutral (ADX 18.6, close 29,716.13 vs EMA50 29,531.61) and the tape is choppy. The regime filter is mostly green."
       },
       "bars": [
-        {
-          "t": "2026-04-16T19:30:00+00:00",
-          "o": 26284.447265625,
-          "h": 26340.57421875,
-          "l": 26278.212890625,
-          "c": 26324.201171875,
-          "v": 106991740.0,
-          "ema": 25497.37100029937,
-          "sma": 24458.82492487981,
-          "vwap": 26296.117816295002
-        },
-        {
-          "t": "2026-04-17T13:30:00+00:00",
-          "o": 26558.587890625,
-          "h": 26619.62109375,
-          "l": 26481.576171875,
-          "c": 26580.89453125,
-          "v": 0.0,
-          "ema": 25539.862119160178,
-          "sma": 24478.509239783652,
-          "vwap": null
-        },
         {
           "t": "2026-04-17T14:30:00+00:00",
           "o": 26587.619140625,
@@ -8871,16 +8849,38 @@
           "ema": 29516.9295899069,
           "sma": 29719.958774038463,
           "vwap": 29689.78256653734
+        },
+        {
+          "t": "2026-07-10T13:30:00+00:00",
+          "o": 29618.78515625,
+          "h": 29757.244140625,
+          "l": 29591.07421875,
+          "c": 29699.12109375,
+          "v": 204966021.0,
+          "ema": 29524.074354763492,
+          "sma": 29725.06765324519,
+          "vwap": 29682.479817708332
+        },
+        {
+          "t": "2026-07-10T14:30:00+00:00",
+          "o": 29699.89453125,
+          "h": 29741.630859375,
+          "l": 29484.490234375,
+          "c": 29716.130859375,
+          "v": 116451276.0,
+          "ema": 29531.605982395315,
+          "sma": 29729.42765925481,
+          "vwap": 29669.776478769018
         }
       ]
     },
     "GLD": {
       "symbol": "GLD",
-      "bar_time_utc": "2026-07-09T19:30:00+00:00",
-      "close": 378.2099914550781,
-      "ema": 376.7840009964165,
-      "sma": 380.21297630896936,
-      "vwap": 378.5095625800328,
+      "bar_time_utc": "2026-07-10T14:30:00+00:00",
+      "close": 376.08990478515625,
+      "ema": 376.7517324422674,
+      "sma": 380.175975388747,
+      "vwap": 375.8599397630278,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8890,39 +8890,17 @@
       "read": {
         "bias": "neutral",
         "strength": "weak",
-        "adx": 21.41,
-        "ema_slope_4bar": 0.2771,
+        "adx": 20.32,
+        "ema_slope_4bar": 0.0805,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GLD is neutral (ADX 21.4, close 378.21 vs EMA50 376.78) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "GLD is neutral (ADX 20.3, close 376.09 vs EMA50 376.75) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
-        {
-          "t": "2026-04-16T19:30:00+00:00",
-          "o": 440.0,
-          "h": 440.635009765625,
-          "l": 439.0,
-          "c": 440.1600036621094,
-          "v": 511553.0,
-          "ema": 437.81837416062115,
-          "sma": 426.52140056903545,
-          "vwap": 440.50018477611457
-        },
-        {
-          "t": "2026-04-17T13:30:00+00:00",
-          "o": 445.6499938964844,
-          "h": 448.70001220703125,
-          "l": 445.32000732421875,
-          "c": 447.4649963378906,
-          "v": 3133213.0,
-          "ema": 438.1966730695337,
-          "sma": 426.733054293119,
-          "vwap": 447.1616719563802
-        },
         {
           "t": "2026-04-17T14:30:00+00:00",
           "o": 447.4800109863281,
@@ -13300,16 +13278,38 @@
           "ema": 376.7840009964165,
           "sma": 380.21297630896936,
           "vwap": 378.5095625800328
+        },
+        {
+          "t": "2026-07-10T13:30:00+00:00",
+          "o": 375.0,
+          "h": 376.989990234375,
+          "l": 374.9700012207031,
+          "c": 376.6499938964844,
+          "v": 1509177.0,
+          "ema": 376.778745816027,
+          "sma": 380.2142838698167,
+          "vwap": 376.2033284505208
+        },
+        {
+          "t": "2026-07-10T14:30:00+00:00",
+          "o": 376.7099914550781,
+          "h": 376.8500061035156,
+          "l": 373.7200012207031,
+          "c": 376.08990478515625,
+          "v": 1690065.0,
+          "ema": 376.7517324422674,
+          "sma": 380.175975388747,
+          "vwap": 375.8599397630278
         }
       ]
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-07-10T12:00:00+00:00",
-      "close": 4112.7001953125,
-      "ema": 4117.753290804432,
-      "sma": 4129.796168870193,
-      "vwap": 4120.439557718806,
+      "bar_time_utc": "2026-07-10T15:00:00+00:00",
+      "close": 4109.0,
+      "ema": 4116.3591868011445,
+      "sma": 4130.399246920072,
+      "vwap": 4113.781152855263,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13319,51 +13319,18 @@
       "read": {
         "bias": "bearish",
         "strength": "chop",
-        "adx": 15.62,
-        "ema_slope_4bar": -0.8773,
+        "adx": 17.3,
+        "ema_slope_4bar": -1.6004,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,117.75)",
-          "ADX falls below 20 (now 15.6)",
+          "Close > EMA50 (4,116.36)",
+          "ADX falls below 20 (now 17.3)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 15.6, close 4,112.70 vs EMA50 4,117.75) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 17.3, close 4,109.00 vs EMA50 4,116.36) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
-        {
-          "t": "2026-06-15T16:00:00+00:00",
-          "o": 4377.7998046875,
-          "h": 4380.2998046875,
-          "l": 4355.89990234375,
-          "c": 4360.60009765625,
-          "v": 6150.0,
-          "ema": 4284.080962295689,
-          "sma": 4254.637687800481,
-          "vwap": 4358.346892681969
-        },
-        {
-          "t": "2026-06-15T17:00:00+00:00",
-          "o": 4360.5,
-          "h": 4360.5,
-          "l": 4341.7001953125,
-          "c": 4346.0,
-          "v": 6309.0,
-          "ema": 4286.50915985272,
-          "sma": 4254.726149338942,
-          "vwap": 4357.814543320099
-        },
-        {
-          "t": "2026-06-15T18:00:00+00:00",
-          "o": 4346.2001953125,
-          "h": 4349.7001953125,
-          "l": 4339.10009765625,
-          "c": 4347.2998046875,
-          "v": 3362.0,
-          "ema": 4288.893106708986,
-          "sma": 4254.783841646635,
-          "vwap": 4357.43198089043
-        },
         {
           "t": "2026-06-15T19:00:00+00:00",
           "o": 4347.5,
@@ -17724,12 +17691,45 @@
           "t": "2026-07-10T12:00:00+00:00",
           "o": 4111.39990234375,
           "h": 4127.0,
-          "l": 4109.7998046875,
-          "c": 4112.7001953125,
-          "v": 4167.0,
-          "ema": 4117.753290804432,
-          "sma": 4129.796168870193,
-          "vwap": 4120.439557718806
+          "l": 4106.0,
+          "c": 4109.2998046875,
+          "v": 7274.0,
+          "ema": 4117.619942152472,
+          "sma": 4129.770012019231,
+          "vwap": 4119.748819739971
+        },
+        {
+          "t": "2026-07-10T13:00:00+00:00",
+          "o": 4109.7001953125,
+          "h": 4115.5,
+          "l": 4093.699951171875,
+          "c": 4108.7001953125,
+          "v": 8961.0,
+          "ema": 4117.270148158747,
+          "sma": 4130.0430908203125,
+          "vwap": 4117.371780781216
+        },
+        {
+          "t": "2026-07-10T14:00:00+00:00",
+          "o": 4108.2998046875,
+          "h": 4118.60009765625,
+          "l": 4081.699951171875,
+          "c": 4101.7001953125,
+          "v": 13660.0,
+          "ema": 4116.65956177262,
+          "sma": 4130.2238619290865,
+          "vwap": 4113.894111506175
+        },
+        {
+          "t": "2026-07-10T15:00:00+00:00",
+          "o": 4101.89990234375,
+          "h": 4109.60009765625,
+          "l": 4100.10009765625,
+          "c": 4109.0,
+          "v": 982.0,
+          "ema": 4116.3591868011445,
+          "sma": 4130.399246920072,
+          "vwap": 4113.781152855263
         }
       ]
     }
@@ -17737,33 +17737,33 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 8,
-    "risk_on_score": 0,
+    "risk_off_score": 7,
+    "risk_on_score": 1,
     "theme_hits": {
       "war": 6,
       "banking": 0,
       "recession": 0,
-      "rate_hike": 1,
+      "rate_hike": 0,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 0
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
         "Nato allies announce \u00a337bn for new missile project",
         "International court tells BBC of breakthrough in Sudan war crimes probe",
-        "U.S. to continue 'technical talks' with Iran after Trump said ceasefire was 'over'"
+        "Jim Cramer flags bull market threat bigger than Iran war"
       ],
       "banking": [],
       "recession": [],
-      "rate_hike": [
-        "Oregon data centers face sharp electricity rate hike under new law - Fox Business"
-      ],
+      "rate_hike": [],
       "crash": [
         "Greek F-16 fighter jet crash-lands at busy Zakynthos airport"
       ],
       "rate_cut": [],
-      "risk_on": []
+      "risk_on": [
+        "June home sales disappoint as prices reach an all-time high - CNBC"
+      ]
     },
     "n_headlines": 112,
     "sources_used": [
@@ -17773,7 +17773,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1783687265.538252,
+    "fetched_at": 1783696827.9543428,
     "risk_off_themes": [
       "banking",
       "crash",
