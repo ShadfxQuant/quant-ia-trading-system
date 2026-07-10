@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-10T20:09:38.426347+00:00",
+  "generated_at_utc": "2026-07-10T21:20:38.142299+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -19,10 +19,10 @@
     "SPY": {
       "symbol": "SPY",
       "bar_time_utc": "2026-07-10T19:30:00+00:00",
-      "close": 754.8599853515625,
-      "ema": 748.2358242678895,
-      "sma": 744.7715609036959,
-      "vwap": 753.5368239650995,
+      "close": 754.9000244140625,
+      "ema": 748.2373944272032,
+      "sma": 744.7718688964844,
+      "vwap": 753.5502406275845,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -33,14 +33,14 @@
         "bias": "bullish",
         "strength": "chop",
         "adx": 10.75,
-        "ema_slope_4bar": 1.101,
+        "ema_slope_4bar": 1.1026,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close < EMA50 (748.24)",
           "ADX falls below 20 (now 10.7)"
         ],
-        "narrative": "SPY leans long (ADX 10.7, close 754.86 vs EMA50 748.24) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "SPY leans long (ADX 10.7, close 754.90 vs EMA50 748.24) and the tape is choppy. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -4437,11 +4437,11 @@
           "o": 754.9600219726562,
           "h": 755.4199829101562,
           "l": 754.5700073242188,
-          "c": 754.8599853515625,
-          "v": 7592666.0,
-          "ema": 748.2358242678895,
-          "sma": 744.7715609036959,
-          "vwap": 753.5368239650995
+          "c": 754.9000244140625,
+          "v": 7855821.0,
+          "ema": 748.2373944272032,
+          "sma": 744.7718688964844,
+          "vwap": 753.5502406275845
         }
       ]
     },
@@ -8880,7 +8880,7 @@
       "close": 376.9800109863281,
       "ema": 376.76051921963307,
       "sma": 379.8192030686599,
-      "vwap": 376.17501759911596,
+      "vwap": 376.17763582709387,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13293,23 +13293,23 @@
         {
           "t": "2026-07-10T19:30:00+00:00",
           "o": 376.3399963378906,
-          "h": 377.0,
+          "h": 377.010009765625,
           "l": 376.239990234375,
           "c": 376.9800109863281,
-          "v": 387510.0,
+          "v": 408901.0,
           "ema": 376.76051921963307,
           "sma": 379.8192030686599,
-          "vwap": 376.17501759911596
+          "vwap": 376.17763582709387
         }
       ]
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-07-10T19:00:00+00:00",
-      "close": 4116.60009765625,
-      "ema": 4116.214856308769,
-      "sma": 4131.481556114783,
-      "vwap": 4113.854773331267,
+      "bar_time_utc": "2026-07-10T20:00:00+00:00",
+      "close": 4128.89990234375,
+      "ema": 4116.712309094455,
+      "sma": 4131.876939978966,
+      "vwap": 4114.030493795616,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13319,28 +13319,17 @@
       "read": {
         "bias": "neutral",
         "strength": "chop",
-        "adx": 18.21,
-        "ema_slope_4bar": -0.6581,
+        "adx": 17.21,
+        "ema_slope_4bar": -0.0323,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 18.2, close 4,116.60 vs EMA50 4,116.21) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 17.2, close 4,128.90 vs EMA50 4,116.71) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
-        {
-          "t": "2026-06-16T00:00:00+00:00",
-          "o": 4336.60009765625,
-          "h": 4341.60009765625,
-          "l": 4327.39990234375,
-          "c": 4340.2998046875,
-          "v": 3273.0,
-          "ema": 4297.585743250758,
-          "sma": 4255.33076171875,
-          "vwap": 4336.433268229167
-        },
         {
           "t": "2026-06-16T01:00:00+00:00",
           "o": 4340.2998046875,
@@ -17725,42 +17714,52 @@
           "h": 4117.0,
           "l": 4106.2998046875,
           "c": 4116.60009765625,
-          "v": 2707.0,
+          "v": 2845.0,
           "ema": 4116.214856308769,
           "sma": 4131.481556114783,
-          "vwap": 4113.854773331267
+          "vwap": 4113.853908366606
+        },
+        {
+          "t": "2026-07-10T20:00:00+00:00",
+          "o": 4116.39990234375,
+          "h": 4128.89990234375,
+          "l": 4116.2998046875,
+          "c": 4128.89990234375,
+          "v": 1465.0,
+          "ema": 4116.712309094455,
+          "sma": 4131.876939978966,
+          "vwap": 4114.030493795616
         }
       ]
     }
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_OFF",
-    "risk_off_score": 5,
-    "risk_on_score": 2,
+    "verdict": "NEUTRAL",
+    "risk_off_score": 3,
+    "risk_on_score": 3,
     "theme_hits": {
-      "war": 4,
+      "war": 3,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 1,
+      "crash": 0,
       "rate_cut": 0,
-      "risk_on": 2
+      "risk_on": 3
     },
     "sample_headlines": {
       "war": [
-        "Dogecoin (DOGE) May Dip Another 10% Amid Renewed US\u2013Iran Tensions",
         "Trump says U.S. to continue talks with Iran despite scrapped ceasefire",
-        "Stock Market Today: Tech Stocks Shrug Off Mideast Tensions to Rise \u2014 Live Updates - WSJ"
+        "Stock Market Today: Tech Stocks Shrug Off Mideast Tensions to Rise \u2014 Live Updates - WSJ",
+        "The newest entrant in the military\u2019s launch competition isn't actually a launch company - Ars Technica"
       ],
       "banking": [],
       "recession": [],
       "rate_hike": [],
-      "crash": [
-        "The dot-com crash was a $5 trillion blip. Why the next financial crisis could hit 4 times harder."
-      ],
+      "crash": [],
       "rate_cut": [],
       "risk_on": [
+        "US home prices hit an all-time high as sales slow and mortgage rates rise",
         "Meta's stock has best week since early 2024 as optimism builds around AI strategy",
         "US home prices hit an all-time high as sales slow and mortgage rates rise - AP News"
       ]
@@ -17773,7 +17772,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1783714180.076047,
+    "fetched_at": 1783718439.5450678,
     "risk_off_themes": [
       "banking",
       "crash",
