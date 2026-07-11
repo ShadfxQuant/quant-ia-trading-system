@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-11T10:07:24.985287+00:00",
+  "generated_at_utc": "2026-07-11T11:18:38.095608+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -35,12 +35,12 @@
         "adx": 10.75,
         "ema_slope_4bar": 1.1026,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close < EMA50 (748.24)",
           "ADX falls below 20 (now 10.7)"
         ],
-        "narrative": "SPY leans long (ADX 10.7, close 754.90 vs EMA50 748.24) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "SPY leans long (ADX 10.7, close 754.90 vs EMA50 748.24) and the tape is choppy. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -17735,23 +17735,23 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_OFF",
-    "risk_off_score": 6,
-    "risk_on_score": 3,
+    "verdict": "NEUTRAL",
+    "risk_off_score": 4,
+    "risk_on_score": 4,
     "theme_hits": {
-      "war": 5,
+      "war": 3,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 3
+      "risk_on": 4
     },
     "sample_headlines": {
       "war": [
         "Trump threatens to 'decimate' Iran if it tries to kill him, as Treasury sanctions alleged Iranian financier",
-        "Trump says U.S. to continue talks with Iran despite scrapped ceasefire",
-        "A Big Winner From the Iran War: Africa\u2019s Richest Man - WSJ"
+        "A Big Winner From the Iran War: Africa\u2019s Richest Man - WSJ",
+        "Kalshi traders think gas prices will stay higher for longer as U.S.-Iran tensions heat back up - CNBC"
       ],
       "banking": [],
       "recession": [],
@@ -17766,7 +17766,7 @@
         "'Sign the Damn Bill!' Anger at Trump Grows as US Housing Prices Hit All-Time High - Common Dreams"
       ]
     },
-    "n_headlines": 112,
+    "n_headlines": 111,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -17774,7 +17774,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1783764446.1579418,
+    "fetched_at": 1783768718.881033,
     "risk_off_themes": [
       "banking",
       "crash",
