@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-11T12:10:00.849430+00:00",
+  "generated_at_utc": "2026-07-11T13:54:51.808240+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -35,12 +35,12 @@
         "adx": 10.75,
         "ema_slope_4bar": 1.1026,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close < EMA50 (748.24)",
           "ADX falls below 20 (now 10.7)"
         ],
-        "narrative": "SPY leans long (ADX 10.7, close 754.90 vs EMA50 748.24) and the tape is choppy. The regime filter is mostly green."
+        "narrative": "SPY leans long (ADX 10.7, close 754.90 vs EMA50 748.24) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -13306,10 +13306,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-07-10T20:00:00+00:00",
-      "close": 4128.89990234375,
-      "ema": 4116.712309094455,
-      "sma": 4131.876939978966,
-      "vwap": 4114.046890031944,
+      "close": 4113.7001953125,
+      "ema": 4116.116242152053,
+      "sma": 4131.760019155649,
+      "vwap": 4113.943980975008,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13317,17 +13317,18 @@
       "trend_carry_pyramid_ok": false,
       "trend_carry_pyramid_cap": 0,
       "read": {
-        "bias": "neutral",
+        "bias": "bearish",
         "strength": "chop",
         "adx": 17.2,
-        "ema_slope_4bar": -0.0323,
+        "ema_slope_4bar": -0.6283,
         "regime_pct_24h": 0.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
-          "Close + ADX both push above EMA50 with ADX \u2265 20",
-          "Or close below EMA50 with ADX rising past 20"
+          "Close > EMA50 (4,116.12)",
+          "ADX falls below 20 (now 17.2)",
+          "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F is neutral (ADX 17.2, close 4,128.90 vs EMA50 4,116.71) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F leans short (ADX 17.2, close 4,113.70 vs EMA50 4,116.12) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17723,35 +17724,34 @@
           "t": "2026-07-10T20:00:00+00:00",
           "o": 4116.39990234375,
           "h": 4129.0,
-          "l": 4116.2998046875,
-          "c": 4128.89990234375,
+          "l": 4113.7001953125,
+          "c": 4113.7001953125,
           "v": 1563.0,
-          "ema": 4116.712309094455,
-          "sma": 4131.876939978966,
-          "vwap": 4114.046890031944
+          "ema": 4116.116242152053,
+          "sma": 4131.760019155649,
+          "vwap": 4113.943980975008
         }
       ]
     }
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
-    "risk_off_score": 5,
-    "risk_on_score": 5,
+    "verdict": "RISK_OFF",
+    "risk_off_score": 7,
+    "risk_on_score": 2,
     "theme_hits": {
-      "war": 3,
+      "war": 2,
       "banking": 0,
       "recession": 1,
       "rate_hike": 0,
-      "crash": 1,
+      "crash": 4,
       "rate_cut": 0,
-      "risk_on": 5
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
         "Trump threatens to 'decimate' Iran if it tries to kill him, as Treasury sanctions alleged Iranian financier",
-        "A Big Winner From the Iran War: Africa\u2019s Richest Man - WSJ",
-        "Kalshi traders think gas prices will stay higher for longer as U.S.-Iran tensions heat back up - CNBC"
+        "NLight Flashes Buy Signal On U.S. Contract For Missile, Drone Defense - Investor's Business Daily"
       ],
       "banking": [],
       "recession": [
@@ -17759,16 +17759,17 @@
       ],
       "rate_hike": [],
       "crash": [
-        "Small plane crash in Bahamas kills 10 people"
+        "Small plane crash in Bahamas kills 10 people",
+        "Robert Kiyosaki warns the 'biggest crash' in US history is nigh \u2014 millions of may lose it all. Protect your riches now",
+        "Jim Cramer Believes SpaceX (SPCX) Caused NASDAQ Selloff"
       ],
       "rate_cut": [],
       "risk_on": [
-        "Stock Index Futures Slip as Chip Rally Fades, SK Hynix Debut in Focus",
-        "Meta's stock has best week since early 2024 as optimism builds around AI strategy",
-        "Stock futures dip after chip-led rally; SoftBank soars 11% as Asia tech stocks rise: Live updates - CNBC"
+        "Stock futures dip after chip-led rally; SoftBank soars 11% as Asia tech stocks rise: Live updates - CNBC",
+        "'Sign the Damn Bill!' Anger at Trump Grows as US Housing Prices Hit All-Time High - Common Dreams"
       ]
     },
-    "n_headlines": 111,
+    "n_headlines": 110,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -17776,7 +17777,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1783771802.3069384,
+    "fetched_at": 1783778092.329225,
     "risk_off_themes": [
       "banking",
       "crash",
