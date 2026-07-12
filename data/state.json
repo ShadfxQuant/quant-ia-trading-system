@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-12T10:40:49.418822+00:00",
+  "generated_at_utc": "2026-07-12T11:44:37.837790+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -35,12 +35,12 @@
         "adx": 10.75,
         "ema_slope_4bar": 1.1026,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close < EMA50 (748.24)",
           "ADX falls below 20 (now 10.7)"
         ],
-        "narrative": "SPY leans long (ADX 10.7, close 754.90 vs EMA50 748.24) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "SPY leans long (ADX 10.7, close 754.90 vs EMA50 748.24) and the tape is choppy. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -13322,13 +13322,13 @@
         "adx": 17.2,
         "ema_slope_4bar": -0.6283,
         "regime_pct_24h": 0.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close > EMA50 (4,116.12)",
           "ADX falls below 20 (now 17.2)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 17.2, close 4,113.70 vs EMA50 4,116.12) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 17.2, close 4,113.70 vs EMA50 4,116.12) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -17736,17 +17736,17 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_OFF",
-    "risk_off_score": 4,
-    "risk_on_score": 1,
+    "verdict": "NEUTRAL",
+    "risk_off_score": 3,
+    "risk_on_score": 2,
     "theme_hits": {
       "war": 1,
       "banking": 0,
       "recession": 1,
       "rate_hike": 0,
-      "crash": 2,
+      "crash": 1,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
@@ -17758,15 +17758,15 @@
       ],
       "rate_hike": [],
       "crash": [
-        "History Says Doing This 1 Thing Will Score You an Investing Win -- Even After a Market Crash.",
         "The dot-com crash was a $5 trillion blip. Why the next financial crisis could hit 4 times harder."
       ],
       "rate_cut": [],
       "risk_on": [
+        "Palo Alto Networks May Need a Breather Before Its Next Rally",
         "Stocks rally when Congress goes on summer break. Here\u2019s why."
       ]
     },
-    "n_headlines": 111,
+    "n_headlines": 110,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -17774,7 +17774,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1783852849.9240701,
+    "fetched_at": 1783856679.1162982,
     "risk_off_themes": [
       "banking",
       "crash",
