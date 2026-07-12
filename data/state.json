@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-12T11:44:37.837790+00:00",
+  "generated_at_utc": "2026-07-12T12:42:21.700521+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -35,12 +35,12 @@
         "adx": 10.75,
         "ema_slope_4bar": 1.1026,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close < EMA50 (748.24)",
           "ADX falls below 20 (now 10.7)"
         ],
-        "narrative": "SPY leans long (ADX 10.7, close 754.90 vs EMA50 748.24) and the tape is choppy. The regime filter is mostly green."
+        "narrative": "SPY leans long (ADX 10.7, close 754.90 vs EMA50 748.24) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -13322,13 +13322,13 @@
         "adx": 17.2,
         "ema_slope_4bar": -0.6283,
         "regime_pct_24h": 0.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close > EMA50 (4,116.12)",
           "ADX falls below 20 (now 17.2)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 17.2, close 4,113.70 vs EMA50 4,116.12) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F leans short (ADX 17.2, close 4,113.70 vs EMA50 4,116.12) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -17736,17 +17736,17 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
-    "risk_off_score": 3,
-    "risk_on_score": 2,
+    "verdict": "RISK_OFF",
+    "risk_off_score": 4,
+    "risk_on_score": 1,
     "theme_hits": {
       "war": 1,
       "banking": 0,
-      "recession": 1,
+      "recession": 2,
       "rate_hike": 0,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 2
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
@@ -17754,6 +17754,7 @@
       ],
       "banking": [],
       "recession": [
+        "Majority of U.S. workers support an AI wealth fund as tech layoffs surge, survey finds",
         "Burnout, frustration and heartbreak: Amazon layoffs take their toll in saturated job market"
       ],
       "rate_hike": [],
@@ -17762,7 +17763,6 @@
       ],
       "rate_cut": [],
       "risk_on": [
-        "Palo Alto Networks May Need a Breather Before Its Next Rally",
         "Stocks rally when Congress goes on summer break. Here\u2019s why."
       ]
     },
@@ -17774,7 +17774,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1783856679.1162982,
+    "fetched_at": 1783860142.3503587,
     "risk_off_themes": [
       "banking",
       "crash",
