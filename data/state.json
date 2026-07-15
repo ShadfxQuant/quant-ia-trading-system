@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-15T09:10:40.085056+00:00",
+  "generated_at_utc": "2026-07-15T11:02:07.156000+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13306,11 +13306,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-07-15T09:00:00+00:00",
-      "close": 4038.300048828125,
-      "ema": 4052.578955286137,
-      "sma": 4081.558482947716,
-      "vwap": 4040.201089066203,
+      "bar_time_utc": "2026-07-15T10:00:00+00:00",
+      "close": 4033.699951171875,
+      "ema": 4051.763246551168,
+      "sma": 4080.740790264423,
+      "vwap": 4039.4811195320913,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13319,30 +13319,19 @@
       "trend_carry_pyramid_cap": 0,
       "read": {
         "bias": "bearish",
-        "strength": "weak",
-        "adx": 21.01,
-        "ema_slope_4bar": -2.8396,
+        "strength": "chop",
+        "adx": 19.96,
+        "ema_slope_4bar": -2.9722,
         "regime_pct_24h": 20.8,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,052.58)",
-          "ADX falls below 20 (now 21.0)",
+          "Close > EMA50 (4,051.76)",
+          "ADX falls below 20 (now 20.0)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 21.0, close 4,038.30 vs EMA50 4,052.58) but the trend is only weak. The regime filter is mostly blocking \u2014 only 21% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 20.0, close 4,033.70 vs EMA50 4,051.76) and the tape is choppy. The regime filter is mostly blocking \u2014 only 21% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
-        {
-          "t": "2026-06-18T13:00:00+00:00",
-          "o": 4265.0,
-          "h": 4296.2001953125,
-          "l": 4263.5,
-          "c": 4275.5,
-          "v": 11148.0,
-          "ema": 4320.574211349433,
-          "sma": 4283.359236027644,
-          "vwap": 4298.906878368865
-        },
         {
           "t": "2026-06-18T14:00:00+00:00",
           "o": 4275.2998046875,
@@ -17724,13 +17713,24 @@
         {
           "t": "2026-07-15T09:00:00+00:00",
           "o": 4037.699951171875,
-          "h": 4039.5,
-          "l": 4037.10009765625,
-          "c": 4038.300048828125,
-          "v": 0.0,
-          "ema": 4052.578955286137,
-          "sma": 4081.558482947716,
-          "vwap": 4040.201089066203
+          "h": 4040.699951171875,
+          "l": 4031.5,
+          "c": 4036.300048828125,
+          "v": 3992.0,
+          "ema": 4052.500523913588,
+          "sma": 4081.5430983323317,
+          "vwap": 4039.7227719916
+        },
+        {
+          "t": "2026-07-15T10:00:00+00:00",
+          "o": 4036.39990234375,
+          "h": 4042.39990234375,
+          "l": 4032.10009765625,
+          "c": 4033.699951171875,
+          "v": 2383.0,
+          "ema": 4051.763246551168,
+          "sma": 4080.740790264423,
+          "vwap": 4039.4811195320913
         }
       ]
     }
@@ -17739,15 +17739,15 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 10,
-    "risk_on_score": 3,
+    "risk_on_score": 4,
     "theme_hits": {
-      "war": 6,
+      "war": 5,
       "banking": 0,
       "recession": 2,
       "rate_hike": 0,
-      "crash": 2,
+      "crash": 3,
       "rate_cut": 1,
-      "risk_on": 2
+      "risk_on": 3
     },
     "sample_headlines": {
       "war": [
@@ -17762,6 +17762,7 @@
       ],
       "rate_hike": [],
       "crash": [
+        "Air India crash report likely to be ready in October, say investigators",
         "Stock market today: Dow, S&P 500, Nasdaq fall as chip stocks tumble, oil surges on US-Iran tensions",
         "Lucid dismisses report that it is weighing filing for bankruptcy or going private after shares plunge"
       ],
@@ -17769,8 +17770,9 @@
         "Social Security cost-of-living adjustment estimate for 2027 falls as inflation cools"
       ],
       "risk_on": [
+        "J&J quarterly earnings beat Wall Street estimates on strength of medicines unit",
         "SK Hynix South Korean shares jump 8% as Asia tech stocks rally",
-        "Cybersecurity stocks rally on AI spending change comments from IBM's Krishna"
+        "Luxury stocks rally on Richemont  sales beat \u2014 but the sector still needs China, says analyst"
       ]
     },
     "n_headlines": 110,
@@ -17781,7 +17783,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1784106640.7091725,
+    "fetched_at": 1784113327.7265024,
     "risk_off_themes": [
       "banking",
       "crash",
