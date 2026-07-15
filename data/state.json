@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-15T11:02:07.156000+00:00",
+  "generated_at_utc": "2026-07-15T12:23:11.718201+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13306,11 +13306,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-07-15T10:00:00+00:00",
-      "close": 4033.699951171875,
-      "ema": 4051.763246551168,
-      "sma": 4080.740790264423,
-      "vwap": 4039.4811195320913,
+      "bar_time_utc": "2026-07-15T12:00:00+00:00",
+      "close": 4042.199951171875,
+      "ema": 4051.1362757791385,
+      "sma": 4079.553096829928,
+      "vwap": 4039.7636822465347,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13320,40 +13320,18 @@
       "read": {
         "bias": "bearish",
         "strength": "chop",
-        "adx": 19.96,
-        "ema_slope_4bar": -2.9722,
+        "adx": 17.45,
+        "ema_slope_4bar": -2.0255,
         "regime_pct_24h": 20.8,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,051.76)",
-          "ADX falls below 20 (now 20.0)",
+          "Close > EMA50 (4,051.14)",
+          "ADX falls below 20 (now 17.5)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 20.0, close 4,033.70 vs EMA50 4,051.76) and the tape is choppy. The regime filter is mostly blocking \u2014 only 21% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 17.5, close 4,042.20 vs EMA50 4,051.14) and the tape is choppy. The regime filter is mostly blocking \u2014 only 21% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
-        {
-          "t": "2026-06-18T14:00:00+00:00",
-          "o": 4275.2998046875,
-          "h": 4277.2998046875,
-          "l": 4255.0,
-          "c": 4271.7001953125,
-          "v": 14309.0,
-          "ema": 4318.6575832695535,
-          "sma": 4284.913084059495,
-          "vwap": 4294.104913890325
-        },
-        {
-          "t": "2026-06-18T15:00:00+00:00",
-          "o": 4271.89990234375,
-          "h": 4274.2001953125,
-          "l": 4241.7001953125,
-          "c": 4245.5,
-          "v": 9942.0,
-          "ema": 4315.788658435453,
-          "sma": 4286.051545597957,
-          "vwap": 4290.17788442741
-        },
         {
           "t": "2026-06-18T16:00:00+00:00",
           "o": 4245.7998046875,
@@ -17726,11 +17704,33 @@
           "o": 4036.39990234375,
           "h": 4042.39990234375,
           "l": 4032.10009765625,
-          "c": 4033.699951171875,
-          "v": 2383.0,
-          "ema": 4051.763246551168,
-          "sma": 4080.740790264423,
-          "vwap": 4039.4811195320913
+          "c": 4034.300048828125,
+          "v": 2535.0,
+          "ema": 4051.7867797925896,
+          "sma": 4080.7454064002404,
+          "vwap": 4039.4807903935516
+        },
+        {
+          "t": "2026-07-15T11:00:00+00:00",
+          "o": 4033.89990234375,
+          "h": 4046.5,
+          "l": 4033.699951171875,
+          "c": 4044.5,
+          "v": 3415.0,
+          "ema": 4051.501023722292,
+          "sma": 4080.1254056490384,
+          "vwap": 4039.6605741418166
+        },
+        {
+          "t": "2026-07-15T12:00:00+00:00",
+          "o": 4044.89990234375,
+          "h": 4048.699951171875,
+          "l": 4041.800048828125,
+          "c": 4042.199951171875,
+          "v": 914.0,
+          "ema": 4051.1362757791385,
+          "sma": 4079.553096829928,
+          "vwap": 4039.7636822465347
         }
       ]
     }
@@ -17739,39 +17739,34 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 10,
-    "risk_on_score": 4,
+    "risk_on_score": 1,
     "theme_hits": {
-      "war": 5,
+      "war": 6,
       "banking": 0,
-      "recession": 2,
+      "recession": 1,
       "rate_hike": 0,
       "crash": 3,
-      "rate_cut": 1,
-      "risk_on": 3
+      "rate_cut": 0,
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
         "Trump retreat over Hormuz tolls suggests he is struggling to end Iran war",
         "Israeli strike on police post in north Gaza kills seven, officials say",
-        "Stock market today: Dow, S&P 500, Nasdaq fall as chip stocks tumble, oil surges on US-Iran tensions"
+        "Dollar steadies as Middle East escalation counters soft US inflation"
       ],
       "banking": [],
       "recession": [
-        "Current and former employees sue Meta, alleging discrimination in using AI to conduct layoffs",
-        "A Call For Xbox To End Cycle Of Layoffs Is Trending On Fan Portal - Kotaku"
+        "Current and former employees sue Meta, alleging discrimination in using AI to conduct layoffs"
       ],
       "rate_hike": [],
       "crash": [
         "Air India crash report likely to be ready in October, say investigators",
-        "Stock market today: Dow, S&P 500, Nasdaq fall as chip stocks tumble, oil surges on US-Iran tensions",
+        "IBM stock price still in the 'penalty box' after epic 25% crash",
         "Lucid dismisses report that it is weighing filing for bankruptcy or going private after shares plunge"
       ],
-      "rate_cut": [
-        "Social Security cost-of-living adjustment estimate for 2027 falls as inflation cools"
-      ],
+      "rate_cut": [],
       "risk_on": [
-        "J&J quarterly earnings beat Wall Street estimates on strength of medicines unit",
-        "SK Hynix South Korean shares jump 8% as Asia tech stocks rally",
         "Luxury stocks rally on Richemont  sales beat \u2014 but the sector still needs China, says analyst"
       ]
     },
@@ -17783,7 +17778,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1784113327.7265024,
+    "fetched_at": 1784118192.5576565,
     "risk_off_themes": [
       "banking",
       "crash",
