@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-16T20:53:26.652692+00:00",
+  "generated_at_utc": "2026-07-16T22:00:36.862797+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -4464,13 +4464,13 @@
         "adx": 22.94,
         "ema_slope_4bar": -64.7093,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "supports",
+        "macro_tilt": "neutral",
         "flip": [
           "Close > EMA50 (29,418.53)",
           "ADX falls below 20 (now 22.9)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "^NDX leans short (ADX 22.9, close 29,035.01 vs EMA50 29,418.53) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "^NDX leans short (ADX 22.9, close 29,035.01 vs EMA50 29,418.53) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -8894,13 +8894,13 @@
         "adx": 19.96,
         "ema_slope_4bar": -1.1073,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close > EMA50 (371.69)",
           "ADX falls below 20 (now 20.0)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 20.0, close 365.01 vs EMA50 371.69) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GLD leans short (ADX 20.0, close 365.01 vs EMA50 371.69) and the tape is choppy. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -13308,10 +13308,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-07-16T20:00:00+00:00",
-      "close": 3979.5,
-      "ema": 4032.2015722414953,
-      "sma": 4065.870789513221,
-      "vwap": 4012.7764501007205,
+      "close": 3979.89990234375,
+      "ema": 4032.2172546863485,
+      "sma": 4065.873865685096,
+      "vwap": 4012.687043536545,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13322,15 +13322,15 @@
         "bias": "bearish",
         "strength": "weak",
         "adx": 21.06,
-        "ema_slope_4bar": -8.291,
+        "ema_slope_4bar": -8.2754,
         "regime_pct_24h": 0.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
-          "Close > EMA50 (4,032.20)",
+          "Close > EMA50 (4,032.22)",
           "ADX falls below 20 (now 21.1)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 21.1, close 3,979.50 vs EMA50 4,032.20) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 21.1, close 3,979.90 vs EMA50 4,032.22) but the trend is only weak. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
         {
@@ -17727,34 +17727,34 @@
           "o": 3984.800048828125,
           "h": 3984.800048828125,
           "l": 3976.199951171875,
-          "c": 3979.5,
-          "v": 986.0,
-          "ema": 4032.2015722414953,
-          "sma": 4065.870789513221,
-          "vwap": 4012.7764501007205
+          "c": 3979.89990234375,
+          "v": 1317.0,
+          "ema": 4032.2172546863485,
+          "sma": 4065.873865685096,
+          "vwap": 4012.687043536545
         }
       ]
     }
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_OFF",
-    "risk_off_score": 5,
-    "risk_on_score": 2,
+    "verdict": "NEUTRAL",
+    "risk_off_score": 4,
+    "risk_on_score": 3,
     "theme_hits": {
-      "war": 4,
+      "war": 3,
       "banking": 0,
       "recession": 1,
       "rate_hike": 0,
       "crash": 0,
       "rate_cut": 0,
-      "risk_on": 2
+      "risk_on": 3
     },
     "sample_headlines": {
       "war": [
-        "Iran targets military bases as US launches wave of strikes",
         "US military to start screening for testosterone deficiency, Hegseth says",
-        "A Cold War bunker gets a luxury makeover as 'doomsday' condos"
+        "A Cold War bunker gets a luxury makeover as 'doomsday' condos",
+        "Strait of Hormuz oil shipments fall toward pre-peace deal levels as war reignites - Yahoo! Finance Canada"
       ],
       "banking": [],
       "recession": [
@@ -17764,11 +17764,12 @@
       "crash": [],
       "rate_cut": [],
       "risk_on": [
+        "Lumvoa\u2019s Unique Profile Leads to Optimism Around Viridian Therapeutics (VRDN)",
         "'Not a junk rally:' How to trade the strongest small-cap stock market in three decades",
         "BlackRock Shares Rally After Assets Soar Past $15 Trillion - WSJ"
       ]
     },
-    "n_headlines": 114,
+    "n_headlines": 113,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -17776,7 +17777,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1784235207.5844936,
+    "fetched_at": 1784239237.9247777,
     "risk_off_themes": [
       "banking",
       "crash",
