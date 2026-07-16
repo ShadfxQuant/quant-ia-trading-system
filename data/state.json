@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-16T11:14:28.823516+00:00",
+  "generated_at_utc": "2026-07-16T12:53:58.331073+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -35,12 +35,12 @@
         "adx": 11.23,
         "ema_slope_4bar": 0.605,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close < EMA50 (750.49)",
           "ADX falls below 20 (now 11.2)"
         ],
-        "narrative": "SPY leans long (ADX 11.2, close 754.73 vs EMA50 750.49) and the tape is choppy. The regime filter is mostly green."
+        "narrative": "SPY leans long (ADX 11.2, close 754.73 vs EMA50 750.49) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -4464,13 +4464,13 @@
         "adx": 12.92,
         "ema_slope_4bar": -8.94,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "supports",
         "flip": [
           "Close > EMA50 (29,519.66)",
           "ADX falls below 20 (now 12.9)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "^NDX leans short (ADX 12.9, close 29,503.03 vs EMA50 29,519.66) and the tape is choppy. The regime filter is mostly green."
+        "narrative": "^NDX leans short (ADX 12.9, close 29,503.03 vs EMA50 29,519.66) and the tape is choppy. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -8894,13 +8894,13 @@
         "adx": 14.72,
         "ema_slope_4bar": -0.1977,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close > EMA50 (373.56)",
           "ADX falls below 20 (now 14.7)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 14.7, close 372.29 vs EMA50 373.56) and the tape is choppy. The regime filter is mostly green."
+        "narrative": "GLD leans short (ADX 14.7, close 372.29 vs EMA50 373.56) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -13307,11 +13307,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-07-16T11:00:00+00:00",
-      "close": 4035.0,
-      "ema": 4049.04503603531,
-      "sma": 4071.913099083534,
-      "vwap": 4040.006501581643,
+      "bar_time_utc": "2026-07-16T12:00:00+00:00",
+      "close": 4008.10009765625,
+      "ema": 4047.782223984426,
+      "sma": 4071.3792536808896,
+      "vwap": 4034.6280285624366,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13321,29 +13321,18 @@
       "read": {
         "bias": "bearish",
         "strength": "chop",
-        "adx": 11.3,
-        "ema_slope_4bar": -2.1146,
+        "adx": 12.01,
+        "ema_slope_4bar": -2.9516,
         "regime_pct_24h": 0.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,049.05)",
-          "ADX falls below 20 (now 11.3)",
+          "Close > EMA50 (4,047.78)",
+          "ADX falls below 20 (now 12.0)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 11.3, close 4,035.00 vs EMA50 4,049.05) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F leans short (ADX 12.0, close 4,008.10 vs EMA50 4,047.78) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
-        {
-          "t": "2026-06-22T09:00:00+00:00",
-          "o": 4215.5,
-          "h": 4228.60009765625,
-          "l": 4172.89990234375,
-          "c": 4226.2001953125,
-          "v": 4819.0,
-          "ema": 4251.019910256152,
-          "sma": 4298.053857421875,
-          "vwap": 4201.8937217433395
-        },
         {
           "t": "2026-06-22T10:00:00+00:00",
           "o": 4226.5,
@@ -17725,30 +17714,41 @@
         {
           "t": "2026-07-16T11:00:00+00:00",
           "o": 4035.199951171875,
-          "h": 4035.800048828125,
-          "l": 4033.0,
-          "c": 4035.0,
-          "v": 268.0,
-          "ema": 4049.04503603531,
-          "sma": 4071.913099083534,
-          "vwap": 4040.006501581643
+          "h": 4048.39990234375,
+          "l": 4026.199951171875,
+          "c": 4044.10009765625,
+          "v": 6103.0,
+          "ema": 4049.4019026100655,
+          "sma": 4071.9830998347356,
+          "vwap": 4039.9728640266626
+        },
+        {
+          "t": "2026-07-16T12:00:00+00:00",
+          "o": 4044.39990234375,
+          "h": 4048.699951171875,
+          "l": 4004.800048828125,
+          "c": 4008.10009765625,
+          "v": 13928.0,
+          "ema": 4047.782223984426,
+          "sma": 4071.3792536808896,
+          "vwap": 4034.6280285624366
         }
       ]
     }
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
-    "risk_off_score": 3,
-    "risk_on_score": 2,
+    "verdict": "RISK_OFF",
+    "risk_off_score": 5,
+    "risk_on_score": 1,
     "theme_hits": {
       "war": 3,
       "banking": 0,
       "recession": 0,
-      "rate_hike": 0,
-      "crash": 0,
+      "rate_hike": 1,
+      "crash": 1,
       "rate_cut": 0,
-      "risk_on": 2
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
@@ -17758,11 +17758,14 @@
       ],
       "banking": [],
       "recession": [],
-      "rate_hike": [],
-      "crash": [],
+      "rate_hike": [
+        "Japan tried tightening the way Kevin Warsh suggested. Here\u2019s how it worked out."
+      ],
+      "crash": [
+        "Stock Market Today: Tech Futures Slide As Sandisk, SK Hynix Plunge; Nvidia Chipmaker TSMC Falls (Live Coverage)"
+      ],
       "rate_cut": [],
       "risk_on": [
-        "Is Orchid Island Capital (ORC) One of the Best Beaten-Down REITs Ready for a Rotation Rally After BTIG\u2019s Neutral Start?",
         "Stock Market Today: Nasdaq Looks to Build on Tuesday Rally - WSJ"
       ]
     },
@@ -17774,7 +17777,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1784200469.5246623,
+    "fetched_at": 1784206439.087496,
     "risk_off_themes": [
       "banking",
       "crash",
