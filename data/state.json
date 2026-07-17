@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-17T10:58:18.432235+00:00",
+  "generated_at_utc": "2026-07-17T12:17:20.456048+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13307,11 +13307,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-07-17T10:00:00+00:00",
-      "close": 4000.60009765625,
-      "ema": 4016.5379585500064,
-      "sma": 4052.5569373497597,
-      "vwap": 3994.1233364345253,
+      "bar_time_utc": "2026-07-17T12:00:00+00:00",
+      "close": 3993.0,
+      "ema": 4014.6882114452987,
+      "sma": 4050.40078125,
+      "vwap": 3994.2998827236597,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13321,40 +13321,18 @@
       "read": {
         "bias": "bearish",
         "strength": "chop",
-        "adx": 15.8,
-        "ema_slope_4bar": -2.9531,
+        "adx": 14.12,
+        "ema_slope_4bar": -3.1284,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,016.54)",
-          "ADX falls below 20 (now 15.8)",
+          "Close > EMA50 (4,014.69)",
+          "ADX falls below 20 (now 14.1)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 15.8, close 4,000.60 vs EMA50 4,016.54) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 14.1, close 3,993.00 vs EMA50 4,014.69) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
-        {
-          "t": "2026-06-23T08:00:00+00:00",
-          "o": 4116.2998046875,
-          "h": 4128.39990234375,
-          "l": 4108.2001953125,
-          "c": 4122.60009765625,
-          "v": 5968.0,
-          "ema": 4207.700250355597,
-          "sma": 4290.187706580529,
-          "vwap": 4150.434074995378
-        },
-        {
-          "t": "2026-06-23T09:00:00+00:00",
-          "o": 4123.0,
-          "h": 4140.10009765625,
-          "l": 4122.10009765625,
-          "c": 4140.10009765625,
-          "v": 4144.0,
-          "ema": 4205.04926397523,
-          "sma": 4288.856937349759,
-          "vwap": 4149.008223923307
-        },
         {
           "t": "2026-06-23T10:00:00+00:00",
           "o": 4140.0,
@@ -17726,12 +17704,34 @@
           "t": "2026-07-17T10:00:00+00:00",
           "o": 4001.699951171875,
           "h": 4002.89990234375,
-          "l": 3997.199951171875,
-          "c": 4000.60009765625,
-          "v": 2062.0,
-          "ema": 4016.5379585500064,
-          "sma": 4052.5569373497597,
-          "vwap": 3994.1233364345253
+          "l": 3994.10009765625,
+          "c": 3994.39990234375,
+          "v": 2638.0,
+          "ema": 4016.294813635791,
+          "sma": 4052.5092435396637,
+          "vwap": 3993.99161031838
+        },
+        {
+          "t": "2026-07-17T11:00:00+00:00",
+          "o": 3994.5,
+          "h": 4002.699951171875,
+          "l": 3993.60009765625,
+          "c": 3997.89990234375,
+          "v": 2783.0,
+          "ema": 4015.573444565515,
+          "sma": 4051.474628155048,
+          "vwap": 3994.28889553703
+        },
+        {
+          "t": "2026-07-17T12:00:00+00:00",
+          "o": 3998.199951171875,
+          "h": 3999.60009765625,
+          "l": 3991.800048828125,
+          "c": 3993.0,
+          "v": 838.0,
+          "ema": 4014.6882114452987,
+          "sma": 4050.40078125,
+          "vwap": 3994.2998827236597
         }
       ]
     }
@@ -17739,34 +17739,39 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 8,
-    "risk_on_score": 0,
+    "risk_off_score": 10,
+    "risk_on_score": 1,
     "theme_hits": {
-      "war": 2,
+      "war": 3,
       "banking": 0,
       "recession": 0,
-      "rate_hike": 0,
+      "rate_hike": 1,
       "crash": 6,
       "rate_cut": 0,
-      "risk_on": 0
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
         "JD Vance accuses Israel of 'manipulating' US public opinion to prolong Iran war",
+        "US stock futures steady amid cooling rate hike fears; Iran tensions persist - Investing.com",
         "China\u2019s War on \u2018Lying Flat\u2019 Comes for Companion Chatbots - Gizmodo"
       ],
       "banking": [],
       "recession": [],
-      "rate_hike": [],
+      "rate_hike": [
+        "US stock futures steady amid cooling rate hike fears; Iran tensions persist - Investing.com"
+      ],
       "crash": [
         "School bus crash kills at least 20 pupils in Uganda",
         "Olympic cyclist admits to driving despite ban after crash that killed wife",
-        "Bad week for \u2018the ants\u2019 as ripple effects of Korean crash spread out across Asia"
+        "Can You Stomach The Plunge In Applied Optoelectronics Stock?"
       ],
       "rate_cut": [],
-      "risk_on": []
+      "risk_on": [
+        "Stock market today: Dow, S&P 500, Nasdaq rise as Apple notches record high - Yahoo! Finance Canada"
+      ]
     },
-    "n_headlines": 113,
+    "n_headlines": 110,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -17774,7 +17779,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1784285899.2060618,
+    "fetched_at": 1784290641.6822968,
     "risk_off_themes": [
       "banking",
       "crash",
