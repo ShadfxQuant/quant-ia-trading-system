@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-17T20:02:30.662872+00:00",
+  "generated_at_utc": "2026-07-17T21:05:54.603417+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -22,7 +22,7 @@
       "close": 743.155029296875,
       "ema": 749.3564921278075,
       "sma": 745.2385249211238,
-      "vwap": 744.7666184908271,
+      "vwap": 744.7630563101652,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4438,10 +4438,10 @@
           "h": 744.4000244140625,
           "l": 742.5999755859375,
           "c": 743.155029296875,
-          "v": 8634269.0,
+          "v": 8770712.0,
           "ema": 749.3564921278075,
           "sma": 745.2385249211238,
-          "vwap": 744.7666184908271
+          "vwap": 744.7630563101652
         }
       ]
     },
@@ -8878,10 +8878,10 @@
     "GLD": {
       "symbol": "GLD",
       "bar_time_utc": "2026-07-17T19:30:00+00:00",
-      "close": 368.4010009765625,
-      "ema": 370.8014019644784,
-      "sma": 373.41227088341344,
-      "vwap": 367.3934679345412,
+      "close": 368.4200134277344,
+      "ema": 370.80214755079885,
+      "sma": 373.4124171330379,
+      "vwap": 367.3963814931901,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8892,7 +8892,7 @@
         "bias": "bearish",
         "strength": "chop",
         "adx": 14.68,
-        "ema_slope_4bar": -0.467,
+        "ema_slope_4bar": -0.4663,
         "regime_pct_24h": 100.0,
         "macro_tilt": "conflicts",
         "flip": [
@@ -8900,7 +8900,7 @@
           "ADX falls below 20 (now 14.7)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 14.7, close 368.40 vs EMA50 370.80) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GLD leans short (ADX 14.7, close 368.42 vs EMA50 370.80) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -13297,21 +13297,21 @@
           "o": 367.4599914550781,
           "h": 368.5299987792969,
           "l": 367.44000244140625,
-          "c": 368.4010009765625,
-          "v": 786428.0,
-          "ema": 370.8014019644784,
-          "sma": 373.41227088341344,
-          "vwap": 367.3934679345412
+          "c": 368.4200134277344,
+          "v": 802185.0,
+          "ema": 370.80214755079885,
+          "sma": 373.4124171330379,
+          "vwap": 367.3963814931901
         }
       ]
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-07-17T19:00:00+00:00",
-      "close": 4018.0,
-      "ema": 4013.9592973806225,
-      "sma": 4043.930012394832,
-      "vwap": 4000.1828048036477,
+      "bar_time_utc": "2026-07-17T20:00:00+00:00",
+      "close": 4020.60009765625,
+      "ema": 4014.2913050921957,
+      "sma": 4043.137704702524,
+      "vwap": 4000.5468782590556,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13321,28 +13321,17 @@
       "read": {
         "bias": "neutral",
         "strength": "chop",
-        "adx": 11.99,
-        "ema_slope_4bar": 0.5466,
+        "adx": 11.28,
+        "ema_slope_4bar": 0.6359,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 12.0, close 4,018.00 vs EMA50 4,013.96) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 11.3, close 4,020.60 vs EMA50 4,014.29) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
-        {
-          "t": "2026-06-23T17:00:00+00:00",
-          "o": 4151.89990234375,
-          "h": 4157.7001953125,
-          "l": 4145.5,
-          "c": 4145.89990234375,
-          "v": 4797.0,
-          "ema": 4188.9265787412,
-          "sma": 4276.720785757211,
-          "vwap": 4147.87631202788
-        },
         {
           "t": "2026-06-23T18:00:00+00:00",
           "o": 4146.0,
@@ -17724,13 +17713,24 @@
         {
           "t": "2026-07-17T19:00:00+00:00",
           "o": 4016.39990234375,
-          "h": 4018.89990234375,
+          "h": 4020.89990234375,
           "l": 4006.800048828125,
-          "c": 4018.0,
-          "v": 2269.0,
-          "ema": 4013.9592973806225,
-          "sma": 4043.930012394832,
-          "vwap": 4000.1828048036477
+          "c": 4019.89990234375,
+          "v": 2902.0,
+          "ema": 4014.0338033548874,
+          "sma": 4043.944627028245,
+          "vwap": 4000.3042377647253
+        },
+        {
+          "t": "2026-07-17T20:00:00+00:00",
+          "o": 4019.89990234375,
+          "h": 4022.89990234375,
+          "l": 4013.199951171875,
+          "c": 4020.60009765625,
+          "v": 1402.0,
+          "ema": 4014.2913050921957,
+          "sma": 4043.137704702524,
+          "vwap": 4000.5468782590556
         }
       ]
     }
@@ -17738,22 +17738,22 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 6,
-    "risk_on_score": 2,
+    "risk_off_score": 9,
+    "risk_on_score": 0,
     "theme_hits": {
-      "war": 3,
+      "war": 4,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 3,
+      "crash": 5,
       "rate_cut": 0,
-      "risk_on": 2
+      "risk_on": 0
     },
     "sample_headlines": {
       "war": [
-        "JD Vance accuses Israel of 'manipulating' US public opinion to prolong Iran war",
-        "Oil prices ease after recent rally as Iran tensions keep supply concerns in focus",
-        "Meta's latest move in the AI talent war \u2014 plus Cramer's 4 quick hits on the market"
+        "Many Ukrainian soldiers outraged over removal of defence minister, troops tell BBC",
+        "One anti-war critic fined, another held as Russia clamps down on opponents",
+        "JD Vance accuses Israel of 'manipulating' US public opinion to prolong Iran war"
       ],
       "banking": [],
       "recession": [],
@@ -17761,13 +17761,10 @@
       "crash": [
         "Uganda suspends school trips after 20 pupils die in bus crash",
         "Olympic cyclist admits to driving despite ban after crash that killed wife",
-        "Tesla driver in fatal Texas crash overrode FSD by pressing accelerator \u2018100 percent,\u2019 investigators confirm - The Verge"
+        "Chip stocks have entered a bear market. A BofA analyst says not to panic."
       ],
       "rate_cut": [],
-      "risk_on": [
-        "Oil prices ease after recent rally as Iran tensions keep supply concerns in focus",
-        "UnitedHealth Stock: The 1 Number in the Earnings Beat That Has Shares Jumping - Barron's"
-      ]
+      "risk_on": []
     },
     "n_headlines": 113,
     "sources_used": [
@@ -17777,7 +17774,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1784318551.2144535,
+    "fetched_at": 1784322355.8130293,
     "risk_off_themes": [
       "banking",
       "crash",
