@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-17T09:11:34.977015+00:00",
+  "generated_at_utc": "2026-07-17T10:58:18.432235+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13307,11 +13307,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-07-17T09:00:00+00:00",
-      "close": 3999.0,
-      "ema": 4017.0786776480486,
-      "sma": 4053.5653977614184,
-      "vwap": 3993.0968334191034,
+      "bar_time_utc": "2026-07-17T10:00:00+00:00",
+      "close": 4000.60009765625,
+      "ema": 4016.5379585500064,
+      "sma": 4052.5569373497597,
+      "vwap": 3994.1233364345253,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13321,29 +13321,18 @@
       "read": {
         "bias": "bearish",
         "strength": "chop",
-        "adx": 15.99,
-        "ema_slope_4bar": -3.0814,
+        "adx": 15.8,
+        "ema_slope_4bar": -2.9531,
         "regime_pct_24h": 0.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (4,017.08)",
-          "ADX falls below 20 (now 16.0)",
+          "Close > EMA50 (4,016.54)",
+          "ADX falls below 20 (now 15.8)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GC=F leans short (ADX 16.0, close 3,999.00 vs EMA50 4,017.08) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GC=F leans short (ADX 15.8, close 4,000.60 vs EMA50 4,016.54) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
-        {
-          "t": "2026-06-23T07:00:00+00:00",
-          "o": 4131.89990234375,
-          "h": 4142.7001953125,
-          "l": 4114.0,
-          "c": 4116.0,
-          "v": 5589.0,
-          "ema": 4211.173725975978,
-          "sma": 4291.662319711539,
-          "vwap": 4155.338294419827
-        },
         {
           "t": "2026-06-23T08:00:00+00:00",
           "o": 4116.2998046875,
@@ -17725,13 +17714,24 @@
         {
           "t": "2026-07-17T09:00:00+00:00",
           "o": 3997.89990234375,
-          "h": 3999.0,
-          "l": 3997.5,
-          "c": 3999.0,
-          "v": 20.0,
-          "ema": 4017.0786776480486,
-          "sma": 4053.5653977614184,
-          "vwap": 3993.0968334191034
+          "h": 4006.5,
+          "l": 3996.800048828125,
+          "c": 4001.800048828125,
+          "v": 2453.0,
+          "ema": 4017.1884834844454,
+          "sma": 4053.5869365985577,
+          "vwap": 3993.738370502905
+        },
+        {
+          "t": "2026-07-17T10:00:00+00:00",
+          "o": 4001.699951171875,
+          "h": 4002.89990234375,
+          "l": 3997.199951171875,
+          "c": 4000.60009765625,
+          "v": 2062.0,
+          "ema": 4016.5379585500064,
+          "sma": 4052.5569373497597,
+          "vwap": 3994.1233364345253
         }
       ]
     }
@@ -17739,16 +17739,16 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 7,
-    "risk_on_score": 1,
+    "risk_off_score": 8,
+    "risk_on_score": 0,
     "theme_hits": {
       "war": 2,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 5,
+      "crash": 6,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 0
     },
     "sample_headlines": {
       "war": [
@@ -17761,12 +17761,10 @@
       "crash": [
         "School bus crash kills at least 20 pupils in Uganda",
         "Olympic cyclist admits to driving despite ban after crash that killed wife",
-        "Stock futures edge up ahead of retail sales, jobs data; South Korea's Kospi tumbles 7% in chip rout: Live updates - CNBC"
+        "Bad week for \u2018the ants\u2019 as ripple effects of Korean crash spread out across Asia"
       ],
       "rate_cut": [],
-      "risk_on": [
-        "AEHR Stock Skyrockets After Q2 Earnings Beat-and-Raise"
-      ]
+      "risk_on": []
     },
     "n_headlines": 113,
     "sources_used": [
@@ -17776,7 +17774,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1784279495.6411753,
+    "fetched_at": 1784285899.2060618,
     "risk_off_themes": [
       "banking",
       "crash",
