@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-19T14:12:32.474869+00:00",
+  "generated_at_utc": "2026-07-19T15:17:01.121753+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -17738,16 +17738,16 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 3,
-    "risk_on_score": 0,
+    "risk_off_score": 4,
+    "risk_on_score": 1,
     "theme_hits": {
       "war": 3,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 0,
+      "crash": 1,
       "rate_cut": 0,
-      "risk_on": 0
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
@@ -17758,11 +17758,15 @@
       "banking": [],
       "recession": [],
       "rate_hike": [],
-      "crash": [],
+      "crash": [
+        "Tesla Heads Into Its July 22 Earnings Down 22%, and One Firm Sees a 67% Plunge From Here. Who's Right?"
+      ],
       "rate_cut": [],
-      "risk_on": []
+      "risk_on": [
+        "Palo Alto Networks Stock Has Doubled in 3 Months. Here\u2019s Why the Rally May Be Far From Over."
+      ]
     },
-    "n_headlines": 111,
+    "n_headlines": 114,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -17770,7 +17774,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1784470353.0359094,
+    "fetched_at": 1784474222.7678082,
     "risk_off_themes": [
       "banking",
       "crash",
