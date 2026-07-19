@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-19T16:15:31.249100+00:00",
+  "generated_at_utc": "2026-07-19T17:27:30.440061+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -17738,33 +17738,33 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 3,
-    "risk_on_score": 1,
+    "risk_off_score": 5,
+    "risk_on_score": 0,
     "theme_hits": {
-      "war": 3,
+      "war": 4,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 0,
+      "crash": 1,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 0
     },
     "sample_headlines": {
       "war": [
         "Russia launches major ballistic missile attack on Ukrainian cities",
         "One anti-war critic fined, another held as Russia clamps down on dissent",
-        "Stock Market Today: Dow Drops 400 Points Amid Iran War News; Netflix Tumbles (Live Coverage) - Investor's Business Daily"
+        "Mortgage rates hit highest level since the start of the war with Iran - WXOW"
       ],
       "banking": [],
       "recession": [],
       "rate_hike": [],
-      "crash": [],
+      "crash": [
+        "Oracle Just Hit a Fresh 52-Week Low and Had Its Credit Cut Toward Junk. Has the AI-Capex Panic Overshot?"
+      ],
       "rate_cut": [],
-      "risk_on": [
-        "Palo Alto Networks Stock Has Doubled in 3 Months. Here\u2019s Why the Rally May Be Far From Over."
-      ]
+      "risk_on": []
     },
-    "n_headlines": 114,
+    "n_headlines": 113,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -17772,7 +17772,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1784477731.8013823,
+    "fetched_at": 1784482050.7721574,
     "risk_off_themes": [
       "banking",
       "crash",
