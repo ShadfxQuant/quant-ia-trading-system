@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-20T10:14:09.551099+00:00",
+  "generated_at_utc": "2026-07-20T12:27:19.874944+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13307,11 +13307,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-07-20T10:00:00+00:00",
-      "close": 4024.89990234375,
-      "ema": 4015.440583812625,
-      "sma": 4033.536159104567,
-      "vwap": 4017.3658081044814,
+      "bar_time_utc": "2026-07-20T12:00:00+00:00",
+      "close": 4016.5,
+      "ema": 4016.197960040897,
+      "sma": 4032.157696063702,
+      "vwap": 4020.408119954539,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13321,39 +13321,17 @@
       "read": {
         "bias": "neutral",
         "strength": "chop",
-        "adx": 11.27,
-        "ema_slope_4bar": 1.4729,
+        "adx": 12.81,
+        "ema_slope_4bar": 1.5617,
         "regime_pct_24h": 0.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GC=F is neutral (ADX 11.3, close 4,024.90 vs EMA50 4,015.44) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
+        "narrative": "GC=F is neutral (ADX 12.8, close 4,016.50 vs EMA50 4,016.20) and the tape is choppy. The regime filter is mostly blocking \u2014 only 0% of the last 24h was tradable."
       },
       "bars": [
-        {
-          "t": "2026-06-24T08:00:00+00:00",
-          "o": 4091.60009765625,
-          "h": 4104.7998046875,
-          "l": 4090.0,
-          "c": 4093.300048828125,
-          "v": 2940.0,
-          "ema": 4152.050276703963,
-          "sma": 4249.792330228365,
-          "vwap": 4095.4765048474565
-        },
-        {
-          "t": "2026-06-24T09:00:00+00:00",
-          "o": 4093.300048828125,
-          "h": 4095.800048828125,
-          "l": 4081.60009765625,
-          "c": 4081.800048828125,
-          "v": 3869.0,
-          "ema": 4149.295365806872,
-          "sma": 4247.803870567908,
-          "vwap": 4094.610280245414
-        },
         {
           "t": "2026-06-24T10:00:00+00:00",
           "o": 4082.0,
@@ -17724,13 +17702,35 @@
         {
           "t": "2026-07-20T10:00:00+00:00",
           "o": 4025.800048828125,
-          "h": 4026.0,
+          "h": 4030.39990234375,
           "l": 4022.39990234375,
-          "c": 4024.89990234375,
-          "v": 106.0,
-          "ema": 4015.440583812625,
-          "sma": 4033.536159104567,
-          "vwap": 4017.3658081044814
+          "c": 4029.0,
+          "v": 1602.0,
+          "ema": 4015.6013719560074,
+          "sma": 4033.5676983173075,
+          "vwap": 4017.8042923299495
+        },
+        {
+          "t": "2026-07-20T11:00:00+00:00",
+          "o": 4029.0,
+          "h": 4046.0,
+          "l": 4024.39990234375,
+          "c": 4030.5,
+          "v": 6955.0,
+          "ema": 4016.185631879301,
+          "sma": 4032.905389873798,
+          "vwap": 4020.462269436562
+        },
+        {
+          "t": "2026-07-20T12:00:00+00:00",
+          "o": 4030.0,
+          "h": 4030.199951171875,
+          "l": 4012.800048828125,
+          "c": 4016.5,
+          "v": 3902.0,
+          "ema": 4016.197960040897,
+          "sma": 4032.157696063702,
+          "vwap": 4020.408119954539
         }
       ]
     }
@@ -17738,22 +17738,22 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 10,
-    "risk_on_score": 0,
+    "risk_off_score": 9,
+    "risk_on_score": 1,
     "theme_hits": {
-      "war": 8,
+      "war": 7,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
       "crash": 2,
-      "rate_cut": 0,
+      "rate_cut": 1,
       "risk_on": 0
     },
     "sample_headlines": {
       "war": [
         "Russia launches major ballistic missile attack on Ukrainian cities",
-        "One anti-war critic fined, another held as Russia clamps down on dissent",
-        "Gulf Oil Exports Briefly Recovered to Pre-War Levels Before Latest Escalation"
+        "Ryanair stock slides 6% as higher fuel costs amid Iran war dent profit",
+        "U.S. Treasury yields edge higher as Wall Street monitors Middle East tensions"
       ],
       "banking": [],
       "recession": [],
@@ -17762,10 +17762,12 @@
         "China's car market heads for worst year since 2021 as sales plunge 20%",
         "'Give me my money back': South Korean traders' leveraged SK Hynix, Samsung bets unravel after selloff"
       ],
-      "rate_cut": [],
+      "rate_cut": [
+        "James Hardie Industries plc (JHX) Recovered Following Easing Middle East Conflict and Strong Outlook"
+      ],
       "risk_on": []
     },
-    "n_headlines": 114,
+    "n_headlines": 113,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -17773,7 +17775,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1784542450.164025,
+    "fetched_at": 1784550440.3977177,
     "risk_off_themes": [
       "banking",
       "crash",
