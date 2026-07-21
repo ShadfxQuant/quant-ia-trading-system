@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-21T09:28:30.741900+00:00",
+  "generated_at_utc": "2026-07-21T11:26:02.291859+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13307,11 +13307,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-07-21T09:00:00+00:00",
-      "close": 4070.5,
-      "ema": 4028.977881187134,
-      "sma": 4028.0300011268027,
-      "vwap": 4058.4313513310103,
+      "bar_time_utc": "2026-07-21T11:00:00+00:00",
+      "close": 4063.800048828125,
+      "ema": 4031.7764901344126,
+      "sma": 4028.8992318960336,
+      "vwap": 4060.2367265913513,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13320,41 +13320,19 @@
       "trend_carry_pyramid_cap": 0,
       "read": {
         "bias": "bullish",
-        "strength": "weak",
-        "adx": 28.27,
-        "ema_slope_4bar": 7.7996,
-        "regime_pct_24h": 12.5,
+        "strength": "strong",
+        "adx": 30.09,
+        "ema_slope_4bar": 6.1308,
+        "regime_pct_24h": 20.8,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,028.98)",
-          "ADX falls below 20 (now 28.3)",
+          "Close < EMA50 (4,031.78)",
+          "ADX falls below 20 (now 30.1)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GC=F leans long (ADX 28.3, close 4,070.50 vs EMA50 4,028.98) but the trend is only weak. The regime filter is mostly blocking \u2014 only 12% of the last 24h was tradable. Macro backdrop supports this read."
+        "narrative": "GC=F leans long (ADX 30.1, close 4,063.80 vs EMA50 4,031.78) and the trend is strong. The regime filter is mostly blocking \u2014 only 21% of the last 24h was tradable. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-06-25T07:00:00+00:00",
-          "o": 3992.5,
-          "h": 4005.5,
-          "l": 3986.60009765625,
-          "c": 4003.5,
-          "v": 5612.0,
-          "ema": 4071.5412055205366,
-          "sma": 4193.04848069411,
-          "vwap": 4001.1883549526124
-        },
-        {
-          "t": "2026-06-25T08:00:00+00:00",
-          "o": 4003.60009765625,
-          "h": 4017.89990234375,
-          "l": 4000.199951171875,
-          "c": 4004.89990234375,
-          "v": 5972.0,
-          "ema": 4068.9278210822313,
-          "sma": 4190.387712214543,
-          "vwap": 4002.0936336767268
-        },
         {
           "t": "2026-06-25T09:00:00+00:00",
           "o": 4004.89990234375,
@@ -17725,13 +17703,35 @@
         {
           "t": "2026-07-21T09:00:00+00:00",
           "o": 4067.699951171875,
-          "h": 4071.5,
-          "l": 4067.699951171875,
-          "c": 4070.5,
-          "v": 1941.0,
-          "ema": 4028.977881187134,
-          "sma": 4028.0300011268027,
-          "vwap": 4058.4313513310103
+          "h": 4074.39990234375,
+          "l": 4065.39990234375,
+          "c": 4070.199951171875,
+          "v": 5677.0,
+          "ema": 4028.966114566423,
+          "sma": 4028.0276930588943,
+          "vwap": 4059.336548074691
+        },
+        {
+          "t": "2026-07-21T10:00:00+00:00",
+          "o": 4070.5,
+          "h": 4074.800048828125,
+          "l": 4065.10009765625,
+          "c": 4067.300048828125,
+          "v": 4271.0,
+          "ema": 4030.4694061060977,
+          "sma": 4028.480001126803,
+          "vwap": 4060.132183213423
+        },
+        {
+          "t": "2026-07-21T11:00:00+00:00",
+          "o": 4067.699951171875,
+          "h": 4068.300048828125,
+          "l": 4059.89990234375,
+          "c": 4063.800048828125,
+          "v": 1451.0,
+          "ema": 4031.7764901344126,
+          "sma": 4028.8992318960336,
+          "vwap": 4060.2367265913513
         }
       ]
     }
@@ -17739,35 +17739,35 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 7,
-    "risk_on_score": 0,
+    "risk_off_score": 5,
+    "risk_on_score": 1,
     "theme_hits": {
-      "war": 5,
+      "war": 4,
       "banking": 0,
-      "recession": 1,
+      "recession": 0,
       "rate_hike": 0,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 0
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
-        "Ryanair profits drop as Iran war puts off passengers and lifts fuel costs",
+        "Lebanese army says troops deploying in 'pilot zone' after Israeli withdrawal",
         "U.S. strikes Iran and Houthis threaten Saudi Arabia shipping as mediators push 10-day ceasefire",
         "What to know about testosterone replacement therapy as the U.S. military plans to test troops"
       ],
       "banking": [],
-      "recession": [
-        "New Samsung Layoffs in the U.S. Show Smartphone Arm's Struggles, Even as It Profits Massively From AI - Gizmodo"
-      ],
+      "recession": [],
       "rate_hike": [],
       "crash": [
         "'Give me my money back': South Korean traders' leveraged SK Hynix, Samsung bets unravel after selloff - CNBC"
       ],
       "rate_cut": [],
-      "risk_on": []
+      "risk_on": [
+        "GM boosts full-year guidance, reports Q2 earnings beat as costs come down"
+      ]
     },
-    "n_headlines": 110,
+    "n_headlines": 109,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -17775,7 +17775,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1784626111.7609565,
+    "fetched_at": 1784633162.7139182,
     "risk_off_themes": [
       "banking",
       "crash",
