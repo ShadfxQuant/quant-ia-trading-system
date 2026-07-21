@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-21T20:52:24.046322+00:00",
+  "generated_at_utc": "2026-07-21T21:59:31.553927+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -35,13 +35,13 @@
         "adx": 20.33,
         "ema_slope_4bar": 0.0262,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close < EMA50 (748.14)",
           "ADX falls below 20 (now 20.3)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 20.3, close 748.33 vs EMA50 748.14) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "SPY leans long (ADX 20.3, close 748.33 vs EMA50 748.14) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -13307,10 +13307,10 @@
     "GC=F": {
       "symbol": "GC=F",
       "bar_time_utc": "2026-07-21T20:00:00+00:00",
-      "close": 4085.800048828125,
-      "ema": 4045.127925465364,
-      "sma": 4032.8600022536057,
-      "vwap": 4065.8459233974386,
+      "close": 4082.199951171875,
+      "ema": 4044.986745165119,
+      "sma": 4032.8323091947113,
+      "vwap": 4065.925981455017,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -13320,16 +13320,16 @@
       "read": {
         "bias": "bullish",
         "strength": "strong",
-        "adx": 32.92,
-        "ema_slope_4bar": 6.7104,
+        "adx": 32.53,
+        "ema_slope_4bar": 6.5692,
         "regime_pct_24h": 58.3,
-        "macro_tilt": "neutral",
+        "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,045.13)",
-          "ADX falls below 20 (now 32.9)",
+          "Close < EMA50 (4,044.99)",
+          "ADX falls below 20 (now 32.5)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GC=F leans long (ADX 32.9, close 4,085.80 vs EMA50 4,045.13) and the trend is strong. The regime filter is mostly green."
+        "narrative": "GC=F leans long (ADX 32.5, close 4,082.20 vs EMA50 4,044.99) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -17725,50 +17725,46 @@
           "t": "2026-07-21T20:00:00+00:00",
           "o": 4088.60009765625,
           "h": 4090.89990234375,
-          "l": 4084.10009765625,
-          "c": 4085.800048828125,
-          "v": 1357.0,
-          "ema": 4045.127925465364,
-          "sma": 4032.8600022536057,
-          "vwap": 4065.8459233974386
+          "l": 4080.89990234375,
+          "c": 4082.199951171875,
+          "v": 1997.0,
+          "ema": 4044.986745165119,
+          "sma": 4032.8323091947113,
+          "vwap": 4065.925981455017
         }
       ]
     }
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
-    "risk_off_score": 5,
-    "risk_on_score": 4,
+    "verdict": "RISK_OFF",
+    "risk_off_score": 4,
+    "risk_on_score": 1,
     "theme_hits": {
-      "war": 5,
+      "war": 4,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
       "crash": 0,
-      "rate_cut": 1,
-      "risk_on": 3
+      "rate_cut": 0,
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
         "Lebanese army says troops deploying in 'pilot zone' after Israeli withdrawal",
-        "Why oil prices haven't gone crazy despite 5 months of US-Iran war",
-        "U.S. strikes Iran and Houthis threaten Saudi Arabia shipping as mediators push 10-day ceasefire"
+        "U.S. strikes Iran and Houthis threaten Saudi Arabia shipping as mediators push 10-day ceasefire",
+        "Pro stock pickers cannot beat simple math \u2014 war in the Middle East is proving it"
       ],
       "banking": [],
       "recession": [],
       "rate_hike": [],
       "crash": [],
-      "rate_cut": [
-        "James Hardie Industries plc (JHX) Recovered Following Easing Middle East Conflict and Strong Outlook"
-      ],
+      "rate_cut": [],
       "risk_on": [
-        "Copper Price Rally Powers Hudbay Minerals (HBM) in Q2",
-        "Why energy stocks still look so cheap, even after their big rally this month",
-        "IREN, Hut 8 Soar On AI Data Center Deals, Lead Neocloud Rally - Investor's Business Daily"
+        "Why energy stocks still look so cheap, even after their big rally this month"
       ]
     },
-    "n_headlines": 112,
+    "n_headlines": 113,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -17776,7 +17772,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1784667144.7578876,
+    "fetched_at": 1784671172.4940937,
     "risk_off_themes": [
       "banking",
       "crash",
