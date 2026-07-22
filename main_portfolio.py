@@ -88,6 +88,11 @@ def prepare_dual(df: pd.DataFrame) -> pd.DataFrame:
     # on baseline #0 (CAGR 17.1→17.3, PF 3.16→3.18, n unchanged).
     if getattr(PULLBACK, "use_rsi_size_mult", False):
         df = _apply_rsi_size_mult(df)
+    # RSI entry GATE (surgical): block shorts into oversold / longs into
+    # overbought, on BOTH sleeves. Distinct from the size mult above. Off by
+    # default; enabled only after backtest validation (config flag).
+    if getattr(PULLBACK, "use_rsi_entry_gate", False):
+        df = _apply_rsi_entry_gate(df)
     # Layer 6: high-conviction agreement size multiplier
     # (deterministic regime ∈ growth/stabilization AND HMM bull → 1.5× size).
     if getattr(PULLBACK, "use_conviction_size_mult", False):
@@ -117,6 +122,43 @@ def _apply_rsi_size_mult(df):
     existing = out.get("pullback_SizeMult", pd.Series(1.0, index=out.index)).fillna(1.0)
     out["pullback_SizeMult"] = (existing * mult).clip(lower=0.2)  # never zero
     out["RSI_14"] = rsi
+    return out
+
+
+def _apply_rsi_entry_gate(df):
+    """Surgical RSI entry gate on BOTH pullback and trend_carry signals.
+
+    Zeros a signal (blocks the entry) when the entry fights RSI extremes:
+        SHORT (signal == -1) and RSI < rsi_oversold   → blocked
+        LONG  (signal == +1) and RSI > rsi_overbought → blocked
+
+    Reuses RSI_14 if a prior layer already computed it; otherwise computes
+    the same Wilder-EWMA RSI(14). Only touches signal columns — never sizing,
+    exits, or structure. trend_carry gets the brake it structurally lacked.
+    """
+    import pandas as pd
+    cfg = PULLBACK
+    out = df.copy()
+    if "RSI_14" in out.columns:
+        rsi = out["RSI_14"]
+    else:
+        close = out["Close"]
+        delta = close.diff()
+        gain = delta.clip(lower=0.0)
+        loss = (-delta).clip(lower=0.0)
+        avg_gain = gain.ewm(alpha=1/14, adjust=False).mean()
+        avg_loss = loss.ewm(alpha=1/14, adjust=False).mean()
+        rs = avg_gain / avg_loss.replace(0, float("nan"))
+        rsi = (100 - 100 / (1 + rs)).fillna(50.0)
+        out["RSI_14"] = rsi
+    block_short = rsi < cfg.rsi_oversold
+    block_long = rsi > cfg.rsi_overbought
+    for col in ("pullback_Signal", "trend_carry_Signal"):
+        if col not in out.columns:
+            continue
+        sig = out[col]
+        out.loc[(sig == -1) & block_short, col] = 0
+        out.loc[(sig == 1) & block_long, col] = 0
     return out
 
 

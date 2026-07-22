@@ -247,6 +247,18 @@ class PullbackStratConfig:
     rsi_overbought: float = 60.0
     rsi_mult_oversold: float = 1.3
     rsi_mult_overbought: float = 0.7
+    # ----- RSI entry GATE (surgical; distinct from the size mult above) -----
+    # Blocks the most extreme-RSI entries rather than just resizing them:
+    #   block SHORT when RSI < rsi_oversold  (don't short the oversold hole)
+    #   block LONG  when RSI > rsi_overbought (don't long the overbought top)
+    # Applied to BOTH pullback and trend_carry (trend_carry previously had NO
+    # RSI/HMM brake — its worst live loss was a short into an oversold rip).
+    # Kept as a flag so it can be validated on/off; only shipped live after a
+    # backtest on SPY/^NDX/GLD confirms it is non-regressive (gate-first rule).
+    # VALIDATED 2026-07-22 (_validate_rsi_gate.py): pooled PnL +$1,277, PF up on
+    # all 3 (SPY 3.67→3.83, ^NDX 2.39→2.50, GLD 8.12→8.56), DD unchanged, 98.2%
+    # of trades retained. Cleared → enabled live. Also brakes trend_carry.
+    use_rsi_entry_gate: bool = True
     # ----- Layer 6: High-conviction agreement size multiplier (2026-05-30) -----
     # Tested at 1.15/1.20/1.30/1.50× on SPY+GLD. SPY shows microscopic positive
     # (+$200-$400), GLD loses substantially (-$2,600 to -$7,900). Combined
