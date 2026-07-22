@@ -6,13 +6,14 @@
 ---
 
 ## ⬡ Diagnostic & fixes — 2026-07-22
-- **Ran full system audit; fixed & deployed everything mechanical + one validated gate.** Commits `a4bbc094` (GC=F drop + HMM log) → `d4f6a74b` (RSI gate).
+- **Ran full system audit; fixed & deployed everything mechanical + 2 validated risk controls.** Commits `a4bbc094` (GC=F drop + HMM log) → `d4f6a74b` (RSI gate) → `a5a4ab73` (correlation cap).
 - **Icon corruption was breaking git** (298 `Icon` files in `.git`/tree → `fetch`/`push` dead). Cleaned; git healthy. Recurring — if git breaks again: `find .git -name 'Icon*' -type f -delete`.
 - **Deploy gap found**: GC=F removal + dashboard fixes were uncommitted → live worker was STILL running 4 symbols. Now committed + pushed; live runs 3 symbols.
 - **HMM "not converging" spam** (~100 lines/run) silenced via `logging.getLogger("hmmlearn").setLevel(ERROR)` — came through logging, not warnings. Informational-only, no behavior change.
-- **RSI entry gate wired live + VALIDATED** (see gate node below). Also brakes trend_carry.
-- **Live truth**: cloud cron healthy (commits every ~1–2h, errors=none). Book was **−4.2% ($95,800)**, deeper than a stale local snapshot showed — the whipsaw + un-braked trend_carry short (6wks) drove it.
-- **Still open (not done)**: correlation cap (unvalidated), Node20 runner deprecation (cosmetic), always-on button listener, Infinex bridge. Local clone can drift stale — cloud is source of truth.
+- **RSI entry gate wired live + VALIDATED** (see Gates node). Also brakes trend_carry.
+- **Correlation cap wired live + VALIDATED** (see Risk controls node). Blocks self-hedging book.
+- **Live truth**: cloud cron healthy (commits every ~1–2h, errors=none). Book was **−4.2% ($95,800)**, deeper than a stale local snapshot showed — the whipsaw + un-braked trend_carry short (6wks) + self-hedging (LONG SPY + SHORT ^NDX) drove it. All three causes now addressed.
+- **Still open**: Node20 runner deprecation (cosmetic), always-on button listener, Infinex bridge, double-trade + leverage (validated, not wired). Local clone can drift stale — cloud is source of truth.
 
 ## ⬡ What it is
 - Systematic **1-hour trend-continuation** engine on liquid index/gold.
@@ -32,9 +33,10 @@
 - Stop −2.5% / TP1 +4% (close 50%, stop→BE) / TP2 +15% / time stop 390 bars (~16d).
 - **GLD override (LIVE)**: TP1 +5% / TP2 +20% (gold trends run longer). Regime-flip exit: now OFF (was GC=F-only; GC=F dropped 2026-06-26).
 
-## ⬡ Gates
+## ⬡ Gates & risk controls (LIVE)
 - **RSI entry gate — LIVE 2026-07-22** (`use_rsi_entry_gate=True`): block shorts RSI<40, longs RSI>60, on BOTH pullback + trend_carry (in `prepare_dual`). Re-validated on SPY/^NDX/GLD: pooled PnL +$1,277, PF up on all 3, DD unchanged, 98.2% trades kept. This is also the **trend_carry brake**.
-- **HMM veto** (was GC=F only, +$16.8k): **MOOT now GC=F is dropped.** Blanket veto = −$34k → stays rejected. No HMM veto on the remaining 3 symbols.
+- **Correlation cap — LIVE 2026-07-22** (`USE_CORRELATION_CAP`, in `core/paper_trader`): won't open a position that fights an existing opposite-side position in the same cluster. Clusters: equity {SPY,^NDX} (ρ=0.93), gold {GLD}. Blocks LONG SPY+SHORT ^NDX and LONG SPY pullback+SHORT SPY carry. Validated (shared-book replay): PnL $51.7k→$71.3k (+$19.6k), DD −7.1%→−6.4%, 93 conflicts blocked.
+- **HMM veto** (was GC=F only, +$16.8k): **MOOT now GC=F is dropped.** Blanket veto = −$34k → stays rejected.
 
 ## ⬡ Double-trade overlay (validated MC, your idea)
 - Strong (HMM conv>0.65) signal on SPY/^NDX + other index **trailing** → copy to laggard, 1.5× wider TP/SL, **15% size**.
@@ -56,7 +58,7 @@
 - Expect **~4–5 signals/week** across the 3 symbols (lumpy, clustered); ~2–3/wk if only US500+XAUUSD.
 
 ## ⬡ What's LIVE vs validated-only
-- **LIVE**: universe = SPY/^NDX/GLD (SLV + GC=F dropped), engine (pullback + trend_carry, both **RSI-gated** 2026-07-22 + HMM-informational), GLD exits, Telegram alerts + cron. Regime-flip exit OFF.
+- **LIVE**: universe = SPY/^NDX/GLD (SLV + GC=F dropped), engine (pullback + trend_carry, both **RSI-gated** + **correlation-capped** 2026-07-22 + HMM-informational), GLD exits, Telegram alerts + cron. Regime-flip exit OFF.
 - **Validated, NOT wired**: double-trade overlay, leverage knob. (RSI gate now LIVE; GC=F HMM veto moot.)
 
 ## ⬡ REJECTED — don't retry (all tested, all lose money)
@@ -77,7 +79,6 @@
 - `SYSTEM_LOG.md` = full 65-Part journal · `research/SYSTEM_OVERVIEW.md` = architecture
 
 ## ⬡ Open / next
-- ✅ DONE 2026-07-22: RSI gate wired live, trend_carry braked, GC=F dropped, HMM log silenced, Icon corruption cleaned.
-- **Correlation cap** — still open (unvalidated): book can hold LONG SPY + SHORT ^NDX simultaneously; the two sleeves can also fight on the same symbol.
+- ✅ DONE 2026-07-22: RSI gate + trend_carry brake, **correlation cap**, GC=F dropped, HMM log silenced, Icon corruption cleaned. All validated + live.
 - Double-trade overlay + leverage knob (validated, not wired). Infinex execution bridge (tap→trade) — security-gated, not built. Always-on button listener (Cloudflare webhook).
-- Walk-forward monitor (SPY edge degraded in last 12mo — watch).
+- Node20 GitHub runner deprecation (cosmetic). Walk-forward monitor (SPY edge degraded in last 12mo — watch).
