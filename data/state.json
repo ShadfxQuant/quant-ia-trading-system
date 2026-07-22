@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-22T09:28:19.987690+00:00",
+  "generated_at_utc": "2026-07-22T11:26:36.677325+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -35,13 +35,13 @@
         "adx": 20.33,
         "ema_slope_4bar": 0.0262,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close < EMA50 (748.14)",
           "ADX falls below 20 (now 20.3)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 20.3, close 748.33 vs EMA50 748.14) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "SPY leans long (ADX 20.3, close 748.33 vs EMA50 748.14) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -13306,11 +13306,11 @@
     },
     "GC=F": {
       "symbol": "GC=F",
-      "bar_time_utc": "2026-07-22T09:00:00+00:00",
-      "close": 4125.2998046875,
-      "ema": 4073.3891140094784,
-      "sma": 4038.7584604116587,
-      "vwap": 4122.716303160783,
+      "bar_time_utc": "2026-07-22T11:00:00+00:00",
+      "close": 4125.0,
+      "ema": 4076.979185801438,
+      "sma": 4039.6576923076923,
+      "vwap": 4122.534881767041,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -13320,40 +13320,18 @@
       "read": {
         "bias": "bullish",
         "strength": "strong",
-        "adx": 42.83,
-        "ema_slope_4bar": 8.2457,
+        "adx": 42.59,
+        "ema_slope_4bar": 7.7917,
         "regime_pct_24h": 70.8,
-        "macro_tilt": "neutral",
+        "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (4,073.39)",
-          "ADX falls below 20 (now 42.8)",
+          "Close < EMA50 (4,076.98)",
+          "ADX falls below 20 (now 42.6)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GC=F leans long (ADX 42.8, close 4,125.30 vs EMA50 4,073.39) and the trend is strong. The regime filter is mostly green."
+        "narrative": "GC=F leans long (ADX 42.6, close 4,125.00 vs EMA50 4,076.98) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-06-26T07:00:00+00:00",
-          "o": 4047.800048828125,
-          "h": 4055.5,
-          "l": 4042.5,
-          "c": 4046.39990234375,
-          "v": 4517.0,
-          "ema": 4047.0905538568295,
-          "sma": 4137.377708082932,
-          "vwap": 4029.8993538623827
-        },
-        {
-          "t": "2026-06-26T08:00:00+00:00",
-          "o": 4046.10009765625,
-          "h": 4053.0,
-          "l": 4041.199951171875,
-          "c": 4046.10009765625,
-          "v": 2345.0,
-          "ema": 4047.051712437199,
-          "sma": 4135.446168870192,
-          "vwap": 4031.065412843349
-        },
         {
           "t": "2026-06-26T09:00:00+00:00",
           "o": 4045.800048828125,
@@ -17724,53 +17702,74 @@
         {
           "t": "2026-07-22T09:00:00+00:00",
           "o": 4122.60009765625,
-          "h": 4126.5,
-          "l": 4122.10009765625,
-          "c": 4125.2998046875,
-          "v": 882.0,
-          "ema": 4073.3891140094784,
-          "sma": 4038.7584604116587,
-          "vwap": 4122.716303160783
+          "h": 4126.60009765625,
+          "l": 4117.5,
+          "c": 4118.7998046875,
+          "v": 3715.0,
+          "ema": 4073.134212048694,
+          "sma": 4038.7084604116585,
+          "vwap": 4122.5364947528205
+        },
+        {
+          "t": "2026-07-22T10:00:00+00:00",
+          "o": 4119.2001953125,
+          "h": 4126.10009765625,
+          "l": 4119.2001953125,
+          "c": 4121.2001953125,
+          "v": 2333.0,
+          "ema": 4075.0191525688433,
+          "sma": 4039.173846905048,
+          "vwap": 4122.518484703852
+        },
+        {
+          "t": "2026-07-22T11:00:00+00:00",
+          "o": 4121.7998046875,
+          "h": 4126.0,
+          "l": 4119.2998046875,
+          "c": 4125.0,
+          "v": 874.0,
+          "ema": 4076.979185801438,
+          "sma": 4039.6576923076923,
+          "vwap": 4122.534881767041
         }
       ]
     }
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
+    "verdict": "RISK_OFF",
     "risk_off_score": 5,
-    "risk_on_score": 5,
+    "risk_on_score": 2,
     "theme_hits": {
-      "war": 4,
+      "war": 2,
       "banking": 0,
       "recession": 0,
-      "rate_hike": 0,
-      "crash": 1,
-      "rate_cut": 1,
-      "risk_on": 4
+      "rate_hike": 1,
+      "crash": 2,
+      "rate_cut": 0,
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
         "Iran war has cost US $37.5bn so far, Hegseth says, as Pentagon seeks billions more",
-        "Stocks fall as oil gains; Iran tensions, earnings in focus",
-        "Archer Aviation (ACHR) Unveils Defense Aircraft Amid Geopolitical Tensions, Takes Off 19.6%"
+        "Oil prices climb to six-week high as hopes of de-escalation in Iran diminish"
       ],
       "banking": [],
       "recession": [],
-      "rate_hike": [],
+      "rate_hike": [
+        "The ECB is expected to hold rates. But analysts say hawkish hints could be coming \u2014 and a hike isn\u2019t impossible"
+      ],
       "crash": [
+        "Dow Jones Futures: Trump Comments Spark Stock Market Losses; Elon Musk-Led SpaceX, Tesla Tumble - Investor's Business Daily",
         "Why Dan Ives Maintains His Sky High Target on IBM After Its Largest Crash Ever - 24/7 Wall St."
       ],
-      "rate_cut": [
-        "Asia stocks climb as easing oil rally supports risk appetite - Investing.com"
-      ],
+      "rate_cut": [],
       "risk_on": [
-        "Stock market today: Dow, S&P 500, Nasdaq rally fizzles as chip stock momentum fades, oil rises",
-        "Soybeans Rally on Monday Following More Export Business",
-        "Why energy stocks still look so cheap, even after their big rally this month"
+        "Super Micro Soars Late On Booming Margins, Orders; Dell, HP Enterprise Also Rally",
+        "Intel results to test if AI-fueled rally has room to run"
       ]
     },
-    "n_headlines": 105,
+    "n_headlines": 107,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -17778,7 +17777,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1784712500.8085885,
+    "fetched_at": 1784719597.7934418,
     "risk_off_themes": [
       "banking",
       "crash",
