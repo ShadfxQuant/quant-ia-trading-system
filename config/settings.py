@@ -731,6 +731,33 @@ def trade_label(symbol: str) -> str:
     return TRADING_LABEL_MAP.get(symbol, symbol)
 
 
+# ---------------------------------------------------------------------------
+# Correlation cap (2026-07-22) — portfolio-level conflict guard.
+# Highly-correlated symbols form a cluster; the book must NOT hold opposite-
+# side positions within a cluster. Measured daily-return correlation:
+#   SPY ↔ ^NDX = 0.93  → one "equity" cluster (long one + short the other is a
+#                         confused/self-hedging book that pays double friction;
+#                         same rule blocks LONG SPY pullback + SHORT SPY carry).
+#   GLD ↔ equities ≈ 0.30 → its own "gold" cluster; trades freely vs equities
+#                            (that divergence is the intended diversification).
+# Enforced at position-open time in core/paper_trader. Unknown → own cluster.
+# VALIDATED 2026-07-22 (_validate_corr_cap.py — faithful shared-book replay of
+# the real _process_tick across SPY/^NDX/GLD): cap ON vs OFF → realized PnL
+# $51.7k→$71.3k (+$19.6k), max DD −7.13%→−6.42% (0.71pp shallower), 93
+# conflicting entries blocked. Strongly non-regressive → enabled live.
+# ---------------------------------------------------------------------------
+USE_CORRELATION_CAP: bool = True
+CORRELATION_CLUSTERS: dict = {
+    "SPY":  "equity",
+    "^NDX": "equity",
+    "GLD":  "gold",
+}
+
+
+def correlation_cluster(symbol: str) -> str:
+    """Cluster id for a symbol; unknown symbols get their own singleton cluster."""
+    return CORRELATION_CLUSTERS.get(symbol, symbol)
+
 
 # Singletons used across modules.
 DATA = DataConfig()

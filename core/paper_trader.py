@@ -30,7 +30,10 @@ from dataclasses import dataclass, asdict, field
 from datetime import datetime, timezone
 from typing import Any
 
-from config.settings import PULLBACK, TRENDCARRY
+from config.settings import (
+    PULLBACK, TRENDCARRY,
+    USE_CORRELATION_CAP, correlation_cluster,
+)
 
 
 PAPER_PATH = os.path.join("data", "paper_account.json")
@@ -161,6 +164,21 @@ def _has_open(acct: PaperAccount, symbol: str, strategy: str) -> bool:
     return any(p.symbol == symbol and p.strategy == strategy for p in acct.open_positions)
 
 
+def _correlation_conflict(acct: PaperAccount, symbol: str, side: int) -> str | None:
+    """Portfolio-level correlation cap. Returns the conflicting symbol if
+    opening (symbol, side) would put an OPPOSITE-side position inside the same
+    correlation cluster (e.g. LONG SPY while SHORT ^NDX at ρ=0.93, or LONG SPY
+    pullback while SHORT SPY trend_carry). None = no conflict, ok to open.
+    Disabled when USE_CORRELATION_CAP is False."""
+    if not USE_CORRELATION_CAP:
+        return None
+    cluster = correlation_cluster(symbol)
+    for p in acct.open_positions:
+        if p.side != side and correlation_cluster(p.symbol) == cluster:
+            return p.symbol
+    return None
+
+
 def _open_position(acct: PaperAccount, symbol: str, strategy: str, side: int,
                    entry_price: float, bar_time: str) -> Position | None:
     if _has_open(acct, symbol, strategy):
@@ -251,13 +269,12 @@ def _manage_open(acct: PaperAccount, bar_high: float, bar_low: float,
 # ---------------------------------------------------------------------------
 # Public tick entry point — called from worker.build_state
 # ---------------------------------------------------------------------------
-def tick(state: dict) -> dict[str, Any]:
-    """Walk every symbol in state, manage open positions, open new ones on
-    fresh signals. Returns a list of action strings for the worker to log
-    and the Discord card to display."""
-    acct = load_account()
+def _process_tick(acct: PaperAccount, state: dict) -> list[dict]:
+    """Core per-tick logic on an in-memory account (no I/O): manage exits then
+    open new positions on fresh signals, subject to the correlation cap.
+    Mutates `acct`, returns the action list. Shared by the live `tick()` and
+    the validation replay so both exercise identical logic."""
     actions: list[dict] = []
-
     for sym, snap in state.get("symbols", {}).items():
         bars = snap.get("bars") or []
         if not bars:
@@ -295,6 +312,18 @@ def tick(state: dict) -> dict[str, Any]:
             ) or _has_open(acct, sym, strat)
             if already:
                 continue
+            # Portfolio correlation cap: don't open a position that fights an
+            # existing opposite-side position in the same correlated cluster.
+            conflict = _correlation_conflict(acct, sym, side)
+            if conflict is not None:
+                actions.append({
+                    "event": "skip",
+                    "symbol": sym,
+                    "strategy": strat,
+                    "side": "LONG" if side == 1 else "SHORT",
+                    "reason": f"correlation_cap (conflicts with open {conflict})",
+                })
+                continue
             pos = _open_position(acct, sym, strat, side, bar_close, bar_time)
             if pos:
                 actions.append({
@@ -309,7 +338,15 @@ def tick(state: dict) -> dict[str, Any]:
                     "tp2": round(pos.entry_price * (1 + pos.tp2_pct * side), 2),
                     "equity_after": round(acct.equity, 2),
                 })
+    return actions
 
+
+def tick(state: dict) -> dict[str, Any]:
+    """Live entry point (called from worker.build_state). Loads the persisted
+    account, processes the tick, saves, and returns a summary for logging and
+    the Discord/Telegram card."""
+    acct = load_account()
+    actions = _process_tick(acct, state)
     save_account(acct)
     return {
         "equity": round(acct.equity, 2),
