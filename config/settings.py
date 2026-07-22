@@ -44,12 +44,19 @@ class DataConfig:
         #   - SPY (S&P 500 ETF):     PF 3.18, CAGR +17.3%, DD -6.9%
         #   - ^NDX (Nasdaq-100 cash): PF 3.13, CAGR +20.9%, DD -6.6%
         #   - GLD (gold ETF):        PF 3.40, CAGR +36.4%, DD -5.3%
-        #   - GC=F (gold futures):   regime-flip exit (Part 8.11) — 23/5 gold
         # EXECUTION MAPPING via TRADING_LABEL_MAP:
         #   SPY  → MT5 US500
         #   ^NDX → MT5 US100
         #   GLD  → MT5 XAUUSD
-        #   GC=F → MT5 XAUUSD (cross-confirm)
+        # DROPPED 2026-06-26 (user decision):
+        #   GC=F — gold now traded through GLD only (both → XAUUSD anyway).
+        #     User trades XAUUSD on Infinex and wanted a single gold instrument
+        #     instead of two symbols both mapping to XAUUSD. Consequence: the
+        #     regime-flip exit and the (validated-not-wired) GC=F HMM veto were
+        #     gated to GC=F only and are NOT migrated to GLD — applying them to
+        #     GLD regressed CAGR 3-25pp in MC (Parts 8.9-8.11), so they now
+        #     apply to nothing. GLD keeps its wider exit ladder (8.30). Reach
+        #     back for GC=F only if a 24h gold data feed + validation justify it.
         # DROPPED 2026-06-19 (Part 8.39):
         #   SLV — removed from live trading. (1) NO MT5 EXECUTION VENUE: not
         #     in TRADING_LABEL_MAP; user trades US500/US100/XAUUSD only, so an
@@ -64,7 +71,7 @@ class DataConfig:
         #     beneficial." Reach back for FX only after building a proper
         #     session-aware FX framework.
         # LIVE UNIVERSE (US500 + US100 + XAUUSD — user's MT5 instruments):
-        "SPY", "^NDX", "GLD", "GC=F",
+        "SPY", "^NDX", "GLD",
     ])
     start: str = "2024-05-06"
     end: str = "2026-05-06"
@@ -641,10 +648,9 @@ CRYPTO_CARRY = CryptoCarryConfig()
 # already have NYSE-hours data so they don't need a filter.
 # ---------------------------------------------------------------------------
 REGIME_FILTERS: dict = {
-    # GC=F: gold spot FX (24/5). Inherits PAXG's regime filter heuristic
-    # since gold spot off-hours liquidity has the same chop characteristics
-    # the COMBO_E filter was tuned for.
-    "GC=F": "ADX_25_NO_ASIA_SLOPE",
+    # (GC=F's ADX_25_NO_ASIA_SLOPE filter removed 2026-06-26 when GC=F was
+    # dropped from the universe. All current symbols are NYSE-hours and pass
+    # through unfiltered.)
 }
 
 
@@ -655,7 +661,10 @@ REGIME_FILTERS: dict = {
 # applying it to them regressed CAGR by 3-25pp in MC. Restrict to gold
 # perp / gold spot class only.
 # ---------------------------------------------------------------------------
-REGIME_FLIP_EXIT_SYMBOLS: set = {"GC=F"}
+# Empty since GC=F was dropped 2026-06-26 — the regime-flip exit was validated
+# ONLY for the gold-futures class and regressed SPY/^NDX/GLD in MC, so it is
+# deliberately NOT migrated to GLD. No symbol uses it now.
+REGIME_FLIP_EXIT_SYMBOLS: set = set()
 
 
 # ---------------------------------------------------------------------------
@@ -701,7 +710,6 @@ TRADING_LABEL_MAP: dict = {
     "SPY":   "US500",
     "^NDX":  "US100",        # Nasdaq-100 cash index (Part 8.22 swap from QQQ)
     "GLD":   "XAUUSD",
-    "GC=F":  "XAUUSD",       # cross-confirm gold via 23/5 futures
 }
 
 

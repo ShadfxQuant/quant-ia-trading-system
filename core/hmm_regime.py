@@ -21,6 +21,7 @@ State labelling:
 
 from __future__ import annotations
 
+import logging
 import warnings
 from dataclasses import dataclass
 
@@ -31,6 +32,14 @@ try:
     from hmmlearn.hmm import GaussianHMM
 except ImportError:                          # pragma: no cover
     GaussianHMM = None
+
+# hmmlearn's ConvergenceMonitor emits "Model is not converging" through the
+# `hmmlearn` logger (NOT the warnings system, so warnings.simplefilter can't
+# reach it). We refit walk-forward on short windows where hitting n_iter
+# without a monotonic LL gain is expected and harmless — the model still
+# returns usable posteriors, and HMM is informational-only downstream. Quiet
+# the logger so it doesn't spam every worker run.
+logging.getLogger("hmmlearn").setLevel(logging.ERROR)
 
 
 @dataclass

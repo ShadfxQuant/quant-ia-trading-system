@@ -190,7 +190,7 @@ st.caption(
     "Pullback engine + trend-carry sleeve · "
     + " · ".join(DATA.symbols)
     + " · 1× lev · proxy-signal architecture (SPY/^NDX/GLD signals → MT5 US500/US100/XAUUSD execution) · "
-    "Kalman-smoothed HMM + regime-flip exit (GC=F) · "
+    "Kalman-smoothed HMM (informational) · "
     "**realized 2.83yr: $100K → $409,279 (+$309,279 / +64.5% CAGR / −9.1% DD / WR 71.0% / n=920)** · "
     "3yr MC: mean $452K, P(2×) 100%, P(5×) 23%, P(ruin) 0%. "
     "**Educational only — not investment advice. Past performance is not "
@@ -279,9 +279,9 @@ yfinance bars  →  indicators  →  5-state regime
                                     ↓
               ┌─────────────────────┴───────────────────┐
               ↓                                          ↓
-       Pullback signal                          Regime-flip exit         ← NEW 8.11
+       Pullback signal                          Regime-flip exit
               ↓                                          ↓
-       Trend-carry runner                       (GC=F only, dd ≤ −2%)
+       Trend-carry runner                       (disabled — GC=F dropped)
               ↓                                          ↓
                  Execution engine (shared $100K pool)
                                     ↓
@@ -297,15 +297,15 @@ yfinance bars  →  indicators  →  5-state regime
 
 | Knob | Value |
 |---|---|
-| Signals computed on | SPY, ^NDX, GLD, GC=F |
-| Execute on MT5 as | US500, **US100**, XAUUSD (+ XAUUSD cross-confirm) |
+| Signals computed on | SPY, ^NDX, GLD |
+| Execute on MT5 as | US500, **US100**, XAUUSD |
 | Watchlist | SLV, EURUSD=X (IWM + QQQ dropped — Part 8.22) |
 | Pullback size | 0.30 of equity, cap 1.00 |
 | Max pyramid | 8 legs |
 | Stop / TP1 / TP2 | −2.5% / +4% / +15% |
 | Time stop | 390 bars |
 | RSI size mult | 1.3× / 0.7× |
-| Regime-flip exit | ON (GC=F only) |
+| Regime-flip exit | OFF (GC=F dropped 2026-06-26) |
 | Kalman P_bull | ON (q=1e-4, r=1e-2) |
 | Leverage | 1× (paper window) |
 
@@ -326,7 +326,7 @@ Per-symbol realized — signal source → MT5 execution:
 - SPY → **US500**: $170,758 (+20.9% CAGR, 75.7% WR, PF 3.18)
 - **^NDX** → **US100**: $170,920 (+20.9% CAGR, 78.3% WR, PF **3.13**)
 - GLD → **XAUUSD**: $233,533 (+34.9% CAGR, 80.1% WR, PF 3.40)
-- GC=F → **XAUUSD** cross-confirm: $134,068 (+13.3% CAGR, regime-flip exit)
+  _(GC=F gold-futures cross-confirm dropped 2026-06-26 — gold via GLD only)_
 """)
     st.caption(
         "Documented in SYSTEM_LOG.md Parts 8.7 → 8.12. "
