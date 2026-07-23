@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-23T09:25:18.983800+00:00",
+  "generated_at_utc": "2026-07-23T11:25:00.499025+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -4464,13 +4464,13 @@
         "adx": 16.4,
         "ema_slope_4bar": -7.614,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "supports",
+        "macro_tilt": "neutral",
         "flip": [
           "Close > EMA50 (29,115.63)",
           "ADX falls below 20 (now 16.4)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "^NDX leans short (ADX 16.4, close 28,997.43 vs EMA50 29,115.63) and the tape is choppy. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "^NDX leans short (ADX 16.4, close 28,997.43 vs EMA50 29,115.63) and the tape is choppy. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -13307,15 +13307,15 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_OFF",
-    "risk_off_score": 5,
+    "verdict": "NEUTRAL",
+    "risk_off_score": 2,
     "risk_on_score": 1,
     "theme_hits": {
       "war": 1,
       "banking": 0,
       "recession": 0,
-      "rate_hike": 1,
-      "crash": 3,
+      "rate_hike": 0,
+      "crash": 1,
       "rate_cut": 0,
       "risk_on": 1
     },
@@ -13325,13 +13325,9 @@
       ],
       "banking": [],
       "recession": [],
-      "rate_hike": [
-        "The bull market faces higher likelihood of a Fed rate hike as Iran crisis intensifies"
-      ],
+      "rate_hike": [],
       "crash": [
-        "A year after deadly jet crash at Bangladesh school, families demand answers",
-        "Will the housing market crash in 2026? What the numbers say",
-        "Yes, the AI stock selloff looks terrifying. But it might actually save the bull market."
+        "A year after deadly jet crash at Bangladesh school, families demand answers"
       ],
       "rate_cut": [],
       "risk_on": [
@@ -13346,7 +13342,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1784798720.2170405,
+    "fetched_at": 1784805901.074285,
     "risk_off_themes": [
       "banking",
       "crash",
