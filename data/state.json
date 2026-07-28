@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-28T11:44:56.892714+00:00",
+  "generated_at_utc": "2026-07-28T13:20:51.076622+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -35,13 +35,13 @@
         "adx": 23.67,
         "ema_slope_4bar": -0.8215,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "supports",
+        "macro_tilt": "neutral",
         "flip": [
           "Close > EMA50 (742.91)",
           "ADX falls below 20 (now 23.7)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "SPY leans short (ADX 23.7, close 739.02 vs EMA50 742.91) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "SPY leans short (ADX 23.7, close 739.02 vs EMA50 742.91) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -4465,13 +4465,13 @@
         "adx": 35.01,
         "ema_slope_4bar": -104.7229,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "supports",
+        "macro_tilt": "neutral",
         "flip": [
           "Close > EMA50 (28,582.28)",
           "ADX falls below 20 (now 35.0)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "^NDX leans short (ADX 35.0, close 28,036.41 vs EMA50 28,582.28) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "^NDX leans short (ADX 35.0, close 28,036.41 vs EMA50 28,582.28) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -13308,36 +13308,36 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_OFF",
-    "risk_off_score": 6,
-    "risk_on_score": 1,
+    "verdict": "NEUTRAL",
+    "risk_off_score": 4,
+    "risk_on_score": 3,
     "theme_hits": {
-      "war": 2,
+      "war": 1,
       "banking": 0,
       "recession": 0,
-      "rate_hike": 1,
-      "crash": 3,
+      "rate_hike": 2,
+      "crash": 1,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 3
     },
     "sample_headlines": {
       "war": [
-        "As the US pauses the war with Iran, is Trump really running out of weapons?",
-        "U.S. Treasury Yields, Dollar Fall Amid Military De-escalation, Oil-Price Decline - WSJ"
+        "As the US pauses the war with Iran, is Trump really running out of weapons?"
       ],
       "banking": [],
       "recession": [],
       "rate_hike": [
-        "Analysis: Kevin Warsh's Fed press conference will be revealing even without a rate hike"
+        "Analysis: Kevin Warsh's Fed press conference will be revealing even without a rate hike",
+        "Fed expected to hold rates steady \u2014 but an interest rate hike isn't off the table - Yahoo Finance"
       ],
       "crash": [
-        "Morning Bid: Chip rout snowballs",
-        "Making sense of the panic over Chinese AI - TechCrunch",
-        "Loop 202 reopens after deadly crash - AZ Family"
+        "World stocks hit one-month low as chip rout worsens"
       ],
       "rate_cut": [],
       "risk_on": [
-        "PayPal delivers an earnings beat as investors await updates on possible merger"
+        "PayPal delivers an earnings beat \u2014 and suggests it\u2019s not against a merger deal",
+        "Dow futures rally 500 points as oil prices fall after U.S. and Iran pause attacks: Live updates - CNBC",
+        "Big Tech Earnings and Fed Rate Decision Put Stock Rally to the Test | The 10-Point for July 27 - WSJ"
       ]
     },
     "n_headlines": 112,
@@ -13348,7 +13348,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1785239098.002901,
+    "fetched_at": 1785244852.3289697,
     "risk_off_themes": [
       "banking",
       "crash",
