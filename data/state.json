@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-28T09:37:30.537276+00:00",
+  "generated_at_utc": "2026-07-28T11:44:56.892714+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13309,33 +13309,35 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 5,
+    "risk_off_score": 6,
     "risk_on_score": 1,
     "theme_hits": {
-      "war": 3,
+      "war": 2,
       "banking": 0,
       "recession": 0,
-      "rate_hike": 0,
-      "crash": 2,
+      "rate_hike": 1,
+      "crash": 3,
       "rate_cut": 0,
       "risk_on": 1
     },
     "sample_headlines": {
       "war": [
-        "Trump says Iran war talks taking place during lull in strikes",
         "As the US pauses the war with Iran, is Trump really running out of weapons?",
         "U.S. Treasury Yields, Dollar Fall Amid Military De-escalation, Oil-Price Decline - WSJ"
       ],
       "banking": [],
       "recession": [],
-      "rate_hike": [],
+      "rate_hike": [
+        "Analysis: Kevin Warsh's Fed press conference will be revealing even without a rate hike"
+      ],
       "crash": [
+        "Morning Bid: Chip rout snowballs",
         "Making sense of the panic over Chinese AI - TechCrunch",
         "Loop 202 reopens after deadly crash - AZ Family"
       ],
       "rate_cut": [],
       "risk_on": [
-        "Crypto stocks rally thanks to rotation from AI infrastructure; bitcoin miners lag"
+        "PayPal delivers an earnings beat as investors await updates on possible merger"
       ]
     },
     "n_headlines": 112,
@@ -13346,7 +13348,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1785231451.068436,
+    "fetched_at": 1785239098.002901,
     "risk_off_themes": [
       "banking",
       "crash",
