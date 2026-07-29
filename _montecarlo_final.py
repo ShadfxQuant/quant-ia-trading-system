@@ -32,7 +32,9 @@ from execution.portfolio import run_portfolio, StrategySpec
 
 N_PATHS = 10_000
 INITIAL = 100_000.0
-SYMBOLS = ["SPY", "^NDX", "GLD", "GC=F"]
+# Derive from the live universe so this can't drift (GC=F dropped 2026-07-22).
+from config.settings import DATA as _DATA
+SYMBOLS = list(_DATA.symbols)
 # Proxy-signal architecture (Part 8.22 - IWM dropped, QQQ→^NDX swap):
 # signals computed on these tickers, executed on MT5 as:
 #   SPY→US500 · ^NDX→US100 · GLD→XAUUSD · GC=F→XAUUSD (cross)
