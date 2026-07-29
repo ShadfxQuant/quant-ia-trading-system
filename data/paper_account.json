@@ -1,5 +1,5 @@
 {
-  "equity": 96375.17168598104,
+  "equity": 95719.01653975646,
   "initial_capital": 100000.0,
   "cash": 100093.92824218668,
   "open_positions": [
@@ -47,21 +47,6 @@
       "bar_time_at_entry": "2026-06-12T14:30:00+00:00",
       "tp1_hit": false,
       "remaining_size": 29839.178472656004
-    },
-    {
-      "symbol": "SPY",
-      "strategy": "pullback",
-      "side": 1,
-      "entry_time": "2026-07-13T15:49:12.925727+00:00",
-      "entry_price": 751.510009765625,
-      "size": 29091.851106011414,
-      "stop_pct": 0.025,
-      "tp1_pct": 0.04,
-      "tp2_pct": 0.15,
-      "tp1_size_frac": 0.5,
-      "bar_time_at_entry": "2026-07-13T15:30:00+00:00",
-      "tp1_hit": false,
-      "remaining_size": 29091.851106011414
     },
     {
       "symbol": "^NDX",
@@ -298,8 +283,20 @@
       "size": 14370.055420374907,
       "pnl": 574.8022168149969,
       "reason": "tp1"
+    },
+    {
+      "symbol": "SPY",
+      "strategy": "pullback",
+      "side": 1,
+      "entry_time": "2026-07-13T15:49:12.925727+00:00",
+      "entry_price": 751.510009765625,
+      "exit_time": "2026-07-29T16:58:43.288837+00:00",
+      "exit_price": 734.56,
+      "size": 29091.851106011414,
+      "pnl": -656.1551462245858,
+      "reason": "manual_close"
     }
   ],
-  "n_trades_total": 17,
-  "last_updated_utc": "2026-07-29T16:54:11.756176+00:00"
+  "n_trades_total": 18,
+  "last_updated_utc": "2026-07-29T16:58:43.289103+00:00"
 }
