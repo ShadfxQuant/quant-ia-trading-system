@@ -1,5 +1,5 @@
 {
-  "equity": 95800.36946916605,
+  "equity": 96375.17168598104,
   "initial_capital": 100000.0,
   "cash": 100093.92824218668,
   "open_positions": [
@@ -75,8 +75,8 @@
       "tp2_pct": 0.15,
       "tp1_size_frac": 0.5,
       "bar_time_at_entry": "2026-07-20T14:30:00+00:00",
-      "tp1_hit": false,
-      "remaining_size": 28740.110840749814
+      "tp1_hit": true,
+      "remaining_size": 14370.055420374907
     },
     {
       "symbol": "^NDX",
@@ -286,8 +286,20 @@
       "size": 29311.68877179991,
       "pnl": -1172.467550871996,
       "reason": "stop"
+    },
+    {
+      "symbol": "^NDX",
+      "strategy": "pullback",
+      "side": -1,
+      "entry_time": "2026-07-20T14:41:22.410459+00:00",
+      "entry_price": 28837.73046875,
+      "exit_time": "2026-07-29T15:33:27.041201+00:00",
+      "exit_price": 27684.22125,
+      "size": 14370.055420374907,
+      "pnl": 574.8022168149969,
+      "reason": "tp1"
     }
   ],
-  "n_trades_total": 16,
-  "last_updated_utc": "2026-07-29T13:28:19.896532+00:00"
+  "n_trades_total": 17,
+  "last_updated_utc": "2026-07-29T15:33:27.041248+00:00"
 }
