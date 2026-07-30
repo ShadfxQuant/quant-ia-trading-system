@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-30T20:02:31.766458+00:00",
+  "generated_at_utc": "2026-07-30T21:20:15.417990+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -19,10 +19,10 @@
     "SPY": {
       "symbol": "SPY",
       "bar_time_utc": "2026-07-30T19:30:00+00:00",
-      "close": 741.7100219726562,
-      "ema": 740.1968902730383,
-      "sma": 745.7884239783654,
-      "vwap": 738.9869863585768,
+      "close": 741.72998046875,
+      "ema": 740.1976729591596,
+      "sma": 745.7885775052584,
+      "vwap": 739.0084157502794,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -33,14 +33,14 @@
         "bias": "neutral",
         "strength": "chop",
         "adx": 12.81,
-        "ema_slope_4bar": 0.1296,
+        "ema_slope_4bar": 0.1304,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "SPY is neutral (ADX 12.8, close 741.71 vs EMA50 740.20) and the tape is choppy. The regime filter is mostly green."
+        "narrative": "SPY is neutral (ADX 12.8, close 741.73 vs EMA50 740.20) and the tape is choppy. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -4435,13 +4435,13 @@
         {
           "t": "2026-07-30T19:30:00+00:00",
           "o": 741.77001953125,
-          "h": 742.094970703125,
+          "h": 742.0999755859375,
           "l": 741.0,
-          "c": 741.7100219726562,
-          "v": 12181004.0,
-          "ema": 740.1968902730383,
-          "sma": 745.7884239783654,
-          "vwap": 738.9869863585768
+          "c": 741.72998046875,
+          "v": 12583754.0,
+          "ema": 740.1976729591596,
+          "sma": 745.7885775052584,
+          "vwap": 739.0084157502794
         }
       ]
     },
@@ -8878,10 +8878,10 @@
     "GLD": {
       "symbol": "GLD",
       "bar_time_utc": "2026-07-30T19:30:00+00:00",
-      "close": 377.135009765625,
-      "ema": 373.03311255706956,
-      "sma": 373.1200965294471,
-      "vwap": 376.1926335051445,
+      "close": 377.17999267578125,
+      "ema": 373.034876592762,
+      "sma": 373.1204425518329,
+      "vwap": 376.1973942109262,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8892,14 +8892,14 @@
         "bias": "neutral",
         "strength": "weak",
         "adx": 26.33,
-        "ema_slope_4bar": 0.6417,
+        "ema_slope_4bar": 0.6435,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "GLD is neutral (ADX 26.3, close 377.14 vs EMA50 373.03) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "GLD is neutral (ADX 26.3, close 377.18 vs EMA50 373.03) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -13296,11 +13296,11 @@
           "o": 377.2200012207031,
           "h": 377.4599914550781,
           "l": 376.8599853515625,
-          "c": 377.135009765625,
-          "v": 722666.0,
-          "ema": 373.03311255706956,
-          "sma": 373.1200965294471,
-          "vwap": 376.1926335051445
+          "c": 377.17999267578125,
+          "v": 739144.0,
+          "ema": 373.034876592762,
+          "sma": 373.1204425518329,
+          "vwap": 376.1973942109262
         }
       ]
     }
@@ -13308,10 +13308,10 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 9,
+    "risk_off_score": 10,
     "risk_on_score": 1,
     "theme_hits": {
-      "war": 6,
+      "war": 7,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
@@ -13330,7 +13330,7 @@
       "rate_hike": [],
       "crash": [
         "Oscar-winning songwriter Glen Hansard killed in crash",
-        "A break below this critical stock-market threshold used to signal panic for investors. Not anymore.",
+        "Micron: AI Panic, But Memory Supercycle Isn't Over Yet (Upgrade) (NASDAQ:MU) - Seeking Alpha",
         "Korean Stocks Plunge 16% in Two-Day Burst of Retail Selling - Bloomberg"
       ],
       "rate_cut": [],
@@ -13338,7 +13338,7 @@
         "Ford Stock Jumps After Earnings Beat. The Aluminum Crisis Is Over. - Barron's"
       ]
     },
-    "n_headlines": 112,
+    "n_headlines": 111,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13346,7 +13346,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1785441752.5145776,
+    "fetched_at": 1785446415.9384615,
     "risk_off_themes": [
       "banking",
       "crash",
