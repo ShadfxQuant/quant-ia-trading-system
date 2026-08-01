@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-07-31T21:30:10.669840+00:00",
+  "generated_at_utc": "2026-08-01T09:07:09.534667+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -4451,7 +4451,7 @@
       "close": 28272.9765625,
       "ema": 28158.008807135848,
       "sma": 28788.391541466346,
-      "vwap": 28235.252947834262,
+      "vwap": 28239.068761993643,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8801,10 +8801,10 @@
           "h": 28604.30078125,
           "l": 27957.2734375,
           "c": 28118.42578125,
-          "v": 364159204.0,
+          "v": 0.0,
           "ema": 28130.901301344307,
           "sma": 28843.404071514422,
-          "vwap": 28226.66666666667
+          "vwap": null
         },
         {
           "t": "2026-07-31T14:30:00+00:00",
@@ -8815,7 +8815,7 @@
           "v": 177495288.0,
           "ema": 28126.5615750661,
           "sma": 28830.257091346153,
-          "vwap": 28178.12338768887
+          "vwap": 28078.529296875
         },
         {
           "t": "2026-07-31T15:30:00+00:00",
@@ -8826,7 +8826,7 @@
           "v": 124717216.0,
           "ema": 28130.710278617433,
           "sma": 28818.215685096155,
-          "vwap": 28173.358333415435
+          "vwap": 28109.123002493012
         },
         {
           "t": "2026-07-31T16:30:00+00:00",
@@ -8837,7 +8837,7 @@
           "v": 123979889.0,
           "ema": 28138.91948031381,
           "sma": 28807.79356971154,
-          "vwap": 28192.027376605576
+          "vwap": 28162.429907239737
         },
         {
           "t": "2026-07-31T17:30:00+00:00",
@@ -8848,7 +8848,7 @@
           "v": 112003185.0,
           "ema": 28145.2169087819,
           "sma": 28801.91661658654,
-          "vwap": 28207.485562515634
+          "vwap": 28194.507054506634
         },
         {
           "t": "2026-07-31T18:30:00+00:00",
@@ -8859,7 +8859,7 @@
           "v": 131276369.0,
           "ema": 28153.31624569241,
           "sma": 28796.346920072116,
-          "vwap": 28223.88254001848
+          "vwap": 28222.36811458425
         },
         {
           "t": "2026-07-31T19:30:00+00:00",
@@ -8870,7 +8870,7 @@
           "v": 149953000.0,
           "ema": 28158.008807135848,
           "sma": 28788.391541466346,
-          "vwap": 28235.252947834262
+          "vwap": 28239.068761993643
         }
       ]
     },
@@ -13307,22 +13307,22 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 8,
-    "risk_on_score": 1,
+    "risk_off_score": 9,
+    "risk_on_score": 2,
     "theme_hits": {
       "war": 6,
       "banking": 0,
       "recession": 0,
       "rate_hike": 1,
-      "crash": 1,
+      "crash": 2,
       "rate_cut": 1,
-      "risk_on": 0
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
-        "Spain sending troops as thousands enter enclave of Ceuta from Morocco",
-        "At least five members of same family killed in Russian missile attack, Zelensky says",
-        "Why limited war with the US may suit Iran better than peace"
+        "Missile that left crater deep inside Poland was probably Russian - Polish PM",
+        "Why limited war with the US may suit Iran better than peace",
+        "Iran's overlapping power centers make ending the war more complicated"
       ],
       "banking": [],
       "recession": [],
@@ -13330,14 +13330,17 @@
         "Analysis: Markets heard a dovish Kevin Warsh. The Fed chairman's own words suggest a rate hike"
       ],
       "crash": [
-        "S&P 500 ends with its first July decline since 2014. Here are the stocks that led the selloff."
+        "S&P 500 ends with its first July decline since 2014. Here are the stocks that led the selloff.",
+        "Zuckerberg\u2019s Net Worth Falls $18 Billion Amid Meta Stock Plunge\u2014Wall Street Sours On AI Spending - forbes.com"
       ],
       "rate_cut": [
         "Analysis: Markets heard a dovish Kevin Warsh. The Fed chairman's own words suggest a rate hike"
       ],
-      "risk_on": []
+      "risk_on": [
+        "US Dollar Price Forecast: Dollar Retreats as ECB and BoE Hold Policy Steady; EUR/USD and GBP/USD Rally"
+      ]
     },
-    "n_headlines": 112,
+    "n_headlines": 114,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13345,7 +13348,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1785533412.4179835,
+    "fetched_at": 1785575230.4281745,
     "risk_off_themes": [
       "banking",
       "crash",
