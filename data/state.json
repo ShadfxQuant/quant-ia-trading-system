@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-03T20:57:10.997851+00:00",
+  "generated_at_utc": "2026-08-04T09:39:45.071155+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -4451,7 +4451,7 @@
       "close": 28775.466796875,
       "ema": 28294.868144479544,
       "sma": 28766.62783954327,
-      "vwap": 28641.585592205916,
+      "vwap": 28721.951909679505,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8801,10 +8801,10 @@
           "h": 28561.0390625,
           "l": 28202.173828125,
           "c": 28558.333984375,
-          "v": 314830476.0,
+          "v": 0.0,
           "ema": 28173.707833694247,
           "sma": 28782.692052283655,
-          "vwap": 28440.515625
+          "vwap": null
         },
         {
           "t": "2026-08-03T14:30:00+00:00",
@@ -8815,7 +8815,7 @@
           "v": 184932752.0,
           "ema": 28190.788837765063,
           "sma": 28777.479537259616,
-          "vwap": 28503.310044002457
+          "vwap": 28610.21158854167
         },
         {
           "t": "2026-08-03T15:30:00+00:00",
@@ -8826,7 +8826,7 @@
           "v": 129288303.0,
           "ema": 28211.384970965453,
           "sma": 28774.62743389423,
-          "vwap": 28540.15362085338
+          "vwap": 28639.984861195328
         },
         {
           "t": "2026-08-03T16:30:00+00:00",
@@ -8837,7 +8837,7 @@
           "v": 109418981.0,
           "ema": 28233.082573207004,
           "sma": 28771.54405048077,
-          "vwap": 28569.935452149213
+          "vwap": 28666.11452476459
         },
         {
           "t": "2026-08-03T17:30:00+00:00",
@@ -8848,7 +8848,7 @@
           "v": 105968327.0,
           "ema": 28254.113955140063,
           "sma": 28769.167457932694,
-          "vwap": 28597.41410072414
+          "vwap": 28690.683817078498
         },
         {
           "t": "2026-08-03T18:30:00+00:00",
@@ -8859,7 +8859,7 @@
           "v": 123991793.0,
           "ema": 28275.2518729532,
           "sma": 28768.80743689904,
-          "vwap": 28622.41885130365
+          "vwap": 28710.039208791924
         },
         {
           "t": "2026-08-03T19:30:00+00:00",
@@ -8870,7 +8870,7 @@
           "v": 134080000.0,
           "ema": 28294.868144479544,
           "sma": 28766.62783954327,
-          "vwap": 28641.585592205916
+          "vwap": 28721.951909679505
         }
       ]
     },
@@ -8893,13 +8893,13 @@
         "adx": 16.43,
         "ema_slope_4bar": -0.1931,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close > EMA50 (372.12)",
           "ADX falls below 20 (now 16.4)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 16.4, close 371.69 vs EMA50 372.12) and the tape is choppy. The regime filter is mostly green."
+        "narrative": "GLD leans short (ADX 16.4, close 371.69 vs EMA50 372.12) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -13307,40 +13307,39 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
-    "risk_off_score": 6,
-    "risk_on_score": 5,
+    "verdict": "RISK_OFF",
+    "risk_off_score": 7,
+    "risk_on_score": 2,
     "theme_hits": {
       "war": 5,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 1,
+      "crash": 2,
       "rate_cut": 1,
-      "risk_on": 4
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
         "Threat to oil tankers in Middle East  worst since start of Iran war, analysts say",
-        "Russian anti-war politician says he has fled the country",
-        "Sudan army drone strike on court session kills 35, rights group says"
+        "Stocks rise despite Iran tensions, oil up, yen eases",
+        "Bitcoin and ethereum prices today, Monday, August 3, 2026: Prices pulling back this morning despite de-escalation with Iran"
       ],
       "banking": [],
       "recession": [],
       "rate_hike": [],
       "crash": [
-        "SpaceX's post-IPO plunge sets tense backdrop for first earnings report"
+        "SpaceX's post-IPO plunge sets tense backdrop for first earnings report",
+        "JOMO Trumps FOMO as KOSPI Crash Fuels Zero-Loss Satisfaction - chosun.com"
       ],
       "rate_cut": [
         "\u2018I\u2019m easing into retirement\u2019: I\u2019m getting an $80,000 pension payout. Where can I invest it safely?"
       ],
       "risk_on": [
-        "Investors are rotating into financial stocks. The Fed\u2019s next move could determine how far the rally runs.",
-        "Financial stocks are crushing it. These charts show why the \u2018breakout\u2019 rally may have just begun.",
-        "Snap's stock jumps 10% on earnings beat and strong sales forecast"
+        "Snap's stock jumps 8% on earnings beat and strong sales forecast"
       ]
     },
-    "n_headlines": 111,
+    "n_headlines": 109,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13348,7 +13347,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1785790631.580309,
+    "fetched_at": 1785836385.98287,
     "risk_off_themes": [
       "banking",
       "crash",
