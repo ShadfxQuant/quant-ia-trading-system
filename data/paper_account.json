@@ -1,5 +1,5 @@
 {
-  "equity": 95001.12391570829,
+  "equity": 93448.30539129268,
   "initial_capital": 100000.0,
   "cash": 100093.92824218668,
   "open_positions": [
@@ -32,36 +32,6 @@
       "bar_time_at_entry": "2026-05-28T19:30:00+00:00",
       "tp1_hit": true,
       "remaining_size": 21000.0
-    },
-    {
-      "symbol": "SPY",
-      "strategy": "trend_carry",
-      "side": -1,
-      "entry_time": "2026-06-12T14:46:35.723405+00:00",
-      "entry_price": 738.4500122070312,
-      "size": 29839.178472656004,
-      "stop_pct": 0.04,
-      "tp1_pct": 0.08,
-      "tp2_pct": 0.25,
-      "tp1_size_frac": 0.3,
-      "bar_time_at_entry": "2026-06-12T14:30:00+00:00",
-      "tp1_hit": false,
-      "remaining_size": 29839.178472656004
-    },
-    {
-      "symbol": "^NDX",
-      "strategy": "pullback",
-      "side": -1,
-      "entry_time": "2026-07-20T14:41:22.410459+00:00",
-      "entry_price": 28837.73046875,
-      "size": 28740.110840749814,
-      "stop_pct": 0.025,
-      "tp1_pct": 0.04,
-      "tp2_pct": 0.15,
-      "tp1_size_frac": 0.5,
-      "bar_time_at_entry": "2026-07-20T14:30:00+00:00",
-      "tp1_hit": true,
-      "remaining_size": 14370.055420374907
     },
     {
       "symbol": "^NDX",
@@ -307,8 +277,32 @@
       "size": 28715.704961926935,
       "pnl": -717.8926240481716,
       "reason": "stop"
+    },
+    {
+      "symbol": "SPY",
+      "strategy": "trend_carry",
+      "side": -1,
+      "entry_time": "2026-06-12T14:46:35.723405+00:00",
+      "entry_price": 738.4500122070312,
+      "exit_time": "2026-08-04T15:58:52.604668+00:00",
+      "exit_price": 767.9880126953125,
+      "size": 29839.178472656004,
+      "pnl": -1193.567138906239,
+      "reason": "stop"
+    },
+    {
+      "symbol": "^NDX",
+      "strategy": "pullback",
+      "side": -1,
+      "entry_time": "2026-07-20T14:41:22.410459+00:00",
+      "entry_price": 28837.73046875,
+      "exit_time": "2026-08-04T15:58:52.604694+00:00",
+      "exit_price": 29558.67373046875,
+      "size": 14370.055420374907,
+      "pnl": -359.25138550937197,
+      "reason": "stop"
     }
   ],
-  "n_trades_total": 19,
-  "last_updated_utc": "2026-08-04T13:28:23.079254+00:00"
+  "n_trades_total": 21,
+  "last_updated_utc": "2026-08-04T15:58:52.604736+00:00"
 }
