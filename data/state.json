@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-04T11:48:51.763877+00:00",
+  "generated_at_utc": "2026-08-04T13:28:14.206953+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -8893,13 +8893,13 @@
         "adx": 16.43,
         "ema_slope_4bar": -0.1931,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close > EMA50 (372.12)",
           "ADX falls below 20 (now 16.4)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 16.4, close 371.69 vs EMA50 372.12) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GLD leans short (ADX 16.4, close 371.69 vs EMA50 372.12) and the tape is choppy. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -13307,35 +13307,33 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_OFF",
-    "risk_off_score": 5,
-    "risk_on_score": 3,
+    "verdict": "NEUTRAL",
+    "risk_off_score": 3,
+    "risk_on_score": 2,
     "theme_hits": {
-      "war": 4,
+      "war": 1,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 1,
+      "crash": 2,
       "rate_cut": 1,
-      "risk_on": 2
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
-        "Threat to oil tankers in Middle East  worst since start of Iran war, analysts say",
-        "Stocks rise despite higher oil prices as Iran tensions persist",
-        "Trump warns Iran talks are \u2018last chance\u2019 to end war as Qatar confirms diplomatic efforts"
+        "Threat to oil tankers in Middle East  worst since start of Iran war, analysts say"
       ],
       "banking": [],
       "recession": [],
       "rate_hike": [],
       "crash": [
+        "Will the housing market crash in 2026? What the second half of the year looks like",
         "JOMO Trumps FOMO as KOSPI Crash Fuels Zero-Loss Satisfaction - chosun.com"
       ],
       "rate_cut": [
         "\u2018I\u2019m easing into retirement\u2019: I\u2019m getting an $80,000 pension payout. Where can I invest it safely?"
       ],
       "risk_on": [
-        "CAT Stock Lifts Dow Jones With Massive Earnings Beat",
         "McDonald's earnings beat estimates, chain announces new U.S. head to accelerate growth"
       ]
     },
@@ -13347,7 +13345,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1785844132.917343,
+    "fetched_at": 1785850095.1771548,
     "risk_off_themes": [
       "banking",
       "crash",
