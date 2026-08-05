@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-05T11:45:18.990236+00:00",
+  "generated_at_utc": "2026-08-05T13:25:26.935948+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -35,13 +35,13 @@
         "adx": 55.39,
         "ema_slope_4bar": 3.5838,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "supports",
+        "macro_tilt": "neutral",
         "flip": [
           "Close < EMA50 (751.16)",
           "ADX falls below 20 (now 55.4)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 55.4, close 771.28 vs EMA50 751.16) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "SPY leans long (ADX 55.4, close 771.28 vs EMA50 751.16) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -8894,12 +8894,12 @@
         "adx": 18.95,
         "ema_slope_4bar": 0.3327,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close < EMA50 (372.73)",
           "ADX falls below 20 (now 19.0)"
         ],
-        "narrative": "GLD leans long (ADX 19.0, close 374.12 vs EMA50 372.73) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GLD leans long (ADX 19.0, close 374.12 vs EMA50 372.73) and the tape is choppy. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -13307,34 +13307,35 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_ON",
+    "verdict": "NEUTRAL",
     "risk_off_score": 3,
-    "risk_on_score": 5,
+    "risk_on_score": 3,
     "theme_hits": {
-      "war": 1,
+      "war": 2,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 2,
-      "rate_cut": 0,
-      "risk_on": 5
+      "crash": 1,
+      "rate_cut": 1,
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
+        "Russia strike kills 21 as Ukraine says it needs more missile interceptors",
         "GM, Chinese automaker extend joint venture for 20 years despite geopolitical tensions with U.S."
       ],
       "banking": [],
       "recession": [],
       "rate_hike": [],
       "crash": [
-        "Peter Schiff says a \u2018much bigger selloff\u2019 in Bitcoin is coming. Here\u2019s why \u2014 and how investors can prepare",
-        "Stocks return to record highs. Investors who sat tight during the recent momentum crash are being rewarded."
+        "Stock Market Today: Dow Rises After Surprise Jobs Data; AMD, SpaceX Plunge On Earnings (Live Coverage)"
       ],
-      "rate_cut": [],
+      "rate_cut": [
+        "\u2018I\u2019m easing into retirement\u2019: I\u2019m getting an $80,000 pension payout. Where can I invest it safely?"
+      ],
       "risk_on": [
-        "Michael Burry bets against rally: 'We are near a major top, and possible a 1987-type fall'",
-        "SoftBank jumps 13% as Asia tech stocks track Wall Street AI rally",
-        "Jim Cramer says one hedge fund's collapse cleared the way for tech's rally"
+        "Silver prices today, Wednesday, August 5, 2026: Prices rising in early trading on Hormuz optimism",
+        "Michael Burry bets against rally: 'We are near a major top, and possible a 1987-type fall'"
       ]
     },
     "n_headlines": 111,
@@ -13345,7 +13346,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1785930319.8527913,
+    "fetched_at": 1785936327.5443583,
     "risk_off_themes": [
       "banking",
       "crash",
