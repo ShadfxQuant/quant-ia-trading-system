@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-06T11:51:48.881175+00:00",
+  "generated_at_utc": "2026-08-06T13:43:55.951767+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13310,39 +13310,41 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 5,
-    "risk_on_score": 3,
+    "risk_off_score": 6,
+    "risk_on_score": 4,
     "theme_hits": {
-      "war": 3,
+      "war": 2,
       "banking": 0,
-      "recession": 0,
+      "recession": 1,
       "rate_hike": 1,
-      "crash": 1,
+      "crash": 2,
       "rate_cut": 0,
-      "risk_on": 3
+      "risk_on": 4
     },
     "sample_headlines": {
       "war": [
-        "Middle East War Triggers New Global Refining Boom",
         "Ukraine\u2019s military hits one of Russia\u2019s biggest oil refineries in long-range drone attack",
         "Beijing flips the script on the U.S. tech war \u2014 and tests the truce weeks before Xi's visit"
       ],
       "banking": [],
-      "recession": [],
+      "recession": [
+        "Badger Meter\u2019s (BMI) Revenue Contraction Signals Demand Air Pocket"
+      ],
       "rate_hike": [
         "Fed Governor Cook says she's 'prepared to act' on rate hike to address inflation"
       ],
       "crash": [
-        "Flash crash briefly fells SK Hynix while SocGen strategist says Korean shakeout is nearly done"
+        "Western Digital Sinks 16%, SanDisk Falls 11%, Micron Drops 6% as Memory Selloff Hits Storage Stocks",
+        "Michael Burry warned of a 1987-style crash \u2014 and kept his AI shorts open - qz.com"
       ],
       "rate_cut": [],
       "risk_on": [
+        "The AI rally is back \u2014 here's how to tell if it has legs: One Big Investment Idea",
         "Restaurant Brands International earnings beat as Burger King's U.S. business soars",
-        "AMD Sales Outlook Disappoints Investors After AI-Fueled Rally - Bloomberg.com",
-        "Palantir short sellers sustain $3B loss following stock's 30% rally (PLTR:NASDAQ) - Seeking Alpha"
+        "Aggressive options trading helped drive the S&P 500\u2019s latest rally. What that means for investors."
       ]
     },
-    "n_headlines": 111,
+    "n_headlines": 114,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13350,7 +13352,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1786017109.411563,
+    "fetched_at": 1786023836.4524167,
     "risk_off_themes": [
       "banking",
       "crash",
