@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-05T21:41:09.073955+00:00",
+  "generated_at_utc": "2026-08-06T09:41:26.654055+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -35,13 +35,13 @@
         "adx": 54.23,
         "ema_slope_4bar": 2.598,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close < EMA50 (756.21)",
           "ADX falls below 20 (now 54.2)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 54.2, close 769.74 vs EMA50 756.21) and the trend is strong. The regime filter is mostly green."
+        "narrative": "SPY leans long (ADX 54.2, close 769.74 vs EMA50 756.21) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -4452,7 +4452,7 @@
       "close": 29471.29296875,
       "ema": 28874.947472690885,
       "sma": 28775.547881610575,
-      "vwap": 29697.557540352238,
+      "vwap": 29641.480186433393,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -4465,13 +4465,13 @@
         "adx": 54.63,
         "ema_slope_4bar": 124.7839,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close < EMA50 (28,874.95)",
           "ADX falls below 20 (now 54.6)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "^NDX leans long (ADX 54.6, close 29,471.29 vs EMA50 28,874.95) and the trend is strong. The regime filter is mostly green."
+        "narrative": "^NDX leans long (ADX 54.6, close 29,471.29 vs EMA50 28,874.95) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -8803,10 +8803,10 @@
           "h": 29946.62890625,
           "l": 29781.5703125,
           "c": 29791.716796875,
-          "v": 316534598.0,
+          "v": 0.0,
           "ema": 28671.521047993825,
           "sma": 28780.579612379806,
-          "vwap": 29839.972005208332
+          "vwap": null
         },
         {
           "t": "2026-08-05T14:30:00+00:00",
@@ -8817,7 +8817,7 @@
           "v": 173653521.0,
           "ema": 28711.096049788186,
           "sma": 28780.146138822114,
-          "vwap": 29792.09907641552
+          "vwap": 29704.836588541668
         },
         {
           "t": "2026-08-05T15:30:00+00:00",
@@ -8828,7 +8828,7 @@
           "v": 153541730.0,
           "ema": 28750.16359134061,
           "sma": 28780.1029296875,
-          "vwap": 29763.164191084485
+          "vwap": 29688.858923839187
         },
         {
           "t": "2026-08-05T16:30:00+00:00",
@@ -8839,7 +8839,7 @@
           "v": 106665010.0,
           "ema": 28784.689421704705,
           "sma": 28779.43093449519,
-          "vwap": 29747.629629850966
+          "vwap": 29680.258728919096
         },
         {
           "t": "2026-08-05T17:30:00+00:00",
@@ -8850,7 +8850,7 @@
           "v": 102757922.0,
           "ema": 28818.57460982413,
           "sma": 28779.0435546875,
-          "vwap": 29734.68453627817
+          "vwap": 29672.578689499136
         },
         {
           "t": "2026-08-05T18:30:00+00:00",
@@ -8861,7 +8861,7 @@
           "v": 134973435.0,
           "ema": 28850.606840198674,
           "sma": 28778.068524639424,
-          "vwap": 29720.28889514887
+          "vwap": 29663.879845192474
         },
         {
           "t": "2026-08-05T19:30:00+00:00",
@@ -8872,7 +8872,7 @@
           "v": 132282000.0,
           "ema": 28874.947472690885,
           "sma": 28775.547881610575,
-          "vwap": 29697.557540352238
+          "vwap": 29641.480186433393
         }
       ]
     },
@@ -8895,13 +8895,13 @@
         "adx": 38.31,
         "ema_slope_4bar": 2.278,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "supports",
         "flip": [
           "Close < EMA50 (376.90)",
           "ADX falls below 20 (now 38.3)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GLD leans long (ADX 38.3, close 389.57 vs EMA50 376.90) and the trend is strong. The regime filter is mostly green."
+        "narrative": "GLD leans long (ADX 38.3, close 389.57 vs EMA50 376.90) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -13309,39 +13309,36 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
+    "verdict": "RISK_OFF",
     "risk_off_score": 4,
-    "risk_on_score": 3,
+    "risk_on_score": 1,
     "theme_hits": {
-      "war": 1,
+      "war": 3,
       "banking": 0,
       "recession": 0,
       "rate_hike": 1,
-      "crash": 2,
+      "crash": 0,
       "rate_cut": 0,
-      "risk_on": 3
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
-        "DeepSeek Matched Gemini 3.6 Flash at 3 Cents Per Benchmark Test. Alibaba (BABA) Is Turning Alphabet\u2019s (GOOGL) China Problem Into a Price War"
+        "Ukraine\u2019s military hits one of Russia\u2019s biggest oil refineries in long-range drone attack",
+        "Beijing flips the script on the U.S. tech war \u2014 and tests the truce weeks before Xi's visit",
+        "GM, Chinese automaker extend joint venture for 20 years despite geopolitical tensions with U.S. - CNBC"
       ],
       "banking": [],
       "recession": [],
       "rate_hike": [
         "Fed Governor Cook says she's 'prepared to act' on rate hike to address inflation"
       ],
-      "crash": [
-        "Reddit's Tumble Has Been Overdone After It Produced Strong FCF - RDDT Could be 40% Too Cheap",
-        "SpaceX moon crash is a perfect metaphor for rocket maker\u2019s share price, analysts say"
-      ],
+      "crash": [],
       "rate_cut": [],
       "risk_on": [
-        "USD/JPY, USD/CAD, and USD/CHF Forecasts \u2013 Carry Trade Interest Drives Dollar Rally",
-        "Aggressive options trading helped drive the S&P 500\u2019s latest rally. What that means for investors.",
-        "Figma\u2019s push into AI agents drives an earnings beat"
+        "S&P 500 futures climb after massive rally lifts index to fresh record: Live updates - CNBC"
       ]
     },
-    "n_headlines": 110,
+    "n_headlines": 109,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13349,7 +13346,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1785966070.5015461,
+    "fetched_at": 1786009287.5691667,
     "risk_off_themes": [
       "banking",
       "crash",
