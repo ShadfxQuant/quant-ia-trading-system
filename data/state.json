@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-07T08:15:45.603916+00:00",
+  "generated_at_utc": "2026-08-07T09:27:21.334841+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -35,13 +35,13 @@
         "adx": 42.58,
         "ema_slope_4bar": 1.6164,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close < EMA50 (759.30)",
           "ADX falls below 20 (now 42.6)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 42.6, close 768.53 vs EMA50 759.30) and the trend is strong. The regime filter is mostly green."
+        "narrative": "SPY leans long (ADX 42.6, close 768.53 vs EMA50 759.30) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -4465,13 +4465,13 @@
         "adx": 33.65,
         "ema_slope_4bar": 68.6773,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close < EMA50 (29,006.72)",
           "ADX falls below 20 (now 33.6)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "^NDX leans long (ADX 33.6, close 29,374.31 vs EMA50 29,006.72) and the trend is strong. The regime filter is mostly green."
+        "narrative": "^NDX leans long (ADX 33.6, close 29,374.31 vs EMA50 29,006.72) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -8895,13 +8895,13 @@
         "adx": 43.74,
         "ema_slope_4bar": 1.5996,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "supports",
         "flip": [
           "Close < EMA50 (379.95)",
           "ADX falls below 20 (now 43.7)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GLD leans long (ADX 43.7, close 389.65 vs EMA50 379.95) and the trend is strong. The regime filter is mostly green."
+        "narrative": "GLD leans long (ADX 43.7, close 389.65 vs EMA50 379.95) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -13309,22 +13309,22 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
+    "verdict": "RISK_OFF",
     "risk_off_score": 6,
-    "risk_on_score": 6,
+    "risk_on_score": 1,
     "theme_hits": {
       "war": 2,
       "banking": 0,
       "recession": 0,
       "rate_hike": 1,
       "crash": 3,
-      "rate_cut": 2,
-      "risk_on": 4
+      "rate_cut": 1,
+      "risk_on": 0
     },
     "sample_headlines": {
       "war": [
         "Rights groups say Israeli attack that killed Lebanese journalist an apparent war crime",
-        "Beijing flips the script on the U.S. tech war \u2014 and tests the truce weeks before Xi's visit"
+        "Sudan's invisible children - born in war with no legal identity"
       ],
       "banking": [],
       "recession": [],
@@ -13337,16 +13337,11 @@
         "Trade Desk shares tumble on earnings miss and weak outlook"
       ],
       "rate_cut": [
-        "Fed's Cook ready to raise rates if inflation doesn't start easing",
         "\u2018I\u2019m easing into retirement\u2019: I\u2019m getting an $80,000 pension payout. Where can I invest it safely?"
       ],
-      "risk_on": [
-        "Stock market today: Dow posts record on hopes for Iran deal, S&P 500 and Nasdaq snap 4-day rally",
-        "Axon Stock Falls After AI, Drone Wins Fuel Q2 Earnings Beat",
-        "Yen firms after landmark intervention, dollar near lows on optimism over Iran talks"
-      ]
+      "risk_on": []
     },
-    "n_headlines": 113,
+    "n_headlines": 114,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13354,7 +13349,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1786090546.2307315,
+    "fetched_at": 1786094842.5790975,
     "risk_off_themes": [
       "banking",
       "crash",
