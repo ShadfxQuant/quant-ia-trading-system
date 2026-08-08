@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-07T20:58:55.741029+00:00",
+  "generated_at_utc": "2026-08-08T07:51:31.614694+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -35,13 +35,13 @@
         "adx": 40.71,
         "ema_slope_4bar": 1.7198,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close < EMA50 (762.55)",
           "ADX falls below 20 (now 40.7)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 40.7, close 773.12 vs EMA50 762.55) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "SPY leans long (ADX 40.7, close 773.12 vs EMA50 762.55) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -4452,7 +4452,7 @@
       "close": 29719.171875,
       "ema": 29165.722233137967,
       "sma": 28775.94178185096,
-      "vwap": 29636.427462913045,
+      "vwap": 29651.644693096096,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4465,13 +4465,13 @@
         "adx": 29.08,
         "ema_slope_4bar": 86.3356,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close < EMA50 (29,165.72)",
           "ADX falls below 20 (now 29.1)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "^NDX leans long (ADX 29.1, close 29,719.17 vs EMA50 29,165.72) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "^NDX leans long (ADX 29.1, close 29,719.17 vs EMA50 29,165.72) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -8803,10 +8803,10 @@
           "h": 29701.505859375,
           "l": 29455.568359375,
           "c": 29645.19140625,
-          "v": 314119033.0,
+          "v": 0.0,
           "ema": 29031.754754829133,
           "sma": 28764.681189903848,
-          "vwap": 29600.75520833333
+          "vwap": null
         },
         {
           "t": "2026-08-07T14:30:00+00:00",
@@ -8817,7 +8817,7 @@
           "v": 187663968.0,
           "ema": 29058.236798757403,
           "sma": 28768.084825721155,
-          "vwap": 29621.890023942724
+          "vwap": 29657.266276041668
         },
         {
           "t": "2026-08-07T15:30:00+00:00",
@@ -8828,7 +8828,7 @@
           "v": 137313714.0,
           "ema": 29079.3865964777,
           "sma": 28771.06678185096,
-          "vwap": 29625.551236448424
+          "vwap": 29649.51874192701
         },
         {
           "t": "2026-08-07T16:30:00+00:00",
@@ -8839,7 +8839,7 @@
           "v": 97296568.0,
           "ema": 29101.252869655047,
           "sma": 28773.942923677885,
-          "vwap": 29624.89140738797
+          "vwap": 29642.845709615347
         },
         {
           "t": "2026-08-07T17:30:00+00:00",
@@ -8850,7 +8850,7 @@
           "v": 87974772.0,
           "ema": 29120.540440943085,
           "sma": 28774.78826622596,
-          "vwap": 29623.411378222794
+          "vwap": 29637.35894866451
         },
         {
           "t": "2026-08-07T18:30:00+00:00",
@@ -8861,7 +8861,7 @@
           "v": 106684411.0,
           "ema": 29143.132451837475,
           "sma": 28774.881700721155,
-          "vwap": 29627.198428201238
+          "vwap": 29640.662309732055
         },
         {
           "t": "2026-08-07T19:30:00+00:00",
@@ -8872,7 +8872,7 @@
           "v": 119424891.0,
           "ema": 29165.722233137967,
           "sma": 28775.94178185096,
-          "vwap": 29636.427462913045
+          "vwap": 29651.644693096096
         }
       ]
     },
@@ -8895,13 +8895,13 @@
         "adx": 51.29,
         "ema_slope_4bar": 2.4002,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "supports",
+        "macro_tilt": "neutral",
         "flip": [
           "Close < EMA50 (384.46)",
           "ADX falls below 20 (now 51.3)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GLD leans long (ADX 51.3, close 398.51 vs EMA50 384.46) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "GLD leans long (ADX 51.3, close 398.51 vs EMA50 384.46) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -13309,40 +13309,36 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_OFF",
-    "risk_off_score": 5,
+    "verdict": "NEUTRAL",
+    "risk_off_score": 3,
     "risk_on_score": 2,
     "theme_hits": {
       "war": 2,
       "banking": 0,
-      "recession": 1,
-      "rate_hike": 1,
+      "recession": 0,
+      "rate_hike": 0,
       "crash": 1,
       "rate_cut": 0,
       "risk_on": 2
     },
     "sample_headlines": {
       "war": [
-        "Sudan's invisible children - born in war with no legal identity",
+        "Child among three killed in Russian missile attacks near Kyiv",
         "Russia sanctions bill honoring Lindsey Graham breezes through Senate, heads to House"
       ],
       "banking": [],
-      "recession": [
-        "Layoffs fall to the lowest level since the U.S. put men on the moon. Here\u2019s what that says about the economy. - MarketWatch"
-      ],
-      "rate_hike": [
-        "Some of the urgency is gone for a Fed rate hike in September after a soft jobs report"
-      ],
+      "recession": [],
+      "rate_hike": [],
       "crash": [
         "South Korea space agency shares Moon images after SpaceX rocket debris crash"
       ],
       "rate_cut": [],
       "risk_on": [
         "Chesky says Airbnb will spend \u2018a lot more\u2019 on AI as earnings beat and stock surges 15%",
-        "Restaurant Brands International earnings beat as Burger King's U.S. business soars - CNBC"
+        "Lower Oil Prices Lend Support For The Gold Rally - Crude Oil Prices Today | OilPrice.com"
       ]
     },
-    "n_headlines": 112,
+    "n_headlines": 113,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13350,7 +13346,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1786136336.2470691,
+    "fetched_at": 1786175492.3117898,
     "risk_off_themes": [
       "banking",
       "crash",
