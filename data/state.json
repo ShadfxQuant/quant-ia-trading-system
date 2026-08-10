@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-09T21:02:00.003751+00:00",
+  "generated_at_utc": "2026-08-10T08:28:05.867880+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13310,30 +13310,33 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 2,
-    "risk_on_score": 0,
+    "risk_off_score": 4,
+    "risk_on_score": 1,
     "theme_hits": {
-      "war": 2,
+      "war": 4,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
       "crash": 0,
-      "rate_cut": 0,
+      "rate_cut": 1,
       "risk_on": 0
     },
     "sample_headlines": {
       "war": [
         "Child among three killed in Russian missile attacks near Kyiv",
+        "Australian rare earth miner surges as much as 29% after U.S. Department of War investment",
         "Iran sets conditions for opening Strait of Hormuz after UAE says one of its ships was targeted by airstrike"
       ],
       "banking": [],
       "recession": [],
       "rate_hike": [],
       "crash": [],
-      "rate_cut": [],
+      "rate_cut": [
+        "\u2018I\u2019m easing into retirement\u2019: I\u2019m getting an $80,000 pension payout. Where can I invest it safely?"
+      ],
       "risk_on": []
     },
-    "n_headlines": 112,
+    "n_headlines": 113,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13341,7 +13344,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1786309320.8393338,
+    "fetched_at": 1786350486.8556206,
     "risk_off_themes": [
       "banking",
       "crash",
