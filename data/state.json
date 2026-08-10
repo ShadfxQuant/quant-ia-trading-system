@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-10T15:41:35.837505+00:00",
+  "generated_at_utc": "2026-08-10T16:34:33.454917+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -18,11 +18,11 @@
   "symbols": {
     "SPY": {
       "symbol": "SPY",
-      "bar_time_utc": "2026-08-10T15:30:00+00:00",
-      "close": 773.469970703125,
-      "ema": 763.8318006708669,
-      "sma": 750.9499441293569,
-      "vwap": 773.8622346159256,
+      "bar_time_utc": "2026-08-10T16:30:00+00:00",
+      "close": 772.8150024414062,
+      "ema": 764.1796821083715,
+      "sma": 751.1101557804988,
+      "vwap": 773.7775810475862,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -32,29 +32,18 @@
       "read": {
         "bias": "bullish",
         "strength": "strong",
-        "adx": 41.52,
-        "ema_slope_4bar": 1.7086,
+        "adx": 40.7,
+        "ema_slope_4bar": 1.6252,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
-          "Close < EMA50 (763.83)",
-          "ADX falls below 20 (now 41.5)",
+          "Close < EMA50 (764.18)",
+          "ADX falls below 20 (now 40.7)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 41.5, close 773.47 vs EMA50 763.83) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "SPY leans long (ADX 40.7, close 772.82 vs EMA50 764.18) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
-        {
-          "t": "2026-05-18T15:30:00+00:00",
-          "o": 735.6199951171875,
-          "h": 737.9299926757812,
-          "l": 734.469970703125,
-          "c": 734.8300170898438,
-          "v": 3791456.0,
-          "ema": 737.9504095650125,
-          "sma": 725.4101313664363,
-          "vwap": 737.8969198113871
-        },
         {
           "t": "2026-05-18T16:30:00+00:00",
           "o": 734.8200073242188,
@@ -4427,32 +4416,43 @@
           "o": 774.35498046875,
           "h": 775.0499877929688,
           "l": 773.3099975585938,
-          "c": 773.7575073242188,
-          "v": 5068591.0,
-          "ema": 763.4384059756727,
-          "sma": 750.785944542518,
-          "vwap": 773.8805374801419
+          "c": 773.739990234375,
+          "v": 5129386.0,
+          "ema": 763.437719030973,
+          "sma": 750.7858097956731,
+          "vwap": 773.8789148045114
         },
         {
           "t": "2026-08-10T15:30:00+00:00",
           "o": 773.760009765625,
-          "h": 773.8599853515625,
+          "h": 774.4349975585938,
           "l": 773.1599731445312,
-          "c": 773.469970703125,
-          "v": 623477.0,
-          "ema": 763.8318006708669,
-          "sma": 750.9499441293569,
-          "vwap": 773.8622346159256
+          "c": 773.3699951171875,
+          "v": 2879490.0,
+          "ema": 763.8272200539618,
+          "sma": 750.9490403395432,
+          "vwap": 773.8370286850767
+        },
+        {
+          "t": "2026-08-10T16:30:00+00:00",
+          "o": 773.3699951171875,
+          "h": 773.4879760742188,
+          "l": 771.8900146484375,
+          "c": 772.8150024414062,
+          "v": 874402.0,
+          "ema": 764.1796821083715,
+          "sma": 751.1101557804988,
+          "vwap": 773.7775810475862
         }
       ]
     },
     "^NDX": {
       "symbol": "^NDX",
-      "bar_time_utc": "2026-08-10T15:30:00+00:00",
-      "close": 29668.123046875,
-      "ema": 29225.34632173461,
-      "sma": 28777.38273737981,
-      "vwap": 29705.038865789506,
+      "bar_time_utc": "2026-08-10T16:30:00+00:00",
+      "close": 29667.595703125,
+      "ema": 29243.761486345076,
+      "sma": 28778.213611778847,
+      "vwap": 29703.374701679328,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4462,29 +4462,18 @@
       "read": {
         "bias": "bullish",
         "strength": "weak",
-        "adx": 27.44,
-        "ema_slope_4bar": 82.2139,
+        "adx": 26.89,
+        "ema_slope_4bar": 78.0393,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
-          "Close < EMA50 (29,225.35)",
-          "ADX falls below 20 (now 27.4)",
+          "Close < EMA50 (29,243.76)",
+          "ADX falls below 20 (now 26.9)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "^NDX leans long (ADX 27.4, close 29,668.12 vs EMA50 29,225.35) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "^NDX leans long (ADX 26.9, close 29,667.60 vs EMA50 29,243.76) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
-        {
-          "t": "2026-05-18T15:30:00+00:00",
-          "o": 28860.86328125,
-          "h": 28970.75,
-          "l": 28768.11328125,
-          "c": 28778.806640625,
-          "v": 107062248.0,
-          "ema": 29014.746893668085,
-          "sma": 28093.98419471154,
-          "vwap": 28895.835559732277
-        },
         {
           "t": "2026-05-18T16:30:00+00:00",
           "o": 28779.83203125,
@@ -8866,23 +8855,34 @@
         {
           "t": "2026-08-10T15:30:00+00:00",
           "o": 29669.396484375,
-          "h": 29669.677734375,
+          "h": 29744.15625,
           "l": 29634.4453125,
-          "c": 29668.123046875,
-          "v": 23820402.0,
-          "ema": 29225.34632173461,
-          "sma": 28777.38273737981,
-          "vwap": 29705.038865789506
+          "c": 29696.576171875,
+          "v": 113424100.0,
+          "ema": 29226.46213055814,
+          "sma": 28777.601607572116,
+          "vwap": 29704.314606924614
+        },
+        {
+          "t": "2026-08-10T16:30:00+00:00",
+          "o": 29695.48046875,
+          "h": 29702.40625,
+          "l": 29635.32421875,
+          "c": 29667.595703125,
+          "v": 13953499.0,
+          "ema": 29243.761486345076,
+          "sma": 28778.213611778847,
+          "vwap": 29703.374701679328
         }
       ]
     },
     "GLD": {
       "symbol": "GLD",
-      "bar_time_utc": "2026-08-10T15:30:00+00:00",
-      "close": 398.9801025390625,
-      "ema": 386.08895626689707,
-      "sma": 375.9245814396785,
-      "vwap": 398.2878822579203,
+      "bar_time_utc": "2026-08-10T16:30:00+00:00",
+      "close": 399.57000732421875,
+      "ema": 386.66396446436585,
+      "sma": 376.14496530386117,
+      "vwap": 398.78746470159945,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -8892,29 +8892,18 @@
       "read": {
         "bias": "bullish",
         "strength": "strong",
-        "adx": 49.77,
-        "ema_slope_4bar": 2.1995,
+        "adx": 49.86,
+        "ema_slope_4bar": 2.2012,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "supports",
+        "macro_tilt": "neutral",
         "flip": [
-          "Close < EMA50 (386.09)",
-          "ADX falls below 20 (now 49.8)",
+          "Close < EMA50 (386.66)",
+          "ADX falls below 20 (now 49.9)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GLD leans long (ADX 49.8, close 398.98 vs EMA50 386.09) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "GLD leans long (ADX 49.9, close 399.57 vs EMA50 386.66) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
-        {
-          "t": "2026-05-18T15:30:00+00:00",
-          "o": 416.260009765625,
-          "h": 417.7900085449219,
-          "l": 416.2300109863281,
-          "c": 416.510009765625,
-          "v": 584674.0,
-          "ema": 425.79693943037444,
-          "sma": 427.182419527494,
-          "vwap": 418.3719989006532
-        },
         {
           "t": "2026-05-18T16:30:00+00:00",
           "o": 416.4700012207031,
@@ -13288,36 +13277,47 @@
           "h": 399.25,
           "l": 398.3550109863281,
           "c": 398.94000244140625,
-          "v": 1584148.0,
+          "v": 1611991.0,
           "ema": 385.56278703129846,
           "sma": 375.71481229341947,
-          "vwap": 398.26405480794125
+          "vwap": 398.26868822505907
         },
         {
           "t": "2026-08-10T15:30:00+00:00",
           "o": 398.989990234375,
-          "h": 399.19000244140625,
+          "h": 400.4100036621094,
           "l": 398.80999755859375,
-          "c": 398.9801025390625,
-          "v": 117644.0,
-          "ema": 386.08895626689707,
-          "sma": 375.9245814396785,
-          "vwap": 398.2878822579203
+          "c": 400.2099914550781,
+          "v": 1477944.0,
+          "ema": 386.13718720478005,
+          "sma": 375.9340421236478,
+          "vwap": 398.72528642611
+        },
+        {
+          "t": "2026-08-10T16:30:00+00:00",
+          "o": 400.20001220703125,
+          "h": 400.2099914550781,
+          "l": 398.8999938964844,
+          "c": 399.57000732421875,
+          "v": 401546.0,
+          "ema": 386.66396446436585,
+          "sma": 376.14496530386117,
+          "vwap": 398.78746470159945
         }
       ]
     }
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_OFF",
-    "risk_off_score": 4,
+    "verdict": "NEUTRAL",
+    "risk_off_score": 2,
     "risk_on_score": 1,
     "theme_hits": {
       "war": 2,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 2,
+      "crash": 0,
       "rate_cut": 1,
       "risk_on": 0
     },
@@ -13329,16 +13329,13 @@
       "banking": [],
       "recession": [],
       "rate_hike": [],
-      "crash": [
-        "\u2018Massive Upgrade Cycle\u2019 Coming \u2013 Ignore Memory Costs Panic and Buy Apple (AAPL)?",
-        "Cathie Wood Ignores AI Panic \u2014 Buys More Nvidia, Sells This Gaming Stock Instead"
-      ],
+      "crash": [],
       "rate_cut": [
         "China\u2019s monthly inflation cools as impact from Iran war eases - Financial Times"
       ],
       "risk_on": []
     },
-    "n_headlines": 110,
+    "n_headlines": 111,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13346,7 +13343,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1786376496.558941,
+    "fetched_at": 1786379674.6987236,
     "risk_off_themes": [
       "banking",
       "crash",
