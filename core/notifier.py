@@ -122,16 +122,35 @@ def send_telegram(body: str, buttons: list | None = None) -> bool:
     if buttons:
         kb = {"inline_keyboard": [[{"text": t, "callback_data": cb} for t, cb in buttons]]}
         params["reply_markup"] = json.dumps(kb)
-    data = urllib.parse.urlencode(params).encode("utf-8")
-    req = urllib.request.Request(
-        url, data=data, method="POST",
-        headers={"Content-Type": "application/x-www-form-urlencoded",
-                 "User-Agent": "quant_ia_notifier/1.0"},
-    )
-    try:
+
+    def _post(p: dict) -> bool:
+        data = urllib.parse.urlencode(p).encode("utf-8")
+        req = urllib.request.Request(
+            url, data=data, method="POST",
+            headers={"Content-Type": "application/x-www-form-urlencoded",
+                     "User-Agent": "quant_ia_notifier/1.0"},
+        )
         with urllib.request.urlopen(req, timeout=10) as r:
             return 200 <= r.status < 300
-    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as e:
+
+    try:
+        return _post(params)
+    except urllib.error.HTTPError as e:
+        # Telegram legacy Markdown 400s on any unbalanced entity — a single
+        # stray underscore in a dynamic field (e.g. "trend_carry", a crypto
+        # symbol like "BTC_USDT", or a close reason) leaves an italic entity
+        # unclosed. Rather than silently drop the message, resend as plain
+        # text so the alert ALWAYS gets through.
+        if e.code == 400:
+            plain = {k: v for k, v in params.items() if k != "parse_mode"}
+            try:
+                return _post(plain)
+            except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as e2:
+                print(f"[notifier] telegram plain-text retry failed: {e2}")
+                return False
+        print(f"[notifier] telegram failed: {e}")
+        return False
+    except (urllib.error.URLError, TimeoutError, OSError) as e:
         print(f"[notifier] telegram failed: {e}")
         return False
 
