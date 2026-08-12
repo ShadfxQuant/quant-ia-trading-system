@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-12T09:35:35.708513+00:00",
+  "generated_at_utc": "2026-08-12T10:41:15.940470+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -35,13 +35,13 @@
         "adx": 27.87,
         "ema_slope_4bar": 0.6428,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close < EMA50 (766.66)",
           "ADX falls below 20 (now 27.9)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 27.9, close 770.48 vs EMA50 766.66) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "SPY leans long (ADX 27.9, close 770.48 vs EMA50 766.66) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -4465,13 +4465,13 @@
         "adx": 20.47,
         "ema_slope_4bar": 25.0514,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close < EMA50 (29,349.35)",
           "ADX falls below 20 (now 20.5)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "^NDX leans long (ADX 20.5, close 29,522.92 vs EMA50 29,349.35) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "^NDX leans long (ADX 20.5, close 29,522.92 vs EMA50 29,349.35) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -8895,13 +8895,13 @@
         "adx": 46.54,
         "ema_slope_4bar": 1.6202,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "supports",
         "flip": [
           "Close < EMA50 (391.59)",
           "ADX falls below 20 (now 46.5)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GLD leans long (ADX 46.5, close 400.98 vs EMA50 391.59) and the trend is strong. The regime filter is mostly green."
+        "narrative": "GLD leans long (ADX 46.5, close 400.98 vs EMA50 391.59) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -13309,14 +13309,14 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
-    "risk_off_score": 2,
+    "verdict": "RISK_OFF",
+    "risk_off_score": 3,
     "risk_on_score": 1,
     "theme_hits": {
       "war": 1,
       "banking": 0,
       "recession": 0,
-      "rate_hike": 1,
+      "rate_hike": 2,
       "crash": 0,
       "rate_cut": 0,
       "risk_on": 1
@@ -13328,6 +13328,7 @@
       "banking": [],
       "recession": [],
       "rate_hike": [
+        "Cleveland Fed's Beth Hammack warns one rate hike won't cut it as inflation swallows workers' wage gains",
         "Cleveland Fed's Hammack: It will take more than one interest rate hike to bring down inflation - Yahoo Finance"
       ],
       "crash": [],
@@ -13336,7 +13337,7 @@
         "SpaceX Stock Keeps Rising After Lockup Rally Ahead of the Next Share Unlock - Barron's"
       ]
     },
-    "n_headlines": 111,
+    "n_headlines": 112,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13344,7 +13345,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1786527336.5844674,
+    "fetched_at": 1786531276.2964182,
     "risk_off_themes": [
       "banking",
       "crash",
