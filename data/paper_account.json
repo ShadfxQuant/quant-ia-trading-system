@@ -1,5 +1,5 @@
 {
-  "equity": 93448.30539129268,
+  "equity": 92298.70095766269,
   "initial_capital": 100000.0,
   "cash": 100093.92824218668,
   "open_positions": [
@@ -32,21 +32,6 @@
       "bar_time_at_entry": "2026-05-28T19:30:00+00:00",
       "tp1_hit": true,
       "remaining_size": 21000.0
-    },
-    {
-      "symbol": "^NDX",
-      "strategy": "trend_carry",
-      "side": -1,
-      "entry_time": "2026-07-20T16:16:28.256510+00:00",
-      "entry_price": 28915.283203125,
-      "size": 28740.110840749814,
-      "stop_pct": 0.04,
-      "tp1_pct": 0.08,
-      "tp2_pct": 0.25,
-      "tp1_size_frac": 0.3,
-      "bar_time_at_entry": "2026-07-20T15:30:00+00:00",
-      "tp1_hit": false,
-      "remaining_size": 28740.110840749814
     }
   ],
   "closed_trades": [
@@ -301,8 +286,20 @@
       "size": 14370.055420374907,
       "pnl": -359.25138550937197,
       "reason": "stop"
+    },
+    {
+      "symbol": "^NDX",
+      "strategy": "trend_carry",
+      "side": -1,
+      "entry_time": "2026-07-20T16:16:28.256510+00:00",
+      "entry_price": 28915.283203125,
+      "exit_time": "2026-08-13T14:03:33.579825+00:00",
+      "exit_price": 30071.89453125,
+      "size": 28740.110840749814,
+      "pnl": -1149.6044336299926,
+      "reason": "stop"
     }
   ],
-  "n_trades_total": 21,
-  "last_updated_utc": "2026-08-13T12:30:36.226289+00:00"
+  "n_trades_total": 22,
+  "last_updated_utc": "2026-08-13T14:03:33.579878+00:00"
 }
