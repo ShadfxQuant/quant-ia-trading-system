@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-15T10:49:02.688839+00:00",
+  "generated_at_utc": "2026-08-15T11:07:00.289487+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -35,13 +35,13 @@
         "adx": 38.32,
         "ema_slope_4bar": 0.7278,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close < EMA50 (771.85)",
           "ADX falls below 20 (now 38.3)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "SPY leans long (ADX 38.3, close 776.30 vs EMA50 771.85) and the trend is strong. The regime filter is mostly green."
+        "narrative": "SPY leans long (ADX 38.3, close 776.30 vs EMA50 771.85) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -4465,13 +4465,13 @@
         "adx": 28.02,
         "ema_slope_4bar": 50.2641,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close < EMA50 (29,708.06)",
           "ADX falls below 20 (now 28.0)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "^NDX leans long (ADX 28.0, close 30,050.44 vs EMA50 29,708.06) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "^NDX leans long (ADX 28.0, close 30,050.44 vs EMA50 29,708.06) but the trend is only weak. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -8895,13 +8895,13 @@
         "adx": 21.23,
         "ema_slope_4bar": 0.7065,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "supports",
         "flip": [
           "Close < EMA50 (397.51)",
           "ADX falls below 20 (now 21.2)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GLD leans long (ADX 21.2, close 401.43 vs EMA50 397.51) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "GLD leans long (ADX 21.2, close 401.43 vs EMA50 397.51) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -13309,17 +13309,17 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
-    "risk_off_score": 2,
-    "risk_on_score": 2,
+    "verdict": "RISK_OFF",
+    "risk_off_score": 3,
+    "risk_on_score": 1,
     "theme_hits": {
       "war": 1,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 1,
+      "crash": 2,
       "rate_cut": 0,
-      "risk_on": 2
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
@@ -13329,15 +13329,15 @@
       "recession": [],
       "rate_hike": [],
       "crash": [
+        "The \u2018Hindenburg Omen\u2019 keeps flashing. Should investors worry about a stock-market crash?",
         "Jim Cramer says Cisco\u2019s post-earnings plunge is a buying opportunity. Here\u2019s why - CNBC"
       ],
       "rate_cut": [],
       "risk_on": [
-        "BofA\u2019s Hartnett Sees a Republican Senate Win Fueling Stock Rally",
         "Drone stocks rally after Trump orders tariffs on foreign-made components"
       ]
     },
-    "n_headlines": 106,
+    "n_headlines": 107,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13345,7 +13345,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1786790944.0885017,
+    "fetched_at": 1786792020.7871342,
     "risk_off_themes": [
       "banking",
       "crash",
