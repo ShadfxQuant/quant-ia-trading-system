@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-19T13:53:17.967717+00:00",
+  "generated_at_utc": "2026-08-19T14:28:12.269428+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -19,10 +19,10 @@
     "SPY": {
       "symbol": "SPY",
       "bar_time_utc": "2026-08-19T13:30:00+00:00",
-      "close": 769.155029296875,
-      "ema": 771.266352976317,
-      "sma": 760.1447354830228,
-      "vwap": 769.29833984375,
+      "close": 769.6900024414062,
+      "ema": 771.2873323153182,
+      "sma": 760.1488506610577,
+      "vwap": 769.4733276367188,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -33,14 +33,14 @@
         "bias": "neutral",
         "strength": "strong",
         "adx": 34.24,
-        "ema_slope_4bar": -0.5251,
+        "ema_slope_4bar": -0.5041,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "SPY is neutral (ADX 34.2, close 769.16 vs EMA50 771.27) and the trend is strong. The regime filter is mostly green."
+        "narrative": "SPY is neutral (ADX 34.2, close 769.69 vs EMA50 771.29) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -4436,22 +4436,22 @@
           "t": "2026-08-19T13:30:00+00:00",
           "o": 770.3599853515625,
           "h": 770.6300048828125,
-          "l": 768.1099853515625,
-          "c": 769.155029296875,
-          "v": 4829717.0,
-          "ema": 771.266352976317,
-          "sma": 760.1447354830228,
-          "vwap": 769.29833984375
+          "l": 768.0999755859375,
+          "c": 769.6900024414062,
+          "v": 7529606.0,
+          "ema": 771.2873323153182,
+          "sma": 760.1488506610577,
+          "vwap": 769.4733276367188
         }
       ]
     },
     "^NDX": {
       "symbol": "^NDX",
       "bar_time_utc": "2026-08-19T13:30:00+00:00",
-      "close": 29372.82421875,
-      "ema": 29711.905114110537,
-      "sma": 29069.385426682693,
-      "vwap": 29445.966796875,
+      "close": 29354.015625,
+      "ema": 29711.167522198775,
+      "sma": 29069.240745192306,
+      "vwap": 29431.287760416668,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4461,15 +4461,15 @@
       "read": {
         "bias": "neutral",
         "strength": "strong",
-        "adx": 35.12,
-        "ema_slope_4bar": -42.3057,
+        "adx": 35.21,
+        "ema_slope_4bar": -43.0433,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "^NDX is neutral (ADX 35.1, close 29,372.82 vs EMA50 29,711.91) and the trend is strong. The regime filter is mostly green."
+        "narrative": "^NDX is neutral (ADX 35.2, close 29,354.02 vs EMA50 29,711.17) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -8865,22 +8865,22 @@
           "t": "2026-08-19T13:30:00+00:00",
           "o": 29572.484375,
           "h": 29647.6328125,
-          "l": 29317.443359375,
-          "c": 29372.82421875,
-          "v": 129163595.0,
-          "ema": 29711.905114110537,
-          "sma": 29069.385426682693,
-          "vwap": 29445.966796875
+          "l": 29292.21484375,
+          "c": 29354.015625,
+          "v": 272846047.0,
+          "ema": 29711.167522198775,
+          "sma": 29069.240745192306,
+          "vwap": 29431.287760416668
         }
       ]
     },
     "GLD": {
       "symbol": "GLD",
       "bar_time_utc": "2026-08-19T13:30:00+00:00",
-      "close": 408.6050109863281,
-      "ema": 399.913772341524,
-      "sma": 387.1307074913612,
-      "vwap": 408.58167521158856,
+      "close": 411.54998779296875,
+      "ema": 400.029261628059,
+      "sma": 387.1533611591046,
+      "vwap": 410.21666463216144,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -8890,16 +8890,16 @@
       "read": {
         "bias": "bullish",
         "strength": "weak",
-        "adx": 24.08,
-        "ema_slope_4bar": 0.3168,
+        "adx": 24.51,
+        "ema_slope_4bar": 0.4323,
         "regime_pct_24h": 100.0,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (399.91)",
-          "ADX falls below 20 (now 24.1)",
+          "Close < EMA50 (400.03)",
+          "ADX falls below 20 (now 24.5)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GLD leans long (ADX 24.1, close 408.61 vs EMA50 399.91) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "GLD leans long (ADX 24.5, close 411.55 vs EMA50 400.03) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -13294,13 +13294,13 @@
         {
           "t": "2026-08-19T13:30:00+00:00",
           "o": 408.80999755859375,
-          "h": 409.6700134277344,
+          "h": 411.6300048828125,
           "l": 407.4700012207031,
-          "c": 408.6050109863281,
-          "v": 3447179.0,
-          "ema": 399.913772341524,
-          "sma": 387.1307074913612,
-          "vwap": 408.58167521158856
+          "c": 411.54998779296875,
+          "v": 6020342.0,
+          "ema": 400.029261628059,
+          "sma": 387.1533611591046,
+          "vwap": 410.21666463216144
         }
       ]
     }
@@ -13308,22 +13308,22 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 10,
-    "risk_on_score": 1,
+    "risk_off_score": 11,
+    "risk_on_score": 2,
     "theme_hits": {
-      "war": 4,
+      "war": 5,
       "banking": 0,
       "recession": 2,
       "rate_hike": 0,
       "crash": 4,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
         "South Korea shortens war games with US, citing Washington request",
         "US condemns 'unnecessary escalation' after Israeli airstrikes on Syrian airbase",
-        "UAE severs trade with Iran after reported missile strike"
+        "Dividend Stocks Lost the Yield War But May Still Beat the Market"
       ],
       "banking": [],
       "recession": [
@@ -13333,12 +13333,13 @@
       "rate_hike": [],
       "crash": [
         "Six tourists and pilot killed in Kenya helicopter crash",
-        "Nike\u2019s nightmare collapse deepens as shares crash 78% from highs \u2014 critics say brand went \u2018woke\u2019 and now it\u2019s broke",
+        "America\u2019s growing debt pile will be the big focus Wednesday as global bond rout deepens",
         "The bond selloff is rattling investors, but here\u2019s why they shouldn\u2019t expect a deeper stock downturn"
       ],
       "rate_cut": [],
       "risk_on": [
-        "Stock market today: Dow, S&P 500, Nasdaq gain steam as bonds rally, Trump pauses tariffs on Canadian goods"
+        "Stock market today: Dow, S&P 500 gain steam as bonds rally, Trump pauses tariffs on Canadian goods",
+        "Global bonds rally on signs of support for US Treasury market"
       ]
     },
     "n_headlines": 112,
@@ -13349,7 +13350,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1787147598.5576904,
+    "fetched_at": 1787149692.7759562,
     "risk_off_themes": [
       "banking",
       "crash",
