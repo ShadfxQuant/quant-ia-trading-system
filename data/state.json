@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-20T07:41:57.392498+00:00",
+  "generated_at_utc": "2026-08-20T08:18:31.525575+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -8893,13 +8893,13 @@
         "adx": 26.97,
         "ema_slope_4bar": 1.7,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "supports",
+        "macro_tilt": "neutral",
         "flip": [
           "Close < EMA50 (402.62)",
           "ADX falls below 20 (now 27.0)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GLD leans long (ADX 27.0, close 413.88 vs EMA50 402.62) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "GLD leans long (ADX 27.0, close 413.88 vs EMA50 402.62) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -13307,42 +13307,39 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_OFF",
-    "risk_off_score": 8,
-    "risk_on_score": 4,
+    "verdict": "NEUTRAL",
+    "risk_off_score": 5,
+    "risk_on_score": 5,
     "theme_hits": {
       "war": 2,
       "banking": 0,
-      "recession": 1,
+      "recession": 0,
       "rate_hike": 1,
-      "crash": 4,
+      "crash": 2,
       "rate_cut": 1,
-      "risk_on": 3
+      "risk_on": 4
     },
     "sample_headlines": {
       "war": [
-        "Trump scaling down U.S.-South Korea drills risks more than just joint military readiness",
+        "Trump scaling down U.S.-South Korea drills could risk more than just joint military readiness",
         "Iran\u2019s Attacks on Ships in Hormuz Mount, Testing U.S. Military Restraint - WSJ"
       ],
       "banking": [],
-      "recession": [
-        "FalconX CEO Talks Deals, Potential IPO, Layoffs"
-      ],
+      "recession": [],
       "rate_hike": [
         "Fed officials saw need for rate hike if inflation doesn't cool, minutes show"
       ],
       "crash": [
         "Ecuador intelligence chief and five Americans killed in Kenya helicopter crash",
-        "BlackRock updates its Bitcoin outlook after historic selloff",
-        "Will the housing market crash in 2026? Gen Z is rooting for it"
+        "Asian stocks slump as chip selloff deepens; KOSPI plunges 5% - Investing.com"
       ],
       "rate_cut": [
         "Dollar range-bound as markets price dovish Fed response"
       ],
       "risk_on": [
+        "Cheesecake Factory President Sells $3.5M Stock After 81% Rally -- Should Investors Beware?",
         "The chip-stock rally hits a speed bump \u2014 but these analysts see reason to be hopeful",
-        "ServiceNow\u2019s stock leads a software rally. Here\u2019s what\u2019s energizing investors.",
-        "Diesel Margins Top $100 a Barrel to Reach Record High as Supply Crunch Grows - Bloomberg"
+        "ServiceNow\u2019s stock leads a software rally. Here\u2019s what\u2019s energizing investors."
       ]
     },
     "n_headlines": 110,
@@ -13353,7 +13350,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1787211718.6776483,
+    "fetched_at": 1787213912.692124,
     "risk_off_themes": [
       "banking",
       "crash",
