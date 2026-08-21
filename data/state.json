@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-21T18:52:26.469856+00:00",
+  "generated_at_utc": "2026-08-21T19:20:59.709705+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -19,10 +19,10 @@
     "SPY": {
       "symbol": "SPY",
       "bar_time_utc": "2026-08-21T18:30:00+00:00",
-      "close": 765.719970703125,
-      "ema": 768.637761325338,
-      "sma": 764.1879183255709,
-      "vwap": 765.7770350826094,
+      "close": 766.0999755859375,
+      "ema": 768.6526634776052,
+      "sma": 764.1908414400541,
+      "vwap": 765.7924453250359,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -32,15 +32,15 @@
       "read": {
         "bias": "neutral",
         "strength": "weak",
-        "adx": 26.7,
-        "ema_slope_4bar": -0.4897,
+        "adx": 26.27,
+        "ema_slope_4bar": -0.4748,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "SPY is neutral (ADX 26.7, close 765.72 vs EMA50 768.64) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "SPY is neutral (ADX 26.3, close 766.10 vs EMA50 768.65) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -4435,23 +4435,23 @@
         {
           "t": "2026-08-21T18:30:00+00:00",
           "o": 765.27001953125,
-          "h": 765.8800048828125,
+          "h": 766.364990234375,
           "l": 765.0599975585938,
-          "c": 765.719970703125,
-          "v": 1008151.0,
-          "ema": 768.637761325338,
-          "sma": 764.1879183255709,
-          "vwap": 765.7770350826094
+          "c": 766.0999755859375,
+          "v": 3232475.0,
+          "ema": 768.6526634776052,
+          "sma": 764.1908414400541,
+          "vwap": 765.7924453250359
         }
       ]
     },
     "^NDX": {
       "symbol": "^NDX",
       "bar_time_utc": "2026-08-21T18:30:00+00:00",
-      "close": 29310.01953125,
-      "ema": 29497.077439465953,
-      "sma": 29246.201141826925,
-      "vwap": 29277.03350848858,
+      "close": 29317.1640625,
+      "ema": 29497.35761716203,
+      "sma": 29246.256099759616,
+      "vwap": 29279.175172590043,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4462,14 +4462,14 @@
         "bias": "neutral",
         "strength": "strong",
         "adx": 38.39,
-        "ema_slope_4bar": -32.5414,
+        "ema_slope_4bar": -32.2612,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "^NDX is neutral (ADX 38.4, close 29,310.02 vs EMA50 29,497.08) and the trend is strong. The regime filter is mostly green."
+        "narrative": "^NDX is neutral (ADX 38.4, close 29,317.16 vs EMA50 29,497.36) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -8864,23 +8864,23 @@
         {
           "t": "2026-08-21T18:30:00+00:00",
           "o": 29284.33203125,
-          "h": 29313.787109375,
+          "h": 29333.37890625,
           "l": 29274.203125,
-          "c": 29310.01953125,
-          "v": 25563986.0,
-          "ema": 29497.077439465953,
-          "sma": 29246.201141826925,
-          "vwap": 29277.03350848858
+          "c": 29317.1640625,
+          "v": 66875311.0,
+          "ema": 29497.35761716203,
+          "sma": 29246.256099759616,
+          "vwap": 29279.175172590043
         }
       ]
     },
     "GLD": {
       "symbol": "GLD",
       "bar_time_utc": "2026-08-21T18:30:00+00:00",
-      "close": 424.1199951171875,
-      "ema": 409.2826528113974,
-      "sma": 393.5392251821665,
-      "vwap": 422.5126817646421,
+      "close": 423.9800109863281,
+      "ema": 409.2771632376382,
+      "sma": 393.53814838115983,
+      "vwap": 422.5732105193816,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -8891,7 +8891,7 @@
         "bias": "bullish",
         "strength": "strong",
         "adx": 37.26,
-        "ema_slope_4bar": 2.5371,
+        "ema_slope_4bar": 2.5316,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
@@ -8899,7 +8899,7 @@
           "ADX falls below 20 (now 37.3)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GLD leans long (ADX 37.3, close 424.12 vs EMA50 409.28) and the trend is strong. The regime filter is mostly green."
+        "narrative": "GLD leans long (ADX 37.3, close 423.98 vs EMA50 409.28) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -13295,12 +13295,12 @@
           "t": "2026-08-21T18:30:00+00:00",
           "o": 424.2149963378906,
           "h": 424.32000732421875,
-          "l": 423.739990234375,
-          "c": 424.1199951171875,
-          "v": 359731.0,
-          "ema": 409.2826528113974,
-          "sma": 393.5392251821665,
-          "vwap": 422.5126817646421
+          "l": 423.6099853515625,
+          "c": 423.9800109863281,
+          "v": 880745.0,
+          "ema": 409.2771632376382,
+          "sma": 393.53814838115983,
+          "vwap": 422.5732105193816
         }
       ]
     }
@@ -13309,7 +13309,7 @@
   "macro": {
     "verdict": "NEUTRAL",
     "risk_off_score": 3,
-    "risk_on_score": 4,
+    "risk_on_score": 2,
     "theme_hits": {
       "war": 2,
       "banking": 0,
@@ -13317,7 +13317,7 @@
       "rate_hike": 0,
       "crash": 0,
       "rate_cut": 0,
-      "risk_on": 4
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
@@ -13332,12 +13332,11 @@
       "crash": [],
       "rate_cut": [],
       "risk_on": [
-        "Pangaea Logistics (PANL): Freight Rate Rally Drives Operational Strength Amid Margin Pressures",
         "Kalshi traders think the bitcoin rally could end the year near current levels",
-        "Longer-dated Treasury yields rise as Bessent's bond buyback rally fizzles out"
+        "Bitcoin on track for 23% weekly gain as investor optimism floods back"
       ]
     },
-    "n_headlines": 112,
+    "n_headlines": 113,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13345,7 +13344,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1787338347.8464916,
+    "fetched_at": 1787340060.6107297,
     "risk_off_themes": [
       "banking",
       "crash",
