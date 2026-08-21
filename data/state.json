@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-21T08:21:09.038179+00:00",
+  "generated_at_utc": "2026-08-21T09:05:45.966199+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -8893,13 +8893,13 @@
         "adx": 27.1,
         "ema_slope_4bar": 1.5858,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "supports",
+        "macro_tilt": "neutral",
         "flip": [
           "Close < EMA50 (405.45)",
           "ADX falls below 20 (now 27.1)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GLD leans long (ADX 27.1, close 415.26 vs EMA50 405.45) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "GLD leans long (ADX 27.1, close 415.26 vs EMA50 405.45) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -13307,23 +13307,22 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_OFF",
-    "risk_off_score": 4,
-    "risk_on_score": 1,
+    "verdict": "NEUTRAL",
+    "risk_off_score": 2,
+    "risk_on_score": 2,
     "theme_hits": {
-      "war": 4,
+      "war": 2,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
       "crash": 0,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 2
     },
     "sample_headlines": {
       "war": [
-        "US sanctions more Cuban companies and officials",
-        "Assad officer extradited to Syria on war crimes charges for first time",
-        "US stock futures steady after tech slump; investors focus on Middle East tensions - Yahoo Finance"
+        "US stock futures steady after tech slump; investors focus on Middle East tensions - Yahoo Finance",
+        "Exclusive | Carlyle Joins $1 Billion Investment Round in Missile Startup Castelion - WSJ"
       ],
       "banking": [],
       "recession": [],
@@ -13331,10 +13330,11 @@
       "crash": [],
       "rate_cut": [],
       "risk_on": [
+        "Longer-dated Treasury yields rise as Bessent's bond buyback rally fizzles out",
         "Bitcoin on track for 20% weekly gain as investor optimism floods back"
       ]
     },
-    "n_headlines": 114,
+    "n_headlines": 112,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13342,7 +13342,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1787300470.0203996,
+    "fetched_at": 1787303147.442687,
     "risk_off_themes": [
       "banking",
       "crash",
