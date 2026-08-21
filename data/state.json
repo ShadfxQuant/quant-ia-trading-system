@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-21T20:35:39.356746+00:00",
+  "generated_at_utc": "2026-08-21T20:57:59.984669+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -8893,13 +8893,13 @@
         "adx": 38.46,
         "ema_slope_4bar": 2.4253,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "supports",
+        "macro_tilt": "neutral",
         "flip": [
           "Close < EMA50 (409.82)",
           "ADX falls below 20 (now 38.5)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GLD leans long (ADX 38.5, close 423.38 vs EMA50 409.82) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "GLD leans long (ADX 38.5, close 423.38 vs EMA50 409.82) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -13307,15 +13307,15 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_OFF",
-    "risk_off_score": 4,
+    "verdict": "NEUTRAL",
+    "risk_off_score": 3,
     "risk_on_score": 2,
     "theme_hits": {
       "war": 2,
       "banking": 0,
       "recession": 1,
       "rate_hike": 0,
-      "crash": 1,
+      "crash": 0,
       "rate_cut": 0,
       "risk_on": 2
     },
@@ -13329,9 +13329,7 @@
         "US unemployment claims dropped to 206,000 last week with layoffs still sparse - AP News"
       ],
       "rate_hike": [],
-      "crash": [
-        "Stocks Slip Before the Open as Bond Rout Resumes; Walmart Sinks After Earnings"
-      ],
+      "crash": [],
       "rate_cut": [],
       "risk_on": [
         "Kalshi traders think the bitcoin rally could end the year near current levels",
@@ -13346,7 +13344,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1787344540.645344,
+    "fetched_at": 1787345880.9995606,
     "risk_off_themes": [
       "banking",
       "crash",
