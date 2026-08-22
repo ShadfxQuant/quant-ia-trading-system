@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-22T07:33:10.424680+00:00",
+  "generated_at_utc": "2026-08-22T07:57:56.208605+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -8893,13 +8893,13 @@
         "adx": 38.46,
         "ema_slope_4bar": 2.4253,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "supports",
         "flip": [
           "Close < EMA50 (409.82)",
           "ADX falls below 20 (now 38.5)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GLD leans long (ADX 38.5, close 423.38 vs EMA50 409.82) and the trend is strong. The regime filter is mostly green."
+        "narrative": "GLD leans long (ADX 38.5, close 423.38 vs EMA50 409.82) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -13307,13 +13307,13 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
-    "risk_off_score": 3,
+    "verdict": "RISK_OFF",
+    "risk_off_score": 4,
     "risk_on_score": 2,
     "theme_hits": {
       "war": 3,
       "banking": 0,
-      "recession": 0,
+      "recession": 1,
       "rate_hike": 0,
       "crash": 0,
       "rate_cut": 0,
@@ -13326,7 +13326,9 @@
         "U.S. military says it aided passage of 660 million barrels of oil through Strait of Hormuz since May"
       ],
       "banking": [],
-      "recession": [],
+      "recession": [
+        "If We're in an AI Bubble, History Says This Is the Best Way to Recession-Proof Your Portfolio"
+      ],
       "rate_hike": [],
       "crash": [],
       "rate_cut": [],
@@ -13343,7 +13345,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1787383990.9459646,
+    "fetched_at": 1787385477.380691,
     "risk_off_themes": [
       "banking",
       "crash",
