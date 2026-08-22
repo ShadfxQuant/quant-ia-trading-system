@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-22T08:39:40.927881+00:00",
+  "generated_at_utc": "2026-08-22T09:03:46.764380+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -8893,13 +8893,13 @@
         "adx": 38.46,
         "ema_slope_4bar": 2.4253,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "supports",
         "flip": [
           "Close < EMA50 (409.82)",
           "ADX falls below 20 (now 38.5)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GLD leans long (ADX 38.5, close 423.38 vs EMA50 409.82) and the trend is strong. The regime filter is mostly green."
+        "narrative": "GLD leans long (ADX 38.5, close 423.38 vs EMA50 409.82) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -13307,15 +13307,15 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
-    "risk_off_score": 3,
+    "verdict": "RISK_OFF",
+    "risk_off_score": 4,
     "risk_on_score": 2,
     "theme_hits": {
       "war": 3,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 0,
+      "crash": 1,
       "rate_cut": 0,
       "risk_on": 2
     },
@@ -13328,14 +13328,16 @@
       "banking": [],
       "recession": [],
       "rate_hike": [],
-      "crash": [],
+      "crash": [
+        "Stock Market on Aug. 20, 2026: Dow drops around 700 points, S&P 500 and Nasdaq end lower as Bessent buybacks fail to calm bond market; Treasury yields climb; Walmart shares tumble after earnings results; Big Tech stocks retreat - MarketWatch"
+      ],
       "rate_cut": [],
       "risk_on": [
         "Kalshi traders think the bitcoin rally could end the year near current levels",
         "Bitcoin surges 22% for the week as investor optimism floods back"
       ]
     },
-    "n_headlines": 112,
+    "n_headlines": 113,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13343,7 +13345,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1787387981.4776978,
+    "fetched_at": 1787389427.1790614,
     "risk_off_themes": [
       "banking",
       "crash",
