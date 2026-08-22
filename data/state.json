@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-22T13:55:32.848655+00:00",
+  "generated_at_utc": "2026-08-22T14:23:17.210501+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -8893,13 +8893,13 @@
         "adx": 38.46,
         "ema_slope_4bar": 2.4253,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "conflicts",
+        "macro_tilt": "neutral",
         "flip": [
           "Close < EMA50 (409.82)",
           "ADX falls below 20 (now 38.5)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GLD leans long (ADX 38.5, close 423.38 vs EMA50 409.82) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GLD leans long (ADX 38.5, close 423.38 vs EMA50 409.82) and the trend is strong. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -13307,17 +13307,17 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_ON",
-    "risk_off_score": 3,
-    "risk_on_score": 5,
+    "verdict": "NEUTRAL",
+    "risk_off_score": 4,
+    "risk_on_score": 4,
     "theme_hits": {
       "war": 3,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 0,
+      "crash": 1,
       "rate_cut": 0,
-      "risk_on": 5
+      "risk_on": 4
     },
     "sample_headlines": {
       "war": [
@@ -13328,7 +13328,9 @@
       "banking": [],
       "recession": [],
       "rate_hike": [],
-      "crash": [],
+      "crash": [
+        "Billionaire Leon Cooperman says today's AI boom echoes a big bust from the 1970s \u2014 a lesson from the 'Nifty Fifty' crash"
+      ],
       "rate_cut": [],
       "risk_on": [
         "Dow Jones Futures: Market Rally Repairs Some Damage; Nvidia Earnings Loom",
@@ -13344,7 +13346,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1787406933.974848,
+    "fetched_at": 1787408597.8564787,
     "risk_off_themes": [
       "banking",
       "crash",
