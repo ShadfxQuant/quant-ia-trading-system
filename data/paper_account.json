@@ -1,23 +1,8 @@
 {
-  "equity": 91361.20095766269,
+  "equity": 90521.20095766269,
   "initial_capital": 100000.0,
   "cash": 100093.92824218668,
   "open_positions": [
-    {
-      "symbol": "GLD",
-      "strategy": "trend_carry",
-      "side": -1,
-      "entry_time": "2026-05-29T14:25:17.804263+00:00",
-      "entry_price": 412.8299865722656,
-      "size": 30000.0,
-      "stop_pct": 0.04,
-      "tp1_pct": 0.08,
-      "tp2_pct": 0.25,
-      "tp1_size_frac": 0.3,
-      "bar_time_at_entry": "2026-05-28T19:30:00+00:00",
-      "tp1_hit": true,
-      "remaining_size": 21000.0
-    },
     {
       "symbol": "SPY",
       "strategy": "pullback",
@@ -310,8 +295,20 @@
       "size": 37500.0,
       "pnl": -937.499999999998,
       "reason": "stop"
+    },
+    {
+      "symbol": "GLD",
+      "strategy": "trend_carry",
+      "side": -1,
+      "entry_time": "2026-05-29T14:25:17.804263+00:00",
+      "entry_price": 412.8299865722656,
+      "exit_time": "2026-08-24T14:11:09.128950+00:00",
+      "exit_price": 429.34318603515624,
+      "size": 21000.0,
+      "pnl": -839.9999999999993,
+      "reason": "stop"
     }
   ],
-  "n_trades_total": 23,
-  "last_updated_utc": "2026-08-24T13:25:20.225115+00:00"
+  "n_trades_total": 24,
+  "last_updated_utc": "2026-08-24T14:11:09.128996+00:00"
 }
