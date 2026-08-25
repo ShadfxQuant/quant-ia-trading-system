@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-25T11:58:04.654848+00:00",
+  "generated_at_utc": "2026-08-25T13:02:56.116004+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -13308,20 +13308,20 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 7,
-    "risk_on_score": 0,
+    "risk_off_score": 11,
+    "risk_on_score": 3,
     "theme_hits": {
-      "war": 7,
+      "war": 11,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
       "crash": 0,
-      "rate_cut": 0,
-      "risk_on": 0
+      "rate_cut": 2,
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
-        "China warns it will safeguard its interests after US widens sanctions against Iran",
+        "China warns it will protect its interests after US widens sanctions against Iran",
         "US-Canada trade war escalates as Trump threatens tariff hike on vehicles",
         "'Half my business will be gone' - firms in Canada and US fear trade war"
       ],
@@ -13329,8 +13329,13 @@
       "recession": [],
       "rate_hike": [],
       "crash": [],
-      "rate_cut": [],
-      "risk_on": []
+      "rate_cut": [
+        "Oil drops 3% as U.S. shifts to economic pressure on Iran, easing fears of renewed war",
+        "Trump\u2019s trade war with Canada could lead the U.S. back to quantitative easing"
+      ],
+      "risk_on": [
+        "Stock Market Today: Dow Rises As Treasury Yields Fall; Nvidia, Micron, Sandisk Rally (Live Coverage)"
+      ]
     },
     "n_headlines": 108,
     "sources_used": [
@@ -13340,7 +13345,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1787659085.970348,
+    "fetched_at": 1787662976.8375225,
     "risk_off_themes": [
       "banking",
       "crash",
