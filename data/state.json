@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-26T18:54:42.893887+00:00",
+  "generated_at_utc": "2026-08-26T21:38:28.435916+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -18,11 +18,11 @@
   "symbols": {
     "SPY": {
       "symbol": "SPY",
-      "bar_time_utc": "2026-08-26T18:30:00+00:00",
-      "close": 766.4500122070312,
-      "ema": 766.5998797865561,
-      "sma": 768.4963421161358,
-      "vwap": 765.6196222760802,
+      "bar_time_utc": "2026-08-26T19:30:00+00:00",
+      "close": 766.010009765625,
+      "ema": 766.5933259599982,
+      "sma": 768.6658038799579,
+      "vwap": 765.7076065707289,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -32,29 +32,18 @@
       "read": {
         "bias": "bearish",
         "strength": "chop",
-        "adx": 13.05,
-        "ema_slope_4bar": -0.1645,
+        "adx": 13.84,
+        "ema_slope_4bar": -0.094,
         "regime_pct_24h": 100.0,
         "macro_tilt": "supports",
         "flip": [
-          "Close > EMA50 (766.60)",
-          "ADX falls below 20 (now 13.1)",
+          "Close > EMA50 (766.59)",
+          "ADX falls below 20 (now 13.8)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "SPY leans short (ADX 13.1, close 766.45 vs EMA50 766.60) and the tape is choppy. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "SPY leans short (ADX 13.8, close 766.01 vs EMA50 766.59) and the tape is choppy. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-06-04T18:30:00+00:00",
-          "o": 757.7999877929688,
-          "h": 758.2999877929688,
-          "l": 757.5,
-          "c": 758.2899780273438,
-          "v": 5269760.0,
-          "ema": 754.398300154541,
-          "sma": 746.4017770620493,
-          "vwap": 755.647641518774
-        },
         {
           "t": "2026-06-04T19:30:00+00:00",
           "o": 758.2899780273438,
@@ -4436,23 +4425,34 @@
         {
           "t": "2026-08-26T18:30:00+00:00",
           "o": 765.6099853515625,
-          "h": 766.5800170898438,
+          "h": 767.3499755859375,
           "l": 765.52001953125,
-          "c": 766.4500122070312,
-          "v": 1415906.0,
-          "ema": 766.5998797865561,
-          "sma": 768.4963421161358,
-          "vwap": 765.6196222760802
+          "c": 766.8900146484375,
+          "v": 3674140.0,
+          "ema": 766.6171347842583,
+          "sma": 768.4997267503005,
+          "vwap": 765.6641429098058
+        },
+        {
+          "t": "2026-08-26T19:30:00+00:00",
+          "o": 766.9000244140625,
+          "h": 767.2100219726562,
+          "l": 765.489990234375,
+          "c": 766.010009765625,
+          "v": 5083434.0,
+          "ema": 766.5933259599982,
+          "sma": 768.6658038799579,
+          "vwap": 765.7076065707289
         }
       ]
     },
     "^NDX": {
       "symbol": "^NDX",
-      "bar_time_utc": "2026-08-26T18:30:00+00:00",
-      "close": 29250.076171875,
-      "ema": 29303.163131163237,
-      "sma": 29464.467518028847,
-      "vwap": 29177.19727835726,
+      "bar_time_utc": "2026-08-26T19:30:00+00:00",
+      "close": 29229.619140625,
+      "ema": 29301.05549575718,
+      "sma": 29472.297310697115,
+      "vwap": 29193.94081865474,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4462,29 +4462,18 @@
       "read": {
         "bias": "bearish",
         "strength": "chop",
-        "adx": 17.93,
-        "ema_slope_4bar": -17.4364,
+        "adx": 18.18,
+        "ema_slope_4bar": -12.5447,
         "regime_pct_24h": 100.0,
         "macro_tilt": "supports",
         "flip": [
-          "Close > EMA50 (29,303.16)",
-          "ADX falls below 20 (now 17.9)",
+          "Close > EMA50 (29,301.06)",
+          "ADX falls below 20 (now 18.2)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "^NDX leans short (ADX 17.9, close 29,250.08 vs EMA50 29,303.16) and the tape is choppy. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "^NDX leans short (ADX 18.2, close 29,229.62 vs EMA50 29,301.06) and the tape is choppy. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-06-04T18:30:00+00:00",
-          "o": 30528.294921875,
-          "h": 30530.98046875,
-          "l": 30466.068359375,
-          "c": 30530.234375,
-          "v": 114039169.0,
-          "ema": 30292.921505806822,
-          "sma": 29671.246829927884,
-          "vwap": 30425.040664809298
-        },
         {
           "t": "2026-06-04T19:30:00+00:00",
           "o": 30528.908203125,
@@ -8866,55 +8855,55 @@
         {
           "t": "2026-08-26T18:30:00+00:00",
           "o": 29212.208984375,
-          "h": 29258.41796875,
+          "h": 29296.767578125,
           "l": 29210.22265625,
-          "c": 29250.076171875,
-          "v": 28969817.0,
-          "ema": 29303.163131163237,
-          "sma": 29464.467518028847,
-          "vwap": 29177.19727835726
+          "c": 29270.68359375,
+          "v": 88816176.0,
+          "ema": 29303.971265354412,
+          "sma": 29464.626036658654,
+          "vwap": 29186.303309236748
+        },
+        {
+          "t": "2026-08-26T19:30:00+00:00",
+          "o": 29267.765625,
+          "h": 29274.263671875,
+          "l": 29213.267578125,
+          "c": 29229.619140625,
+          "v": 101860818.0,
+          "ema": 29301.05549575718,
+          "sma": 29472.297310697115,
+          "vwap": 29193.94081865474
         }
       ]
     },
     "GLD": {
       "symbol": "GLD",
-      "bar_time_utc": "2026-08-26T18:30:00+00:00",
-      "close": 421.55999755859375,
-      "ema": 417.9822857491638,
-      "sma": 402.04366971529447,
-      "vwap": 422.01626222336773,
+      "bar_time_utc": "2026-08-26T19:30:00+00:00",
+      "close": 421.3299865722656,
+      "ema": 418.11959672295967,
+      "sma": 402.42993891789365,
+      "vwap": 421.99417519676405,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
-      "pullback_pyramid_ok": true,
-      "pullback_pyramid_cap": 8,
+      "pullback_pyramid_ok": false,
+      "pullback_pyramid_cap": 0,
       "trend_carry_pyramid_ok": false,
       "trend_carry_pyramid_cap": 0,
       "read": {
         "bias": "bullish",
         "strength": "weak",
-        "adx": 26.87,
-        "ema_slope_4bar": 0.6143,
+        "adx": 25.29,
+        "ema_slope_4bar": 0.5917,
         "regime_pct_24h": 100.0,
         "macro_tilt": "supports",
         "flip": [
-          "Close < EMA50 (417.98)",
-          "ADX falls below 20 (now 26.9)",
+          "Close < EMA50 (418.12)",
+          "ADX falls below 20 (now 25.3)",
           "EMA50 crosses back below SMA130"
         ],
-        "narrative": "GLD leans long (ADX 26.9, close 421.56 vs EMA50 417.98) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "GLD leans long (ADX 25.3, close 421.33 vs EMA50 418.12) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-06-04T18:30:00+00:00",
-          "o": 410.92999267578125,
-          "h": 411.3800048828125,
-          "l": 410.45001220703125,
-          "c": 411.0950012207031,
-          "v": 761997.0,
-          "ema": 412.0121878419442,
-          "sma": 418.04285630446213,
-          "vwap": 411.514290002267
-        },
         {
           "t": "2026-06-04T19:30:00+00:00",
           "o": 411.1000061035156,
@@ -13296,13 +13285,24 @@
         {
           "t": "2026-08-26T18:30:00+00:00",
           "o": 421.4100036621094,
-          "h": 421.70001220703125,
-          "l": 421.17388916015625,
-          "c": 421.55999755859375,
-          "v": 249714.0,
-          "ema": 417.9822857491638,
-          "sma": 402.04366971529447,
-          "vwap": 422.01626222336773
+          "h": 421.7799987792969,
+          "l": 421.07501220703125,
+          "c": 421.7200012207031,
+          "v": 641365.0,
+          "ema": 417.9885604025798,
+          "sma": 402.04490051269534,
+          "vwap": 422.00902054907914
+        },
+        {
+          "t": "2026-08-26T19:30:00+00:00",
+          "o": 421.7300109863281,
+          "h": 421.989990234375,
+          "l": 421.1600036621094,
+          "c": 421.3299865722656,
+          "v": 739430.0,
+          "ema": 418.11959672295967,
+          "sma": 402.42993891789365,
+          "vwap": 421.99417519676405
         }
       ]
     }
@@ -13311,7 +13311,7 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 3,
-    "risk_on_score": 0,
+    "risk_on_score": 1,
     "theme_hits": {
       "war": 2,
       "banking": 0,
@@ -13319,23 +13319,25 @@
       "rate_hike": 0,
       "crash": 1,
       "rate_cut": 0,
-      "risk_on": 0
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
         "Is UK's Storm Shadow missile a game changer for Ukraine?",
-        "Stock Futures Jump as Markets Shrug Off Iran Sanctions With Focus on Big Tech and Fed"
+        "Squeezed by tariffs and Iran war, farmers say they face a new crisis - The Washington Post"
       ],
       "banking": [],
       "recession": [],
       "rate_hike": [],
       "crash": [
-        "The biggest risk to retirement plans may no longer be a stock market crash or inflation"
+        "Video appears to show San Francisco train driver asleep before 2 empty trains crash - ABC News - Breaking News, Latest News and Videos"
       ],
       "rate_cut": [],
-      "risk_on": []
+      "risk_on": [
+        "USD/JPY and USD/CHF Eye Upside as GBP/USD Rally Fades"
+      ]
     },
-    "n_headlines": 111,
+    "n_headlines": 113,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13343,7 +13345,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1787770484.475924,
+    "fetched_at": 1787780309.3107674,
     "risk_off_themes": [
       "banking",
       "crash",
