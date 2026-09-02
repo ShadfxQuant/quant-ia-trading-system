@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-01T22:04:09.135922+00:00",
+  "generated_at_utc": "2026-09-02T11:59:57.605722+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -4452,7 +4452,7 @@
       "close": 29080.056640625,
       "ema": 29318.81107135043,
       "sma": 29511.058428485576,
-      "vwap": 29101.11078523917,
+      "vwap": 29109.46908074783,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8803,10 +8803,10 @@
           "h": 29127.978515625,
           "l": 28993.611328125,
           "c": 29114.412109375,
-          "v": 206401221.0,
+          "v": 0.0,
           "ema": 29378.473964688128,
           "sma": 29529.911087740384,
-          "vwap": 29078.667317708332
+          "vwap": null
         },
         {
           "t": "2026-09-01T14:30:00+00:00",
@@ -8817,7 +8817,7 @@
           "v": 126512120.0,
           "ema": 29370.739691563103,
           "sma": 29526.31484375,
-          "vwap": 29114.03470615268
+          "vwap": 29171.735677083332
         },
         {
           "t": "2026-09-01T15:30:00+00:00",
@@ -8828,7 +8828,7 @@
           "v": 97685749.0,
           "ema": 29361.40392853612,
           "sma": 29522.447776442306,
-          "vwap": 29127.50846628019
+          "vwap": 29172.472643438687
         },
         {
           "t": "2026-09-01T16:30:00+00:00",
@@ -8839,7 +8839,7 @@
           "v": 77347523.0,
           "ema": 29350.908768348432,
           "sma": 29519.543810096155,
-          "vwap": 29123.907203979452
+          "vwap": 29154.872915981643
         },
         {
           "t": "2026-09-01T17:30:00+00:00",
@@ -8850,7 +8850,7 @@
           "v": 68228278.0,
           "ema": 29338.87596432006,
           "sma": 29516.305378605768,
-          "vwap": 29116.830969042665
+          "vwap": 29138.13325439258
         },
         {
           "t": "2026-09-01T18:30:00+00:00",
@@ -8861,7 +8861,7 @@
           "v": 91273156.0,
           "ema": 29328.55615015555,
           "sma": 29513.163641826923,
-          "vwap": 29105.74915577906
+          "vwap": 29117.873140002564
         },
         {
           "t": "2026-09-01T19:30:00+00:00",
@@ -8872,7 +8872,7 @@
           "v": 93176113.0,
           "ema": 29318.81107135043,
           "sma": 29511.058428485576,
-          "vwap": 29101.11078523917
+          "vwap": 29109.46908074783
         }
       ]
     },
@@ -13309,35 +13309,35 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 3,
-    "risk_on_score": 1,
+    "risk_off_score": 10,
+    "risk_on_score": 0,
     "theme_hits": {
-      "war": 1,
+      "war": 6,
       "banking": 0,
-      "recession": 1,
-      "rate_hike": 1,
-      "crash": 0,
+      "recession": 0,
+      "rate_hike": 0,
+      "crash": 4,
       "rate_cut": 0,
-      "risk_on": 1
+      "risk_on": 0
     },
     "sample_headlines": {
       "war": [
-        "U.S. strikes Iran as Tehran retaliates, raising risk of wider war"
+        "Why US troops have a history in this raucous Thai city",
+        "More than 900 killed in Gaza this year despite ceasefire, Hamas-run health ministry says",
+        "Bitcoin and ethereum prices today, Wednesday, September 2, 2026: Crypto prices tumble as Iran war reignites"
       ],
       "banking": [],
-      "recession": [
-        "AI could cause global economic downturn, Andrew Bailey warns G20 - BBC"
+      "recession": [],
+      "rate_hike": [],
+      "crash": [
+        "Bus crash on Egypt's Red Sea coast kills 22",
+        "Tiger Woods to change plea after crash arrest",
+        "Bitcoin and ethereum prices today, Wednesday, September 2, 2026: Crypto prices tumble as Iran war reignites"
       ],
-      "rate_hike": [
-        "Fed Governor Barr says he'll support rate hike if inflation doesn't ease"
-      ],
-      "crash": [],
       "rate_cut": [],
-      "risk_on": [
-        "Broadcom earnings need to answer these questions for the stock to rally again"
-      ]
+      "risk_on": []
     },
-    "n_headlines": 111,
+    "n_headlines": 112,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13345,7 +13345,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1788300249.9433122,
+    "fetched_at": 1788350400.160693,
     "risk_off_themes": [
       "banking",
       "crash",
