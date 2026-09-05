@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-05T11:10:15.156721+00:00",
+  "generated_at_utc": "2026-09-05T13:52:17.704740+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -8893,13 +8893,13 @@
         "adx": 25.18,
         "ema_slope_4bar": -0.3729,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "supports",
+        "macro_tilt": "neutral",
         "flip": [
           "Close > EMA50 (408.53)",
           "ADX falls below 20 (now 25.2)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 25.2, close 406.74 vs EMA50 408.53) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "GLD leans short (ADX 25.2, close 406.74 vs EMA50 408.53) but the trend is only weak. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -13307,36 +13307,37 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "RISK_ON",
-    "risk_off_score": 3,
-    "risk_on_score": 8,
+    "verdict": "NEUTRAL",
+    "risk_off_score": 5,
+    "risk_on_score": 6,
     "theme_hits": {
-      "war": 3,
+      "war": 4,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 0,
-      "rate_cut": 2,
-      "risk_on": 6
+      "crash": 1,
+      "rate_cut": 1,
+      "risk_on": 5
     },
     "sample_headlines": {
       "war": [
         "At least two dead in blast at Bolivia military barracks",
-        "U.S. sanctions Turkish bank accused of enabling Iran as Bessent says he 'hopes for' no further bank penalties",
-        "U.S. 'Economic Outcast\u2019 operation gains momentum as EU joins sanctions; South Korea weighs military backing"
+        "Meet the CISO: A new front line star in the AI cybersecurity war",
+        "U.S. sanctions Turkish bank accused of enabling Iran as Bessent says he 'hopes for' no further bank penalties"
       ],
       "banking": [],
       "recession": [],
       "rate_hike": [],
-      "crash": [],
+      "crash": [
+        "Are Stocks Going to Plunge if Congress Is Split Under President Donald Trump? Here's What History Says About Stock Market Returns in This Scenario."
+      ],
       "rate_cut": [
-        "Trump doubles down on threat to halt trade with top partners unless Fed cuts rates",
-        "Stocks, Bonds Rally After Dovish Fed Comments - WSJ"
+        "Trump doubles down on threat to halt trade with top partners unless Fed cuts rates"
       ],
       "risk_on": [
-        "Lululemon Shares Fall 17% After FY2026 Guidance Cut Despite Q2 Earnings Beat",
+        "What strong jobs data means for rates \u2014 plus, an out-of-favor trade shines this week",
         "Diesel hits record high as Ukraine and Iran wars knock out refineries, fueling inflation worries",
-        "What strong jobs data means for rates \u2014 plus, an out-of-favor trade shines this week"
+        "US diesel prices hit a record high of $5.85 on average as the Iran war disrupts the flow of fuel - AP News"
       ]
     },
     "n_headlines": 112,
@@ -13347,7 +13348,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1788606615.6165533,
+    "fetched_at": 1788616338.1683228,
     "risk_off_themes": [
       "banking",
       "crash",
