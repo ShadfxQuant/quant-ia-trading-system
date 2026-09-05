@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-05T13:52:17.704740+00:00",
+  "generated_at_utc": "2026-09-05T16:27:29.842277+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -8893,13 +8893,13 @@
         "adx": 25.18,
         "ema_slope_4bar": -0.3729,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "supports",
         "flip": [
           "Close > EMA50 (408.53)",
           "ADX falls below 20 (now 25.2)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 25.2, close 406.74 vs EMA50 408.53) but the trend is only weak. The regime filter is mostly green."
+        "narrative": "GLD leans short (ADX 25.2, close 406.74 vs EMA50 408.53) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -13307,17 +13307,17 @@
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
-    "risk_off_score": 5,
+    "verdict": "RISK_ON",
+    "risk_off_score": 4,
     "risk_on_score": 6,
     "theme_hits": {
       "war": 4,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 1,
-      "rate_cut": 1,
-      "risk_on": 5
+      "crash": 0,
+      "rate_cut": 2,
+      "risk_on": 4
     },
     "sample_headlines": {
       "war": [
@@ -13328,19 +13328,18 @@
       "banking": [],
       "recession": [],
       "rate_hike": [],
-      "crash": [
-        "Are Stocks Going to Plunge if Congress Is Split Under President Donald Trump? Here's What History Says About Stock Market Returns in This Scenario."
-      ],
+      "crash": [],
       "rate_cut": [
-        "Trump doubles down on threat to halt trade with top partners unless Fed cuts rates"
+        "Trump doubles down on threat to halt trade with top partners unless Fed cuts rates",
+        "Stocks, Bonds Rally After Dovish Fed Comments - WSJ"
       ],
       "risk_on": [
         "What strong jobs data means for rates \u2014 plus, an out-of-favor trade shines this week",
-        "Diesel hits record high as Ukraine and Iran wars knock out refineries, fueling inflation worries",
-        "US diesel prices hit a record high of $5.85 on average as the Iran war disrupts the flow of fuel - AP News"
+        "US diesel prices hit a record high of $5.85 on average as the Iran war disrupts the flow of fuel - AP News",
+        "Stock Market on Sept. 3, 2026: Dow, S&P 500, Nasdaq end sharply higher as software stocks and Big Tech rally; Treasury yields ease after Fed governor Waller's remarks - MarketWatch"
       ]
     },
-    "n_headlines": 112,
+    "n_headlines": 111,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13348,7 +13347,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1788616338.1683228,
+    "fetched_at": 1788625650.8311455,
     "risk_off_themes": [
       "banking",
       "crash",
