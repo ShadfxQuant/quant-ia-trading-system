@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-16T20:13:37.634130+00:00",
+  "generated_at_utc": "2026-09-16T22:59:59.519112+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -19,10 +19,10 @@
     "SPY": {
       "symbol": "SPY",
       "bar_time_utc": "2026-09-16T19:30:00+00:00",
-      "close": 754.030029296875,
-      "ema": 761.1374778787844,
-      "sma": 764.7973543607271,
-      "vwap": 756.1365671172464,
+      "close": 754.0700073242188,
+      "ema": 761.1390456445625,
+      "sma": 764.7976618840145,
+      "vwap": 756.1058991146235,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -33,7 +33,7 @@
         "bias": "bearish",
         "strength": "weak",
         "adx": 24.61,
-        "ema_slope_4bar": -0.875,
+        "ema_slope_4bar": -0.8735,
         "regime_pct_24h": 100.0,
         "macro_tilt": "supports",
         "flip": [
@@ -41,7 +41,7 @@
           "ADX falls below 20 (now 24.6)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "SPY leans short (ADX 24.6, close 754.03 vs EMA50 761.14) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "SPY leans short (ADX 24.6, close 754.07 vs EMA50 761.14) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
         {
@@ -4438,11 +4438,11 @@
           "o": 751.239990234375,
           "h": 754.3699951171875,
           "l": 751.1099853515625,
-          "c": 754.030029296875,
-          "v": 12368939.0,
-          "ema": 761.1374778787844,
-          "sma": 764.7973543607271,
-          "vwap": 756.1365671172464
+          "c": 754.0700073242188,
+          "v": 12943928.0,
+          "ema": 761.1390456445625,
+          "sma": 764.7976618840145,
+          "vwap": 756.1058991146235
         }
       ]
     },
@@ -8882,7 +8882,7 @@
       "close": 391.75,
       "ema": 398.3056776498346,
       "sma": 408.22904029259314,
-      "vwap": 394.88381417561993,
+      "vwap": 394.86507375715803,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13299,10 +13299,10 @@
           "h": 392.1300048828125,
           "l": 390.010009765625,
           "c": 391.75,
-          "v": 1195088.0,
+          "v": 1273166.0,
           "ema": 398.3056776498346,
           "sma": 408.22904029259314,
-          "vwap": 394.88381417561993
+          "vwap": 394.86507375715803
         }
       ]
     }
@@ -13313,32 +13313,31 @@
     "risk_off_score": 10,
     "risk_on_score": 1,
     "theme_hits": {
-      "war": 4,
+      "war": 3,
       "banking": 0,
       "recession": 1,
-      "rate_hike": 3,
-      "crash": 2,
+      "rate_hike": 5,
+      "crash": 1,
       "rate_cut": 0,
       "risk_on": 1
     },
     "sample_headlines": {
       "war": [
         "Eight children among 21 killed after war-damaged Gaza building collapses, rescuers say",
-        "Consumers hit by one-two punch of oil and rates from Iran war. The estimated bill is $1,700 per household",
-        "House set to pass sweeping Russia sanctions bill honoring Lindsey Graham"
+        "House passes sweeping Russia sanctions bill honoring Lindsey Graham, sends to Trump",
+        "Consumers hit by one-two punch of oil and rates from Iran war. The estimated bill is $1,700 per household"
       ],
       "banking": [],
       "recession": [
         "Oracle CFO Says 'Doing More With Less' Isn't the Answer in All-Hands After Layoffs - Business Insider"
       ],
       "rate_hike": [
+        "Analysis: How Trump could reignite the Fed independence fight after Warsh's rate hike",
         "Fed raises rates: What it means for your credit cards, mortgages, savings accounts and auto loans",
-        "As Fed rolls out its first interest-rate hike in 3 years, officials are divided on what to do next",
-        "What a Fed rate hike could mean for mortgage rates (and what borrowers need to do now) - CBS News"
+        "As Fed rolls out its first interest-rate hike in 3 years, market braces for more increases"
       ],
       "crash": [
-        "Rich Dad Poor Dad author warns biggest crash in history has started",
-        "AI Extinction Fears Could Crush Nvidia\u2019s $1.3 Trillion Growth Engine, but Don\u2019t Panic Sell Just Yet"
+        "Rich Dad Poor Dad author warns biggest crash in history has started"
       ],
       "rate_cut": [],
       "risk_on": [
@@ -13353,7 +13352,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1789589618.8019395,
+    "fetched_at": 1789599600.125766,
     "risk_off_themes": [
       "banking",
       "crash",
@@ -13374,17 +13373,6 @@
     "return_pct": -10.85,
     "open_count": 1,
     "closed_count": 26,
-    "actions": [
-      {
-        "event": "close",
-        "symbol": "SPY",
-        "strategy": "pullback",
-        "side": "LONG",
-        "reason": "stop",
-        "exit_price": 755.3422714233399,
-        "pnl": -692.24,
-        "equity_after": 89150.05
-      }
-    ]
+    "actions": []
   }
 }
