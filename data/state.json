@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-16T22:59:59.519112+00:00",
+  "generated_at_utc": "2026-09-17T12:28:15.359043+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -4452,7 +4452,7 @@
       "close": 28953.015625,
       "ema": 29191.8546011006,
       "sma": 29279.629251802886,
-      "vwap": 29079.219366252382,
+      "vwap": 29062.17158976286,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8803,10 +8803,10 @@
           "h": 29172.990234375,
           "l": 29068.240234375,
           "c": 29147.76171875,
-          "v": 209494619.0,
+          "v": 0.0,
           "ema": 29225.47565914874,
           "sma": 29292.417578125,
-          "vwap": 29129.6640625
+          "vwap": null
         },
         {
           "t": "2026-09-16T14:30:00+00:00",
@@ -8817,7 +8817,7 @@
           "v": 110995439.0,
           "ema": 29224.395654745847,
           "sma": 29290.509254807694,
-          "vwap": 29147.260170404676
+          "vwap": 29180.471354166668
         },
         {
           "t": "2026-09-16T15:30:00+00:00",
@@ -8828,7 +8828,7 @@
           "v": 78557234.0,
           "ema": 29222.497862525423,
           "sma": 29288.270042067306,
-          "vwap": 29155.9286817733
+          "vwap": 29184.956478220356
         },
         {
           "t": "2026-09-16T16:30:00+00:00",
@@ -8839,7 +8839,7 @@
           "v": 63639236.0,
           "ema": 29219.64492857835,
           "sma": 29286.158623798077,
-          "vwap": 29155.853959527805
+          "vwap": 29177.523856173237
         },
         {
           "t": "2026-09-16T17:30:00+00:00",
@@ -8850,7 +8850,7 @@
           "v": 99732677.0,
           "ema": 29216.840838241944,
           "sma": 29285.25018028846,
-          "vwap": 29156.38020788574
+          "vwap": 29172.238804653305
         },
         {
           "t": "2026-09-16T18:30:00+00:00",
@@ -8861,7 +8861,7 @@
           "v": 156727546.0,
           "ema": 29201.60313073736,
           "sma": 29281.962109375,
-          "vwap": 29105.207099536397
+          "vwap": 29095.15396364967
         },
         {
           "t": "2026-09-16T19:30:00+00:00",
@@ -8872,7 +8872,7 @@
           "v": 110246447.0,
           "ema": 29191.8546011006,
           "sma": 29279.629251802886,
-          "vwap": 29079.219366252382
+          "vwap": 29062.17158976286
         }
       ]
     },
@@ -13310,41 +13310,39 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 10,
+    "risk_off_score": 9,
     "risk_on_score": 1,
     "theme_hits": {
-      "war": 3,
+      "war": 2,
       "banking": 0,
-      "recession": 1,
+      "recession": 0,
       "rate_hike": 5,
-      "crash": 1,
+      "crash": 2,
       "rate_cut": 0,
       "risk_on": 1
     },
     "sample_headlines": {
       "war": [
         "Eight children among 21 killed after war-damaged Gaza building collapses, rescuers say",
-        "House passes sweeping Russia sanctions bill honoring Lindsey Graham, sends to Trump",
-        "Consumers hit by one-two punch of oil and rates from Iran war. The estimated bill is $1,700 per household"
+        "Trump says U.S. \u2018hopefully\u2019 nearing end of Iran war as Saudi Arabia, Houthis trade strikes"
       ],
       "banking": [],
-      "recession": [
-        "Oracle CFO Says 'Doing More With Less' Isn't the Answer in All-Hands After Layoffs - Business Insider"
-      ],
+      "recession": [],
       "rate_hike": [
-        "Analysis: How Trump could reignite the Fed independence fight after Warsh's rate hike",
-        "Fed raises rates: What it means for your credit cards, mortgages, savings accounts and auto loans",
-        "As Fed rolls out its first interest-rate hike in 3 years, market braces for more increases"
+        "Stock market today: Dow, S&P 500, Nasdaq rise as Fed rate hike pacifies markets' inflation worries",
+        "Dow Jones Futures Rise After Hawkish Fed, Warsh Hit Stocks, Trump Fumes; AMD, Bloom Energy Eye Buy Points",
+        "Top strategist thinks the Federal Reserve interest rate hike won't fix this huge earnings risk"
       ],
       "crash": [
-        "Rich Dad Poor Dad author warns biggest crash in history has started"
+        "Fund Capitalizes on Axon Enterprise (AXON) in AI-Related Selloff",
+        "How To Protect Yourself From The Looming AI-Stock Crash"
       ],
       "rate_cut": [],
       "risk_on": [
-        "U.S. Diesel Prices Hit New Record High as Fuel Squeeze Bites - WSJ"
+        "UBS Bets on Valero Energy (VLO) to Shatter its Record High"
       ]
     },
-    "n_headlines": 112,
+    "n_headlines": 110,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13352,7 +13350,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1789599600.125766,
+    "fetched_at": 1789648096.190241,
     "risk_off_themes": [
       "banking",
       "crash",
