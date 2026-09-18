@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-17T22:58:04.095138+00:00",
+  "generated_at_utc": "2026-09-18T12:07:21.034298+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -4451,7 +4451,7 @@
       "close": 29442.1171875,
       "ema": 29249.08247703113,
       "sma": 29290.195057091347,
-      "vwap": 29413.52404897762,
+      "vwap": 29427.326149738077,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8801,10 +8801,10 @@
           "h": 29432.962890625,
           "l": 29308.923828125,
           "c": 29411.162109375,
-          "v": 289266698.0,
+          "v": 0.0,
           "ema": 29200.454895542734,
           "sma": 29281.163100961538,
-          "vwap": 29384.349609375
+          "vwap": null
         },
         {
           "t": "2026-09-17T14:30:00+00:00",
@@ -8815,7 +8815,7 @@
           "v": 140245210.0,
           "ema": 29208.472442531256,
           "sma": 29283.15241887019,
-          "vwap": 29389.986157818566
+          "vwap": 29401.611979166668
         },
         {
           "t": "2026-09-17T15:30:00+00:00",
@@ -8826,7 +8826,7 @@
           "v": 100185531.0,
           "ema": 29217.653976647678,
           "sma": 29284.902689302886,
-          "vwap": 29397.475952298897
+          "vwap": 29413.268499702022
         },
         {
           "t": "2026-09-17T16:30:00+00:00",
@@ -8837,7 +8837,7 @@
           "v": 88293702.0,
           "ema": 29225.58804251444,
           "sma": 29286.503365384615,
-          "vwap": 29401.709556073896
+          "vwap": 29416.985738195363
         },
         {
           "t": "2026-09-17T17:30:00+00:00",
@@ -8848,7 +8848,7 @@
           "v": 78437793.0,
           "ema": 29233.40896180309,
           "sma": 29288.216240985577,
-          "vwap": 29404.64480039129
+          "vwap": 29419.063433485153
         },
         {
           "t": "2026-09-17T18:30:00+00:00",
@@ -8859,7 +8859,7 @@
           "v": 95327391.0,
           "ema": 29241.20350925689,
           "sma": 29289.320973557693,
-          "vwap": 29407.569482489456
+          "vwap": 29420.936397273148
         },
         {
           "t": "2026-09-17T19:30:00+00:00",
@@ -8870,7 +8870,7 @@
           "v": 108953077.0,
           "ema": 29249.08247703113,
           "sma": 29290.195057091347,
-          "vwap": 29413.52404897762
+          "vwap": 29427.326149738077
         }
       ]
     },
@@ -8880,7 +8880,7 @@
       "close": 398.2799987792969,
       "ema": 398.5401517284973,
       "sma": 407.223586331881,
-      "vwap": 399.6377483881407,
+      "vwap": 399.6347617527048,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -13252,10 +13252,10 @@
           "h": 400.7632141113281,
           "l": 399.20001220703125,
           "c": 400.32000732421875,
-          "v": 529114.0,
+          "v": 482465.0,
           "ema": 398.495896595011,
           "sma": 407.8978172889123,
-          "vwap": 400.0989274785896
+          "vwap": 400.09897248608223
         },
         {
           "t": "2026-09-17T16:30:00+00:00",
@@ -13266,7 +13266,7 @@
           "v": 348106.0,
           "ema": 398.54115172241256,
           "sma": 407.7777395395132,
-          "vwap": 400.072711684604
+          "vwap": 400.0725104032669
         },
         {
           "t": "2026-09-17T17:30:00+00:00",
@@ -13277,7 +13277,7 @@
           "v": 334027.0,
           "ema": 398.5685571542542,
           "sma": 407.6008171668419,
-          "vwap": 400.03961316620354
+          "vwap": 400.0391365262998
         },
         {
           "t": "2026-09-17T18:30:00+00:00",
@@ -13288,7 +13288,7 @@
           "v": 790153.0,
           "ema": 398.55077021621975,
           "sma": 407.4151632455679,
-          "vwap": 399.8438199353725
+          "vwap": 399.8419201587878
         },
         {
           "t": "2026-09-17T19:30:00+00:00",
@@ -13299,7 +13299,7 @@
           "v": 979463.0,
           "ema": 398.5401517284973,
           "sma": 407.223586331881,
-          "vwap": 399.6377483881407
+          "vwap": 399.6347617527048
         }
       ]
     }
@@ -13307,35 +13307,37 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 5,
+    "risk_off_score": 11,
     "risk_on_score": 1,
     "theme_hits": {
       "war": 4,
       "banking": 0,
       "recession": 0,
-      "rate_hike": 1,
+      "rate_hike": 7,
       "crash": 0,
-      "rate_cut": 0,
-      "risk_on": 1
+      "rate_cut": 1,
+      "risk_on": 0
     },
     "sample_headlines": {
       "war": [
         "UN experts say grounds to believe US committed war crimes in Iran strikes",
         "US to allow Iran delegation to attend UN meetings in New York as war passes half-year mark",
-        "Eight children among 21 killed after war-damaged Gaza building collapses, rescuers say"
+        "UN mission finds evidence signaling U.S. war crimes in Iran; Washington rejects report"
       ],
       "banking": [],
       "recession": [],
       "rate_hike": [
-        "Fed rate hike likely means more expensive credit cards and mortgages, but savers may rejoice - AP News"
+        "How the Federal Reserve rate hike shapes consumer loans",
+        "How the Federal Reserve's rate hike impacts student loan interest rates",
+        "What a Fed rate hike means for your bank accounts, loans, credit cards, and investments"
       ],
       "crash": [],
-      "rate_cut": [],
-      "risk_on": [
-        "Bitcoin Price Prediction: Failed Clarity Act Vote Will Put BTC\u2019s Rally to the Test"
-      ]
+      "rate_cut": [
+        "Warsh Defies Trump\u2019s Calls for Rate Cut as War Stokes Inflation - Bloomberg.com"
+      ],
+      "risk_on": []
     },
-    "n_headlines": 114,
+    "n_headlines": 111,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13343,7 +13345,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1789685884.6863818,
+    "fetched_at": 1789733243.983857,
     "risk_off_themes": [
       "banking",
       "crash",
