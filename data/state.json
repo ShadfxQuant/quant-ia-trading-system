@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-23T23:10:02.822295+00:00",
+  "generated_at_utc": "2026-09-24T12:36:22.681185+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -22,7 +22,7 @@
       "close": 767.780029296875,
       "ema": 766.6964505858236,
       "sma": 765.2976459209735,
-      "vwap": 768.4618824361592,
+      "vwap": 768.4620420619939,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -4417,10 +4417,10 @@
           "h": 769.0449829101562,
           "l": 767.0599975585938,
           "c": 768.27001953125,
-          "v": 3395000.0,
+          "v": 3377192.0,
           "ema": 766.611902360872,
           "sma": 765.3422987717848,
-          "vwap": 768.9854910092361
+          "vwap": 768.9861414222755
         },
         {
           "t": "2026-09-23T18:30:00+00:00",
@@ -4431,7 +4431,7 @@
           "v": 3726599.0,
           "ema": 766.6522228833318,
           "sma": 765.3217224121094,
-          "vwap": 768.8246020518592
+          "vwap": 768.8250586345457
         },
         {
           "t": "2026-09-23T19:30:00+00:00",
@@ -4442,7 +4442,7 @@
           "v": 10296470.0,
           "ema": 766.6964505858236,
           "sma": 765.2976459209735,
-          "vwap": 768.4618824361592
+          "vwap": 768.4620420619939
         }
       ]
     },
@@ -4452,7 +4452,7 @@
       "close": 30470.181640625,
       "ema": 29988.538635098124,
       "sma": 29513.758473557693,
-      "vwap": 30455.384400302322,
+      "vwap": 30446.024083311895,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": true,
@@ -8803,10 +8803,10 @@
           "h": 30696.275390625,
           "l": 30354.3359375,
           "c": 30389.802734375,
-          "v": 251648744.0,
+          "v": 0.0,
           "ema": 29863.588860119056,
           "sma": 29464.626908052884,
-          "vwap": 30480.138020833332
+          "vwap": null
         },
         {
           "t": "2026-09-23T14:30:00+00:00",
@@ -8817,7 +8817,7 @@
           "v": 149265439.0,
           "ema": 29887.846175040857,
           "sma": 29474.39347956731,
-          "vwap": 30473.4371195386
+          "vwap": 30462.139973958332
         },
         {
           "t": "2026-09-23T15:30:00+00:00",
@@ -8828,7 +8828,7 @@
           "v": 102842253.0,
           "ema": 29909.199250897098,
           "sma": 29483.32937199519,
-          "vwap": 30468.598851074927
+          "vwap": 30457.080687731832
         },
         {
           "t": "2026-09-23T16:30:00+00:00",
@@ -8839,7 +8839,7 @@
           "v": 103982294.0,
           "ema": 29927.927880151135,
           "sma": 29492.230603966345,
-          "vwap": 30456.81656627012
+          "vwap": 30440.33529754643
         },
         {
           "t": "2026-09-23T17:30:00+00:00",
@@ -8850,7 +8850,7 @@
           "v": 92190788.0,
           "ema": 29949.020475537367,
           "sma": 29499.358112980768,
-          "vwap": 30454.903856768076
+          "vwap": 30440.738302362857
         },
         {
           "t": "2026-09-23T18:30:00+00:00",
@@ -8861,7 +8861,7 @@
           "v": 95853759.0,
           "ema": 29968.879736913354,
           "sma": 29506.602989783652,
-          "vwap": 30455.453942957043
+          "vwap": 30444.038168332117
         },
         {
           "t": "2026-09-23T19:30:00+00:00",
@@ -8872,7 +8872,7 @@
           "v": 121357621.0,
           "ema": 29988.538635098124,
           "sma": 29513.758473557693,
-          "vwap": 30455.384400302322
+          "vwap": 30446.024083311895
         }
       ]
     },
@@ -13311,34 +13311,38 @@
   "macro": {
     "verdict": "RISK_OFF",
     "risk_off_score": 5,
-    "risk_on_score": 0,
+    "risk_on_score": 2,
     "theme_hits": {
-      "war": 2,
+      "war": 3,
       "banking": 0,
-      "recession": 1,
-      "rate_hike": 2,
-      "crash": 0,
-      "rate_cut": 0,
-      "risk_on": 0
+      "recession": 0,
+      "rate_hike": 1,
+      "crash": 1,
+      "rate_cut": 1,
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
         "Ethiopia and Tigray accuse each of launching offensives, fuelling fears of new war",
-        "Poland accuses Russian military helicopter of violating its airspace"
+        "Poland accuses Russian military helicopter of violating its airspace",
+        "A red carpet and military flyover - How Trump welcomed Xi"
       ],
       "banking": [],
-      "recession": [
-        "Revealed: Some of the Oracle Cloud Roles Hit Hardest in Layoffs - Business Insider"
-      ],
+      "recession": [],
       "rate_hike": [
-        "Higher interest rates squeeze younger and lower-income households. 'A rate hike is a blunt tool,' says expert",
-        "What does a Fed rate hike mean for mortgage rates? - usatoday.com"
+        "New York Fed\u2019s Williams says it's 'reasonable' to expect another rate hike by year-end"
       ],
-      "crash": [],
-      "rate_cut": [],
-      "risk_on": []
+      "crash": [
+        "30-year Treasury yield hits highest level since 2004 as bond market rout continues"
+      ],
+      "rate_cut": [
+        "Massachusetts lesbian bar ignites fury after easing mask rules for one night a week - Fox News"
+      ],
+      "risk_on": [
+        "Wall Street\u2019s Nasdaq hits all-time high as AI frenzy gathers pace - Al Jazeera"
+      ]
     },
-    "n_headlines": 110,
+    "n_headlines": 111,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13346,7 +13350,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1790205004.0171506,
+    "fetched_at": 1790253383.3070595,
     "risk_off_themes": [
       "banking",
       "crash",
