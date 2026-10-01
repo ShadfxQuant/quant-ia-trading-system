@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-01T19:38:02.179795+00:00",
+  "generated_at_utc": "2026-10-01T23:25:11.319118+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -19,10 +19,10 @@
     "SPY": {
       "symbol": "SPY",
       "bar_time_utc": "2026-10-01T19:30:00+00:00",
-      "close": 764.3900146484375,
-      "ema": 765.6330433688661,
-      "sma": 764.7608623798077,
-      "vwap": 762.1695324865857,
+      "close": 764.02001953125,
+      "ema": 765.6185337564273,
+      "sma": 764.7580162635217,
+      "vwap": 762.4761154227816,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -32,15 +32,15 @@
       "read": {
         "bias": "neutral",
         "strength": "chop",
-        "adx": 16.66,
-        "ema_slope_4bar": -0.2504,
+        "adx": 16.41,
+        "ema_slope_4bar": -0.2649,
         "regime_pct_24h": 100.0,
         "macro_tilt": "neutral",
         "flip": [
           "Close + ADX both push above EMA50 with ADX \u2265 20",
           "Or close below EMA50 with ADX rising past 20"
         ],
-        "narrative": "SPY is neutral (ADX 16.7, close 764.39 vs EMA50 765.63) and the tape is choppy. The regime filter is mostly green."
+        "narrative": "SPY is neutral (ADX 16.4, close 764.02 vs EMA50 765.62) and the tape is choppy. The regime filter is mostly green."
       },
       "bars": [
         {
@@ -4427,31 +4427,31 @@
           "h": 765.1500244140625,
           "l": 763.72998046875,
           "c": 764.5150756835938,
-          "v": 3253074.0,
+          "v": 3508191.0,
           "ema": 765.683779235006,
           "sma": 764.8090928297777,
-          "vwap": 762.1427002614529
+          "vwap": 762.1593171151042
         },
         {
           "t": "2026-10-01T19:30:00+00:00",
-          "o": 764.5,
-          "h": 764.8099975585938,
-          "l": 764.219970703125,
-          "c": 764.3900146484375,
-          "v": 412295.0,
-          "ema": 765.6330433688661,
-          "sma": 764.7608623798077,
-          "vwap": 762.1695324865857
+          "o": 764.510009765625,
+          "h": 765.6500244140625,
+          "l": 763.469970703125,
+          "c": 764.02001953125,
+          "v": 5932736.0,
+          "ema": 765.6185337564273,
+          "sma": 764.7580162635217,
+          "vwap": 762.4761154227816
         }
       ]
     },
     "^NDX": {
       "symbol": "^NDX",
       "bar_time_utc": "2026-10-01T19:30:00+00:00",
-      "close": 30533.79296875,
-      "ema": 30360.377576575942,
-      "sma": 29864.818494591345,
-      "vwap": 30437.040735113354,
+      "close": 30508.837890625,
+      "ema": 30359.398946061236,
+      "sma": 29864.626532451923,
+      "vwap": 30444.797623559512,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4461,15 +4461,15 @@
       "read": {
         "bias": "bullish",
         "strength": "chop",
-        "adx": 15.56,
-        "ema_slope_4bar": 30.4469,
+        "adx": 15.22,
+        "ema_slope_4bar": 29.4682,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
-          "Close < EMA50 (30,360.38)",
-          "ADX falls below 20 (now 15.6)"
+          "Close < EMA50 (30,359.40)",
+          "ADX falls below 20 (now 15.2)"
         ],
-        "narrative": "^NDX leans long (ADX 15.6, close 30,533.79 vs EMA50 30,360.38) and the tape is choppy. The regime filter is mostly green."
+        "narrative": "^NDX leans long (ADX 15.2, close 30,508.84 vs EMA50 30,359.40) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -8864,23 +8864,23 @@
         {
           "t": "2026-10-01T19:30:00+00:00",
           "o": 30541.9921875,
-          "h": 30560.5,
-          "l": 30526.775390625,
-          "c": 30533.79296875,
-          "v": 16602125.0,
-          "ema": 30360.377576575942,
-          "sma": 29864.818494591345,
-          "vwap": 30437.040735113354
+          "h": 30589.44140625,
+          "l": 30487.146484375,
+          "c": 30508.837890625,
+          "v": 91355465.0,
+          "ema": 30359.398946061236,
+          "sma": 29864.626532451923,
+          "vwap": 30444.797623559512
         }
       ]
     },
     "GLD": {
       "symbol": "GLD",
       "bar_time_utc": "2026-10-01T19:30:00+00:00",
-      "close": 382.67999267578125,
-      "ema": 385.82836225386944,
-      "sma": 394.04800696739784,
-      "vwap": 382.03617167139174,
+      "close": 382.7799987792969,
+      "ema": 385.8322840618505,
+      "sma": 394.0487762451172,
+      "vwap": 382.09309676283937,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8891,15 +8891,15 @@
         "bias": "bearish",
         "strength": "chop",
         "adx": 19.2,
-        "ema_slope_4bar": -0.5602,
+        "ema_slope_4bar": -0.5563,
         "regime_pct_24h": 100.0,
-        "macro_tilt": "neutral",
+        "macro_tilt": "conflicts",
         "flip": [
           "Close > EMA50 (385.83)",
           "ADX falls below 20 (now 19.2)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 19.2, close 382.68 vs EMA50 385.83) and the tape is choppy. The regime filter is mostly green."
+        "narrative": "GLD leans short (ADX 19.2, close 382.78 vs EMA50 385.83) and the tape is choppy. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
         {
@@ -13286,54 +13286,60 @@
           "h": 383.2950134277344,
           "l": 382.3399963378906,
           "c": 382.7550048828125,
-          "v": 442599.0,
+          "v": 456577.0,
           "ema": 385.95686713460776,
           "sma": 394.2326223520132,
-          "vwap": 382.0254448642742
+          "vwap": 382.02753320331436
         },
         {
           "t": "2026-10-01T19:30:00+00:00",
-          "o": 382.75,
-          "h": 383.0,
-          "l": 382.6700134277344,
-          "c": 382.67999267578125,
-          "v": 73910.0,
-          "ema": 385.82836225386944,
-          "sma": 394.04800696739784,
-          "vwap": 382.03617167139174
+          "o": 382.7799987792969,
+          "h": 383.05999755859375,
+          "l": 382.5299987792969,
+          "c": 382.7799987792969,
+          "v": 485643.0,
+          "ema": 385.8322840618505,
+          "sma": 394.0487762451172,
+          "vwap": 382.09309676283937
         }
       ]
     }
   },
   "errors": {},
   "macro": {
-    "verdict": "NEUTRAL",
-    "risk_off_score": 2,
+    "verdict": "RISK_OFF",
+    "risk_off_score": 6,
     "risk_on_score": 1,
     "theme_hits": {
-      "war": 2,
+      "war": 3,
       "banking": 0,
-      "recession": 0,
+      "recession": 1,
       "rate_hike": 0,
-      "crash": 0,
+      "crash": 2,
       "rate_cut": 0,
       "risk_on": 1
     },
     "sample_headlines": {
       "war": [
         "K-pop star convicted of violating military service law",
-        "Rosenberg: Putin shows no sign of stopping the war as Russia doubles down on Ukraine"
+        "Rosenberg: Putin shows no sign of stopping the war as Russia doubles down on Ukraine",
+        "Treasury sanctions operation targets Iran's auto, rail industries in latest economic attack"
       ],
       "banking": [],
-      "recession": [],
+      "recession": [
+        "Nike shares drop as retailer posts disappointing sales, announces layoffs as part of restructuring"
+      ],
       "rate_hike": [],
-      "crash": [],
+      "crash": [
+        "US government debt rout triggers \u2018vicious loop\u2019 of selling - Financial Times",
+        "Michael Burry Buys Put Options on Nvidia, Micron, and Palantir as \"The Big Short\" Investor Predicts a 1987-Style Market Crash - fool.com"
+      ],
       "rate_cut": [],
       "risk_on": [
-        "Accenture rallies more than 20% after earnings beat, heads for best day ever"
+        "Accenture stock rallies after earnings beat expectations"
       ]
     },
-    "n_headlines": 112,
+    "n_headlines": 113,
     "sources_used": [
       "bbc_world",
       "yahoo_finance",
@@ -13341,7 +13347,7 @@
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1790883482.9902906,
+    "fetched_at": 1790897112.015541,
     "risk_off_themes": [
       "banking",
       "crash",
