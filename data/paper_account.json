@@ -1,5 +1,5 @@
 {
-  "equity": 89689.10544500063,
+  "equity": 88612.83617966062,
   "initial_capital": 100000.0,
   "cash": 100093.92824218668,
   "open_positions": [
@@ -32,21 +32,6 @@
       "bar_time_at_entry": "2026-09-24T17:30:00+00:00",
       "tp1_hit": false,
       "remaining_size": 26745.015507989323
-    },
-    {
-      "symbol": "^NDX",
-      "strategy": "trend_carry",
-      "side": 1,
-      "entry_time": "2026-10-07T20:01:52.536645+00:00",
-      "entry_price": 31156.263671875,
-      "size": 26906.73163350019,
-      "stop_pct": 0.04,
-      "tp1_pct": 0.08,
-      "tp2_pct": 0.25,
-      "tp1_size_frac": 0.3,
-      "bar_time_at_entry": "2026-10-07T19:30:00+00:00",
-      "tp1_hit": false,
-      "remaining_size": 26906.73163350019
     },
     {
       "symbol": "GLD",
@@ -388,8 +373,20 @@
       "size": 13476.343792572032,
       "pnl": 539.0537517028824,
       "reason": "tp1"
+    },
+    {
+      "symbol": "^NDX",
+      "strategy": "trend_carry",
+      "side": 1,
+      "entry_time": "2026-10-07T20:01:52.536645+00:00",
+      "entry_price": 31156.263671875,
+      "exit_time": "2026-10-15T17:18:24.221707+00:00",
+      "exit_price": 29910.013124999998,
+      "size": 26906.73163350019,
+      "pnl": -1076.2692653400097,
+      "reason": "stop"
     }
   ],
-  "n_trades_total": 27,
-  "last_updated_utc": "2026-10-15T12:30:51.849347+00:00"
+  "n_trades_total": 28,
+  "last_updated_utc": "2026-10-15T17:18:24.221744+00:00"
 }
