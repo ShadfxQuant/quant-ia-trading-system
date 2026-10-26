@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-25T21:54:12.593983+00:00",
+  "generated_at_utc": "2026-10-26T13:59:47.318498+00:00",
   "engine": {
     "pullback_base_pct": 0.3,
     "pullback_cap_pct": 1.0,
@@ -18,11 +18,11 @@
   "symbols": {
     "SPY": {
       "symbol": "SPY",
-      "bar_time_utc": "2026-10-23T19:30:00+00:00",
-      "close": 759.9099731445312,
-      "ema": 767.0375456693898,
-      "sma": 770.7122957669771,
-      "vwap": 760.6926053988622,
+      "bar_time_utc": "2026-10-26T13:30:00+00:00",
+      "close": 762.9099731445312,
+      "ema": 766.8756800801797,
+      "sma": 770.7109877366286,
+      "vwap": 762.9463297526041,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -32,29 +32,18 @@
       "read": {
         "bias": "bearish",
         "strength": "weak",
-        "adx": 27.52,
-        "ema_slope_4bar": -1.1496,
+        "adx": 26.02,
+        "ema_slope_4bar": -1.0053,
         "regime_pct_24h": 100.0,
         "macro_tilt": "supports",
         "flip": [
-          "Close > EMA50 (767.04)",
-          "ADX falls below 20 (now 27.5)",
+          "Close > EMA50 (766.88)",
+          "ADX falls below 20 (now 26.0)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "SPY leans short (ADX 27.5, close 759.91 vs EMA50 767.04) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "SPY leans short (ADX 26.0, close 762.91 vs EMA50 766.88) but the trend is only weak. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-08-04T19:30:00+00:00",
-          "o": 772.3099975585938,
-          "h": 773.4099731445312,
-          "l": 770.9600219726562,
-          "c": 771.280029296875,
-          "v": 11014760.0,
-          "ema": 751.116942897043,
-          "sma": 746.6011446439303,
-          "vwap": 769.1132116943056
-        },
         {
           "t": "2026-08-05T13:30:00+00:00",
           "o": 775.8499755859375,
@@ -4443,16 +4432,27 @@
           "ema": 767.0375456693898,
           "sma": 770.7122957669771,
           "vwap": 760.6926053988622
+        },
+        {
+          "t": "2026-10-26T13:30:00+00:00",
+          "o": 762.27001953125,
+          "h": 764.2990112304688,
+          "l": 761.6300048828125,
+          "c": 762.9099731445312,
+          "v": 3813382.0,
+          "ema": 766.8756800801797,
+          "sma": 770.7109877366286,
+          "vwap": 762.9463297526041
         }
       ]
     },
     "^NDX": {
       "symbol": "^NDX",
-      "bar_time_utc": "2026-10-23T19:30:00+00:00",
-      "close": 28956.06640625,
-      "ema": 29509.735141870544,
-      "sma": 30244.610066105768,
-      "vwap": 29030.02768714121,
+      "bar_time_utc": "2026-10-26T13:30:00+00:00",
+      "close": 29051.525390625,
+      "ema": 29491.76613201778,
+      "sma": 30235.030739182694,
+      "vwap": 29078.29296875,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -4462,29 +4462,18 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 35.82,
-        "ema_slope_4bar": -90.8726,
+        "adx": 34.4,
+        "ema_slope_4bar": -85.004,
         "regime_pct_24h": 100.0,
         "macro_tilt": "supports",
         "flip": [
-          "Close > EMA50 (29,509.74)",
-          "ADX falls below 20 (now 35.8)",
+          "Close > EMA50 (29,491.77)",
+          "ADX falls below 20 (now 34.4)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "^NDX leans short (ADX 35.8, close 28,956.07 vs EMA50 29,509.74) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
+        "narrative": "^NDX leans short (ADX 34.4, close 29,051.53 vs EMA50 29,491.77) and the trend is strong. The regime filter is mostly green. Macro backdrop supports this read."
       },
       "bars": [
-        {
-          "t": "2026-08-04T19:30:00+00:00",
-          "o": 29772.01953125,
-          "h": 29830.40234375,
-          "l": 29727.046875,
-          "c": 29727.046875,
-          "v": 149045000.0,
-          "ema": 28625.567382537392,
-          "sma": 28738.94248798077,
-          "vwap": 29566.760035045787
-        },
         {
           "t": "2026-08-05T13:30:00+00:00",
           "o": 29867.783203125,
@@ -8873,16 +8862,27 @@
           "ema": 29509.735141870544,
           "sma": 30244.610066105768,
           "vwap": 29030.02768714121
+        },
+        {
+          "t": "2026-10-26T13:30:00+00:00",
+          "o": 29048.5546875,
+          "h": 29170.75390625,
+          "l": 29012.599609375,
+          "c": 29051.525390625,
+          "v": 126956515.0,
+          "ema": 29491.76613201778,
+          "sma": 30235.030739182694,
+          "vwap": 29078.29296875
         }
       ]
     },
     "GLD": {
       "symbol": "GLD",
-      "bar_time_utc": "2026-10-23T19:30:00+00:00",
-      "close": 366.6000061035156,
-      "ema": 374.6615980101845,
-      "sma": 378.9030097374549,
-      "vwap": 366.23710148236535,
+      "bar_time_utc": "2026-10-26T13:30:00+00:00",
+      "close": 365.8100891113281,
+      "ema": 374.3144800141509,
+      "sma": 378.7916257418119,
+      "vwap": 366.2816975911458,
       "pullback_signal": 0,
       "trend_carry_signal": 0,
       "pullback_pyramid_ok": false,
@@ -8892,29 +8892,18 @@
       "read": {
         "bias": "bearish",
         "strength": "strong",
-        "adx": 55.33,
-        "ema_slope_4bar": -1.4233,
+        "adx": 57.14,
+        "ema_slope_4bar": -1.3757,
         "regime_pct_24h": 100.0,
         "macro_tilt": "conflicts",
         "flip": [
-          "Close > EMA50 (374.66)",
-          "ADX falls below 20 (now 55.3)",
+          "Close > EMA50 (374.31)",
+          "ADX falls below 20 (now 57.1)",
           "EMA50 crosses back above SMA130"
         ],
-        "narrative": "GLD leans short (ADX 55.3, close 366.60 vs EMA50 374.66) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
+        "narrative": "GLD leans short (ADX 57.1, close 365.81 vs EMA50 374.31) and the trend is strong. The regime filter is mostly green. Macro backdrop conflicts with this read \u2014 size cautiously."
       },
       "bars": [
-        {
-          "t": "2026-08-04T19:30:00+00:00",
-          "o": 374.2550048828125,
-          "h": 374.489990234375,
-          "l": 373.8999938964844,
-          "c": 374.1199951171875,
-          "v": 559068.0,
-          "ema": 372.77080132662303,
-          "sma": 372.96870586688703,
-          "vwap": 374.7787717636497
-        },
         {
           "t": "2026-08-05T13:30:00+00:00",
           "o": 384.9599914550781,
@@ -13303,6 +13292,17 @@
           "ema": 374.6615980101845,
           "sma": 378.9030097374549,
           "vwap": 366.23710148236535
+        },
+        {
+          "t": "2026-10-26T13:30:00+00:00",
+          "o": 367.2950134277344,
+          "h": 367.5,
+          "l": 365.5350036621094,
+          "c": 365.8100891113281,
+          "v": 1037433.0,
+          "ema": 374.3144800141509,
+          "sma": 378.7916257418119,
+          "vwap": 366.2816975911458
         }
       ]
     }
@@ -13310,39 +13310,42 @@
   "errors": {},
   "macro": {
     "verdict": "RISK_OFF",
-    "risk_off_score": 3,
-    "risk_on_score": 0,
+    "risk_off_score": 4,
+    "risk_on_score": 1,
     "theme_hits": {
-      "war": 1,
+      "war": 3,
       "banking": 0,
       "recession": 0,
       "rate_hike": 0,
-      "crash": 2,
+      "crash": 1,
       "rate_cut": 0,
-      "risk_on": 0
+      "risk_on": 1
     },
     "sample_headlines": {
       "war": [
+        "Russia to host first Olympic federation world event since Ukraine invasion",
+        "How war, security and coalition math are shaping the Israeli election",
         "Ukraine disputes Elon Musk\u2019s claim that its military violated Starlink terms during drone operations"
       ],
       "banking": [],
       "recession": [],
       "rate_hike": [],
       "crash": [
-        "Worried about this stock-market selloff? Relief may be coming after the midterms \u2014 no matter who wins.",
-        "Person dead after fiery crash near LAX - KTLA"
+        "Sinking Profits Turn China\u2019s $3.5 Trillion Stock Rout Into Trap - Bloomberg.com"
       ],
       "rate_cut": [],
-      "risk_on": []
+      "risk_on": [
+        "Rapper Nicki Minaj joins Trump onstage at Michigan rally"
+      ]
     },
-    "n_headlines": 89,
+    "n_headlines": 87,
     "sources_used": [
       "bbc_world",
       "cnbc_top",
       "marketwatch",
       "newsapi"
     ],
-    "fetched_at": 1792965253.7318902,
+    "fetched_at": 1793023187.739393,
     "risk_off_themes": [
       "banking",
       "crash",
